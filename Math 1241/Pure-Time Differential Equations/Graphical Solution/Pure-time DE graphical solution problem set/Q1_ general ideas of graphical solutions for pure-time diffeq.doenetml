@@ -1,0 +1,88 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7TFkKM3BG6JopPnfGQJWoe
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 823ecb9fccb58bc4
+-->
+<problem>
+<!-- <title>general ideas of graphical solutions for pure&#x2D;time diffeq</title> -->
+<variantControl numVariants="1" />
+  
+<setup>
+
+
+</setup>
+
+
+<p>Our goal is to understand what a pure-time differential equation can tell us about the graph of the unknown function.</p>
+
+
+<exercise includeAutoNumber="true"><title />
+Recall using the slope of the tangent line to find the derivative of a function at a point.  If a function is decreasing, the slope is negative, so the derivative is negative.  Likewise, if the derivative is negative at a point, the function is 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">decreasing</choice>
+<choice>increasing</choice>
+<choice>neither increasing or decreasing</choice>
+</choiceInput>
+</answer>
+ there.
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+If a function is increasing, the slope is positive, so the derivative is positive.  Likewise, if the derivative is positive at a point, the function is 
+<answer inline="true">
+<choiceInput>
+<choice>neither increasing or decreasing</choice>
+<choice>decreasing</choice>
+<choice credit="1">increasing</choice>
+</choiceInput>
+</answer>
+ there.
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+If the function is flat, or has a horizontal tangent line, the slope and derivative are zero.  Then if the derivative is zero at a point, the function is 
+<answer inline="true">
+<choiceInput>
+<choice>increasing</choice>
+<choice credit="1">neither increasing or decreasing</choice>
+<choice>decreasing</choice>
+</choiceInput>
+</answer>
+ there. In other words, the graph is 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">horizontal</choice>
+<choice>vertical</choice>
+<choice>angled up</choice>
+<choice>angled down</choice>
+</choiceInput>
+</answer>
+.
+</exercise>
+
+<solution>
+
+
+<ol>
+
+<li>
+This works both ways. A function is decreasing at a point if and only if the derivative is negative at that point.
+</li>
+
+<li>
+This works both ways. A function is increasing at a point if and only if the derivative is positive at that point.
+</li>
+
+<li>
+If the derivative is zero, the function is neither increasing nor decreasing, and the graph is therefore horizontal (or flat) wherever the derivative is zero.
+</li>
+
+
+</ol>
+
+</solution>
+
+
+</problem>

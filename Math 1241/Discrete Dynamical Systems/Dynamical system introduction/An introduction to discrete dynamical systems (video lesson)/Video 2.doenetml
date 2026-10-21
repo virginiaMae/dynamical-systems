@@ -1,0 +1,65 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7C5bkvfLghCWQdKwiSJtZK
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: a431c1672719904b
+-->
+<title>An introduction to discrete dynamical systems</title>
+
+<setup>
+  <selectFromSequence name="m0" from="400" to="2000" />
+  <selectFromSequence name="p" from="0.1" to="2" step="0.1" />
+</setup>
+
+<p><ref>Video 1</ref> | <ref>Video 2</ref> | <ref>Summary</ref> | <ref>Transcripts</ref> </p>
+
+
+<section><title>Video 2</title>
+<figure suppressFigureNameInCaption="true">
+<video youtube="Y3CX5JyNAZs" size="large" aspectRatio="16/9" name="v1" />
+<caption>Discrete dynamical system introduction, part 2 </caption>
+</figure>
+
+<number name="v1RoundUp" hide="true">
+  <conditionalContent>
+    <case condition="$v1.fractionWatched > 0.9">1</case>
+    <else>$v1.fractionWatched</else>
+  </conditionalContent>
+</number>
+  
+  <p>Video credit achieved: <number displayDecimals="1">$v1RoundUp*100</number>%</p>
+
+<answer hide="true" name="v1Credit">
+  <award credit="$v1RoundUp"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+
+  
+<problem><title>Video 2 review question</title>
+<p>If one starts with a moose population of <m>m_0=$m0</m> individuals, and the population grows by $p% per year (i.e., <m>m_{t+1}−m_t=<number name="r">$p/100</number>m_t</m>), what is the size of the moose population after after one year?</p>
+
+<p><m>m_1 = </m> <answer name="ans2"><number name="m1">$m0(1+$r)</number></answer> (no rounding, fractional population size allowed)</p>
+
+  <hint hide="$ans2.numSubmissions &lt; 2 or $ans2.creditAchieved = 1 or $ans2.numSubmissions >= 5">
+  <p>The population size after 1 year is
+    <me>m_1 = m_0 + $r m_0</me>
+    where <m>m_0=$m0</m>.
+  </p>
+  </hint>
+
+    <hint hide="$ans2.numSubmissions &lt; 5 or $ans2.creditAchieved = 1">
+  <p>The population size after 1 year is
+    <md>
+      <mrow>m_1 &amp;= m_0 + $r m_0</mrow>
+      <mrow>&amp;= $m0 + $r \cdot $m0 = <number displayDigits="10" extend="$m1" /></mrow>
+    </md>
+  </p>
+  </hint>
+  
+  <solution>
+    <m>m_1 = $m0 + <number>$p/100</number> \cdot $m0 = $m1</m>
+  </solution>
+</problem>
+
+</section>

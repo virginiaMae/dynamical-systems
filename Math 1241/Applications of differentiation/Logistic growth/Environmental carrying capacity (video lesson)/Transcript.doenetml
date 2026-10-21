@@ -1,0 +1,37 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7RptBZKSx6TLWFLiQQCscK
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: ed8d1a74af1863fc
+-->
+<title>Environmental carrying capacity</title>
+<p><ref>Video</ref> | <ref>Summary</ref> | <ref>Transcript</ref>  </p>
+<description>
+We examine a difference equation used to describe population growth in limited environments.
+</description>
+
+<section><title>Transcript: The discrete logistic equation</title>
+  
+<p>One of the simplest types of discrete dynamical systems is a linear dynamical system of the form <m>P_{t+1} -P_t = rP_t</m>. Where, for example, <m>P_t</m> equals population size at time <m>t</m>. This equation says that the change in one time step is proportional to the population size with proportionality constant <m>r</m>, which is the growth rate. If <m>r</m> is positive, <m>r > 0</m>, this population exhibits exponential growth. This means that the population size grows without bound. So if we were to plot population size versus time, it would just keep growing and growing without bound, growing faster and faster as time increases. This could be a good model for early stages of population growth, but clearly it becomes bad for later stages because the population cannot grow without bound. In a realistic situation the population size can’t grow to extremely huge values. The population lives in an environment that can’t support an arbitrarily large number of individuals. Instead, eventually the population will run out of food, or space, or something like that, and the population growth will slow down or stop. To model these environmental constraints, we can introduce something called a carrying capacity.</p>
+  
+<p>The carrying capacity is the maximum population size that the environment can sustain indefinitely. As a population reaches its environmental limits, its growth slows down. If we let <m>M</m> be the carrying capacity, then if we plot population size versus time, the idea is that the population size won’t grow beyond <m>M</m>. Initially the population will be small and it will grow exponentially, then eventually the population growth rate will slow down, and the population size will approach the carrying capacity. If for some reason one started with a population size above the carrying capacity, the population size would decline and approach the carrying capacity from above. To model the effect of an environmental carrying capacity, we’ll let <m>P_t</m> be the population size in time period <m>t</m>, and <m>M</m> be the carrying capacity. Then <m>\frac{P_t}{M}</m> is the fraction of the carrying capacity that is used . So that, if for example <m>\frac{P_t}{M}</m>  was one-half, then the population size would be half its maximal value. Then <m>(1 - \frac{P_t}{M})</m> is the unused fraction. Then the idea to incorporate the carrying capacity into the population model is to make the reproduction of the population proportional not only to the population size <m>P_t</m>, but also proportional to the unused fraction of the carrying capacity.</p>
+  
+<p>So, we can write the model, that’s <m>P_{t+1} - P_t</m>, is the change from time <m>t</m> to time <m>(t+1)</m>, we’ll make that proportional with proportionality constant <m>r</m>, to the population size <m>P_t</m>. If we left the equation like this, then we would have the old exponential growth model, but let’s make this population increase also proportional to the unused carrying capacity;
+<me>P_{t+1} - P_t = r P_t (1 - \frac{P_t}{M})</me>
+With this change, now the population growth will slow down when <m>P_t</m> gets closer to <m>M</m>. This equation is one form of the Discrete logistic equation. </p>
+
+<p>In this model the parameter <m>r</m> is called the low density growth rate, and the reason <m>r</m> is called this is because when the population size is small, when <m>P_t</m> is small compared to <m>M</m>, then this equation is close to the exponential growth equation with rate <m>r</m>. Let’s take a look at this a little more closely. If we have a small population size, we mean that it is small compared to the carrying capacity <m>M</m>, <m>P_t \lt\lt  M</m>. This means that the ratio, <m>\frac{P_t}{M}</m> is close to 0, is much smaller than 1; <m>\frac{P_t}{M} \lt\lt 1</m>. So that if I take the factor <m>(1 - \frac{P_t}{M})</m>,  subtracting <m>\frac{P_t}{M}</m> from 1 doesn’t change the value very much, so this quantity is pretty close to 1. In this regime, the discrete logistic equation looks like <m>P_{t+1} - P_t \approx r P_t \cdot 1</m>, so the logistic equation looks like the exponential growth equation, with growth rate <m>r</m>
+<m>P_{t+1} - P_t \approx r P_t.</m>
+However, as the population size grows, the growth rate slows down.</p>
+    
+<p>So let’s say we have an intermediate population size, let’s say <m>P_t</m> is about half the carrying capacity.  <m>P_t \approx \frac{M}{2}</m>. In this case, the factor <m>(1 - \frac{P_t}{M})</m> is about one-half, and so the logistic equation looks something like <m>P_{t+1} - P_t \approx r  P_t...</m> but now we multiply by <m>(1 - \frac{P_t}{M})</m>, and that’s about a half. And so it looks like the growth rate is basically reduced by one-half
+<me>P_{t+1} - P_t \approx \frac{r}{2} P_t.</me>
+The effect of the carrying capacity is to slow down the growth as the population size gets larger. 
+</p>
+
+<p>If we have a really large population size, let’s say if we have a population size right around the carrying capacity <m>P_t \approx M</m>, then the ratio <m>\frac{P_t}{M}</m> is pretty close to 1. So that the factor <m>(1 - \frac{P_t}{M})</m> is almost 0. In this case the logistic growth equation becomes <m>P_{t+1} - P_t \approx r  P_t...</m> but now we’re multiplying basically by 0, because the factor <m>(1 - \frac{P_t}{M})</m> is about 0. When the population size reaches the carrying capacity, the growth has slowed down to nothing. In fact, what this means is that the carrying capacity M is an equilibrium of the equation
+<me>P_{t+1} - P_t \approx 0\;\;\;M = \text{equilibrium}</me></p>
+
+<p>This applet illustrates the relationship between exponential growth and logistic growth. Here we’ve set the growth rate to 0.4, the carrying capacity to 1000, and we have an initial condition of 10, which is 1% of the carrying capacity. The carrying capacity 1000 is illustrated by the horizontal cyan line. The red x’s give the solution to exponential growth, and the blue circles give the solution to logistic growth. Since we start at a low initial condition, the exponential and logistic growth equations start off the same. At this low population size, the carrying capacity doesn’t influence the growth very much. However, after 10 or so units of time, one can see that the logistic growth is slowing down compared to the exponential growth. And of course the logistic growth asymptotes to the carrying capacity of 1000, while the exponential growth model grows without bound. If one changes the initial conditions to make them larger, the exponential growth model is larger right at the beginning. And if we go beyond the carrying capacity, the exponential growth goes up, while the logistic growth goes down to the carrying capacity. </p>
+</section>
+  

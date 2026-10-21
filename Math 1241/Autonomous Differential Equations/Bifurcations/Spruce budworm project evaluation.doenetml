@@ -1,0 +1,29 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 81NZPwf6PTFTz5m3oqHTrT
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: d58640be4168c21a
+-->
+<title>Spruce budworm project evaluation</title>
+
+<p>What was your table number?  <textInput name="tableNumber" /></p>
+<p>Who were the members of your group?  (include yourself)</p>
+
+<textInput expanded="true" name="members" />
+
+<p>Which individuals contributed equally to the project?</p>
+
+<textInput expanded="true" name="contributed" />
+
+<p>List any individuals that did not contribute a fair amount to the project.  Explain the situation including interactions, if any, each individual had with the rest of the group while working on the project.</p>
+
+<textInput expanded="true" name="lackOfContribution" />
+
+
+<p>Other comments:</p>
+
+<textInput expanded="true" name="other" />
+
+<answer showCorrectness="false">
+  <award><when>true</when></award>
+</answer>

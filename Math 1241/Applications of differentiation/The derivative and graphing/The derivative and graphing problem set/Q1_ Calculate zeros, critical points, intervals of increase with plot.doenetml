@@ -1,0 +1,349 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7RKknPNVy3pRRXzQevMKmD
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 2500fc149dcb181a
+-->
+<problem>
+<!-- <title>Calculate zeros, critical points, intervals of increase with plot</title> -->
+
+<setup>
+
+<function name="f" variables="x">(x^2-1)*e^x</function>
+
+<math name="f_poly">(x^2-1)</math>
+<math name="zeros">-1, 1</math>
+
+<math name="fprime_expanded">2xe^x + (x^2-1)e^x</math>
+<function name="fprime">(x^2+2x-1) e^x</function>
+
+<math name="fprime_polynomial">(x^2+2x-1)</math>
+
+<math name="cp1"> -sqrt(2) - 1</math>
+<math name="cp2">  sqrt(2) - 1</math>
+<math name="critical_points">$cp1, $cp2</math>
+
+
+<subsetOfReals name="left_interval">(-infinity, $cp1 )</subsetOfReals>
+<subsetOfReals name="middle_interval">($cp1 ,$cp2 )</subsetOfReals>
+<subsetOfReals name="right_interval">($cp2 , infinity)</subsetOfReals>
+
+<math name="f_cp1">$$f($cp1 )</math>
+<math name="f_cp2">$$f($cp2 )</math>
+<point name="point_cp1">($cp1 ,$f_cp1 )</point>
+<point name="point_cp2">($cp2 ,$f_cp2 )</point>
+
+
+</setup>
+
+
+<p>As a warm up, consider the function <m>f(x)= $f </m> that is graphed below.</p>
+
+
+
+<graph size="large" aspectRatio="2" xmin="-5" xmax="3" ymin="-1.5" ymax="2.1" fixAxes="true">
+
+<function extend="$f" />
+
+</graph>
+
+
+
+<exercise>
+<p>Calculate the derivative of <m>f</m>.</p>
+
+<m>\frac{ df }{ dx } =</m> 
+<answer>
+<award>$fprime </award>
+</answer>
+</exercise>
+
+<exercise>
+<p>Calculate the critical points of <m>f</m>, the points where <m>\frac{ df }{ dx }=0</m> or <m>\frac{ df }{ dx }</m> does not exist. Write the answers in increasing order, separated by commas.  You can write your answer in terms of square roots, or, if you round, include at least 5 significant digits to assure full credit.</p>
+
+<p>Critical points: 
+<answer name="answer2">
+<award matchPartial="true" allowedErrorInNumbers="0.0001">$critical_points </award>
+<award credit="0.8" matchPartial="true" allowedErrorInNumbers="0.001" feedbackCodes="numericalerror">$critical_points </award>
+
+<award unorderedCompare="true" credit="0.9" matchPartial="true" allowedErrorInNumbers="0.0001" name="award4">$critical_points</award>
+<award unorderedCompare="true" credit="0.72" matchPartial="true" allowedErrorInNumbers="0.001" feedbackCodes="numericalerror" name="award5">$critical_points </award>
+</answer>
+</p>
+<feedback condition="$award4 or $award5">Enter the critical points in increasing order.</feedback>
+
+$answer2.feedbacks
+
+
+<p>Evaluate <m>f</m> at each of those critical points.</p>
+<p>Write your answers as ordered pairs of the form <m>(a,b)</m>, where <m>a</m> is the critical point and <m>b</m> is the value of <m>f</m> at the critical point.</p>
+
+<p>For first critical point: 
+<answer name="answer3">
+<award allowedErrorInNumbers="0.0001">$point_cp1 </award>
+<award credit="0.8" allowedErrorInNumbers="0.001" feedbackCodes="numericalerror">$point_cp1 </award>
+</answer>
+$answer3.feedbacks
+
+</p>
+
+<p>For second critical point: 
+<answer name="answer4">
+<award allowedErrorInNumbers="0.0001">$point_cp2 </award>
+<award credit="0.8" allowedErrorInNumbers="0.001" feedbackCodes="numericalerror">$point_cp2 </award>
+</answer>
+$answer4.feedbacks
+</p>
+
+<p>Plot critical points on the graph, i.e., plot the points <m>(a,b)</m> you just calculated.</p>
+
+<number hide="true" name="n_i">0</number>
+<updateValue disabled="$n_i > 3" target="$n_i" newValue="$n_i+1">
+  <label>Add point</label>
+</updateValue>
+<updateValue disabled="$n_i &lt; 1" target="$n_i" newValue="$n_i-1">
+  <label>Remove point</label>
+</updateValue>
+
+<graph size="large" aspectRatio="2" xmin="-5" xmax="3" ymin="-1.5" ymax="2.1" showNavigation="false">
+
+<function extend="$f" />
+
+<repeatForSequence fixed="false" from="1" to="$n_i" name="map1" valueName="i">
+
+<point name="dragPoint" stylenumber="2" x="$i - 3" y="1">
+  <label>(<math displayDigits="5" extend="$dragPoint.x" />, <math displayDigits="5" extend="$dragPoint.y" />)</label>
+  
+    <attractTo threshold="0.2">$point_cp1</attractTo>
+    <attractTo threshold="0.2">$point_cp2</attractTo>
+  
+</point>
+
+</repeatForSequence>
+
+</graph>
+
+<p>
+<answer><award unorderedCompare="true" matchPartial="true"><when>
+<mathList> $map1 </mathList> = <mathList>$point_cp1 $point_cp2</mathList>
+</when></award>
+</answer>
+</p>
+</exercise>
+
+<exercise>
+The two critical points divide the number line into three intervals: one to the left of the critical points, one between the critical points, and one to the right of the critical points. What are these three intervals? 
+
+  
+<hint>
+You can write the intervals as <m>(a,b)</m> or as <m>a &lt; x &lt; b</m>.  Or if an interval extends to infinity, you can write it, for example, as <m>(-\infty, b)</m> or <m>x &lt; b</m>.
+</hint>
+
+  
+<p>Left interval: 
+<answer name="answer5">
+  <mathInput name="mi5" />
+<award allowedErrorInNumbers="0.0001" referencesAreResponses="$mi5">
+  <when><subsetOfReals>$mi5</subsetOfReals> = $left_interval</when>
+</award>
+<award credit="0.8" allowedErrorInNumbers="0.001" feedbackCodes="numericalerror">
+  <when><subsetOfReals>$mi5</subsetOfReals> = $left_interval</when>
+</award>
+</answer>
+</p>
+$answer5.feedbacks
+
+  
+  <p>
+
+Middle interval: 
+<answer name="answer6">
+  <mathInput name="mi6" />
+<award allowedErrorInNumbers="0.0001" referencesAreResponses="$mi6">
+  <when><subsetOfReals>$mi6</subsetOfReals> = $middle_interval</when>
+</award>
+<award credit="0.8" allowedErrorInNumbers="0.001" feedbackCodes="numericalerror">
+  <when><subsetOfReals>$mi6</subsetOfReals> = $middle_interval</when>
+</award>
+</answer>
+</p>
+$answer6.feedbacks
+
+<p>
+
+Right interval: 
+<answer name="answer7">
+  <mathInput name="mi7" />
+<award allowedErrorInNumbers="0.0001" referencesAreResponses="$mi7">
+  <when><subsetOfReals>$mi7</subsetOfReals> = $right_interval</when>
+</award>
+<award credit="0.8" allowedErrorInNumbers="0.001" feedbackCodes="numericalerror">
+  <when><subsetOfReals>$mi7</subsetOfReals> = $right_interval</when>
+</award>
+</answer>
+</p>
+$answer7.feedbacks
+</exercise>
+
+<exercise>
+On each of these intervals, <m>\frac{ df }{ dx }</m> does not change sign. Pick an auxiliary point in each interval, test the sign of <m>\frac{ df }{ dx }</m> at that point, and conclude whether <m>f</m> is increasing or decreasing on that interval. 
+
+<p>On left interval <m>f</m> is 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">increasing</choice>
+<choice>decreasing</choice>
+</choiceInput>
+</answer>
+
+</p>
+<p>
+
+On middle interval <m>f</m> is 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">decreasing</choice>
+<choice>increasing</choice>
+</choiceInput>
+</answer>
+
+</p>
+<p>
+
+On right interval <m>f</m> is 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">increasing</choice>
+<choice>decreasing</choice>
+</choiceInput>
+</answer>
+</p>
+</exercise>
+
+<exercise>
+What are the two roots of <m>f</m> itself, i.e., at what points is <m>f(x)=0</m>? 
+
+<p>Roots of <m>f</m>: 
+<answer>
+<award symbolicEquality="true" matchPartial="true" unorderedCompare="true">$zeros </award>
+</answer>
+</p>
+
+<p>What is the value of <m>f</m> at each of those roots? 
+<answer>
+<award symbolicEquality="true">0</award>
+</answer>
+</p>
+
+<p>Plot the roots of <m>f</m> on the graph.</p>
+
+
+  
+<number hide="true" name="n_i2">0</number>
+<updateValue disabled="$n_i2 > 3" target="$n_i2" newValue="$n_i2+1">
+  <label>Add point</label>
+</updateValue>
+<updateValue disabled="$n_i2 &lt; 1" target="$n_i2" newValue="$n_i2-1">
+  <label>Remove point</label>
+</updateValue>
+
+
+<graph size="large" aspectRatio="2" xmin="-5" xmax="3" ymin="-1.5" ymax="2.1" showNavigation="false">
+
+<function extend="$f" />
+<collect componentType="point" from="$map1" />
+
+
+<repeatForSequence fixed="false" from="1" to="$n_i2" name="map2" valueName="i">
+
+<point name="dragPoint2" stylenumber="3" x="$i - 3" y="-1">
+
+
+<attractTo threshold="0.2"><point>(-1, 0)</point></attractTo>
+<attractTo threshold="0.2"><point>( 1, 0)</point></attractTo>
+
+
+</point>
+
+</repeatForSequence>
+
+</graph>
+
+<p>
+<answer><award unorderedCompare="true" matchPartial="true"><when>
+<mathList> $map2 </mathList> = <mathList>(-1,0) (1,0)</mathList>
+</when></award>
+</answer>
+</p>
+
+
+<p>(Usually, the next step is to sketch the graph of <m>f</m> from this information, but in this warm-up problem, you have the graph of <m>f</m>.)</p>
+</exercise>
+
+
+
+
+
+<solution>
+  <setup>
+<math name="x1">-3</math>
+<math name="fprimex1">$$fprime($x1 )</math>
+<math name="x2">0</math>
+<math name="fprimex2">$$fprime($x2 )</math>
+<math name="x3">1</math>
+<math name="fprimex3">$$fprime($x3 )</math>
+  </setup>
+
+<exercise>
+The derivative is <m>\frac{ df }{ dx }= $fprime_expanded = $fprime </m>.
+</exercise>
+
+<exercise>
+The derivative exists everywhere.  Since the exponential function can never be zero, the only way for
+<me>\frac{ df }{ dx } = $fprime =0</me>
+is for <m>$fprime_polynomial =0</m>.  Plugging this into the quadratic equation we find the critical points are
+<m>x=$critical_points </m>, or, if rounding to 5 significant digits, the critical points are <m>x=<round numDigits="5">$critical_points</round></m>.
+
+<p>Since <m>f(<round numDigits="5">$cp1</round>)=<round numDigits="5">$f_cp1</round></m>, the ordered pair is <m><round numDigits="5">$point_cp1</round></m>.  Since <m>f(<round numDigits="5">$cp2</round>)=<round numDigits="5">$f_cp2</round></m>, the ordered pair is <m><round numDigits="5">$point_cp2</round></m>.
+
+</p>
+</exercise>
+
+<exercise>
+<p>Left interval: <m><round numDigits="5">$left_interval</round></m></p>
+
+<p>Middle interval: <m><round numDigits="5">$middle_interval</round></m></p>
+
+<p>Right interval: <m><round numDigits="5">$right_interval</round></m></p>
+</exercise>
+
+<exercise>
+We could pick for example <m>x=$x1 </m> in the left interval.  Since <m>\frac{ df }{ dx }\Big|_{x=$x1  } = <round numDigits="5">$fprimex1</round> \gt  0</m>, <m>f</m> is increasing in the left interval.
+
+<p>We could pick for example <m>x=$x2 </m> in the middle interval.  Since <m>\frac{ df }{ dx }\Big|_{x=$x2  } = <round numDigits="5">$fprimex2</round> \lt  0</m>, <m>f</m> is decreasing in the middle interval.</p>
+
+<p>We could pick for example <m>x=$x3 </m> in the rigth interval.  Since <m>\frac{ df }{ dx }\Big|_{x=$x3  } = <round numDigits="5">$fprimex3</round> \gt  0</m>, <m>f</m> is increasing in the right interval.</p>
+</exercise>
+
+<exercise>
+Since <m>e^x</m> cannot be zero, <m>f(x)</m> is zero only when <m>$f_poly =0</m>, i.e., when <m>x= $zeros </m>.
+
+<p>The locations of the critical points and roots of <m>f</m> are shown in the following figure.</p>
+
+
+<graph size="large" aspectRatio="2" xmin="-5" xmax="3" ymin="-2" ymax="3" showNavigation="false">
+
+<function extend="$f" />
+
+<point fixed="true" stylenumber="2" extend="$point_cp1" />
+<point fixed="true" stylenumber="2" extend="$point_cp2" />
+
+
+<point fixed="true" stylenumber="3">(1, 0)</point>
+<point fixed="true" stylenumber="3">(-1, 0)</point>
+
+</graph>
+</exercise></solution>
+
+
+</problem>

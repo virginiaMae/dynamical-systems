@@ -1,0 +1,80 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7FtajhnyEkbuJbuYRMh8Mk
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: a2bb34541304a48c
+-->
+<title>A graphical approach to finding equilibria of discrete dynamical systems</title>
+
+<p><ref>Video 1</ref> | <ref>Video 2</ref> | <ref>Video 3</ref> | <ref>Transcripts</ref> </p>
+
+
+<aside><title>Equilibria of discrete dynamical systems</title>
+
+  <p>One of most important types of solutions to a dynamical system is also the simplest: a solution in which nothing at all happens.  We call this type of solution an equilibrium.  We illustrate an equilibrium with an example.</p>
+
+<p>Let <m>x_{t+1} = 2x_t -1</m>.  In this dynamical system, we first double the number then subtract 1.  What is the number that, if you double it and then subtract 1, you get back to where you started?  There is only one number that satisfies this condition: the number 1.  The number 1 is an equilibrium of the dynamical system <m>x_{t+1} = 2x_t - 1</m>.</p>
+
+<p>Let's demonstrate this is true.  If we start with the initial condition <m>x_0 = 1</m>, we plug it into the formula for <m>x_1</m> to calculate that <m>x_1 = 1</m>.  That looks good; we stayed at 1 for one time step.  To be an equilibrium, <m>x_t</m> has to stay at 1 forever.  Will <m>x_2</m> also be 1?  Plugging in <m>x_1 = 1</m> into the formula for <m>x_2</m> gives the same calculation, showing that <m>x_2</m> stays at 1.  In fact, we get the same calculation for any value of <m>t</m>.  We can keep going like this forever.  If we were patient, we could calculate that <m>x_{100} = 1</m> or even <m>x_{1000} = 1</m>.</p>
+
+<p>We say that the solution <m>x_t = 1</m> is an equilibrium of the dynamical system <m>x_{t+1} = 2x_t - 1</m>.  For this equilibrium solution, no matter the value of <m>t</m>, <m>x_t</m> is always <m>1</m>.</p>
+
+<p>We can show that <m>x_t = 2</m> is not anequilibrium by trying the initial condition <m>x_0 = 2</m>.  If <m>x_0</m> is <m>2</m>, we'd calculate that <m>x_1</m> is <m>3</m>.  If we start at <m>2</m>, we don't stay at <m>2</m>, so <m>2</m> is not an equilibrium.</p>
+
+<p>To determine if a number is an equilibrium, just plug it into the dynamical system.  If you get the same number back, it is an equilibrium.  If you get a different number back, it is not an equilibrium.</p>
+
+<p>Let's look at another example, this time in difference form: <me>z_{n+1} - z_n =  4(z_n -2)(z_n + 3).</me>  Let's try the initial condition <m>z_0 = 2</m>.  We set <m>n=0</m> into the dynamical system and replace <m>z_0</m> with <m>2</m>.  The right hand side becomes zero so that <m>z_1 - 2 = 0</m> or <m>z_1</m> is <m>2</m>.  We started at <m>2</m> and we stayed at <m>2</m>.  <m>z_n = 2</m> is equilibrium of the dynamical system.</p>
+
+<p>We also find that <m>-3</m> is an equilibrium.  Again, the right hand side becomes <m>0</m> so that <m>z</m> doesn't change.  <m>z_n = -3</m> is an equilibrium of the dynamical system.</p>
+
+<p>If you try any other initial condition <m>z_0</m>, you will find that <m>z_1</m> will be a different number.  For example, if <m>z_0 = 0</m>, then <m>z_1 = -24</m>.  <m>0</m> is definitely not an equilibrium.</p>
+
+<p>This approach of plugging in numbers works well at testing if a number is an equilibrium.  It's not a great way to find the value of an equilibrium if we don't know it.  We can't test every single number out there.  Let's hope we can find a better approach for finding equilibria.</p>
+  
+</aside>
+
+<aside><title>Solving for equilibria in discrete dynamical systems</title>
+  
+<p>An equilibrium of a dynamical system is a constant solution.  That means if the initial condition is equal to the equilibrium, we will stay at that value forever.  Plugging the equilibrium into the dynamical system gives the same number back for the next time step.</p>
+
+<p>How do we find such a constant solution?  Let's work it out with an example.</p>
+
+<p>Let <m>x_{t+1} = 4 + 0.6 x_t</m>.  We can check if 2 is an equilibrium by plugging <m>x_t=2</m> into the system to see if we get 2 back.  We calculate that <m>x_{t+1} = 5.2</m>.  Since 5.2 is not the same number as 2, the value changed, and 2 is not an equilibrium.</p>
+
+<p>Now, we could go ahead and try plugging in lots of different numbers and hope that eventually we find the value of the equilibrium.  But, there are a lot of numbers out there, and it might take a long time until we find the right one.  And, even if we found one equilibrium, how do we know if that is the only one?  Maybe the dynamical system has two equilibria or even more equilibria.</p>
+
+<p>We can let variables come to the rescue.  Since a variable can stand for any number, we can try all numbers at once with a variable.  Let's use the variable capital <m>E</m> for equilibrium.  If we plug in <m>x_t = E</m> into the dynamical system, we can see if we get <m>E</m> back out for <m>x_{t+1}</m>.</p>
+
+<p>For our example, plugging in <m>E</m> for <m>x_t</m> gives <m>x_{t+1} = 4 + 0.6E</m>.  For <m>E</m> to be an equilibrium, we need the value of <m>x_{t+1}</m> to be <m>E</m>.  In other words, we need <m>4 + 0.6E</m> to be equal to <m>E</m>.  If we can find a number <m>E</m> for which <m>E = 4 + 0.6E</m>, then <m>E</m> is an equilibrium.</p>
+
+<p>Let's solve this equation for <m>E</m>.  By subtracting off <m>0.6E</m> from both sides of the equation, we get the condition <m>0.4E = 4</m>.  Dividing both sides by 0.4, we get the final answer that <m>E = 10</m>.  We have found that <m>x_t = 10</m> is an equilibrium of the dynamical system <m>x_{t+1} = 4 + 0.6 x_t</m>.</p>
+
+<p>In fact, since 10 is the only value of E where <m>4 + 0.6 E = E</m>, we can see that we have found all equilibria.  The solution <m>x_t=10</m> is the only equilibrium of the dynamical system.</p>
+
+<p>Let's try this again for a couple more examples.  Example 2 is <m>y_{n+1} - y_n = 1</m>.  We try to find an equilibrium <m>y_n = E</m> by plugging in E for both <m>y_n</m> and <m>y_{n+1}</m>.  <m>E</m> is an equilibrium if <m>E - E = 1</m> or <m>0 = 1</m>.  The equation for the equilibrium has no solutions; the dynamical system has no equilibria.  That makes sense.  We are adding the number 1 at each time step, so there is no way to have a constant solution.</p>
+
+<p>Example 3 is <m>z_{t+1} - z_t = z_t^2 - z_t</m>.  We set both <m>z_t</m> and <m>z_{t+1}</m> equal to E to look for the equilibria.  We obtain the equation <m>0 = E^2-E</m>.  To solve this equation we factor, obtaining <m>0 = E(E-1)</m>.  One of the two factors must be zero so either <m>E=0</m> or <m>E-1=0</m>.  The equilibria are <m>E = 0</m> and <m>E=1</m>.  Both <m>z_t = 0</m> and <m>z_t = 1</m> are constant solutions to the dynamical system.  To verify that both 0 and 1 are equilibria, you can plug in those numbers to see that <m>z</m> doesn't change.</p>
+
+<p>In summary, to calculate the equilibria of a discrete dynamical system, replace all occurrences of the state variable with the variable <m>E</m>, then solve the resulting equation for <m>E</m>.</p>
+  
+</aside>
+
+<aside><title>Equilibria of discrete dynamical systems (part 3)</title>
+<p>Let's imagine we have a discrete dynamical system for, let's say, a growth of a population, so <m>P_t</m> is the population at time <m>t</m>. So we would have <m>P_{t+1} - P_t</m>, that's the change in the population, well let’s say it's some constant <m>r</m>, growth rate parameter, times <m>P_t</m> (times the population). 
+  <me>P_{t+1} - P_t = rP_t.</me>
+Let’s imagine we’re subtracting off or harvesting an amount <m>h</m> in each time step. So let's look for equilibria of this discrete dynamical system
+  <me name="example1">P_{t+1} - P_t = rP_t - h.</me></p>
+
+<p>So, an equilibrium is the value of the state variables where they don’t change. So, for example, if the value of the state variable <m>P_t</m> is some equilibrium –  so let's call that <m>E</m>, it's just a number, the equilibrium size <me>P_t = E.</me> So, this value, <m>E</m>, is an equilibrium –  then the idea is that the population size doesn’t change, and the state variables don’t change, so here <m>P_{t+1}</m> is also equal to <m>E</m>, and the next time step, <m>P_{t+2}</m> is also equal to this number <m>E</m>, etc. So, that’s the idea of an equilibrium, it’s the state variable that just stays at the value of equilibrium. Ok, for this equation here, (<m>P_{t+1} - P_t = rP_t - h</m>), let’s look for the equilibrium. Let’s look for the case where <m>P_t</m> is the same as <m>P_{t+1}</m>, they're all equal to <m>E</m>. So, what we’ll do is we’ll just replace all the state  variables with the equilibrium value, <m>E</m>. So we have <m>P_{t+1}</m>,(well that’s <m>E</m>) minus <m>P_t</m>, (well that’s <m>E</m> again) is equal to <m>r</m> times <m>P_t</m>, (or <m>E</m>) minus <m>h</m>. 
+  <me>E - E = rE - h.</me>
+Okay that means we have <m>0 = rE - h</m>. Or, <m>E = \frac{h}{r}</m>. For this dynamical system, there’s one equilibrium, its <m>E = \frac{h}{r}</m>, and you can verify if you plug in <m>\frac{h}{r}</m> for all the <m>P</m>’s here; you can see that this dynamical system is satisfied.</p>
+<p>The idea of an equilibrium is a fundamental concept in dynamical systems. We are going to use the concept of an equilibrium over and over again as we study dynamical systems. Let’s try another example. </p>
+<p>Again, we’ll think of the growth of a population, so <m>P_{t+1} - P_t</m> is some growth rate again as before. This time let's imagine that we’re subtracting off a quantity that's proportional to <m>P_t</m>, with proportionality constant <m>b</m>. <me>P_{t+1} - P_t = rP_t - bP_t.</me>
+Ok, what does equilibrium mean? We need some value <m>E</m>, that we’re going to substitute for all the state variables, plug that into here, and when we do that, we again get  <m>E - E</m> on the left-hand side equals <m>rE</m> (or <m>P_t</m>) minus <m>b</m> times <m>P_t</m>, (or <m>b</m> times <m>E</m>). We have 
+  <me>0 = E(r - b).</me>
+This equation has the product of two factors equal to zero, so we know that the equation has two solutions, where either factor could be zero. We could have <m>E = 0</m>, or <m>r - b = 0</m>. In other words, <m>E = 0</m> or <m>r = b</m>. What does this result mean?</p>
+<p>In the first case, we can see that <m>E = 0</m>, for a population size of 0 is always in equilibrium, no matter the value of either of the parameters <m>r</m> or <m>b</m>. We always know that having no individuals in the population is an equilibrium.</p>
+<p>What about this other equation (<m>r-b = 0</m>)? What does this mean? If it happens to be that the parameters are chosen so that <m>r = b</m>, then any value of <m>E</m> is an equilibrium. Let’s think about this a little further. So let's imagine that we have <m>r = b</m>, then, the dynamical system, well it just becomes <m>P_{t+1} - P_t = 0</m>. This is a dynamical system that says the value of <m>P_t</m> in the next time step is the same as the previous time step – there’s no change. This implies the system never changes. In other words, this case here is pretty boring. Nothing ever happens, no matter what we choose for the initial conditions, the system will always sit there, never change.</p>
+<p>The equilibrium <m>E = 0</m> is a little more interesting. It makes sense for a model of population growth, it says that if you start with nobody, then no one is born. That makes a lot of sense. We aren’t  modeling any individuals of the population being dropped off by spacecraft or anything…so if nobody’s there, it’ll stay that way. <m>E = 0</m> is an equilibrium. </p>
+</aside>
+

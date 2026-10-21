@@ -1,0 +1,828 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7YxWyP1nt8Dbcqqpy2hunP
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: cea2dab26de00bf0
+-->
+<section>
+  <title>
+Introduction to solving autonomous DEs graphically
+</title>
+
+  <variantControl numVariants="1" variantNames="demonstratedPreliminaries" />
+
+<setup>
+  <integer extend="$pgn.currentPage" name="pageNum" />
+  <boolean name="reviewing">false</boolean>
+</setup>
+
+<conditionalContent condition="$pageNum=1">
+<p>In this activity, you'll first answer some questions individually, then work with your group on an activity, then answer some follow up questions individually. You'll be brought to a new page (and won't be able to come back) when you click the <q>Move on to group activity</q> button, so don't click it until you are ready!</p>
+</conditionalContent>
+
+
+
+<paginator name="pgn">
+
+<section aggregateScores="true" weight="0">
+  <variantControl numVariants="1" />
+  <title>Introductory questions</title>
+
+  <copy uri="doenet:activityId=7YffsGVtwCeEQQRte8S6YM" name="pretest" />
+
+</section>
+  
+
+<section aggregateScores="true" name="main">
+
+<title>The graphical approach</title>
+
+
+<p>You can work on this activity as a group.</p>
+
+<p> Our goal is to use a graphical approach to solve the continuous dynamical system (or differential equation)
+<md>
+  <mrow>\frac{du}{dt} \amp = <function variables="u" name="f">1−u^2/9</function></mrow>
+  <mrow>u(0) \amp =u_0</mrow>
+</md>
+for various initial conditions <m>u_0</m>. 
+By solving, we mean determine what u(t) looks like as a function of time, though we won't find a formula for u(t).
+</p>
+
+<p>The dynamical system gives the rule of how the state variable <m>u</m> changes with time.  We will sometimes write the state variable as just <m>u</m> and other times as <m>u(t)</m>.  They both mean the same thing: a state variable whose value changes with time.</p>
+
+
+<aside boxed="true">
+<title>
+  Why use both <m>u</m> and <m>u(t)</m>?
+</title>
+
+<p>In a dynamical system, the value of a state variable, such as <m>u</m>, changes with time <m>t</m>.  We can use different notation to emphasize different aspects of the state variable.</p>  
+
+<p>When we want to emphasize the value of the state variable, we will typically write the state variable as just <m>u</m>.  This notation is particularly useful when we want to convey that the actual time <m>t</m> is not important.</p>
+
+<p>When we want to emphasize that the state variable is a function of time, we can write it as <m>u(t)</m>.  This notation is particularly useful when we want to express the value of the variable at a particular time, such as <m>u(5) = 3</m>, which means that <m>u=3</m> at the moment when <m>t=5</m>.</p>
+
+</aside>
+
+
+
+
+<p>The differential equation gives a formula for calculating the rate of change <m>\frac{du}{dt}</m> given the current value of the state variable <m>u</m>.  We typically write the equation as above.  But, if it is helpful to remind yourself that <m>u</m> is a function of time <m>u(t)</m>, you can replace <m>u</m> with <m>u(t)</m> and write the derivative as <m>u'(t)</m>.  With this notation, the differential equation becomes
+<me>u'(t) = 1 - \frac{u(t)^2}{9}.</me>
+</p>
+
+<p>A key feature of this differential equation (in either notation) is that the rate of change <m>\frac{du}{dt}</m> (or <m>u'(t)</m>) depends only on the value of the state variable <m>u</m> (or <m>u(t)</m>).  It doesn't depend explicitly on time <m>t</m>.</p>
+
+<subsection>
+<title>Some preliminaries</title>
+
+<select>
+<!--   <option selectForVariantNames="interactivePreliminaries">
+
+    <p>The differential equation means that, if the value of the state variable at some time is <m>u = 2</m>, then we know that <m>\frac{du}{dt} =</m> 
+    <answer allowedErrorInNumbers="1E&#x2D;6">
+      <award><evaluate name="upat2" function="$f" input="2" /></award>
+    </answer>
+    .  So, for example, if we are given that the value of <m>u</m> when <m>t=11</m> is <m>u(11)=2</m>, we can conclude that the rate of change of <m>u</m> when <m>t=11</m>  must be <m>u'(11)=</m> 
+    <answer allowedErrorInNumbers="1E&#x2D;6"><award><copy tname="upat2"/></award></answer>.</p>
+    
+    <p>We are particularly interested in the sign of the rate of change of <m>u</m> so that we can determine if <m>u</m> is increasing or decreasing.  The above calculation showed that whenever <m>u(t)</m> is 2, the rate of change of <m>u(t)</m> is 
+    <answer inline>
+      <choiceinput randomizeOrder>
+      <choice credit="1">positive</choice>
+      <choice>negative</choice>
+      <choice>zero</choice>
+      </choiceinput>
+    </answer>.
+    We conclude that whenever <m>u(t)</m> is 2, the solution <m>u(t)</m> must be 
+    <answer inline>
+      <choiceinput randomizeOrder>
+      <choice credit="1">increasing</choice>
+      <choice>decreasing</choice>
+      <choice>not changing</choice>
+      </choiceinput>
+    </answer>
+    at that moment.</p>
+    
+    <p>We found a value (<m>u(t)=2</m>) where <m>u(t)</m> must be increasing.  Now, it's your turn to find one point (there are many possibilities) where <m>u(t)</m> is decreasing.  By examining the differential equation, find a value of <m>u(t)</m> where <m>u(t)</m> must be decreasing:
+    <m>u(t)</m> is decreasing when <m>u(t)=</m>
+    <answer name="uDecrease">
+      <mathinput name="uDecreaseInput" />
+      <award>
+        <when>$uDecreaseInput < &#x2D;3 or
+        $uDecreaseInput > 3
+        </when>
+      </award>
+    </answer>
+    </p>
+    
+    <feedback condition="$uDecrease > &#x2D;3 and $uDecrease < 3">
+      <p>No, <m>u(t)</m> is not decreasing when <m>u(t)=$uDecrease</m>.
+      When <m>u(t)=$uDecrease</m>, the rate of change is <m>\frac{du}{dt} = <math>1&#x2D;$uDecrease^2/9</math> = 
+      <evaluate forceSymbolic simplify displayDigits="4" function="$f" input="$uDecrease" />
+      \gt 0.
+     </m> 
+      Since the rate of change is positive, <m>u(t)</m> is increasing.</p>
+    </feedback>
+    <feedback condition="$uDecrease <&#x2D;3 or $uDecrease > 3">
+        <p>Yes, <m>u(t)</m> is decreasing when <m>u(t)=$uDecrease</m>.
+        When <m>u(t)=$uDecrease</m>, the rate of change is <m>\frac{du}{dt} = <math>1&#x2D;$uDecrease^2/9</math> = 
+      <evaluate forceSymbolic simplify displayDigits="4" function="$f" input="$uDecrease" />
+      \lt 0.
+     </m> 
+      Since the rate of change is negative, <m>u(t)</m> is decreasing.</p>
+    </feedback>
+    <feedback condition="$uDecrease = &#x2D;3 or $uDecrease = 3">
+      <p>No, <m>u(t)</m> is not decreasing when <m>u(t)=$uDecrease</m>.
+      When <m>u(t)=$uDecrease</m>, the rate of change is <m>\frac{du}{dt} = <math>1&#x2D;$uDecrease^2/9</math> = 0.
+     </m> 
+      Since the rate of change is zero, <m>u(t)</m> is not changing.</p>
+    </feedback>
+    <feedback condition="$uDecrease.responseHasBeenSubmitted and not isnumber($uDecrease)">
+      <p>Enter a numerical value for <m>u(t)</m>.</p>
+    </feedback>
+    
+    <p>We can represent your findings on a plot of the <m>u</m>&#x2D;axis, represented as a <copy prop="styleDescription" tname="uAxisPreliminary/uaxis" /> line below.  This plot is called the <q>state line</q> or <q>phase line</q> for the state variable <m>u</m>.  Notice how there is no represention of time <m>t</m> on this graph, as we don't need to know <m>t</m> in order to know how <m>u</m> is changing.
+    </p>
+    
+    
+    <graph width="400" aspectRatio="4" xmin="&#x2D;6" xmax="6" ymin="&#x2D;1" ymax="1" xlabel="u" displayyaxis="false" name="uAxisPreliminary" newNamespace fixAxes>
+    <line name="uaxis" stylenumber="4" fixed draggable="false">y=0</line>
+      <setup>
+        <boolean name="hideLeftArrow">true</boolean>
+        <boolean name="hideRightArrow">true</boolean>
+      </setup>
+      <point hide x="4" y="0.3" name="leftTail">
+        <constraints>
+          <attractTo threshold="0.1"><copy tname="uaxis" /></attractTo>
+        </constraints>
+      </point>
+      <vector hide fixed name="leftDisplacement">(&#x2D;1,0)</vector>
+      <point hide x="4" y="0.2" name="rightTail">
+        <constraints>
+          <attractTo threshold="0.1"><copy tname="uaxis" /></attractTo>
+        </constraints>
+      </point>
+      <vector hide fixed name="rightDisplacement">(1,0)</vector>
+    
+      <vector name="leftArrow" layer="2" headDraggable="false" hide="$hideLeftArrow" tail="$leftTail" displacement="$leftDisplacement" />
+    
+      <vector name="rightArrow" layer="2" headDraggable="false" hide="$hideRightArrow" tail="$rightTail" displacement="$rightDisplacement" />
+    
+    
+    </graph>
+    
+    
+    <p>To represent the behavior of the dynamical system, we will use arrows on the state line to show where <m>u(t)</m> is increasing and where it is decreasing.  Since we calculated that <m>u(t)</m> is increasing whenever <m>u(t)=2</m>, we will draw a rightward arrow at <m>u=2</m> on the state line.</p>
+    
+    <p>Click
+    <updatevalue tname="uAxisPreliminary/hideRightArrow" type="boolean" newValue="false" disabled="not $(uAxisPreliminary/hideRightArrow)" >
+      <label>reveal arrow</label>
+    </updatevalue>
+    and drag the arrow so that it is on the <m>u</m>&#x2D;axis and includes <m>u=2</m>.
+    <answer disabled="$(uAxisPreliminary/hideRightArrow)">
+      <award>
+        <when>
+          <copy prop="tailX2" tname="uAxisPreliminary/rightArrow" isResponse /> = 0
+          and
+          <copy prop="tailX1" tname="uAxisPreliminary/rightArrow" isResponse /> < 2
+          and  
+          <copy prop="headX1" tname="uAxisPreliminary/rightArrow" /> > 2
+        </when>
+      </award>
+    </answer>
+    </p>
+    
+    <p>This rightward arrow at <m>u=2</m> indicates that <m>u(t)</m> must be increasing whenever its value is 2.
+    </p>
+    
+    
+    <p>Above, you also identified a value of <m>u(t)</m> where <m>u(t)</m> was decreasing.  Let's add a leftward arrow to the state line in a region where <m>u(t)</m> is decreasing.  (It doesn't have to include the point you identified above.)</p>
+    
+    
+    <p>Click
+    <updatevalue tname="uAxisPreliminary/hideLeftArrow" type="boolean" newValue="false" disabled="not $(uAxisPreliminary/hideLeftArrow)" >
+      <label>reveal arrow</label>
+    </updatevalue>
+    and drag the arrow so that it is on the <m>u</m>&#x2D;axis and it includes values of <m>u</m> where <m>u(t)</m> is decreasing.
+    <answer name="uDecreaseArrow" disabled="$(uAxisPreliminary/hideLeftArrow)">
+      <award>
+        <when>
+          <copy prop="tailX2" tname="uAxisPreliminary/leftArrow" isResponse /> = 0
+          and (
+            <copy prop="tailX1" tname="uAxisPreliminary/leftArrow" isResponse /> < &#x2D;3
+            or  
+            <copy prop="headX1" tname="uAxisPreliminary/leftArrow" isResponse /> > 3
+          )
+        </when>
+      </award>
+    </answer>
+    </p>
+    
+    
+    <feedback condition="$(uDecreaseArrow.submittedResponse1) = 0 and $(uDecreaseArrow.submittedResponse3) > &#x2D;3 and $(uDecreaseArrow.submittedResponse2) < 3">
+      <p>No, the arrow is in a region where <m>u(t)</m> is increasing.  For example, the tail of the arrow is at <m>u = <copy tname="uDecreaseArrow" prop="submittedResponse2" displayDigits="4" /></m>, where the rate of change is <m>\frac{du}{dt} = <math displayDigits="4">1&#x2D;<copy tname="uDecreaseArrow" prop="submittedResponse2" />^2/9</math> = 
+      <evaluate forceSymbolic simplify displayDigits="4" function="$f" input="$(uDecreaseArrow.submittedResponse2)" />
+      \gt 0
+     </m>. 
+     </p>
+    </feedback>
+    <feedback condition="$(uDecreaseArrow.submittedResponse1) = 0 and $(uDecreaseArrow.submittedResponse3) <= &#x2D;3 and $(uDecreaseArrow.submittedResponse2) > &#x2D;3" >
+      <p>No, part of the arrow is in a region where <m>u(t)</m> is increasing.  The tail of the arrow is at <m>u = <copy tname="uDecreaseArrow" prop="submittedResponse2" displayDigits="4" /></m>, where the rate of change is <m>\frac{du}{dt} = <math displayDigits="4">1&#x2D;<copy tname="uDecreaseArrow" prop="submittedResponse2" />^2/9</math> = 
+      <evaluate forceSymbolic simplify displayDigits="4" function="$f" input="$(uDecreaseArrow.submittedResponse2)" />
+      \gt 0
+     </m>. 
+     </p>
+    </feedback>
+    <feedback condition="$(uDecreaseArrow.submittedResponse1) = 0 and $(uDecreaseArrow.submittedResponse3) < 3 and $(uDecreaseArrow.submittedResponse2) >= 3">
+      <p>No, part of the arrow is in a region where <m>u(t)</m> is increasing. The head of the arrow is at <m>u = <copy tname="uDecreaseArrow" prop="submittedResponse3" displayDigits="4" /></m>, where the rate of change is <m>\frac{du}{dt} = <math displayDigits="4">1&#x2D;<copy tname="uDecreaseArrow" prop="submittedResponse3" />^2/9</math> = 
+      <evaluate forceSymbolic simplify displayDigits="4" function="$f" input="$(uDecreaseArrow.submittedResponse3)" />
+      \gt 0
+     </m>. 
+     </p>
+    </feedback>
+  </option> -->
+  
+  <option selectForVariants="demonstratedPreliminaries">
+    
+    <p>The differential equation means that, if the value of the state variable at some time is <m>u = 2</m>, then we know that <m>\frac{du}{dt} =<evaluate name="upat2a" forceSymbolic="true" function="$f" input="2" /> = <evaluate extend="$upat2a" name="upat2s" simplify="true" /></m>.  So, for example, if we are given that the value of <m>u</m> when <m>t=11</m> is <m>u(11)=2</m>, we can conclude that the rate of change of <m>u</m> when <m>t=11</m>  must be <m>u'(11)= $upat2s</m>.</p>
+    
+    <p>We are particularly interested in the sign of the rate of change of <m>u</m> so that we can determine if <m>u</m> is increasing or decreasing.  The above calculation showed that whenever <m>u(t)</m> is 2, the rate of change of <m>u(t)</m> is positive.
+    We conclude that whenever <m>u(t)</m> is 2, the solution <m>u(t)</m> must be increasing at that moment.</p>
+    
+    <p>We found a value (<m>u(t)=2</m>) where <m>u(t)</m> must be increasing.  Similarly, a value where <m>u(t)</m> must be decreasing is <m>u(t)=4</m> since <m>\frac{du}{dt} =<evaluate name="upat4" forceSymbolic="true" function="$f" input="4" /> = <evaluate extend="$upat4" simplify="true" /> &lt; 0</m>.</p>
+    
+    
+    <p>We can represent your findings on a plot of the <m>u</m>-axis, represented as a <text extend="$uAxisPreliminary2.uaxis.styleDescription" /> line below.  This plot is called the <q>state line</q> or <q>phase line</q> for the state variable <m>u</m>.  Notice how there is no represention of time <m>t</m> on this graph, as we don't need to know <m>t</m> in order to know how <m>u</m> is changing.
+    </p>
+    
+    
+    <graph width="400" aspectRatio="4" xmin="-6" xmax="6" ymin="-1" ymax="1" displayyaxis="false" name="uAxisPreliminary2" showNavigation="false"><xLabel>u</xLabel>
+    <line name="uaxis" stylenumber="4" fixed="true" draggable="false">y=0</line>
+    <vector name="raDisplacement" fixed="true" hide="true">(1,0)</vector>
+      
+    <vector name="rightArrow" layer="2" headDraggable="false" tail="(1.6,0)" displacement="$raDisplacement" fixed="true" />
+
+    <vector name="laDisplacement" fixed="true" hide="true">(-1,0)</vector>
+      
+    <vector name="leftArrow" layer="2" headDraggable="false" tail="(4.4,0)" displacement="$laDisplacement" fixed="true" />
+    
+    </graph>
+    
+    
+    <p>To represent the behavior of the dynamical system, we will use arrows on the state line to show where <m>u(t)</m> is increasing and where it is decreasing.  Since we calculated that <m>u(t)</m> is increasing whenever <m>u(t)=2</m>, we drew a rightward arrow at <m>u=2</m> on the state line.
+    This rightward arrow at <m>u=2</m> indicates that <m>u(t)</m> must be increasing whenever its value is 2.
+    </p>
+    
+    
+    <p>Similarly, we added a leftward arrow to the state line at <m>u=4</m>, as that is a point where <m>u(t)</m> is decreasing.</p>
+    
+
+
+
+  </option>
+</select>
+
+</subsection>
+
+
+
+
+<subsection>
+<title>Reading rate of change from a graph</title>
+
+<p>To get a fuller picture of where <m>u(t)</m> is increasing and where it is decreasing, we'd like to draw many arrows on the <m>u</m> state line showing the direction of movement.  We're going to use a trick to help us do that.  We'll add to the phase line a graphical representation of the rate of change.   We'll superimpose a plot of the rate of change <m>u'(t)</m> as a function of <m>u(t)</m>.</p>
+
+<p>According to the differential equation, the rate of change <m>\frac{du}{dt}</m> is <copy source="f" />.  We plot the rate of change by plotting the function <m>f(u) = <copy source="f" /></m>, shown by the <copy prop="styleDescription" source="uWithf.f" /> curve, on top of the <m>u</m> phase line.</p>
+
+
+
+<graph name="uWithf" width="400" xmin="-6" xmax="6" ymin="-1" ymax="2" fixAxes="true"><xLabel>u</xLabel><yLabel>u'</yLabel>
+<copy name="f" source="f" stylenumber="2" />
+<line name="uaxis" stylenumber="4" fixed="true" draggable="false">y=0</line>
+
+  <setup>
+    <boolean name="hideEs">true</boolean>
+    <boolean name="hideRightArrows">true</boolean>
+    <boolean name="hideLeftArrows">true</boolean>
+  </setup>
+
+  <point name="E1" stylenumber="3" hide="$hideEs" x="-5" y="1">
+    
+      <attractTo threshold="0.2">
+        <point>(3,0)</point>
+        <point>(-3,0)</point>
+      </attractTo>
+    
+  </point>
+  <point name="E2" stylenumber="3" hide="$hideEs" x="-5" y="0.8">
+    
+      <attractTo threshold="0.2">
+        <point>(3,0)</point>
+        <point>(-3,0)</point>
+      </attractTo>
+    
+  </point>
+
+
+  <point hide="true" name="sr1Tail" x="4" y="1">
+    
+      <attractTo threshold="0.1"><copy source="uaxis" /></attractTo>
+    
+  </point>
+  <vector hide="true" name="srDisplacement" fixed="true">(0.5,0)</vector>
+
+  <vector name="shortRight1" layer="2" headDraggable="false" hide="$hideRightArrows" tail="$sr1Tail" displacement="$srDisplacement" />
+
+  <point hide="true" name="sr2Tail" x="4" y="0.8">
+    
+      <attractTo threshold="0.1"><copy source="uaxis" /></attractTo>
+    
+  </point>
+  <vector hide="true" name="sr1Displacement" fixed="true">(0.5,0)</vector>
+
+  <vector name="shortRight2" layer="2" headDraggable="false" hide="$hideRightArrows" tail="$sr2Tail" displacement="$srDisplacement" />
+
+
+  <point hide="true" name="lrTail" x="4" y="0.6">
+    
+      <attractTo threshold="0.1"><copy source="uaxis" /></attractTo>
+    
+  </point>
+  <vector hide="true" name="lrDisplacement" fixed="true">(1.5,0)</vector>
+
+  <vector name="longRight" layer="2" headDraggable="false" hide="$hideRightArrows" tail="$lrTail" displacement="$lrDisplacement" />
+
+  <point hide="true" name="ll1Tail" x="-1.5" y="1.5">
+    
+      <attractTo threshold="0.1"><copy source="uaxis" /></attractTo>
+    
+  </point>
+  <vector hide="true" name="llDisplacement" fixed="true">(-1.5,0)</vector>
+
+
+  <vector name="longLeft1" layer="2" headDraggable="false" hide="$hideLeftArrows" tail="$ll1Tail" displacement="$llDisplacement" />
+
+  <point hide="true" name="ll2Tail" x="-1.5" y="1.3">
+    
+      <attractTo threshold="0.1"><copy source="uaxis" /></attractTo>
+    
+  </point>
+
+  <vector name="longLeft2" layer="2" headDraggable="false" hide="$hideLeftArrows" tail="$ll2Tail" displacement="$llDisplacement" />
+
+
+  <point hide="true" name="sl1Tail" x="-1.5" y="1.1">
+    
+      <attractTo threshold="0.1"><copy source="uaxis" /></attractTo>
+    
+  </point>
+  <vector hide="true" name="slDisplacement" fixed="true">(-0.5,0)</vector>
+
+
+  <vector name="shortLeft1" layer="2" headDraggable="false" hide="$hideLeftArrows" tail="$sl1Tail" displacement="$slDisplacement" />
+
+  <point hide="true" name="sl2Tail" x="-1.5" y="0.9">
+    
+      <attractTo threshold="0.1"><copy source="uaxis" /></attractTo>
+    
+  </point>
+
+  <vector name="shortLeft2" layer="2" headDraggable="false" hide="$hideLeftArrows" tail="$sl2Tail" displacement="$slDisplacement" />
+
+</graph>
+
+<p>We can immediately read off the graph that the velocity of <m>u</m> is zero at two points.  These points are 
+<m>u = </m> <mathInput name="z1" /> and
+<m>u = </m> <mathInput name="z2" />. 
+<answer name="zeroVelocityPoints">
+  <award matchPartial="true" unorderedCompare="true" referencesAreResponses="$z1 $z2">
+    <when>
+      ($z1, $z2) = (3, -3)
+    </when>
+  </award>
+</answer>
+</p>
+
+<hint>
+  <p>Where is the graph of <m>f(u)</m> equal to zero?  Enter the number of points where the graph is zero in the first answer blank.  That will reveal the corresponding number of answer blanks to enter the values of <m>u</m> where <m>f(u)</m> is zero.</p>
+</hint>
+
+<p>These two points, 
+<m>u = <copy prop="submittedResponse1" source="zeroVelocityPoints" includeUndefinedArrayEntries="true" /></m>
+and
+<m>u = <copy prop="submittedResponse2" source="zeroVelocityPoints" includeUndefinedArrayEntries="true" /></m>,
+are called equilibria of the dynamical system, as they correspond to two solutions where <m>u(t)</m> never changes.  
+</p>
+
+<p>Draw points at the equilibria by clicking
+<updateValue target="$uWithf.hideEs" type="boolean" newValue="false" disabled="not $uWithf.hideEs">
+      <label>reveal points</label>
+    </updateValue>
+and moving the <pluralize basedOnNumber="2"><text extend="$uWithf.E1.styleDescriptionWithNoun" /></pluralize> 
+to the locations on the <m>u</m>-axis where <m>u(t)</m> does not change.
+<answer name="equilibriumPoints" disabled="$uWithf.hideEs">
+  <award matchPartial="true" unorderedCompare="true">
+    <when>
+      (<coords extend="$uWithf.E1.coords" isResponse="true" />,
+      <coords extend="$uWithf.E2.coords" isResponse="true" />)
+      = (<coords>(-3, 0)</coords>, <coords>(3,0)</coords>)
+    </when>
+  </award>
+</answer>
+</p>
+
+<p>By looking at the graph of <m>f</m>, we see that there is one interval of <m>u</m> where <m>u(t)</m> is increasing, i.e., where <m>f(u)</m> is positive.  The solution <m>u(t)</m> must be increasing whenever
+<m>u > </m> <mathInput name="condIncrease1" /> and <m>u &lt; </m> <mathInput name="condIncrease2" />.
+<answer>
+  <award matchPartial="true" referencesAreResponses="$condIncrease1 $condIncrease2">
+    <when>
+      $condIncrease1 = -3
+      and
+      $condIncrease2 = 3
+    </when>
+  </award>
+</answer>
+</p>
+
+
+<p>Draw rightward arrows in this region by clicking
+<updateValue target="$uWithf.hideRightArrows" type="boolean" newValue="false" disabled="not $uWithf.hideRightArrows">
+      <label>reveal arrows</label>
+    </updateValue>
+to reveal three arrows.  Notice that one of the arrows is longer than the other two.  The length of the arrow denotes how fast <m>u(t)</m> is changing.  Move the long arrow to the <m>u</m>-axis and make sure it includes the point where <m>u(t)</m> is increasing at its maximum rate.
+  <answer name="maximumRightArrow" disabled="$uWithf.hideRightArrows">
+    <award>
+      <when>
+        <math extend="$uWithf.longRight.tailX2" isResponse="true" /> = 0
+        and
+        <math extend="$uWithf.longRight.tailX1" isResponse="true" /> &lt;= 0
+        and
+        <math extend="$uWithf.longRight.headX1" isResponse="true" /> >= 0
+      </when>
+    </award>
+  </answer>
+</p>
+<feedback condition="$maximumRightArrow.submittedResponse1 = 0 and ($maximumRightArrow.submittedResponse3 > 3 or $maximumRightArrow.submittedResponse2 &lt; -3)">
+  <p>At least part of the arrow is in a region where <m>u(t)</m> is decreasing.
+ </p>
+</feedback>
+<feedback condition="$maximumRightArrow.submittedResponse1 = 0 and $maximumRightArrow.submittedResponse3 &lt;= 3 and $maximumRightArrow.submittedResponse2 >= -3 and ($maximumRightArrow.submittedResponse3 &lt; 0 or $maximumRightArrow.submittedResponse2 > 0)">
+  <p>Although the arrow is indeed contained in a region where <m>u(t)</m> is increasing, it doesn't include the point where the speed is maximal.  What is the value of <m>u</m> where the graphed function <m>f</m> hits its maximum?  
+  <answer weight="0">0</answer>
+ </p>
+</feedback>
+
+<p>Place the shorter two rightward arrows on either side of the longest rightward arrow but still in the region where <m>u(t)</m> is increasing, to denote that <m>u(t)</m> is increasing at a slower rate in those regions.
+  <answer name="otherRightArrows" disabled="$uWithf.hideRightArrows">
+    <award>
+      <when>
+        <math extend="$uWithf.shortRight1.tailX2" isResponse="true" /> = 0 and
+        <math extend="$uWithf.shortRight2.tailX2" isResponse="true" /> = 0 and
+        ((
+        <math extend="$uWithf.shortRight2.tailX1" isResponse="true" /> >
+        <math extend="$uWithf.longRight.headX1" isResponse="true" /> and
+        <math extend="$uWithf.shortRight2.headX1" isResponse="true" /> &lt; 3 and
+        <math extend="$uWithf.shortRight1.headX1" isResponse="true" /> &lt;
+        <math extend="$uWithf.longRight.tailX1" isResponse="true" /> and
+        <math extend="$uWithf.shortRight1.tailX1" isResponse="true" /> > -3
+        ) or (
+        <math extend="$uWithf.shortRight1.tailX1" /> >
+        <math extend="$uWithf.longRight.headX1" /> and
+        <math extend="$uWithf.shortRight1.headX1" /> &lt; 3 and
+        <math extend="$uWithf.shortRight2.headX1" /> &lt;
+        <math extend="$uWithf.longRight.tailX1" /> and
+        <math extend="$uWithf.shortRight2.tailX1" /> > -3
+        ))
+      </when>
+    </award>
+    <award credit="0.5">
+      <when>
+        <math extend="$uWithf.shortRight1.tailX2" /> = 0 and
+        ((
+        <math extend="$uWithf.shortRight1.headX1" /> &lt;
+        <math extend="$uWithf.longRight.tailX1" /> and
+        <math extend="$uWithf.shortRight1.tailX1" /> > -3
+        ) or (
+        <math extend="$uWithf.shortRight1.tailX1" /> >
+        <math extend="$uWithf.longRight.headX1" /> and
+        <math extend="$uWithf.shortRight1.headX1" /> &lt; 3
+        ))
+      </when>
+    </award>
+    <award credit="0.5">
+      <when>
+        <math extend="$uWithf.shortRight2.tailX2" /> = 0 and
+        ((
+        <math extend="$uWithf.shortRight2.headX1" /> &lt;
+        <math extend="$uWithf.longRight.tailX1" /> and
+        <math extend="$uWithf.shortRight2.tailX1" /> > -3
+        ) or (
+        <math extend="$uWithf.shortRight2.tailX1" /> >
+        <math extend="$uWithf.longRight.headX1" /> and
+        <math extend="$uWithf.shortRight2.headX1" /> &lt; 3
+        ))
+      </when>
+    </award>
+    <award credit="0.6">
+      <when>
+        <math extend="$uWithf.shortRight1.tailX2" /> = 0 and
+        <math extend="$uWithf.shortRight2.tailX2" /> = 0 and
+        <math extend="$uWithf.shortRight2.tailX1" /> > -3 and
+        <math extend="$uWithf.shortRight2.headX1" /> &lt; 3 and
+        <math extend="$uWithf.shortRight1.headX1" /> &lt; 3 and
+        <math extend="$uWithf.shortRight1.tailX1" /> > -3
+      </when>
+    </award>    
+    <award credit="0.3">
+      <when>
+        <math extend="$uWithf.shortRight1.tailX2" /> = 0 and
+        <math extend="$uWithf.shortRight1.headX1" /> &lt; 3 and
+        <math extend="$uWithf.shortRight1.tailX1" /> > -3
+      </when>
+    </award>    
+    <award credit="0.3">
+      <when>
+        <math extend="$uWithf.shortRight2.tailX2" /> = 0 and
+        <math extend="$uWithf.shortRight2.headX1" /> &lt; 3 and
+        <math extend="$uWithf.shortRight2.tailX1" /> > -3
+      </when>
+    </award>    
+    
+    </answer>
+</p>
+
+<setup>
+  <boolean name="condition1">
+    ($otherRightArrows.submittedResponse3 &lt;=
+    $otherRightArrows.submittedResponse4 and
+    $otherRightArrows.submittedResponse3 >=
+    $otherRightArrows.submittedResponse7)
+    or
+    ($otherRightArrows.submittedResponse5 &lt;=
+    $otherRightArrows.submittedResponse4 and
+    $otherRightArrows.submittedResponse5 >=
+    $otherRightArrows.submittedResponse7)
+    or
+    ($otherRightArrows.submittedResponse6 &lt;=
+    $otherRightArrows.submittedResponse4 and
+    $otherRightArrows.submittedResponse6 >=
+    $otherRightArrows.submittedResponse7)
+    or
+    ($otherRightArrows.submittedResponse8 &lt;=
+    $otherRightArrows.submittedResponse4 and
+    $otherRightArrows.submittedResponse8 >=
+    $otherRightArrows.submittedResponse7)
+    or
+    ($otherRightArrows.submittedResponse3 &lt;=
+    $otherRightArrows.submittedResponse6 and
+    $otherRightArrows.submittedResponse3 >=
+    $otherRightArrows.submittedResponse8)
+    or
+    ($otherRightArrows.submittedResponse5 &lt;=
+    $otherRightArrows.submittedResponse6 and
+    $otherRightArrows.submittedResponse5 >=
+    $otherRightArrows.submittedResponse8)
+  </boolean>
+  <boolean name="condition2">
+    ($otherRightArrows.submittedResponse1 = 0 and
+      ($otherRightArrows.submittedResponse6 > 3 or
+      $otherRightArrows.submittedResponse8 &lt; -3)
+    )
+    or (
+      $otherRightArrows.submittedResponse2 = 0 and
+      ($otherRightArrows.submittedResponse5 > 3 or
+      $otherRightArrows.submittedResponse3 &lt; -3)
+    )
+  </boolean>
+  <boolean name="condition3">
+    $otherRightArrows.submittedResponse1 = 0 and
+    $otherRightArrows.submittedResponse2 = 0 and
+    (
+      ($otherRightArrows.submittedResponse6 &lt;
+      $otherRightArrows.submittedResponse7
+      and
+      $otherRightArrows.submittedResponse5 &lt;
+      $otherRightArrows.submittedResponse7
+      )
+      or
+      ($otherRightArrows.submittedResponse8 >
+      $otherRightArrows.submittedResponse4
+      and
+      $otherRightArrows.submittedResponse3 >
+      $otherRightArrows.submittedResponse4
+      )
+    )
+  </boolean>
+</setup>
+<feedback condition="$condition1">
+  <p>The arrows cannot overlap each other.
+ </p>
+</feedback>
+<feedback condition="$condition2">
+  <p>At least part of an arrow is in a region where <m>u(t)</m> is decreasing.
+ </p>
+</feedback>
+<feedback condition="$condition3">
+  <p>The short arrows must be on opposite sides of the long arrow.
+ </p>
+</feedback>
+
+<p>On the other hand, there are two regions of <m>u</m> where the differential equation states that <m>u(t)</m> must be decreasing whenever its value is in those regions.  The solution <m>u(t)</m> must be decreasing whenever 
+<m>u \lt</m> <mathInput name="condDecrease1" /> or <m>u \gt </m> <mathInput name="condDecrease2" />.
+<answer>
+  <award matchPartial="true" referencesAreResponses="$condDecrease1 $condDecrease2">
+    <when>
+      $condDecrease1 = -3
+      and
+      $condDecrease2 = 3
+    </when>
+  </award>
+</answer>
+</p>
+
+<p>In each of these regions, draw two leftward arrows by clicking
+<updateValue target="$uWithf.hideLeftArrows" type="boolean" newValue="false" disabled="not $uWithf.hideLeftArrows">
+      <label>reveal arrows</label>
+    </updateValue>
+to reveal four arrows.  Notice that two of the arrows are longer than the other two.  The length of the arrow denotes how fast <m>u(t)</m> is changing.  Move the arrows to the <m>u</m>-axis, placing two of them in each of the reqions where <m>u(t)</m> is decreasing.  Make sure the length of the arrow corresponds to the rate of change of <m>u(t)</m>.
+<math hide="true" name="minLeftShortTail"><min>
+  <math extend="$uWithf.shortLeft1.tailX1" />
+  <math extend="$uWithf.shortLeft2.tailX1" />
+</min></math>
+<math hide="true" name="maxLeftShortTail"><max>
+  <math extend="$uWithf.shortLeft1.tailX1" />
+  <math extend="$uWithf.shortLeft2.tailX1" />
+</max></math>
+<math hide="true" name="minLeftShortHead"><min>
+  <math extend="$uWithf.shortLeft1.headX1" />
+  <math extend="$uWithf.shortLeft2.headX1" />
+</min></math>
+<math hide="true" name="maxLeftShortHead"><max>
+  <math extend="$uWithf.shortLeft1.headX1" />
+  <math extend="$uWithf.shortLeft2.headX1" />
+</max></math>
+<math hide="true" name="minLeftLongTail"><min>
+  <math extend="$uWithf.longLeft1.tailX1" />
+  <math extend="$uWithf.longLeft2.tailX1" />
+</min></math>
+<math hide="true" name="maxLeftLongTail"><max>
+  <math extend="$uWithf.longLeft1.tailX1" />
+  <math extend="$uWithf.longLeft2.tailX1" />
+</max></math>
+<math hide="true" name="minLeftLongHead"><min>
+  <math extend="$uWithf.longLeft1.headX1" />
+  <math extend="$uWithf.longLeft2.headX1" />
+</min></math>
+<math hide="true" name="maxLeftLongHead"><max>
+  <math extend="$uWithf.longLeft1.headX1" />
+  <math extend="$uWithf.longLeft2.headX1" />
+</max></math>
+
+
+  <answer name="leftArrows" disabled="$uWithf.hideLeftArrows">
+    <award matchPartial="true">
+      <when>
+        <math extend="$uWithf.longLeft1.tailX2" isResponse="true" /> = 0 and
+        <math extend="$uWithf.longLeft2.tailX2" isResponse="true" /> = 0 and
+        <math extend="$uWithf.shortLeft1.tailX2" isResponse="true" /> = 0 and
+        <math extend="$uWithf.shortLeft2.tailX2" isResponse="true" /> = 0 and
+        <math extend="$minLeftLongTail" isResponse="true" /> &lt;
+        <math extend="$minLeftShortHead" isResponse="true" />
+        and
+        <math extend="$minLeftShortTail" isResponse="true" /> &lt; -3
+        and
+        3 &lt; <math extend="$maxLeftShortHead" isResponse="true" />
+        and
+        <math extend="$maxLeftShortTail" isResponse="true" /> &lt;
+        <math extend="$maxLeftLongHead" isResponse="true" />
+         <!-- though last two are redundant, add to increase partial credit penalty when arrow is in wrong region  -->
+        and
+        <math extend="$minLeftLongTail" /> &lt; -3
+        and
+        <math extend="$maxLeftLongHead" /> > 3
+      </when>
+    </award>
+    <considerAsResponses>
+    <math extend="$minLeftLongHead" />
+    <math extend="$maxLeftLongTail" />
+    </considerAsResponses>
+  </answer>
+</p>
+<setup>
+  <boolean name="condition4">
+    ($leftArrows.submittedResponse5 >= -3 and
+    $leftArrows.submittedResponse5 &lt;= 3)
+    or
+    ($leftArrows.submittedResponse6 >= -3 and
+    $leftArrows.submittedResponse6 &lt;= 3)
+    or
+    ($leftArrows.submittedResponse7 >= -3 and
+    $leftArrows.submittedResponse7 &lt;= 3)
+    or
+    ($leftArrows.submittedResponse8 >= -3 and
+    $leftArrows.submittedResponse8 &lt;= 3)
+    or
+    ($leftArrows.submittedResponse9 >= -3 and
+    $leftArrows.submittedResponse9 &lt;= 3)
+    or
+    ($leftArrows.submittedResponse10 >= -3 and
+    $leftArrows.submittedResponse10 &lt;= 3)
+    or
+    ($leftArrows.submittedResponse11 >= -3 and
+    $leftArrows.submittedResponse11 &lt;= 3)
+    or
+    ($leftArrows.submittedResponse12 >= -3 and
+    $leftArrows.submittedResponse12 &lt;= 3)
+  </boolean>
+</setup>
+<feedback condition="$condition4">
+  <p>At least part of an arrow is in a region where <m>u(t)</m> is increasing.
+ </p>
+</feedback>
+<feedback condition="$leftArrows.submittedResponse5 >= $leftArrows.submittedResponse6 or $leftArrows.submittedResponse9 >= $leftArrows.submittedResponse10">
+  <p>The arrows must not overlap, and the longer arrows must be in locations where <m>u(t)</m> is moving faster.
+ </p>
+</feedback>
+<feedback condition="$leftArrows.submittedResponse9 &lt; -3 or $leftArrows.submittedResponse6 > 3 or $leftArrows.submittedResponse12 &lt; -3 or $leftArrows.submittedResponse11 > 3">
+  <p>Place two arrows in each of the different regions where <m>u(t)</m> is decreasing.
+ </p>
+</feedback>
+
+<p>The equilibrium points and direction arrows on the <m>u</m> state line give a global picture of the behavior of <m>u(t)</m>.  We can now remove the graph of <m>f(u)</m>, as that was just needed to sketch the equilibria and direction arrows.  The final state line picture is shown below.</p>
+
+<graph width="400" aspectRatio="4" xmin="-6" xmax="6" ymin="-1" ymax="1" displayyaxis="false" name="uAxisFinal" fixAxes="true"><xLabel>u</xLabel>
+
+  <line name="uaxis" stylenumber="4" fixed="true" draggable="false">y=0</line>
+
+  <point extend="$uWithf.E1" targetAttributesToIgnore="" />
+  <point extend="$uWithf.E2" targetAttributesToIgnore="" />
+  <vector extend="$uWithf.longRight" targetAttributesToIgnore="" />
+  <vector extend="$uWithf.shortRight1" targetAttributesToIgnore="" />
+  <vector extend="$uWithf.shortRight2" targetAttributesToIgnore="" />
+  <vector extend="$uWithf.longLeft1" targetAttributesToIgnore="" />
+  <vector extend="$uWithf.longLeft2" targetAttributesToIgnore="" />
+  <vector extend="$uWithf.shortLeft1" targetAttributesToIgnore="" />
+  <vector extend="$uWithf.shortLeft2" targetAttributesToIgnore="" />
+
+</graph>
+
+  
+</subsection>
+
+</section>
+  
+
+<section aggregateScores="true" weight="0">
+  <variantControl numVariants="1" />
+  <title>Final questions</title>
+  
+  <copy uri="doenet:activityId=7YffsGVtwCeEQQRte8S6YM" name="posttest" />
+
+</section>
+  
+
+  
+</paginator>
+
+<conditionalContent condition="$pageNum=1">
+  
+<p>When finished answering the questions, click the <q>Move on to group activity</q> button to go to the next section.  You will need to scroll up to the top of the new page.</p>
+  
+<p>
+  <callAction name="toGroupActivity" actionName="setPage" target="$pgn" number="2">
+      <label>Move on to group activity</label>
+    </callAction>
+</p>
+
+</conditionalContent>
+
+<conditionalContent condition="$pageNum=2 and not $reviewing">
+
+
+<p>When you have finished this activity, click the <q>Move on to final questions</q> button to move on to the final set of questions to be answered individually.  When the new page loads, scroll to the top to begin.</p>
+<p>
+  <callAction name="toFinalQuestions" actionName="setPage" target="$pgn" number="3">
+      <label>Move on to  final questions</label>
+    </callAction>
+</p>
+
+</conditionalContent>
+
+<conditionalContent condition="$pageNum=3">
+
+
+<p>When finished answering the questions, click <q>Finish</q>.  You will be returned to the main activity in case you wish to review your previous work.</p>
+  
+<p>
+  <callAction name="backToGroupActivity" actionName="setPage" target="$pgn" number="2">
+      <label>Finish</label>
+    </callAction>
+  <updateValue triggerWith="$backToGroupActivity" type="boolean" target="$reviewing" newValue="true" />
+  
+</p>
+
+</conditionalContent>
+
+</section>

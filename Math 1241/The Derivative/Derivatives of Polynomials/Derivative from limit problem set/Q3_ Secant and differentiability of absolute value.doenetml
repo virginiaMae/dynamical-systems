@@ -1,0 +1,370 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7KJyVXtH6Z19BbHFNxu7Zx
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 1b6e21d4af308310
+-->
+<problem>
+<!-- <title>Secant and differentiability of absolute value, worksheet</title> -->
+
+<setup>
+
+<function name="f" variables="x" symbolic="true">abs(x)</function>
+<function name="secant_slope" variables="a h">($$f(a+h)-$$f(a))/h</function>
+<number name="slope_n05_1">$$secant_slope(-0.5, 1)</number>
+<number name="slope_n05_n1">$$secant_slope(-0.5, -1)</number>
+<number name="slope_n05_01">$$secant_slope(-0.5, 0.1)</number>
+<number name="slope_n05_001">$$secant_slope(-0.5, 0.01)</number>
+<number name="slope_n05_n01">$$secant_slope(-0.5, -0.1)</number>
+<number name="slope_n05_n001">$$secant_slope(-0.5, -0.01)</number>
+<number name="fprime_n05">$slope_n05_n001 </number>
+<number name="slope_0_1">$$secant_slope(0, 1)</number>
+<number name="slope_0_01">$$secant_slope(0, 0.1)</number>
+<number name="slope_0_001">$$secant_slope(0, 0.01)</number>
+<number name="slope_0_n1">$$secant_slope(0, -1)</number>
+<number name="slope_0_n01">$$secant_slope(0, -0.1)</number>
+<number name="slope_0_n001">$$secant_slope(0, -0.01)</number>
+
+</setup>
+
+
+<p>Let <m>f</m> be the absolute value function <m>f(x)=|x|</m>.  We'll explore where the function is differentiable (i.e., where the derivative exists).  The function is differentiable at the point <m>a</m> if the limit
+<me>\frac{df}{dx}\biggr|_{x=a} = \lim_{h \to 0} \frac{f(a+h)-f(a)}{h} = \lim_{h \to 0} \frac{|a+h|-|a|}{h}</me>
+exists.  For the limit to exist, the expression must approach the same value for both positive and negative <m>h</m>.
+</p>
+
+<exercise includeAutoNumber="true"><title />
+<p>For <m>a=-0.5</m>, calculate the slopes <m>\frac{f(a+h)-f(a)}{h}</m> of the secant lines for:
+</p>
+<p>
+
+<m>h=1</m>: 
+<answer>
+<award symbolicEquality="true" simplifyOnCompare="numbers">$slope_n05_1 </award>
+</answer>
+, <m>h= -1</m>: 
+<answer>
+<award symbolicEquality="true" simplifyOnCompare="numbers">$slope_n05_n1 </award>
+</answer>
+
+</p>
+<p>
+
+<m>h=0.1</m>: 
+<answer>
+<award symbolicEquality="true" simplifyOnCompare="numbers">$slope_n05_01 </award>
+</answer>
+, <m>h= -0.1</m>: 
+<answer>
+<award symbolicEquality="true" simplifyOnCompare="numbers">$slope_n05_n01 </award>
+</answer>
+
+</p>
+<p>
+
+<m>h=0.01</m>: 
+<answer>
+<award symbolicEquality="true" simplifyOnCompare="numbers">$slope_n05_001 </award>
+</answer>
+, <m>h= -0.01</m>: 
+<answer>
+<award symbolicEquality="true" simplifyOnCompare="numbers">$slope_n05_n001 </award>
+</answer>
+</p>
+
+<p>Does the derivative <m>\frac{df}{dx}\Bigr|_{x=-0.5}</m> exist?  
+<answer inline="true">
+<choiceInput>
+<choice credit="1">yes</choice>
+<choice>no</choice>
+</choiceInput>
+</answer>
+ If so, what is its value?  
+<answer>
+<award symbolicEquality="true" simplifyOnCompare="numbers">$fprime_n05 </award>
+</answer>
+ Is the function differentiable at <m>x=-0.5</m>? 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">yes</choice>
+<choice>no</choice>
+</choiceInput>
+</answer>
+</p>
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<p>For <m>a=0</m>, calculate the slopes <m>\frac{f(a+h)-f(a)}{h}</m> of the secant lines for:
+</p>
+<p>
+
+<m>h=1</m>: 
+<answer>
+<award symbolicEquality="true" simplifyOnCompare="numbers">$slope_0_1 </award>
+</answer>
+, <m>h= -1</m>: 
+<answer>
+<award symbolicEquality="true" simplifyOnCompare="numbers">$slope_0_n1 </award>
+</answer>
+
+</p>
+<p>
+
+<m>h=0.1</m>: 
+<answer>
+<award symbolicEquality="true" simplifyOnCompare="numbers">$slope_0_01 </award>
+</answer>
+, <m>h= -0.1</m>: 
+<answer>
+<award symbolicEquality="true" simplifyOnCompare="numbers">$slope_0_n01 </award>
+</answer>
+
+</p>
+<p>
+
+<m>h=0.01</m>: 
+<answer>
+<award symbolicEquality="true" simplifyOnCompare="numbers">$slope_0_001 </award>
+</answer>
+, <m>h= -0.01</m>: 
+<answer>
+<award symbolicEquality="true" simplifyOnCompare="numbers">$slope_0_n001 </award>
+</answer>
+</p>
+
+<p>Does the derivative <m>\frac{df}{dx}\Bigr|_{x=0}</m> exist?  
+<answer inline="true">
+<choiceInput>
+<choice credit="1">no</choice>
+<choice>yes</choice>
+</choiceInput>
+</answer>
+  Is the function differentiable at <m>x=0</m>? 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">no</choice>
+<choice>yes</choice>
+</choiceInput>
+</answer>
+</p>
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<p>Sketch a graph of the function <m>f(x)</m> and its derivative <m>\frac{df}{dx}</m> in four steps: </p>
+  <ul>
+    
+    <li>Step 1: Move the $absVertex.styleDescription points so that the $absRay1.styleDescription lines represent the graph of <m>f(x)</m>.      
+  
+   
+<graph size="medium" xmin="-4.5" xmax="4.5" ymin="-4.5" ymax="4.5" showNavigation="false" grid="true" identicalAxisScales="true" name="graph3a">
+
+  
+  <point name="absVertex" styleNumber="3" x="1" y="1">
+    <attractToGrid />
+  </point>
+  
+  <point name="abs1" x="-3" y="1" styleNumber="3">
+    <attractToGrid />
+  </point>
+  
+  <point name="abs2" x="2" y="1" styleNumber="3">
+    <attractToGrid />
+  </point>
+  
+  <ray fixed="true" name="absRay1" endpoint="$absVertex" through="$abs1" styleNumber="3" applyStyleToLabel="true">
+    <label><m>f(x)</m></label>
+  </ray>
+  <ray fixed="true" name="absRay2" endpoint="$absVertex" through="$abs2" styleNumber="3" />
+    
+
+</graph>
+      
+<p>Graph of function: 
+  <answer>
+    <award>
+      <when matchPartial="true">
+        (<boolean>$absVertex=(0,0) and $ay1 > 0 and $ax1 = $ay1</boolean> and
+        <boolean>$absVertex=(0,0) and $ay2 > 0 and $ax2 = -$ay2</boolean>)
+        or
+        (<boolean>$absVertex=(0,0) and $ay1 > 0 and $ax1 = -$ay1</boolean> and
+        <boolean>$absVertex=(0,0) and $ay2 > 0 and $ax2 = $ay2</boolean>)     
+      </when>
+    </award>
+    <considerAsResponses>
+      $absVertex $abs1 $abs2
+    </considerAsResponses>
+  </answer>
+</p>
+    </li>
+
+<li>Step 2: Identify and add a red square at all locations on the graph of <m>f(x)</m> where the derivative fails. You can generate as many red squares as you need using the "Add Point" and "Delete Point" buttons.
+
+  <graph extend="$graph3a" name="graph3b">
+
+  
+  <repeatForSequence from="1" to="$n_nodiff" name="nodiff_points" valueName="v" indexName="i"><setup><number copy="$v" fixed="false" name="ref1" /></setup>
+      <point stylenumber="2" x="$ref1-4" y="3">
+        <attractToGrid /><constrainToGraph />
+      </point>
+    </repeatForSequence>
+  </graph>
+     
+<p>Click <updateValue target="$n_nodiff" newValue="$n_nodiff+1">
+  <label>Add Red Square</label>
+</updateValue> and <updateValue target="$n_nodiff" newValue="$n_nodiff-1" disabled="$n_nodiff=0">
+  <label>Delete Red Square</label>
+</updateValue> to change the number of points and move them to the locations where <m>f(x)</m> is not differentiable.</p>
+
+<number hide="true" name="n_nodiff">0</number>
+
+
+<math hide="true" name="ax1" extend="$abs1.x" />
+<math hide="true" name="ay1" extend="$abs1.y" />
+<math hide="true" name="ax2" extend="$abs2.x" />
+<math hide="true" name="ay2" extend="$abs2.y" />
+
+<math hide="true" name="dtx1" extend="$derivThru1.x" />
+<math hide="true" name="dty1" extend="$derivThru1.y" />
+<math hide="true" name="dtx2" extend="$derivThru2.x" />
+<math hide="true" name="dty2" extend="$derivThru2.y" />
+
+
+<p>Point(s) of non-differentiability:  
+<answer>
+  <award referencesAreResponses="$nodiff_points"><when>
+    <mathList>$nodiff_points</mathList> = (0,0)
+  </when></award>
+</answer>
+</p>
+</li>
+
+<li>Step 3: Move the $derivThru1.styleDescription points so that the $derivRay1.styleDescription lines represent the graph of <m>\frac{df}{dx}</m>.
+
+<graph extend="$graph3b" name="graph3c">
+
+    <point name="derivThru1" x="-2" y="0">
+    <attractToGrid includeGridlines="true" />
+  </point>
+  
+  <endpoint name="derivEnd1" x="-1" y="0" switchable="true">
+    <attractToGrid />
+  </endpoint>
+  
+  <ray fixed="true" name="derivRay1" endpoint="$derivEnd1" through="$derivThru1" applyStyleToLabel="true">
+    <label><m>\frac{df}{dx}</m></label>
+  </ray>
+   
+  <endpoint name="derivEnd2" x="3" y="0" switchable="true">
+    <attractToGrid />
+  </endpoint>
+  
+  <point name="derivThru2" x="4" y="0">
+    <attractToGrid includeGridlines="true" />
+  </point>
+  
+  <ray fixed="true" name="derivRay2" endpoint="$derivEnd2" through="$derivThru2" applyStyleToLabel="true">
+    <label><m>\frac{df}{dx}</m></label>
+  </ray>
+
+</graph>
+  
+<p>Graph of derivative:
+  <answer>
+    <award>
+      <when matchPartial="true">
+        (<boolean>$derivEnd1=(0,1) and $dtx1 > 0 and $dty1 = 1</boolean> and <boolean>$derivEnd2=(0,-1) and $dtx2 &lt; 0 and $dty2 = -1</boolean>) or
+        (<boolean>$derivEnd1=(0,-1) and $dtx1 &lt; 0 and $dty1 = -1</boolean> and <boolean>$derivEnd2=(0,1) and $dtx2 > 0 and $dty2 = 1</boolean>)
+      </when>
+    </award>
+    <considerAsResponses>
+      $derivEnd1 $derivThru1 $derivEnd2 $derivThru2
+    </considerAsResponses>
+  </answer>
+</p>
+</li>
+    
+
+<li>Step 4: Click the $derivEnd1.styleDescriptionWithNoun (s) to toggle an open endpoint at any location(s) where the derivative function is not defined.
+<p>Open endpoints of derivative:
+  <answer>
+    <award>
+      <when matchPartial="true">
+        $derivEnd1.open = true and $derivEnd2.open = true
+      </when>
+    </award>
+    <considerAsResponses>
+      $derivEnd1 $derivThru1 $derivEnd2 $derivThru2
+    </considerAsResponses>
+  </answer>
+</p>
+</li>
+</ul>
+</exercise>
+  
+<solution>
+
+
+<exercise includeAutoNumber="true"><title />
+<p>For <m>a=-0.5</m>, the secant slopes are:
+</p>
+<p>
+
+<m>h=1: $slope_n05_1 </m>, <m>h= -1: $slope_n05_n1 </m>
+</p>
+<p>
+
+<m>h=0.1: $slope_n05_01 </m>, <m>h= -0.1: $slope_n05_n01 </m>
+</p>
+<p>
+
+<m>h=0.01: $slope_n05_001 </m>, <m>h= -0.01: $slope_n05_n001 </m>
+</p>
+
+<p>The derivative exists at <m>a=-0.5</m>, i.e., the function is differentiable.  The derivative is $fprime_n05 .</p>
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<p>For <m>a=0</m>, the secant slopes are:
+</p>
+<p>
+
+<m>h=1: $slope_0_1 </m>, <m>h= -1: $slope_0_n1 </m>
+</p>
+<p>
+
+<m>h=0.1: $slope_0_01 </m>, <m>h= -0.1: $slope_0_n01 </m>
+</p>
+<p>
+
+<m>h=0.01: $slope_0_001 </m>, <m>h= -0.01: $slope_0_n001 </m></p>
+
+<p>The derivative does not exist at <m>a=0</m>, i.e., the function is not differentiable.</p>
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+The graph of <m>f</m> ($absRay1.styleDescription function), <m>\frac{df}{dx}</m> ($derivThru1.styleDescription function) and the non-differentiable point of <m>f</m> (red square):
+
+<graph size="medium" xmin="-4.5" xmax="4.5" ymin="-4.5" ymax="4.5" showNavigation="false">
+
+<point fixed="true" styleNumber="3">(0,0)</point>
+<point fixed="true" styleNumber="3">(1,1)</point>
+<point fixed="true" styleNumber="3">(-1,1)</point>
+<ray fixed="true" endpoint="(0,0)" through="(1,1)" styleNumber="3" />
+<ray fixed="true" endpoint="(0,0)" through="(-1,1)" styleNumber="3" /> 
+
+<endpoint fixed="true" open="true">(0,1)</endpoint>
+<endpoint fixed="true" open="true">(0,-1)</endpoint>
+<point fixed="true">(3,1)</point>
+<point fixed="true">(-3,-1)</point>
+<ray fixed="true" endpoint="(0,1)" through="(3,1)" />
+<ray fixed="true" endpoint="(0,-1)" through="(-3,-1)" />
+
+<point fixed="true" styleNumber="2">(0,0)</point>
+
+</graph>
+</exercise>
+
+</solution>
+
+
+</problem>

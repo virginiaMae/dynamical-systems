@@ -1,0 +1,104 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 81khJryacPeohonoWDEcEa
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 65c6ad5f9d1e6dbf
+-->
+<title>Introduction to bifurcations of a differential equation</title>
+
+<p><ref>Video</ref> | <ref>Transcript</ref> </p>
+
+<description>
+Representing the influence of a parameter on the behavior of a differential equation in terms of a bifurcation diagram of equilibria.
+</description>
+
+<section><title>Video</title>
+<figure>
+<video youtube="4IzfnGrFi5Q" size="large" aspectRatio="16/9" name="v1" />
+<caption>Bifurcations of a differential equation</caption>
+</figure>
+
+
+
+<setup>
+  <number name="timestamp1" />
+  <number name="timestamp2" />
+</setup>
+
+<sideBySide margins="5%">
+<div>Video credit achieved: <number displayDecimals="1">$v1.fractionWatched*100</number>%
+  
+<answer hide="true" name="v1Credit">
+  <award credit="$v1.fractionWatched"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+</div>
+
+<!-- <div>
+<updateValue type="number" target="v1.time" newValue="$timestamp1" name="skipTo1">
+  <label>Go to Key Moment 1</label>
+</updateValue>
+</div>
+
+<div>
+<updateValue type="text" triggerWithTargets="skipTo1" target="v1" prop="state" newValue="playing" name="playStamp1"/>
+
+<updateValue type="number" target="v1.time" newValue="$timestamp2" name="skipTo2">
+  <label>Go to Key Moment 2</label>
+</updateValue>
+</div>
+
+
+<updateValue type="text" triggerWithTargets="skipTo2" target="v1" prop="state" newValue="playing" name="playStamp2"/> -->
+</sideBySide>
+
+
+
+
+  
+<problem><title>Video review questions</title>
+<exercise includeAutoNumber="true"><title />
+<p>Consider an autonomous differential equation described by   
+  <md>
+    <mrow>\frac{dx}{dt} \amp= f(x),</mrow>
+    <mrow>f(x) \amp=x^2 - 4x + c</mrow>
+  </md>
+  where <m>c</m> is a parameter. The function <m>f(x)</m> is graphed below. Use the slider to observe how the graph of <m>f</m> changes for different values of the parameter <m>c</m>.</p>
+
+  <slider name="c" from="-10" to="10" showValue="false" initialValue="-4" step="1">
+    <label><m>c = $c.value</m></label>
+  </slider>
+  <graph xmin="-5" ymin="-16" ymax="16" aspectRatio="1" grid="true">
+    <function name="f">x^2 -4x + $c</function>
+    <point name="equilibrium1" styleNumber="3">(2+sqrt(4 - $c),0)
+    <label><m>E_1</m></label>
+    </point>
+    <point name="equilibrium2" styleNumber="3" hide="$c=4">(2-sqrt(4 - $c),0)
+    <label><m>E_2</m></label>
+    </point>
+  </graph>
+<p>The $equilibrium1.styleDescription triangles indicate equilibrium locations for the system, or values of <m>x</m> for which <m>\frac{dx}{dt} = 0</m>.</p>
+<p>How many equilibria are present when <m>c = 0</m>?</p>
+  <answer>2</answer>
+
+<p>How many equilibria are present when <m>c = 5</m>?</p>
+  <answer>0</answer>
+
+<p>How many equilibria are present when <m>c = 4</m>?</p>
+  <answer>1</answer>
+<p>A bifurcation point occurs where the behavior of the system changes, i.e. in this case, where the number of equilibria changes. Which of the following is a bifurcation point for the given system?</p>
+  <answer>
+    <choice credit="1"><m>c = 4</m></choice>
+    <choice><m>c = 0</m></choice>
+    <choice><m>c = -4</m></choice>
+    <choice><m>c = -10</m></choice>
+  </answer>
+  
+</exercise>
+</problem>
+</section>
+
+
+
+

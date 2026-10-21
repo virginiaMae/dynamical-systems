@@ -1,0 +1,41 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7CrBzMGged5yTJrmdv5Xoa
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: a5029e210eee7500
+-->
+<title>Introduction to an infectious disease model</title>
+<p><ref>Video 1</ref> | <ref>Summary</ref> | <ref>Transcript</ref></p>
+
+<section><title>Summary</title>
+
+<p>A simple model consisting of three state variables is introduced to describe the behavior of an infectious disease modelled by a discrete dynamical system. These state variables are:
+  <ul>
+    <li><p><m>\textbf{S}</m>: <alert>the Susceptibles</alert></p>
+      <p><m>S(t) =</m> the number of individuals at time <m>t</m> that can get infected</p></li>
+    <li><p><m>\textbf{I}</m>: <alert>the Infectives</alert></p>
+      <p><m>I(t) =</m> the number of individuals at time <m>t</m> who are infected and can transmit the disease</p></li>
+    <li><p><m>\textbf{R}</m>: <alert>the Removed</alert></p>
+      <p><m>R(t) =</m> the number of individuals at time <m>t</m> who are immune (or recovered)</p></li>
+  </ul>
+</p>
+
+<p>The figure from the video shown below illustrates the relationship between the three state variables introduced.</p> 
+<figure>
+<image source="doenet:rXNsNcsATM5qGhgjDEaXwv" asfilename="Discrete SIR screenshot (1).png" size="large" mimeType="image/png" imageName="Infographic showing the interaction between the susceptibles, the infectives, and the removed" authorName="Virginia Mae" licenseCodes="CC-BY"><shortDescription>Infographic showing the interaction between the susceptibles, the infectives, and the removed</shortDescription></image>
+<caption>Relationships between state variables in an infectious disease model</caption>
+</figure>
+
+<p>The two arrows in the figure represent two expressions that describe important changes to the dynamical system. These expressions are:
+  <ol>
+    <li><p>The rate at which susceptibles become infected at time <m>t</m>,</p>
+    <p><m>S \longrightarrow I = b S I</m></p>
+    <p>where <m>b</m> is an infection rate parameter that combines the effects of both the likelihood that a susceptible and an infected person will interact as well as the likelihood that such an interaction will lead to an infection.</p></li>
+
+    <li><p>The rate at which infected individuals recover at time <m>t</m>,</p>
+    <p><m>I \longrightarrow R = a I</m></p>
+    <p>where <m>a</m> is a recovery rate parameter that captures how quickly an individual recovers from the disease.</p></li>
+  </ol>
+</p>
+
+</section>

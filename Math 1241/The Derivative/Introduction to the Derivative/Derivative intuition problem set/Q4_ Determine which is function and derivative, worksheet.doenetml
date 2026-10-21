@@ -1,0 +1,97 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7KjZ7ELxKaGYKRzrYR2gLD
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 309f20bd13361f27
+-->
+<problem>
+<variantControl numVariants="1" />
+<!-- <title>Determine which is function and derivative, worksheet</title> -->
+
+<setup>
+
+<function name="f1" variables="x" labelPosition="upperleft">0.2(x-2)^2-1
+  <label><m>f(x)</m></label>
+</function>
+<function name="fprime1" variables="x" labelPosition="lowerleft">0.4 (-2 + x)
+  <label><m>Q(x)</m></label>
+</function>
+<function name="f2" variables="x" labelPosition="upperleft">x^2*sin(x)
+  <label><m>p(x)</m></label>
+</function>
+<function name="fprime2" variables="x">x (x cos(x) + 2 sin(x))
+  <label><m>h(x)</m></label>
+</function>
+
+</setup>
+
+<p>
+In each plot, identify which of the curves is the graph of the derivative of the other.
+</p>
+
+<graph xmin="-3.5" xmax="6.5" ymin="-2.5" ymax="3.5" showNavigation="false">
+
+<function stylenumber="3" extend="$f1" />
+<function extend="$fprime1" />
+
+</graph>
+
+<p>The function 
+  <choiceInput inline="true" name="cdf1">
+    <choice>Q(x)</choice>
+    <choice>f(x)</choice>
+  </choiceInput>
+  is the derivative of the function
+    <choiceInput inline="true" name="cf1">
+    <choice>Q(x)</choice>
+    <choice>f(x)</choice>
+  </choiceInput>.
+
+  <answer>
+    <award>
+      <when>
+        $cdf1=<text>Q(x)</text> and $cf1 = <text>f(x)</text>
+      </when>
+    </award>
+  </answer>
+</p>
+
+<graph xmin="-5.5" xmax="5.5" ymin="-24.5" ymax="24.5" showNavigation="false">
+
+<function stylenumber="2" extend="$f2" />
+
+<function stylenumber="4" extend="$fprime2" />
+
+
+</graph>
+
+
+  
+<p>The function 
+  <choiceInput inline="true" name="cdf2">
+    <choice>h(x)</choice>
+    <choice>p(x)</choice>
+  </choiceInput>
+  is the derivative of the function
+    <choiceInput inline="true" name="cf2">
+    <choice>h(x)</choice>
+    <choice>p(x)</choice>
+  </choiceInput>.
+
+  <answer>
+    <award>
+      <when>
+        $cdf2=<text>h(x)</text> and $cf2 = <text>p(x)</text>
+      </when>
+    </award>
+  </answer>
+</p>
+
+  
+
+<solution>
+<p><m>Q(x)</m> is the derivative of <m>f(x)</m> and <m>h(x)</m> is the derivative of <m>p(x)</m>. </p>
+</solution>
+
+
+</problem>

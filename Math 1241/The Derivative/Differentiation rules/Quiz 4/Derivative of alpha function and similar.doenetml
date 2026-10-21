@@ -1,0 +1,94 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7MX1omYXqY3H9YJapW6x1e
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: ddec41630cb974fa
+-->
+<problem>
+<!-- <title>Derivative of alpha function and similar</title> -->
+
+<setup>
+
+<selectFromSequence name="n" from="2" to=" 7" />
+<selectFromSequence name="b_sub" from="-5" to=" 5" exclude="0" />
+<selectFromSequence name="reciprocal" from="-1" to=" 1" step=" 2" />
+<select name="f">f g h </select>
+<select name="x">y z t </select>
+
+<math name="b" simplify="full">$b_sub ^$reciprocal </math>
+<math name="bx" simplify="true">$b$x</math>
+<math name="fun">$x ^$n *e^(<math simplify="true">$b *$x</math> )</math>
+<math name="dfun" simplify="numbers"><math simplify="true">($n *$x ^($n -1) + $b *$x ^$n )</math>*e^($bx )</math>
+<math name="monomial" simplify="full">$x ^$n </math>
+<math name="exponential" simplify="full">e^($b *$x )</math>
+<math name="d_monomial" simplify="full">$n *$x ^($n -1)</math>
+<math name="d_exponential" simplify="numbers">$b *e^($bx )</math>
+
+<select name="deriv">
+  <option>
+    <math>d$f / d$x</math>
+  </option>
+  <option>
+    <math referencesAreFunctionSymbols="$f">$f'($x)</math>
+  </option>
+</select>
+
+<select name="wording">1 2 3 4 5</select>
+</setup>
+
+<conditionalContent>
+  <case condition="$wording=1">
+    <p>Compute the derivative, <m>$deriv[1][1] </m>, of
+    <me>$f($x) = $fun.</me>
+    <m>$deriv[1][1]  =</m> 
+    <answer forceFullCheckworkButton="true">$dfun</answer>
+    </p>
+  </case>
+  <case condition="$wording=2">
+  <p>Calculate the derivative of
+    <me>$f($x) = $fun.</me></p>
+    <p><m>$deriv[1][1]  =</m> 
+    <answer forceFullCheckworkButton="true">$dfun</answer>
+    </p>
+  </case>
+  <case condition="$wording=3">
+  <p>For the function
+    <me>$f($x) = $fun,</me>
+    what is the derivative $deriv[1][1]?</p>
+    <p><m>$deriv[1][1]  =</m> 
+    <answer forceFullCheckworkButton="true">$dfun</answer>
+    </p>
+  </case>
+  <case condition="$wording=4">
+  <p>Let <m>$f($x) = $fun.</m>  What is the derivative of <m>$f($x)</m>?</p>
+    <p><m>$deriv[1][1]  =</m> 
+    <answer forceFullCheckworkButton="true">$dfun</answer>
+    </p>
+  </case>
+  <case condition="$wording=5">
+    <p>Compute the derivative, <m>$deriv[1][1] </m>, of the function <m>$f($x)</m> below
+    <me>$f($x) = $fun.</me></p>
+    <p><m>$deriv[1][1]  =</m> 
+    <answer forceFullCheckworkButton="true">$dfun</answer>
+    </p>
+  </case>
+</conditionalContent>
+
+
+
+
+
+<solution>
+
+
+Since <m>$f ($x )</m> is the product of <m>$monomial </m> times <m>$exponential </m>, we must use the product rule.  The derivative of <m>$monomial </m> is
+<me>\left($monomial \right)' = $d_monomial ,</me>
+and the derivative of <m>$exponential </m> is
+<me>\left($exponential \right)' = $d_exponential</me>
+
+The derivative of <m>$f ($x )</m> is therefore
+<me>$deriv[1][1]  = <math>$d_monomial $exponential  + $monomial $d_exponential</math> = $dfun</me>
+</solution>
+
+
+</problem>

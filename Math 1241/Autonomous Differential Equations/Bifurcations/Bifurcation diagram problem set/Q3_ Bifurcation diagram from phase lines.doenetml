@@ -1,0 +1,491 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 81yd5Q7zodhyqehuN5SSbn
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 8394f5788b00cb16
+-->
+<problem>
+  <!-- <title>Bifurcation diagram from phase lines</title> -->
+  
+<setup>
+
+  <number name="parvalbif1">1</number>
+  <number name="parvalbif2">5</number>
+  <number name="ybif1">3</number>
+  <number name="ybif2">-6</number>
+
+  <function name="Eofa1" variables="p">-sqrt(($parvalbif2 - p)/4)+$ybif2</function>
+  <function name="Eofa2" variables="p">sqrt(($parvalbif2 - p)/4)+$ybif2</function>
+  <function name="Eofa3" variables="p">-sqrt(2(p - $parvalbif1))+$ybif1</function>
+  <function name="Eofa4" variables="p">sqrt(2(p - $parvalbif1))+$ybif1</function>
+
+
+
+  
+    <styleDefinition stylenumber="2" lineWidth="3" />
+    <styleDefinition styleNumber="3" markerColor="red" markerSize="4" markerStyle="circle" lineColor="red" lineWidth="3" />
+    <styleDefinition styleNumber="4" markerColor="red" markerSize="2" markerStyle="circle" lineColor="red" lineWidth="3" />
+  
+
+</setup>
+
+<p>Now let's see if you can draw a bifurcation diagram even if we don't give you as much scaffolding.</p>
+
+<p>As usual, we have a dynamical system 
+ <m>\frac{ dy }{ dt } = f (y, a),</m>
+that depends on a parameter <m>a</m>.  Your goal is to draw a bifurcation diagram with respect to parameter <m>a</m>.</p>
+
+<p>This time, rather than plotting the function <m>f</m> for different values of <m>a</m>, we'll instead directly give you phase lines. 
+
+ </p>
+
+<p>Below, you can show the phase line for any value of <m>a</m> (in increments of 0.1) in the interval <m>-4 \le a \le 9</m>, by typing a value  or changing the value with the slider.</p>
+
+<p><m>a = </m> <mathInput bindValueTo="$a" /></p>
+<slider name="a" from="-4" to="9" step="0.1" showControls="true" />
+
+<div>
+<pre>
+
+</pre>
+<p>Phase line for <m>a=$a</m>: </p>
+
+<graph aspectRatio="25/4" displayYAxis="false" xmin="-10" xmax="10" ymin="-3" ymax="3" fixAxes="true">
+  <xLabel><m>y</m></xLabel>
+  <setup>
+    <conditionalContent name="labelPosE1">
+      <case condition="4 &lt; $a &lt; 5">
+        <text>upperleft</text><text>upperright</text>
+      </case>
+      <else>
+        <text>top</text><text>top</text>
+      </else>
+    </conditionalContent>
+  </setup>
+
+  <conditionalContent condition="$a &lt;= 5">
+    <equilibriumPoint name="E1" styleNumber="3" stable="false" fixed="true" x="$$Eofa1($a)" y="0" labelPosition="$labelPosE1[1][1]">
+      <label><m><math displayDigits="3" extend="$E1.x" /></m></label>
+    </equilibriumPoint>
+  </conditionalContent>
+  <conditionalContent condition="$a &lt; 5">
+    <equilibriumPoint name="E2" styleNumber="3" stable="true" fixed="true" x="$$Eofa2($a)" y="0" labelPosition="$labelPosE1[1][2]">
+      <label><m><math displayDigits="3" extend="$E2.x" /></m></label>
+    </equilibriumPoint>
+
+  </conditionalContent>
+
+  <conditionalContent condition="$a >= 1">
+    <equilibriumPoint name="E3" styleNumber="3" stable="false" fixed="true" x="$$Eofa3($a)" y="0" labelPosition="top">
+      <label><m><math displayDigits="3" extend="$E3.x" /></m></label>
+    </equilibriumPoint>
+  </conditionalContent>
+  <conditionalContent condition="$a > 1">
+    <equilibriumPoint name="E4" styleNumber="3" stable="true" fixed="true" x="$$Eofa4($a)" y="0" labelPosition="top">
+      <label><m><math displayDigits="3" extend="$E4.x" /></m></label>
+    </equilibriumPoint>
+  </conditionalContent>
+
+  <conditionalContent>
+    <case condition="$a &lt; 1">
+      <vector styleNumber="2" fixed="true" tail="(9, 0)" head="($$Eofa2($a)+0.5,0)" />
+    </case>
+    <case condition="$a &lt;= 4.5">
+      <vector styleNumber="2" fixed="true" tail="($$Eofa1($a)+0.2, 0)" head="($$Eofa2($a)-0.2,0)" />
+    </case>
+    <case condition="$a &lt;=5">
+      <vector styleNumber="2" fixed="true" tail="($$Eofa1($a)-0.5, 0)" head="(-9,0)" />
+    </case>
+    <case condition="1 &lt;= $a &lt;=5">
+      <vector styleNumber="2" fixed="true" tail="($$Eofa3($a)-0.5, 0)" head="($$Eofa2($a)+0.5, 0)" />
+    </case>
+    <case condition="1 &lt;= $a">
+      <vector styleNumber="2" fixed="true" tail="(9, 0)" head="($$Eofa4($a)+0.5, 0)" />
+    </case>
+    <case condition="1.1 &lt;= $a">
+      <vector styleNumber="2" fixed="true" tail="($$Eofa3($a)+0.3, 0)" head="($$Eofa4($a)-0.3, 0)" />
+    </case>
+    <case condition="5 &lt; $a">
+      <vector styleNumber="2" fixed="true" tail="($$Eofa3($a)-0.5, 0)" head="(-9, 0)" />
+    </case>
+  </conditionalContent>
+
+
+</graph>
+</div>
+
+<p>How many bifurcations points can you observe from the phase lines?  <answer name="nbf">2</answer></p>
+
+<p>What are the values of the parameter <m>a</m> at the bifurcation points?</p>
+<ul>
+  <repeatForSequence length="min(5, $nbf)" name="mapBPs"><li><m>a = </m> <mathInput /></li></repeatForSequence>
+</ul>
+
+<answer name="ansBPs">
+  <award referencesAreResponses="$mapBPs" matchPartial="true">
+    <when>
+      <mathList><setup><collect componentType="mathInput" from="$mapBPs" name="collect_list" /></setup><mathList name="list" extend="$collect_list.value" /></mathList>
+      =
+      <mathList unordered="true">$parvalbif1 $parvalbif2</mathList>
+    </when>
+  </award>
+</answer>
+
+<ul hide="$ansBPs.creditAchieved &lt; 1">
+  <repeat for="$ansBPs.submittedResponses" valueName="v"><li>The bifurcation at <m>a = $v</m> occurs where the state variable <m>y=</m>
+      <answer>
+        <award>
+          <math>
+            <conditionalContent>
+              <case condition="$v = $parvalbif1">$ybif1</case>
+              <case condition="$v = $parvalbif2">$ybif2</case>
+            </conditionalContent>
+          </math>
+        </award>
+      </answer>
+      </li>
+    </repeat>
+
+  <li>For <m>a &lt; $parvalbif1</m>, how many equilibria are there? <answer>2</answer></li>
+  <li>For <m>$parvalbif1 &lt; a &lt; $parvalbif2</m>, how many equilibria are there? <answer>4</answer></li>
+  <li>For <m>a > $parvalbif2</m>, how many equilibria are there? <answer>2</answer></li>
+</ul>
+
+<p>In the below graph, draw the bifurcation diagram of the dynamical system for <m>-4 &lt; a &lt; 9</m>.  The bifurcation diagram summarizes how the number, location, and stability of the equilibria depend on the parameter <m>a</m>.</p>
+
+<p>The bifurcation diagram will look like two parabolas.  Move the parabolas so that their vertices represent the bifurcation points.  The branches of the parabolas should show how the locations of the equilibria involved in the bifurcation change with the parameter <m>a</m>.</p>
+
+<graph name="g1" aspectRatio="5/4" xmin="-4" xmax="9" ymin="-10" ymax="10" fixAxes="true" grid="true">
+  <xLabel><m>a</m></xLabel>
+  <yLabel><m>y</m></yLabel>
+
+  <point name="V1" x="6" y="-5" styleNumber="4">
+<!--     <constraints name="attractToBPs" baseOnGraph="g1">
+      <attractTo threshold="0.06"> -->
+     
+      <attractTo threshold="0.3">
+        <point>($parvalbif1,$ybif1)</point>
+        <point>($parvalbif2,$ybif2)</point>
+      </attractTo>
+    
+  </point>
+
+  <point name="P1a" x="7" y="-7" styleNumber="4">
+<!--     <constraints name="attractToEs" baseOnGraph="g1">
+      <attractTo  threshold="0.06"> -->
+    
+      <attractTo threshold="0.3">
+        $Eofa1 $Eofa2 $Eofa3 $Eofa4
+      </attractTo>
+    
+  </point>
+
+  <point name="P1b" x="7" y="-3" styleNumber="4">
+<!--     <constraints baseOnGraph="g1">
+      <attractTo  threshold="0.06"> -->
+    
+      <attractTo threshold="0.3">
+        $Eofa1 $Eofa2 $Eofa3 $Eofa4
+      </attractTo>
+    
+  </point>
+  
+  <equilibriumCurve name="C1a" switchable="true" styleNumber="3">
+    <function>$V1.y + ($P1a.y - $V1.y) sqrt((x-$V1.x)/($P1a.x - $V1.x))</function>
+  </equilibriumCurve>
+  <equilibriumCurve name="C1b" switchable="true" styleNumber="3">
+    <function>$V1.y + ($P1b.y - $V1.y) sqrt((x-$V1.x)/($P1b.x - $V1.x))</function>
+  </equilibriumCurve>
+
+
+  <point name="V2" x="6" y="3" styleNumber="4">
+<!--     <constraints baseOnGraph="g1">
+      <attractTo threshold="0.06"> -->
+    
+      <attractTo threshold="0.3">
+        <point>($parvalbif1,$ybif1)</point>
+        <point>($parvalbif2,$ybif2)</point>
+      </attractTo>
+    
+  </point>
+  <point name="P2a" x="7" y="5" styleNumber="4">
+<!--     <constraints baseOnGraph="g1">
+      <attractTo  threshold="0.06"> -->
+    
+      <attractTo threshold="0.3">
+        $Eofa1 $Eofa2 $Eofa3 $Eofa4
+      </attractTo>
+    
+  </point>
+  <point name="P2b" x="7" y="1" styleNumber="4">
+<!--     <constraints baseOnGraph="g1">
+      <attractTo  threshold="0.06"> -->
+    
+      <attractTo threshold="0.3">
+        $Eofa1 $Eofa2 $Eofa3 $Eofa4
+      </attractTo>
+    
+  </point>
+
+  <equilibriumCurve name="C2a" switchable="true" styleNumber="3">
+    <function>$V2.y + ($P2a.y - $V2.y) sqrt((x-$V2.x)/($P2a.x - $V2.x))</function>
+  </equilibriumCurve>
+  <equilibriumCurve name="C2b" switchable="true" styleNumber="3">
+    <function>$V2.y + ($P2b.y - $V2.y) sqrt((x-$V2.x)/($P2b.x - $V2.x))</function>
+  </equilibriumCurve>
+
+
+</graph>
+
+<p>Bifurcation points:
+  <answer matchPartial="true">
+    <award referencesAreResponses="$V1 $V2">
+      <when>
+        <mathList>$V1 $V2</mathList>
+        =
+        <mathList unordered="true">
+          <math>($parvalbif1, $ybif1)</math>
+          <math>($parvalbif2, $ybif2)</math>
+        </mathList>
+      </when>
+    </award>
+  </answer>
+</p>
+
+<setup>
+  <boolean name="V11">$V1 = ($parvalbif1, $ybif1)</boolean>
+  <boolean name="V12">$V1 = ($parvalbif2, $ybif2)</boolean>
+  <boolean name="V21">$V2 = ($parvalbif1, $ybif1)</boolean>
+  <boolean name="V22">$V2 = ($parvalbif2, $ybif2)</boolean>
+  
+
+  <conditionalContent name="branchOf1a">
+    <case condition="$V11 and $$Eofa3($P1a.x) = $P1a.y">
+      <number>3</number>
+    </case>
+    <case condition="$V11 and $$Eofa4($P1a.x) = $P1a.y">
+      <number>4</number>
+    </case>
+    <case condition="$V12 and $$Eofa1($P1a.x) = $P1a.y">
+      <number>1</number>
+    </case>
+    <case condition="$V12 and $$Eofa2($P1a.x) = $P1a.y">
+      <number>2</number>
+    </case>
+  </conditionalContent>
+
+  <conditionalContent name="branchOf1b">
+    <case condition="$V11 and $$Eofa3($P1b.x) = $P1b.y">
+      <number>3</number>
+    </case>
+    <case condition="$V11 and $$Eofa4($P1b.x) = $P1b.y">
+      <number>4</number>
+    </case>
+    <case condition="$V12 and $$Eofa1($P1b.x) = $P1b.y">
+      <number>1</number>
+    </case>
+    <case condition="$V12 and $$Eofa2($P1b.x) = $P1b.y">
+      <number>2</number>
+    </case>
+  </conditionalContent>
+
+  <conditionalContent name="branchOf2a">
+    <case condition="$V21 and $$Eofa3($P2a.x) = $P2a.y">
+      <number>3</number>
+    </case>
+    <case condition="$V21 and $$Eofa4($P2a.x) = $P2a.y">
+      <number>4</number>
+    </case>
+    <case condition="$V22 and $$Eofa1($P2a.x) = $P2a.y">
+      <number>1</number>
+    </case>
+    <case condition="$V22 and $$Eofa2($P2a.x) = $P2a.y">
+      <number>2</number>
+    </case>
+  </conditionalContent>
+
+
+  <conditionalContent name="branchOf2b">
+    <case condition="$V21 and $$Eofa3($P2b.x) = $P2b.y">
+      <number>3</number>
+    </case>
+    <case condition="$V21 and $$Eofa4($P2b.x) = $P2b.y">
+      <number>4</number>
+    </case>
+    <case condition="$V22 and $$Eofa1($P2b.x) = $P2b.y">
+      <number>1</number>
+    </case>
+    <case condition="$V22 and $$Eofa2($P2b.x) = $P2b.y">
+      <number>2</number>
+    </case>
+  </conditionalContent>
+
+
+  
+  <conditionalContent name="credit1on34">
+    <case condition="$V1 = ($parvalbif1, $ybif1)">
+      <number>0.5</number>
+    </case>
+    <else>
+      <number>0</number>
+    </else>
+  </conditionalContent>
+  <conditionalContent name="credit1on12">
+    <case condition="$V1 = ($parvalbif2, $ybif2)">
+      <number>0.5</number>
+    </case>
+    <else>
+      <number>0</number>
+    </else>
+  </conditionalContent>
+  <conditionalContent name="credit2on34">
+    <case condition="$V2 = ($parvalbif1, $ybif1)">
+      <number>0.5</number>
+    </case>
+    <else>
+      <number>0</number>
+    </else>
+  </conditionalContent>
+  <conditionalContent name="credit2on12">
+    <case condition="$V2 = ($parvalbif2, $ybif2)">
+      <number>0.5</number>
+    </case>
+    <else>
+      <number>0</number>
+    </else>
+  </conditionalContent>
+</setup>
+
+
+<p />
+
+<p>Equilibrium curve locations:
+  <answer>
+    <award matchPartial="true">
+      <when name="curvesInLocation">
+        <mathList>
+          $branchOf1a[1][1] $branchOf1b[1][1] $branchOf2a[1][1] $branchOf2b[1][1]
+        </mathList>
+        =
+        <mathList unordered="true">1 2 3 4</mathList>
+      </when>
+    </award>
+  </answer>
+</p>
+
+<p>Equilibrium curve stability
+  <answer numAwardsCredited="4" name="ansStab">
+    <award credit="0.25">
+      <when>
+        $branchOf1a[1][1] = 1
+        and not <boolean extend="$C1a.stable" />
+        or
+        $branchOf1b[1][1] = 1
+        and not <boolean extend="$C1b.stable" />
+        or
+        $branchOf2a[1][1] = 1
+        and not <boolean extend="$C2a.stable" />
+        or
+        $branchOf2b[1][1] = 1
+        and not <boolean extend="$C2b.stable" />
+      </when>
+    </award>
+    <award credit="0.25">
+      <when>
+        $branchOf1a[1][1] = 2
+        and <boolean extend="$C1a.stable" />
+        or
+        $branchOf1b[1][1] = 2
+        and <boolean extend="$C1b.stable" />
+        or
+        $branchOf2a[1][1] = 2
+        and <boolean extend="$C2a.stable" />
+        or
+        $branchOf2b[1][1] = 2
+        and <boolean extend="$C2b.stable" />
+      </when>
+    </award>
+    <award credit="0.25">
+      <when>
+        $branchOf1a[1][1] = 3
+        and not <boolean extend="$C1a.stable" />
+        or
+        $branchOf1b[1][1] = 3
+        and not <boolean extend="$C1b.stable" />
+        or
+        $branchOf2a[1][1] = 3
+        and not <boolean extend="$C2a.stable" />
+        or
+        $branchOf2b[1][1] = 3
+        and not <boolean extend="$C2b.stable" />
+      </when>
+    </award>
+    <award credit="0.25">
+      <when>
+        $branchOf1a[1][1] = 4
+        and <boolean extend="$C1a.stable" />
+        or
+        $branchOf1b[1][1] = 4
+        and <boolean extend="$C1b.stable" />
+        or
+        $branchOf2a[1][1] = 4
+        and <boolean extend="$C2a.stable" />
+        or
+        $branchOf2b[1][1] = 4
+        and <boolean extend="$C2b.stable" />
+      </when>
+    </award>
+  </answer>
+</p>
+
+  
+<feedback updateWith="$ansStab" condition="$curvesInLocation.fractionSatisfied = 0">
+  Since no curves are in the correct location, we cannot evaluate stability.
+</feedback>
+<feedback updateWith="$ansStab" condition="$curvesInLocation.fractionSatisfied > 0 and $ansStab.creditAchieved &lt; 1">
+  <updateValue triggerWith="$ansStab" target="$numCorrectLocation" newValue="4$curvesInLocation.fractionSatisfied" />
+  Of the 4 parabola branches, <number name="numCorrectLocation">0</number> are in the correct location.  Of those, <number>4 $ansStab.creditAchieved</number> have the correct stability.
+
+</feedback>
+
+<hint>
+
+  <p>The vertices of the parabolas should be placed according to the values of <m>a</m> and <m>y</m> you answered above.</p>
+
+  <p>To determine the locations of the branches of the parabolas, set the phase line to a value of <m>a</m> where an equilibrium is visible.  Then move the point controlling the appropriate parabola branch to the coordinates <m>(a,y)</m>, where you use the value of <m>a</m> that you chose and the location <m>y</m> of that equilibrium.</p>
+
+  <p>The vertical slice of the bifurcation diagram for any value of <m>a</m> should match the phase line you get when setting <m>a</m> to that value.</p>
+
+</hint>
+
+<solution>
+  <p>There are two bifurcations at <m>a=$parvalbif1</m> and <m>a=$parvalbif2</m></p>
+
+  <ul>
+    <li>The bifurcation at <m>a = $parvalbif1</m> occurs where the state variable <m>y= $ybif1</m></li>
+    <li>The bifurcation at <m>a = $parvalbif2</m> occurs where the state variable <m>y= $ybif2</m></li>
+    
+  <li>For <m>a &lt; $parvalbif1</m>, there are 2 equilibria</li>
+  <li>For <m>$parvalbif1 &lt; a &lt; $parvalbif2</m>, there are 4 equilibria.</li>
+  <li>For <m>a > $parvalbif2</m>, there are 2 equilibria.</li>
+</ul>
+
+<p>The bifurcation diagram:</p>
+  
+<graph aspectRatio="5/4" xmin="-4" xmax="9" ymin="-10" ymax="10" fixAxes="true" grid="true">
+  <xLabel><m>a</m></xLabel>
+  <yLabel><m>y</m></yLabel>
+
+  <equilibriumCurve stable="false" styleNumber="3">$Eofa1</equilibriumCurve>
+  <equilibriumCurve styleNumber="3">$Eofa2</equilibriumCurve>
+  <equilibriumCurve stable="false" styleNumber="3">$Eofa3</equilibriumCurve>
+  <equilibriumCurve styleNumber="3">$Eofa4</equilibriumCurve>
+  
+
+</graph>
+  
+</solution>
+
+  
+
+</problem>

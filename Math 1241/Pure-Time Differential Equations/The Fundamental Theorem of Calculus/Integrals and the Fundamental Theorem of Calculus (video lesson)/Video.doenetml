@@ -1,0 +1,96 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7V8eF536MKVoiRJC4WjRCn
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 33e14ebcc17bdfe4
+-->
+<title>Integrals and the Fundamental Theorem of Calculus</title>
+<p><ref>Video</ref> | <ref>Transcript</ref> </p>
+<description>
+
+</description>
+
+<section><title>Video</title>
+  
+<figure suppressFigureNameInCaption="true">
+<video youtube="XQuqOchbmD8" size="large" aspectRatio="16/9" name="v1" />
+<caption>Integrals and the Fundamental Theorem of Calculus</caption>
+</figure>
+
+
+
+<setup>
+  <number name="timestamp1" />
+  <number name="timestamp2" />
+</setup>
+
+<sideBySide margins="5%">
+<div>Video credit achieved: <number displayDecimals="1">$v1.fractionWatched*100</number>%
+  
+<answer hide="true" name="v1Credit">
+  <award credit="$v1.fractionWatched"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+</div>
+
+<!-- <div>
+<updateValue type="number" target="v1.time" newValue="$timestamp1" name="skipTo1">
+  <label>Go to Key Moment 1</label>
+</updateValue>
+</div>
+
+<div>
+<updateValue type="text" triggerWithTargets="skipTo1" target="v1" prop="state" newValue="playing" name="playStamp1"/>
+
+<updateValue type="number" target="v1.time" newValue="$timestamp2" name="skipTo2">
+  <label>Go to Key Moment 2</label>
+</updateValue>
+</div>
+
+
+<updateValue type="text" triggerWithTargets="skipTo2" target="v1" prop="state" newValue="playing" name="playStamp2"/> -->
+</sideBySide>
+<aside><title>The Fundamental Theorem of Calculus</title>
+
+<p>If <m>f(t)</m> is a continuous function and <m>F(t)</m> any differentiable function with <m>F'(t)=f(t)</m>, then <me>\int_a^b f(t)\, dt=F(b)-F(a)=F(t)\Big |_a^b</me>
+The notation <m>F(t)\Big |_a^b</m> is just short-hand notation for <m>F(b)-F(a)</m>.</p>
+
+</aside>
+  
+  
+<problem><title>Video review questions</title>
+<exercise includeAutoNumber="true"><title />
+
+<p>The <term>indefinite integral</term>, <m>\int f(t)dt</m>, which is obtained from considering the antiderivative of the function <m>f</m>, and the <term>definite integral</term>, <m>\int_{a}^{b} f(t)dt</m>, which is derived from a Riemann sum, are two different mathematical ideas that are related by...</p>
+
+<answer name="ans1a">
+  <choice>the limit definition of a derivative</choice>
+  <choice>the linear approximation of <m>f</m> at <m>a</m> and <m>b</m></choice>
+  <choice credit="1">the Fundamental Theorem of Calculus</choice>
+</answer>
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<p>The antiderivative <m>F(t)</m>, or <term>indefinite integral</term> <m>\int t^2 dt</m> of the function <m>f(t) = t^2</m> is...</p>
+  <answer name="ans2a">
+    <choice credit="1"><m>F(t) = \frac{1}{3} t^3 + C</m></choice>
+    <choice><m>F(t) = 2t + C</m></choice>
+    <choice><m>F(t) = t^2 + C</m></choice>
+  </answer>
+<p>We now want to compute the <term>definite integral</term> of this function from <m>a = 0</m> to <m>b = 3</m> using the Fundamental Theorem of Calculus. This means that...</p>
+  <answer name="ans2b">
+    <choice><m>\int_{3}^{0} t^2 dt = F(0) - F(3)</m></choice> 
+    <choice credit="1"><m>\int_{0}^{3} t^2 dt = F(3) - F(0)</m></choice>
+    <choice><m>\int_{3}^{0} t^2 dt = F(0) + F(3)</m></choice>
+  </answer>
+
+<p>If we now substitute the limits of <m>a</m> and <m>b</m> into the antiderivative you found initially and simplify, we arrive at a final answer of...</p>
+  <answer name="ans2c">
+    <choice credit="1"><m>9</m></choice>
+    <choice><m>-9</m></choice>
+    <choice><m>6</m></choice>
+  </answer>
+</exercise>
+</problem>
+</section>

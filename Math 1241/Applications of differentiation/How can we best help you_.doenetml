@@ -1,0 +1,61 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7TjP9JoE2skqS8PGANbNqr
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 4374b0e4b43e6075
+-->
+<title>How can we best help you?</title>
+
+<p>What are ways in which we can better help you learn in Math 1241?</p>
+<answer selectMultiple="true">
+  <choiceInput name="ci1">
+    <choice>Hold office hours at different times</choice>
+    <choice>Hold review sessions outside class</choice>
+    <choice>Other (specify below)</choice>
+    <choice>Nothing, just keep doing what you're doing</choice>
+  </choiceInput>
+  <award><when>$ci1.selectedIndex > 0</when></award>
+</answer>
+
+
+
+<p>If you have other requests, specify them here:
+<textInput expanded="true" />
+</p>
+
+<p>For office hours, what format do you prefer?</p>
+<answer>
+  <choice credit="1">Strong preference for in person</choice>
+  <choice credit="1">Strong preference for on zoom</choice>
+  <choice credit="1">Preference for in person, but on zoom is OK if needed for scheduling</choice>
+  <choice credit="1">No preference or wouldn't attend office hours</choice>
+</answer>
+
+
+<p>If review sessions would be helpful, what format would you prefer?</p>
+<answer>
+  <choice credit="1">In a classroom during the day</choice>
+  <choice credit="1">In a classroom during the evening</choice>
+  <choice credit="1">At Prof. Nykamp's house during the evening</choice>
+  <choice credit="1">No preference or wouldn't attend review sessions</choice>
+</answer>
+
+<p>If you are interested in coming to office hours or a review session, you can fill out <ref to="https://whenisgood.net/saws223">this poll</ref> to indicate when you are available. (It asks for your name; you don't have to put your real name.)
+</p>
+
+<p>Filled out poll?
+<answer inline="true"><choice credit="1">yes</choice><choice credit="1">no</choice></answer>
+</p>
+
+
+<!-- admin link: https://whenisgood.net/saws223/results/xsqqkwx -->
+
+
+
+
+<p>Is there anything else you'd like us to know?
+<answer weight="0" forceFullCheckworkButton="true">
+  <textInput expanded="true" />
+  <award><when>true</when></award>
+</answer>
+</p>

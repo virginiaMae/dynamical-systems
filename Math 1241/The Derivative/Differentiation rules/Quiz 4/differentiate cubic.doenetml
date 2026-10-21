@@ -1,0 +1,37 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7MJjqkBViPrspiLDtbD1Tt
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 82418caca1211332
+-->
+<problem>
+<!-- <title>differentiate cubic</title> -->
+
+<setup>
+
+<selectFromSequence name="a" from="1" to=" 7" />
+<selectFromSequence name="b" numToSelect="2" withReplacement="true" from="-5" to=" 5" />
+<selectFromSequence name="d" from="1" to=" 10" />
+
+<math name="answer" simplify="full">3*$a*x^2 + 2*$b[1]*x + $b[2] </math>
+<math name="fun" simplify="full">$a *x^3 + $b[1] *x^2 + $b[2] *x + $d </math>
+
+</setup>
+
+
+Compute the derivative, <m>\frac{ df }{ dx }</m>, of the function <m>f(x)</m> below
+
+<me>f(x) = $fun .</me>
+
+<m>f'(x) =</m> 
+<answer>
+<award symbolicEquality="true" simplifyOnCompare="numbers">$answer </award>
+</answer>
+
+<solution>
+<m>f'(x)=$answer </m>
+
+</solution>
+
+
+</problem>

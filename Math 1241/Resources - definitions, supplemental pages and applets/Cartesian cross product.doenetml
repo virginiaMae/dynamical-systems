@@ -1,0 +1,16 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 83Dk6R1eW1zpNeXdATS368
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 6353872895790d3a
+-->
+<section><title>Cartesian product definition</title>
+ 
+<p>The <term>Cartesian product</term> <m>X \times Y</m> between two sets <m>X</m> and <m>Y</m> is the set of all possible ordered pairs with first element from <m>X</m> and second element from <m>Y</m>:
+
+<me>X \times Y=\{ (x,y):x \in X \; \text{and} \; y \in Y \}.</me>
+One example is the standard <ref to="https://mathinsight.org/cartesian_coordinates">Cartesian coordinates</ref> of the plane, where <m>X</m> is the set of points on the <m>x</m>-axis, <m>Y</m> is the set of points on the <m>y</m>-axis, and <m>X \times Y</m> is the <m>xy</m>-plane.</p>
+
+<p>If <m>X=Y</m>, we can denote the <term>Cartesian product</term> of <m>X</m> with itself as <m>X \times X=X^2</m>. For examples, since we can represent both the <m>x</m>-axis and the <m>y</m>-axis as the set of real numbers <m>\mathbf{R}</m>, we can write the <m>xy</m>-plane as <m>\mathbf{R} \times \mathbf{R}= \mathbf{R^2}</m>.</p>
+
+</section>

@@ -1,0 +1,98 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7Y5r84zPFFnxA7M6cVoPGD
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: ad3668e91be099f4
+-->
+<problem>
+<!-- <title>Solve simple linear differential equations, general solutions</title> -->
+
+<setup>
+
+
+<function name="y" variables="t" symbolic="true">y</function>
+<function name="ysol" variables="t" symbolic="true">C*e^(2t)</function>
+<function name="x" variables="t" symbolic="true">x</function>
+<function name="xsol" variables="t" symbolic="true">C*e^(-3t)</function>
+<function name="m" variables="t" symbolic="true">m</function>
+<function name="msol" variables="t" symbolic="true">C*e^(11t)</function>
+<function name="v" variables="t" symbolic="true">v</function>
+<function name="vsol" variables="t">C*e^t</function>
+
+</setup>
+
+
+If we aren't given the initial conditions, we cannot determine the exact solution of the differential equation.  For the following differential equations, give the general solution, which will be a function with an undetermined constant <m>C</m>.
+
+
+<exercise includeAutoNumber="true"><title />
+<m>\displaystyle \frac{ dy }{ dt }=2$y</m>
+
+<p><m>y(t)=</m> 
+<answer>
+<award symbolicEquality="true" simplifyOnCompare="true">$ysol </award>
+</answer>
+</p>
+</exercise>
+
+
+<exercise includeAutoNumber="true"><title />
+<m>x'(t)=-3$x (t) </m>
+
+<p><m>x(t)=</m> 
+<answer>
+<award symbolicEquality="true" simplifyOnCompare="true">$xsol </award>
+</answer>
+</p>
+</exercise>
+
+
+<exercise includeAutoNumber="true"><title />
+<m>\displaystyle \frac{ dm }{ dt }=11$m (t)</m>.
+
+<p><m>m(t)=</m> 
+<answer>
+<award symbolicEquality="true" simplifyOnCompare="true">$msol </award>
+</answer>
+</p>
+</exercise>
+
+
+<exercise includeAutoNumber="true"><title />
+<m>v'(t)=$v </m>.
+
+<p><m>v(t)=</m> 
+<answer>
+<award symbolicEquality="true" simplifyOnCompare="true">$vsol </award>
+</answer>
+</p>
+
+<hint>Recall, sometimes we write <m>y</m> to represent the function <em><m>$y (t)</m></em> as a shorthand notation.</hint>
+</exercise>
+
+  
+<solution>
+
+<exercise includeAutoNumber="true"><title />
+<p>
+<m>y(t)=$ysol </m></p>
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<p>
+<m>x(t)=$xsol </m></p>
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<p>
+<m>m(t)=$msol </m></p>
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<p>
+<m>v(t)=$vsol </m></p>
+</exercise>
+</solution>
+
+
+</problem>

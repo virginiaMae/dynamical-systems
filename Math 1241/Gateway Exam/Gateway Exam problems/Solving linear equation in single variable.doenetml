@@ -1,0 +1,45 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7Aq4N51r6BAe6ayEeXxbAM
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: d991e20a6bb5bcca
+-->
+<problem>
+
+<setup>
+<selectFromSequence name="b" numToSelect="2" withReplacement="true" from="-10" to="10" exclude="0" />
+<selectFromSequence name="a" numToSelect="2" withReplacement="false" from="-10" to="10" exclude="0" />
+
+<select name="x">p q r s u v w x y z P Q R S U V W X Y Z</select>
+<math name="lhs" simplify="full">$a[1]*$x+$b[1]</math>
+<math name="rhs" simplify="full">$a[2]*$x+$b[2]</math>
+<math name="x_involved" simplify="full">$a[1]-$a[2]</math>
+
+<math name="solution" simplify="full">($b[2]-$b[1])/($a[1]-$a[2])</math>
+<math name="minus_cx" simplify="full">-$a[2]*$x</math>
+<math name="minus_b" simplify="full">-$b[1]</math>
+<math name="a_minus_c" simplify="full">$a[1]-$a[2]</math>
+<math name="d_minus_b" simplify="full">$b[2]-$b[1]</math>
+</setup>
+
+<p>Solve for $x.</p>
+<me>$lhs = $rhs</me>
+<p><m>$x =</m> <mathInput name="input1" /></p>
+
+<answer>
+<award symbolicEquality="true" simplifyOnCompare="numbers" referencesAreResponses="$input1"><when>
+  $input1 = $solution
+</when></award>
+</answer>
+
+
+<solution>
+To solve, we move all terms involving <m>$x</m> to one side of the equation and the constant terms to the other.  We add <m>$minus_cx</m> to both sides of the equation then add <m>$minus_b</m> to both sides of the equation, obtaining
+<md>
+  <mrow>$a_minus_c$x \amp = $d_minus_b</mrow>
+</md>
+Dividing through by <m>$a_minus_c</m>, we obtain the solution:
+<me>$x = $solution.</me>
+</solution>
+
+</problem>

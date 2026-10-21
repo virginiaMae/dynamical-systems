@@ -1,0 +1,35 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7Ktnp7EwwBrq4qmZdexLTc
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 33a02b4d6d96ca1b
+-->
+<title>Calculating the derivative of a linear function using the derivative formula</title>
+<p><ref>Video</ref> | <ref>Transcript</ref>  </p>
+<description>
+Exploring how the limit definition of the derivative gives the slope of a linear function.
+</description>
+
+
+<section><title>Transcript: Calculating the derivative of a linear function using the derivative formula</title>
+<p>Let’s let the function <m>f</m> be a linear function. Let’s say – let’s let <m>f(x) = 3x - 2</m>. Then we could ask, what is the slope of the graph of <m>f</m> at <m>x = 7</m>? Well that’s pretty easy; by looking at the formula for <m>f</m> we can see that the slope is 3. In fact, it’s 3 at any point. In other words, <m>f’(7)</m> must be equal to 3, because the derivative is the slope. Well, that’s easy enough. But can we calculate the slope, can we calculate this derivative using the derivative formula? In this case, the derivative formula is overkill, since it's so simple to calculate the slope of a linear function, but it will give us some insight into how to use the formula by trying to use it for the simple case.</p>
+<p>The derivative formula is the formula for the slope of the tangent line as a limit of secant lines. So first, let’s calculate the  slope of a secant line, using the values <m>x_0</m> and <m>(x_0 + \Delta x)</m>. The secant slope is just the change in <m>f</m>, or the change in the output over the change in <m>x</m>, so the change in the input. In this case it’s
+<me>\frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x}.</me>
+So here we’re going to use <m>x_0 = 7</m>, and let’s make <m>\Delta x</m> be something small, let’s say 0.1
+<me>\Delta x = 0.1.</me>
+So in this case the secant slope is
+<me>\frac{f(7 + 0.1) - f(7)}{0.1}.</me>
+Ok this is just <m>\frac{f(7.1) - f(7)}{0.1}</m>. <m>f(7.1)</m> is 19.3, <m>f(7)</m> is 19, so the derivative of the secant line is <m>\frac{0.3}{0.1}</m> or just 3. That’s not surprising, we knew the slope of the line is 3, and of course its secant line is the same thing, and so its slope must be 3. In fact, we didn’t need to put in <m>x_0 = 7</m> and <m>\Delta x = 0.1</m> to get 3, this should work in general. So if we take the general formula, and plug in our expression for <m>f</m>, we should get (*3). So <m>f(x_0 + \Delta x)</m> is <m>3(x_0 + \Delta x) - 2</m>. And then we need to subtract off <m>f(x_0)</m>, so minus <m>(3 x_0 - 2)</m>, divided by <m>\Delta x</m>
+<me>\frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x} = \frac{3(x_0 + \Delta x) - 2 - (3 x_0 - 2)}{\Delta x}</me>
+Ok, so this is the slope of a generic secant line from the point <m>x_0</m> to the point <m>(x_0 + \Delta x)</m>. Well most of the terms cancel, and we get that the slope is <m>\frac{3 \Delta x}{\Delta x}</m>, which is equal to 3. So the conclusion is the slope of any secant line is 3. Again, that’s not surprising, we knew that ahead of time, but the point is that this formula gives us this 3 like it should. </p>
+<p>Ok, so the slope of any secant line is 3, but we need the slope of the tangent line, because that’s the derivative. How do you go from the slope of the secant to the slope of the tangent? You need to let <m>\Delta x</m> go to 0. So we have to let <m>\Delta x</m> be smaller and smaller, and see what value we get for the secant slope as <m>\Delta x</m> gets closer and closer to 0. So the tangent slope is equal to the limit as <m>\Delta x</m> goes to 0 of the secant slope, which we could write as <m>\frac{\Delta f}{\Delta x}</m>, change in output over change in input, which is the limit as <m>\Delta x</m> goes to 0 of our secant slope formula. 
+<me>\text{Tangent slope} = \lim_{\Delta x \to 0} \frac{\Delta f}{\Delta x} = \lim_{\Delta x \to 0} \frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x}.</me>
+Ok , this is pretty easy, we know what this is, its just 3. So the tangent slope is the limit as <m>\Delta x</m> goes to 0, of the secant slope 3. Alright, so what is the limit of the number 3 as <m>\Delta x</m> goes to 0? Well, as <m>\Delta x</m> gets smaller and smaller, nothing happens to the number 3, its always just 3. So this limit is just equal to the number 3 because it's pretty obvious that as <m>\Delta x</m> goes to 0, this number 3 is going to be very close to the number 3. 
+<me>\lim_{\Delta x \to 0} 3 = 3.</me>
+It’s kind of a silly use of a limit here, since the secant never changes -- it's the same thing as the tangent. When we have nonlinear functions, this gets a little more interesting. But at least this exercise shows us how we can use the formula for the derivative to calculate that indeed the derivative of <m>3x - 2</m> is 3. In other words, <m>f’(x) = 3</m>, independent of the value of <m>x</m>. In particular we asked at the beginning what <m>f’(7)</m> was, and again, it’s just 3. The derivative of a linear function is a constant, independent of <m>x</m>.</p>
+<p>So, for this <m>f</m>, what is <m>\frac{df}{dx}</m>? It’s another way of writing the derivative, so the <m>\frac{df}{dx}</m> is just 3. So you’d be ok if I gave you the function, let’s say, <m>g(x) = mx + b</m> for some numbers <m>m</m> and <m>b</m>, but I’m not gonna tell you what they are. Could you then calculate what the derivative <m>g’(x)</m> is? It’s just the number <m>m</m>, the slope <m>m</m>, a constant independent of <m>x</m>. How about the function <m>h(t) = q t + m</m>? Do you see what the derivative <m>\frac{dh}{dt}</m> is? Again, since its a linear function, the derivative is a constant independent of <m>t</m>, and it’s just the slope <m>q</m>. Course I could have written it <m>h’(t) = q</m>, same thing right? Here’s an important special case – what if we had the function <m>f(x) = \text{a constant}</m>. Let’s call it <m>b</m>. For this function, what is the derivative <m>\frac{df}{dx}</m>? A constant is a special case of a linear function, its slope is 0. So the derivative <m>\frac{df}{dx}</m> is 0. Again, a constant independent of <m>x</m>. </p>
+<p>A quick comment about limits. We saw that the limit of 3 as <m>\Delta x</m> goes to 0 is just 3. We can formulate this as a general rule for limits. If <m>g(x)</m> is a constant function (let’s say its <m>g(x) = c</m>, some number <m>c</m>), then the limit of <m>g(x)</m> for <m>x</m> approaching any number (let’s call it <m>a</m>), is the limit as <m>x</m> approaches <m>a</m> of the number <m>c</m>, which is just <m>c</m>
+<me>\lim_{x \to a} g(x) = \lim_{x \to a} c = c.</me>
+We could think of it this way, if we plotted <m>g(x)</m>, it would just be a horizontal line at height <m>c</m>, and then we pick some value of <m>x</m>, we’ll call it <m>a</m>, and we wanted to know what was the limit of <m>g(x)</m> as we got closer and closer to <m>a</m>, well <m>g(x)</m> just gets closer and closer to the value <m>c</m>. Actually it doesn’t get closer and closer, because it is always <m>c</m>, but I guess we could say it gets arbitrarily close to <m>c</m> as <m>x</m> approaches <m>a</m>. So this is how we can think of this rule for limits.</p> 
+
+</section>

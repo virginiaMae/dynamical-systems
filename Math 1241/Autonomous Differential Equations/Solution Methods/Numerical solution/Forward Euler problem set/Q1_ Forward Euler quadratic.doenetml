@@ -1,0 +1,706 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 81cqfYjAZScgdKHoXYEvRT
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: d3f333e29f37a55e
+-->
+<problem>
+<!-- <title>Forward Euler quadratic</title> -->
+
+<setup>
+
+
+<!-- name zfun expression_type FE -->
+
+<function name="fun" variables="z">1-z^2</function>
+
+<m name="fun_z_t">1 - \left(z\left(t\right)\right)^2</m>  
+<!-- <math name='fun_z_t' simplify='full' >$$fun($zfun)</math> -->
+  
+<number name="z0">-0.8</number>
+<evaluate name="fun_z0" function="$fun" input="$z0" />
+<function name="lin0" variables="t">$z0 +$fun_z0 *t</function>
+<evaluate name="fe1_1" function="$lin0" input="1" />
+<evaluate name="fun_fe1_1" function="$fun" input="$fe1_1" />
+<number name="fe1_2">$fe1_1 +$fun_fe1_1 </number>
+<evaluate name="fe05_05" function="$lin0" input="0.5" />
+<math name="half">1/2</math>
+<evaluate name="fun_fe05_05" function="$fun" input="$fe05_05" />
+<number name="fe05_1">$fe05_05 +$fun_fe05_05 /2</number>
+<evaluate name="fun_fe05_1" function="$fun" input="$fe05_1" />
+<number name="fe05_15">$fe05_1 +$fun_fe05_1 /2</number>
+<evaluate name="fun_fe05_15" function="$fun" input="$fe05_15" />
+<number name="fe05_2">$fe05_15 +$fun_fe05_15 /2</number>
+
+
+  <styleDefinition stylenumber="2" lineWidth="3" />
+  <styleDefinition stylenumber="9" markerColor="red" markerStyle="circle" markersize="3" />
+
+
+
+
+  
+</setup>
+<!--
+<p>debug:  fun_z_t=<m>$fun_z_t</m></p>
+<p>debug:  fe1_1=<m>$fe1_1</m></p>
+<p>debug:  fun_fe1_1=<m>$fun_fe1_1</m></p>
+<p>debug:  fun_fe05_05=<m>$fun_fe05_05</m></p>
+<p>debug:  fe05_1=<m>$fe05_1</m></p>
+<p>debug:  fun_fe05_1=<m>$fun_fe05_1</m></p>
+<p>debug:  fe05_05=<m>$fe05_05</m></p>-->
+
+  
+Consider the dynamical system
+<md>
+  <mrow>z'(t)\amp = <math extend="$fun.formula" /></mrow>
+  <mrow>z(0)\amp =$z0 .</mrow>
+</md>
+(We could also write the differential equation as <m>z'(t) = 1-z^2(t)</m>.  After reviewing how to solve this system graphically, we will use the Forward Euler algorithm to obtain a more accurate estimate of the solution <m>z(t)</m>.
+
+
+
+<!--Problem#1**************************************************-->  
+<exercise includeAutoNumber="true"><title />
+Sketch a phase line with equilibria (use closed circles for stable and open circles for unstable) and vector field indicating the direction of motion.
+
+
+
+<module copy="doenet:83TXioRLQfjiFmpyoM1xhD" aspectRatio="10/3" vmin="-2" vmax="2" var="z" name="phaseLine" nEquilibria="2" E1="-1" E2="1" E1stable="false" attractThreshold="0.1" />
+</exercise>
+
+
+<!--Problem#2**************************************************-->  
+<exercise includeAutoNumber="true"><title />
+Using the phase line as a guide, sketch the solution <m>z(t)</m> (i.e., a plot of <m>z</m> versus <m>t</m>).  Since we cannot determine how fast the solution is moving from the phase line, you can disregard the scale on the t axis.  We just want a sketch of the approximate behavior of the solution.
+
+
+<!-- graph 2 -->
+<p>
+  <math hide="true" name="ICexpr" functionSymbols="z">z(0)</math>
+</p>
+
+
+<module copy="doenet:83PUG3WFYYLvLvU2jrcCkc" aspectRatio="5/4" vmin="-1.2" vmax="1.2" var="z" ICexpr="$ICexpr" numPoints="1" IC1="-0.8" final1="1" name="solPlot" dv="0.1" />
+
+</exercise>
+
+<!--Problem#3*************************************************-->
+<exercise includeAutoNumber="true"><title /><p>
+We don't have a formula for the solution <m>z(t)</m> that you just sketched.  But, we do have some information about it.  The differential equation <m>z'(t)=<math extend="$fun.formula" /></m> gives the slope <m>z'(t)</m> of the function <m>z(t)</m> in terms of the value of the function <m>z=z(t)</m> itself.</p>
+
+<p>Since we know that at time <m>t=0</m>, <m>z(0)=$z0 </m>, we can determine from the equation the initial slope of <m>z(t)</m>.  What is the slope <m>z'(0)</m> of the function <m>z(t)</m> when <m>t=0</m>? 
+<answer name="answer1">
+<award allowedErrorInNumbers="0.001">$fun_z0 </award>
+<award credit="0.5" allowedErrorInNumbers="0.01" feedbackCodes="numericalerror">$fun_z0 </award>
+</answer>
+</p>
+$answer1.feedbacks
+
+
+<hint>
+Just plug the value <m>z=z(0)=$z0</m> into the equation for <m>z'(t)</m> to get <m>z'(0)</m>.
+</hint>
+</exercise>
+
+<!--Problem#4*************************************************-->
+<exercise includeAutoNumber="true"><title /><p>
+As soon as <m>z(t)</m> changes away from the value <m>$z0 </m>, then the slope will change to always be <m>z'(t) = 1-z^2(t)</m>.  But, to make the situation simpler, let's pretend that the slope <m>z'(t)</m> did not change but was fixed at this value <m>z'(0)</m> that you calculated.  If the slope, or derivative, of a function is a constant, then the function is linear.  Write down a linear approximation for <m>z(t)</m>, based on assuming the slope is fixed at the number <m>z'(0)</m> and that <m>z(0)=$z0 </m>.</p>
+
+<p><m>L_0(t)=</m> 
+<answer name="answer2">
+<award symbolicEquality="true" simplifyOnCompare="true" allowedErrorInNumbers="0.001">$lin0 </award>
+<award credit="0.5" symbolicEquality="true" simplifyOnCompare="true" allowedErrorInNumbers="0.01" feedbackCodes="numericalerror">$lin0 </award>
+</answer>
+</p>
+$answer2.feedbacks
+
+
+<hint>
+The 
+<ref to="doenet:tangent_line_linear_approximation">linear approximation</ref>
+ of the function <m>z(t)</m> evaluated at the point <m>a</m> is 
+<me>L_a(t) = z(a) + z'(a)(t-a).</me>
+If you substitute <m>a=0</m>, then you just need to plug in the known value of <m>z(0)</m> and the value for <m>z'(0)</m> that you just calculated.
+</hint>
+</exercise>
+
+<!--Problem#5*************************************************-->
+<exercise includeAutoNumber="true"><title /><p>
+According to this linear approximation, what should be the value of <m>z(1)</m>?</p>
+
+<p><m>z(1) \approx L_0(1) =</m> 
+<answer name="answer3">
+<award symbolicEquality="true" simplifyOnCompare="true" allowedErrorInNumbers="0.001">$fe1_1 </award>
+<award credit="0.5" symbolicEquality="true" simplifyOnCompare="true" allowedErrorInNumbers="0.01" feedbackCodes="numericalerror">$fe1_1 </award>
+</answer>
+</p>
+$answer3.feedbacks
+
+
+<hint>
+No tricks here, just plug <m>t=1</m> into your linear approximation formula.
+</hint>
+</exercise>
+
+<!--Problem#6*************************************************-->
+<exercise includeAutoNumber="true"><title /><p>
+By using this linear approximation, you have estimated the value of <m>z(1)</m> using one step of the Forward Euler algorithm with a step size of <m>\Delta t = 1</m>.  If we let <m>f(z)= <math extend="$fun.formula" />,</m> we can write the Forward Euler algorithm compactly as <m>z(0 + \Delta t) = z(0) + f(z(0))\Delta t.</m>
+Repeat the calculation with this formula to verify you get the same answer for <m>z(1)</m>.</p>
+
+<p><m>z(1) = z(0+\Delta t) = z(0)+f(z(0))\Delta t</m>
+</p>
+
+<p>
+<m>=</m> 
+<mathInput name="z01" />
+ <m>+ f(</m> 
+<mathInput name="z02" />
+ <m>) \cdot</m> 
+<mathInput name="deltat" />
+<answer>
+  <award referencesAreResponses="$z01 $z02 $deltat" matchPartial="true">
+    <when>$z01=$z0 and $z02=$z0 and $deltat=1</when> </award>
+</answer>
+</p>
+
+  
+<p>
+<m>=</m> 
+<mathInput name="z03" />
+ <m>+</m> 
+<mathInput name="z_primeat0" />
+ <m> \cdot</m> 
+<mathInput name="deltat2" />
+<answer>
+  <award symbolicEquality="true" simplifyOnCompare="true" allowedErrorInNumbers="0.1" referencesAreResponses="$z03 $z_primeat0 $deltat2" matchPartial="true">
+    <when>$z03=$z0 and $z_primeat0=$fun_z0  and $deltat2=1</when> 
+  </award>
+</answer>
+</p>  
+    
+  
+<p>
+<m>=</m> 
+<answer name="answer10">
+<award symbolicEquality="true" simplifyOnCompare="true" allowedErrorInNumbers="0.001">$fe1_1 </award>
+<award credit="0.5" symbolicEquality="true" simplifyOnCompare="true" allowedErrorInNumbers="0.01" feedbackCodes="numericalerror">$fe1_1 </award>
+</answer>
+</p>
+$answer10.feedbacks
+
+
+<hint>
+In the second line, just plug in values for <m>z(0)</m> and <m>\Delta</m>; in the third line, compute the value of the function (again); in the fourth line, do the arithmetic.  You should get the same answer.
+</hint>
+</exercise>
+
+<!--Problem#7************************************************-->
+<exercise includeAutoNumber="true"><title /><p>
+Now that we have an estimate of <m>z(1)</m>, we can use the Forward Euler algorithm to take another step of size <m>\Delta t=1</m> and estimate <m>z(2)</m>.  If we use the linear approximation at <m>t=1</m>, the slope is <m>z'(1)=f(z(1))</m>.  Since you have an estimate of <m>z(1)</m>, you can estimate this slope.  Taking a step of size <m>\Delta t</m> along this linear approximation with constant slope, the Forward Euler estimate of <m>z(2)</m> is
+<m>z(1+\Delta t) = z(1) + f(z(1))\Delta t.</m>
+Estimate <m>z(2)</m> using the Forward Euler algorithm.</p>
+
+<p><m>z(2)=z(1+\Delta t) \approx  z(1) + f(z(1))\Delta t</m>
+</p>
+
+
+<p>
+<m>=</m> 
+<mathInput name="z1_1" />
+ <m>+ f(</m> 
+<mathInput name="z1_2" />
+ <m>) \cdot</m> 
+<mathInput name="deltat3" />
+<answer>
+  <award referencesAreResponses="$z1_1 $z1_2 $deltat3" matchPartial="true">
+    <when>$z1_1=$fe1_1 and $z1_2=$fe1_1 and $deltat3=1</when> 
+  </award>
+</answer>
+</p>
+  
+  
+
+<p>
+<m>=</m>
+<mathInput name="z1_3" />
+  <m> + </m>
+<mathInput name="f_of_1" />
+<m> \cdot</m> 
+<mathInput name="deltat4" />
+<answer>
+  <award symbolicEquality="true" simplifyOnCompare="true" allowedErrorInNumbers="0.001" referencesAreResponses="$z1_3 $f_of_1 $deltat4" matchPartial="true">
+    <when>$z1_3=$fe1_1 and $f_of_1=$fun_fe1_1 and $deltat4=1</when>
+  </award>
+</answer>
+</p>
+
+  
+<p>
+
+<m>=</m> 
+<answer name="answer17">
+<award symbolicEquality="true" simplifyOnCompare="true" allowedErrorInNumbers="0.001">$fe1_2 </award>
+<award credit="0.5" symbolicEquality="true" simplifyOnCompare="true" allowedErrorInNumbers="0.01" feedbackCodes="numericalerror">$fe1_2 </award>
+</answer>
+</p>
+$answer17.feedbacks
+
+
+<hint>
+Just repeat the same process, using your estimated value of <m>z(1)</m> instead the value of <m>z(0)</m>.
+<p>Use four signicant digits when approximating <m>f (z(1))</m>.</p>
+</hint>
+</exercise>
+
+
+<!--Problem#8*************************************************-->
+<exercise includeAutoNumber="true"><title />
+<p>The general formula for a Forward Euler step to estimate <m>z(t+\Delta t)</m> from <m>z(t)</m> is the linear approximation formula with constant slope <m>z'(t)=f(z(t))</m>.  The formula is
+<me>z(t + \Delta t) = z(t) + f(z(t))\Delta t.</me>
+In each step, we move along the linear approximation from time <m>t</m> to time <m>\Delta t</m>, i.e., taking a step of length <m>\Delta t</m>. </p>
+
+<p>In the previous calculations, you used a time step of <m>\Delta t=1</m> to estimate <m>z(2)</m> in two time steps.  The Forward Euler algorithm is more accurate if you take smaller time steps (as we allow the slope to change more frequently).  Obtain a more accurate estimate of <m>z(1)</m> and <m>z(2)</m> by taking four time steps of length <m>\Delta t = 1/2</m>.  (You'll do twice as much work, using the above formula at <m>t=0, 1/2, 1,</m> and <m>3/2</m>.)</p>
+
+<p><m>z(1/2) = z(0+\Delta t) \approx z(0) + f(z(0)) \Delta t</m>
+</p>
+<p>
+
+<m>=</m>
+<mathInput name="z0_4" />
+  <m> + f(</m>
+<mathInput name="z0_5" />
+  <m>) \cdot </m>
+<mathInput name="deltat5" />
+  
+<answer>
+  <award symbolicEquality="true" simplifyOnCompare="true" allowedErrorInNumbers="0.001" referencesAreResponses="$z0_4 $z0_5 $deltat5" matchPartial="true">
+    <when>$z0_4=$z0 and $z0_5=$z0 and $deltat5=$half</when>
+  </award>
+</answer>
+</p>
+
+<p>
+<m>=</m>
+<mathInput name="z0_6" />
+  <m> + </m>
+<mathInput name="f_of_z0" />
+<m> \cdot</m> 
+<mathInput name="deltat6" />
+<answer>
+  <award symbolicEquality="true" simplifyOnCompare="true" allowedErrorInNumbers="0.001" referencesAreResponses="$z0_6 $f_of_z0 $deltat6" matchPartial="true">
+    <when>$z0_6=$z0 and $f_of_z0=$fun_z0 and $deltat6=1/2</when>
+  </award>
+</answer>
+</p>
+
+
+<p>
+<m>=</m> 
+<answer name="answer24">
+<award symbolicEquality="true" simplifyOnCompare="true" allowedErrorInNumbers="0.001">$fe05_05 </award>
+<award credit="0.5" symbolicEquality="true" simplifyOnCompare="true" allowedErrorInNumbers="0.01" feedbackCodes="numericalerror">$fe05_05 </award>
+</answer>
+</p>
+$answer24.feedbacks
+
+<p><m>z(1) = z(1/2+\Delta t) \approx z(1/2) + f(z(1/2)) \Delta t</m>
+</p>
+
+<p>
+<m>=</m>
+<mathInput name="zhalf_1" />
+  <m> + f(</m>
+<mathInput name="zhalf_2" />
+  <m>) \cdot </m>
+<mathInput name="deltat7" />
+  
+<answer>
+  <award symbolicEquality="true" simplifyOnCompare="true" allowedErrorInNumbers="0.001" referencesAreResponses="$zhalf_1 $zhalf_2 $deltat7" matchPartial="true">
+    <when>$zhalf_1=$fe05_05 and $zhalf_2=$fe05_05 and $deltat7=$half</when>
+  </award>
+</answer>
+</p>
+
+<p>
+<m>=</m>
+<mathInput name="zhalf_3" />
+  <m> + </m>
+<mathInput name="f_of_zhalf" />
+<m> \cdot</m> 
+<mathInput name="deltat8" />
+<answer>
+  <award symbolicEquality="true" simplifyOnCompare="true" allowedErrorInNumbers="0.001" referencesAreResponses="$zhalf_3 $f_of_zhalf $deltat8" matchPartial="true">
+    <when>$zhalf_3=$fe05_05 and $f_of_zhalf=$fun_fe05_05 and $deltat8=1/2</when>
+  </award>
+</answer>
+</p>
+
+
+<p>
+<m>=</m> 
+<answer name="answer31">
+<award symbolicEquality="true" simplifyOnCompare="true" allowedErrorInNumbers="0.001">$fe05_1 </award>
+<award credit="0.5" symbolicEquality="true" simplifyOnCompare="true" allowedErrorInNumbers="0.01" feedbackCodes="numericalerror">$fe05_1 </award>
+</answer>
+</p>
+$answer31.feedbacks
+
+<p><m>z(3/2) = z(1+\Delta t) \approx z(1) + f(z(1)) \Delta t</m>
+</p>
+
+<p>
+<m>=</m>
+<mathInput name="z_of1_1" />
+  <m> + f(</m>
+<mathInput name="z_of1_2" />
+  <m>) \cdot </m>
+<mathInput name="deltat9" />
+  
+<answer>
+  <award symbolicEquality="true" simplifyOnCompare="true" allowedErrorInNumbers="0.001" referencesAreResponses="$z_of1_1 $z_of1_2 $deltat9" matchPartial="true">
+    <when>$z_of1_1=$fe05_1 and $z_of1_2=$fe05_1 and $deltat9=$half</when>
+  </award>
+</answer>
+</p>  
+  
+<p>
+<m>=</m>
+<mathInput name="z_of1_3" />
+  <m> + </m>
+<mathInput name="f_of_z_of1" />
+<m> \cdot</m> 
+<mathInput name="deltat10" />
+<answer>
+  <award symbolicEquality="true" simplifyOnCompare="true" allowedErrorInNumbers="0.001" referencesAreResponses="$z_of1_3 $f_of_z_of1 $deltat10" matchPartial="true">
+    <when>$z_of1_3=$fe05_1 and $f_of_z_of1=$fun_fe05_1 and $deltat10=1/2</when>
+  </award>
+</answer>
+</p>
+  
+
+<p>
+<m>=</m> 
+<answer name="answer38">
+<award symbolicEquality="true" simplifyOnCompare="true" allowedErrorInNumbers="0.001">$fe05_15 </award>
+<award credit="0.5" symbolicEquality="true" simplifyOnCompare="true" allowedErrorInNumbers="0.01" feedbackCodes="numericalerror">$fe05_15 </award>
+</answer>
+</p>
+$answer38.feedbacks
+
+<p><m>z(2) = z(3/2+\Delta t) \approx z(3/2) + f(z(3/2)) \Delta t</m>
+</p>
+
+<p>
+<m>=</m>
+<mathInput name="z_of15_1" />
+  <m> + f(</m>
+<mathInput name="z_of15_2" />
+  <m>) \cdot </m>
+<mathInput name="deltat11" />
+  
+<answer>
+  <award symbolicEquality="true" simplifyOnCompare="true" allowedErrorInNumbers="0.001" referencesAreResponses="$z_of15_1 $z_of15_2 $deltat11" matchPartial="true">
+    <when>$z_of15_1=$fe05_15 and $z_of15_2=$fe05_15 and $deltat11=1/2</when>
+  </award>
+</answer>
+</p>  
+  
+<p>
+<m>=</m>
+<mathInput name="z_of15_3" />
+  <m> + </m>
+<mathInput name="f_of_z_of15" />
+<m> \cdot</m> 
+<mathInput name="deltat12" />
+<answer>
+  <award symbolicEquality="true" simplifyOnCompare="true" allowedErrorInNumbers="0.001" referencesAreResponses="$z_of15_3 $f_of_z_of15 $deltat12" matchPartial="true">
+    <when>$z_of15_3=$fe05_15 and $f_of_z_of15=$fun_fe05_15 and $deltat12=1/2</when>
+  </award>
+</answer>
+</p>  
+  
+  
+  
+
+<p>
+
+<m>=</m> 
+<answer name="answer45">
+<award symbolicEquality="true" allowedErrorInNumbers="0.001">$fe05_2 </award>
+<award credit="0.5" symbolicEquality="true" allowedErrorInNumbers="0.01" feedbackCodes="numericalerror">$fe05_2 </award>
+</answer>
+</p>
+$answer45.feedbacks
+
+
+
+
+<hint>
+Remember <m>\Delta t</m> is now <m>\frac{1}{2}</m> rather than <m>1</m>, like it was in the previous parts.
+
+<p>Each answer you type needs to be correct to four significant digits.  However, if you round intermediate results to four significant digits, your later answers will not be correct to four significant digits.  To make sure you have four correct digits, you should keep at least six digits in your calculations.  It is OK to enter answers with more than four significant digits.</p>
+</hint>
+</exercise>
+
+<!--Problem#9*************************************************-->
+<exercise includeAutoNumber="true"><title /><p>
+Graph your above Forward Euler approximations on the below axes  The coarse approximation is for the case where you used two steps of length <m>\Delta t = 1</m>.  The finer approximation is for the case where you used four time steps of length <m>\Delta=\frac{1}{2}</m>.</p>
+
+<!-- graph 3 -->
+
+
+<setup>
+  <odeSystem variables="z" initialconditions="-0.8" name="ode">
+    <rightHandSide>-z^2+1</rightHandSide>
+  </odeSystem>
+  <boolean name="showExact">false</boolean>
+  <boolean name="showdt1">false</boolean>
+  <boolean name="showdt05">false</boolean>
+</setup>
+
+<p>
+  <updateValue name="revealdt1" type="boolean" target="$showdt1" newValue="true" hide="$showdt1">
+    <label>Show coarse approximation</label>
+  </updateValue>
+  <updateValue name="hidedt1" type="boolean" target="$showdt1" newValue="false" hide="not $showdt1">
+    <label>Hide coarse approximation</label>
+  </updateValue>
+  <updateValue name="revealdt05" type="boolean" target="$showdt05" newValue="true" hide="$showdt05">
+    <label>Show finer approximation</label>
+  </updateValue>
+  <updateValue name="hidedt05" type="boolean" target="$showdt05" newValue="false" hide="not $showdt05">
+    <label>Hide finer approximation</label>
+  </updateValue>
+    <updateValue name="revealExact" type="boolean" target="$showExact" newValue="true" hide="$showExact">
+      <label>Show solution</label>
+    </updateValue>
+  <updateValue name="hideExact" type="boolean" target="$showExact" newValue="false" hide="not $showExact">
+    <label>hide solution</label>
+  </updateValue>
+</p>
+
+<graph xmin="-0.4" xmax="2.5" ymin="-1.2" ymax="1.2" width="500" aspectRatio="5/4" fixAxes="true" grid="true">
+  <xLabel><m>t</m></xLabel>
+  <yLabel><m>z</m></yLabel>
+
+  <function extend="$ode.numericalSolution" styleNumber="4" hide="not $showExact" />
+
+  <point name="P1_0" x="0" y="0" styleNumber="1" hide="not $showdt1">
+    
+      <constrainToGrid dx="10" dy="0.2" />
+      <constrainToGraph />
+    
+  </point>
+  <point name="P1_1" x="1" y="0" styleNumber="1" hide="not $showdt1">
+    
+      <constrainToGrid dx="10" dy="0.2" xoffset="1" yoffset="$fe1_1" />
+      <constrainToGraph />
+    
+  </point>
+  <point name="P1_2" x="2" y="0" styleNumber="1" hide="not $showdt1">
+    
+      <constrainToGrid dx="10" dy="0.2" xoffset="2" yoffset="$fe1_2" />
+      <constrainToGraph />
+    
+  </point>
+  <polyline stylenumber="1" vertices="$P1_0 $P1_1 $P1_2" fixed="true" hide="not $showdt1" />
+
+
+  <point name="P05_0" x="0" y="0" styleNumber="2" hide="not $showdt05">
+    
+      <constrainToGrid dx="10" dy="0.2" />
+      <constrainToGraph />
+    
+  </point>
+  <point name="P05_05" x="0.5" y="0" styleNumber="2" hide="not $showdt05">
+    
+      <constrainToGrid dx="10" dy="0.2" xoffset="0.5" yoffset="$fe05_05" />
+      <constrainToGraph />
+    
+  </point>
+  <point name="P05_1" x="1" y="0" styleNumber="2" hide="not $showdt05">
+    
+      <constrainToGrid dx="10" dy="0.2" xoffset="1" yoffset="$fe05_1" />
+      <constrainToGraph />
+    
+  </point>
+  <point name="P05_15" x="1.5" y="0" styleNumber="2" hide="not $showdt05">
+    
+      <constrainToGrid dx="10" dy="0.2" xoffset="1.5" yoffset="$fe05_15" />
+      <constrainToGraph />
+    
+  </point>
+  <point name="P05_2" x="2" y="0" styleNumber="2" hide="not $showdt05">
+    
+      <constrainToGrid dx="10" dy="0.2" xoffset="2" yoffset="$fe05_2" />
+      <constrainToGraph />
+    
+  </point>
+  <polyline stylenumber="2" vertices="$P05_0 $P05_05 $P05_1 $P05_15 $P05_2" fixed="true" hide="not $showdt05" />
+
+
+</graph>
+
+<p>Check <m>\Delta t =1</m> approximation:
+  <answer matchPartial="true">
+    <award referencesAreResponses="$P1_0 $P1_1 $P1_2">
+      <when>
+        $P1_0.y = $z0
+        and
+        $P1_1.y = $fe1_1
+        and
+        $P1_2.y = $fe1_2
+      </when>
+    </award>
+  </answer>
+</p>
+
+
+<p>Check <m>\Delta t = \frac{1}{2}</m> approximation:
+  <answer matchPartial="true">
+    <award referencesAreResponses="$P05_0 $P05_05 $P05_1 $P05_15 $P05_2">
+      <when>
+        $P05_0.y = $z0
+        and
+        $P05_05.y = $fe05_05
+        and
+        $P05_1.y = $fe05_1
+        and
+        $P05_15.y = $fe05_15
+        and
+        $P05_2.y = $fe05_2
+      </when>
+    </award>
+  </answer>
+</p>
+
+
+
+
+<p>You can compare your solution to the <q>actual solution</q> by checking the button.  (The <q>actual solution</q> is really just an approximation via an algorithm like Forward Euler, but with a small time step.)</p>
+</exercise>
+
+
+<solution>
+
+
+<ol>
+
+<li><p>
+The phase line:
+
+<graph width="500" aspectRatio="50/15" xmin="-2" xmax="2" ymin="-3" ymax="3" displayYAxis="false" fixAxes="true">
+  <xLabel><m>z</m></xLabel>
+  <equilibriumPoint x="-1" y="0" stable="false" fixed="true" styleNumber="9" />
+  <equilibriumPoint x="1" y="0" stable="true" fixed="true" styleNumber="9" />
+  <vector styleNumber="2" tail="(-1.1,0)" head="(-1.9,0)" fixed="true" />
+  <vector styleNumber="2" tail="(-0.9,0)" head="(0.9,0)" fixed="true" />
+  <vector styleNumber="2" tail="(1.9,0)" head="(1.1,0)" fixed="true" />
+</graph></p>
+
+</li>
+
+<li><p>
+By solution, we mean with initial condition <m>z(0)=$z0 </m>.  The only curve that we need is the following.
+
+ <graph width="500" aspectRatio="5/4" ymin="-2" ymax="2" xmin="-0.5" xmax="4" fixAxes="true">
+   <xLabel><m>t</m></xLabel>
+   <yLabel><m>z</m></yLabel>
+
+    <function domain="(0,10)">1 - 1.8 exp(-x/0.5)</function>
+    
+    
+  </graph>
+</p>
+</li>
+
+<li><p>
+<m>z'(0)=1-z(0)^2 = 1-($z0 )^2 = <round numDigits="4"><number>$fun_z0 </number></round></m></p>
+</li>
+
+<li><p>
+The formula for a linear approximation around <m>t=0</m> is
+<me>L(t) = z(0) + z'(0)(t-0).</me>
+Since <m>z(0)=$z0 </m> and <m>z'(0)=<round numDigits="4"><number>$fun_z0 </number></round></m>, the linear approximation for <m>z(t)</m> is
+<m>z(t) = <math extend="$lin0.formula" /></m>.</p>
+</li>
+
+<li><p>
+<m>z(1) = -0.7 + 0.51 (1) = <round numDigits="4"><number>$fe1_1 </number></round></m>.</p>
+</li>
+
+<li><p>
+<md>
+  <mrow>z(0+\Delta t)\amp = z(0) + f(z(0))\Delta t</mrow>
+  <mrow>z(1)\amp = $z0  + f($z0 ) \cdot 1</mrow>
+  <mrow>\amp = $z0  + <round numDigits="4"><number>$fun_z0 </number></round> = <round numDigits="4"><number>$fe1_1 </number></round></mrow>
+</md></p>
+</li>
+
+<li><p>
+<md>
+  <mrow>z(2)\amp = z(1)+f(z(1)) \cdot 1</mrow>
+  <mrow>\amp = <round numDigits="4"><number>$fe1_1 </number></round> + f(<round numDigits="4"><number>$fe1_1 </number></round>)</mrow>
+  <mrow>\amp = <round numDigits="4"><number>$fe1_1 </number></round>+ <round numDigits="4"><number>$fun_fe1_1 </number></round> = <round numDigits="4"><number>$fe1_2 </number></round></mrow>
+</md></p>
+</li>
+
+<li><p>
+<md>
+  <mrow>z(1/2)\amp = z(0)+f(z(0))(1/2)</mrow>
+  <mrow>\amp = $z0  + f($z0 )/2</mrow>
+  <mrow>\amp = $z0  + <round numDigits="4"><number>$fun_z0 </number></round>/2 = <round numDigits="4"><number>$fe05_05 </number></round></mrow>
+</md>
+<md>
+  <mrow>z(1)\amp = z(1/2)+f(z(1/2))(1/2)</mrow>
+  <mrow>\amp = <round numDigits="4"><number>$fe05_05 </number></round> + f(<round numDigits="4"><number>$fe05_05 </number></round>)/2</mrow>
+  <mrow>\amp =<round numDigits="4"><number>$fe05_05 </number></round> +<round numDigits="4"><number>$fun_fe05_05 </number></round>/2 =<round numDigits="4"><number>$fe05_1 </number></round></mrow>
+</md>
+<md>
+  <mrow>z(3/2)\amp = z(1)+f(z(1))(1/2)</mrow>
+  <mrow>\amp = <round numDigits="4"><number>$fe05_1 </number></round> + f(<round numDigits="4"><number>$fe05_1 </number></round>)/2</mrow>
+  <mrow>\amp = <round numDigits="4"><number>$fe05_1 </number></round> + <round numDigits="4"><number>$fun_fe05_1 </number></round>/2 =<round numDigits="4"><number>$fe05_15 </number></round></mrow>
+</md>
+<md>
+  <mrow>z(2)\amp = z(3/2)+f(z(3/2))(1/2)</mrow>
+  <mrow>\amp =<round numDigits="4"><number>$fe05_15 </number></round> + f(<round numDigits="4"><number>$fe05_15 </number></round>)/2</mrow>
+  <mrow>\amp =<round numDigits="4"><number>$fe05_15 </number></round> + <round numDigits="4"><number>$fun_fe05_15 </number></round>/2 = <round numDigits="4"><number>$fe05_2 </number></round></mrow>
+</md></p>
+
+</li>
+
+<li><p>
+A plot of the two Forward Euler solutions along with the actual solution:
+   
+<graph xmin="-0.4" xmax="2.5" ymin="-1.2" ymax="1.2" aspectRatio="5/4" fixAxes="true" grid="true">
+  <xLabel><m>t</m></xLabel>
+  <yLabel><m>z</m></yLabel>
+
+  <function extend="$ode.numericalSolution" styleNumber="4" />
+
+  <point name="P1s_0" x="0" y="-0.8" styleNumber="1" fixed="true" />
+  <point name="P1s_1" x="1" y="$fe1_1" styleNumber="1" fixed="true" />
+  <point name="P1s_2" x="2" y="$fe1_2" styleNumber="1" fixed="true" />
+  <polyline stylenumber="1" vertices="$P1s_0 $P1s_1 $P1s_2" fixed="true" />
+
+
+  <point name="P05s_0" x="0" y="-0.8" styleNumber="2" fixed="true" />
+  <point name="P05s_05" x="0.5" y="$fe05_05" styleNumber="2" fixed="true" />
+  <point name="P05s_1" x="1" y="$fe05_1" styleNumber="2" fixed="true" />
+  <point name="P05s_15" x="1.5" y="$fe05_15" styleNumber="2" fixed="true" />
+  <point name="P05s_2" x="2" y="$fe05_2" styleNumber="2" fixed="true" />
+  <polyline stylenumber="2" vertices="$P05s_0 $P05s_05 $P05s_1 $P05s_15 $P05s_2" fixed="true" />
+
+
+</graph></p>
+
+</li>
+
+
+</ol>
+
+</solution>
+
+
+</problem>

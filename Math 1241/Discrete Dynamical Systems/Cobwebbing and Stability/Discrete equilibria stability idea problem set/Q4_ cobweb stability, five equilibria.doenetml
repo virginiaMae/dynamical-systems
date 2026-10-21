@@ -1,0 +1,113 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7H5cWUTWWmHydwJLC4wmwV
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: b57f371b81f744eb
+-->
+<problem>
+<!-- <title>Cobweb stability, five equilibria, worksheet</title> -->
+
+<setup>
+
+<math name="fixedpoint1">-4</math>
+<math name="fixedpoint2">-1</math>
+<math name="fixedpoint3">2</math>
+<math name="fixedpoint4">4</math>
+<math name="fixedpoint5">6</math>
+<math name="slope1">0.5</math>
+<math name="slope2">3</math>
+<math name="slope3">-0.5</math>
+<math name="slope4">4</math>
+<math name="slope5">-3</math>
+<mathList name="equilibria">$fixedpoint1 $fixedpoint2 $fixedpoint3 $fixedpoint4 $fixedpoint5 </mathList>
+<mathList name="equilibria_unordered" unordered="true">$equilibria </mathList>
+<textList name="equilibria_stability">stable unstable stable unstable unstable</textList>
+
+
+</setup>
+
+
+The below graph shows the function <m>g</m> for the dynamical system
+<m>h_{n+1} = g(h_n)</m>.
+
+
+<sideBySide>
+<stack>	
+
+<p>What are the equilibria of the dynamical system?  (They are integers; enter in increasing order.)</p>
+
+<p>Number of equilibria: <mathInput name="n" /></p>
+
+<p><m>E = </m>
+<repeatForSequence length="min(10,$n)" name="m"><mathInput /></repeatForSequence>
+</p>
+
+
+<answer>
+  <award matchPartial="true"><when>
+    <mathList isResponse="true"><setup><collect from="$m" componentType="mathInput" name="collect_list" /></setup><mathList name="list" extend="$collect_list.value" /></mathList> = $equilibria
+  </when></award>
+
+    <award matchPartial="true" unorderedCompare="true" credit="0.9" name="award1"><when>
+    <mathList isResponse="true"><setup><collect from="$m" componentType="mathInput" name="collect_list1" /></setup><mathList name="list1" extend="$collect_list1.value" /></mathList> = $equilibria_unordered
+  </when></award>
+
+</answer>
+<feedback condition="$award1">Enter the equilibria in increasing order for full credit.</feedback>
+
+
+<p>For each equilibrium, cobweb starting with initial conditions just above and below the equilibrium to determine if the equilibrium is stable or unstable.  Specify the stability of each equilibrium in the same order as above.</p>
+
+<p>
+Stability of equilibria:
+<repeatForSequence length="min($n,10)" name="m2">
+  <choiceInput inline="true"><choice>unstable</choice><choice>stable</choice></choiceInput>
+  </repeatForSequence>
+
+</p>
+
+<answer>
+  <award matchPartial="true" matchByExactPositions="true"><when>
+    <textList isResponse="true"><setup><collect from="$m2" componentType="choiceInput" name="collect_list2" /></setup><textList name="list2" extend="$collect_list2.selectedValue" /></textList> = $equilibria_stability
+  </when></award>
+</answer>
+
+
+</stack>
+<stack>
+
+
+<graph size="medium" showNavigation="false" grid="1 1">
+  <xLabel><m>h_n</m></xLabel>
+  <yLabel><m>h_{n+1}</m></yLabel>
+
+<line fixed="true" stylenumber="2" equation="y=x" />
+<function through="($fixedpoint1, $fixedpoint1) ($fixedpoint2, $fixedpoint2) ($fixedpoint3, $fixedpoint3) ($fixedpoint4, $fixedpoint4) ($fixedpoint5, $fixedpoint5)" throughSlopes="$slope1 $slope2 $slope3 $slope4 $slope5 " />
+
+</graph>
+
+</stack>
+</sideBySide>
+
+<hint>
+We didn't include a cobwebbing applet here.  To prepare you for an exam, you'd best practice doing some cobwebbing by hand.  This problem will give you quite a bit of practice, as there are a lot of equilibria.
+</hint>
+
+
+<solution>
+Equilibria: <m>$equilibria </m>
+<p>
+
+Stability: <c>$equilibria_stability </c>
+
+
+</p>
+<p>
+
+Might have to cobweb carefully on the middle equilibrium to see that it is stable.  It's hardest to distinguish between spiraling toward and spiraling away when just cobwebbing.
+</p>
+
+</solution>
+
+
+</problem>

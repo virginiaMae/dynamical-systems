@@ -1,0 +1,152 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7BXVp6EG6LArNJ3qrYoj5R
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 5fac8dc04e894f44
+-->
+<title>A bistable population model</title>
+<variantControl numVariants="1" />
+
+<p>We can describe the evolution of a bistable population with a dynamical system of the form
+<md>
+  <mrow>\frac{dx}{dt} &amp;= rx(x-\alpha)(\beta-x)</mrow>
+  <mrow>x(0) &amp;= x_0</mrow> 
+</md>
+where <m>r</m> is the growth rate and <m>\alpha</m> and <m>\beta</m> are the non-zero equilibria.  The number <m>x_0</m> is the initial population size.</p>
+
+
+<p>Substituting in numbers for the parameters, we can write the dynamical system as
+  <odeSystem name="ode" initialconditions="$x0" tolerance="0.01" displaydigits="6">
+    <rightHandSide>$r*x*(x-$alpha)($beta-x)</rightHandSide>
+  </odeSystem>
+  You can change the values of the parameters by opening up the Advanced Options, below.
+</p>
+
+<p>In both panels of the simulation, the <ref to="doenet:82MrUSX6Y2kQrMerT3xvqn">state space</ref> of the dynamical system is represented by a <text extend="$stateLine.styleDescription" /> line.  A <text extend="$x0onLine.styleDescriptionWithNoun" /> represents the initial condition <m>x(0) = $x0</m> and a <text extend="$aOfTOnLine.styleDescriptionWithNoun" /> represents the population size <m>x(t)</m> at time t, which you can change via the slider or by dragging the  <text extend="$aOfTOnLine.styleDescriptionWithNoun" /> in the right panel.</p>
+
+<p>The left panel shows the state line of the model by itself, while the right panel is a plot of the <ref to="doenet:82S5kKvMFZgTae6rHgvyF4">state variable</ref> versus time.</p>
+
+
+<setup>
+  <clampNumber name="x0" lowerValue="0" upperValue="$xmax">100</clampNumber>
+  <function extend="$ode.numericalSolution" name="f" />
+  <number name="rDefault">0.000001</number>
+  <number name="alphaDefault">2000</number>
+  <number name="betaDefault">500</number>
+  <number name="tmaxDefault">10</number>
+  <number name="xmaxDefault">3200</number>
+  <math name="stateVarAtT">$$f($t)</math>
+</setup>
+
+<sideBySide margins="3%">
+
+<stack>
+<graph displayYAxis="false" aspectRatio="4" xmin="-0.05$xmax" xmax="$xmax" showNavigation="false">
+  <xLabel>x</xLabel>
+  <lineSegment endpoints="(0,0) ($xmax, 0)" fixed="true" name="stateLine" />
+  <point x="$x0" y="$zeroFixed" name="x0onLine" labelPosition="lowerright" applyStyleToLabel="true">
+    
+      <constrainToGrid />
+    
+    <label><m>x_0 = $x0</m></label>
+  </point>
+  <point styleNumber="3" x="$stateVarAtT" y="$zeroFixed" draggable="false" layer="1" name="aOfTOnLine" labelPosition="upperright" applyStyleToLabel="true">
+    <label><m>x($t) = <math displayDecimals="1" extend="$stateVarAtT" /></m></label>
+  </point>
+</graph>
+
+<p><m>x_0 =</m> <mathInput bindValueTo="$x0" /></p>
+
+<slider name="t" width="200px" from="0" to="$tmax" step="0.1" labelIsName="true" />
+
+<p><math displaydecimals="1" functionSymbols="x">x($t) = $ft_NaN_to_infinity[1][1]</math></p>
+    
+    
+<p>
+<updateValue name="on" hide="$timeAnimation.animationOn" type="boolean" target="$timeAnimation.animationOn" newValue="true">
+  <label>Animate</label>
+</updateValue>
+<updateValue name="off" hide="not $timeAnimation.animationOn" type="boolean" target="$timeAnimation.animationOn" newValue="false">
+  <label>Stop</label>
+</updateValue>
+</p>
+
+</stack>
+
+<graph xmax="$tmax" xmin="-0.1$tmax" ymax="$xmax" ymin="-0.1$xmax" showNavigation="false">
+  <xLabel>t</xLabel>
+  <yLabel>x</yLabel>
+  
+  <lineSegment endpoints="(0,0) (0, $xmax)" fixed="true" />
+
+  <function extend="$f" stylenumber="2" />
+  <point x="$zeroFixed" y="$x0" applyStyleToLabel="true">
+    
+      <constrainToGrid />
+    
+    <label><m>x_0 = $x0</m></label>
+  </point>
+  <point styleNumber="3" x="$t" y="$stateVarAtT" layer="1" applyStyleToLabel="true">
+    <label><m>x($t) = <math displayDecimals="1" extend="$stateVarAtT" /></m></label>
+  </point>
+</graph>
+
+</sideBySide>
+
+<aside>
+<title>Advanced options</title>
+
+<sideBySide margins="0%" widths="50% 20% 20%">
+<!--   <stack>
+    <p>The dynamical system describing the dynamics of the bistable population is
+    </p>
+    <odesystem name="ode" initialconditions="$x0" tolerance="0.01" displaydigits="6" >
+      <righthandside>$r*x*(x&#x2D;$alpha)(x&#x2D;$beta)</righthandside>
+    </odesystem>
+
+    <p>In terms of parameters, the equation is
+    <me>\frac{dx}{dt} = rx(x&#x2D;\alpha)(x&#x2D;\beta).</me>
+    You can change growth rate <m>r</m> and the equilibria <m>\alpha</m> and <m>\beta</m>, 
+    as well as limits <m>t_{max}</m> and <m>x_{max}</m> of the graph.</p>
+
+  </stack>
+ -->
+  <stack>
+    <p><m>r = </m> <mathInput name="r" prefill="$rDefault" /></p>
+    <p><m>\alpha = </m> <mathInput name="alpha" prefill="$alphaDefault" /></p>
+    <p><m>\beta =</m> <mathInput name="beta" prefill="$betaDefault" /></p>
+    <p><m>t_{max} = </m> <mathInput name="tmax" prefill="$tmaxDefault" /></p>
+    <p><m>x_{max}=</m> <mathInput name="xmax" prefill="$xmaxDefault" /></p>
+  </stack>
+
+  <stack>
+    <triggerSet>
+      <updateValue target="$r" newValue="$rDefault" />
+      <updateValue target="$alpha" newValue="$alphaDefault" />
+      <updateValue target="$beta" newValue="$betaDefault" />
+      <updateValue target="$tmax" newValue="$tmaxDefault" />
+      <updateValue target="$xmax" newValue="$xmaxDefault" />
+      <label>Reset parameters</label>
+    </triggerSet>
+  </stack>
+
+</sideBySide>
+
+</aside>
+
+
+<number fixed="true" hide="true" name="zeroFixed">0</number>
+<number hide="true" name="nan">0/0</number>
+<conditionalContent hide="true" name="ft_NaN_to_infinity">
+  <case condition="$$f($t)=$nan">
+    <math>infinity</math>
+  </case>
+  <else>
+    $$f($t)
+  </else>
+</conditionalContent>
+  
+<animateFromSequence name="timeAnimation" target="$t.value" from="0" to="$tmax" step="0.1" animationInterval="100" animationMode="increase once" animationOn="false" />
+
+
+<p>You can explore the behavior of this model in the context of an anteater population <ref to="doenet:7BRujyNVd5uNj6H645HZFg">here</ref>.</p>

@@ -1,0 +1,296 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7Zjyy3B37x4fyAu6HwqQKT
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: ced79097528a0ae0
+-->
+<problem>
+<!-- <title>Determine equilibrium stability of autonomous differential equation analytically</title> -->
+
+<setup>
+
+<sort name="E1"><selectFromSequence from="-8" to="8" exclude="0" numToSelect="3" withReplacement="false" /></sort>
+
+<selectFromSequence name="coef" from="-4" to=" 4" exclude="0" />
+<select name="x">x y z s u v w</select>
+<function name="zero" variables="x">0</function>
+
+
+<function name="fun" variables="$x"><math simplify="numbers">$coef *($x -$E1[1] )*($x -$E1[2] )*($x -$E1[3] )</math></function>
+
+  
+<selectFromSequence name="initial_factor1" from="0.5" to=" 0.7*($E1[1] +10)" step=" 0.5" />
+<math name="initial1" simplify="full">-10+$initial_factor1 </math>
+<selectFromSequence name="initial_factor2" from="0.5" to=" ($E1[2] -$E1[1] )-0.5" step=" 0.5" />
+<math name="initial2" simplify="full">$E1[1] +$initial_factor2 </math>
+<selectFromSequence name="initial_factor3" from="0.5" to=" ($E1[3] -$E1[2] )-0.5" step=" 0.5" />
+<math name="initial3" simplify="full">$E1[2] +$initial_factor3 </math>
+<selectFromSequence name="initial_factor4" from="0.5" to=" 10-$E1[3] -0.5" step=" 0.5" />
+<math name="initial4" simplify="full">$E1[3] +$initial_factor4 </math>
+<evaluate name="fun_minus_10" function="$fun" input="-10" />
+<evaluate name="fun_10" function="$fun" input="10" />
+<evaluate name="fun_a_b" function="$fun" input="($E1[1]+$E1[2])/2" />
+<evaluate name="fun_b_c" function="$fun" input="($E1[2]+$E1[3])/2" />
+
+  
+<!-- <math name='range_at_special_points' simplify='full'  unordered='true'>Max($fun_minus_10 ,$fun_10 ,$fun_a_b ,$fun_b_c )&#x2D;Min($fun_minus_10 ,$fun_10 ,$fun_a_b ,$fun_b_c )</math>
+<math name='min_abs_at_special_points' simplify='full'  unordered='true'>Min(Abs($fun_minus_10 ),Abs($fun_10 ),Abs($fun_a_b ),Abs($fun_b_c ))</math>
+<math name='special_point_ratio' simplify='full' >$range_at_special_points /$min_abs_at_special_points </math>
+<math name='small_special_point_ratio' simplify='full' >$special_point_ratio <30</math>
+ -->
+  
+<math name="fun_expand" expand="true" simplify="true">$fun</math>
+<derivative name="fun_prime" variables="$x">$fun_expand</derivative>
+  
+<evaluate name="fun_prime_E1" function="$fun_prime" input="$E1[1]" />
+<boolean name="E1_stable">$fun_prime_E1 &lt; 0</boolean>
+<evaluate name="fun_prime_E2" function="$fun_prime" input="$E1[2]" />
+<boolean name="E2_stable">$fun_prime_E2 &lt; 0</boolean>
+<evaluate name="fun_prime_E3" function="$fun_prime" input="$E1[3]" />
+<boolean name="E3_stable">$fun_prime_E3 &lt; 0</boolean>
+
+<textList name="EstabilityText">
+  <repeat for="$E1[1] $E1[2] $E1[3]" valueName="v">
+      <conditionalContent>
+        <case condition="$$fun_prime($v) &lt; 0">
+          <text>stable</text>
+        </case>
+        <else>
+          <text>unstable</text>
+        </else>
+      </conditionalContent>
+    </repeat>
+</textList>
+ 
+<math name="xmin" simplify="full">min(1,$E1[1] ,$E1[2] ,$E1[3] , $initial1 )-2</math>
+<math name="xmax" simplify="full">max(-1,$E1[1] ,$E1[2] ,$E1[3] ,$initial4 )+2</math>
+<mathList name="Es">$E1[1] $E1[2] $E1[3]</mathList>
+
+
+  <styleDefinition styleNumber="2" lineWidth="3" />
+  <styleDefinition styleNumber="3" lineColor="cyan" lineWidth="2" markerStyle="circle" markerColor="cyan" markerSize="4" />
+  <styleDefinition styleNumber="4" lineColor="magenta" lineWidth="2" markerStyle="circle" markerColor="magenta" markerSize="4" />
+  <styleDefinition styleNumber="5" lineColor="lightblue" lineWidth="3" markerStyle="circle" markerColor="lightblue" markerSize="4" />
+  <styleDefinition styleNumber="6" lineColor="lightgreen" lineWidth="3" markerStyle="circle" markerColor="lightgreen" markerSize="4" />
+  <styleDefinition styleNumber="7" lineColor="purple" lineWidth="2" markerStyle="circle" markerColor="purple" markerSize="4" />
+  <styleDefinition styleNumber="9" lineColor="red" lineWidth="3" markerColor="red" markerStyle="circle" markerSize="4" />
+
+
+
+</setup>
+
+
+<p>Consider the dynamical system
+<md>
+  <mrow>\frac{ d$x }{ dt }\amp = <math extend="$fun.formula" /></mrow>
+  <mrow>$x (0)\amp = $x _0,</mrow>
+</md>
+where <m>$x _0</m> is an initial condition.  Find all equilibria and analytically determine their stability.  Use this information to draw a phase line diagram, including equilibria and vector field (using solid circles for stable equilibria and open circles of unstable equilibria).  Then, sketch a graph of the solutions for initial conditions <m>$x _0 = $initial1, $E1[1], $initial2, $E1[2], $initial3, $E1[3], $initial4</m>.  If a solution corresponds to an equilibrium, use a solid line for a stable equilibrium and a dashed line for an unstable equilibrium.</p>
+  
+<p>Number of equilibria: <mathInput name="n_e" /></p>
+
+<p>Equilibria (in increasing order): </p>
+
+  <ul>
+    <repeatForSequence length="min($n_e,5)" name="esMap" valueName="v"><li><m>z _e=</m> <mathInput /></li></repeatForSequence>
+  </ul>
+  
+<p>
+<answer matchPartial="true">
+  <award>
+    <when>
+      <mathList name="uEs"><setup><collect componentType="mathInput" from="$esMap" name="collect_list" /></setup><mathList name="list" extend="$collect_list.value" /></mathList>
+      = $Es
+    </when>
+  </award>
+  <award unorderedCompare="true" credit="0.8" name="award2">
+    <when>
+      $uEs = $Es
+    </when>
+  </award>
+</answer>
+</p>
+
+<feedback condition="$award2">Enter equilibria in increasing order for full credit.</feedback>
+
+
+<p>Stability of equilibria:</p>
+
+<ul>
+<repeat for="$uEs" name="mapStab" valueName="v"><li><m>z_e=$v</m> is 
+    <choiceInput inline="true">
+      <choice>stable</choice>
+      <choice>unstable</choice>
+    </choiceInput>
+    </li>
+  </repeat>
+</ul>
+<p>
+<answer>
+  <award matchPartial="true" matchByExactPositions="true">
+    <when>
+      <textList><setup><collect componentType="choiceInput" from="$mapStab" name="collect_list1" /></setup><textList name="list1" extend="$collect_list1.selectedValue" /></textList>
+      = $EstabilityText
+    </when>
+  </award>
+</answer>
+</p>
+  
+
+
+<p>The phase line:</p>
+ 
+<module copy="doenet:83TXioRLQfjiFmpyoM1xhD" aspectRatio="10/3" vmin="$xmin" vmax="$xmax" var="$x" name="phaseLine" nEquilibria="3" E1="$E1[1]" E2="$E1[2]" E3="$E1[3]" E1stable="$E1_stable" />
+
+
+<p>A plot of solutions, including equilibria, versus time:</p>
+
+<setup>
+  <math name="ICexpr" referencesAreFunctionSymbols="$x">$x(0)</math>
+  <conditionalContent name="final1">
+    <case condition="$E1_stable">
+      <number>$E1[1]</number>
+      <number>$E1[1]</number>
+      <number>$E1[3]</number>
+      <number>$E1[3]</number>
+    </case>
+    <else>
+      <number>-Infinity</number>
+      <number>$E1[2]</number>
+      <number>$E1[2]</number>
+      <number>Infinity</number>
+    </else>
+  </conditionalContent>
+
+
+</setup>
+   
+
+<module copy="doenet:83PUG3WFYYLvLvU2jrcCkc" aspectRatio="5/4" vmin="$xmin-1" vmax="$xmax+2" var="z" ICexpr="$ICexpr" convertEquilibria="true" numPoints="7" IC1="$initial1" final1="$final1[1][1]" IC2="$E1[1]" final2="$E1[1]" Estable2="$E1_stable" IC3="$initial2" final3="$final1[1][2]" IC4="$E1[2]" final4="$E1[2]" Estable4="$E2_stable" IC5="$initial3" final5="$final1[1][3]" IC6="$E1[3]" final6="$E1[3]" Estable6="$E3_stable" IC7="$initial4" final7="$final1[1][4]" name="solPlot" />
+
+  
+<solution>
+<p>Let <m>f($x ) = <math extend="$fun.formula" /></m>.  Since <m>f</m> is factored, we can read off the equilibria.  The equilibria are <m>$x =$E1[1] ,$E1[2] ,$E1[3] </m>.</p>
+
+<p>To calculate the derivative of <m>f</m>, we expand it to <m>f($x ) = $fun_expand</m>.  Its derivative is <m>f'($x ) = <math extend="$fun_prime.formula" />.</m></p>
+
+<p>Evaluating the derivative at the equilibria:</p>
+<p><m>f'($E1[1] ) = $fun_prime_E1
+<conditionalContent>
+<case condition="$E1_stable">
+\lt 
+</case>
+<else>
+\gt 
+</else>
+</conditionalContent>
+ 0</m>, so the equilibrium <m>$x =$E1[1] </m> is
+<conditionalContent>
+<case condition="$E1_stable">
+  stable
+</case>
+<else>
+  unstable
+</else>
+</conditionalContent>
+.</p>
+<p><m>f'($E1[2] ) = $fun_prime_E2
+<conditionalContent>
+<case condition="$E2_stable">
+\lt 
+</case>
+<else>
+\gt 
+</else>
+</conditionalContent>
+ 0</m>, so the equilibrium <m>$x =$E1[2] </m> is
+<conditionalContent>
+<case condition="$E2_stable">
+  stable
+</case>
+<else>
+  unstable>
+</else>
+</conditionalContent>
+.</p>
+<p><m>f'($E1[3] ) = $fun_prime_E3
+<conditionalContent>
+<case condition="$E3_stable">
+\lt 
+</case>
+<else>
+\gt 
+</else>
+</conditionalContent>
+ 0</m>, so the equilibrium <m>$x =$E1[3] </m> is
+<conditionalContent>
+<case condition="$E3_stable">
+  stable
+</case>
+<else>
+  unstable
+</else>
+</conditionalContent>
+.</p>
+
+<p>The resulting phase line.</p>
+
+  <graph aspectRatio="10/3" xmin="$xmin" xmax="$xmax" ymin="-3" ymax="3" fixAxes="true" displayYAxis="false">
+    <xLabel>$x</xLabel>
+    <equilibriumPoint styleNumber="9" fixed="true" stable="$E1_stable">($E1[1],0)</equilibriumPoint>
+    <equilibriumPoint styleNumber="9" fixed="true" stable="$E2_stable">($E1[2],0)</equilibriumPoint>
+    <equilibriumPoint styleNumber="9" fixed="true" stable="$E3_stable">($E1[3],0)</equilibriumPoint>
+    
+    <conditionalContent>
+      <case condition="$E1_stable">
+        <vector styleNumber="2" tail="($xmin+0.3, 0)" head="($E1[1]-0.3,0)" fixed="true" />
+        <vector styleNumber="2" tail="($E1[2]-0.3, 0)" head="($E1[1]+0.3,0)" fixed="true" />
+        <vector styleNumber="2" tail="($E1[2]+0.3, 0)" head="($E1[3]-0.3,0)" fixed="true" />
+        <vector styleNumber="2" tail="($xmax-0.3, 0)" head="($E1[3]+0.3,0)" fixed="true" />
+      </case>
+      <else>
+        <vector styleNumber="2" head="($xmin+0.3, 0)" tail="($E1[1]-0.3,0)" fixed="true" />
+        <vector styleNumber="2" head="($E1[2]-0.3, 0)" tail="($E1[1]+0.3,0)" fixed="true" />
+        <vector styleNumber="2" head="($E1[2]+0.3, 0)" tail="($E1[3]-0.3,0)" fixed="true" />
+        <vector styleNumber="2" head="($xmax-0.3, 0)" tail="($E1[3]+0.3,0)" fixed="true" />
+      </else>
+    </conditionalContent>
+
+
+  </graph>
+
+<p>Below is a sketch of the solutions.  The exact form of the curves isn't important, only that they start at the right value, go in the right direction, and end at the right value.</p>
+
+
+<p>Sketch of the solutions at the seven initial conditions, where the equilibria are dashed or solid horizontal lines.</p>
+
+<graph aspectRatio="5/4" ymin="$xmin-1" ymax="$xmax+2" xmin="-2" xmax="20" fixAxes="true">
+  <xLabel><m>t</m></xLabel>
+  <yLabel><m>$x</m></yLabel>
+  <conditionalContent>
+    <case condition="$E1_stable">
+      <function domain="(0,30)" styleNumber="1">$E1[1] + e^(-x/2)($initial1-$E1[1])</function>
+      <equilibriumLine styleNumber="9" stable="true">y=$E1[1]</equilibriumLine>
+      <function domain="(0,30)" styleNumber="3">$E1[1] + e^(-x/2)($initial2-$E1[1]) </function>
+      <equilibriumLine styleNumber="9" stable="false">y=$E1[2]</equilibriumLine>
+      <function domain="(0,30)" styleNumber="5">$E1[3] + e^(-x/2)($initial3-$E1[3]) </function>
+      <equilibriumLine styleNumber="9" stable="true">y=$E1[3]</equilibriumLine>
+      <function domain="(0,30)" styleNumber="7">$E1[3] + e^(-x/2)($initial4-$E1[3])</function>
+    </case>
+    <else>
+      <function domain="(0,30)" styleNumber="1">$initial1 - e^(x/2) +1 </function>
+      <equilibriumLine styleNumber="9" stable="false">y=$E1[1]</equilibriumLine>
+      <function domain="(0,30)" styleNumber="3">$E1[2] + e^(-x/2)($initial2-$E1[2]) </function>
+      <equilibriumLine styleNumber="9" stable="true">y=$E1[2]</equilibriumLine>
+      <function domain="(0,30)" styleNumber="5">$E1[2] + e^(-x/2)($initial3-$E1[2]) </function>
+      <equilibriumLine styleNumber="9" stable="false">y=$E1[3]</equilibriumLine>
+      <function domain="(0,30)" styleNumber="7">$initial4 + e^(x/2) -1 </function>
+    </else>
+  </conditionalContent>
+</graph>
+
+
+</solution>
+
+
+</problem>

@@ -1,0 +1,88 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7U4GahpG7uGqzMuNKVZqGH
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 97779f602581c25d
+-->
+<title>Solving pure-time differential equations through integration</title>
+<p><ref>Video</ref> | <ref>Transcript</ref>   </p>
+<description>
+
+</description>
+<section><title>Video</title>
+<figure suppressFigureNameInCaption="true">
+<video youtube="uiLoxumSBrE" size="large" aspectRatio="16/9" name="v1" />
+<caption>Solving pure-time differential equations through integration</caption>
+</figure>
+
+
+
+<setup>
+  <number name="timestamp1">108</number>
+  <number name="timestamp2">251</number>
+</setup>
+  
+
+<sideBySide margins="5%">
+<div><p>Video credit achieved: <number displayDecimals="1">$v1.fractionWatched*100</number>%</p>
+  
+<answer hide="true" name="v1Credit">
+  <award credit="$v1.fractionWatched"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+</div>
+
+
+<p><updateValue type="number" target="$v1.time" newValue="$timestamp1" name="skipTo1">
+  <label>Go to Key Moment 1</label>
+</updateValue>
+<updateValue type="text" triggerWith="$skipTo1" target="$v1.state" newValue="playing" name="playStamp1" /></p>
+
+<p><updateValue type="number" target="$v1.time" newValue="$timestamp2" name="skipTo2">
+  <label>Go to Key Moment 2</label>
+</updateValue>
+
+
+<updateValue type="text" triggerWith="$skipTo2" target="$v1.state" newValue="playing" name="playStamp2" /></p>
+</sideBySide>
+
+
+<problem><title>Video review questions</title>
+<setup>
+
+</setup>
+
+<exercise includeAutoNumber="true"><title />
+<p>Let the derivative of <m>F(t)</m> be a given function <m>f</m>, so <m>\frac{ dF }{ dt } = f</m>. Then the function <m>F(t)</m>, whose derivative is <m>f</m>, is called an <term>antiderivative</term> of <m>f</m>.</p>
+  
+<p>Another name for the <term>antiderivative</term> <m>F(t)</m> is
+  <answer name="ans1a">
+    <choice>the <term>derivative</term> of <m>f(t)</m>, or <m>\frac{df}{dt}</m></choice>
+    <choice credit="1">the <term>integral</term> of <m>f(t)</m>, or, <m>\int f(t) \, dt</m> </choice>
+    <choice>the <term>linear approximation</term> of <m>f(t)</m></choice>
+  </answer></p>
+<hint>See <ref to="$v1">Key Moment 1</ref></hint>
+
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<p>Which function below, when differentiated, will give you the function <m>f(t) = t^3</m>? In other words, what is the <term>antiderivative</term> of <m>f</m>?
+  <answer name="ans1b">
+    <choice><m>F(t) = 3t^2 + C</m></choice>
+    <choice credit="1"><m>F(t) = \frac{1}{4} t^4 + C</m></choice>
+    <choice><m>F(t) = \frac{1}{2} t^2 + C</m></choice>
+    <choice><m>F(t) = \frac{1}{3} t^4 + C</m></choice>
+  </answer></p>
+<hint>Try taking the derivative of each function <m>F(t)</m> to see if you get back <m>f</m> as a result. Remember, <m>C</m> is any constant, so its derivative is just 0. See <ref to="$v1">Key Moment 2</ref></hint>
+<p>We can also write this <term>antiderivative</term> <m>F(t)</m> as the <term>integral</term> of <m>f(t)</m>. Which notation below is the correct way to express this?
+  <answer name="ans1c">
+    <choice><m>\int F(t) \, dt = f(t)</m></choice>
+    <choice><m>F(t) = \sum f(t)</m></choice>
+    <choice credit="1"><m>\int f(t) \, dt = F(t)</m></choice>
+  </answer></p>
+    
+</exercise>
+</problem>
+</section>
+

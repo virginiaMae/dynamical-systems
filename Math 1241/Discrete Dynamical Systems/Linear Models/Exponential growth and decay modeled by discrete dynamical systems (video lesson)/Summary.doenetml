@@ -1,0 +1,62 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7E8ZfhMYDEdJLroRDhiMPP
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 2b927efc5f2245de
+-->
+<title>Exponential growth and decay modeled by discrete dynamical systems</title>
+
+<p><ref>Video</ref> | <ref>Summary</ref> | <ref>Examples</ref> | <ref>Transcript</ref> </p>
+
+
+<section><title>Summary</title>
+
+<p>If we have a linear discrete dynamical system in 
+<term><ref to="doenet:82YaRL8CieueYqLgxMpxye">function iteration form</ref></term>
+, 
+<mdn>
+  <mrow>x_{t+1}\amp =R x_t
+<!-- django tag equation_tag, function_iteration_form, , , , "1" -->
+
+</mrow>
+  <mrow>x_{0}\amp = \text{a known positive value},\notag</mrow>
+</mdn>
+then the 
+<ref to="doenet:7DBEyjdcSF3AWs1fs2WNkK">solution is the exponential</ref>
+
+<me>x_t = R^tx_0.</me>
+Given that <m>x_0 \gt  0</m>, the solution will be positive as long as <m>R \gt  0</m>.  The value of <m>R</m> determines whether we get exponential growth or decay.</p>
+<ul>
+<li>If <m>R \gt  1</m>, then at each time step, the value of the state variable increases.  The solution exhibits exponential growth.  The growth makes sense because in each time step, we are multiplying by a number greater than 1.</li>
+<li>If <m>0 \lt  R \lt 1</m>, then at each time step, the value of the state variable decreases.  The solution exhibits exponential decay.  The decay makes sense because in each time step, we are multiplying by a positive number less than 1.</li>
+<li>If <m>R=1</m>, then the solution is a constant.  The constant solution makes sense because in each time step, we are multiplying by 1.</li>
+</ul>
+
+<p>On the other hand, if we have a linear dynamical system in 
+<term><ref to="doenet:832kteFVLDpZJ9tARy27gK">difference form</ref></term>
+,
+<mdn>
+  <mrow>x_{t+1} - x_t\amp =r x_t
+<!-- django tag equation_tag, difference_form, , , , "2" -->
+
+</mrow>
+  <mrow>x_{0}\amp = \text{a known positive value},\notag</mrow>
+</mdn>
+then, to  
+<ref to="doenet:7DBEyjdcSF3AWs1fs2WNkK">solve the system</ref>
+, we first must add <m>x_t</m> to both sides of the evolution rule, converting it into the equivalent system in function iteration form:
+<md>
+  <mrow>x_{t+1}\amp =(r +1)x_t</mrow>
+  <mrow>x_{0}\amp = \text{a known positive value}.</mrow>
+</md>
+Its solution is the exponential
+<me>x_t = (r+1)^tx_0.</me>
+Given that <m>x_0 \gt  0</m>, the solution will be positive as long as <m>r \gt  -1</m>.  The value of <m>r</m> determines whether we get exponential growth or decay.</p>
+<ul>
+<li>If <m>r \gt  0</m>, then at each time step, the value of the state variable increases.  The solution exhibits exponential growth.  The growth makes sense because in each time step, we are adding a positive quantity.</li>
+<li>If <m>-1 \lt  r \lt  0</m>, then at each time step, the value of the state variable decreases.  The solution exhibits exponential decay.  The decay makes sense because in each time step, we are subtracting a positive quantity, but we aren't subtracting off any more than the value of <m>x_t</m> in the previous time step.</li>
+<li>If <m>r = 0</m>, then the solution is a constant.  The constant solution makes sense because in each time step, we are adding zero.</li>
+</ul>
+
+</section>
+

@@ -1,0 +1,40 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7Uo7skS1L4YCD4vE6N7ZCn
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 8d35f90297347ead
+-->
+
+<problem>
+<!-- <title>Indefinite integral &#x2D; polynomial</title> -->
+
+<setup>
+
+<selectFromSequence name="a" from="-10" to="10" numToSelect="4" withReplacement="true" exclude="0 -1 1" />
+<selectFromSequence name="aa" from="4" to="5" />
+<selectFromSequence name="bb" from="2" to="3" />
+
+<function name="f" variables="t" simplify="numbers" symbolic="true">$a[1] *t^$aa +$a[2] *t^$bb +$a[3]*t+$a[4]</function>
+<function name="polyAntiderivative" variables="t" simplify="true" symbolic="true">($a[1]/($aa+1))*t^($aa+1)+($a[2]/($bb+1))*t^($bb+1)+($a[3]/2)*t^(2)+$a[4]*t</function>
+<math name="intfeval_C" simplify="numbersPreserveOrder">$$polyAntiderivative(t) +C</math>
+</setup>
+
+
+Evaluate the integral:<m>\int</m><m>(\displaystyle $f )dt =</m>
+
+<answer>
+  <award>$intfeval_C </award>
+  <award credit="0.67" name="award_noC">$$polyAntiderivative(t)</award>
+</answer>
+  
+<feedback condition="$award_noC">Don't forget the constant of integration.</feedback>
+
+<solution>
+<p>We first use the sum and constant product rules for integration:<m>\int</m><m>(\displaystyle $f )dt = $a[1] \int t^$aa dt + $a[2] \int t^$bb dt + $a[3] \int t dt + $a[4] \int dt</m>
+</p>
+<p>We then find the antiderivatives: <m>$a[1] \int t^$aa dt + $a[2] \int t^$bb dt + $a[3] \int t dt + $a[4] \int dt = $intfeval_C</m></p>
+
+</solution>
+
+
+</problem>

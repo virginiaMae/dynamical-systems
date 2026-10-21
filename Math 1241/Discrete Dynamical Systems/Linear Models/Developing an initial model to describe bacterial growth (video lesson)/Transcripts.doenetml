@@ -1,0 +1,73 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7Fatmb4kXSQwkeFna8u4DT
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 779a8aa1abc5e997
+-->
+<title>Developing an initial model to describe bacteria growth</title>
+
+<p><ref>Video 1</ref> | <ref>Video 2 </ref> | <ref>Summary</ref> | <ref>Transcripts</ref> </p>
+
+<!--   <p>Coming soon!</p> -->
+
+<aside><title>Transcript: Developing a bacteria growth model from experimental data</title>
+
+<p><ref to="$experimentData">This chart</ref> shows the results of an experiment where measurements of a bacteria population density were taken at sixteen minute intervals.
+The numbers on the right give a measurement of the size of the bacteria population. You can see the website for more information on how the bacteria population size was measured. Our goal is to use this data, along with knowledge about how bacteria grow, to develop a mathematical model describing the bacteria population growth.</p> 
+
+<p>What do we know about how a bacteria population grows? One, cells divide in half, this is fission. Two, each cell takes about the same time to mature and divide. Let’s see if we can use these principles, coupled with the data, to develop a mathematical model. Let’s start by defining some notation. Let’s let <m>t</m> equal the time step in sixteen minute intervals, which is the time between the snapshots of our data. So, <m>t</m> would be equal to 0 for the first measurement, then 1 after 16 minutes, 2 after 32, 3 etc…</p>
+
+<p>What’s our state variable? We’ll let <m>B_t</m> equal bacteria density in time interval t. Looking back at our chart, we see this means <m>B_0</m> was 0.022, <m>B_1</m> after 16 minutes, is 0.036, <m>B_2</m> is 0.060, etc. Let's look at a plot of <m>B_t</m> versus time step. Clearly the density is increasing faster and faster with time. Dynamics is all about change. So let's focus on how the bacteria population changes over time. What is an expression for the change in the time step? It’s just <m>B_{t+1} - B_t</m>, that's the change from time step <m>t</m> to <m>(t+1)</m>. So for example, in the first time step, if you look at <m>B_1 - B_0</m>, well, that's just the difference, it's 0.014. And we could continue <m>B_2 - *B_1 = 0.024</m>. And we could do this for each data point.</p> 
+
+<p><ref to="$plot_Density_v_TimeStep">Here’s a chart</ref> where, first of all, we’ve renamed time not in minutes anymore but in time steps, it's 0 to 5, and we’ve calculated the change in the population in each of these time units. <ref to="$plot_Change_v_TimeStep">Here’s a plot</ref> that shows the change in the size of the bacteria population in each time step plotted as a function of the time step. We can see that the change is increasing with time, and in fact it seems as though the change is increasing faster than linearly, see how these points start to curve upward?</p> 
+
+<p>Ok, how are we going to write down a mathematical model, a dynamical system model, that captures this data? We want to write a model of the form <m>B_{t+1} - B_t = \text{something}</m>, right? This is the change. Well, let's go back to what we know about how the bacteria population grows…it grows by cells dividing in half through fission, and we’ll assume each cell takes the same amount of time to divide in half. The data that we have gives us the bacteria population every 16 minutes. If it turned out that each cell took 16 minutes to divide, then we would expect that at every time step the population would double. But you can see that the population does not double – we went from 0.022 to 0.036, so up by 0.014. This is less than doubling, so it seems from this data that the bacteria take longer than 16 minutes to divide. Or they take longer than 1 time step, so a bacteria doubling model isn’t going to work here. </p>
+
+
+  
+<p>Well, what's a reasonable assumption? Since the bacteria take longer than 1 time step to divide, maybe a reasonable assumption is that in one time step, a certain fraction divide. This means that the population size should grow as a certain fraction of the original population size. In other words, this change here should be not exactly equal to the old population size, but proportional to it – where <m>c</m> is a parameter that is determined by how fast the bacteria divide in comparison to the time step.
+<me name="model">B_{t+1} - B_t = c B_t</me>
+So, we have a model here for population growth, and we just have 1 free parameter. Can we determine this from the data? Now, here’s one thing we could do, we could look at the growth from 0 to 1, and use that to fit a value of <m>c</m>, and then look at the growth from 1 to 2, fit another value of <m>c</m>, etc. But that’s not a very good way of doing it. We want to somehow fit all the data at once to get the single value of <m>c</m>, because again we imagine that the <m>c</m> is the same in every time step.</p>
+
+<p>We can use sophisticated methods to determine the <m>c</m>, or to fit it from the data, but let's just try to do this graphically.</p>
+  
+
+  
+<p>What does this equation say? 
+  $model 
+This equation says that the change is a linear function of the population size. See, the change <m>B_{t+1} - B_t</m> is proportional to <m>B_t</m>. If we plot <ref to="$plot_Change_v_PopulationSize">change versus population size</ref>, we should get a line, and more than that, we should get a line through the origin. For, after all, if this equation is correct, then when <m>B_t</m> is 0, the change should also be 0. Earlier we had a plot of population change versus time, but here we replot the data so that we can plot population change now versus the population density.</p>
+  
+<p>According to our model, this should be a linear relationship that goes through the origin. This looks sort of like a line, maybe this point here isn’t so good, but maybe the model’s ok, maybe we can fit these points with a line through the origin. <ref to="$findSlopeApplet">Here is an applet</ref> that will allow us to do just that. The table at the right shows the bacteria data. We have time snapshots 1 through 5, 0 through 5, plus the bacteria population size at those times. We've calculated the change between each time step, and here are the points we’re going to apply – which is the population size in the horizontal axis and the change in the vertical axis. These 5 points are shown right here.</p>
+  
+<p>We need to fit these points with a line through the origin. This applet forces the line to go through the origin; the only thing we can do is change its slope. So, we could try to change the slope until we match all the points. Here’s a slope that matches more or less all the points, but it seems like we’d do even better if we ignore the point over here (*the 5th point). If we can just fit the four points we can do a really good job. If I put this point at <m>(0.15, 0.1)</m>, the resulting line fits very well the first four points, and its slope is just <m>\frac{0.1}{0.15}</m>, or <m>\frac{2}{3}</m>. We can conclude that we can fit this data with a line through the origin with slope <m>\frac{2}{3}</m>. The slope of our line is exactly this parameter <m>c</m>. From our fitting of the data, we can conclude that a reasonable value of <m>c</m> is <m>\frac{2}{3}</m>. Our resulting dynamical system is that the change <m>B_{t+1} - B_t</m> is approximately <m>\frac{2}{3}</m> times the population size <m>B_t</m>.
+<me>B_{t+1} - B_t = \frac{2}{3} B_t</me>We believe this model is a good representation of the bacteria growth at least for the first 4 points. The fact that the fifth point was lower than we would have expected it indicates that maybe something is going on after the fifth time point that isn’t well captured by this model. But that's something we can worry about another day.</p>
+
+</aside>
+
+<aside><title>Transcript: Solving a bacterial growth model</title>
+<p>By combining what we know about how bacteria divide with bacteria data, we came up with the following dynamical system for bacteria growth
+  
+<me>B_{t+1} - B_t = \frac{2}{3} B_t.</me>
+
+If we let <m>B_t</m> be the population size in time <m>t</m>, where <m>t</m> was 16-minute intervals, then the change <m>B_{t+1} - B_t</m> was two-thirds times the population size <m>B_t</m>. When we combine this with the initial condition -- the first data point that we had was that <m>B_0</m>, the initial population size, was 0.022.</p>
+  
+<p>The next question is, can we <em>solve</em> this dynamical system? What does it mean to solve? This means *to write <m>B_t</m> as a function of <m>t</m> alone. In the expression here in this dynamical system, we couldn’t quickly tell what <m>B_{33}</m> is, we had to iterate going from 0 to 1 to 2 to 3…If we <em>solve</em> the system we could immediately say, "oh, we know what <m>B_{32}</m> is". This form of the dynamical system can be called a <term><ref to="doenet:832kteFVLDpZJ9tARy27gK">difference equation</ref></term>. It's a difference equation because it's written in the form of this temporal difference, this change in <m>B</m>. The difference equation is nice for developing a model, because we like to think about how a population evolves in terms of its change. To <em>solve</em> the model though, it's sometimes more convenient to write the dynamical system in a different form - that I’ll call <term><ref to="doenet:82YaRL8CieueYqLgxMpxye">function iteration form</ref></term>. In function iteration form, we write <m>B_{t+1}</m>, the new value, as simply some function of the old value,
+  <me>B_{t+1} = f(B_t).</me>
+For our given model, what is <m>f</m>? To find <m>f</m> we just need to solve for <m>B_{t+1}</m>. We do that by adding <m>B_t</m> to both sides of the equation and we get that 
+  <me>B_{t+1} = \frac{2}{3} B_t + B_t</me>
+when we add it to both sides. In other words, it's <m>\frac{5}{3} B_t</m>.
+  <me name="modelFuncItForm">B_{t+1} = \frac{5}{3} B_t</me>
+So, to go from the bacteria population at time <m>t</m> to time <m>(t+1)</m> we simply need to multiply by <m>\frac{5}{3}</m>, or 1 plus the <m>\frac{2}{3}</m> we were given earlier. In other words, this function <m>f</m> is just multiplication by <m>\frac{5}{3}</m>. We could say <m>f(x) = \frac{5}{3} x</m>, where <m>x</m> is just the input. For me, I like to define functions instead using something other than <m>x</m>, just to emphasize.  For example, we could say that <m>f(\text{house}) = \frac{5}{3} \text{house}</m>. The point being that <m>f</m> is a function, so it takes whatever its input is, and multiplies it by <m>\frac{5}{3}</m>. So, we could just write the dynamical system again as $modelFuncItForm Just rewriting that here.</p>
+
+<p>Now it's a simple matter to evolve this dynamical system. We just need to apply the function <m>f</m> again and again for each time step. For example, if we plug in <m>t = 0</m>, this equation is that <m>B_1</m> is <m>\frac{5}{3}</m> times <m>B_0</m>; this boxed equation here is really a whole bunch of different equations for t= 0, 1, 2, 3, etc. So, it also says that <m>B_2</m> is <m>\frac{5}{3}</m> times <m>B_1</m>, etc. Now we’re given the initial condition, given that <m>B_0</m> is 0.022. Then we can calculate that <m>B_1</m> is <m>\frac{5}{3}</m> times 0.022, which is about 0.037, and <m>B_2</m> is therefore <m>\frac{5}{3}</m> times <m>B_1</m>, or <m>\frac{5}{3}</m> times 0.037, which is approximately 0.061.</p>
+  
+<!-- Timestamp 4:56 (switch to applet demo)  -->
+<p>We can use the <ref to="doenet:7CkDpewb8Wp9Mng4XjxDHt">function iteration applet</ref> to quickly calculate iterates of the bacteria growth model. We need to use the function iteration form and write <m>f</m> as <m>f(x)</m>, so <m>f(x)</m> is <m>\frac{5}{3}</m>...and <m>x</m>. And we have initial conditions 0.022. That’s <m>x_0</m>, or <m>B_0</m> in our model. To calculate new values we just need to click iterate to apply the function <m>f</m> to the previous value. If we click once, we see that <m>x_1</m>, or <m>B_1</m> in our model, is 0.037 approximately. Clicking it again, we see <m>x_2</m> is approximately 0.061, and we can continue in this process to calculate many iterates of the model. And the resulting values are plotted with time on the horizontal axis -- and the state variable on the vertical axis.</p>
+
+<p>Let’s calculate a formula for the solution to this dynamical system. 
+Ok, we have <m>B_{t+1} = \frac{2}{3} B_t + B_t</m>, and then <m>B_2 = \frac{5}{3} B_1</m>, over here. But <m>B_1 = \frac{5}{3} B_0</m> so, we could write <m>B_2</m> as 
+  <me>B_2 = \frac{5}{3} \times \frac{5}{3} \times B_0</me>. In other words, <m>B_2</m> is <m>\frac{5}{3}^2</m> times the initial population size, <m>B_0</m>. Let's try that for <m>B_3</m>: <m>B_3 = \frac{5}{3} B_2</m>, but we know that <m>B_2</m> is <m>\frac{5}{3}^2</m> times <m>B_0</m>, if we multiply that by another <m>\frac{5}{3}^2</m>, we have that <m>B_3</m> is <m>B_3 = \frac{5}{3} \times \frac{5}{3} \times \frac{5}{3} \times B_0</m>, or in other words its <m>\frac{5}{3}^3</m> times <m>B_0</m>. Now you can see the pattern, we can continue this and do this for any value of <m>t</m>, to get from time 0 to time <m>t</m>, we just need to take <m>B_0</m> and multiply it by <m>\frac{5}{3}</m>, <m>t</m> times. So we have <m>B_t</m> is <m>\frac{5}{3}</m> to the power of <m>t</m> times <m>B_0</m>
+  <me>B_t = \frac{5}{3}^t B_0.</me>
+This is our general solution for any initial condition. But we have a particular solution we care about, where <m>B_0</m> is 0.022, and for that we can write down our specific solution substituting in the value of <m>B_0</m>, and we see that <m>B_t</m> is <m>\frac{5}{3}</m> to the power of <m>t</m> times 0.022
+  <me>B_t = \frac{5}{3}^t 0.022.</me> This is our specific solution for <m>B_0 = 0.022</m>. Using this formula we can quickly calculate the bacteria population size at any time point <m>t</m> according to the model. If we want to know the population size after a certain number of minutes, we have to remember to first divide by 16, because there are 16 minutes in each time interval.</p>
+</aside>

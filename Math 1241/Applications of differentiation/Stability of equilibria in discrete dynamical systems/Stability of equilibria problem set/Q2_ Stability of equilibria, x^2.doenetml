@@ -1,0 +1,370 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7QeWcXjv6hzgU4Rbem6YGr
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 843be3129f72197f
+-->
+<problem>
+<variantControl numVariants="1" />
+<!-- <title>Stability of discrete dynamical systems, x^2</title> -->
+
+<setup>
+
+<function name="f" variables="x">x^2</function>
+<function name="tan1" variables="x">0</function>
+<function name="tan2" variables="x">2(x-1)+1</function>
+<math name="Es">0,1</math>
+<math name="Es_unsorted" unordered="true">$Es </math>
+
+</setup>
+
+
+Consider the dynamical system <m>x_{n+1} = f(x_n)</m>, where <m>f(x)=x^2</m>.
+
+
+<exercise>
+What are the two equilibria of the dynamical system? <m>E=</m> 
+<answer>
+<award matchPartial="true" symbolicEquality="true">$Es </award>
+<award symbolicEquality="true" credit="0.75" name="award1">$Es_unsorted </award>
+</answer>
+  (Enter in increasing order, separated by commas.)
+  
+<feedback condition="$award1">Enter your values in increasing order.</feedback>
+</exercise>
+
+<exercise>
+<p>
+What are the slopes of the tangent lines to <m>f(x)</m> at the two equilibria?
+</p>
+<p>
+
+For the first equilibrium, <m>f'(</m>
+  <mathInput name="E1val" />
+<m>)\,= </m> 
+  <mathInput name="E1slope" />.
+</p>
+
+  <answer matchPartial="true" symbolicEquality="true">
+    <award referencesAreResponses="$E1val $E1slope">
+      <when>$E1val = 0 and $E1slope = 0</when>
+    </award>
+  </answer>
+  
+<p>
+
+For the second equilibrium, <m>f'(</m>
+    <mathInput name="E2val" />
+<m>)\,=</m> 
+  <mathInput name="E2slope" />.
+</p>
+
+  <answer matchPartial="true" symbolicEquality="true">
+    <award referencesAreResponses="$E2val $E2slope">
+      <when>$E2val = 1 and $E2slope = 2</when>
+    </award>
+  </answer>
+</exercise>
+
+<exercise>
+<p>
+The slopes of the tangent lines, <m>f'(E)</m>, play the role of the slope <m>R</m>, above.  Translate the above conclusions about stability in terms of the slope of the tangent line.
+</p>
+<p>
+
+An equilibrium <m>E</m> is stable if 
+  <mathInput name="stableLower" />
+   <m>\lt f'(E) \lt</m> 
+  <mathInput name="stableUpper" />
+  <answer symbolicEquality="true" matchPartial="true">
+    <award referencesAreResponses="$stableLower $stableUpper">
+      <when>$stableLower = -1 and $stableUpper = 1</when>
+    </award>
+  </answer>, which we can rewrite as <m>|f'(E)| \lt</m> 
+<answer>
+<award symbolicEquality="true">1</award>
+</answer>.
+</p>
+  
+<p>
+
+An equilibrium <m>E</m> is unstable if <m>f'(E) \gt</m> 
+<answer>
+<award symbolicEquality="true">1</award>
+</answer>
+ or if <m>f'(E) \lt</m> 
+<answer>
+<award symbolicEquality="true">-1</award>
+</answer>
+, which we can rewrite as <m>|f'(E)| \gt</m> 
+<answer>
+<award symbolicEquality="true">1</award>
+</answer>
+.
+</p>
+<p>
+
+(We've just stated the 
+<ref to="doenet:equilibria_discrete_dynamical_systems_stability">stability theorem</ref>
+ for discrete dynamical systems.)
+ </p>
+
+<p>Based on the tangent line slopes, determine the stability of the equilibria.
+</p>
+<p>
+
+The first equilibrium, <m>E=</m> 
+<answer>
+<award symbolicEquality="true">0</award>
+</answer>
+ is 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">stable</choice>
+<choice>unstable</choice>
+</choiceInput>
+</answer>
+.
+</p>
+<p>
+
+The second equilibrium, <m>E=</m> 
+<answer>
+<award symbolicEquality="true">1</award>
+</answer>
+ is 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">unstable</choice>
+<choice>stable</choice>
+</choiceInput>
+</answer>
+</p>
+</exercise>
+
+<exercise>
+<p>On the following graph of <m>f(x)=x^2</m> and the diagonal, sketch the tangent lines at the equilibria.  Cobweb to verify your conclusions regarding equilibrium stability. (To verify stability, cobweb with initial conditions near the equilibria.)</p>
+
+  <setup>
+    <point name="E1">(0,0)</point>
+    <point name="E2">(1,1)</point>
+    
+    <math extend="$A1.x" name="A1x" />
+    <math extend="$A2.x" name="A2x" />
+    <derivative name="df">$f</derivative>
+    <number name="numPoints">1</number>
+    <number name="zeroFixed" fixed="true">0</number>
+
+    <number fixed="true" name="xmin">-2</number>
+    <number fixed="true" name="xmax">4</number>
+    <number fixed="true" name="ymin">-0.5</number>
+    <number fixed="true" name="ymax">3</number>
+
+  </setup>
+
+  <updateValue name="addLine" target="$numPoints" newValue="$numPoints+1" type="number">
+    <label>Add line</label>
+  </updateValue>
+  <updateValue name="deleteLine" target="$numPoints" newValue="max(1,$numPoints-1)" type="number" disabled="$numPoints &lt;= 1">
+    <label>Delete line</label>
+  </updateValue>
+
+  <graph size="large" aspectRatio="2" identicalAxisScales="true" grid="0.5 0.5" showNavigation="false" xmin="$xmin" xmax="$xmax" ymin="$ymin" ymax="$ymax" name="ex4Graph">
+   <xLabel><m>x_n</m></xLabel>
+   <yLabel><m>x_{n+1}</m></yLabel>
+    <point name="A1" x="-1" y="1" styleNumber="2">
+      
+        <attractTo>$E1</attractTo>
+        <attractTo>$E2</attractTo>
+        <constrainTo>$f</constrainTo>
+        <constrainToGraph />
+      
+    </point>
+    <point name="A2" x="-1.5" y="2" styleNumber="2">
+      
+        <attractTo>$E1</attractTo>
+        <attractTo>$E2</attractTo>
+        <constrainTo>$f</constrainTo>
+        <constrainToGraph />
+      
+    </point>
+    <line equation="y=$$df($A1x)(x-$A1x) + $$f($A1x)" fixed="true" styleNumber="2" name="tangentLine1" />
+    <line equation="y=$$df($A2x)(x-$A2x) + $$f($A2x)" fixed="true" styleNumber="2" name="tangentLine2" />
+
+<!--     <copy source="f" layer="1" styleNumber="2" hide/> -->
+    <cobwebPolyline function="$f" numPoints="$numPoints" name="cobwebPolyline" initialPoint="$initialPoint" lockToSolution="true" draggable="false" />
+    <point x="-0.4" y="$initialPoint.x" name="initialPoint" layer="2">
+      
+        <constrainToGraph />
+      
+    </point>
+  </graph>
+
+  <aside name="calculatedValue">
+    <title>Calculated values</title>
+
+    <md>
+    <repeat for="$cobwebPolyline.iterateValues" valueName="x" indexName="i">
+        <mrow>
+          x_{<number>$i-1</number>} \amp = <math displayDigits="5" extend="$x" />
+        </mrow>
+      </repeat>
+    </md>
+
+  </aside>
+
+  <p>Correct tangent lines:
+    <answer matchPartial="true">
+      <award referencesAreResponses="$A1 $A2">
+        <when><mathList unordered="true">$A1 $A2</mathList>
+          = <mathList>$E1 $E2</mathList>
+        </when>
+      </award>
+    </answer>
+  </p>
+
+  <p>Cobweb at least 3 iterations from just below first equilibrium.
+    <answer disableAfterCorrect="true">
+      <award referencesAreResponses="$initialPoint $numPoints" credit="$numPoints/6">
+        <when>-0.5 &lt; $initialPoint.x &lt;= -0.1</when>
+      </award>
+      <award credit="0" name="tooCloseBelow">
+        <when>-0.1 &lt; $initialPoint.x &lt;= 0</when>
+      </award>
+    </answer>
+  </p>
+  <feedback condition="$tooCloseBelow">
+    Start at least 0.1 below the equilibrium so we can see what's going on, and make sure to construct 3 complete steps.
+  </feedback>
+
+
+   <p>Cobweb at least 3 iterations from just above first equilibrium.
+    <answer disableAfterCorrect="true">
+      <award referencesAreResponses="$initialPoint $numPoints" credit="$numPoints/6">
+        <when>0.1 &lt;= $initialPoint.x &lt; 0.5</when>
+      </award>
+      <award credit="0" name="tooCloseAbove">
+        <when>0 &lt;= $initialPoint.x &lt; 0.1</when>
+      </award>
+    </answer>
+  </p>
+  <feedback condition="$tooCloseAbove">
+    Start at least 0.1 above the equilibrium so we can see what's going on, and make sure to construct 3 complete steps.
+  </feedback>
+
+  <p>Cobweb at least 6 iterations from just below the second equilibrium.
+    <answer disableAfterCorrect="true">
+      <award referencesAreResponses="$initialPoint $numPoints" credit="$numPoints/12">
+        <when>0.9 &lt;= $initialPoint.x &lt; 1</when>
+      </award>
+      <award credit="0" name="tooFarBelow">
+        <when>0.5 &lt; $initialPoint.x &lt; 0.9</when>
+      </award>
+    </answer>
+  </p>
+  <feedback condition="$tooFarBelow">
+    Start from within 0.1 of the equilibrium so we can see what's going on, and make sure to construct 6 complete steps.
+  </feedback>
+
+    <p>Cobweb at least 4 iterations from just above the second equilibrium.
+    <answer disableAfterCorrect="true">
+      <award referencesAreResponses="$initialPoint $numPoints" credit="$numPoints/8">
+        <when>1 &lt; $initialPoint.x &lt;= 1.1</when>
+      </award>
+      <award credit="0" name="tooFarAbove">
+        <when>1.1 &lt; $initialPoint.x &lt; 1.5</when>
+      </award>
+    </answer>
+  </p>
+  <feedback condition="$tooFarAbove">
+    Start from within 0.1 of the equilibrium so we can see what's going on, and make sure to construct 4 complete steps.
+  </feedback>
+</exercise>
+
+
+<solution>
+
+
+<exercise>
+The equilibria <m>E</m> must satisfy <m>E = E^2</m>.  Subtracting <m>E</m> from both sides, the condition becomes <m>0 = E^2-E = E(E-1)</m>.  The equilibria are <m>E=0</m> and <m>E=1</m>.
+</exercise>
+
+<exercise>
+<m>f'(x)=2x</m>.  At <m>E=0</m>, the slope is <m>f'(0)=0</m>.  At <m>E=1</m>, the slope is <m>f'(1)=2</m>.
+</exercise>
+
+<exercise>
+Since <m>f'(0)=0</m> and <m>-1 \lt  0 \lt  1</m>, the equilibrium <m>E=0</m> is stable.  Since <m>f'(1)=2 \gt  1</m>, the equilibrium <m>E=1</m> is unstable.
+</exercise>
+
+<exercise>
+<p>
+A cobwebbing plot from below the first equilibrium:
+ <graph size="large" aspectRatio="2" identicalAxisScales="true" grid="0.5 0.5" xmin="$xmin" xmax="$xmax" ymin="$ymin" ymax="$ymax" name="ex4GraphSol1_left" showNavigation="false">
+   <xLabel><m>x_n</m></xLabel>
+   <yLabel><m>x_{n+1}</m></yLabel>
+
+   <point styleNumber="2" fixed="true" extend="$E1" />
+   <point styleNumber="2" fixed="true" extend="$E2" />
+    <line equation="y=$$df($E1.x)(x-$E1.x) + $$f($E1.x)" fixed="true" styleNumber="2" name="tangentLine1Sol" />
+    <line equation="y=$$df($E2.x)(x-$E2.x) + $$f($E2.x)" fixed="true" styleNumber="2" name="tangentLine2Sol" />
+
+<!--     <copy source="f" layer="1" styleNumber="2" /> -->
+    <cobwebPolyline function="$f" numPoints="8" name="cobwebPolylineSol1_left" initialPoint="(-0.4, -0.4)" lockToSolution="true" draggable="false" />
+  </graph>  
+</p>
+
+<p>
+A cobwebbing plot from above the first equilibrium:
+ <graph size="large" aspectRatio="2" identicalAxisScales="true" grid="0.5 0.5" xmin="$xmin" xmax="$xmax" ymin="$ymin" ymax="$ymax" name="ex4GraphSol1_right" showNavigation="false">
+   <xLabel><m>x_n</m></xLabel>
+   <yLabel><m>x_{n+1}</m></yLabel>
+
+    <point styleNumber="2" fixed="true" extend="$E1" />
+    <point styleNumber="2" fixed="true" extend="$E2" />
+    $tangentLine1Sol
+    $tangentLine2Sol
+
+<!--     <copy source="f" layer="1" styleNumber="2" /> -->
+    <cobwebPolyline function="$f" numPoints="8" name="cobwebPolylineSol1_right" initialPoint="(0.5, 0.5)" lockToSolution="true" draggable="false" />
+  </graph>  
+</p>
+
+<p>
+A cobwebbing plot from below the second equilibrium:
+ <graph size="large" aspectRatio="2" identicalAxisScales="true" grid="0.5 0.5" xmin="$xmin" xmax="$xmax" ymin="$ymin" ymax="$ymax" name="ex4GraphSol2_left" showNavigation="false">
+   <xLabel><m>x_n</m></xLabel>
+   <yLabel><m>x_{n+1}</m></yLabel>
+   
+    <point styleNumber="2" fixed="true" extend="$E1" />
+    <point styleNumber="2" fixed="true" extend="$E2" />
+    $tangentLine1Sol
+    $tangentLine2Sol
+
+<!--     <copy source="f" layer="1" styleNumber="2" /> -->
+    <cobwebPolyline function="$f" numPoints="12" name="cobwebPolylineSol2_left" initialPoint="(0.95, 0.95)" lockToSolution="true" draggable="false" />
+  </graph>  
+</p>
+
+<p>
+A cobwebbing plot from above the second equilibrium:
+ <graph size="large" aspectRatio="2" identicalAxisScales="true" grid="0.5 0.5" xmin="$xmin" xmax="$xmax" ymin="$ymin" ymax="$ymax" name="ex4GraphSol2_right" showNavigation="false">
+   <xLabel><m>x_n</m></xLabel>
+   <yLabel><m>x_{n+1}</m></yLabel>
+
+    <point styleNumber="2" fixed="true" extend="$E1" />
+    <point styleNumber="2" fixed="true" extend="$E2" />
+    $tangentLine1Sol
+    $tangentLine2Sol
+
+<!--     <copy source="f" layer="1" styleNumber="2" /> -->
+    <cobwebPolyline function="$f" numPoints="8" name="cobwebPolylineSol2_right" initialPoint="(1.05, 1.05)" lockToSolution="true" draggable="false" />
+  </graph>  
+</p>
+
+</exercise>
+
+</solution>
+
+
+</problem>

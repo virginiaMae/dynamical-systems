@@ -1,0 +1,82 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7AMEmqgo3W77gArY1BTvHK
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 90643ccc1cec56e9
+-->
+<!--*******************************************************
+Checked: VM 8/8/2022
+*********************************************************-->
+
+<problem>
+
+<setup>
+<selectFromSequence name="a1" exclude="-1 0 1" from="-7" to="7" />
+<selectFromSequence name="a2_recip" from="2" to="9" />
+<selectFromSequence name="a3_num" exclude="0" from="-5" to="5" />
+<selectFromSequence name="a3_denom" from="6" to="9" />
+<selectFromSequence name="b1" exclude="0" numToSelect="3" withReplacement="true" from="-5" to="5" />
+<selectFromSequence name="c1mag" numToSelect="3" withReplacement="true" from="0" to="4" />
+<selectFromSequence name="c1sign" numToSelect="6" withReplacement="true" from="-1" to="1" />
+<selectFromSequence name="c1present" numToSelect="6" withReplacement="true" from="0" to="1" />
+<selectFromSequence name="d1" numToSelect="3" withReplacement="true" from="2" to="3" />
+<selectFromSequence name="e1mag" numToSelect="3" withReplacement="true" from="0" to="2" />
+<selectFromSequence name="f1" numToSelect="3" withReplacement="true" from="4" to="5" />
+
+<selectFromSequence name="g1" from="-4" to="4" />
+<selectFromSequence name="g2" step=" 2" from="-6" to="6" />
+<selectFromSequence name="g3" from="-8" to="8" />
+<select name="x" numToSelect="3">x y z</select>
+<math name="a2" simplify="numbers">1/$a2_recip</math>
+<math name="a3" simplify="numbers">$a3_num/$a3_denom</math>
+
+<math name="c1" simplify="numbers">$c1mag[1]*$c1sign[1]*$c1present[1]</math>
+<math name="c2" simplify="numbers">$c1mag[2]*$c1sign[2]*$c1present[2]</math>
+<math name="c3" simplify="numbers">$c1mag[3]*$c1sign[3]*$c1present[3]</math>
+<math name="e1" simplify="numbers">$e1mag[1]*$c1sign[4]*$c1present[4]</math>
+<math name="e2" simplify="numbers">$e1mag[1]*$c1sign[4]*$c1present[4]</math>
+<math name="e3" simplify="numbers">$e1mag[1]*$c1sign[4]*$c1present[4]</math>
+<math name="single_log">log(($arg1)^$a1*($arg2)^$a2*($arg3)^$a3)</math>
+<math name="arg1" simplify="numbers">$b1[1]*$x[1] + $c1*$x[1]^$d1[1] + $e1*$x[1]^$f1[1] + $g1</math>
+<math name="arg2" simplify="numbers">$b1[2]*$x[2] + $c2*$x[2]^$d1[2] + $e2*$x[2]^$f1[2] + $g2</math>
+<math name="arg3" simplify="numbers">$b1[3]*$x[3] + $c3*$x[3]^$d1[3] + $e3*$x[3]^$f1[3] + $g3</math>
+</setup>
+
+Rewrite the expression
+<me>$single_log</me>
+in a form with no logarithm of a product, quotient or power. Then, <me>$single_log \\= A \log \left($arg1\right) + B \log \left($arg2\right) + C\log\left($arg3\right),</me> 
+where
+<p>A = <mathInput name="input1" /></p>
+<p>B = <mathInput name="input2" /></p>
+<p>C = <mathInput name="input3" /></p>
+<answer>
+  <award matchpartial="true" referencesAreResponses="$input1 $input2 $input3"><when>
+    <mathList>$input1 $input2 $input3</mathList>
+    =
+    <mathList>$a1 $a2 $a3</mathList>
+  </when></award>
+</answer>
+
+
+<solution>
+
+  <setup>
+    <math name="log_polynomial" simplify="numbers">$a1*log($arg1) + $a2*log($arg2) + $a3*log($arg3)</math>
+    <math name="log_with_exponents" simplify="numberspreserveorder">log(($b1[1]*$x[1] + $c1*$x[1]^$d1[1] + $e1*$x[1]^$f1[1] + $g1)^$a1) + log(($b1[2]*$x[2] + $c2*$x[2]^$d1[2] + $e2*$x[2]^$f1[2] + $g2)^$a2) + log(($b1[3]*$x[3] + $c3*$x[3]^$d1[3] + $e3*$x[3]^$f1[3] + $g3)^$a3)</math>
+
+  </setup>
+Since the logarithm of a product (or a quotient) is the sum (or difference) of the logarithms, we can rewrite the expression to have three terms, each containing a logarithm.
+<md>
+  <mrow>$single_log</mrow>
+  <mrow>= $log_with_exponents</mrow>
+</md>
+Since the logarithm of an expression raised to a power is the same as that power multiplied by the logarithm of the expression, we can bring down all the exponents, obtaining
+<md>
+  <mrow>$log_with_exponents</mrow>
+  <mrow>= $log_polynomial.</mrow>
+</md>
+Therefore <m>A=$a1</m>, <m>B=$a2</m>, and <m>C=$a3</m>.
+
+</solution>
+
+</problem>

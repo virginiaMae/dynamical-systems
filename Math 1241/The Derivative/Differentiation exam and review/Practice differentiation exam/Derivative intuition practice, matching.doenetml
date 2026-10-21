@@ -1,0 +1,208 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7NT1my19jPqtrc3W7eq1fV
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 9109f9781d3467ef
+-->
+<problem>
+<!-- <title>Derivative graph match</title> -->
+
+<setup>
+
+
+<selectFromSequence name="c1_1" numToSelect="3" withReplacement="true" from="-3.1" to=" 3.1" step=" .1" />
+
+<select name="c2_1" numToSelect="2" withReplacement="true">
+<option><selectFromSequence from="-1.5" to="-0.4" step=" .1" /></option>
+<option><selectFromSequence from="0.4" to="1.5" step=" .1" /></option>
+</select>
+
+<selectFromSequence name="c3_1" from="0.1" to=" 1" step=" .1" />
+<selectFromSequence name="c3_2" from="-3" to=" 3" step=" .1" />
+<selectFromSequence name="c3_3" from="0" to=" 1" step=" .1" />
+<selectFromSequence name="c4_1" from="-0.15" to=" .15" step=" .2" exclude="0" />
+<selectFromSequence name="c4_2" from="-2" to=" 0" step=" .1" />
+<selectFromSequence name="c4_3" from="-5" to=" 5" step=" .1" />
+<selectFromSequence name="c4_4" numToSelect="3" withReplacement="true" from="-1" to=" 1" step=" .1" />
+<selectFromSequence name="c1_2" from="0.4" to=" 2" step=" .1" />
+<selectFromSequence name="c1_3" from="1" to=" 1.5" step=" .1" />
+
+
+<selectFromSequence name="c5_1" from="0.5" to=" 2" step=" 0.1" />
+
+<selectFromSequence name="c5_3" from="-0.5" to=" 0.5" />
+<selectFromSequence name="c6_1" from="0.2" to=" 0.6" step=" 0.01" />
+<selectFromSequence name="c6_2" from="-4" to=" 4" step=" 0.1" />
+<selectFromSequence name="c6_3" from="-0.5" to=" 0.5" step=" 0.01" />
+<selectFromSequence name="c6_4" numToSelect="2" withReplacement="true" from="0.5" to=" 1.5" step=" 0.1" />
+<selectFromSequence name="c7_1" from="0.03" to=" 0.1" step=" .01" />
+<selectFromSequence name="c7_2" from="-2" to=" 2" step=" 0.1" />
+<selectFromSequence name="c7_3" from="5" to=" 10" />
+<selectFromSequence name="c7_4" from="0" to=" 1" step=" 0.1" />
+
+<selectFromSequence name="c8_2" from="max(0.2, 0.3/$c6_4[2])" to="min(2, 2/$c6_4[2])" step=" .1" />
+
+<selectFromSequence name="c8_4" numToSelect="2" withReplacement="true" from="-1" to=" 1" step=" 0.1" />
+<selectFromSequence name="c8_5" numToSelect="4" withReplacement="true" from="-1" to=" 1" step=" 2" />
+
+
+<selectFromSequence name="c9_1" numToSelect="2" withReplacement="true" from="-0.6" to=" 0.6" step=" 0.3" exclude="0" />
+<selectFromSequence name="c9_5" from="-0.6" to=" 0.6" step=" 0.3" exclude="-$c9_1[1]-$c9_1[2] 0" />
+
+
+<selectFromSequence name="c9_2" numToSelect="3" from="-3" to=" 3" step=" 0.5" />
+
+
+
+<selectFromSequence name="c10_1" numToSelect="2" withReplacement="true" from="0.2" to=" 0.5" step=" 0.1" />
+
+<selectFromSequence name="c10_3" from="-3" to=" 3" step=" 0.1" />
+
+
+<math name="f9_sub_formula">$c9_1[1] *abs(x-$c9_2[1] )+$c9_1[2] *abs(x-$c9_2[2] )+$c9_5 *abs(x-$c9_2[3] )</math>
+<function name="f9_sub" variables="x">$f9_sub_formula</function>
+
+<number name="f9_max_slope">max( abs($c9_1[1]+$c9_1[2]+$c9_5), abs(-$c9_1[1]+$c9_1[2]+$c9_5), abs($c9_1[1]-$c9_1[2]+$c9_5), abs($c9_1[1]+$c9_1[2]-$c9_5) )</number>
+
+<number name="f9_left">$$f9_sub(-4)</number>
+<number name="f9_right">$$f9_sub(4)</number>
+<number name="f9_corner1">$$f9_sub($c9_2[1])</number>
+<number name="f9_corner2">$$f9_sub($c9_2[2])</number>
+<number name="f9_corner3">$$f9_sub($c9_2[3])</number>
+<max name="f9_max">$f9_left $f9_right $f9_corner1 $f9_corner2 $f9_corner3</max>
+<min name="f9_min">$f9_left $f9_right $f9_corner1 $f9_corner2 $f9_corner3</min>
+
+<number name="f9_a">min( 4/($f9_max-$f9_min), 2/$f9_max_slope)</number>
+<number name="f9_b">2 - $f9_a * $f9_max</number>
+
+
+
+<math name="f9_corner1_sub" simplify="full">$c9_1[2] *abs($c9_2[1] -$c9_2[2] )+$c9_5 *abs($c9_2[1] -$c9_2[3] )</math>
+<math name="f9_corner2_sub" simplify="full">$c9_1[1] *abs($c9_2[2] -$c9_2[1] )+$c9_5 *abs($c9_2[2] -$c9_2[3] )</math>
+<math name="f9_corner3_sub" simplify="full">$c9_1[1] *abs($c9_2[3] -$c9_2[1] )+$c9_1[2] *abs($c9_2[3] -$c9_2[2] )</math>
+<math name="f9_corner_sub_mean" simplify="full">($f9_corner1_sub +$f9_corner2_sub +$f9_corner3_sub )/3</math>
+
+
+
+
+<select name="f1" numToSelect="5" withReplacement="false">
+
+<option><function variables="x">$c1_3 *sin($c1_2 *x+$c1_1[1] )+$c4_4[2] </function></option>
+<option><function variables="x">$c2_1[1][1] *e^($c2_1[2][1] *x)+$c4_4[3] </function></option>
+<option><function variables="x">$c3_1 *$c8_5[2] *(x-$c3_2 )^2-$c3_3 *$c8_5[2] </function></option>
+<option><function variables="x">$c4_1 *((x-$c4_2 )^3+$c4_3 *(x-$c4_2 )^2+10)+$c4_4[1] </function></option>
+<option><function variables="x">0.2*sin($c5_1 *x+$c1_1[2] )*exp($c5_3 *x)</function></option>
+<option><function variables="x">$c6_1 *$c8_5[4] *abs(x-$c6_2 )+$c6_3 *(x-$c6_2 )-$c6_4[1] *$c8_5[4] </function></option>
+<option><function variables="x">$c7_1 *$c8_5[3] *((x-$c7_2 )^4-$c7_3 *(x-$c7_2 )^2+20)-$c7_4 *$c8_5[3] </function></option>
+<option><function variables="x">$c8_5[1] *$c6_4[2] *abs(sin($c8_2 *x+$c1_1[3] ))+$c8_4[1] </function></option>
+<option><function variables="x">$f9_a * $f9_sub_formula + $f9_b</function></option>
+<option><function variables="x">$c10_1[1] *sin($c10_1[2] *(x-$c10_3 )^2) +$c8_4[2] </function></option>
+
+</select>
+
+
+<select name="answera" numToSelect="5" withReplacement="false">
+
+<option><text>1.</text><math extend="$f1[1][1].formula" /></option>
+<option><text>2.</text><math extend="$f1[2][1].formula" /></option>
+<option><text>3.</text><math extend="$f1[3][1].formula" /></option>
+<option><text>4.</text><math extend="$f1[4][1].formula" /></option>
+<option><text>5.</text><math extend="$f1[5][1].formula" /></option>
+
+</select>
+
+
+<module name="funcApplet">
+  <moduleAttributes><text name="num">1</text><math name="formula">0</math></moduleAttributes>
+
+  <stack>
+  <alert>$num.</alert>
+  <graph size="small" aspectRatio="2" xmin="-5" xmax="5" ymin="-2.5" ymax="2.5" fixAxes="true">
+    <function variables="x">$formula</function>
+  </graph>
+  </stack>
+</module>
+
+
+
+
+<module name="derivApplet">
+  <moduleAttributes><text name="letter">A</text><math name="formula">0</math></moduleAttributes><setup>
+    
+    
+    <text name="choice">$choiceInput1.selectedValue</text>
+  </setup>
+
+  <stack>
+  <alert>$letter.</alert> Derivative of
+  <choiceInput inline="true" name="choiceInput1">
+  <choice>1.</choice><choice>2.</choice><choice>3.</choice>  <choice>4.</choice><choice>5.</choice>
+  </choiceInput>
+
+  <graph size="small" aspectRatio="2" xmin="-5" xmax="5" ymin="-2.5" ymax="2.5" fixAxes="true">
+    <derivative>$formula</derivative>
+  </graph>
+  </stack>
+
+</module>
+
+
+
+</setup>
+
+
+<p>Match the graph of the function on the left with the graph of its derivative on the right.</p>
+
+<sideBySide>
+<module copy="$funcApplet" num="1" formula="$f1[1][1]" />
+<module name="appA" copy="$derivApplet" letter="A" formula="$answera[1][2]" />
+</sideBySide>
+
+<sideBySide>
+<module copy="$funcApplet" num="2" formula="$f1[2][1]" />
+<module name="appB" copy="$derivApplet" letter="B" formula="$answera[2][2]" />
+</sideBySide>
+
+<sideBySide>
+<module copy="$funcApplet" num="3" formula="$f1[3][1]" />
+<module name="appC" copy="$derivApplet" letter="C" formula="$answera[3][2]" />
+</sideBySide>
+
+<sideBySide>
+<module copy="$funcApplet" num="4" formula="$f1[4][1]" />
+<module name="appD" copy="$derivApplet" letter="D" formula="$answera[4][2]" />
+</sideBySide>
+
+<sideBySide>
+<module copy="$funcApplet" num="5" formula="$f1[5][1]" />
+<module name="appE" copy="$derivApplet" letter="E" formula="$answera[5][2]" />
+</sideBySide>
+
+
+<answer>
+
+<award matchPartial="true"><when>
+$appA.choice = $answera[1][1] and
+$appB.choice = $answera[2][1] and
+$appC.choice = $answera[3][1] and
+$appD.choice = $answera[4][1] and
+$appE.choice = $answera[5][1]
+</when></award>
+
+</answer>
+
+
+
+
+
+<solution>
+<p>A: $answera[1][1] </p>
+<p>B: $answera[2][1] </p>
+<p>C: $answera[3][1] </p>
+<p>D: $answera[4][1] </p>
+<p>E: $answera[5][1] </p>
+
+</solution>
+
+
+</problem>

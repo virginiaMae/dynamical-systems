@@ -1,0 +1,34 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 81oHLNJFxt4sHLb5QnVRhn
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 8348656fc7cb5809
+-->
+<title>Introduction to bifurcations of a differential equation</title>
+
+<p><ref>Video</ref> | <ref>Transcript</ref> </p>
+
+<description>
+Representing the influence of a parameter on the behavior of a differential equation in terms of a bifurcation diagram of equilibria.
+</description>
+
+<section><title>Transcript</title>
+
+<section><title>Bifurcations of a differential equation</title>
+<p>Let’s say I have the differential equation dz/dt = 4 z - z^3. We can analyze the behavior of this differential equation by plotting the function f(z) = 4z - z^3. The differential equation has 3 equilibria – it turns out they’re at -2, 0 and 2. For z less than -2, dz/dt is positive, because f is positive. Between -2 and 0, it’s negative. Between 0 and 2 it’s positive, and it’s negative again above 2. Since the vector field is pointing toward the equilibrium -2, and also toward the equilibrium 2, both these equilibria are stable. On the other hand the vector field is pointing away from the equilibrium at 0, so this equilibrium is unstable. We can summarize this behavior by plotting just the phase line. </p>
+
+<p>In this case, let’s show the stable equilibrium with solid circles, and the unstable equilibrium, with an open circle. If the only information we had was this phase line, we could already determine the rough behavior of the dynamical system. We could see that initial conditions above 0 would go to 2, and initial conditions below 0 would go to -2. Let’s change the dynamical system slightly. Let’s add one more term to the right hand side, which is just the number c.  c is a parameter. For each value of c, we have a different differential equation. Our original differential equation corresponded to the case where c is equal to 0. </p>
+
+<p>Let’s look at what happens when we choose other values of c. Let’s set c = 1. This means we have a differential equation dz/dt = 4z - z^3 + 1. In green here at the right, we have plotted what the right hand side looks like, when c is 0. For fun, let’s add a plus 0 at the end. We could call this function f_0 to emphasize that it's the right hand side when c is equal to 0. When c is equal to 1 we have a new function, f(z) = 4z - z^3+1, which we could call f_1.  The only difference between f_1 and f_0 is that f_1 is translated upward by one unit.It’s graph looks something like this. Again, this differential equation has 3 equilibria, and the outer equilibria are stable while the inner one is unstable. But now they’re no longer symmetric. The phase line looks something like this – where the two stable equilibria are shifted to the right and the unstable equilibria is shifted to the left. Let’s make c even larger. Let’s set it equal to 2. In this case the right hand side would be shifted up a little further. And the left two equilibria would move closer together, while the right equilibria moves further to the right. The phase diagram would look something like this. When c is equal to 3, the right hand side, call it f_3(z),  is raised even further, and the two left equilibria become very close together, so that the phase line with the equilibria would look like this. </p>
+
+<p>In each of these cases, when c is equal to 0, 1, 2 or 3, the phase lines all look more or less the same – they all have three equilibria, where the middle equilibrium is unstable, and the outer two equilibria are stable.</p> 
+
+<p>Let’s see what happens when we increase c even further, to 4. When we plot the function f_4(z) = 4z - z^3 + 4, there’s a big difference. The graph of f now has only one equilibrium. The other two equilibria have disappeared, because the graph of f no longer dips down to 0, or negative z. The equilibrium at the right though, hasn’t changed much. It’s still stable, since f is positive to the left, and negative to the right. The phase diagram for c = 4 looks something like this. Now the system has dramatically different behavior, because two equilibria have disappeared. When c was 0, 1, 2, or 3, initial conditions that were sufficiently negative, would lead to the system going to the lower equilibrium at a negative value, but now all of a sudden if you change c to 4, it doesn’t matter where you start. All initial conditions will go to the positive equilibrium.This dramatic change in the behavior of a differential equation when you change a parameter like c, is called a bifurcation. </p>
+
+<p>Bifurcation means splitting. We still use the word bifurcation, even though in this case it didn’t lead to any splitting of equilibria, instead equilibria just disappeared. The actual bifurcation point was the value of c, the number the equilibrium changes from 3 to 1, happens to occur for this case, at around 3.079. So if c is less than c*, then are 3 equilibria, and if c is greater than c*, we have just one equilibrium. The disappearance of the two equilibria, or the bifurcation, can be summarized by this series of phase line plots, from c = 0 to c = 4. But we can also plot it one more way. </p>
+
+<p>We can flip the phase line on its side, and plot it vertically. And then we can use the horizontal axis for c. And now we can plot our equilibria from the phase lines using this new format. So when c is equal to 0, we have a stable equilibrium at 2 and -2, and an unstable equilibrium at 0. When c is equal to 1, an unstable equilibrium is shifted down a bit, and the two stable equilibria shifted up a bit. When c is equal to 2, the unstable equilibrium shifted down further, and the stable equilibrium shifted up further, so that the two lower equilibria get closer together. Then when c was equal to 3, the two lower equilibria were very close together. Until finally, when c was equal to 4, only the upper equilibrium remained. </p>
+
+<p>We could fill in this plot more, by adding phase lines for different values of c. We could put in c = ½ or 10, ¾, etc.When we plotted all these equilibria for all the different values of c, it would end up merging together into a curve. Where I’ve drawn the stable equilibria with a solid line, and the unstable equilibria with a dashed line. Typically in this diagram, called the bifurcation diagram, we don’t show individual points for the different phase lines, but just display the curve of equilibria, for all the smushed-together phase lines in this plot. You can also see from this plot the special value of c, c*, where the two equilibria disappeared. A bifurcation diagram is a handy way to summarize how the behavior of a dynamical system changes with a parameter. </p>
+</section>
+</section>

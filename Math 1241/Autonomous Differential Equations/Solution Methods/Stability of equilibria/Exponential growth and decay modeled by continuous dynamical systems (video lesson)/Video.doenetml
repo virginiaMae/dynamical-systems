@@ -1,0 +1,83 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7YXqQfXNjPJBruZYegiahn
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 0b4f64db8fbda34b
+-->
+<title>Exponential growth and decay modeled by continuous dynamical systems</title>
+<p><ref>Video</ref> | <ref>Transcript</ref> </p>
+<description>
+Overview of exponential growth and decay in continuous time, modeled by a linear autonomous differential equation.
+</description>
+
+
+
+
+<section><title>Video</title>
+<figure suppressFigureNameInCaption="true">
+<video youtube="Ft2Rn3V_OEA" size="large" aspectRatio="16/9" name="v1" />
+<caption>Exponential growth and decay in continuous dynamical systems</caption>
+</figure>
+
+
+
+<setup>
+  <number name="timestamp1" />
+  <number name="timestamp2" />
+</setup>
+
+<sideBySide margins="5%">
+<div>Video credit achieved: <number displayDecimals="1">$v1.fractionWatched*100</number>%
+  
+<answer hide="true" name="v1Credit">
+  <award credit="$v1.fractionWatched"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+</div>
+
+<!-- <div>
+<updateValue type="number" target="v1.time" newValue="$timestamp1" name="skipTo1">
+  <label>Go to Key Moment 1</label>
+</updateValue>
+</div>
+
+<div>
+<updateValue type="text" triggerWithTargets="skipTo1" target="v1" prop="state" newValue="playing" name="playStamp1"/>
+
+<updateValue type="number" target="v1.time" newValue="$timestamp2" name="skipTo2">
+  <label>Go to Key Moment 2</label>
+</updateValue>
+</div>
+
+
+<updateValue type="text" triggerWithTargets="skipTo2" target="v1" prop="state" newValue="playing" name="playStamp2"/> -->
+</sideBySide>
+
+  
+<problem><title>Video review questions</title>
+<exercise includeAutoNumber="true"><title />
+<p>A general solution to the continuous linear dynamical system given by
+  <me>\frac{dx}{dt} = r x</me>
+where <m>r</m> is the growth or decay rate of the population, is
+  <answer name="ans1a">
+    <choice><m>x(t) = r \frac{x^2}{2} + C</m></choice>
+    <choice><m>x(t) = r + C</m></choice>
+    <choice credit="1"><m>x(t) = Ce^{rt}</m></choice>
+  </answer></p>
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<p>A solution which takes into account the initial condition <m>x(0) = x_0</m> is given by
+  <me>x(t) = x_0 e^{rt}.</me></p>
+<p>This is known as the
+  <answer name="ans1b">
+    <choice credit="1">specific solution</choice>
+    <choice>initial solution</choice>
+    <choice>equilibrium solution</choice>
+  </answer></p>
+</exercise>
+</problem>
+</section>
+
+

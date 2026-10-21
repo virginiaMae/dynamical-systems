@@ -1,0 +1,85 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7NeNW7DcjDTWXqQDW3sVcg
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 7f1628b04259570d
+-->
+<problem>
+<!-- <title>differentiate cubic with parameter in linear term</title>
+ -->
+<setup>
+
+<selectFromSequence name="aa" from="1" to=" 7" />
+<selectFromSequence name="bb" from="-5" to=" 5" />
+<selectFromSequence name="cc" from="-5" to=" 5" exclude="-1 0 1" />
+
+<selectFromSequence name="dd" from="-10" to=" 10" />
+<select name="x"> x y z t</select>
+<select name="par"> a b c m n</select>
+<select name="f"> f g h</select>
+
+
+<selectFromSequence name="pow" from="2" to="5" />
+<math name="answer" simplify="full">3*$aa *$x ^2+2*$bb *$x +$cc *$par ^$pow </math>
+<math name="fun" simplify="full">$aa *$x ^3 + $bb *$x ^2 + $cc *$par ^$pow *$x  + $dd </math>
+
+<select name="deriv">
+  <option>
+    <math>d$f / d$x</math>
+  </option>
+  <option>
+    <math referencesAreFunctionSymbols="$f">$f'($x)</math>
+  </option>
+</select>
+
+<select name="wording">1 2 3 4 5</select>
+</setup>
+
+
+<conditionalContent>
+  <case condition="$wording=1">
+    <p>Given that $par is a constant parameter, compute the derivative, <m>$deriv[1][1] </m>, of
+    <me>$f($x) = $fun.</me>
+    <m>$deriv[1][1]  =</m> 
+    <answer forceFullCheckworkButton="true">$answer</answer>
+    </p>
+  </case>
+  <case condition="$wording=2">
+  <p>Calculate the derivative of
+    <me>$f($x) = $fun,</me>
+    where $par is a constant parameter.</p>
+    <p><m>$deriv[1][1]  =</m> 
+    <answer forceFullCheckworkButton="true">$answer</answer>
+    </p>
+  </case>
+  <case condition="$wording=3">
+  <p>For the function
+    <me>$f($x) = $fun,</me>
+    what is the derivative $deriv[1][1]?  View $par as a constant parameter.</p>
+    <p><m>$deriv[1][1]  =</m> 
+    <answer forceFullCheckworkButton="true">$answer</answer>
+    </p>
+  </case>
+  <case condition="$wording=4">
+  <p>Let <m>$f($x) = $fun.</m>  What is the derivative of <m>$f($x)</m>?  The quantity $par is a constant parameter.</p>
+    <p><m>$deriv[1][1]  =</m> 
+    <answer forceFullCheckworkButton="true">$answer</answer>
+    </p>
+  </case>
+  <case condition="$wording=5">
+  <p>The function <m>$f($x) = $fun</m> involves a constant parameter $par.  Calculate the derivative $deriv[1][1].</p>
+    <p><m>$deriv[1][1]  =</m> 
+    <answer forceFullCheckworkButton="true">$answer</answer>
+    </p>
+  </case>
+</conditionalContent>
+
+
+<solution>
+The only trick to calculate this derivative is what to do about the constant parameter $par.  Since the constant number <m>$cc $par ^$pow </m> multiplies <m>$x </m> in the term <m>$cc $par ^$pow $x </m>, the derivative of that term is <m>$cc $par ^$pow </m> times the derivative of <m>$x </m>, which is one.  The derivative of that term is simply <m>$cc $par ^$pow </m>.  The derivative of <m>$f </m> is
+<me>$deriv[1][1] =$answer </me>
+
+</solution>
+
+
+</problem>

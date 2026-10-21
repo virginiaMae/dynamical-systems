@@ -1,0 +1,10 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7TcJks5y8exgYDpS2Fuyfn
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 479f5b307d093e2f
+-->
+Placeholder document so Exam 3 will show up in gradebook.
+
+  <!-- kludge: hidden answer to keep from getting full credit upon viewing page -->
+  <answer hide="true" />

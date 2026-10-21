@@ -1,0 +1,156 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 82pYKu35rXcyTwxosz1BKX
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 9b5eec069fd817cf
+-->
+<problem>
+<!-- <title>SIS model, graph solution</title> -->
+
+<setup>
+
+<number name="alpha1">0.5</number>
+<number name="mu1">2</number>
+<number name="alpha2">2</number>
+<number name="mu2">0.5</number>
+<function name="fun1" variables="I">$alpha1 *I*(1−I)−$mu1 *I</function>
+<function name="fun2" variables="I">$alpha2 *I*(1−I)−$mu2 *I</function>
+<number name="Imax">1.15</number>
+<number name="Imin">-0.15</number>
+<number name="dI1">1/60</number>
+<number name="dI2">1/20</number>
+<number name="I01">0.1</number>
+<number name="I02">0.5</number>
+<number name="I03">0.9</number>
+<number name="E22">1-$mu2 /$alpha2 </number>
+
+
+  <styleDefinition styleNumber="2" lineWidth="3" />
+  <styleDefinition styleNumber="3" lineColor="cyan" lineWidth="2" markerStyle="circle" markerColor="cyan" markerSize="3" />
+  <styleDefinition styleNumber="4" lineColor="magenta" lineWidth="2" markerStyle="circle" markerColor="magenta" markerSize="3" />
+  <styleDefinition styleNumber="5" lineColor="lightblue" lineWidth="3" markerStyle="circle" markerColor="lightblue" markerSize="3" />
+  <styleDefinition styleNumber="6" lineColor="lightgreen" lineWidth="3" markerStyle="circle" markerColor="lightgreen" markerSize="3" />
+  <styleDefinition styleNumber="7" lineColor="purple" lineWidth="2" markerStyle="circle" markerColor="purple" markerSize="3" />
+  <styleDefinition styleNumber="9" lineColor="red" lineWidth="3" markerColor="red" markerStyle="circle" markerSize="4" />
+
+
+</setup>
+
+
+The analysis on the previous pages should have identified two cases for parameter values that give different results.  For each case, draw the phase line with equilibria, restricted to biologically plausible values of <m>I</m>.  Then, on a plot of <m>I</m> versus <m>t</m>, sketch solutions <m>I(t)</m> for representative initial conditions <m>I(0)</m>.  On the <m>I</m> versus <m>t</m> plot, also sketch the equilibrium solutions, using a solid line for stable equilibria and a dashed line for unstable equilibria.
+
+<hint>
+Remember, from above, what are biologically plausible values of <m>I</m>.
+</hint>
+
+
+<exercise includeAutoNumber="true"><title />
+<p>For the first case, let <m>\alpha=$alpha1 </m> and <m>\mu=$mu1 </m>.</p>
+
+<!-- <copy uri="doenet:activityId=83TXioRLQfjiFmpyoM1xhD" aspectRatio="5" vmin='&#x2D;0.1' vmax='1.1' var="I" assignNames="phaseLine1" nEquilibria="1" E1="0" E1stable="true" attractThreshold="0.02"/> -->
+
+<module copy="doenet:83TXioRLQfjiFmpyoM1xhD" aspectRatio="5" vmin="-0.1" vmax="1.1" var="I" name="phaseLine1" nEquilibria="1" E1="0" E1stable="true" attractThreshold="0.02" />
+
+
+
+<p>On this plot of <m>I</m> versus <m>t</m>, plot the equilibria using solid or dashed horizontal lines and solutions at representative initial conditions.</p>
+
+
+<math name="ICexpr" functionSymbols="I" hide="true">I(0)</math>
+<!--   
+<copy uri="doenet:activityId=83PUG3WFYYLvLvU2jrcCkc"  aspectRatio="5/3" vmin="&#x2D;0.2" vmax="1.1" dv="0.05" minHandleRadius="0.1" var="I" ICexpr="$ICexpr" convertEquilibria nPoints="4" IC1="0" final1="0" Estable1="true" IC2="$I01" final2="0" IC3="$I02" final3="0" IC4="$I03" final4="0" assignNames="solPlot1"/> -->
+
+<module copy="doenet:83PUG3WFYYLvLvU2jrcCkc" aspectRatio="5/3" vmin="-0.2" vmax="1.1" dv="0.05" minHandleRadius="0.1" var="I" ICexpr="$ICexpr" convertEquilibria="true" numPoints="4" IC1="0" final1="0" Estable1="true" IC2="$I01" final2="0" IC3="$I02" final3="0" IC4="$I03" final4="0" name="solPlot1" />
+  
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<p>For the second case, let <m>\alpha=$alpha2 </m> and <m>\mu=$mu2 </m>.</p>
+
+<!-- <copy uri="doenet:activityId=83TXioRLQfjiFmpyoM1xhD" aspectRatio="5" vmin='&#x2D;0.1' vmax='1.1' var="I" assignNames="phaseLine2" nEquilibria="2" E1="0" E1stable="false" E2="$E22" attractThreshold="0.02" /> -->
+
+<module copy="doenet:83TXioRLQfjiFmpyoM1xhD" aspectRatio="5" vmin="-0.1" vmax="1.1" var="I" name="phaseLine2" nEquilibria="2" E1="0" E1stable="false" E2="$E22" attractThreshold="0.02" />
+
+<p>
+On this plot of <m>I</m> versus <m>t</m>, plot the equilibria using solid or dashed horizontal lines and solutions at representative initial conditions.</p>
+
+<!-- 
+<copy uri="doenet:activityId=83PUG3WFYYLvLvU2jrcCkc" aspectRatio="4/3" vmin="&#x2D;0.2" vmax="1.1" dv="0.05" minHandleRadius="0.1" var="I" ICexpr="$ICexpr" convertEquilibria nPoints="5" IC1="0" final1="0" Estable1="false" IC2="$I01" final2="$E22" IC3="$I02" final3="$E22" IC4="$E22" final4="$E22" Estable4="true" IC5="$I03" final5="$E22" assignNames="solPlot" /> -->
+
+<module copy="doenet:83PUG3WFYYLvLvU2jrcCkc" aspectRatio="4/3" vmin="-0.2" vmax="1.1" dv="0.05" minHandleRadius="0.1" var="I" ICexpr="$ICexpr" convertEquilibria="true" numPoints="5" IC1="0" final1="0" Estable1="false" IC2="$I01" final2="$E22" IC3="$I02" final3="$E22" IC4="$E22" final4="$E22" Estable4="true" IC5="$I03" final5="$E22" name="solPlot" />
+
+</exercise>
+
+
+<solution>
+<p>Biologically plausible values of <m>I</m> are in the interval <m>0 \le I \le 1</m>.</p>
+
+
+
+<ol>
+
+<li>
+<p>For the first case, <m>\alpha \lt  \mu</m>, represented by <m>\alpha=$alpha1 </m> and <m>\mu=$mu1 </m>, the phase line has one equilibrium at zero, since the other equilibrium is not biologically plausible.</p>
+
+  
+  <graph aspectRatio="4" xmin="-0.1" xmax="1.1" ymin="-3" ymax="3" fixAxes="true" displayYAxis="false">
+    <xLabel><m>I</m></xLabel>
+    <equilibriumPoint styleNumber="9" fixed="true" stable="true">(0,0)</equilibriumPoint>
+
+    <vector styleNumber="2" tail="(-0.1, 0)" head="(-0.05,0)" fixed="true" />
+    <vector styleNumber="2" tail="(1, 0)" head="(0.05,0)" fixed="true" />
+
+</graph>
+
+<p>A plot versus <m>t</m> of solutions for the prescribed initial conditions along with equilibria:</p>
+
+<graph aspectRatio="4/3" ymin="-0.1" ymax="1.1" xmin="-2" xmax="20" fixAxes="true">
+  <xLabel><m>t</m></xLabel>
+  <yLabel><m>I</m></yLabel>
+  <equilibriumLine styleNumber="9" stable="true">y=0</equilibriumLine>
+  <function domain="(0,30)" styleNumber="2">e^(-x/2)(0.1) </function>
+  <function domain="(0,30)" styleNumber="3">e^(-x/2)(0.5) </function>
+  <function domain="(0,30)" styleNumber="4">e^(-x/2)(0.9)</function>
+</graph>
+
+
+</li>
+
+<li>
+<p>For the second case, when <m>\alpha \gt  \mu</m>, represented by <m>\alpha=$alpha2 </m> and <m>\mu=$mu2 </m>, the lower equilibrium is zero and the upper equilibrium is <m>1-\mu/\alpha=<round numDigits="5"><number>$E22 </number></round></m>.  The phase line:</p>
+
+  <graph aspectRatio="4" xmin="-0.1" xmax="1.1" ymin="-3" ymax="3" fixAxes="true" displayYAxis="false">
+    <xLabel><m>I</m></xLabel>
+    <equilibriumPoint styleNumber="9" fixed="true" stable="false">(0,0)</equilibriumPoint>
+    <equilibriumPoint styleNumber="9" fixed="true" stable="true">($E22,0)</equilibriumPoint>
+
+    <vector styleNumber="2" head="(-0.1, 0)" tail="(-0.05,0)" fixed="true" />
+    <vector styleNumber="2" head="($E22-0.05, 0)" tail="(0.05,0)" fixed="true" />
+    <vector styleNumber="2" head="($E22+0.05, 0)" tail="(1,0)" fixed="true" />
+
+</graph>
+
+
+<p>A plot versus <m>t</m> of solutions for the prescribed initial conditions along with equilibria:</p>
+
+<graph aspectRatio="4/3" ymin="-0.1" ymax="1.1" xmin="-2" xmax="20" fixAxes="true">
+  <xLabel><m>I</m></xLabel>
+  <yLabel><m>t</m></yLabel>
+  <equilibriumLine styleNumber="9" stable="false">y=0</equilibriumLine>
+  <function domain="(0,30)" styleNumber="2">$E22 + e^(-x/2)(0.1-$E22) </function>
+  <function domain="(0,30)" styleNumber="3">$E22 + e^(-x/2)(0.5-$E22) </function>
+  <equilibriumLine styleNumber="9" stable="true">y=$E22</equilibriumLine>
+  <function domain="(0,30)" styleNumber="5">$E22 + e^(-x/2)(0.9-$E22)</function>
+</graph>
+
+
+
+</li>
+
+
+</ol>
+
+</solution>
+
+
+</problem>

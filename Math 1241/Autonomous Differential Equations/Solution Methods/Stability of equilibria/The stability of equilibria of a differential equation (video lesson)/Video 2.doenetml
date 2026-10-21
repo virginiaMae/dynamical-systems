@@ -1,0 +1,126 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7ZaAeuA5B73tS5Bkk6oVUn
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 55bdc57ed55fbd89
+-->
+<title>The stability of equilibria of a differential equation</title>
+
+<p><ref>Video 1</ref> | <ref>Video 2</ref> | <ref>Transcripts</ref> </p>
+
+<description>
+Identifying stable and unstable equilibria of a differential equation by graphically solving the equation for nearby initial conditions.
+</description>
+
+<section><title>Video 2</title>
+<figure>
+<video youtube="4Qlo4SSH0V8" size="large" aspectRatio="16/9" name="v2" />
+<caption>The stability of equilibria of a differential equation, analytic approach</caption>
+</figure>
+
+
+
+<setup>
+  <number name="timestamp1" />
+  <number name="timestamp2" />
+</setup>
+
+<sideBySide margins="5%">
+<div>Video credit achieved: <number displayDecimals="1">$v2.fractionWatched*100</number>%
+  
+<answer hide="true" name="v2Credit">
+  <award credit="$v2.fractionWatched"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v2" target="$v2Credit" actionName="submitAnswer" />
+</div>
+
+<!-- <div>
+<updateValue type="number" target="v1.time" newValue="$timestamp1" name="skipTo1">
+  <label>Go to Key Moment 1</label>
+</updateValue>
+</div>
+
+<div>
+<updateValue type="text" triggerWithTargets="skipTo1" target="v1" prop="state" newValue="playing" name="playStamp1"/>
+
+<updateValue type="number" target="v1.time" newValue="$timestamp2" name="skipTo2">
+  <label>Go to Key Moment 2</label>
+</updateValue>
+</div>
+
+
+<updateValue type="text" triggerWithTargets="skipTo2" target="v1" prop="state" newValue="playing" name="playStamp2"/> -->
+</sideBySide>
+
+
+<aside startOpen="true"><title>Stability theorem</title>
+
+<p>Let <m>\frac{ dx }{ dt } = f(x)</m> be an autonomous differential equation.  Suppose <m>x(t)=x^*</m> is an equilibrium, i.e.,
+<m>f(x^*)=0</m>.  Then</p>
+<ul>
+<li>if <m>f'(x^*)\lt 0</m>, the equilibrium <m>x(t)=x^*</m> is stable, and</li>
+<li>if <m>f'(x^*)\gt 0</m>, the equilibrium <m>x(t)=x^*</m> is unstable.</li>
+</ul>
+</aside>
+  
+<problem><title>Video review questions</title>
+<exercise includeAutoNumber="true"><title />
+
+<p>Consider the autonomous differential equation <md>
+  <mrow>\frac{dx}{dt} \amp= f(x)\;\;\;\text{where,}</mrow>
+  <mrow>f(x) \amp= a x,</mrow>
+</md>
+and <m>a</m> is a nonzero constant parameter.</p>
+<p>Below, move the two points on the graph to construct any function <m>f(x) = a x</m> that meets following conditions: </p>
+  <ul>
+    <li>the system has a single, unstable equilibrium.</li>
+    <li>the value of <m>a</m> on your constructed graph will result in solutions <m>x(t)</m> that exhibit exponential growth. (Note, there are an infinite number of possible choices for <m>f(x)</m> but you only need to graph one.)</li>
+  </ul>
+
+<graph grid="true">
+  <xLabel><m>x</m></xLabel>
+  <yLabel><m>\frac{dx}{dt}</m></yLabel>
+  <point name="dragPoint1" styleNumber="3" hide="$ans1.creditAchieved = 1">(4,4)
+    <constrainToGrid />
+    <attractTo threshold="3"><point>(0,0)</point></attractTo>
+  </point>
+  <point name="dragPoint2" styleNumber="4" hide="$ans1.creditAchieved = 1">(5,4)
+    <constrainToGrid />
+    
+  </point>
+    <line name="userLine" through="$dragPoint1 $dragPoint2" styleNumber="4" applyStyleToLabel="true">
+      <label><m>f(x) = $userLine.slope x</m></label>
+    </line>
+</graph>
+  
+  <answer name="ans1">
+    <award>
+      <when>($dragPoint1 = (0,0) or $dragPoint2 = (0,0)) and $userLine.slope > 0</when>
+    </award>
+    <award name="notThroughOrigin" credit="1/2">
+      <when>$userLine.yIntercept != 0 and $userLine.slope > 0</when>
+    </award>
+    <award name="notPositiveSlope" credit="1/2">
+      <when>$userLine.yIntercept = 0 and $userLine.slope &lt;= 0</when>
+    </award>
+    <award name="bothPartsIncorrect" credit="0">
+      <when>$userLine.yIntercept != 0 and $userLine.slope &lt;= 0</when>
+    </award>
+  </answer>
+
+  <feedback condition="$notThroughOrigin">Double check the equation for <m>\frac{dx}{dt}</m>. It's given by the linear function <m>f(x) = ax</m>. This function represents a line with slope <m>m = a</m> and <m>y</m>-intercept <m>b = 0</m>. Does that match the line you've graphed?</feedback>
+  
+  <feedback condition="$notPositiveSlope"><p> Review the stability theorem introduced in the video. It tells us that if the derivative of <m>f</m> is positive at an equilibrium point, then the equilibrium is <em>unstable</em>.</p>
+  <p>In our case, since the function <m>f</m> is linear, it's derivative is just <m>f'(x) = a</m>. Therefore, if we know that the equilibrium point <m>x_e = 0</m> is <em>unstable</em>, then the derivative <m>f'(x) = a</m> must have a positive value. Does this match the slope in the graph you have drawn for <m>f</m>?</p></feedback>
+
+  <feedback condition="$bothPartsIncorrect"><p>Consider the function we are graphing, <m>f(x) = a x</m>. Isn't this just a line with slope <m>m = a</m> and <m>y-</m>intercept <m>b = 0</m>? That tells us the general shape of the graph.</p> 
+    <p>How can we decide what to make the slope <m>a</m>? The stability theorem tells us that at an <em>unstable</em> equilibrium point, the derivative of the function is positive. Since the derivative of a function represents it's instantaneous slope (which in this case is the same throughout), this means that the slope, <m>a</m>, should be positive.</p>
+  </feedback>
+
+  
+</exercise>
+</problem>
+</section>
+
+

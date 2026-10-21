@@ -1,0 +1,45 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7RyxKo6zCfRa3LmtxEEo8k
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: e8c3f9c27a7f9b57
+-->
+<document documentWideCheckWork="true">
+<title>Bacteria logistic growth project evaluation</title>
+
+<p>What was your table number?  
+<answer name="ansTableNumber">
+  <textInput name="tableNumber" />
+  <award><when>$tableNumber != <text /></when></award></answer>
+</p>
+  
+<p>Who were the members of your group?  (include yourself)</p>
+
+<answer name="ansMembers">
+<textInput expanded="true" name="members" />
+  <award><when>$members != <text /></when></award>
+</answer>
+  
+<p>Which individuals contributed equally to the project?</p>
+
+<answer name="ansContributed">
+<textInput expanded="true" name="contributed" />
+  <award><when>$contributed != <text /></when></award>
+</answer>
+  
+<p>List any individuals that did not contribute a fair amount to the project.  Explain the situation including interactions, if any, each individual had with the rest of the group while working on the project.</p>
+
+
+<answer weight="0" name="ansLackOfContribution">
+<textInput expanded="true" name="lackOfContribution" />
+  <award><when>true</when></award>
+</answer>
+
+<p>Other comments:</p>
+  
+<answer weight="0" name="ansOther">
+<textInput expanded="true" name="other" />
+  <award><when>true</when></award>
+</answer>
+  
+</document>

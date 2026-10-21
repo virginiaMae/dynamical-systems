@@ -1,0 +1,170 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7Le1TiJUnHHyDrjf17VnsR
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: b70b6b75bf129c31
+-->
+<title>Exploring the derivative of the exponential function</title>
+<p><ref>Video</ref> | <ref>Applets</ref> | <ref>Transcript</ref>  </p>
+<description>
+A guided tour into the reasons that the derivative of the exponential function with base e is the function itself.
+</description>
+
+
+<section name="vid_section"><title>Video</title>
+<figure suppressFigureNameInCaption="true">
+<video youtube="fwKVQ0W_91o" size="large" aspectRatio="16/9" name="v1" />
+<caption>The derivative of an exponential function</caption>
+</figure>
+
+
+<setup>
+  <number name="timestamp1">218</number>
+  <number name="timestamp2">401</number>
+  <number name="timestamp3">537</number>
+  <number name="timestamp4">726</number>
+</setup>
+  
+
+<sideBySide margins="5%">
+<div><p>Video credit achieved: <number displayDecimals="1">$v1RoundUp*100</number>%</p></div>
+
+<!-- <stack>
+<p><updateValue type="number" target="v1.time" newValue="$timestamp1" name="skipTo1">
+  <label>Go to Key Moment 1</label>
+</updateValue></p>
+<updateValue type="text" triggerWithTargets="skipTo1" target="v1" prop="state" newValue="playing" name="playStamp1"/>
+
+<p><updateValue type="number" target="v1.time" newValue="$timestamp2" name="skipTo2">
+  <label>Go to Key Moment 2</label>
+</updateValue>
+
+</p>
+
+<updateValue type="text" triggerWithTargets="skipTo2" target="v1" prop="state" newValue="playing" name="playStamp2"/>
+
+</stack>
+
+<stack>
+<p><updateValue type="number" target="v1.time" newValue="$timestamp3" name="skipTo3">
+  <label>Go to Key Moment 3</label>
+</updateValue>
+</p>
+
+<updateValue type="text" triggerWithTargets="skipTo3" target="v1" prop="state" newValue="playing" name="playStamp3"/>
+
+<p><updateValue type="number" target="v1.time" newValue="$timestamp4" name="skipTo4">
+  <label>Go to Key Moment 4</label>
+</updateValue>
+</p>
+
+<updateValue type="text" triggerWithTargets="skipTo4" target="v1" prop="state" newValue="playing" name="playStamp4"/>
+</stack> -->
+</sideBySide>
+
+
+<number name="v1RoundUp" hide="true">
+  <conditionalContent>
+    <case condition="$v1.fractionWatched > 0.9">1</case>
+    <else>$v1.fractionWatched</else>
+  </conditionalContent>
+</number>
+
+
+<answer hide="true" name="v1Credit">
+  <award credit="$v1RoundUp"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+
+
+<problem><title>Video review questions</title>
+
+<exercise includeAutoNumber="true"><title />
+<p>Complete the sentence:</p>
+<p>The derivative of <m>f(x) = a^x</m>, where <m>a</m> is a constant, is</p>
+  <answer name="v1Review1a">
+    <choice><m>f'(x) = x \cdot a^{x-1}</m></choice>
+    <choice credit="1">proportional to the function <m>f</m> itself</choice>
+    <choice><m>f'(x) = a^x</m></choice>
+  </answer>
+
+  <feedback condition="$_choice1"><p>Oops - You're thinking of the rule for taking the derivative of a <term>power function</term>, 
+    <me>\text{power function rule:}\;\;\;f'(x) = a \cdot x^{a - 1}\;\;\;\text{where}\;\;\;f(x) = x^a</me>
+This does <em>not</em> match our given <term>exponential function</term>: <m>f(x) = a^x</m>.</p>
+<p>When calculating the derivative, it definitely matters where the independent variable <m>x</m> is located! For an <term>exponential</term> function <m>f(x) = a^x</m>, the variable <m>x</m> is the <em>exponent</em> of the function, while for <term>power functions</term> the variable <m>x</m> is the <em>base</em>. Exponential functions follow a completely different rule for differentiation than power functions.</p></feedback>
+
+  <feedback condition="$_choice3"><p>This <em>would</em> be correct if we are considering the magical function where <m>a = e</m>. If the constant <m>a</m> just so happens to be equal to the number <m>e</m>, then we have the special condition where the proportionality constant <m>\bigg( \lim_{h \to 0} \frac{a^h - 1}{h} \bigg)</m> is equal to 1. In this case, we can say that the derivative of the function <m>f</m> is <em>equal</em> to the function <m>f</m>.</p>
+    <p>In general (i.e. for <m>a \neq e</m>) all we know is that <alert>the derivative of the function <m>f</m> is proportional</alert> to a <em>number</em>. The proportionality constant is given by <m>\bigg( \lim_{h \to 0} \frac{a^h - 1}{h} \bigg)</m> and corresponds to the value of the function's derivative at 0:
+    <md>
+      <mrow>f'(x) \amp= \bigg(\lim_{h \to 0} \frac{a^h - 1}{h} \bigg) \cdot a^x</mrow>
+      <mrow>\amp=\bigg(f'(0)\bigg) \cdot a^x</mrow>
+    </md>
+So, what <em>can</em> we say about the derivative of this function <m>f</m> for <em>any</em> base <m>a</m>?</p></feedback>
+</exercise>
+
+
+<aside><title>Formula - The derivative of an <term>exponential function</term> with base <m>a</m>:</title>
+  <md>
+  <mrow>f'(x) \amp= \bigg(\lim_{h \to 0} \frac{a^h - 1}{h} \bigg) \cdot a^x\;\;\;\text{where}\;\;\;f(x) = a^x</mrow>
+    <mrow>\amp=\bigg(f'(0)\bigg) \cdot a^x</mrow>
+  </md>
+</aside>
+
+
+<aside><title>Formula - The derivative of an <term>exponential function</term> with base <m>e</m>:</title>
+  <md>
+  <mrow>f'(x) \amp= \bigg(\lim_{h \to 0} \frac{e^h - 1}{h} \bigg) \cdot e^x\;\;\;\text{where}\;\;\;f(x) = e^x</mrow>
+    <mrow>\amp= \bigg(f'(0)\bigg) \cdot e^x</mrow>
+    <mrow>\amp=(1)\cdot e^x</mrow>
+    <mrow>\amp=e^x</mrow>
+  </md>
+</aside>
+
+<exercise includeAutoNumber="true"><title />
+<p>Using the graph below, explore the derivative of the function <m>f(x) = e^x</m> near <m>x = 0</m>. </p>
+  <ul>
+    <li>The derivative <m>f'(x)</m> is represented by the $derivLine.styleDescriptionWithNoun, and can be moved by dragging the $dragPoint.styleDescriptionWithNoun. </li>
+  <li>The value of the function <m>f</m> at any point can be found by dragging the $dragPointFunction.styleDescriptionWithNoun.
+
+<number name="x" hide="true" displayDecimals="1">-1</number>
+<number name="x2" hide="true" displayDecimals="1">1</number>
+  <graph size="medium" name="feedbackGraph" xmin="-4" xmax="4" ymin="-2" ymax="6">
+    <function applyStyleToLabel="true" name="f">e^x
+      <label><m>f(x) = e^x</m></label>
+    </function>
+    <derivative name="f_prime" hide="true">$f</derivative>
+    <line styleNumber="2" slope="$$f_prime($x)" through="$dragPoint" name="derivLine" />
+    <point styleNumber="5" fixed="true">(0,1)</point>
+    <point styleNumber="2" name="dragPoint" displayDecimals="1" applyStyleToLabel="true" labelPosition="right">($x,$$f_prime($x))
+      <label><m>f'($x) = <math displayDecimals="1" simplify="true">$$f_prime($x)</math></m></label>
+    </point>
+    <point styleNumber="4" name="dragPointFunction" displayDecimals="1" applyStyleToLabel="true" labelPosition="left">($x2,$$f($x2))
+      <label><m>f($x2) = <math displayDecimals="1" simplify="true">$$f($x2)</math></m></label>
+    </point>
+  </graph>
+  </li>
+  
+<li><p>Complete the sentence:</p>
+<p>The number <m>e</m> is the unique number where...</p>
+  <answer name="v1Review1b">
+    <choice credit="1">the derivative <m>f'(x)</m>, of the function <m>f(x) = e^x</m>, is equal to the value of the function itself</choice>
+    <choice>the derivative <m>f'(x)</m>, of the function <m>f(x) = e^x</m>, is always negative</choice>
+    <choice>the derivative <m>f'(x)</m>, of the function <m>f(x) = e^x</m>, goes to 0 as <m>x</m> approaches infinity</choice>
+  </answer>
+<hint>
+<p>Can you match up the two points on the graph? What does that imply about the value of the derivative?</p>
+</hint>
+  
+<feedback condition="$_choice5">Consider the graph above. What is the behavior of the slope of the tangent line (i.e. the derivative) of the function <m>f</m> for all <m>x</m>? The derivative is represented by the $derivLine.styleDescriptionWithNoun, and can be moved by dragging the $dragPoint.styleDescriptionWithNoun. 
+<p>Is the derivative of this function ever negative?</p>
+</feedback>
+<feedback condition="$_choice6">Consider the graph above. What is the behavior of the slope of the tangent line (i.e. the derivative) of the function <m>f</m> for all <m>x</m>? The derivative is represented by the $derivLine.styleDescriptionWithNoun, and can be moved by dragging the $dragPoint.styleDescriptionWithNoun. 
+<p>What is the behavior of the derivative for large <m>x</m>?</p></feedback>
+</li>
+</ul>
+</exercise>
+
+</problem>
+
+</section>

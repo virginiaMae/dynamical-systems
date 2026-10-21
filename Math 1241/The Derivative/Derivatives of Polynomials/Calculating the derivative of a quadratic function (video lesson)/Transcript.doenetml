@@ -1,0 +1,65 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7KzNV3XCYgbgvY1kb5zPC6
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: b366a69ce89f6b55
+-->
+<title>Calculating the derivative of a quadratic function</title>
+
+<p><ref>Video</ref> | <ref>Transcript</ref>  </p>
+
+<description>
+Using the limit definition of the derivative to calculate the derivative of a quadratic.
+</description>
+
+<section><title>Transcript: Calculating the derivative of a quadratic function</title>
+<p>The derivative of a linear function is very simple. It's just the slope of the line. However, most functions are nonlinear -- which means their slope changes for different values of the input. The next simplest function after a linear function is a quadratic, so let’s explore the derivative of a quadratic function. Let’s call the function <m>g</m> and let’s use <m>t</m> rather than <m>x</m> for the independent variable for a change, (*so we have the function) 
+<me>g(t).</me>
+So, we’ll make <m>g</m> be <m>3 t^2</m> 
+<me>g(t) = 3t^2.</me>
+and let’s try to calculate the average rate of change of <m>g</m> (which is the slope of the secant), and the instantaneous rate of change (the slope of the tangent or the derivative).</p>
+<p>If we think of <m>g</m> as being some position (for example the distance an object falling has dropped), and we can think of <m>t</m> as time, then we can think of the slope of the secant or the average rate of change as being average velocity, and then the instantaneous rate of change will just be the velocity at a particular point in time. The secant slope is equal to the change in the output <m>g</m> (or the change in position) divided by the change in the input <m>t</m> (or change in time). Let’s calculate the slope from <m>t = t_0</m>. We’ll start at <m>t_0</m> to a later time <m>t</m>, <m>t=t_0 + \Delta t</m>. So then, <m>\Delta g</m> (the change in <m>g</m>), is <m>g</m> of the later time, <m>(t_0 + \Delta t)</m>, minus <m>g(t_0)</m>, all over the change in the input (the change in time <m>\Delta t</m>)
+<me>\text{Secant slope} = \frac{\Delta g}{\Delta t} = \frac{g(t_0 + \Delta t_0) - g(t_0)}{\Delta t}.</me>
+Let’s start at the point <m>t_0 = 1</m> , then the secant slope is <m>\frac{g(1 + \Delta t) - g(1)}{\Delta t}</m>. Now, let’s plug in what <m>g</m> is: <m>g</m> is 3 times <m>t^2</m>, so <m>g( 1 + \Delta t)</m> is <m>3(1 + \Delta t)^2</m>. (*Next), <m>g(1)</m> is <m>3(1)^2</m>, and we divide by <m>\Delta t</m>. 
+<me>\frac{3(1+\Delta t)^2 - 3(1)^2}{\Delta t}.</me>
+Multiplying out the quadratic we get <m>3(1+2 \Delta t + \Delta t^2 ) - 3</m>, still over <m>\Delta t</m>,
+<me>\frac{3(1+2 \Delta t + \Delta t^2 ) - 3}{\Delta t}</me>
+this 3 cancels with the 1(*times 3), and we get that the slope of the secant is <m>(6 \Delta t+ 3 \Delta t^2)</m>, all over <m>\Delta t</m>
+<me>\frac{6\Delta t + 3 \Delta t^2}{\Delta t}.</me>
+And if we cancel out the <m>\Delta t</m>, we get <m>6 + 3 \Delta t</m>. And, of course, this makes sense only if <m>\Delta t</m> is not equal to 0. So, the slope of the secant from 1 to <m>(1 + \Delta t)</m> is <m>6 + 3 \Delta t</m>. </p>
+<p>Now, to calculate the derivative or the instantaneous rate of change, we need to calculate the tangent slope. And the tangent slope is just the secant slope, <m>\frac{\Delta g} {\Delta t}</m>, in the limit that <m>\Delta t</m> goes to 0. Since we’re looking at <m>t = 1</m>, this would be the limit as <m>\Delta t</m> goes to 0, of <m>g(1 + \Delta t) - g(1)</m>  over <m>\Delta t</m>
+<me>\lim_{\Delta t \to 0} \frac{\Delta g}{\Delta t} = \lim_{\Delta t \to 0} \frac{g(1+ \Delta t) - g(1) }{ \Delta t}.</me></p>
+<p>Now, remember the secant slope is valid as long as <m>\Delta t</m> is not equal to 0, and "the limit as <m>\Delta t</m> goes to 0" means that we don’t ever let <m>\Delta t</m> get exactly 0 -- so it’s ok to use the fact that <m>\Delta t \neq 0</m>. This means that we can replace the slope of the secant with <m>6 + 3 \Delta t</m>. So, we can take the limit as <m>\Delta t</m> goes to 0 of <m>(6+3 \Delta t)</m>
+<me>\lim_{\Delta t \to 0} (6 + 3\Delta t),</me> 
+  that's the tangent slope.</p>
+<p>Well, what happens to <m>6+ 3 \Delta t</m> as <m>\Delta t</m> gets smaller and smaller? This just gets closer to 6 because you get 6 + "something that gets really really small". So, the limit is simply 6. Since we never actually got to <m>\Delta t = 0</m> we don’t care about the fact that we had to divide by zero. We never did divide by 0, we just got really really close. We were just dividing by a really really small number. So, therefore we can conclude that the derivative of <m>g</m> at 1 is equal to 6
+<me>g’(1) = 6,</me>
+The slope of <m>g</m> at 1 is 6. Can we calculate this in general, at any value of <m>t</m>? Well, let’s start with the secant slope,
+<me>\text{Secant slope} = \frac{\Delta g}{\Delta t}</me>
+Well, this in general is 
+  <me>\frac{g(t + \Delta t) - g(t )}{\Delta t}.</me>
+Let’s just plug in what <m>g</m> is and see if we can simplify. 
+So <m>g( t + \Delta t)</m> is <m>3(t + \Delta t)^2</m>. 
+<m>g(t)</m> is <m>3 t^2</m>.
+Divide by <m>\Delta t</m>,
+<me>\frac{\Delta g}{\Delta t} = \frac{3(t + \Delta t)^2 - 3t^2 } {\Delta t}</me>
+Multiply out the numerator,
+<me>\frac{\Delta g}{\Delta t} = \frac{3(t^2 + 2t \Delta t + \Delta t^2) - 3 t^2} {\Delta t}</me>
+And here we can see that the <m>3 t^2</m> cancels, and
+that simplifies to 
+<m>\frac{6t \Delta t + 3 \Delta t^2}{\Delta t}</m>. 
+And, since we don’t have to worry about the case when <m>\Delta t</m> is equal to 0, we can cancel the <m>\Delta t</m>’s to get that the slope of the secant is just
+<m>6t + 3 \Delta t</m>
+<me>\frac{\Delta g}{\Delta t} = 6t + 3 \Delta t,</me>
+(as long as <m>\Delta t</m> is not equal to 0). Now, to calculate the derivative we need the tangent slope, so we need to take the limit as <m>\Delta t</m> goes to 0. So we take the limit as <m>\Delta t</m> goes to 0, of <m>g(t + \Delta t) - g(t)</m>  over <m>\Delta t</m>. Again, we don’t care about the case when <m>\Delta t</m> is 0, so <m>\Delta t</m> is not 0, we can plug in our formula for the secant slope. So the tangent slope is a limit as <m>\Delta t</m> goes to 0 of <m>6t + 3 \Delta t</m>. 
+<me>\text{Tangent slope} = \lim_{\Delta t \to 0} \frac{\Delta g}{\Delta t} = \lim_{\Delta t \to 0} \frac{g(t + \Delta t) - g(t)}{\Delta t}
+ = \lim_{\Delta t \to 0} (6t + 3 \Delta t)</me>
+Well, what does this get closer and closer to as <m>\Delta t</m> gets really small? Second term goes away (approaches 0); <m>6t</m> doesn’t change when <m>\Delta t</m> goes to 0 (there’s no <m>\Delta t</m> here, just a <m>t</m>). So, as <m>\Delta t</m> goes to 0, this quantity just approaches <m>6t</m>. So therefore, in general, the derivative of <m>g</m> at point <m>t</m>, is 6 times <m>t</m> 
+<me>g’(t) = 6t.</me>
+So, starting with <m>3t^2</m>, we get <m>6t</m> when we take the derivative. So, what is <m>\frac{dg}{dt}</m>? That’s just another way to write the derivative. It’s <m>6t</m>,
+<me>\frac{dg}{dt} = 6t.</me>
+How about <m>\frac{dg}{dt}</m> when <m>t</m> is equal to 4?
+<me>\frac{dg}{dt} \biggr\rvert_{t=4}</me>
+Well, plug in <m>t = 4</m>. You get 6 times 4, which is 24.</p>
+<p>We can visualize the derivative of our function <m>3t^2</m> by using the derivative of a function applet. This derivative however uses <m>x</m>, so we have to call <m>g</m>, not 3 times <m>t^2</m> but 3 times <m>x^2</m>, and the applet also calls the function <m>f</m> rather than <m>g</m>. But here’s our function, <m>3x^2</m> or <m>3t^2</m>. Note that the applet does all the work for us and tells us that indeed that <m>g’</m>, or <m>f’</m> here it is, is <m>6x</m>. And we can see that our derivative is this green curve, it's actually a line. Because the slope increases linearly with <m>x</m>. When <m>x</m> is 0, the tangent line is flat and the slope is 0. For positive values of <m>x</m> we have a positive slope which increases the larger <m>x</m> is. For negative values of <m>x</m> we have a negative slope, which decreases the more negative you make <m>x</m>.</p> 
+</section>

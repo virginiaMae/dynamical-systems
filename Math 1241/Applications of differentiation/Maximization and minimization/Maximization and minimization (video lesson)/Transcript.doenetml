@@ -1,0 +1,60 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7RYFoqrVpVnGYQUEUVPB3H
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: dfe8c4a5aaee39f1
+-->
+<title>Maximization and minimization</title>
+<p><ref>Video</ref> | <ref>Transcript</ref> | </p>
+<description>
+How to calculate the maxima and minima of a differentiable function.
+</description>
+
+<section><title>Transcript: Maximization and Minimization</title>
+<p>In this lecture, we’ll show how to use calculus to find maxima and minima of functions. Let’s let <m>f(x)</m> be the function <m>x</m> times <m>e</m> to the negative <m>x</m> </p>
+<me>f(x) = x e ^{-x}.</me>
+<p>Let’s start by taking a look at the graph of the function. Let’s use Geogebra to graph <m>f</m>. We can do this simply by typing <m>f</m> into the input box. Let’s change the color and make it bigger. Here we can see that the function goes up, reaches a maximum about right here, and then goes back down. Let’s see how we can calculate where this maximum occurs. How can we find the point where <m>f</m> reaches its maximum?</p>
+  
+<p>The solution is to find the critical points of <m>f</m>, i.e. the points where the derivative is 0 or undefined. How do we calculate the derivative <m>f’(x)</m>? <m>f</m> is <m>x</m> times <m>e</m> to the negative <m>x</m>, it’s a product, so we should use the product rule. It’s the derivative of <m>x</m>, which is 1, times <m>e^{-x}</m>, plus <m>x</m> times the derivative of <m>e^{-x}</m>. Do you remember how to differentiate <m>e^{-x}</m>?</p>
+  
+<p>The derivative of <m>e^{-x}</m> is just minus 1 and then the function itself, <m>e^{-x}</m>. So we multiply by minus <m>e^{-x}</m>, therefore <m>f’(x)</m>, if we factor out the 1 and the negative <m>x</m>, is <m>(1 - x)</m> times <m>e^{-x}</m>. </p>
+<me>f'(x) = (1-x)e^{-x}</me>
+
+<p>So when is <m>f’(x)</m> equal to 0? <m>e^{-x}</m> can never be 0, so the only possibility is that <m>(1-x)</m> is equal to 0. In other words, when <m>x = 1</m>. So <m>x = 1</m> is a critical point. And a critical point is a potential maximum or minimum. How can we tell if <m>x = 1</m> is a maximum, a minimum, or neither? Let’s look at the derivative near <m>x = 1</m>.</p>
+  
+<p>Well here’s the derivative, (let’s emphasize that). If <m>x &lt; 1</m>, then <m>(1-x )</m> is positive, and it’s multiplied by <m>e^{-x}</m>, which is positive, so this means that <m>f’</m> is positive. </p>
+  
+<p>On the other hand, if <m>x > 1</m>, then <m>(1-x)</m> is negative, and so <m>f’(x)</m> is negative.</p>
+  
+<p>So <m>f</m> is increasing to the left and <m>f</m> is decreasing to the right. We can summarize this by a diagram. If we know the function is increasing up to 1 and decreasing afterward, then it must be going up, stopping here and coming back down. So, we can conclude that right at <m>x = 1</m> we have a local maximum. Let’s take a look at the graph of <m>f</m> again.</p>
+
+<p>In Geogebra, we can easily plot the derivative by just typing Derivative of f. Here it calculates the derivative, it's the same as the function we came up with (although it's written in a different form). Let’s make it green. Here we can see that the derivative is positive, up until the point <m>x = 1</m>, and then becomes negative. The point where the derivative switches from being positive to negative is exactly where the maximum of <m>f</m> is. The maximum occurs when <m>x</m> is 1. So the point is at <m>(1, f(1))</m>, so here is our local maximum.</p>
+  
+<p>Let’s try another function. Let’s let <m>g(z)  = z - 2</m>, the whole quantity squared. 
+<me>g(z) = (z-2)^2</me>
+  
+To find the maxima or minima of <m>g</m>, we need to calculate the critical points, i.e. we need to calculate the derivative. How do we calculate the derivative of <m>g</m>? <m>g</m> is the composition of two functions – first we subtract 2, and then we square. So therefore we have to use the chain rule. We could do this, we could let <m>h(u) = u^2</m>, and <m>k(z) = z - 2</m>. Then <m>g(z)</m> is <m>h(k(z))</m>. It’s easy to calculate the derivative of the component functions <m>h</m> and <m>k</m>. <m>h’(u)</m> is <m>2u</m>, and <m>k’(z)</m> is 1. So therefore using the chain rule, <m>g’(z)</m> is <m>h’(k(z))</m> times <m>k’(z)</m>.
+<me>g'(z) = h'(k(z))\cdot k'(z)</me> </p>
+
+<p>Well, this is equal to <m>h’</m>, <m>k(z)</m> is <m>(z-2)</m>, so <m>h’(z-2)</m>. <m>k’(z)</m> is just 1. And now we need to plug in <m>u = z-2</m> into the formula for <m>h’</m>. So we get 2 times <m>(z-2)</m>. </p>
+<me>g'(z) = 2(z - 2)</me>  
+<p>Now it's simple to calculate the critical points, <m>g’(z) = 0</m> if and only if  <m>z = 2</m>. 
+We have one critical point. If we’re to the left of the critical point, if <m>z &lt; 2</m>, what is the sign of <m>g’(z)</m>? Well, if <m>z &lt; 2</m>, this factor is negative –  so <m>g’(z)</m> is negative. On the other hand, if we’re to the right, if <m>z > 2</m>, then <m>g’(z)</m> is positive. So <m>g</m> is first decreasing, and then increasing. Right here, at the point <m>z = 2</m>, we must have a local minimum. If you were to plot <m>g(z)</m> you’d get a parabola, like this. If you were to plot the derivative, it would be a line; it would look like this, where right here is the <m>z</m>-axis. So that indeed the derivative is negative up to the point ,<m>z = 2</m>, and then becomes positive. </p>
+  
+<p>Let’s try one more example. Let’s let <m>h(t)</m> equal <m>t</m> minus <m>t^3</m>
+<me>h(t) = t - t^3.</me> 
+To find the critical points lets calculate the derivative <m>\frac{dh}{dt}</m>. This is just 1 minus 3 times <m>t^2</m>. Set that equal to 0, this means 3 times <m>t^2</m> is equal to 1, or <m>t^2</m> is equal to one-third. Therefore, <m>t</m> is equal to plus or minus the square root of one-third.
+<md>
+<mrow>h'(t) \amp= 1 - 3t^2</mrow>
+<mrow>h'(t) \amp= 0 \;\;\implies\;\;t = \pm \sqrt{\frac{1}{3}}</mrow>
+</md>
+</p>
+  
+<p>The function has two critical points. One at the square root of one-third, and another at negative the square root of one-third. This derivative, <m>(1-3t^2)</m> is positive for <m>t</m> between negative square root of one-third, and square root of one-third. 
+So therefore <m>h</m> is increasing in this interval. </p>
+  
+<p>The derivative is negative if <m>t</m> is less than negative the square root of one-third, or if <m>t</m> is greater than the square root of one-third. So <m>h</m> is decreasing in those intervals. </p>
+  
+<p>Around <m>t = - \sqrt{\frac{1}{3}}</m>, <m>h</m> is first decreasing and then increasing, so it looks like this. So <m>t = - \sqrt{\frac{1}{3}}</m> is a minimum. 
+Around positive square root of one-third, <m>h</m> is first increasing and then decreasing, so therefore <m>\sqrt{\frac{1}{3}}</m> is a maximum. Just by looking at the intervals where the derivative is positive or negative, we can determine the local minima and maxima of a function.</p>  
+</section>

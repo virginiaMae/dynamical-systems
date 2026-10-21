@@ -1,0 +1,523 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7KgQAfew68uZ9ErAvYgQyZ
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 41d54d4ee7cfbf75
+-->
+<problem asList="true">
+<!-- <title>Sketch the derivative of Gaussian, step&#x2D;by&#x2D;step, worksheet</title> -->
+
+<setup>
+
+<math fixed="true" name="sqrt2">sqrt(2)</math>
+<function name="f" variables="x" symbolic="false">4*exp(-(x/2)**2)</function>
+<function name="fprime" variables="x" symbolic="false">-2*x*exp(-(x/2)**2)</function>
+
+<function name="tan_0" variables="x" symbolic="false">$$f(0)</function>
+<function name="tan_n5" variables="x" symbolic="false">$$f(-5)+$$fprime(-5)*(x+5)</function>
+<function name="tan_5" variables="x" symbolic="false">$$f(5)+$$fprime(5)*(x-5)</function>
+<function name="tan_sqrt2" variables="x" symbolic="false">$$f(1.4142 )+$$fprime(1.4142 )*(x-1.4142 )</function>
+<function name="tan_nsqrt2" variables="x" symbolic="false">$$f(-1.4142 )+$$fprime(-1.4142 )*(x+1.4142 )</function>
+
+<number name="fprime_nsqrt2">$$fprime(-1.4142 )</number>
+<number name="fprime_nsqrt2_over_2">$fprime_nsqrt2/2</number>
+
+<number name="x1">0</number>
+<number name="x2">1.4142 * -3.5</number>
+<number name="x3">1.4142 * 3.5</number>
+<number name="x4">-1.4142 </number>
+<number name="x5">1.4142 </number>
+<number name="dx">1.4142 /2</number>
+
+
+<module name="tangentPoint">
+<moduleAttributes><math name="sn">1</math><math name="x">1</math></moduleAttributes><setup>
+  
+  
+  <copy source="p" prop="x" name="px" />
+</setup>
+
+<point name="p" stylenumber="$sn" x="$x" y="$$f($x )">
+
+<constrainToGrid dx="$dx" />
+<constrainTo>$f</constrainTo>
+
+</point>
+
+<line stylenumber="$sn" through="$p" slope="$$fprime($p.x)" />
+</module>
+
+</setup>
+
+
+<p>The graph of a function <m>g(x)</m> is shown below.</p>
+
+
+<exercise>
+<p>First, find the point where the graph of <m>g</m> has a horizontal tangent line (there is only one).  This occurs for <m>x=</m>
+<answer>
+<award symbolicEquality="true">0</award>
+</answer>
+. 
+</p>
+<p>
+
+ Sketch the horizontal tangent line on the graph. 
+<answer>
+<award><when>$tan1.px = 0</when></award>
+</answer>
+
+</p>
+
+<graph size="medium" aspectRatio="11/6" xmin="-5" xmax="5" ymin="-1" ymax="5.1" fixAxes="true" grid="true" name="g1">
+  <xLabel><m>x</m></xLabel>
+  <yLabel><m>g(x)</m></yLabel>
+  
+
+<function extend="$f" />
+<module name="tan1" copy="$tangentPoint" f="$f" sn="2" x="1.5" dx="$dx" />
+
+</graph>
+
+
+<p>
+
+What is the derivative at this point?
+
+
+<m>g'(</m><mathInput name="mi1" minWidth="30" /><m>)=</m><mathInput name="mi2" minWidth="30" />
+
+<answer>
+<award matchPartial="true" symbolicEquality="true"><when>$mi1 = 0 and $mi2 = 0</when></award>
+</answer>
+
+</p>
+
+<p>On the second graph, as a first step of sketching the derivative of <m>g</m>, draw the single point on the graph of the derivative that we've calculated so far.  Since we've calculated the derivative at <m>x=</m> 
+<answer>
+<award symbolicEquality="true">0</award>
+</answer>
+, the point to draw is 
+
+<m>(x,g'(x)) = (</m><mathInput name="mi3" minWidth="30" /><m>,</m><mathInput name="mi4" minWidth="30" /><m>)</m>.
+<answer>
+<award matchPartial="true" symbolicEquality="true"><when>$mi3 = 0 and $mi4 = 0</when></award>
+</answer>
+
+</p>
+
+
+<graph size="medium" aspectRatio="55/28" xmin="-5" xmax="5" ymin="-2.5" ymax="2.5" fixAxes="true" grid="true" name="g2">
+  <xLabel><m>x</m></xLabel>
+  <yLabel><m>g'(x)</m></yLabel>
+
+<point stylenumber="2" name="derivPoint1" x="3" y="1">
+  
+    <constrainToGrid dx="$dx" dy="$fprime_nsqrt2_over_2" />
+    <constrainToGraph buffer="0" />
+  
+</point>
+
+</graph>
+<p>Point is in correct location: 
+<answer>
+<award><when>$derivPoint1 = ($x1, $$fprime($x1) )</when></award>
+</answer>
+
+</p>
+</exercise>
+
+<exercise>
+<p>There are two other places where the tangent line is nearly horizontal.  Sketch those tangent lines on the first graph.  The derivative at those points is very similar to the derivative from the previous part.  Sketch corresponding points <m>(x,g'(x))</m> for the derivative on the second graph.</p>
+
+
+<graph size="medium" aspectRatio="11/6" xmin="-5" xmax="5" ymin="-1" ymax="5.1" fixAxes="true" grid="true" name="g3">
+  <xLabel><m>x</m></xLabel>
+  <yLabel><m>g(x)</m></yLabel>
+
+<function fixed="true" extend="$f" />
+<module fixed="true" extend="$tan1" />
+<module name="tan2" copy="$tangentPoint" f="$f" sn="3" x="-1" dx="$dx" />
+<module name="tan3" copy="$tangentPoint" f="$f" sn="3" x="-3" dx="$dx" />
+
+</graph>
+
+<p>Tangent lines in correct locations: <answer>
+<award matchPartial="true" unorderedCompare="true" allowedErrorInNumbers="0.01"><when>
+($tan2.px, $tan3.px) = ($x2, $x3)
+</when></award>
+</answer>
+</p>
+
+
+<graph size="medium" aspectRatio="55/28" xmin="-5" xmax="5" ymin="-2.5" ymax="2.5" fixAxes="true" grid="true" name="g4">
+  <xLabel><m>x</m></xLabel>
+  <yLabel><m>g'(x)</m></yLabel>
+
+<point fixed="true" extend="$derivPoint1" />
+
+<point stylenumber="3" name="derivPoint2" x="4" y="1">
+  
+    <constrainToGrid dx="$dx" dy="$fprime_nsqrt2_over_2" />
+    <constrainToGraph buffer="0" />
+  
+</point>
+
+<point stylenumber="3" name="derivPoint3" x="2" y="1">
+  
+    <constrainToGrid dx="$dx" dy="$fprime_nsqrt2_over_2" />
+    <constrainToGraph buffer="0" />
+  
+</point>
+
+
+</graph>
+
+<p>Points in correct locations: <answer>
+<award unorderedCompare="true" matchPartial="true"><when>
+($derivPoint2, $derivPoint3) = ( ($x2, 0), ($x3, 0) )
+</when></award>
+</answer>
+</p>
+</exercise>
+
+
+
+<exercise>
+<p>There's one point where the tangent line has a maximally positive slope and another point where it has a maximally negative slope.  Sketch those tangent lines on the graph.</p>
+
+<graph size="medium" aspectRatio="11/6" xmin="-5" xmax="5" ymin="-1" ymax="5.1" fixAxes="true" grid="true" name="g5">
+  <xLabel><m>x</m></xLabel>
+  <yLabel><m>g(x)</m></yLabel>
+
+<function fixed="true" extend="$f" />
+<module fixed="true" extend="$tan1" />
+<module fixed="true" extend="$tan2" />
+<module fixed="true" extend="$tan3" />
+<module name="tan4" copy="$tangentPoint" f="$f" sn="4" x="-0.5" dx="$dx" />
+<module name="tan5" copy="$tangentPoint" f="$f" sn="4" x="2" dx="$dx" />
+
+</graph>
+
+<p>Tangent lines in correct locations: 
+<answer>
+<award matchPartial="true" unorderedCompare="true" allowedErrorInNumbers="0.01"><when>
+($tan4.px, $tan5.px) = ($x4, $x5)
+</when></award>
+</answer>
+</p>
+
+
+  <p>We want to estimate the slope of those tangent lines, as those slopes are the values of the derivative. First, what is the sign of the slopes? For the left point, the slope <m>g'(x)</m> is
+    <answer inline="true">
+      <choice credit="1">positive</choice>
+      <choice>negative</choice>
+      <choice>zero</choice>
+    </answer>. 
+     For the right point, the slope <m>g'(x)</m> is
+    <answer inline="true">
+      <choice>positive</choice>
+      <choice credit="1">negative</choice>
+      <choice>zero</choice>
+    </answer>.
+  </p>
+  
+  <p>
+   Add the points <m>(x,g'(x))</m> for those two values of <m>x</m> to the graph of the derivative in this plot. Remember, the signs of the <m>y</m>-coordinates of those points should match the signs you determined above.</p>
+
+<graph size="medium" aspectRatio="55/28" xmin="-5" xmax="5" ymin="-2.5" ymax="2.5" fixAxes="true" grid="true" name="g6">
+  <xLabel><m>x</m></xLabel>
+  <yLabel><m>g'(x)</m></yLabel>
+
+<point fixed="true" extend="$derivPoint1" />
+<point fixed="true" extend="$derivPoint2" />
+<point fixed="true" extend="$derivPoint3" />
+
+
+<point stylenumber="4" name="derivPoint4" x="-2" y="1">
+  
+    <constrainToGrid dx="$dx" dy="$fprime_nsqrt2_over_2" />
+    <constrainToGraph buffer="0" />
+  
+</point>
+
+<point stylenumber="4" name="derivPoint5" x="-1" y="1">
+  
+    <constrainToGrid dx="$dx" dy="$fprime_nsqrt2_over_2" />
+    <constrainToGraph buffer="0" />
+  
+</point>
+
+
+</graph>
+
+<p>Points in correct locations:
+<answer name="steepPoints">
+<award unorderedCompare="true" matchPartial="true">
+  <when>
+    ($derivPoint4, $derivPoint5) = ( ($x4, $$fprime($x4)), ($x5, $$fprime($x5)) )
+  </when>
+</award>
+</answer>
+</p>
+<feedback updateWith="$steepPoints" condition="$derivPoint4=($x4, $fprime_nsqrt2_over_2) or $derivPoint5=($x4, $fprime_nsqrt2_over_2)">
+  The point for the maximum positive slope is close.  However, the slope is larger than <number extend="$fprime_nsqrt2_over_2" displayDigits="2" />.
+</feedback>
+<feedback updateWith="$steepPoints" condition="$derivPoint4=($x5, -$fprime_nsqrt2_over_2) or $derivPoint5=($x5, -$fprime_nsqrt2_over_2)">
+  The point for the maximum negative slope is close.  However, the absolute value of the slope is larger than <number extend="$fprime_nsqrt2_over_2" displayDigits="2" />.
+</feedback>
+</exercise>
+
+<exercise>
+<p>Finish the sketch of the derivative <m>\frac{dg}{dx}</m> on the second graph by drawing a smooth curve connecting the points you sketched.</p>
+  
+  <p>First move the points of the curve to correspond to the five points you drew already.</p>
+  
+  <p>Points of curve in correct locations:
+  <answer><award><when>
+    ($pointsForward or $pointsBackward) and
+    $onCorrectPoints
+  </when></award></answer>
+</p>
+
+  
+
+
+<graph size="medium" aspectRatio="55/28" xmin="-5" xmax="5" ymin="-2.5" ymax="2.5" fixAxes="true" grid="true">
+  <xLabel><m>x</m></xLabel>
+  <yLabel><m>g'(x)</m></yLabel>
+
+<point fixed="true" extend="$derivPoint1" />
+<point fixed="true" extend="$derivPoint2" />
+<point fixed="true" extend="$derivPoint3" />
+<point fixed="true" extend="$derivPoint4" />
+<point fixed="true" extend="$derivPoint1" />
+<point fixed="true" extend="$derivPoint5" />
+
+
+<point name="c1" x="-3" y="-1">
+<attractTo>$derivPoint1</attractTo><attractTo>$derivPoint2</attractTo><attractTo>$derivPoint3</attractTo><attractTo>$derivPoint4</attractTo><attractTo>$derivPoint5</attractTo>
+</point>
+
+<point name="c2" x="-2" y="-1">
+<attractTo>$derivPoint1</attractTo><attractTo>$derivPoint2</attractTo><attractTo>$derivPoint3</attractTo><attractTo>$derivPoint4</attractTo><attractTo>$derivPoint5</attractTo>
+</point>
+
+<point name="c3" x="-1" y="-1">
+<attractTo>$derivPoint1</attractTo><attractTo>$derivPoint2</attractTo><attractTo>$derivPoint3</attractTo><attractTo>$derivPoint4</attractTo><attractTo>$derivPoint5</attractTo>
+</point>
+
+<point name="c4" x="0" y="-1">
+<attractTo>$derivPoint1</attractTo><attractTo>$derivPoint2</attractTo><attractTo>$derivPoint3</attractTo><attractTo>$derivPoint4</attractTo><attractTo>$derivPoint5</attractTo>
+</point>
+
+<point name="c5" x="1" y="-1">
+<attractTo>$derivPoint1</attractTo><attractTo>$derivPoint2</attractTo><attractTo>$derivPoint3</attractTo><attractTo>$derivPoint4</attractTo><attractTo>$derivPoint5</attractTo>
+</point>
+
+
+<setup>
+  <controlVectors name="mag2CV">
+  <vector>
+  <point name="p" x="0" y="1">
+    
+      <constrainTo>
+        <point>(2, 0)</point>
+        <point>(2* 0.70710678, 2 * 0.70710678)</point>
+        <point>(0, 2)</point>
+        <point>(2 * -0.70710678, 2 * 0.70710678)</point>
+        <point>(-2, 0)</point>
+        <point>(2 * -0.70710678, 2 * -0.70710678)</point>
+        <point>(0, -2)</point>
+        <point>(2 * 0.70710678, 2 * -0.70710678)</point>
+      </constrainTo>
+    
+  </point>
+  </vector>
+  </controlVectors>
+
+  <controlVectors name="mag075CV">
+  <vector>
+  <point name="p" x="0" y="1">
+    
+      <constrainTo>
+        <point>(0.75, 0)</point>
+        <point>(0.75* 0.70710678, 0.75 * 0.70710678)</point>
+        <point>(0, 0.75)</point>
+        <point>(0.75 * -0.70710678, 0.75 * 0.70710678)</point>
+        <point>(-0.75, 0)</point>
+        <point>(0.75 * -0.70710678, 0.75 * -0.70710678)</point>
+        <point>(0, -0.75)</point>
+        <point>(0.75 * 0.70710678, 0.75 * -0.70710678)</point>
+      </constrainTo>
+    
+  </point>
+  </vector>
+  </controlVectors>
+</setup>
+
+
+
+  
+<curve through="$c1 $c2 $c3 $c4 $c5">
+<bezierControls>
+  <controlVectors copy="$mag2CV" name="cv1" />
+  <controlVectors copy="$mag075CV" name="cv2" />
+  <controlVectors name="cv3">
+    <vector>
+      <point name="p" x="0" y="1">
+        
+          <constrainTo>
+            <point>(0.3929, 0.9196)</point>
+            <point>(-0.3929, 0.9196)</point>
+            <point>(0.3929, -0.9196)</point>
+            <point>(-0.3929, -0.9196)</point>
+            <point>(1,0)</point>
+            <point>(-1,0)</point>
+          </constrainTo>
+        
+      </point>
+    </vector>
+  </controlVectors>
+  <controlVectors copy="$mag075CV" name="cv4" />
+  <controlVectors copy="$mag2CV" name="cv5" />
+</bezierControls>
+</curve>
+
+</graph>
+
+
+<boolean hide="true" name="onCorrectPoints">
+<when unorderedCompare="true">($c1, $c5) = ($derivPoint2, $derivPoint3)</when> and
+<when unorderedCompare="true">($c2, $c4) = ($derivPoint4, $derivPoint5)</when> and
+$c3 = $derivPoint1
+</boolean>
+
+<math hide="true" name="cx1" extend="$c1.x" />
+<math hide="true" name="cx2" extend="$c2.x" />
+<math hide="true" name="cx3" extend="$c3.x" />
+<math hide="true" name="cx4" extend="$c4.x" />
+<math hide="true" name="cx5" extend="$c5.x" />
+
+
+<boolean hide="true" name="pointsForward">$cx1 &lt; $cx2 and $cx2 &lt; $cx3 and $cx3 &lt; $cx4 and $cx4 &lt; $cx5</boolean>
+<boolean hide="true" name="pointsBackward">$cx1 > $cx2 and $cx2 > $cx3 and $cx3 > $cx4 and $cx4 > $cx5</boolean>
+
+
+
+
+<setup>
+<boolean name="handlesForward" allowedErrorInNumbers="0.01" allowedErrorIsAbsolute="true">
+$cv1.p = (-2, 0) and
+$cv2.p = (-0.75, 0) and
+$cv4.p = (-0.75, 0) and
+$cv5.p = (-2, 0) and
+$cv3.p = (-0.3929, 0.9196)
+</boolean>
+
+<boolean name="handlesBackward" allowedErrorInNumbers="0.01" allowedErrorIsAbsolute="true">
+$cv1.p = (2, 0) and
+$cv2.p = (0.75, 0) and
+$cv4.p = (0.75, 0) and
+$cv5.p = (2, 0) and
+$cv3.p = (0.3929, -0.9196)
+</boolean>
+</setup>
+
+  
+<!-- Validation testing -->
+<!-- <p>(cv1/p) = $(cv1/p)</p>
+<p>(cv2/p) = $(cv2/p)</p>
+<p>(cv3/p) = $(cv3/p)</p>
+<p>(cv4/p) = $(cv4/p)</p>
+<p>(cv5/p) = $(cv5/p)</p> -->
+<!-- Validation testing -->
+
+
+  <p hide="not(($pointsForward or $pointsBackward) and $onCorrectPoints)"><em>(Correctly move the points on the curve to the correct direction before continuing.)</em></p>
+
+  <p>If you click one of the points on the curve, you should see a gray line emanating from the point with two small gray points at each end. Your goal is to rotate those line segments (by dragging the gray points) so tha the curve matches the shape of the derivative <m>g'(x)</m>.</p>
+
+  <p>Start with the points where <m>g'(x)</m> is maximum and where <m>g'(x)</m> is minimum. (The points on either side of the middle point.) Since the graph reaches an extremum at those places, you want the line segments to be 
+    <answer inline="true">
+      <choice>vertical</choice>
+      <choice credit="1">horizontal</choice>
+      <choice>diagonal</choice>
+    </answer>.
+    Move the line segments around those points to match your answer (making the sure that the curve <m>g'(x)</m> looks like a graph of a function).
+  </p>
+
+  <p>The gray line segments at the ends of the function can be hard to find, as they might point off the graph. You can temporarily move the points away from the edge of the graph to find the line segment. Around those points the derivative should be 
+    <answer inline="true">
+      <choice credit="1">small</choice>
+      <choice>large</choice>
+    </answer>.
+    Move those line segments to make sure that is true.
+  </p>
+
+  <p>For the middle point, just move the line segment to make the function have as few extra wiggles as possible. If you have the line segement off by 180 degrees, it might be hard to see the tight wiggle, so try rotating by 180 degrees if it still isn't giving you credit.</p>
+  
+  
+<p>Correct shape of curve (active once points are correct)
+<answer disabled="not(($pointsForward or $pointsBackward) and $onCorrectPoints)">
+<award matchPartial="true">
+  <when>$handlesForward or $handlesBackward</when>
+</award>
+</answer>
+</p>
+
+</exercise>
+
+
+<solution>
+
+
+<exercise includeAutoNumber="true"><title />
+<p>The horizontal tangent line is at <m>x=0</m>, as  <m>g'(0)=0</m>. The corresponding point on the graph of the derivative is <m>(x,g'(x)) = (0,0)</m>.</p>
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<p>The tangent line is nearly horizontal at the end points <m>x=-5</m> and <m>x=5</m>.  On the graph of the derivative, plots the points <m>(-5,0)</m> and <m>(5,0)</m>.</p>
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<p>The tangent line slope is maximally positive around <m>x=-1.4</m>, with slope around <m><round numDigits="2"><number>$fprime_nsqrt2 </number></round></m>.  It is maximally negative around <m>x=1.4</m>, with slope around <m>-<round numDigits="2"><number>$fprime_nsqrt2 </number></round></m>.  All the tangent lines are shown on the graph below.</p>
+
+
+<graph size="medium" aspectRatio="11/6" xmin="-5" xmax="5" ymin="-1" ymax="5.1" fixAxes="true" grid="true">
+  <xLabel><m>x</m></xLabel>
+  <yLabel><m>g(x)</m></yLabel>
+
+<function fixed="true" extend="$f" />
+<module fixed="true" copy="$tangentPoint" f="$f" sn="2" x="$x1" dx="$dx" />
+<module fixed="true" copy="$tangentPoint" f="$f" sn="3" x="$x2" dx="$dx" />
+<module fixed="true" copy="$tangentPoint" f="$f" sn="3" x="$x3" dx="$dx" />
+<module fixed="true" name="ptest" copy="$tangentPoint" f="$f" sn="4" x="$x4" dx="$dx" />
+<module fixed="true" copy="$tangentPoint" f="$f" sn="4" x="$x5" dx="$dx" />
+
+</graph>
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<p>The derivative is shown below.</p>
+
+
+<graph size="medium" aspectRatio="55/28" xmin="-5" xmax="5" ymin="-2.5" ymax="2.5" fixAxes="true" grid="true">
+  <xLabel><m>x</m></xLabel>
+  <yLabel><m>g'(x)</m></yLabel>
+
+<function fixed="true" extend="$fprime" />
+<point stylenumber="2" fixed="true">($x1, $$fprime($x1))</point>
+<point stylenumber="3" fixed="true">($x2, $$fprime($x2))</point>
+<point stylenumber="3" fixed="true">($x3, $$fprime($x3))</point>
+<point stylenumber="4" fixed="true">($x4, $$fprime($x4))</point>
+<point stylenumber="4" fixed="true">($x5, $$fprime($x5))</point>
+
+
+</graph>
+</exercise>
+
+</solution>
+
+
+</problem>

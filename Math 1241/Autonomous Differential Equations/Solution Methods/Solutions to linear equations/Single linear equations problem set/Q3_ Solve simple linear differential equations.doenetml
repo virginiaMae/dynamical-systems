@@ -1,0 +1,120 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7Y4tXYPCuU5zaos2VAtD2c
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 8d88feb5249ba22e
+-->
+<problem>
+<!-- <title>Solve simple linear differential equations</title> -->
+
+<setup>
+
+
+  
+<math name="u0" simplify="full">5</math>
+<math name="usol" simplify="full">$u0 *e^(3t)</math>
+<math name="v0" simplify="full">7</math>
+<math name="vsol" simplify="full">$v0 *e^(-4t)</math>
+<math name="s0" simplify="full">-2</math>
+<math name="ssol" simplify="full">$s0 *e^(t)</math>
+<math name="z0" simplify="full">-5</math>
+<math name="zsol" simplify="full">$z0 *e^(-t)</math>
+<math name="z02">-5</math>
+<math name="zsol2">$z02 *e^(-t)</math>
+
+</setup>
+
+<p>
+Solve the following differential equations.
+</p>
+
+<!--Problem#1**********************************************-->
+<exercise includeAutoNumber="true"><title />
+<p><m>\frac{ du }{ dt } = 3u(t) </m>
+</p>
+<p>
+<m>u(0) = $u0 </m>
+</p>
+<p><m>u(t)=</m> 
+<answer>
+<award symbolicEquality="true" simplifyOnCompare="true">$usol </award>
+</answer>
+</p>
+</exercise>
+  
+<!--Problem#2**********************************************-->
+<exercise includeAutoNumber="true"><title />
+<p>
+  <m>\frac{ dv }{ dt } = -4v </m>
+</p>
+<p>
+  <m>v(0) = $v0 </m>
+</p>
+<p>
+  <m>v(t)=</m> 
+  <answer>
+  <award symbolicEquality="true" simplifyOnCompare="true">$vsol </award>
+  </answer>
+</p>
+
+</exercise>
+
+<!--Problem#3**********************************************-->
+<exercise includeAutoNumber="true"><title />
+<p>
+  <m>s'(t) = s </m>
+</p>
+<p>
+  <m>s(0) = $s0 </m>
+</p>
+<p>
+  <m>s(t)=</m> 
+  <answer>
+  <award symbolicEquality="true" simplifyOnCompare="true">$ssol </award>
+  </answer>
+</p>
+</exercise>
+
+<!--Problem#4**********************************************-->
+<exercise includeAutoNumber="true"><title />
+<p>
+  <m>z'(t) = −z(t) </m>
+</p>
+<p>
+  <m>z(0) = $z0 </m>
+</p>
+<p>
+  <m>z(t)=</m> 
+  <answer symbolicEquality="true" simplifyOnCompare="true">
+  <award>$zsol </award>
+  <award>$zsol2 </award>
+  </answer>
+</p>
+
+</exercise>
+
+
+<solution>
+
+
+<exercise includeAutoNumber="true"><title />
+<m>u(t)=$usol </m>
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<m>v(t)=$vsol </m>
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<m>s(t)=$ssol </m>
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<m>z(t)=$zsol2 </m>
+</exercise>
+
+
+</solution>
+
+
+</problem>

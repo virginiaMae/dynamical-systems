@@ -1,0 +1,199 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7WNhCws3qYc9Jcxn8SCZRT
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: a144e63229e22eac
+-->
+<problem>
+<!-- <title>Riemann Sum &#x2D; logarithm plus monomial</title> -->
+
+<setup>
+
+<select name="side">
+  <option><number>0</number><text>left</text><text>right</text></option>
+  <option><number>1</number><text>right</text><text>left</text></option>
+</select>
+  
+<select name="var">t x</select>
+
+<selectFromSequence name="a" from="1" to="3" />
+<selectFromSequence name="b" from="2" to="3" />
+<selectFromSequence name="c" from="1" to="4" numToSelect="2" withReplacement="true" />
+<selectFromSequence name="ub" from="$c[2]+1" to="5" />
+<selectFromSequence name="n" from="3" to="4" />
+  
+<function name="p" variables="$var" symbolic="false"><math simplify="numbers">$c[1] *$var ^$b  + ln($a *$var )</math></function>
+
+
+<math name="deltat" simplify="numbers">($ub -$c[2] )/$n </math>
+<function name="ldeltat" variables="l" symbolic="true">$c[2] +$deltat *l</function>
+
+<mathList name="terms">
+  <repeatForSequence length="$n" indexName="i">
+      <math simplify="numbers">$$p($$ldeltat($i-1+$side[1][1]))*$deltat</math>
+    </repeatForSequence>
+</mathList>
+
+<sum name="the_sum" displayDigits="7" simplify="true"><mathList extend="$terms" /></sum>
+
+<mathList name="terms_no_deltat">
+  <repeat for="$terms" valueName="v"><math simplify="numbers">$v/$deltat</math></repeat>
+</mathList>
+  
+<math name="sum_no_deltat" simplify="numbers">$the_sum /$deltat </math>
+
+<mathList name="terms_wrong_side">
+  <repeatForSequence length="$n" indexName="i">
+      <math simplify="numbers">$$p($$ldeltat($i-$side[1][1]))*$deltat</math>
+    </repeatForSequence>
+</mathList>
+<sum name="sum_wrong_side"><mathList extend="$terms_wrong_side" /></sum>
+
+<mathList name="terms_wrong_side_no_deltat">
+  <repeat for="$terms_wrong_side" valueName="v"><math simplify="numbers">$v/$deltat</math></repeat>
+</mathList>
+  
+<math name="sum_wrong_side_no_deltat" simplify="numbers">$sum_wrong_side /$deltat </math>
+
+<number name="factor_numerical">0.9</number>
+<number name="factor_wrong_side">0.8</number>
+<number name="factor_no_deltat">0.7</number>
+
+  
+<max name="maxAbsTerm">
+  <repeat for="$terms" valueName="v"><abs>$v</abs></repeat>
+</max>
+
+  
+</setup>
+
+<p>
+Approximate the definite integral <m>\displaystyle \int_{$c[2]}^{$ub} $p \, d$var</m> using a $side[1][2]-hand  Riemann sum with <m>$n</m> intervals.  If rounding, be sure to include at least <m>5</m> significant digits.  (To be safe, include even more digits.)
+</p>
+
+
+<p>
+<m>\displaystyle \int_{$c[2]}^{$ub} $p \, d$var</m>
+</p>
+
+  
+<p>
+<m>\approx</m> 
+<group name="mts">
+  <mathInput />
+  <repeatForSequence length="$n-1"> + <mathInput /></repeatForSequence>
+</group>
+<answer matchPartial="true" matchByExactPositions="true" name="ans_terms">
+  <award referencesAreResponses="$mts" allowedErrorInNumbers="0.0001">
+    <when>
+      <mathList name="uterms">
+        <setup><collect componentType="mathInput" from="$mts" name="collect_list" /></setup><mathList name="list" extend="$collect_list.value" />
+      </mathList>
+      = $terms
+    </when>
+  </award>
+  <award credit="$factor_numerical" allowedErrorInNumbers="0.001" feedbackCodes="numericalerror">
+    <when>$uterms = $terms</when>
+  </award>
+  <award credit="$factor_no_deltat" allowedErrorInNumbers="0.0001" name="award_terms_no_deltat">
+    <when>$uterms = $terms_no_deltat</when>
+  </award>
+  <award credit="$factor_no_deltat$factor_numerical" allowedErrorInNumbers="0.001" name="award_terms_no_deltat2" feedbackCodes="numericalerror">
+    <when>$uterms = $terms_no_deltat</when>
+  </award>
+  <award credit="$factor_wrong_side" allowedErrorInNumbers="0.0001" name="award_terms_wrong_side">
+    <when>$uterms = $terms_wrong_side</when>
+  </award>
+  <award credit="$factor_wrong_side$factor_numerical" allowedErrorInNumbers="0.001" name="award_terms_wrong_side2" feedbackCodes="numericalerror">
+    <when>$uterms = $terms_wrong_side</when>
+  </award>
+  <award credit="$factor_wrong_side$factor_no_deltat" allowedErrorInNumbers="0.0001" name="award_terms_wrong_side_no_deltat">
+    <when>$uterms = $terms_wrong_side_no_deltat</when>
+  </award>
+  <award credit="$factor_wrong_side$factor_no_deltat$factor_numerical" allowedErrorInNumbers="0.001" name="award_terms_wrong_side_no_deltat2" feedbackCodes="numericalerror">
+    <when>$uterms = $terms_wrong_side_no_deltat</when>
+  </award>
+</answer>
+</p>
+$ans_terms.feedbacks
+<feedback condition="$award_terms_no_deltat or $award_terms_no_deltat2 or $award_terms_wrong_side_no_deltat or $award_terms_wrong_side_no_deltat2">
+  It seems you forgot to multiply by the interval width.
+</feedback>
+<feedback condition="$award_terms_wrong_side or $award_terms_wrong_side2 or $award_terms_wrong_side_no_deltat or $award_terms_wrong_side_no_deltat2">
+  The problem is asking for a $side[1][2]-hand Riemann sum, but it looks like you are calculating a $side[1][3]-hand Riemann sum.
+</feedback>
+
+<p>
+<m>=</m>
+<answer forceFullCheckworkButton="true" name="answer6">
+  <award allowedErrorInNumbers="0.0001">
+    $the_sum
+  </award>
+  <award allowedErrorInNumbers="$maxAbsTerm*10^(-14)" allowedErrorIsAbsolute="true">
+    $the_sum
+  </award>
+  <award credit="$factor_numerical" allowedErrorInNumbers="0.001" feedbackCodes="numericalerror">
+    $the_sum
+  </award>
+  <award allowedErrorInNumbers="0.0001" credit="$factor_no_deltat" name="award_no_deltat">
+    $sum_no_deltat
+  </award>
+  <award credit="$factor_no_deltat$factor_numerical" allowedErrorInNumbers="0.001" feedbackCodes="numericalerror" name="award_no_deltat2">
+    $sum_no_deltat
+  </award>
+  <award allowedErrorInNumbers="0.0001" credit="$factor_wrong_side" name="award_wrong_side">
+    $sum_wrong_side
+  </award>
+  <award credit="$factor_wrong_side$factor_numerical" allowedErrorInNumbers="0.001" feedbackCodes="numericalerror" name="award_wrong_side2">
+    $sum_wrong_side
+  </award>
+  <award allowedErrorInNumbers="0.0001" credit="$factor_wrong_side$factor_no_deltat" name="award_wrong_side_no_deltat">
+    $sum_wrong_side_no_deltat
+  </award>
+  <award credit="$factor_wrong_side$factor_no_deltat$factor_numerical" allowedErrorInNumbers="0.001" feedbackCodes="numericalerror" name="award_wrong_side_no_deltat2">
+    $sum_wrong_side_no_deltat
+  </award>
+</answer>
+</p>
+<feedback condition="$award_no_deltat or $award_no_deltat2 or $award_wrong_side_no_deltat or $award_wrong_side_no_deltat2"> It seems you forgot to multiply by the interval width.</feedback>
+<feedback condition="$award_wrong_side or $award_wrong_side2 or $award_wrong_side_no_deltat or $award_wrong_side_no_deltat2"> The problem is asking for a $side[1][2]-hand Riemann sum, but it looks like you are calculating a $side[1][3]-hand Riemann sum.</feedback>$answer6.feedbacks
+
+  
+
+
+<solution>
+
+
+    <setup>
+
+    <mathList name="endpoints">
+      <repeatForSequence length="$n" indexName="i"><math simplify="full">$$ldeltat($i-1+$side[1][1])</math></repeatForSequence>
+    </mathList>
+
+    <sum name="the_sum_as_sum" forceSymbolic="true" displayDigits="7"><mathList extend="$terms" /></sum>
+
+
+
+
+  </setup>
+
+  
+<p>We need to split the interval <m>($c[2], $ub)</m> into <m>$n </m> smaller intervals, each with width <m>\frac{ $ub -( $c[2]  )}{ $n  }=$deltat </m>. The $side[1][2]  endpoints for these intervals are: <m>$endpoints </m>.</p>
+
+
+<p>
+We then evaluate the integrand <m><math extend="$p.formula" /></m> at each of these endpoints, multiply by <m>$deltat </m>, and add them together:
+</p>
+
+<p>
+<m>$the_sum_as_sum
+=<sum displaySmallAsZero="$maxAbsTerm*10^(-14)" extend="$the_sum" /> <!--  = <round numberdecimals="6">$leftsum </round> --></m>
+</p>
+  
+
+
+  
+</solution>
+
+
+</problem>

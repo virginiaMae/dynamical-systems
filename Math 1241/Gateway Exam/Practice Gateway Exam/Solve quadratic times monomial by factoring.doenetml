@@ -1,0 +1,69 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7BCCgq6bzgYYsaa5NW4Gqa
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 15958adefcdcce74
+-->
+<problem>
+
+<setup>
+<selectFromSequence name="a" exclude="0" numToSelect="3" withReplacement="true" from="-10" to="10" excludecombinations="(1 1) (1 -1) (-1 1) (-1 -1)" />
+<selectFromSequence name="c" exclude="0" from="-10" to="10" />
+
+<selectFromSequence name="n" from="1" to="4" />
+<select name="x">x y z</select>
+
+<math name="factored_quadratic" simplify="full">($x+$a[1])($x+$a[2])</math>
+<math name="expanded_quadratic" simplify="full" expand="true">$factored_quadratic</math>
+<convertSetToList name="zero_list" simplify="full"><math>{-$a[1],-$a[2],0}</math></convertSetToList>
+<math name="factor1" simplify="full">$x+$a[1]</math>
+<math name="factor2" simplify="full">$x+$a[2]</math>
+<math name="minus_a" simplify="full">-$a[1]</math>
+<math name="minus_b" simplify="full">-$a[2]</math>
+<math name="monomial" simplify="full">$c*$x^$n</math>
+<math name="monomial_times_expanded_quadratic" simplify="full">$monomial*$expanded_quadratic</math>
+<math name="monomial_times_factored_quadratic" simplify="full">$monomial*$factored_quadratic</math>
+</setup>
+
+Solve the equation <m>$monomial_times_expanded_quadratic =0</m> by factoring.
+
+<p>How many solutions are there? <mathInput name="user_num_sol" /></p>
+
+<p>The solutions are:</p>
+
+<repeatForSequence length="min(10,$user_num_sol)" name="xs">
+    <p><m>$x =</m> <mathInput /></p>
+  </repeatForSequence>
+
+<answer>
+  <award>
+    <when matchpartial="true">
+      <mathList>
+        <setup><collect componentType="mathInput" from="$xs" isResponse="true" name="collect_list" /></setup><mathList name="list" extend="$collect_list.value" />
+      </mathList>
+      =
+      $zero_list
+    </when>
+  </award>
+
+</answer>
+
+
+<solution>
+Factoring the quadratic <m>$expanded_quadratic</m>, we obtain <m>$factored_quadratic</m>.  Therefore, the solutions to 
+<me>$monomial_times_expanded_quadratic =0</me>
+are the same as the solutions to
+<me>$monomial_times_factored_quadratic=0.</me>
+For this factored expression to be zero, one of the factors must be zero.  
+<conditionalContent>
+  <case condition="$a[1]=$a[2]">
+Either <m>$x=0</m> or <m>$factor1=0</m>.  Therefore there are two solutions: <m>$x=0</m> and <m>$x = $minus_a</m>.
+  </case>
+  <else>
+Either <m>$x=0</m>, <m>$factor1=0</m>, or <m>$factor2=0</m>.  Therefore, there are three solutions: <m>$x=0</m>,  <m>$x=$minus_a</m>, and <m>$x=$minus_b</m>.
+  </else>
+</conditionalContent>
+
+</solution>
+
+</problem>

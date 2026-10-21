@@ -1,0 +1,134 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7PsyrDkeThRuBzRJ25r2pg
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 188e107d667f88dc
+-->
+<title>The tangent line as a linear approximation</title>
+<p><ref>Video</ref> | <ref>Transcript</ref></p>
+<description>
+How the tangent line to the graph of a function is a linear approximation to the function close by the tangent point.
+</description>
+
+
+<section name="vid_section"><title>Video</title>
+<figure suppressFigureNameInCaption="true">
+<video youtube="PC4f3XzK2bc" size="large" aspectRatio="16/9" name="v1" />
+<caption>The tangent line as a linear approximation</caption>
+</figure>
+
+<setup>
+  <number name="timestamp1">60</number>
+  <number name="timestamp2">295</number>
+</setup>
+  
+
+<sideBySide margins="5%">
+<div><number name="v1RoundUp" hide="true">
+  <conditionalContent>
+    <case condition="$v1.fractionWatched > 0.9">1</case>
+    <else>$v1.fractionWatched</else>
+  </conditionalContent>
+</number>
+  
+  <p>Video credit achieved: <number displayDecimals="1">$v1RoundUp*100</number>%</p>
+
+<answer hide="true" name="v1Credit">
+  <award credit="$v1RoundUp"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+</div>
+
+
+<div>
+  <p>
+  <updateValue type="number" target="$v1.time" newValue="$timestamp1" name="skipTo1">
+    <label>Go to Key Moment 1</label>
+  </updateValue>
+  <updateValue type="text" triggerWith="$skipTo1" target="$v1.state" newValue="playing" name="playStamp1" />
+  <updateValue type="number" target="$v1.time" newValue="$timestamp2" name="skipTo2">
+    <label>Go to Key Moment 2</label>
+  </updateValue>
+    <updateValue type="text" triggerWith="$skipTo2" target="$v1.state" newValue="playing" name="playStamp2" />
+  </p>
+</div>
+</sideBySide>
+
+<aside name="linearApproximationFormula"><title>Formula - Linear approximation using the tangent line:</title>
+  <md>
+  <mrow>y \amp= f(a) +f'(a)(x-a)</mrow>
+  </md>
+  <p>where, 
+    <ul>
+      <li><m>a</m> is the input value at which the tangent line is to be evaluated and </li>
+      <li><m>y</m> is an approximation to <m>f(x)</m> for input values of <m>x</m> near <m>a</m>.</li>
+    </ul>
+  </p>
+</aside>
+
+  
+
+<problem><title>Video review questions</title>
+<setup>
+
+</setup>
+
+<exercise includeAutoNumber="true"><title />
+<p>Select the option that best completes the sentence.</p>
+<p>The tangent line, or the linear approximation, to a function at a point <m>a</m>
+  <answer name="ans1a">
+    <choice> is negative when the rate of change of the function <m>f</m> is greater than 0 at <m>a</m></choice>
+    <choice credit="1"> is a good approximation to the function <m>f</m> at points near <m>a</m></choice>
+    <choice> has a slope that is always equal to the value of the function <m>f</m> at <m>a</m></choice>
+  </answer></p>
+  <feedback condition="$ans1a = $_choice1.text">Actually, the opposite of this statement is true: if the rate of change of the function is <em>greater</em> than 0, then the derivative will have a <em>positive</em> value at <m>a</m>.</feedback>
+  <feedback condition="$ans1a = $_choice3.text">This statement is not generally true - the value of a function is <em>not</em> necessarily equal to it's derivative (or the slope of its tangent line) at every <m>x</m> (or any arbitrary point <m>a</m>). But, there is a special function where this is, in fact, the case: <m>f(x) = e^x</m>.
+  </feedback>
+  <hint>See <ref to="$vid_section">Key Moment 1</ref></hint>
+
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<p>Given a function <m>f(x) = x^2</m>, let's determine the equation of the tangent line to <m>f(x)</m> at <m>x = 3</m>:
+  <ul>
+    <li><p>First, what is <m>f'(x)</m> = 
+      <answer name="ans2a">2x</answer></p>
+      <feedback condition="$ans2a.numSubmissions > 2 and $ans2a.creditAchieved !=1">Here, we need to use the <ref to="doenet:7KNaZhtcLkYEubRxQt2Ak4">power rule</ref> to differentiate <m>f(x) = x^2</m></feedback>
+    </li>  
+   
+    <li><p>Note that in this question, the <m>a</m> in the linear approximation formula given <ref to="$linearApproximationFormula">here</ref> is:  <m>a = </m>
+      <answer inline="true" name="ans2a_a">3</answer></p>
+      <feedback condition="$ans2a_a.numSubmissions = 2">Check the formula <ref to="$linearApproximationFormula">here</ref>. In this formula, <m>a</m> represents the input value at which we are calculating the tangent line. In this case, we are determining the equation of the tangent line at x = ....?</feedback>
+      So, then <m>f'(a) = </m>
+      <answer name="ans2b">6</answer>
+      <feedback condition="$ans2b.numSubmissions = 2">Using the expression you calculated for <m>f'(x)</m> (it should be a function involving <m>x</m>...), substitute the value you found for <m>a</m> from the previous question.</feedback> 
+    </li>
+      
+    <li><p>Finally, <m>f(a) = </m>
+      <answer name="ans2c">9</answer></p>
+      <feedback condition="$ans2c.numSubmissions = 2">Substitute the value you found for <m>a</m> from the previous question as the input for the original function <m>f</m>.</feedback>  
+    </li>
+    <li><p>We now have everything we need to write the equation for the tangent line to <m>f</m> at <m>a</m>. It is:
+  
+      <choiceInput name="choice2d">
+        <choice><m>y = </m><math>$ans2c - $ans2a ( $ans2a_a + x)</math></choice>
+        <choice><m>y = </m><math>$ans2c + $ans2a_a ( $ans2b - x)</math></choice>
+        <choice credit="1"><m>y = </m><math>$ans2c + $ans2b (x - $ans2a_a)</math></choice>
+      </choiceInput>
+      <answer name="ans2d">
+        <award>
+          <when>$choice2d.selectedIndex = 3 and $ans2a.creditAchieved = 1 and $ans2a_a.creditAchieved = 1 and $ans2b.creditAchieved = 1 and $ans2c.creditAchieved = 1
+          </when>
+        </award> 
+      </answer></p>
+      <feedback condition="$ans2d.numSubmissions > 0 and $ans2d.creditAchieved != 1"> Note, in this part you need to get all the previous responses to question 2 correct in order to obtain the final correct equation.</feedback>
+    </li>
+  </ul>
+</p>
+</exercise>
+<hint>See <ref to="$vid_section">Key Moment 2</ref> for a similar example..(with a trickier derivative)</hint>
+
+</problem>
+
+</section>

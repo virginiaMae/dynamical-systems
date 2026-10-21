@@ -1,0 +1,111 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7TMuG78EXWM7W1KpBTFdag
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 043ce3461c950cb3
+-->
+
+<title>Using the Forward Euler algorithm to solve pure-time differential equations</title>
+<p><ref>Video</ref> | <ref>Summary</ref> | <ref>Transcript</ref>  </p>
+<description>
+By pretending that the slope of a function is constant over small intervals, we following tangent lines to estimate the solution to pure-time differential equations.
+</description>
+
+
+
+
+<section><title>Video</title>
+
+<figure suppressFigureNameInCaption="true">
+<video youtube="POvY3bTQmAg" size="large" aspectRatio="16/9" name="v1" />
+<caption>Solving pure-time differential equations with the Forward-Euler algorithm</caption>
+</figure>
+
+
+<setup>
+  <number name="timestamp1">438</number>
+  <number name="timestamp2">9*60 + 27</number>
+</setup>
+  
+
+<sideBySide margins="5%">
+<div><p>Video credit achieved: <number displayDecimals="1">$v1.fractionWatched*100</number>%</p>
+  
+<answer hide="true" name="v1Credit">
+  <award credit="$v1.fractionWatched"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+</div>
+
+
+<p><updateValue type="number" target="$v1.time" newValue="$timestamp1" name="skipTo1">
+  <label>Go to Key Moment 1</label>
+</updateValue>
+<updateValue type="text" triggerWith="$skipTo1" target="$v1.state" newValue="playing" name="playStamp1" /></p>
+
+<p><updateValue type="number" target="$v1.time" newValue="$timestamp2" name="skipTo2">
+  <label>Go to Key Moment 2</label>
+</updateValue>
+
+<updateValue type="text" triggerWith="$skipTo2" target="$v1.state" newValue="playing" name="playStamp2" /></p>
+</sideBySide>
+
+<aside name="forwardEulerAlgorith"><title>Forward Euler algorithm:</title>
+
+<p>Let <m>x(t)</m> be the solution to a pure-time differential equation given by
+<md>
+  <mrow name="pure_time">\frac{ dx }{ dt }\amp = f(t)</mrow>
+  <mrow>x(t_0)\amp = x_0, \notag</mrow>
+</md>
+Then, the function <m>x(t)</m> can be approximated for time steps of length <m>\Delta t</m> by a series of linear approximations given by:
+  <md>
+    <mrow> x(t_{i+1}) \approx x(t_i) + x'(t_i)\Delta t\;\;\;\text{for} \;\;\;i = 0,1,2,...</mrow>
+  </md></p>
+    
+ 
+</aside>
+
+  
+
+<problem><title>Video review questions</title>
+<setup>
+
+</setup>
+
+<exercise includeAutoNumber="true"><title />
+<p>The fundamental idea behind the Forward Euler algorithm for approximating a solution to a differential equation is
+  <answer name="ans1a">
+    <choice>to sketch a graph of the solution function based on where the graph of the differential equation is positive, negative, or zero.</choice>
+    <choice>to use intuition to check possible solution functions and see if they match the match the differential equation when they are differentiated.</choice>
+    <choice credit="1">to use the slope of the solution function as calculated from the differential equation as an approximation to the function itself over a series of small time steps.</choice>
+  </answer></p>
+  <feedback condition="$ans1a = $_choice1.text">This is a good way to gather information about the behavior of the solution, as illustrated in <ref to="doenet:7TzyuEb4GCMtxb3GbDoU4T">Graphical solution of pure-time differential equations</ref>. The Forward Euler algorithm, however, describes a different process for gathering information about the solution function. See <ref to="$v1">Key Moment 1</ref></feedback>
+  <feedback condition="$ans1a = $_choice2.text">This option can be the perfect way to find a solution to a simple differential equation, as illustrated in <ref to="doenet:7TnsSPfdT3XFW3iGJ1EoWM">Introduction to pure-time differential equations</ref>. The Forward Euler algorithm, however, describes a different process for gathering information about the solution function. It can also be used for much more complex functions that do not lend themselves to a guess-and-check procedure for discovery. See <ref to="$v1">Key Moment 1</ref>
+  </feedback>
+<hint>See <ref to="$vid_section">Key Moment 1</ref></hint>
+
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<!-- <p>Let 
+  <me>\frac{dx}{dt} = f(t)
+    \;\;\;\text{where}\;\;\;f(t) = 2t^2 &#x2D; 6t + 4</me>
+and <m>x(0) = 3</m>.</p>
+<p>  Using the Forward Euler algorithm, we can approximate the value of the solution function after one time step as <m>x(t_1) = x(t_0) + x'(t_0)\Delta t</m>. Let <m>\Delta t = 1</m>
+  Then, <m>x'(t_0) = f(0) = </m>
+    <answer>4</answer></p> -->
+<p>The Forward Euler algorithm can yield inaccurate results unless</p>
+ <answer name="ans2a">
+   <choice credit="1">the algorithm is implemented over many small time steps with a computer program.</choice>
+   <choice>you always keep at least 7 decimal places when calculating subsequent time steps.</choice>
+   <choice>you always work with fractions rather than decimals in intermediate steps.</choice>
+   <choice>the differential equation is a polynomial function of degree 2 or greater.</choice>
+ </answer>
+<hint>See <ref to="$v1">Key Moment 2</ref></hint>
+</exercise>
+</problem>
+
+  
+</section>
+

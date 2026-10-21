@@ -1,0 +1,215 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7E84DKgfVFENhtzWRpArH4
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 7a572d03fcf41c89
+-->
+
+<title>Exponential growth and decay modeled by discrete dynamical systems</title>
+
+<p><ref>Video</ref> | <ref>Summary</ref> | <ref>Examples</ref> | <ref>Transcript</ref> </p>
+<description>
+Overview of exponential growth and decay in discrete time.  Exploration of their qualitative properties as well as solutions to the dynamical system.
+</description>
+
+<p>The 
+<ref to="doenet:7DBEyjdcSF3AWs1fs2WNkK">solution to a linear discrete dynamical system</ref>
+ is an exponential.  If we choose conditions so that the 
+<term><ref to="doenet:82S5kKvMFZgTae6rHgvyF4">state variable</ref></term>
+ stays positive, this exponential solution will exhibit either exponential growth or exponential decay.  We can determine whether we get growth or decay from the parameters of the system.</p>
+
+
+
+
+<section><title>Growth versus decay</title>
+
+<section><title>Video</title>
+
+<figure suppressFigureNameInCaption="true">
+<video youtube="rbvTlXW_4-g" size="large" aspectRatio="16/9" name="v1" />
+<caption>Exponential growth and decay in discrete dynamical systems</caption>
+</figure>
+  
+<number name="v1RoundUp" hide="true">
+  <conditionalContent>
+    <case condition="$v1.fractionWatched > 0.9">1</case>
+    <else>$v1.fractionWatched</else>
+  </conditionalContent>
+</number>
+  
+  <p>Video credit achieved: <number displayDecimals="1">$v1RoundUp*100</number>%</p>
+
+<answer hide="true" name="v1Credit">
+  <award credit="$v1RoundUp"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+  
+</section>
+
+<subsection><title>Video review questions</title>
+
+<ol><li>
+<problem>
+<title><alert>Parameter range<!--regime--> for exponential growth/decay, function iteration form</alert></title>
+
+<setup>
+
+<selectFromSequence name="x0" from="0.1" to=" 10" step=" 0.1" />
+<select name="x">x y z s u v w </select>
+<select name="n">n t </select>
+<select name="a">a b c alpha beta gamma </select>
+<math name="base" simplify="full">$a</math>
+<math name="base_to_the_n" simplify="full">$base ^$n </math>
+</setup>
+
+<p>For the discrete dynamical system
+<md>
+  <mrow>$x _{ $n  +1}\amp = $a  $x _{ $n  }</mrow>
+  <mrow>$x _{0}\amp = $x0 </mrow>
+</md>
+for what range of values of the parameter <m>$a </m> does the system exhibit exponential decay?</p>
+
+<p>
+<answer symbolicEquality="true" name="ans1">0</answer>
+ <m>\lt $a  \lt</m> 
+<answer symbolicEquality="true" name="ans2">1</answer>
+</p>
+
+<p>For what range of values of the parameter <m>$a </m> does the system exhibit exponential growth?</p>
+
+<p><m>$a  \gt</m> 
+<answer symbolicEquality="true" name="ans3">1</answer>
+</p>
+
+    <hint hide="($ans1.numSubmissions &lt; 2 and $ans2.numSubmissions &lt; 2 and $ans3.numSubmissions &lt; 2) or $ans1.creditAchieved + $ans2.creditAchieved + $ans3.creditAchieved = 3 or $ans1.numSubmissions >= 5 or $ans2.numSubmissions >= 5 or $ans3.numSubmissions >= 5">
+  <p>We can answer this question by solving the system. The equation is already in function iteration form.
+To go from <m>$x _{ $n  }</m> to <m>$x _{ $n +1}</m>, we must multiply by <m>$base </m>.  Since the initial condition is <m>$x _0 = $x0 </m>, and we must multiply by <m>$base </m> for a total of <m>$n </m> times to get to <m>$x _{ $n  }</m>,  the solution is
+<me>$x _{ $n  } = $base_to_the_n $x0 .</me></p>
+  </hint>
+
+  <hint hide="($ans1.numSubmissions &lt; 5 and $ans2.numSubmissions &lt; 5 and $ans3.numSubmissions &lt; 5) or $ans1.creditAchieved + $ans2.creditAchieved + $ans3.creditAchieved = 3">
+<p>We can answer this question by solving the system. The equation is already in function iteration form.
+To go from <m>$x _{ $n  }</m> to <m>$x _{ $n +1}</m>, we must multiply by <m>$base </m>.  Since the initial condition is <m>$x _0 = $x0 </m>, and we must multiply by <m>$base </m> for a total of <m>$n </m> times to get to <m>$x _{ $n  }</m>,  the solution is
+<me>$x _{ $n  } = $base_to_the_n $x0 .</me></p>
+
+<p>For exponential decay we need
+<me>0 \lt $base  \lt 1.</me>
+
+</p>
+
+<p>For exponential growth, we need
+<me>$base  \gt 1.</me>
+</p>
+        
+  </hint>
+
+<solution>
+<p>We can answer this question by solving the system. The equation is already in function iteration form.
+To go from <m>$x _{ $n  }</m> to <m>$x _{ $n +1}</m>, we must multiply by <m>$base </m>.  Since the initial condition is <m>$x _0 = $x0 </m>, and we must multiply by <m>$base </m> for a total of <m>$n </m> times to get to <m>$x _{ $n  }</m>,  the solution is
+<me>$x _{ $n  } = $base_to_the_n $x0 .</me></p>
+
+<p>For exponential decay we need
+<me>0 \lt $base  \lt 1.</me>
+
+</p>
+
+<p>For exponential growth, we need
+<me>$base  \gt 1.</me>
+</p>
+
+</solution>
+</problem>
+</li>
+
+
+<li>
+<problem>
+<title><alert>Parameter regime for exponential growth/decay, difference form</alert></title>
+
+<setup>
+
+<selectFromSequence name="selectFromSequence" from="0.1" to=" 10" step=" 0.1" />
+<select name="select">x y z s u v w </select>
+<select name="select1">n t </select>
+<select name="select2">a b c alpha beta gamma </select>
+<math name="base" simplify="full">$select2[1] +1</math>
+<math name="base_to_the_n" simplify="full">$base ^$select1[1] </math>
+</setup>
+
+
+<p>For the discrete dynamical system
+<md>
+  <mrow>
+$select[1] _{ $select1[1]  +1} - $select[1] _{ $select1[1]  }\amp = $select2[1]  $select[1] _{ $select1[1]  }  
+</mrow>
+  <mrow>$select[1] _{0}\amp = $selectFromSequence[1] </mrow>
+</md>
+for what range of values of the parameter <m>$select2[1] </m> does the system exhibit exponential decay?</p>
+
+<p>
+<answer symbolicEquality="true" name="ans4">-1</answer>
+ <m>\lt $select2[1]  \lt</m> 
+<answer symbolicEquality="true" name="ans5">0</answer>
+</p>
+
+<p>For what range of values of the parameter <m>$select2[1] </m> does the system exhibit exponential growth?</p>
+
+<p><m>$select2[1]  \gt</m> 
+<answer symbolicEquality="true" name="ans6">0</answer>
+</p>
+
+  
+    <hint hide="($ans4.numSubmissions &lt; 2 and $ans5.numSubmissions &lt; 2 and $ans6.numSubmissions &lt; 2) or $ans4.creditAchieved + $ans5.creditAchieved + $ans6.creditAchieved = 3 or $ans4.numSubmissions >= 5 or $ans5.numSubmissions >= 5 or $ans6.numSubmissions >= 5">
+      
+<p>We can answer this question by solving the system. 
+Since the equation is in difference form, we add <m>$select[1] _{ $select1[1]  }</m> to both sides, rewriting the equation in function iteration form as <me>$select[1] _{ $select1[1]  +1} = ($select2[1] +1)$select[1] _$select1[1] .</me>
+
+To go from <m>$select[1] _{ $select1[1]  }</m> to <m>$select[1] _{ $select1[1] +1}</m>, we must multiply by <m>$base </m>.  Since the initial condition is <m>$select[1] _0 = $selectFromSequence[1] </m>, and we must multiply by <m>$base </m> for a total of <m>$select1[1] </m> times to get to <m>$select[1] _{ $select1[1]  }</m>,  the solution is
+<me>$select[1] _{ $select1[1]  } = $base_to_the_n $selectFromSequence[1] .</me></p>
+  </hint>
+
+  <hint hide="($ans4.numSubmissions &lt; 5 and $ans5.numSubmissions &lt; 5 and $ans6.numSubmissions &lt; 5) or $ans4.creditAchieved + $ans5.creditAchieved + $ans6.creditAchieved = 3">
+<p>We can answer this question by solving the system. 
+Since the equation is in difference form, we add <m>$select[1] _{ $select1[1]  }</m> to both sides, rewriting the equation in function iteration form as <me>$select[1] _{ $select1[1]  +1} = ($select2[1] +1)$select[1] _$select1[1] .</me>
+
+To go from <m>$select[1] _{ $select1[1]  }</m> to <m>$select[1] _{ $select1[1] +1}</m>, we must multiply by <m>$base </m>.  Since the initial condition is <m>$select[1] _0 = $selectFromSequence[1] </m>, and we must multiply by <m>$base </m> for a total of <m>$select1[1] </m> times to get to <m>$select[1] _{ $select1[1]  }</m>,  the solution is
+<me>$select[1] _{ $select1[1]  } = $base_to_the_n $selectFromSequence[1] .</me></p>
+
+<p>For exponential decay we need
+<me>0 \lt $base  \lt 1.</me>
+This condition is the same as <me>-1 \lt $select2[1]  \lt 0.</me>
+</p>
+
+<p>For exponential growth, we need
+<me>$base  \gt 1.</me>
+This condition is the same as <me>$select2[1] > 0.</me>
+</p>
+  </hint>
+
+<solution>
+<p>We can answer this question by solving the system. 
+Since the equation is in difference form, we add <m>$select[1] _{ $select1[1]  }</m> to both sides, rewriting the equation in function iteration form as <me>$select[1] _{ $select1[1]  +1} = ($select2[1] +1)$select[1] _$select1[1] .</me>
+
+To go from <m>$select[1] _{ $select1[1]  }</m> to <m>$select[1] _{ $select1[1] +1}</m>, we must multiply by <m>$base </m>.  Since the initial condition is <m>$select[1] _0 = $selectFromSequence[1] </m>, and we must multiply by <m>$base </m> for a total of <m>$select1[1] </m> times to get to <m>$select[1] _{ $select1[1]  }</m>,  the solution is
+<me>$select[1] _{ $select1[1]  } = $base_to_the_n $selectFromSequence[1] .</me></p>
+
+<p>For exponential decay we need
+<me>0 \lt $base  \lt 1.</me>
+This condition is the same as <me>-1 \lt $select2[1]  \lt 0.</me>
+</p>
+
+<p>For exponential growth, we need
+<me>$base  \gt 1.</me>
+This condition is the same as <me>$select2[1] > 0.</me>
+</p>
+</solution>
+
+</problem>
+</li>
+</ol>
+</subsection>
+
+</section>
+
+

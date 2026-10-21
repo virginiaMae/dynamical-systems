@@ -1,0 +1,87 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7Y9ENaTU1Db74XEYkEfUSv
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 36c7d86b5e6b1d42
+-->
+<title>Solving single autonomous differential equations using graphical methods</title>
+<p><ref>Video</ref> | <ref>Summary</ref> | <ref>Transcript</ref> </p>
+<description>
+Using graphical methods, one can observe where the rate of change is positive or negative and determine the behavior of a solution to a differential equation.
+</description>
+
+
+
+
+<section><title>Video</title>
+
+<figure suppressFigureNameInCaption="true">
+<video youtube="gBi3W1eD7hU" size="large" aspectRatio="16/9" name="v1" />
+<caption>A graphical approach to solving an autonomous differential equation</caption>
+</figure>
+
+
+<setup>
+  <number name="timestamp1" />
+  <number name="timestamp2" />
+</setup>
+
+<sideBySide margins="5%">
+<div>Video credit achieved: <number displayDecimals="1">$v1.fractionWatched*100</number>%
+  
+<answer hide="true" name="v1Credit">
+  <award credit="$v1.fractionWatched"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+</div>
+
+</sideBySide>
+
+  
+<problem><title>Video review questions</title>
+<exercise includeAutoNumber="true"><title />
+
+
+<p>A dynamical system is described by the <ref to="doenet:7XUfXRgBFR5siU2z19gbxK"><term>autonomous differential equation</term></ref>:  
+
+<md>  
+  <mrow>\frac{dv}{dt} \amp= f(v)</mrow>
+  <mrow>v(t_0) \amp=v_0 \;\;\text{(initial condition)}</mrow>
+</md>
+  where,
+  <me>f(v) = <function variables="v" name="f">v^3-5v^2-8v+12</function>.</me>
+</p>
+
+<p>The function <m>f(v)</m> is graphed below.</p>  
+ 
+<graph name="vWithf" size="large" aspectRatio="2" xmin="-3" xmax="8" ymin="-40" ymax="40" fixAxes="true">
+  <xLabel><m>v</m></xLabel>
+  <yLabel><m>f(v) = \frac{dv}{dt}</m></yLabel>
+  <function styleNumber="5" extend="$f" />
+
+</graph>
+
+
+<p>Which of the statements below are true? (Select all that apply.)
+  <answer selectMultiple="true">
+    <choice><m>v(t)</m> is increasing  when <m>1 &lt; v &lt; 6</m></choice>
+    <choice credit="1"><m>v(t)</m> is increasing when <m>v = -1</m></choice>
+    <choice credit="1"><m>v(t)</m> is decreasing when <m>v = 5</m></choice>
+    <choice><m>v(t)</m> is decreasing when <m>v > 6</m></choice>
+  </answer>
+</p>
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<p>For the dynamical system described above, we are now given the initial condition that <m>v(0) = 4</m>. Which of the following statements correctly describes the behavior of <m>v</m> as <m>t</m> increases?</p>
+<answer>
+  <choice><m>v</m> increases rapidly at first, then slows down as <m>t</m> increases, and approaches the value <m>v = 6</m>.</choice>
+  <choice><m>v</m> decreases slowly at first, then begins to decrease more rapidly, approaching the value <m>v = 1</m>. </choice>
+  <choice credit="1"><m>v</m> decreases rapidly at first, then begins to decrease more gradually, approaching the value <m>v = 1</m>. </choice>
+</answer>
+</exercise>  
+
+</problem>
+</section>
+

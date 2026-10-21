@@ -1,0 +1,100 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7NatVaepmDtXiMv5AcA87r
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 1ae2c9d732b13a23
+-->
+<problem>
+<!-- <title>Derivative of quotient of quadratic functions</title> -->
+
+<setup>
+
+<selectFromSequence name="c1" numToSelect="3" withReplacement="true" from="-10" to=" 10" exclude="0" />
+
+<selectFromSequence name="temp1" numToSelect="3" withReplacement="true" from="-10" to=" 10" exclude="0" />
+<select name="a1" numToSelect="4" withReplacement="false">
+<option>$temp1[1]</option>
+<option>$temp1[2]</option>
+<option>$temp1[3]</option>
+<option><math>0</math></option>
+</select>
+
+
+<select name="function"> f g m p r u v w</select>
+<select name="x"> x y z s t</select>
+
+<math name="numerator" simplify="full">$a1[1][1] *$x ^2+$a1[2][1] *$x +$c1[1] </math>
+<math name="denominator" simplify="full">$a1[3][1] *$x ^2+$a1[4][1] *$x +$c1[2] </math>
+<math name="quotient" simplify="full">$numerator /$denominator </math>
+<derivative name="derivative" simplify="full" variables="$x">$quotient</derivative>
+<math name="derivative2" simplify="full" expand="true">$derivative </math>
+<derivative name="d_numerator" simplify="full" variables="$x">$numerator</derivative>
+<derivative name="d_denominator" simplify="full" variables="$x">$denominator</derivative>
+<math name="numerator_of_derivative" simplify="full" expand="true">$denominator *$d_numerator -$numerator *$d_denominator </math>
+<math name="deriv" simplify="full">d$function/d$x</math>
+<selectFromSequence name="phrasing" from="1" to="4" />
+<!-- <math name='derivative_sign_error_detection' simplify='full' >$numerator_of_derivative /$denominator ^2 </math> -->
+
+</setup>
+
+
+<conditionalContent>
+<case condition="$phrasing = 1">
+Let <m>$function ($x ) = $quotient </m>.  Find <m>$deriv </m>.
+
+</case><case condition="$phrasing = 2">
+Calculate <m>$deriv </m>, where  <m>$function ($x ) = $quotient </m>. 
+
+</case><case condition="$phrasing = 3">
+Calculate the derivative of <m>$function ($x ) = $quotient </m>.
+
+</case><else>
+Differentiate the function <m>$function ($x ) = $quotient </m>.
+
+</else>
+</conditionalContent>
+
+
+<p><m>$deriv  =</m> 
+<answer forceFullCheckWorkButton="true">
+<award>$derivative </award>
+<!-- <award credit='0.9' nSignErrorsMatched="1" feedbackCodes='onesignerror'>$derivative </award> -->
+<!-- <award credit='0.81' nSignErrorsMatched="2" feedbackCodes='twosignerrors'>$derivative </award> -->
+<!-- <award symbolicEquality='true'>$derivative_sign_error_detection </award> -->
+<!-- <award credit='0.9' symbolicEquality='true' nSignErrorsMatched="1" feedbackCodes='onesignerror'>$derivative_sign_error_detection </award> -->
+<!-- <award credit='0.81' symbolicEquality='true' nSignErrorsMatched="2" feedbackCodes='twosignerrors'>$derivative_sign_error_detection </award> -->
+</answer>
+<!-- <copy prop="feedbacks" source="answer1" /> -->
+</p>
+
+<hint>
+
+
+<paragraphs>
+<title>Helpful pages</title>
+<ul>
+<li><ref to="doenet:7KNaZhtcLkYEubRxQt2Ak4">The derivative of a power function</ref></li>
+<li><ref to="doenet:7KXg34rBKDhBUUnmi58mwv">Derivatives of polynomials</ref></li>
+<li><ref to="doenet:7LMCto3Hr81zxLMzwiiARp">The quotient rule for differentiation</ref>
+</li>
+</ul>
+</paragraphs>
+</hint>
+
+
+<solution>
+Using the 
+<ref to="doenet:7LMCto3Hr81zxLMzwiiARp">The quotient rule for differentiation</ref>
+, 
+<md>
+  <mrow>\frac{ d$function }{ d$x }\amp =  \frac{ ($denominator  ) \frac{ d }{ d$x } ($numerator )  - ($numerator ) \frac{ d }{ d$x } ($denominator  ) }{ ($denominator )^2 }</mrow>
+  <mrow>\amp =  \frac{ ($denominator  ) ($d_numerator ) - ($numerator )($d_denominator ) }{ ($denominator )^2 }</mrow>
+  <mrow>\amp =  \frac{ $numerator_of_derivative  }{ ($denominator )^2 }.</mrow>
+</md>
+We could multiply out the denominator <m>($denominator )^2</m>, but there is no real advantage for doing so.
+
+
+</solution>
+
+
+</problem>

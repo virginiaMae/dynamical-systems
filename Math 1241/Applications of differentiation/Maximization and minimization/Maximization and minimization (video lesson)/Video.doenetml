@@ -1,0 +1,257 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7RWFe1v9ek1mvR8cg6MDiK
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 7799f967400b0b90
+-->
+<title>Maximization and minimization</title>
+<p><ref>Video</ref> | <ref>Transcript</ref> | </p>
+<description>
+How to calculate the maxima and minima of a differentiable function.
+</description>
+
+<section name="vid_section"><title>Video</title>
+<figure suppressFigureNameInCaption="true">
+<video youtube="Ot3bDjmP2A4" size="large" aspectRatio="16/9" name="v1" />
+<caption>Maximization and minimization</caption>
+</figure>
+
+
+<setup>
+  <number name="timestamp1" />
+  <number name="timestamp2" />
+</setup>
+
+<sideBySide margins="5%">
+<div><number name="v1RoundUp" hide="true">
+  <conditionalContent>
+    <case condition="$v1.fractionWatched > 0.9">1</case>
+    <else>$v1.fractionWatched</else>
+  </conditionalContent>
+</number>
+  
+  <p>Video credit achieved: <number displayDecimals="1">$v1RoundUp*100</number>%</p>
+
+<answer hide="true" name="v1Credit">
+  <award credit="$v1RoundUp"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+</div>
+
+<!-- <div>
+<updateValue type="number" target="v1.time" newValue="$timestamp1" name="skipTo1">
+  <label>Go to Key Moment 1</label>
+</updateValue>
+</div>
+
+<div>
+<updateValue type="text" triggerWithTargets="skipTo1" target="v1" prop="state" newValue="playing" name="playStamp1"/>
+
+<updateValue type="number" target="v1.time" newValue="$timestamp2" name="skipTo2">
+  <label>Go to Key Moment 2</label>
+</updateValue>
+</div>
+
+
+<updateValue type="text" triggerWithTargets="skipTo2" target="v1" prop="state" newValue="playing" name="playStamp2"/> -->
+</sideBySide>
+
+
+<aside><title>Procedure for determining where <m>f(x)</m> has a local maxima, a local minima, or neither</title>
+
+<p>Recall from <ref to="doenet:7RBWCoHiThLRwNvD4ven4p">The derivative, critical points, and graphing</ref> the following steps to determine whether <m>f</m> increases, decreases, or changes direction within an interval:</p>
+
+<ol>
+  <li>Determine the intervals where <m>f'(x)</m> does not change sign by locating the <term>critical points</term> of <m>f</m>, as well as values where <m>f(x)</m> is not defined.</li>
+  
+  <li>Determine <m>f'(a)</m> at <term>auxiliary points</term> within each interval</li>
+  
+  <li>If <m>f'(a) > 0</m> in an interval, then <m>f</m> is <em>increasing</em> on that interval. </li>
+
+  <li>If <m>f'(a) &lt; 0</m> in an interval, then <m>f</m> is <em>decreasing</em> on that interval. </li>
+  <li>If <m>f'(a) = 0</m> in an interval, then <m>f</m> is constant on that interval.</li>
+</ol>
+
+<p>Now, make a chart or sketch a picture illustrating how the function <m>f</m> behaves in each interval. You can draw the following conclusions from such a chart:</p>
+  <ul>
+    <li>If <m>f</m> increases to the left of a critical point <m>x_c</m> and then decreases to the right of <m>x_c</m>, <m>f</m> has a <term>local maximum</term> at <m>x_c</m>.</li>
+    <li>If <m>f</m> decreases to the left of a point <m>x_c</m> and then increases to the right of <m>a</m>, <m>f</m> has a <term>local minimum</term> at <m>c_x</m>.</li>
+    <li>If <m>f</m> increases (or decreases) on both sides of <m>x_c</m>, then the point <m>x_c</m> is <alert>neither</alert> a local maximum nor a local minimum of <m>f</m>.</li>
+  </ul>
+</aside>
+<!-- 
+<aside name="criticalPoint"><title>Critical Point &#x2D; (definition)</title>
+  <term>critical point</term>
+  <p>A critical point, <m>a</m>, of <m>f</m> occurs where one of the following conditions exist:</p>
+  <ul>
+    <li><m>f'(a) = 0</m>; <nbsp/><nbsp/><nbsp/> (the derivative is equal to zero at <m>a</m>)</li>
+    <li><m>f'(a)</m> does not exist; <nbsp/><nbsp/><nbsp/> (<m>f</m> is not differentiable at <m>a</m>)</li>
+  </ul>
+  <p>For a point <m>a</m> to be a critical point of the function, the function must be defined at that point, i.e. <m>f(a)</m> exists.</p>
+</aside> -->
+
+  
+<problem><title>Video review questions</title>
+<exercise includeAutoNumber="true"><title />
+<p>A function <m>f</m> has critical points at <m>x = -4</m>, <m>x = 0</m>, and <m>x = 4</m>. The intervals thus created are shown on the number line below. Auxiliary points labeled <m>a_1</m> through <m>a_4</m> can be dragged to determine <m>f'(a)</m> (shown in the chart below) within their respective intervals.</p>
+  
+
+
+<hint><title>What is an auxiliary point?</title>
+<p>Recall from <ref to="doenet:7RBWCoHiThLRwNvD4ven4p">The derivative, critical points, and graphing</ref>, that an <term>auxiliary point</term> is an arbitrary point selected within each interval in the domain of <m>f</m>. The intervals are determined such that the sign of <m>f'(x)</m> does not change within each interval.</p>
+<p>The auxiliary point, <m>a</m>, may be selected to be any convenient point within each interval, provided that <m>f'(a)</m> is defined at that point and that it does not coincide with a critical point.</p></hint>
+  
+
+<!-- <subsetOfRealsInput prefill="(&#x2D;8) union (0) union (6)" fixed/> -->
+
+<derivative name="f_prime" hide="true">$f</derivative>
+<graph ymin="-2" ymax="2" displayYAxis="false" fixAxes="true" size="full" identicalAxisScales="true">
+  <point name="A" styleNumber="2" fixed="true">(-4,0)
+    <label><m>x = -4</m></label>
+  </point>
+  <point name="B" styleNumber="2" fixed="true">(0,0)
+    <label><m>x = 0</m></label>
+  </point>
+  <point name="C" styleNumber="2" fixed="true">(4,0)
+    <label><m>x = 4</m></label>
+  </point>
+  <line name="lineA" styleNumber="6" fixed="true">x = -4</line>
+  <line name="lineB" styleNumber="6" fixed="true">x = 0</line>
+  <line name="lineC" styleNumber="6" fixed="true">x = 4</line>
+  <ray name="rayToA" styleNumber="3" endpoint="$A" through="(-9,0)" fixed="true" />
+  <lineSegment name="segmentAB" endpoints="$A $B" fixed="true" />
+  <lineSegment name="segmentBC" endpoints="$B $C" styleNumber="3" fixed="true" />
+  <ray name="rayPastC" endpoint="$C" through="(9,0)" fixed="true" />
+  <point name="a1" styleNumber="5">(-7,0)
+    
+      <constrainTo>$rayToA</constrainTo>
+    
+    <label><m>a_1</m></label>
+  </point>
+  <point name="a2" styleNumber="5">(-1,0)
+    
+      <constrainTo>$segmentAB</constrainTo>
+    
+    <label><m>a_2</m></label>
+  </point>
+  <point name="a3" styleNumber="5">(2,0)
+    
+      <constrainTo>$segmentBC</constrainTo>
+    
+    <label><m>a_3</m></label>
+  </point>
+  <point name="a4" styleNumber="5">(7,0)
+    
+      <constrainTo>$rayPastC</constrainTo>
+    
+    <label><m>a_4</m></label>
+  </point>
+  <legend>
+    <label forObject="$a1">Drag auxiliary points</label>
+  </legend>
+</graph>
+
+<p>The following chart was made illustrating the values of <m>f'(x)</m> determined at each auxiliary point.</p>
+
+<p>In each interval, classify whether the values for <m>f'(a)</m> indicate that <m>f</m> is increasing, decreasing, or neither for that interval</p>
+
+<table suppressTableNameInTitle="true">
+  <tabular>
+  <row>
+    <cell><alert>Intervals of <m>f</m></alert></cell>
+    <cell><math>(-infinity, -4)</math></cell>
+    <cell><math>(-4,0)</math></cell>
+    <cell><math>(0,4)</math></cell>
+    <cell><math>(4,infinity)</math></cell>
+  </row>
+  <row>
+    <cell><m>f'</m> <alert> at auxiliary point</alert> <m>a_n</m></cell>
+    <cell><m>f'(a_1) = </m> <math displayDecimals="2">$$f_prime($a1.x)</math></cell>
+    <cell><m>f'(a_2) = </m> <math displayDecimals="2">$$f_prime($a2.x)</math></cell>
+    <cell><m>f'(a_3) = </m> <math displayDecimals="2">$$f_prime($a3.x)</math></cell>
+    <cell><m>f'(a_4) = </m> <math displayDecimals="2">$$f_prime($a4.x)</math></cell>
+  </row>
+    <row>
+    <cell><m>f</m> <alert>is _____ on this interval</alert></cell>
+    <cell>
+      <answer inline="true">
+        <choice>increasing</choice>
+        <choice credit="1">decreasing</choice>
+        <choice>neither</choice>
+      </answer>
+    </cell>
+    <cell>
+      <answer inline="true">
+        <choice credit="1">increasing</choice>
+        <choice>decreasing</choice>
+        <choice>neither</choice>
+      </answer>
+    </cell>
+    <cell> 
+      <answer inline="true">
+        <choice credit="1">increasing</choice>
+        <choice>decreasing</choice>
+        <choice>neither</choice>
+      </answer>
+    </cell>
+    <cell> 
+      <answer inline="true">
+        <choice>increasing</choice>
+        <choice credit="1">decreasing</choice>
+        <choice>neither</choice>
+      </answer>
+    </cell>
+  </row> 
+  </tabular>
+</table>
+
+<p>At <m>x = -4</m>, <m>f</m> has: </p>
+    <answer>
+      <choice>a local maximum</choice>
+      <choice credit="1">a local minimum</choice>
+      <choice>neither a local maximum nor a local minimum</choice>
+    </answer>
+<p>At <m>x = 0</m>, <m>f</m> has: </p>
+    <answer>
+      <choice>local maximum</choice>
+      <choice>local minimum</choice>
+      <choice credit="1">neither a local maximum nor a local minimum</choice>
+    </answer>
+
+<p>At <m>x = 4</m>, <m>f</m> has: </p>
+    <answer>
+      <choice credit="1">local maximum</choice>
+      <choice>local minimum</choice>
+      <choice>neither a local maximum nor a local minimum</choice>
+    </answer>
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<p>Which of the graphs below could be a graph of <m>f</m>?</p>
+
+<answer name="ans2">
+<choice>
+<graph size="small">
+  $lineA $lineB $lineC
+  <function name="g" minima="($A.x, 2) ($C.x, -4)" maxima="($B.x, 4)" styleNumber="2" />  
+</graph>
+</choice>
+<choice credit="1">
+<graph ymin="-16" ymax="16" size="small">
+  $lineA $lineB $lineC
+  <function name="f" maxima="(4,12)" minima="(-4,-12)" styleNumber="4" through="(-2,-8) (-1,-1) (-1/12,-1/1728) (1/12,1/1728) (1,1) (2,8)" />  
+</graph>
+</choice>
+<choice>
+<graph size="small">
+  $lineA $lineB $lineC
+  <function name="h" maxima="($A.x, 6) ($C.x, 2)" minima="($B.x, -6)" styleNumber="3" />  
+</graph>
+</choice>
+</answer>
+
+</exercise>
+</problem>
+
+</section>

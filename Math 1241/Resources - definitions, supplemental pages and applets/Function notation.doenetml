@@ -1,0 +1,38 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 83GvQ82Ubr9gaa6o8Z57rx
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: d89ebe576e40baae
+-->
+<section><title>Function notation</title>
+
+ 
+<p>Recall the notation that <m>\mathbf{R}</m> stands for the real numbers. Similarly, <m>\mathbf{R^2}</m> is a two-dimensional vector, and <m>\mathbf{R^3}</m> is a three-dimensional vector.</p>
+
+<section><title>Scalar-valued functions</title>
+<p>In one-variable calculus, you worked a lot with one-variable functions, i.e., functions from <m>\mathbf{R}</m> onto <m>\mathbf{R}</m>. If <m>f(x)</m> is such a one-variable function, we can write <m>f: \mathbf{R} \rightarrow \mathbf{R}</m>  as a shorthand way of expressing that <m>f</m> is a function from <m>\mathbf{R}</m> onto <m>\mathbf{R}</m>.</p>
+
+<p>A function like <m>f(x,y)=x+y</m> is a function of two variables. It takes an element of <m>\mathbf{R^2}</m>, like <m>(2,1)</m>, and gives a value that is a real number (i.e., an element of <m>\mathbf{R}</m>), like <m>f(2,1)=3</m>. Since <m>f</m> maps <m>\mathbf{R^2}</m> to <m>\mathbf{R}</m>, we write <m>f: \mathbf{R^2} \rightarrow \mathbf{R}</m>. We can also use this “mapping” notation to define the actual function. We could define the above <m>f(x,y)</m> by writing <m>f: (x,y) \mapsto x + y</m>.</p>
+
+<p>To contrast a simple real number with a vector, we refer to the real number as a scalar. Hence, we can refer to <m>f: \mathbf{R^2} \rightarrow \mathbf{R}</m> as a scalar-valued function of two variables or even just say it is a real-valued function of two variables.</p>
+
+<p>Everything works the same for scalar valued functions of three or more variables. For example, <m>f(x,y,z)</m>, which we can write <m>f: \mathbf{R^3} \rightarrow \mathbf{R}</m>, is a scalar-valued function of three variables.</p>
+</section>
+
+<section><title>Vector-valued functions</title>
+<p>In contrast, a vector-valued function takes on values that are vectors. First, let's talk about vector-valued functions of a single variable.</p>
+
+<p>A vector-valued function in two dimensions can be written <m>f: \mathbf{R} \rightarrow \mathbf{R^2}</m>. An example is <m>f(t)=(3t,−t)</m>. For a given real number, which we'll denote by ♣ for fun, <m>f(♣)</m> is the two-dimensional vector <m>(3♣,−♣)</m>. Similarly, a vector-valued function in three dimensions can be written <m>f: \mathbf{R} \rightarrow \mathbf{R^3}</m>. For example, if <m>f(s)=(1−s,s^3,\cos s)</m>, then <m>f(0)=(1,0,1)</m>. We sometimes write vector-valued functions using the standard unit vectors <m>\mathbf{i}</m>, <m>\mathbf{j}</m>, and <m>\mathbf{k}</m>, as in <m>f(s)=(1−s) \mathbf{i}+s^3 \mathbf{i}+(\cos s) \mathbf{k}</m>.</p>
+
+<p>Lastly, we can have vector-valued functions of multiple variables. For example, a function could take values in <m>\mathbf{R^3}</m>, say <m>(x,y,z)</m>, and map them to <m>\mathbf{R^2}</m>, such as <m>f(x,y,z)=(x−y,x^{22}/z)</m>. We can write a function from <m>\mathbf{R^3}</m> to <m>\mathbf{R^2}</m> as <m>f: \mathbf{R^3} \rightarrow \mathbf{R^2}</m>. You get the idea.</p>
+</section>
+
+<section><title>The domain of a function</title>
+<p>The function <m>f(t)=(t,t^2)</m> is defined over all real numbers <m>\mathbf{R}</m>, i.e., the <em>domain</em> of the function is <m>\mathbf{R}</m>. Sometimes a function of one variable may be defined over a subset of real numbers, say some set <m>U \subset \mathbf{R}</m>; in this case, the domain of the function is <m>U</m>. (Note, the symbol “<m>\subset</m>” just means “is a subset of”.) In three dimensions, for example, we can specify the domain by writing <m>f: U \subset \mathbf{R} \rightarrow \mathbf{R^3}</m>, or simply <m>f: U \rightarrow \mathbf{R^3}</m>.</p>
+
+<p>Example: since <m>\log t</m> isn't a real number for <m>t \leq 0</m>, the domain of <m>f(t)=(\log t)\mathbf{i}+t \mathbf{j}</m>, is the set <m>D=(0,\infty)</m>. We could write this <m>f:(0,\infty) \rightarrow \mathbf{R^2}</m>. What would the domain be if we replaced <m>\log t</m> with <m>\log(t−3)</m> or <m>\log(2−t)</m>? You have to think where <m>\log(t−3)</m> or <m>\log(2−t)</m> is a real number, i.e., where <m>t−3>0</m> or where <m>2−t>0</m>.</p>
+
+<p>We use the same notation for functions of multiple variables. If we wrote <m>f:U \subset \mathbf{R^2} \rightarrow \mathbf{R^3}</m>, we would mean a function maps values in a subset <m>U</m> of <m>\mathbf{R^2}</m> to values in <m>\mathbf{R^3}</m>.</p>
+</section>
+
+</section>

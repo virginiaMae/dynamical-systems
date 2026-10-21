@@ -1,0 +1,10 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 837E3MFMf4BoC3udN7tAZF
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: a0c78f65bbd36488
+-->
+<section suppressAutoName="true" suppressAutoNumber="true"><title>Trajectory definition</title>
+ 
+<p>In dynamical systems, a trajectory is the set of points in state space that are the future states resulting from a given initial state. In a discrete dynamical system, a trajectory is a set of isolated points in state space. In a continuous dynamical system, a trajectory is a curve in state space.</p>
+</section>

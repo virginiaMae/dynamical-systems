@@ -1,0 +1,55 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7BoWDo8ruTAWTp5Pg6HwZX
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: ff085439ff232922
+-->
+<problem>
+
+<setup>
+  <selectFromSequence name="a" exclude="0" numToSelect="3" withReplacement="true" from="-4" to="4" />
+  <selectFromSequence name="d" exclude="0 $a[2]$a[3]/$a[1]" withReplacement="true" from="-4" to="4" />
+  <selectFromSequence name="e" numToSelect="2" withReplacement="true" from="-4" to="4" />
+
+  <select name="x" numToSelect="2" withReplacement="false">x y z s t u v w r q m n p</select>
+  <math name="lhs1" simplify="numbers">$a[1]*$x[1]+$a[2]*$x[2]</math>
+  <math name="lhs2" simplify="numbers">$a[3]*$x[1]+$d*$x[2]</math>
+  <math name="rhs1">$e[1]</math>
+  <math name="rhs2">$e[2]</math>
+  <math name="det" simplify="numbers">$a[1]*$d-$a[2]*$a[3]</math>
+
+  <math name="x_sol" simplify="numbers">($d*$e[1]-$e[2]*$a[2])/$det</math>
+  <math name="y_sol" simplify="numbers">($e[2]*$a[1]-$e[1]*$a[3])/$det</math>
+</setup>
+
+
+Solve the system of equations.
+<md>
+  <mrow>$lhs1 \amp = $rhs1</mrow>
+  <mrow>$lhs2 \amp = $rhs2</mrow>
+</md>
+
+<p><m>$x[1] =</m> <mathInput name="input1" /></p>
+<p><m>$x[2] =</m> <mathInput name="input2" /></p>
+<p>(You can enter fractions. Don't round your answers.)</p>
+
+<answer>
+  <award symbolicEquality="true" simplifyOnCompare="numbers" matchpartial="true" referencesAreResponses="$input1 $input2"><when>
+    $input1 = $x_sol
+    and 
+    $input2 = $y_sol
+  </when></award>
+  <award credit="0.8" symbolicEquality="true" simplifyOnCompare="numbers" matchpartial="true" allowederrorinnumbers="0.00001" feedbackText="For full credit, don't round your answers but leave them as fractions"><when>
+    $input1 = $x_sol
+    and 
+    $input2 = $y_sol
+  </when></award>
+</answer>
+
+$_answer1.feedbacks
+
+<solution>
+<m>$x[1]=$x_sol</m>, <m>$x[2]=$y_sol</m>.
+</solution>
+
+</problem>

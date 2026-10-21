@@ -1,0 +1,40 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7DEKVQ11n1evB2iCC2ZM9n
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: e250894bc275124f
+-->
+<title>Solving linear discrete dynamical systems</title>
+<p><ref>Video</ref> | <ref>Summary</ref> | <ref>Transcript</ref> </p>
+
+<section><title>Summary</title>
+<p>The solution to the linear system 
+<mdn>
+  <mrow name="linear_function_iteration">x_{n+1}\amp = a x_n</mrow>
+  <mrow number="false">x_0\amp = b</mrow>
+</mdn>
+is 
+<me>x_{n} = a^n b.</me>
+According to the rule <m>x_{n+1}=ax_n</m>, one multiplies by <m>a</m> for each time step.  Therefore, to evolve from <m>x_0</m> to <m>x_n</m>, one must multiply by <m>a</m> a total of <m>n</m> times, i.e., multiply by <m>a^n</m>.</p>
+
+<p>Model <ref to="$linear_function_iteration" /> was especially simple to solve because it is in 
+<term><ref to="doenet:82YaRL8CieueYqLgxMpxye">function iteration form</ref></term>
+, meaning the rule is in the form <m>x_{n+1}=f(x_n)</m> for some function <m>f</m> (in this case <m>f(x)=ax</m>).  Sometimes, it is easier to come up with a model of the form
+<mdn>
+  <mrow name="linear_difference">x_{n+1} - x_n\amp = ax_n</mrow>
+  <mrow number="false">x_0\amp = b.</mrow>
+</mdn>
+This form is called 
+<term><ref to="doenet:832kteFVLDpZJ9tARy27gK">difference form</ref></term>
+ because the left hand side <m>x_{n+1}-x_n</m> is the difference between values of the state variables between two time steps.  To solve a linear discrete dynamical system <ref to="$linear_difference" /> in difference form, the first step is to convert it to function iteration form.  Simply add <m>x_n</m> to both sides to obtain
+<md>
+  <mrow>x_{n+1}\amp = (a+1)x_n</mrow>
+  <mrow>x_0\amp = b.</mrow>
+</md>
+The solution is the same as for model <ref to="$linear_function_iteration" /> in function iteration form, only that <m>a</m> is replaced by <m>a+1</m>:
+<me>x_n = (a+1)^n b.</me>
+</p>
+<p>You can see some 
+<ref to="doenet:7DJkFrEE5eYv9KbqumLsnF">Examples of solving linear discrete dynamical systems</ref> here.</p>
+
+</section>

@@ -1,0 +1,70 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 814L8JkXXRqcadwqn97P9V
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 3b877ee63e8cea70
+-->
+
+<title>The Forward Euler algorithm for solving an autonomous differential equation</title>
+  
+<p><ref>Video</ref> | <ref>Transcript</ref> </p>
+<description>
+Using the linear approximation, or tangent line, to the solution of a differential equation to estimate the solution over small intervals.
+</description>
+
+<section><title>Video</title>
+<figure>
+<video youtube="6sQ6jJp21yM" size="large" aspectRatio="16/9" name="v1" />
+<caption>The Forward Euler algorithm for solving an autonomous differential equation </caption>
+</figure>
+
+
+<setup>
+  <number name="timestamp1" />
+  <number name="timestamp2" />
+</setup>
+
+<sideBySide margins="5%">
+<div>Video credit achieved: <number displayDecimals="1">$v1.fractionWatched*100</number>%
+  
+<answer hide="true" name="v1Credit">
+  <award credit="$v1.fractionWatched"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+</div>
+
+<!-- <div>
+<updateValue type="number" target="v1.time" newValue="$timestamp1" name="skipTo1">
+  <label>Go to Key Moment 1</label>
+</updateValue>
+</div>
+
+<div>
+<updateValue type="text" triggerWithTargets="skipTo1" target="v1" prop="state" newValue="playing" name="playStamp1"/>
+
+<updateValue type="number" target="v1.time" newValue="$timestamp2" name="skipTo2">
+  <label>Go to Key Moment 2</label>
+</updateValue>
+</div>
+
+
+<updateValue type="text" triggerWithTargets="skipTo2" target="v1" prop="state" newValue="playing" name="playStamp2"/> -->
+</sideBySide>
+
+  
+<problem><title>Video review questions</title>
+<exercise includeAutoNumber="true"><title />
+
+<p>Which of the following statements about the Forward Euler algorithm for solving autonomous differential equations is <alert>incorrect</alert>?</p>
+  <answer name="ans1">
+    <choice>it provides a way to approximate the behavior of solutions to the differential equation based on tangent line approximations computed at discrete time steps</choice>
+    <choice>its a useful way to glean information about the behavior of solutions when you know the function <m>f(x)</m> but you don't have an analytic solution (i.e. an equation for <m>x(t)</m>) for the differential equation</choice>
+    <choice credit="1">it's a technique for determining information about solutions solely based on the graph of the differential equation </choice>
+    <choice>the approximation improves with smaller time steps since the slopes of unique solutions are likely changing continuously over time</choice>
+  </answer>
+</exercise>
+</problem>
+</section>
+
+

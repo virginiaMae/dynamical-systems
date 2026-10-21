@@ -1,0 +1,225 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7PX9FKMn6GB8jNBsMh8XMc
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 7d848acbe76735db
+-->
+<title>The stability of equilibria for discrete dynamical systems</title>
+<p><ref>Video</ref> | <ref>Transcript</ref>  </p>
+<description>
+Identifying stable and unstable equilibria though the derivative of the updating function.
+</description>
+
+
+<section><title>Video</title>
+
+<p>
+<ref to="doenet:equilibria_discrete_dynamical_systems">Equilibria</ref>
+ of 
+<ref to="doenet:discrete_dynamical_system_introduction">discrete dynamical systems</ref>
+ can be 
+<ref to="doenet:equilibria_discrete_dynamical_systems_stability_idea">stable or unstable</ref>
+, depending on whether or not trajectories that start near the equilibria move away from the equilibria.  Here we show how to determine this stability using the derivative of the updating function. </p>
+
+
+<figure suppressFigureNameInCaption="true">
+<video youtube="7B0IXsc1hQ8" size="large" aspectRatio="16/9" name="v1" />
+<caption>Stability of equilibria of discrete dynamical systems, revisited</caption>
+</figure>
+
+<setup>
+  <number name="timestamp1">175</number>
+  <number name="timestamp2">355</number>
+</setup>
+
+<sideBySide margins="5%">
+<div><number name="v1RoundUp" hide="true">
+  <conditionalContent>
+    <case condition="$v1.fractionWatched > 0.9">1</case>
+    <else>$v1.fractionWatched</else>
+  </conditionalContent>
+</number>
+  
+  <p>Video credit achieved: <number displayDecimals="1">$v1RoundUp*100</number>%</p>
+
+<answer hide="true" name="v1Credit">
+  <award credit="$v1RoundUp"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+</div>
+
+<div>
+<updateValue type="number" target="$v1.time" newValue="$timestamp1" name="skipTo1">
+  <label>Go to Key Moment 1</label>
+</updateValue>
+
+<updateValue type="text" triggerWith="$skipTo1" target="$v1.state" newValue="playing" name="playStamp1" />
+</div>
+<div>
+<updateValue type="number" target="$v1.time" newValue="$timestamp2" name="skipTo2">
+  <label>Go to Key Moment 2</label>
+</updateValue>
+
+<updateValue type="text" triggerWith="$skipTo2" target="$v1.state" newValue="playing" name="playStamp2" />
+</div>
+</sideBySide>
+
+
+
+<aside startOpen="true"><title>Stability theorem</title>
+
+
+<p>We can summarize the results for the stability of discrete dynamical systems with the following stability theorem.</p>
+
+<p>Consider the discrete dynamical system
+<md>
+  <mrow>x_{n+1}\amp = f(x_n)</mrow>
+  <mrow>x_0\amp = a,</mrow>
+</md>
+with an 
+<ref to="doenet:equilibria_discrete_dynamical_systems">equilibrium</ref><footnote>Recall that the fact that <m>E</m> is an equilibrium simply means that <m>E = f(E)</m>.
+</footnote>
+  <m>x_n = E</m>. Then, we can determine the stability of the equilibrium by calculating the derivative of <m>f</m> evaluated at the equilbrium as follows.</p>
+<ul>
+<li>If <m>|f'(E)| \lt  1</m>, then the equilibrium <m>x_n=E</m> is stable.</li>
+<li>If <m>|f'(E)| \gt  1</m>, then the equilibrium <m>x_n = E</m> is unstable.</li>
+<li>If <m>|f'(E)|=1</m>, then we can't figure out the stability of the equilibrium from just the derivative <m>f'(E)</m>.</li>
+</ul>
+</aside>
+
+<problem><title>Video review questions</title>
+<exercise includeAutoNumber="true"><title />
+<p>Explore the cobwebbing applet below for the given updating function.</p>
+
+<p>
+<booleanInput name="showDiagonal" prefill="true">
+  <label>Show Cobwebbing and Diagonal line given by: <m>x_{n+1} = x_n</m></label>
+</booleanInput></p>
+<p>Enter updating function: <m>f(x) = </m> <mathInput prefill="1/8(x+3)(x-2)" name="formula" /></p>
+<!-- <p>Sample evolution rule: <m>f(x) = </m> <math name="formula">0.05(x&#x2D;2)^3+1</math></p> -->
+
+  <setup>
+    <function name="f" symbolic="true">$formula</function>
+    <solveEquations variables="x" name="solveForE" minVar="$xmin" maxVar="$xmax">$formula = x</solveEquations>
+    <math extend="$A.x" name="px" />
+    <derivative name="df">$f</derivative>
+    <number name="num">10</number>
+    <number name="zeroFixed" fixed="true">0</number>
+    <point x="-8" y="$initialPoint.x" name="initialPoint" labelPosition="left">
+<!--       <constraints baseOnGraph="g"> -->
+      
+        <constrainToGraph />
+      
+      <label>Initial Point</label>
+    </point>
+    
+  </setup>
+<!-- <asList>$solveForE.solutions</asList> -->
+
+
+  <updateValue name="addLine" target="$num" newValue="$num+1" type="number">
+    <label>Add line</label>
+  </updateValue>
+  <updateValue name="deleteLine" target="$num" newValue="max(1,$num-1)" type="number" disabled="$num &lt;= 1">
+    <label>Delete line</label>
+  </updateValue>
+
+  <graph identicalAxisScales="true" grid="true" showNavigation="true" name="g">
+  <xLabel><m>x_n</m></xLabel>
+  <yLabel><m>x_{n+1}</m></yLabel>
+  <point name="A" x="0" y="0" styleNumber="2">
+    
+      <repeat for="$solveForE.solutions" valueName="v"><attractTo><point>($v, $v)</point></attractTo></repeat>
+      <constrainTo>$f</constrainTo>
+      <constrainToGraph />
+    
+  </point>
+      <line equation="y=$$df($px)(x-$px) + $$f($px)" fixed="true" styleNumber="3" name="tangentLine" />
+
+    <function extend="$f" layer="1" styleNumber="2" />
+    <cobwebPolyline function="$f" numPoints="$num" name="cobwebPolyline" initialPoint="$initialPoint" lockToSolution="true" draggable="false" hide="!$showDiagonal" />
+    <point extend="$initialPoint" layer="2" />
+
+
+    <point name="E1" styleNumber="5">($solveForE.solution1, $solveForE.solution1)
+      <label><m>E_1</m></label>
+    </point>
+    <point name="E2" styleNumber="5">($solveForE.solution2, $solveForE.solution2)
+      <label><m>E_2</m></label>
+    </point>
+    <point name="E3" styleNumber="5">($solveForE.solution3, $solveForE.solution3)
+      <label><m>E_3</m></label>
+    </point>
+    
+</graph>
+<p>Use the <alert>word bank</alert> below to complete the summary of the equilibrium points of <m>f</m>:</p>
+<p>The <textInput name="ti_1" /> point <m>E_1</m> is <textInput name="ti_2" />. This can be determined either by cobwebbing around the point <m>E_1</m> and observing that the values tend towards the point, or by observing that the <textInput name="ti_3" /> of the slope of the  <textInput name="ti_4" /> to <m>f</m> at point <m>E_1</m> is less than 1.</p>
+<p>The equilibrium point at <m>E_2</m> is <textInput name="ti_5" />. Cobwebbing values near <m>E_2</m> tend <textInput name="ti_6" /> the point, and the <textInput name="ti_7" /> of <m>f</m> at point <m>E_2</m> is greater than 1.</p>
+<answer name="ans1a" matchPartial="true" type="text">
+  <award>
+    <when>$ti_1 = equilibrium and $ti_2 = stable and $ti_3 = absolute value and $ti_4 = tangent line and $ti_5 = unstable and $ti_6 = away from and $ti_7 = derivative</when>
+  </award>
+</answer>
+<p><alert>Word bank</alert></p>
+  <tabular>
+   <row>
+     <cell>
+      <booleanInput prefill="$absoluteValueUsed">
+        <label>absolute value</label>
+      </booleanInput></cell>
+      <cell>
+      <booleanInput prefill="$stableUsed">
+        <label>stable</label>
+      </booleanInput></cell>
+      <cell>
+      <booleanInput prefill="$derivativeUsed">
+        <label>derivative</label>
+      </booleanInput></cell>
+  </row>
+  
+  <row>
+      <cell>
+      <booleanInput prefill="$unstableUsed">
+        <label>unstable</label>
+      </booleanInput></cell>
+      <cell>
+      <booleanInput prefill="$equilibriumUsed">
+        <label>equilibrium</label>
+      </booleanInput></cell>
+      <cell>
+      <booleanInput prefill="$awayFromUsed">
+        <label>away from</label>
+      </booleanInput></cell>
+  </row>
+  <row>
+    <cell>
+      <booleanInput prefill="$tangentLineUsed">
+        <label>tangent line</label>
+      </booleanInput></cell>
+      <cell />
+      <cell />
+  </row>
+  </tabular>
+
+
+<setup>
+<boolean name="absoluteValueUsed">$ti_1 = absolute value or $ti_2 = absolute value or $ti_3 = absolute value or $ti_4 = absolute value or $ti_5 = absolute value or $ti_6 = absolute value or $ti_7 = absolute value</boolean>
+
+<boolean name="stableUsed">$ti_1 = stable or $ti_2 = stable or $ti_3 = stable or $ti_4 = stable or $ti_5 = stable or $ti_6 = stable or $ti_7 = stable</boolean>
+
+<boolean name="derivativeUsed">$ti_1 = derivative or $ti_2 = derivative or $ti_3 = derivative or $ti_4 = derivative or $ti_5 = derivative or $ti_6 = derivative or $ti_7 = derivative</boolean>
+  
+<boolean name="unstableUsed">$ti_1 = unstable or $ti_2 = unstable or $ti_3 = unstable or $ti_4 = unstable or $ti_5 = unstable or $ti_6 = unstable or $ti_7 = unstable</boolean>
+
+<boolean name="equilibriumUsed">$ti_1 = equilibrium or $ti_2 = equilibrium or $ti_3 = equilibrium or $ti_4 = equilibrium or $ti_5 = equilibrium or $ti_6 = equilibrium or $ti_7 = equilibrium</boolean>
+
+<boolean name="awayFromUsed">$ti_1 = away from or $ti_2 = away from or $ti_3 = away from or $ti_4 = away from or $ti_5 = away from or $ti_6 = away from or $ti_7 = away from</boolean>
+
+<boolean name="tangentLineUsed">$ti_1 = tangent line or $ti_2 = tangent line or $ti_3 = tangent line or $ti_4 = tangent line or $ti_5 = tangent line or $ti_6 = tangent line or $ti_7 = tangent line</boolean>
+
+</setup>
+</exercise>
+</problem>
+  
+</section>

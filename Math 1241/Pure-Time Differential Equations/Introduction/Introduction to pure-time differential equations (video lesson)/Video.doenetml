@@ -1,0 +1,87 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7TonxTj3qqxnuXf9QyKvD4
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 0e19e0f8142ba59a
+-->
+<title>Introduction to pure-time differential equations</title>
+<p><ref>Video</ref> | <ref>Applets</ref> | <ref>Transcript</ref> </p>
+<description>
+
+</description>
+
+
+<section><title>Video</title>
+<figure suppressFigureNameInCaption="true">
+<video youtube="ubTqHUsFxJY" size="large" aspectRatio="16/9" name="v1" />
+<caption>Introduction to pure-time differential equations</caption>
+</figure>
+
+
+<setup>
+  <number name="timestamp1" />
+  <number name="timestamp2" />
+</setup>
+
+<sideBySide margins="5%">
+<div>Video credit achieved: <number displayDecimals="1">$v1.fractionWatched*100</number>%
+  
+<answer hide="true" name="v1Credit">
+  <award credit="$v1.fractionWatched"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+</div>
+
+<!-- <div>
+<updateValue type="number" target="v1.time" newValue="$timestamp1" name="skipTo1">
+  <label>Go to Key Moment 1</label>
+</updateValue>
+</div>
+
+<div>
+<updateValue type="text" triggerWithTargets="skipTo1" target="v1" prop="state" newValue="playing" name="playStamp1"/>
+
+<updateValue type="number" target="v1.time" newValue="$timestamp2" name="skipTo2">
+  <label>Go to Key Moment 2</label>
+</updateValue>
+</div>
+
+
+<updateValue type="text" triggerWithTargets="skipTo2" target="v1" prop="state" newValue="playing" name="playStamp2"/> -->
+</sideBySide>
+
+  
+<problem><title>Video review questions</title>
+<exercise includeAutoNumber="true"><title />
+
+<p>Which of the equations below is a differential equation?</p>
+
+<answer name="ans1a">
+  <choice><m>f(t) = 3t^2 + 2t - 7</m></choice>
+  <choice credit="1"><m>3t + 6 = \frac{dx}{dt}</m></choice>
+  <choice><m>f(t) = 3e^{-2t}</m></choice>
+</answer>
+</exercise>
+<exercise includeAutoNumber="true"><title />
+<p>How can you check to see that a proposed solution to a differential eqation is correct?</p>
+<answer name="ans1b">
+  <choice credit="1">Differentiate the solution to check whether it matches the original differential equation</choice>
+  <choice>Invert the solution to check whether it matches the differential equation</choice>
+  <choice>Think of at least five other solutions and then roll a six sided dice to choose one</choice>
+  <choice>Take the limit of the solution as <m>t</m> goes to infinity and check to see whether it matches the differential equation.</choice>
+</answer>
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<p>Which of the following equations provides the <alert>general solution</alert> to the differential equation <m>\frac{dx}{dt} = 15</m> ?</p>
+<answer name="ans1c">
+  <choice><m>x(t) = 15t</m></choice>
+  <choice><m>x(t) = 15t + 130</m></choice>
+  <choice credit="1"><m>x(t) = 15t + C</m></choice>
+  <choice><m>f(t) = 0</m></choice>
+</answer>
+</exercise>
+</problem>
+  
+</section>

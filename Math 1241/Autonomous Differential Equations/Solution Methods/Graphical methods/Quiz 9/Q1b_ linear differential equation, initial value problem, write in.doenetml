@@ -1,0 +1,59 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7Yk6Bi8gCV9TCU4EBzp7EV
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: e8cfc83f3e220408
+-->
+<problem>
+<!-- <title>linear differential equation, initial value problem, write in</title> -->
+
+<setup>
+
+<selectFromSequence name="a" from="-10" to=" 10" step=" 0.1" exclude="0" />
+<selectFromSequence name="b" from="-10" to=" 10" step=" 0.1" exclude="0" />
+<selectFromSequence name="differential_notation" from="0" to=" 1" />
+<select name="f_name">x y z s u v w</select>
+<math name="diffeq">$a$f_name</math>
+<math name="solution" simplify="full">$b *e^($a *t)</math>
+<math name="solution2">$b/(e^(-1*$a *t))</math>
+<selectFromSequence name="name_index" from="0" to="1" />
+
+</setup>
+
+<!--
+<p>debug:  function name = <m>$f_name</m></p>
+<p>debug:  coefficient on t, a = <m>$a</m></p>  
+<p>debug:  coefficient on e, b = <m>$b</m></p>
+<p>debug:  solution = <m>$solution</m></p>
+<p>debug:  differential_notation = <m>$name_index</m></p>
+<p>debug:  name_index= <m>$f_name</m></p>
+<p>debug:  differential equation= <m>$diffeq</m></p>
+<p>debug:  solution2= <m>$solution2</m></p>-->
+  
+<p>What is the solution to the following dynamical system?
+
+<md>
+<conditionalContent condition="$differential_notation=1">
+  <mrow>\frac{ d$f_name }{ dt } \amp = $diffeq </mrow>
+</conditionalContent>
+<conditionalContent condition="$differential_notation=0">
+  <mrow>$f_name '(t) \amp = $diffeq </mrow>
+</conditionalContent>
+<mrow>$f_name (0) \amp = $b </mrow></md>
+</p>
+<p>  
+<m>
+$f_name (t) = </m><answer>
+<award symbolicEquality="true" simplifyOnCompare="true">$solution </award>
+<award symbolicEquality="true" simplifyOnCompare="true">$solution2 </award>
+</answer>
+</p>
+
+
+<solution>
+The answer is <m>$f_name (t) =$solution </m>.
+
+</solution>
+
+
+</problem>

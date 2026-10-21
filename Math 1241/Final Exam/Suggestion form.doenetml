@@ -1,0 +1,53 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 82JDe8RKDsnyC79p56VQzx
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 67599e0d61dc2a5d
+-->
+<title>Suggestion form</title>
+
+<p>I hope the interactive exercises and activities on Doenet helped you learned some of the dynamical systems concepts of the course.  Especially since this project is still in the pilot stages, we're constantly looking for ways to make it a better experience. We'd like to get your feedback on how to improve the system.</p>
+
+
+<paragraphs>
+  <title>Interactive graphs</title>
+  <p>Many problem sets contained interactive graphs that helped explain concepts or allowed you to answer questions.  Can you list any examples where you found that the graphics particularly helped you learn the course concepts?   </p>
+
+  <textInput name="graphicsHelpful" expanded="true" />
+
+<p>Were there cases where you felt that the interactive graphs got in the way of your learning?</p>
+
+  <textInput name="graphicsHarmful" expanded="true" />
+
+<p>Any other comments on the use of interactive graphs in this course?</p>
+  <textInput name="graphicsOther" expanded="true" />
+
+  
+</paragraphs>
+
+
+<paragraphs>
+  <title>Communicating course progress</title>
+
+  <p>One area which we would like to do better is in communicating course progress throughout the semester so that you can understand how well you are doing and estimate final course outcomes.  This year, we tried showing progress by including a fraction of assigned points at the top of the gradebook.  What type of information on your progress would be most helpful for you?  Would, for example, a projection of best/worst/expected final course score be useful?  Anything else?</p>
+
+  <textInput name="courseProgress" expanded="true" />
+  
+
+</paragraphs>
+
+<paragraphs>
+  <title>Other suggestions</title>
+
+  <p>Any other suggestions for us?</p>
+
+  <textInput name="other" expanded="true" />
+  
+
+</paragraphs>
+
+<p>Thanks for the suggestions!</p>
+
+<answer showCorrectness="false">
+  <award><when>true</when></award>
+</answer>

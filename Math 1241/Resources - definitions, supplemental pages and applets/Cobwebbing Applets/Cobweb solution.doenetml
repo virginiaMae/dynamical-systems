@@ -1,0 +1,49 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 83vCskTYActBRJRjUApuoe
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: b2bf0d2a7bcc37c5
+-->
+<module name="cobwebAppletSolution">
+  <moduleAttributes><function name="f">x(4-x)</function><number name="x0">1</number><number name="xmin">-10</number><number name="xmax">10</number><number name="ymin">-10</number><number name="ymax">10</number><boolean name="showNavigation">true</boolean><math name="variable">x</math><math name="timeVariable">n</math><boolean name="showCalculatedValues">true</boolean><number name="numPoints">4</number><text name="grid">none</text></moduleAttributes><setup>
+    
+    
+<!--     <customAttribute componentType="_componentSize" attribute="width" defaultValue="300px" assignNames="width" />
+    <customAttribute componentType="_componentSize" attribute="height" defaultValue="300px" assignNames="height" /> -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+   <label name="xLabelGraph"><m>$(variable)_$timeVariable</m></label>
+    <label name="yLabelGraph"><m>$(variable)_{$timeVariable+1}</m></label>
+  
+  </setup>
+
+
+  <graph size="medium" xmin="$xmin" xmax="$xmax" ymin="$ymin" ymax="$ymax" showNavigation="$showNavigation" identicalAxisScales="true" grid="true">
+    <xLabel>$xLabelGraph</xLabel>
+    <yLabel>$yLabelGraph</yLabel>
+    
+    <cobwebPolyline function="$f" numPoints="$numPoints" name="cobwebPolyline" initialPoint="($x0,0)" variable="$variable" lockToSolution="true" draggable="false" />
+  </graph>
+
+  <aside hide="not $showCalculatedValues" name="calculatedValue">
+    <title>Calculated values</title>
+
+    <md>
+    <repeat for="$cobwebPolyline.iterateValues" valueName="x" indexName="i">
+        <mrow>
+          $(variable)_{<number>$i-1</number>} \amp = <math displayDigits="5" extend="$x" />
+        </mrow>
+      </repeat>
+    </md>
+
+  </aside>
+
+</module>

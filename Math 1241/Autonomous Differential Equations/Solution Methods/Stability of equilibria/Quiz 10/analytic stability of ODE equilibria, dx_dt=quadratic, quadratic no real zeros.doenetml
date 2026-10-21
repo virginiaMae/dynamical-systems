@@ -1,0 +1,94 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7ZwdeCKkYG3uHEsNDsKkzk
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 726d406cdfb80d48
+-->
+<problem>
+<!-- <title>analytic stability of ODE equilibria, dx/dt=quadratic, quadratic no real zeros</title> -->
+
+<setup>
+
+<selectFromSequence name="a" from="-4" to=" 4" exclude="0" />
+<selectFromSequence name="b" from="-4" to=" 4" />
+<selectFromSequence name="c" from="ceil($b ^2/4)+1" to=" 10" />
+<selectFromSequence name="x0" from="-10" to=" 10" />
+
+
+<select name="x">x y z u v w p X Y Z S</select>
+<function name="fun" variables="$x" symbolic="true"><math expand="true" simplify="true">$a *($x ^2+$b *$x +$c )</math></function>
+
+<mathList name="Es" />
+
+
+</setup>
+
+
+
+<p>Consider the 
+  <select>
+    <option>differential equation</option>
+    <option>dynamical system</option>
+  </select>
+<md>
+  <mrow>
+   <select name="derivString">
+     <option>\frac{ d$x }{ dt }</option>
+     <option>$x'(t)</option>
+   </select>
+  \amp = <math extend="$fun.formula" /></mrow>
+  <mrow>$x _0\amp = $x0 </mrow>
+  <mrow />
+</md>
+</p>
+<p>
+Find all the equilibria and determine their stability.
+</p>
+
+
+<p>Number of equilibria: <mathInput name="n_e" /></p>
+
+<p>The equilibria are</p>
+<ul>
+  <repeatForSequence length="min(5, $n_e)" name="mapEs"><li><m>$(x)_e = </m> <mathInput /></li></repeatForSequence>
+</ul>
+<answer>
+<award>
+  <when>
+    $n_e = 0 
+  </when>
+</award>
+</answer>
+
+<p>Stability of equilibria:</p>
+<ul>
+  <repeat for="$collectedEs" name="mapStab" valueName="v">
+      <li><m>$(x)_e = $v</m>:
+      <choiceInput inline="true">
+        <choice>stable</choice>
+        <choice>unstable</choice>
+      </choiceInput>
+      </li>
+    </repeat>
+</ul>
+  
+<answer maxNumAttempts="3">
+  <award>
+    <when>
+      $n_e = 0 
+    </when>
+  </award>
+</answer>
+
+
+
+<solution>
+<p>To find equilibria, set <m>$derivString = 0</m>.  If we let <m>f($x ) =<math extend="$fun.formula" /></m>, then an equilibrium <m>$x _e</m> must satisfy <m>f($x _e)=0</m>, or
+<me>$$fun($(x)_e) =0.</me>
+We can solve this equation by using the quadratic formula.  The result is that the quadratic has no real roots (the quadratic formula yields the square root of a negative number).  We care only about real values of <m>$x </m>, and the quadratic is never zero for any real <m>$x _e</m>.  There are no equilibria.</p>
+
+
+</solution>
+
+
+</problem>

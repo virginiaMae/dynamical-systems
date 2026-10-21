@@ -1,0 +1,28 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7LQRbgs59Y7KjLCFm69RHT
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 2a9017df32c839cb
+-->
+<title>The quotient rule for differentiation</title>
+<p><ref>Video</ref> | <ref>Summary</ref> | <ref>Transcript</ref>  </p>
+<description>
+The quotient rule is derived from the product rule for differentiation.
+</description>
+
+<section><title>The quotient rule for differentiation</title>
+<p>Let <m>f(x)</m> be the function <m>g(x)</m> over <m>h(x)</m>. Let’s say we know the derivative <m>g’(x)</m> and <m>h’(x)</m> and we want to determine the derivative <m>f’(x)</m>. If you’ve studied the product rule and other differentiation rules, then you probably aren’t surprised to know that <m>f’(x)</m> is not equal to <m>g’(x)</m> over <m>h’(x)</m>. When faced with a new differentiation problem, one fallback is to always go back to the limit definition. <m>f’(x)</m> equals the limit as <m>\Delta x</m> goes to 0 of <m>f(x + \Delta x)</m> plus…. Nah, I’m tired of the limit definition. Let’s see if we can find another way.</p>
+<p>Instead, let's use one of mathematician’s favorite tricks. Let’s reduce this to a previously solved problem. We want to find the relationship among <m>f’</m>, <m>g’</m> and <m>h’</m>. In the current form, it looks a little challenging. If <m>f(x) = g(x)</m> over h(x)</p>
+  <me>f(x) = \frac{g(x)}{h(x)}.</me>
+<p>But we can make it look nicer by multiplying through by <m>h(x)</m>. When we do this, we get <m>f(x)</m> times <m>h(x)</m> equals <m>g(x)</m>
+  <me>g(x) = f(x) h(x).</me>
+If I gave you this relationship among <m>f</m>, <m>g</m>, and <m>h</m>, and asked you to tell me how <m>g’</m> depended on <m>f’</m> and <m>h’</m>, would you know what to do? If you are familiar with the product rule then I hope you would. We’ve reduced the new quotient problem to the previously solved problem of finding the derivative of a product.</p>
+<p>The product rule says that <m>f’(x)</m> times <m>h(x)</m> plus <m>f(x)</m> times <m>h’(x)</m> equals <m>g’(x)</m>
+  <me>g'(x) = f'(x)h(x) + f(x)h'(x)\;\;\text{where}\;\;g(x) = f(x) h(x).</me>
+This formula is nice, but its not exactly what we want. What we want is a formula for <m>f’(x)</m> in terms of <m>g</m> and <m>h</m> and their derivatives. But we can solve this for <m>f’</m> by subtracting off <m>f</m> times <m>h’</m> and then dividing by <m>h</m>. When we do this, we get that <m>f’(x)</m> is equal to <m>g’(x)</m> minus <m>f(x)</m> times <m>h’(x)</m> all over <m>h(x)</m>
+  <me>f'(x) = \frac{g'(x) -f(x) h'(x)}{h(x)}.</me>
+We’re almost done, this is looking better, there’s just one problem though that the right hand side depends on <m>f</m>. If we replace <m>f(x)</m> with this definition <m>\frac{g(x)}{h(x)}</m>, then we get that the derivative is <m>g’(x)</m> minus <m>g(x)</m> over <m>h(x)</m> times <m>h’(x)</m>, all over <m>h(x)</m>
+  <me>f'(x) = \frac{g'(x) - \frac{g(x)}{h(x)}h'(x)}{h(x)}.</me> 
+  This is now a valid formula for the derivative <m>f’(x)</m> in terms of <m>g</m> and <m>h</m> and their derivatives. To make it a little prettier, we can multiply the numerator and denominator by <m>h(x)</m> to cancel the fraction in the numerator. When we do this, we get the final formula <m>f’(x)</m> is equal to <m>h(x)</m> times <m>g’(x)</m> minus <m>g(x)</m> times <m>h’(x)</m>, all over <m>[h(x)]^2</m>
+  <me>f'(x) = \frac{g'(x)h(x) - g(x) h'(x)}{[h(x)]^2}.</me> 
+Maybe it still isn’t pretty, but that's the way things go. This is the quotient rule for calculating the derivative of a quotient. It gives the derivative of <m>g(x)</m> over <m>h(x)</m>. It might be hard to remember which term has the minus sign in front of it, but you can keep it straight by thinking of the special case <m>f(x) = g(x)/h(x)</m>, where <m>h</m> is just a constant number. In this case, calculating the derivative is simple: <m>f’(x)</m> is just <m>g’(x)</m> over <m>h</m>. This result is consistent with the full formula since <m>h’</m> is 0, given that its a constant. This special case can help you remember that the term with the <m>g’(x)</m>, i.e. the term where you differentiate the numerator, is the one without the minus sign. </p></section>

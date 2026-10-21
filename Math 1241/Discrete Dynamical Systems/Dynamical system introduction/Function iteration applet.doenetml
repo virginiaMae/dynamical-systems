@@ -1,0 +1,76 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7CkDpewb8Wp9Mng4XjxDHt
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 7949ee643eda6989
+-->
+<document><title>Function iteration applet</title>
+
+<p><alert>Instructions:</alert> To use the function iteration applet, you have to specify what function you are applying for each time step in <term><ref to="doenet:82YaRL8CieueYqLgxMpxye">function iteration form</ref></term>. The prefilled value of <m>f(x)</m> shown below is an illustration of how this works: in each time step we are multiplying the value at step <m>n</m> by <m>1.5</m>, so the function shown in the box is <m>f(x) =  1.5 x</m>.</p>
+
+<p>Change the definition of <m>f(x)</m> in the box below, enter your desired initial condition (or drag the <copy prop="styleDefinition" source="x0" /> point on the vertical axis), and you're good to go.  Simply click the iterate button to simulate the dynamical system.</p>
+  
+<setup>
+  <number name="nIterations">0</number>
+  <function variables="$varName" name="f">$fformula</function>
+  <number name="zeroFixed" fixed="true">0</number>
+  <math name="prefillFunction" format="latex">3 {$varName}_n</math>
+  <functionIterates initialValue="$initialValue" function="$f" numIterates="$nIterations" name="fIterates" />
+  <mathList extend="$fIterates.iterates" name="allIterates" displayDecimals="$numDecimals" />
+  <repeat for="$allIterates" name="iterateVertices" valueName="v" indexName="i"><point draggable="false" styleNumber="2">($i, $v)</point></repeat>
+  <math extend="$fIterates.finalIterate" name="finalValue" displayDecimals="$numDecimals" />
+  
+</setup>
+
+
+<sideBySide>
+  <stack>
+    
+    <p><m>f($varName) = </m> <mathInput name="fformula" prefill="1.5 $varName" /></p> 
+    <p><m>{$varName}_0 = </m> <mathInput name="initialValue" prefill="5" displayDigits="4" /></p>
+  
+    <updateValue target="$nIterations" newValue="$nIterations+1">
+      <label>iterate</label>
+    </updateValue>
+    <updateValue target="$nIterations" newValue="0">
+      <label>reset</label>
+    </updateValue>
+
+    <text name="text_varName" hide="true">$varName</text>
+    <graph size="large" xmin="-0.2$tmax" xmax="$tmax" ymin="$xmin" ymax="$xmax" displayYAxisTickLabels="false">
+      <xLabel>n</xLabel>
+      <yLabel>$text_varName</yLabel>
+      <lineSegment endpoints="(0,$xmin) (0, $xmax)" fixed="true" name="stateLine" />
+    
+      <point name="x0" labelPosition="left">($zeroFixed, $initialValue)
+        <label><m>{$varName}_0</m></label>
+      </point>
+      <polyline draggable="false" vertices="(0, $initialValue) $iterateVertices" styleNumber="2" />
+      $iterateVertices
+      <point draggable="false" styleNumber="3" name="xn" hide="$nIterations = 0" labelPosition="upperright">($zeroFixed, $finalValue)
+        <label><m>{$varName}_{$nIterations} = $finalValue</m></label>
+      </point>
+      <lineSegment endpoints="$xn ($nIterations, $finalValue)" hide="$nIterations=0" styleNumber="3" draggable="false" name="linkLine" />
+    </graph>
+  </stack>
+ 
+<stack>
+  <tabular>
+    <row header="true"><cell>Iterate values</cell></row>
+    <row><cell>Number of decimal places to show: <mathInput name="numDecimals" prefill="3" /></cell></row>
+    <row><cell><m>{$varName}_0 = <mathInput displayDecimals="$numDecimals" extend="$initialValue" /></m></cell></row>
+    <repeat for="$allIterates" valueName="v" indexName="i"><row><cell><m>{$varName}_{$i} = $v</m></cell></row></repeat>
+  </tabular>
+</stack>
+</sideBySide>
+
+<aside boxed="true"><title>Additional controls</title>
+
+<p>Variable name: <mathInput name="varName" prefill="x" /></p>
+<p><m>{$varName}_{min}</m>: <mathInput name="xmin" prefill="-10" /></p>
+<p><m>{$varName}_{max}</m>: <mathInput name="xmax" prefill="80" /></p>
+<p><m>t_{max}</m>: <mathInput name="tmax" prefill="20" /></p>
+
+</aside> 
+
+</document>

@@ -1,0 +1,293 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7PPbAWTUtmwAJzG5Tiekqv
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 5ae1dd6a3e68f028
+-->
+<problem>
+<!-- <title>Cobweb linear approx: linear dynamical system with no constant</title> -->
+
+<setup>
+
+<number name="one">1</number>
+<number name="zero">0</number>
+<number name="n1">-1</number>
+
+</setup>
+
+<p>The simplest form of a linear discrete dynamical system is one where there is no constant term, i.e., a dynamical system of the form
+<me>z_{n+1} = a z_n, \quad \text{for }n= 0,1,2,\ldots</me>
+where <m>a</m> is a parameter. This form of dynamical system includes 
+<ref to="doenet:exponential_growth_decay_discrete">exponential growth and decay</ref>, which occurs when <m>a</m> is positive.  But, here we will also allow <m>a</m> to be negative, so we'll get a larger range of behavior.</p>
+
+<p>To answer the questions, you can use this cobweb applet, where you can change the value of the parameter <m>a</m>.</p>
+
+  
+<p>a = <mathInput prefill="1/2" name="a" /></p>
+
+<function hide="true" name="az" variables="z_n" simplify="true">$a z_n</function>
+
+
+<hint><title>Applet tip: Zooming into equilibria</title>
+<p>  In this version of the cobwebbing applet, the initial point and several cobwebbing iterations have already been drawn automatically.</p>
+<p>Therefore, if you add lines, you may not immediately see the cobwebbing unless you zoom in close to the final point from the previous iteration.</p></hint>
+<p>Cobweb applet for
+  <me>z_{n+1} = $az</me>
+</p>
+
+
+  <setup>
+    <function name="f" symbolic="true">$formula</function>
+    <solveEquations variables="x" name="solveForE" minVar="$xmin" maxVar="$xmax">$formula = x</solveEquations>
+    <copy prop="x" source="A" name="px" />
+    <derivative name="df">$f</derivative>
+    <number name="n">10</number>
+    <number name="zeroFixed" fixed="true">0</number>
+    <point x="5" y="$initialPoint.x" name="initialPoint" hide="true">
+      
+        <constrainToGraph />
+      
+      <label>Initial Point</label>
+    </point>
+
+    <number fixed="true" name="xmin">-10</number>
+    <number fixed="true" name="xmax">10</number>
+
+  </setup>
+
+  <updateValue name="addLine" target="$n" newValue="$n+1" type="number">
+    <label>Add line</label>
+  </updateValue>
+  <updateValue name="deleteLine" target="$n" newValue="max(1,$n-1)" type="number" disabled="$n &lt;= 1">
+    <label>Delete line</label>
+  </updateValue>
+
+
+  <graph identicalAxisScales="true" grid="true" showNavigation="true">
+    <xLabel><m>z_n</m></xLabel>
+    <yLabel><m>z_{n+1}</m></yLabel>
+
+    <cobwebPolyline function="$az" numPoints="$n" name="cobwebPolyline" initialPoint="$initialPoint" lockToSolution="true" draggable="false" />
+    <point extend="$initialPoint" layer="2" hide="false" />
+  </graph>
+
+  <aside name="calculatedValue">
+    <title>Calculated values</title>
+
+    <md>
+    <repeat for="$cobwebPolyline.iterateValues" valueName="x" indexName="i">
+        <mrow>
+          z_{<number>$i-1</number>} \amp = <math displayDigits="5" extend="$x" />
+        </mrow>
+      </repeat>
+    </md>
+
+  </aside>
+
+  
+
+<exercise>
+<p>
+What condition on the parameter <m>a</m> will ensure there is exactly one equilibrium?  <m>a \ne</m> 
+<answer>
+<award symbolicEquality="true" simplifyOnCompare="numbers">$one </award>
+</answer>
+
+</p>
+<p>
+
+Given that condition, what is the equilibrium? <m>E=</m> 
+<answer>
+<award symbolicEquality="true" simplifyOnCompare="numbers">$zero </award>
+</answer>
+
+</p>
+<p>
+
+The value of this equilibrium 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">does not</choice>
+<choice>does</choice>
+</choiceInput>
+</answer>
+ depend on the value of the parameter <m>a</m>.
+
+ </p>
+
+<p>Under what conditions are there more than one equilibrium? <m>a =</m> 
+<answer>
+<award symbolicEquality="true" simplifyOnCompare="numbers">$one </award>
+</answer>
+</p>
+
+<p>Are there any conditions for which there are no equilibria? 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">no</choice>
+<choice>yes</choice>
+</choiceInput>
+</answer>
+</p>
+
+</exercise>
+
+<exercise>
+<p>
+How does the stability of the equilibria depend on the value of the parameter <m>a</m>?  
+</p>
+
+  <hint>
+    <p>Use the above applet to investigate the dependence of the stability on <m>a</m>.  For what values of <m>a</m> does the trajectory move <em>toward</em> the equilibrium?</p>
+<p>For what values of <m>a</m> does the trajectory move <em>away</em> from the equilibrium?</p>
+<p>You can use the "plus" and "minus" buttons in the bottom right corner of the graph to get a closer look.</p>
+<p>Can you find any values of <m>a</m> where the trajectory does not move closer or further away from the equilibrium?</p>
+  </hint>
+  
+<p>
+The equilibrium is stable for 
+<answer>
+<award symbolicEquality="true" simplifyOnCompare="numbers">$n1 </award>
+</answer>
+ <m>\lt a \lt</m> 
+<answer>
+<award symbolicEquality="true" simplifyOnCompare="numbers">$one </award>
+</answer>
+
+</p>
+<p>
+
+The equilibrium is unstable for <m>a \gt</m> 
+<answer>
+<award symbolicEquality="true" simplifyOnCompare="numbers">$one </award>
+</answer>
+ or <m>a \lt</m> 
+<answer>
+<award symbolicEquality="true" simplifyOnCompare="numbers">$n1 </award>
+</answer>
+
+</p>
+<p>
+
+In both these cases, the one equilibrium is <m>E=</m> 
+<answer>
+<award symbolicEquality="true" simplifyOnCompare="numbers">$zero </award>
+</answer>
+
+</p>
+
+<p>We have two special cases that are missed by the above two conditions. </p>
+
+<ul>
+<li>
+
+For <m>a=</m> 
+<answer><award symbolicEquality="true" simplifyOnCompare="numbers">$n1 </award></answer>
+
+, the solution spirals around the one equilibrium at <m>E=</m> 
+<answer><award symbolicEquality="true" simplifyOnCompare="numbers">$zero </award></answer>
+
+.  Since the solution 
+<answer inline="true">
+<choiceInput><choice credit="1">does not</choice><choice>does</choice></choiceInput>
+</answer>
+
+ get further away from the equilibrium, we still say the equilibrium is 
+<answer inline="true">
+<choiceInput><choice credit="1">stable</choice><choice>unstable</choice></choiceInput>
+</answer>
+
+.
+
+</li>
+
+<li>
+For <m>a=</m> 
+<answer><award symbolicEquality="true" simplifyOnCompare="numbers">$one </award></answer>
+
+, there are an infinite number of equilibria.  However, since the solution 
+<answer inline="true">
+<choiceInput><choice credit="1">does not</choice><choice>does</choice></choiceInput>
+</answer>
+
+ move for any initial condition, the solution 
+<answer inline="true">
+<choiceInput><choice credit="1">does not</choice><choice>does</choice></choiceInput>
+</answer>
+
+ get further away from any equilibrium.  Therefore, we still say each equilibrium is 
+<answer inline="true">
+<choiceInput><choice credit="1">stable</choice><choice>unstable</choice></choiceInput>
+</answer>
+
+.</li>
+
+</ul>
+
+
+</exercise>
+
+<exercise>
+<p>
+How does the behavior of the dynamical system depend on the sign of <m>a</m>?
+</p>
+<p>
+
+When <m>a</m> is negative, the solution 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">spirals around</choice>
+<choice>moves steadily toward or away from</choice>
+</choiceInput>
+</answer>
+ the equilibrium.
+</p>
+<p>
+
+When <m>a</m> is positive, the solution 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">moves steadily toward or away from</choice>
+<choice>spirals around</choice>
+</choiceInput>
+</answer>
+ the equlibrium.
+
+
+</p>
+</exercise>
+
+<solution>
+<exercise>
+
+If <m>a \ne 1</m>, then there is exactly one equilibrium, <m>E=0</m>.  The value of this equilibrium does not depend on <m>a</m> as long as <m>a \ne 1</m>.
+
+<p>If <m>a=1</m>, then there are more than one equilibrium.  In fact, there are an infinite number of equilibria, as any number is an equilibrium.</p>
+
+<p>For this model, there are no conditions under which there are no equilibria.</p>
+</exercise>
+
+<exercise>
+The equilibrium <m>E=0</m> is stable for <m>-1 \le a \le 1</m>.  It is unstable for <m>a \gt 1</m> or <m>a \lt -1</m>.
+
+<ul>
+<li>For <m>a=-1</m>, the solution spirals around the one equilibrium at <m>E=0</m>.  Since the solution does not get further away from the equilibrium, we still say the equilibrium is stable.</li>
+
+<li>For <m>a=1</m>, there are an infinite number of equilibria.  However, since the solution does not move for any initial condition, the solution does not get further away from any equilibrium.  Therefore, we still say each equilibrium is stable.</li>
+</ul>
+</exercise>
+
+<exercise>
+<p>
+When <m>a</m> is negative, the solution spirals around the equilibrium.
+</p>
+<p>
+
+When <m>a</m> is positive, the solution moves steadily toward or away from the equlibrium.
+</p>
+</exercise>
+
+</solution>
+
+
+</problem>

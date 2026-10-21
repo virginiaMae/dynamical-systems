@@ -1,0 +1,88 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7FoPpw7LbU6U2KctiuX6fr
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 8bb08bfd44d21b5a
+-->
+<title>Equilibria in discrete dynamical systems</title>
+
+<p><ref>Video 1</ref> | <ref>Video 2</ref> | <ref>Video 3</ref> | <ref>Transcripts</ref> </p>
+
+<p>In 
+<ref to="doenet:discrete_dynamical_system_introduction">discrete dynamical systems</ref>, there is a simple way to find equilibria.  Just plug a solution that does not depend on time into the evolution rule.  The result is an algebraic equation that you can solve to determine what the equilibrium solutions are.</p>
+
+<p>For example, to find the equilibria for the discrete dynamical system
+<me>x_{t+1} = 2x_t -1, </me>
+substitute both <m>x_t=E</m> and <m>x_{t+1}=E</m>. Then, solve the equation <m>E = 2E-1</m> to determine that <m>E=1</m>.  The one equilibrium for this dynamical system is the solution <m>x_t=1</m>.</p>
+  
+
+<section><title>Video 2</title>
+
+
+<figure suppressFigureNameInCaption="true">
+<video youtube="nJ2v3OB_dpg" size="large" aspectRatio="16/9" name="v1" />
+<caption>Solving for equilibria in discrete dynamical systems. </caption>
+</figure>
+
+<number name="v1RoundUp" hide="true">
+  <conditionalContent>
+    <case condition="$v1.fractionWatched > 0.9">1</case>
+    <else>$v1.fractionWatched</else>
+  </conditionalContent>
+</number>
+  
+  <p>Video credit achieved: <number displayDecimals="1">$v1RoundUp*100</number>%</p>
+
+<answer hide="true" name="v1Credit">
+  <award credit="$v1RoundUp"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+
+  <problem><title>Video review question</title>
+
+  <p>Find the equilibria of the dynamical system <m>x_{t+1} = 1 + 0.5 x_t</m>.</p>
+
+  <p>How many equilibria are there? <answer name="n">1</answer></p>
+
+  <hint hide="$n.creditAchieved = 1 or $n.numSubmissions &lt; 2">
+    <p>There is 1 one equilibrium.</p>
+  </hint>
+
+  <p>The equilibria are:
+    <repeatForSequence length="min(5,$n)" name="Es">
+        <p>
+          <m>x_t = </m> <mathInput />
+        </p>
+      </repeatForSequence>
+  </p>
+  <answer name="ansEs" matchPartial="true">
+    <award>
+      <when><mathList>
+        <setup><collect componentType="mathInput" from="$Es" name="collect_list" /></setup><mathList name="list" extend="$collect_list.value" />
+      </mathList> = <math>2</math></when>
+    </award>
+  </answer>
+
+  <hint hide="$ansEs.creditAchieved = 1 or $ansEs.numSubmissions &lt; 2 or $ansEs.numSubmissions >= 5">
+    <p>Plug in <m>x_{t+1} = E</m> and <m>x_t = E</m> into the dynamical system, obtaining the equation <m>E = 1 + 0.5 E</m>.</p>
+    <p>To determine the equilibria, solve for <m>E</m>.</p>
+  </hint>
+
+
+  <hint hide="$ansEs.creditAchieved = 1 or $ansEs.numSubmissions &lt; 5">
+    <p>Plug in <m>x_{t+1} = E</m> and <m>x_t = E</m> into the dynamical system, obtaining the equation <m>E = 1 + 0.5 E</m>.</p>
+    <p>To determine the equilibria, solve for <m>E</m>.  Subtract <m>0.5E</m> from both sides to simplify the equation to <m>0.5E = 1</m>.  Divide both sides by 0.5 to determine that <m>E=2</m>.  The one equilibrium is <m>x_t = 2</m>.</p>
+  </hint>
+
+
+  <solution>
+    <p>Plug in <m>x_{t+1} = E</m> and <m>x_t = E</m> into the dynamical system, obtaining the equation <m>E = 1 + 0.5 E</m>.</p>
+    <p>To determine the equilibria, solve for <m>E</m>.  Subtract <m>0.5E</m> from both sides to simplify the equation to <m>0.5E = 1</m>.  Divide both sides by 0.5 to determine that <m>E=2</m>.  The one equilibrium is <m>x_t = 2</m>.</p>
+  </solution>
+    
+  </problem>   
+
+  
+  
+</section>

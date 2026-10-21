@@ -1,0 +1,1010 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 826dj19D2aDeEN8JPSLgPg
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 9b8436cf8edddc5f
+-->
+<problem>
+<!-- <title>Bifurcation with cubic, via plots of function</title> -->
+
+<setup>
+
+<select name="f">f g</select>
+<select name="par">a b c alpha beta gamma</select>
+<select name="x">x y z s u v w</select>
+<selectFromSequence name="a_mag" from="1" to=" 5" />
+<selectFromSequence name="b_mag" from="4" to=" 10" />
+<selectFromSequence name="c" from="-10" to=" 10" exclude="0" />
+<selectFromSequence name="a_sign" from="-1" to=" 1" step="2" numToSelect="4" withReplacement="true" />
+  
+
+<selectFromSequence name="d_mag" from="max(2, 10-$b_mag)" to="max(4, 10-$b_mag)" />
+
+<number name="a">$a_mag *$a_sign[1] </number>
+<number name="b">$b_mag *$a_sign[2] </number>
+<number name="d">-$d_mag *$a_sign[2] </number>
+<number name="reorder">(1-$a_sign[1] *$a_sign[4] )/2</number>
+<function name="line_of_zeros" variables="p" symbolic="true"><math simplify="true">$d +$a_sign[3] *($c +p*$a_sign[4] +$a )/$a </math></function>
+
+<function name="fun" variables="$x $par" symbolic="true" simplify="numbers"><math simplify="true">0.01*($x -$$line_of_zeros($par ))*($a *($x -$b )^2+$c +$par *$a_sign[4] )</math></function>
+<number name="parvalbif">-$c *$a_sign[4] </number>
+<number name="parval1">(-$c -$a *4)*$a_sign[4] </number>
+<number name="parval2">(-$c -$a )*$a_sign[4] </number>
+<number name="parval3">(-$c +$a )*$a_sign[4] </number>
+<function name="fun_at_bif" variables="$x">$$fun($x , $parvalbif )</function>
+<p>
+<number name="xmin">min(-2,floor(min($b +$a_sign[2] *3,$d -4)/2)*2-1)</number>
+<number name="xmax">max(2,ceil(max($b +$a_sign[2] *3,$d +4)/2)*2+1)</number>
+</p>
+
+<function name="fun_at_val1" variables="$x">$$fun($x , $parval1 )</function>
+<function name="fun_at_val2" variables="$x">$$fun($x , $parval2 )</function>
+<function name="fun_at_val3" variables="$x">$$fun($x , $parval3 )</function>
+<number name="val1_zero1">$b -2</number>
+<number name="val1_zero2">$b +2</number>
+<evaluate name="val1_zero3" forceNumeric="true" function="$line_of_zeros" input="$parval1" />
+<!-- <number name='val1_zero3'>$d +$vard_sign *(2*sqrt(6)&#x2D;3)</number> -->
+<number name="val2_zero1">$b -1</number>
+<number name="val2_zero2">$b +1</number>
+<evaluate name="val2_zero3" forceNumeric="true" function="$line_of_zeros" input="$parval2" />
+<evaluate name="valbif_zero2" forceNumeric="true" function="$line_of_zeros" input="$parvalbif" />
+<evaluate name="val3_zero" forceNumeric="true" function="$line_of_zeros" input="$parval3" />
+
+
+<!--   
+<number name='val1_critical_point_sub1'>$val1_zero1 +$val1_zero2 +$val1_zero3 </number>
+<number name='val1_critical_point_sub2'>sqrt($val1_zero1 ^2+$val1_zero2 ^2+$val1_zero3 ^2&#x2D;$val1_zero1 *$val1_zero2 &#x2D;$val1_zero1 *$val1_zero3 &#x2D;$val1_zero2 *$val1_zero3 )</number>
+<number name='val1_critical_point1'>1/3*($val1_critical_point_sub1 +$val1_critical_point_sub2 )</number>
+<number name='val1_critical_point2'>1/3*($val1_critical_point_sub1 &#x2D;$val1_critical_point_sub2 )</number>
+<number name='fun_at_val1_critical_point1'>$$fun_at_val1($val1_critical_point1 )</number>
+<number name='fun_at_val1_critical_point2'>$$fun_at_val1($val1_critical_point2 )</number> -->
+<number name="val2_critical_point_sub1">$val2_zero1 +$val2_zero2 +$val2_zero3 </number>
+<number name="val2_critical_point_sub2">sqrt($val2_zero1 ^2+$val2_zero2 ^2+$val2_zero3 ^2-$val2_zero1 *$val2_zero2 -$val2_zero1 *$val2_zero3 -$val2_zero2 *$val2_zero3 )</number>
+<number name="val2_critical_point1">1/3*($val2_critical_point_sub1 +$val2_critical_point_sub2 )</number>
+<number name="val2_critical_point2">1/3*($val2_critical_point_sub1 -$val2_critical_point_sub2 )</number>
+<number name="fun_at_val2_critical_point1">$$fun_at_val2($val2_critical_point1 )</number>
+<number name="fun_at_val2_critical_point2">$$fun_at_val2($val2_critical_point2 )</number>
+<number name="bif_critical_point1">1/3*($b +2*$d )</number>
+<number name="fun_at_bif_critical_point1">$$fun_at_bif($bif_critical_point1 )</number>
+<number name="fun_at_val3_bif_critical_point1">$$fun_at_val3($bif_critical_point1 )</number>
+
+
+<number name="ymax_sub">max(<!--$fun_at_val1_critical_point1, $fun_at_val1_critical_point2 ,-->
+$fun_at_val2_critical_point1 ,$fun_at_val2_critical_point2 ,$fun_at_val3_bif_critical_point1 ,$fun_at_bif_critical_point1 )</number>
+<number name="ymin_sub">min(<!--$fun_at_val1_critical_point1 ,$fun_at_val1_critical_point2 ,-->
+$fun_at_val2_critical_point1 ,$fun_at_val2_critical_point2 ,$fun_at_val3_bif_critical_point1 ,$fun_at_bif_critical_point1 )</number>
+
+<number name="ymax">max($ymax_sub, -0.2$ymin_sub)</number>
+<number name="ymin">min($ymin_sub, -0.2$ymax_sub)</number>
+
+
+<number name="parval_reorder1">(1-$reorder )*$parval1 +$reorder *$parval3 </number>
+<number name="parval_reorder2">(1-$reorder )*$parval2 +$reorder *$parvalbif </number>
+<number name="parval_reorder3">(1-$reorder )*$parvalbif +$reorder *$parval2 </number>
+<number name="parval_reorder4">(1-$reorder )*$parval3 +$reorder *$parval1 </number>
+<function name="fun_at_val_reorder1" variables="$x">$$fun($x , $parval_reorder1 )</function>
+<function name="fun_at_val_reorder2" variables="$x">$$fun($x , $parval_reorder2 )</function>
+<function name="fun_at_val_reorder3" variables="$x">$$fun($x , $parval_reorder3 )</function>
+<function name="fun_at_val_reorder4" variables="$x">$$fun($x , $parval_reorder4 )</function>
+  
+
+<!-- Required Condition $xmax &#x2D;$xmin  < 20 -->
+
+<conditionalContent name="num_equilibria_1">
+  <case condition="$reorder = 1">
+    <number>1</number><number>3</number>
+  </case>
+  <else>
+    <number>3</number><number>1</number>
+  </else>
+</conditionalContent>
+
+<conditionalContent name="upperStable">
+  <case condition="($a_sign[1] > 0 and $d > $b) or ($a_sign[1] &lt; 0 and $d &lt; $b)">
+    <boolean>true</boolean>
+  </case>
+  <else><boolean>false</boolean></else>
+</conditionalContent>
+
+<boolean name="line_stable">$a_sign[1] &lt; 0</boolean>
+  
+<min name="parminsub" forceNumeric="true">$parval1 $parval3</min>
+<max name="parmaxsub" forceNumeric="true">$parval1 $parval3</max>
+<number name="parmin">min(-2, round($parminsub -($parmaxsub -$parminsub )*0.2), round(-0.2*$parmaxsub))</number>
+<number name="parmax">max(2, round($parmaxsub +($parmaxsub -$parminsub )*0.2), round(-0.2*$parminsub))</number>
+
+ <!--  
+<math name='pmin' simplify='full'  unordered='true'>min(&#x2D;1,$parval_reorder1 &#x2D;1)</math>
+<math name='pmax' simplify='full'  unordered='true'>max(1,$parval_reorder4 +1)</math>
+<math name='one' simplify='full' >1</math>
+<math name='upper_stable' simplify='full'  unordered='true'>if(Or(And($a_is_pos , $d  > $b ),And($a_is_neg , $d  < $b )),1,0)</math>
+<math name='lower_stable' simplify='full' >1&#x2D;$upper_stable </math>
+<math name='b_upper' simplify='full' >&#x2D;$a *$par_effect_sign </math>
+<math name='b_lower' simplify='full' >&#x2D;$a *$par_effect_sign </math>
+<math name='theline' simplify='full'  unordered='true'>Line(Point($parval1 ,$$line_of_zeros($parval1 )),Point($parval3 ,$$line_of_zeros($parval3 )))</math>
+<math name='line_stable' simplify='full'  unordered='true'>if($a_is_neg ,1,0)</math>
+<function name='upper_branch' variables='pp'>$b +sqrt((&#x2D;$c &#x2D;pp*$par_effect_sign )/$a )</function>
+<function name='lower_branch' variables='pp'>$b &#x2D;sqrt((&#x2D;$c &#x2D;pp*$par_effect_sign )/$a )</function>
+<math name='A' simplify='full'  unordered='true'>Point($parvalbif ,$b )</math>
+<math name='B1' simplify='full'  unordered='true'>Point($parval2 ,$b +1)</math>
+<math name='B2' simplify='full'  unordered='true'>Point($parval2 ,$b &#x2D;1)</math>
+<math name='C1' simplify='full'  unordered='true'>Point($parval1 ,$$line_of_zeros($parval1 ))</math>
+<math name='C2' simplify='full'  unordered='true'>Point($parval3 ,$$line_of_zeros($parval3 ))</math>
+<math name='p_test' simplify='full'  unordered='true'>if($a *$par_effect_sign  >0,$pmin , $pmax )</math>
+<math name='line_below_on_edge' simplify='full' >$b &#x2D;$b_sign *sqrt((&#x2D;$c &#x2D;$p_test *$par_effect_sign )/$a ) > $d +$vard_sign *($c +$p_test *$par_effect_sign +$a )/$a </math>
+<math name='line_not_cross_parabola' simplify='full' >Xor($line_below_on_edge , $d  > 0)</math> -->
+<!-- Required Condition Xor($line_below_on_edge , $d  > 0) -->
+
+
+ 
+  <styleDefinition stylenumber="2" lineWidth="3" />
+  <styleDefinition styleNumber="9" markerColor="red" markerSize="4" markerStyle="circle" lineColor="red" lineWidth="3" />
+  <styleDefinition styleNumber="10" markerColor="red" markerSize="1" markerStyle="circle" lineColor="red" lineWidth="3" />
+
+
+
+
+</setup>
+
+
+
+<p>For the dynamical system 
+ <m>\frac{ d$x }{ dt } = $f ($x ,$par ),</m>
+the function <m>$f</m> of <m>$x </m> depends on a parameter <m>$par </m>.  Rather than show the formula for <m>$f</m>, you can see its behavior through these graphs for <m>$par =$parval_reorder1 , $parval_reorder2 , $parval_reorder3 , $parval_reorder4 </m>.
+</p>
+
+<p>You can change the value of $par in the first graph using this slider: </p>
+
+<slider name="pslider" from="$parmin" to="$parmax" step="0.1" initialValue="$parval_reorder1" width="250" />
+
+<sbsGroup>
+<sideBySide>
+
+<stack>
+<p><m>$par = $pslider</m></p>
+<graph aspectRatio="7/5" xmin="$xmin" xmax="$xmax" ymin="$ymin" ymax="$ymax" fixAxes="true" grid="1 1">
+  <xLabel><m>$x</m></xLabel>
+  <yLabel><m>$f</m></yLabel>
+  <function name="fun_at_val_pslider" variables="$x">$$fun($x , $pslider )</function>
+</graph>
+</stack>
+
+<stack>
+<p><m>$par = $parval_reorder2</m></p>
+<graph aspectRatio="7/5" xmin="$xmin" xmax="$xmax" ymin="$ymin" ymax="$ymax" fixAxes="true" grid="1 1">
+  <xLabel><m>$x</m></xLabel>
+  <yLabel><m>$f</m></yLabel>
+  $fun_at_val_reorder2
+</graph>
+</stack>
+
+</sideBySide>
+
+<sideBySide>
+<stack>
+<p><m>$par = $parval_reorder3</m></p>
+<graph aspectRatio="7/5" xmin="$xmin" xmax="$xmax" ymin="$ymin" ymax="$ymax" fixAxes="true" grid="1 1">
+  <xLabel><m>$x</m></xLabel>
+  <yLabel><m>$f</m></yLabel>
+  $fun_at_val_reorder3
+</graph>
+</stack>
+
+<stack>
+<p><m>$par = $parval_reorder4</m></p>
+<graph aspectRatio="7/5" xmin="$xmin" xmax="$xmax" ymin="$ymin" ymax="$ymax" fixAxes="true" grid="1 1">
+  <xLabel><m>$x</m></xLabel>
+  <yLabel><m>$f</m></yLabel>
+  $fun_at_val_reorder4
+</graph>
+</stack>
+
+</sideBySide>
+</sbsGroup>
+  
+<p>For values of <m>$par </m> in between those shown, <m>$f</m> changes smoothly, so its graph will be somewhere in between the snapshots shown (as you can see by changing the value of $par using the slider).</p>
+
+
+
+<exercise includeAutoNumber="true"><title />
+<p>There is a bifurcation that occurs for a particular value of <m>$par </m>, which we'll denote by <m>$par ^*</m>.  What is the value of <m>$par ^*</m>?  <m>$par ^*=</m> 
+<answer>$parvalbif</answer>
+</p>
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<p>At the bifurcation point, the number of equilibria changes.</p>
+
+<p>For <m>$parval_reorder1  \le $par  \lt  $par ^*</m>, the number of equilibria = 
+<answer weight="2">$num_equilibria_1[1][1]</answer>
+.</p>
+
+<p>For <m>$par ^* \lt  $par  \le $parval_reorder4 </m>, the number of equilibria = 
+<answer weight="2">$num_equilibria_1[1][2]</answer>
+.</p>
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<p>Use the below applet to sketch a bifurcation diagram with respect to the parameter <m>$par </m>.  The bifurcation diagram should represent how the number, location, and stability of the equilibria depend on the value of <m>$par </m> for <m>$parval_reorder1  \le $par  \le $parval_reorder4 </m>.</p>
+
+
+
+<p>First, click 
+<updateValue name="revealBifPoint" type="boolean" target="$showBifPoint" newValue="true" disabled="$showBifPoint">
+  <label>Show point</label>
+</updateValue> and move the point to the location of the bifurcation point.
+<answer name="ansBifPoint" disableAfterCorrect="true" disabled="not $showBifPoint">
+  <award>
+    <when>
+      $BP = <math>($parvalbif, $b)</math>
+    </when>
+  </award>
+</answer>
+</p>
+
+<hint>
+  <p>The horizontal coordinate of the point should be the bifurcation value <m>$par^* = </m> <answer weight="0" name="parvalhint">$parvalbif</answer></p>
+
+  <p>The vertical coordinate of the point should be the value <m>$x</m> of the equilibrium right at the bifurcation, i.e, right when <m>$par = $par^*</m>.  At the bifurcation, the equilibrium is at the value <m>$x = </m> <answer weight="0" name="bhint">$b</answer>.</p>
+
+  <conditionalContent condition="$parvalhint.creditAchieved=1 and $bhint.creditAchieved=1">
+    <p>Therefore, move the bifurcation point on the graph to <m>($par, $x) = ($parvalbif, $b)</m>.</p>
+  </conditionalContent>
+</hint>
+
+
+<setup>
+  <boolean name="showBifPoint">false</boolean>
+  <boolean name="showEqFromBif">false</boolean>
+  <boolean name="showCurvesFromBif">false</boolean>
+  <boolean name="showLineEq">false</boolean>
+  <boolean name="showLineCurve">false</boolean>
+</setup>
+
+<graph xmin="$parmin" xmax="$parmax" ymin="$xmin" ymax="$xmax" fixAxes="true" grid="1 1" name="g1">
+  <xLabel><m>$par</m></xLabel>
+  <yLabel><m>$x</m></yLabel>
+  <conditionalContent condition="$showBifPoint">
+    
+    <conditionalContent>
+      <case condition="$ansBifPoint.creditAchieved &lt; 1">
+        <equilibriumPoint name="BP" styleNumber="9" x="-0.5" y="0.5" labelPosition="top" showCoordsWhenDragging="false" stable="false">
+          <label><m>($par, $x) = <coords displayDigits="3" extend="$BP.coords" /></m></label>
+<!--           <constraints baseOnGraph="g1">
+            <attractTo threshold="0.03"> -->
+          
+            <attractTo threshold="0.3">
+              <point>($parvalbif, $b)</point>
+            </attractTo>
+          
+        </equilibriumPoint>
+      </case>
+      <else>
+        <equilibriumPoint name="BPa" styleNumber="9" fixed="true" stable="false" hide="$ansBifCurves.creditAchieved = 1">
+          ($parvalbif, $b)
+        </equilibriumPoint>
+      </else>
+    </conditionalContent>
+
+  </conditionalContent>
+
+
+  <conditionalContent condition="$showEqFromBif">
+    
+    <conditionalContent>
+      <case condition="$ansEqFromBif.creditAchieved &lt; 1">
+        <equilibriumPoint name="BEa" styleNumber="9" x="-1.5" y="1.5" switchable="true">
+<!--           <constraints name="attractTo4" baseOnGraph="g1">
+            <attractTo threshold="0.03"> -->
+          
+            <attractTo threshold="0.3">
+              <point>($parval2, $val2_zero1)</point>
+              <point>($parval2, $val2_zero2)</point>
+              <point>($parval1, $val1_zero1)</point>
+              <point>($parval1, $val1_zero2)</point>
+            </attractTo>
+          
+        </equilibriumPoint>
+        <equilibriumPoint name="BEb" styleNumber="9" x="1.5" y="1.5" switchable="true">
+<!--           <constraints baseOnGraph="g1">
+            <attractTo threshold="0.03"> -->
+          
+            <attractTo threshold="0.3">
+              <point>($parval2, $val2_zero1)</point>
+              <point>($parval2, $val2_zero2)</point>
+              <point>($parval1, $val1_zero1)</point>
+              <point>($parval1, $val1_zero2)</point>
+            </attractTo>
+          
+        </equilibriumPoint>
+        <equilibriumPoint name="BEc" styleNumber="9" x="-1.5" y="-1.5" switchable="true">
+<!--           <constraints baseOnGraph="g1">
+            <attractTo threshold="0.03"> -->
+          
+            <attractTo threshold="0.3">
+              <point>($parval2, $val2_zero1)</point>
+              <point>($parval2, $val2_zero2)</point>
+              <point>($parval1, $val1_zero1)</point>
+              <point>($parval1, $val1_zero2)</point>
+            </attractTo>
+          
+        </equilibriumPoint>
+        <equilibriumPoint name="BEd" styleNumber="9" x="1.5" y="-1.5" switchable="true">
+<!--           <constraints baseOnGraph="g1">
+            <attractTo threshold="0.03"> -->
+          
+            <attractTo threshold="0.3">
+              <point>($parval2, $val2_zero1)</point>
+              <point>($parval2, $val2_zero2)</point>
+              <point>($parval1, $val1_zero1)</point>
+              <point>($parval1, $val1_zero2)</point>
+            </attractTo>
+          
+        </equilibriumPoint>
+      </case>
+      <else>
+        <equilibriumPoint name="BE11" styleNumber="9" fixed="true" stable="not $upperStable[1][1]" hide="$ansBifCurves.creditAchieved = 1">
+          ($parval1, $val1_zero1)
+        </equilibriumPoint>
+        <equilibriumPoint name="BE12" styleNumber="9" fixed="true" stable="$upperStable[1][1]" hide="$ansBifCurves.creditAchieved = 1">
+          ($parval1, $val1_zero2)
+        </equilibriumPoint>
+        <equilibriumPoint name="BE21" styleNumber="9" fixed="true" stable="not $upperStable[1][1]" hide="$ansBifCurves.creditAchieved = 1">
+          ($parval2, $val2_zero1)
+        </equilibriumPoint>
+        <equilibriumPoint name="BE22" styleNumber="9" fixed="true" stable="$upperStable[1][1]" hide="$ansBifCurves.creditAchieved = 1">
+          ($parval2, $val2_zero2)
+        </equilibriumPoint>
+      </else>
+    </conditionalContent>
+
+  </conditionalContent>
+
+
+  <conditionalContent condition="$showCurvesFromBif">
+    <point layer="3" hide="$ansBifCurves.creditAchieved = 1" styleNumber="10" name="C11" x="-1.9" y="1.9">
+      
+        <attractTo>$BE11 $BE12 $BE21 $BE22 $BPa</attractTo>
+      
+    </point>
+    <point layer="3" hide="$ansBifCurves.creditAchieved = 1" styleNumber="10" name="C12" x="-0.5" y="0.3">
+      
+        <attractTo>$BE11 $BE12 $BE21 $BE22 $BPa</attractTo>
+      
+    </point>
+    <point layer="3" hide="$ansBifCurves.creditAchieved = 1" styleNumber="10" name="C13" x="1.9" y="0.2">
+      
+        <attractTo>$BE11 $BE12 $BE21 $BE22 $BPa</attractTo>
+      
+    </point>
+    <point layer="3" hide="$ansBifCurves.creditAchieved = 1" styleNumber="10" name="C21" x="-1.9" y="-0.1">
+      
+        <attractTo>$BE11 $BE12 $BE21 $BE22 $BPa</attractTo>
+      
+    </point>
+    <point layer="3" hide="$ansBifCurves.creditAchieved = 1" styleNumber="10" name="C22" x="-0.5" y="-1.7">
+      
+        <attractTo>$BE11 $BE12 $BE21 $BE22 $BPa</attractTo>
+      
+    </point>
+    <point layer="3" hide="$ansBifCurves.creditAchieved = 1" styleNumber="10" name="C23" x="1.9" y="-1.9">
+      
+        <attractTo>$BE11 $BE12 $BE21 $BE22 $BPa</attractTo>
+      
+    </point>
+
+    <setup>
+      <conditionalContent name="extrapFor1">
+        <case condition="$C11.x*$a_sign[4]*$a_sign[1] > $C13.x*$a_sign[4]*$a_sign[1]">
+          <boolean>true</boolean><boolean>false</boolean>
+        </case>
+        <else>
+          <boolean>false</boolean><boolean>true</boolean>
+        </else>
+      </conditionalContent>
+      <conditionalContent name="extrapFor2">
+        <case condition="$C21.x*$a_sign[4]*$a_sign[1] > $C23.x*$a_sign[4]*$a_sign[1]">
+          <boolean>true</boolean><boolean>false</boolean>
+        </case>
+        <else>
+          <boolean>false</boolean><boolean>true</boolean>
+        </else>
+      </conditionalContent>
+    </setup>
+    <equilibriumCurve name="C1" styleNumber="9" fixed="$ansBifCurves.creditAchieved = 1" switchable="true" through="$C11 $C12 $C13" extrapolateForward="$extrapFor1[1][1]" extrapolateBackward="$extrapFor1[1][2]" layer="2">
+      <conditionalContent>
+        <case condition="$C11 = $BPa">
+        <bezierControls hide="true">
+          <controlVectors pointNumber="1" hide="true">
+             <vector>(($C11.x - $C12.x)/32, ($C11.y - $C12.y)/4  )</vector>
+          </controlVectors>
+          <controlVectors pointNumber="3" hide="true">
+            <vector>(($C12.x - $C13.x)/2, ($C12.y - $C13.y)/8  )</vector>
+          </controlVectors>
+        </bezierControls>
+        </case>
+        <case condition="$C13=$BPa">
+        <bezierControls hide="true">
+          <controlVectors pointNumber="3" hide="true">
+            <vector>(($C12.x - $C13.x)/32, ($C12.y - $C13.y)/4  )</vector>
+          </controlVectors>
+          <controlVectors pointNumber="1" hide="true">
+            <vector>(($C11.x - $C12.x)/2, ($C11.y - $C12.y)/8  )</vector>
+          </controlVectors>
+        </bezierControls>
+        </case>
+      </conditionalContent>
+    </equilibriumCurve>
+
+    <equilibriumCurve name="C2" fixed="$ansBifCurves.creditAchieved = 1" styleNumber="9" switchable="true" through="$C21 $C22 $C23" extrapolateForward="$extrapFor2[1][1]" extrapolateBackward="$extrapFor2[1][2]" layer="2">
+      <conditionalContent condition="$C21=$BPa">
+        <bezierControls hide="true">
+          <controlVectors pointNumber="1" hide="true">
+            <vector>(($C21.x - $C22.x)/32, ($C21.y - $C22.y)/4  )</vector>
+          </controlVectors>
+          <controlVectors pointNumber="3" hide="true">
+            <vector>(($C22.x - $C23.x)/2, ($C22.y - $C23.y)/8  )</vector>
+          </controlVectors>
+        </bezierControls>
+      </conditionalContent>
+      <conditionalContent condition="$C23=$BPa">
+        <bezierControls hide="true">
+          <controlVectors pointNumber="3" hide="true">
+            <vector>(($C22.x - $C23.x)/32, ($C22.y - $C23.y)/4)</vector>
+          </controlVectors>
+          <controlVectors pointNumber="1" hide="true">
+            <vector>(($C21.x - $C22.x)/2, ($C21.y - $C22.y)/8)</vector>
+          </controlVectors>
+        </bezierControls>
+      </conditionalContent>
+    </equilibriumCurve>
+
+  </conditionalContent>
+
+
+  <conditionalContent condition="$showLineEq">
+    
+    <conditionalContent>
+      <case condition="$ansLineEq.creditAchieved &lt; 1">
+        <equilibriumPoint name="LEa" styleNumber="9" x="-1.5" y="1.5" switchable="true">
+<!--           <constraints name="attractToLE" baseOnGraph="g1">
+            <attractTo threshold="0.03"> -->
+          
+            <attractTo threshold="0.3">
+              <point>($parval1, $val1_zero3)</point>
+              <point>($parval2, $val2_zero3)</point>
+              <point>($parvalbif, $valbif_zero2)</point>
+              <point>($parval3, $val3_zero)</point>
+            </attractTo>
+          
+        </equilibriumPoint>
+        <equilibriumPoint name="LEb" styleNumber="9" x="1.5" y="1.5" switchable="true">
+<!--           <constraints baseOnGraph="g1">
+            <attractTo threshold="0.03"> -->
+          
+            <attractTo threshold="0.3">
+              <point>($parval1, $val1_zero3)</point>
+              <point>($parval2, $val2_zero3)</point>
+              <point>($parvalbif, $valbif_zero2)</point>
+              <point>($parval3, $val3_zero)</point>
+            </attractTo>
+          
+        </equilibriumPoint>
+        <equilibriumPoint name="LEc" styleNumber="9" x="-1.5" y="-1.5" switchable="true">
+          
+        </equilibriumPoint>
+        <equilibriumPoint name="LEd" styleNumber="9" x="1.5" y="-1.5" switchable="true">
+          
+        </equilibriumPoint>
+      </case>
+      <else>
+        <equilibriumPoint name="LE1" styleNumber="9" fixed="true" stable="$line_stable" hide="$ansLineCurve.creditAchieved = 1">
+          ($parval1, $val1_zero3)
+        </equilibriumPoint>
+        <equilibriumPoint name="LE2" styleNumber="9" fixed="true" stable="$line_stable" hide="$ansLineCurve.creditAchieved = 1">
+          ($parval2, $val2_zero3)
+        </equilibriumPoint>
+        <equilibriumPoint name="LEbif" styleNumber="9" fixed="true" stable="$line_stable" hide="$ansLineCurve.creditAchieved = 1">
+          ($parvalbif, $valbif_zero2)
+        </equilibriumPoint>
+        <equilibriumPoint name="LE3" styleNumber="9" fixed="true" stable="$line_stable" hide="$ansLineCurve.creditAchieved = 1">
+          ($parval3, $val3_zero)
+        </equilibriumPoint>
+      </else>
+    </conditionalContent>
+
+  </conditionalContent>
+
+
+  <conditionalContent condition="$showLineCurve">
+    <point layer="3" hide="$ansLineCurve.creditAchieved = 1" styleNumber="10" name="CLE1" x="-1.9" y="1.9">
+      
+        <attractTo>$LE1 $LE2 $LEbif $LE3</attractTo>
+      
+    </point>
+    <point layer="3" hide="$ansLineCurve.creditAchieved = 1" styleNumber="10" name="CLE2" x="-1" y="0.2">
+      
+    </point>
+    <point layer="3" hide="$ansLineCurve.creditAchieved = 1" styleNumber="10" name="CLE3" x="0.5" y="-0.2">
+      
+    </point>
+    <point layer="3" hide="$ansLineCurve.creditAchieved = 1" styleNumber="10" name="CLE4" x="1.9" y="-1.9">
+      
+    </point>
+
+
+    <equilibriumCurve name="CLE" fixed="$ansLineCurve.creditAchieved = 1" styleNumber="9" switchable="true" through="$CLE1 $CLE2 $CLE3 $CLE4" extrapolateForward="true" extrapolateBackward="true" layer="2" />
+   
+  </conditionalContent>
+
+
+</graph>
+
+
+<p>For <m>$par = $parval2</m>, there are two equilibria close to the equilibrium value (<m>$x = $b</m>) from the bifurcation.  There is a stable equilibrium at <m>$x =</m> 
+  <answer>
+    <award>
+      <conditionalContent>
+        <case condition="$upperStable[1][1]">$val2_zero2</case>
+        <else>$val2_zero1</else>
+      </conditionalContent>
+    </award>
+    <conditionalContent condition="$line_stable">
+      <award credit="0" name="extraEq21">$val2_zero3</award>
+    </conditionalContent>
+  </answer>
+  and an unstable equilibrium at
+  <answer>
+    <award>
+      <conditionalContent>
+        <case condition="$upperStable[1][1]">$val2_zero1</case>
+        <else>$val2_zero2</else>
+      </conditionalContent>
+    </award>
+    <conditionalContent condition="not $line_stable">
+      <award credit="0" name="extraEq22">$val2_zero3</award>
+    </conditionalContent>
+  </answer>
+  .</p>
+
+<feedback condition="$extraEq21">
+  It is true that there is a stable equilibrium at <m>$x = $val2_zero3</m> when <m>$par=$parval2</m>.  However, here we are looking for the equilibria that are closest to the bifurcation that occurred at <m>$x = $b</m>.
+</feedback>
+<feedback condition="$extraEq22">
+  It is true that there is an unstable equilibrium at <m>$x = $val2_zero3</m> when <m>$par=$parval2</m>.  However, here we are looking for the equilibria that are closest to the bifurcation that occurred at <m>$x = $b</m>.
+</feedback>
+
+
+<p>For <m>$par = $parval1</m>, there are two equilibria a little further away from the equilibrium value (<m>$x = $b</m>) from the bifurcation.  There is a stable equilibrium at <m>$x =</m> 
+<answer>
+  <award>
+    <conditionalContent>
+      <case condition="$upperStable[1][1]">$val1_zero2</case>
+      <else>$val1_zero1</else>
+    </conditionalContent>
+  </award>
+  <conditionalContent condition="$line_stable">
+    <award credit="0" name="extraEq11">$val1_zero3</award>
+  </conditionalContent>
+</answer>
+and an unstable equilibrium at
+<answer>
+  <award>
+    <conditionalContent>
+      <case condition="$upperStable[1][1]">$val1_zero1</case>
+      <else>$val1_zero2</else>
+    </conditionalContent>
+  </award>
+  <conditionalContent condition="not $line_stable">
+    <award credit="0" name="extraEq12">$val1_zero3</award>
+  </conditionalContent>
+</answer>
+.</p>
+
+<feedback condition="$extraEq11">
+  It is true that there is a stable equilibrium at <m>$x = $val1_zero3</m> when <m>$par=$parval1</m>.  However, here we are looking for the equilibria that are closest to the bifurcation that occurred at <m>$x = $b</m>.
+</feedback>
+<feedback condition="$extraEq12">
+  It is true that there is an unstable equilibrium at <m>$x = $val1_zero3</m> when <m>$par=$parval1</m>.  However, here we are looking for the equilibria that are closest to the bifurcation that occurred at <m>$x = $b</m>.
+</feedback>
+
+<!-- <setup>
+  <conditionalContent assignNames="(stabilityCreditFourEs)">
+    <case condition="$fourELocations"><number>0.5</number></case>
+    <else><number>0</number></else>
+  </conditionalContent>
+</setup> -->
+
+
+<p>Click 
+<updateValue name="revealEqFromBif" type="boolean" target="$showEqFromBif" newValue="true" disabled="$showEqFromBif">
+  <label>Show points</label>
+</updateValue> and move the points to the locations of the above equilibria for <m>$par=$parval2</m> and <m>$par = $parval1</m>.  The horizontal coordinate should be the value of the parameter <m>$par</m> and the vertical coordinate should be the location of the equilibrium <m>$x</m>.  Click the points to toggle between a stable equilibrium (filled circle) and an unstable equilibrium (unfilled circle).
+<answer name="ansEqFromBif" disableAfterCorrect="true" matchPartial="true" numAwardsCredited="2" disabled="not $showEqFromBif">
+    <award credit="0.5">
+      <conditionalContent condition="$showEqFromBif">
+      <when name="fourELocations">
+        <mathList>$BEa $BEb $BEc $BEd</mathList> = 
+        <mathList unordered="true">
+          <math>($parval2, $val2_zero1)</math>
+          <math>($parval2, $val2_zero2)</math>
+          <math>($parval1, $val1_zero1)</math>
+          <math>($parval1, $val1_zero2)</math>
+        </mathList>
+      </when>
+      </conditionalContent>
+    </award>
+      <award credit="0.5">
+        <conditionalContent condition="$fourELocations and $showEqFromBif">
+        <when>
+          <boolean extend="$BEa.stable" />
+          = 
+          <boolean>
+            ($upperStable[1][1] and $BEa.y > $b) or (not $upperStable[1][1] and $BEa.y &lt; $b)
+          </boolean>
+          and
+          <boolean extend="$BEb.stable" />
+          = 
+          <boolean>
+            ($upperStable[1][1] and $BEb.y > $b) or (not $upperStable[1][1] and $BEb.y &lt; $b)
+          </boolean>
+          and
+          <boolean extend="$BEc.stable" />
+          = 
+          <boolean>
+            ($upperStable[1][1] and $BEc.y > $b) or (not $upperStable[1][1] and $BEc.y &lt; $b)
+          </boolean>
+          and
+          <boolean extend="$BEd.stable" />
+          = 
+          <boolean>
+            ($upperStable[1][1] and $BEd.y > $b) or (not $upperStable[1][1] and $BEd.y &lt; $b)
+          </boolean>
+        </when>
+        </conditionalContent>
+      </award>
+</answer>
+</p>
+<feedback updateWith="$ansEqFromBif" condition="not $fourELocations and $ansEqFromBif.creditAchieved &lt; 1">
+  At least one of the equilibria is not in the correct location.
+</feedback>
+<feedback updateWith="$ansEqFromBif" condition="$fourELocations and $ansEqFromBif.creditAchieved &lt; 1">
+  The stability of at least one of the equilibria is incorrect.  (Click an equilibrium to toggle its stability.)
+</feedback>
+
+
+<p hide="$ansEqFromBif.creditAchieved = 1 and $ansBifPoint.creditAchieved = 1"><em>Correctly place the bifurcation point and the equilibria around the bifurcation point to continue.</em></p>
+
+
+<p>Click 
+<updateValue name="revealCurvesFromBif" type="boolean" target="$showCurvesFromBif" newValue="true" disabled="$showCurvesFromBif or $ansEqFromBif.creditAchieved &lt; 1 or $ansBifPoint.creditAchieved &lt; 1">
+  <label>Show curves</label>
+</updateValue>
+ to reveal two curves that you can use to fill in the locations of the equilibria near the bifurcation point for all the values of $par.  You can click the curves to change between stable equilibria (represented as a solid line) and unstable equilibria (represented as a dash line).
+<answer matchPartial="true" numAwardsCredited="2" name="ansBifCurves" disabled="not $showCurvesFromBif">
+    <award credit="0.6">
+       <conditionalContent condition="$showCurvesFromBif">
+      <when>
+        (
+          <boolean name="C1lower">
+            <boolean>$C11 = ($parvalbif, $b) and $C12 = ($parval2, $val2_zero1) and $C13 = ($parval1, $val1_zero1)</boolean>
+            or
+            <boolean>$C13 = ($parvalbif, $b) and $C12 = ($parval2, $val2_zero1) and $C11 = ($parval1, $val1_zero1)</boolean>
+          </boolean>
+          and 
+          <boolean name="C2upper">
+            <boolean>$C21 = ($parvalbif, $b) and $C22 = ($parval2, $val2_zero2) and $C23 = ($parval1, $val1_zero2)</boolean>
+            or
+            <boolean>$C23 = ($parvalbif, $b) and $C22 = ($parval2, $val2_zero2) and $C21 = ($parval1, $val1_zero2)</boolean>
+          </boolean>
+        )
+        or
+        (
+          <boolean name="C1upper">
+            <boolean>$C11 = ($parvalbif, $b) and $C12 = ($parval2, $val2_zero2) and $C13 = ($parval1, $val1_zero2)</boolean>
+            or
+            <boolean>$C13 = ($parvalbif, $b) and $C12 = ($parval2, $val2_zero2) and $C11 = ($parval1, $val1_zero2)</boolean>
+          </boolean>
+          and 
+          <boolean name="C2lower">
+            <boolean>$C21 = ($parvalbif, $b) and $C22 = ($parval2, $val2_zero1) and $C23 = ($parval1, $val1_zero1)</boolean>
+            or
+            <boolean>$C23 = ($parvalbif, $b) and $C22 = ($parval2, $val2_zero1) and $C21 = ($parval1, $val1_zero1)</boolean>
+          </boolean>
+        )
+      </when>
+       </conditionalContent>
+    </award>
+    <award credit="0.4">
+       <conditionalContent condition="$showCurvesFromBif">
+      <when>
+        <boolean>
+        ($C1upper and (
+          ($upperStable[1][1] and <boolean extend="$C1.stable" />)
+          or 
+          (not $upperStable[1][1] and not <boolean extend="$C1.stable" />)
+        ))
+        or
+        ($C2upper and (
+          ($upperStable[1][1] and <boolean extend="$C2.stable" />)
+          or
+          (not $upperStable[1][1] and not <boolean extend="$C2.stable" />)
+        ))
+        </boolean>
+        and
+        <boolean>
+        ($C1lower and (
+          ($upperStable[1][1] and not <boolean extend="$C1.stable" />)
+          or
+          (not $upperStable[1][1] and <boolean extend="$C1.stable" />)
+        ))
+        or
+        ($C2lower and (
+          ($upperStable[1][1] and not <boolean extend="$C2.stable" />)
+          or
+          (not $upperStable[1][1] and <boolean extend="$C2.stable" />)
+        ))
+        </boolean>
+      </when>
+       </conditionalContent>
+    </award>
+</answer>
+
+</p>
+
+
+
+<feedback updateWith="$ansBifCurves" condition="not ($C1upper and $C2lower or $C1lower and $C2upper)">
+  At least one curve is not connecting the correct equilibrium points in sequence.
+</feedback>
+<feedback updateWith="$ansBifCurves" condition="($C1upper and $C2lower or $C1lower and $C2upper) and $ansBifCurves.creditAchieved &lt; 1">
+  The stability of the curves is not correct.  You can click them to switch between a solid curve (representing stable equilibria) and a dashed curve (representing unstable equilibria).
+</feedback>
+
+
+<p>We have one more piece to add to the bifurcation diagram.  We have to account for the additional equilibrium that is present for all values of the parameter $par (and is not involved with a bifurcation).  When <m>$par = $parval1</m>, this equilibrium is at <m>$x = </m> <answer>$val1_zero3</answer>.  When <m>$par = $parval2</m>, this equilibrium is at <m>$x = </m> <answer>$val2_zero3</answer>.  When <m>$par = $parvalbif</m>, this equilibrium is at <m>$x = </m> <answer>$valbif_zero2</answer>.  Finally, when <m>$par = $parval3</m>, this equilibrium is the only one and is at <m>$x=</m> <answer>$val3_zero</answer>.  In all cases the equilibrium is 
+<answer>
+  <choiceInput inline="true">
+    <choice credit="$line_stable">stable</choice>
+    <choice credit="not $line_stable">unstable</choice>
+  </choiceInput>
+</answer>.
+</p>
+
+
+<p>Click 
+<updateValue name="revealLineEq" type="boolean" target="$showLineEq" newValue="true" disabled="$showLineEq">
+  <label>Show points</label>
+</updateValue> and move the points to the locations of the equilibria.  Click the points so to give them their proper stability.
+<answer name="ansLineEq" disabled="not $showLineEq" disableAfterCorrect="true" matchPartial="true" numAwardsCredited="2">
+    <award credit="0.8" name="LEinLocation">
+      <conditionalContent condition="$showLineEq">
+      <when>
+        <mathList>
+          $LEa $LEb $LEc $LEd
+        </mathList>
+        =
+        <mathList unordered="true">
+          <math>($parval1, $val1_zero3)</math>
+          <math>($parval2, $val2_zero3)</math>
+          <math>($parvalbif, $valbif_zero2)</math>
+          <math>($parval3, $val3_zero)</math>
+        </mathList>
+      </when>
+      </conditionalContent>
+    </award>
+    <award credit="0.2">
+      <conditionalContent condition="$showLineEq">
+      <when>
+        <boolean extend="$LEa.stable" /> = $line_stable
+        and
+        <boolean extend="$LEb.stable" /> = $line_stable
+        and
+        <boolean extend="$LEc.stable" /> = $line_stable
+        and
+        <boolean extend="$LEd.stable" /> = $line_stable
+      </when>
+      </conditionalContent>
+    </award>
+</answer>
+</p>
+
+<feedback updateWith="$ansLineEq" condition="not $LEinLocation">
+  At least one equilibrium is in the incorrect location.
+</feedback>
+<feedback updateWith="$ansLineEq" condition="$LEinLocation and $ansLineEq.creditAchieved &lt; 1">
+  At least one equilibrium has the incorrect stability.  (Click an equilibrium point to toggle between stable and unstable.)
+</feedback>
+
+<p hide="$ansLineEq.creditAchieved = 1">
+  <em>Correctly place all above equilibria to continue.</em>
+</p>
+
+<p>Click 
+<updateValue name="revealLineCurve" type="boolean" target="$showLineCurve" newValue="true" disabled="$showLineCurve or $ansLineEq.creditAchieved &lt; 1">
+  <label>Show curve</label>
+</updateValue>
+ to reveal a curve that you can use to fill in the locations of the equilibria that aren't involved in the bifurcation.
+ <answer name="ansLineCurve" numAwardsCredited="2" disabled="not $showLineCurve" disableAfterCorrect="true">
+    <award credit="0.8" name="CLElocation">
+    <conditionalContent condition="$showLineCurve">
+      <when>
+        <boolean>
+          $CLE1 = $LE1 and $CLE2 = $LE2 and $CLE3 = $LEbif and $CLE4 = $LE3
+        </boolean>
+        or
+        <boolean>
+          $CLE1 = $LE3 and $CLE2 = $LEbif and $CLE3 = $LE2 and $CLE4 = $LE1
+        </boolean>
+      </when>
+    </conditionalContent>
+    </award>
+    <award credit="0.2">
+    <conditionalContent condition="$showLineCurve">  
+      <when>
+        <boolean extend="$CLE.stable" /> = $line_stable
+      </when>
+    </conditionalContent>
+    </award>
+ </answer>
+</p>
+
+<feedback updateWith="$ansLineCurve" condition="not $CLElocation">
+  The curve must connect the equilibria in seqeuence.
+</feedback>
+<feedback updateWith="$ansLineCurve" condition="$CLElocation and $ansLineCurve.creditAchieved &lt; 1">
+  The stability of the curve is incorrect.  Click the curve to toggle its stability.
+</feedback>
+</exercise>
+
+
+<solution>
+
+
+<ol>
+
+<li>
+There is a bifurcation point at <m>$par^*=$parvalbif </m>.
+</li>
+
+<li>
+At the bifurcation point at <m>$par^*=$parvalbif </m>, the number of equilibria changes from
+<conditionalContent>
+<case condition="$reorder">
+one to three
+</case>
+<else>
+three to one
+</else>
+</conditionalContent>
+.   Therefore For <m>$par  \lt  $par ^*</m>, the number of equilibria = $num_equilibria_1[1][1]  , and for <m>$par  \gt  $par ^*</m>, the number of equilibria = $num_equilibria_1[1][2]  .
+
+</li>
+
+<li>
+A bifurcation diagram is shown below, where stable equilibria are drawn with solid lines and unstable equilibria are drawn with dashed lines.  There is a bifurcation point at <m>$par =$parvalbif </m>, where the number of equilibria changes from
+<conditionalContent>
+<case condition="$reorder">
+one to three
+</case>
+<else>
+three to one
+</else>
+</conditionalContent>
+. 
+
+
+<graph xmin="$parmin" xmax="$parmax" ymin="$xmin" ymax="$xmax" fixAxes="true" grid="1 1">
+  <xLabel><m>$par</m></xLabel>
+  <yLabel><m>$x</m></yLabel>
+    
+  <equilibriumPoint name="sBPa" styleNumber="9" fixed="true" stable="false">
+    ($parvalbif, $b)
+  </equilibriumPoint>
+
+
+    
+  <equilibriumPoint name="sBE11" styleNumber="9" fixed="true" stable="not $upperStable[1][1]">
+    ($parval1, $val1_zero1)
+  </equilibriumPoint>
+  <equilibriumPoint name="sBE12" styleNumber="9" fixed="true" stable="$upperStable[1][1]">
+    ($parval1, $val1_zero2)
+  </equilibriumPoint>
+  <equilibriumPoint name="sBE21" styleNumber="9" fixed="true" stable="not $upperStable[1][1]">
+    ($parval2, $val2_zero1)
+  </equilibriumPoint>
+  <equilibriumPoint name="sBE22" styleNumber="9" fixed="true" stable="$upperStable[1][1]">
+    ($parval2, $val2_zero2)
+  </equilibriumPoint>
+
+
+  <equilibriumCurve name="sC1" fixed="true" styleNumber="9" stable="not $upperStable[1][1]" through="$sBPa $sBE21 $sBE11" extrapolateForward="true" layer="2">
+    <bezierControls>
+      <controlVectors pointNumber="1" hide="true">
+        <vector>(($sBPa.x - $sBE21.x)/32, ($sBPa.y - $sBE21.y)/4  )</vector>
+      </controlVectors>
+      <controlVectors pointNumber="3" hide="true">
+        <vector>(($sBE21.x - $sBE11.x)/2, ($sBE21.y - $sBE11.y)/8  )</vector>
+      </controlVectors>
+    </bezierControls>
+  </equilibriumCurve>
+
+  <equilibriumCurve name="sC2" styleNumber="9" stable="$upperStable[1][1]" through="$sBPa $sBE22 $sBE12" extrapolateForward="true" layer="2">
+    <bezierControls>
+      <controlVectors pointNumber="1" hide="true">
+        <vector>(($sBPa.x - $sBE22.x)/32, ($sBPa.y - $sBE22.y)/4  )</vector>
+      </controlVectors>
+      <controlVectors pointNumber="3" hide="true">
+        <vector>(($sBE22.x - $sBE12.x)/2, ($sBE22.y - $sBE12.y)/8  )</vector>
+      </controlVectors>
+    </bezierControls>
+  </equilibriumCurve>
+
+
+
+    
+  <equilibriumPoint name="sLE1" styleNumber="9" fixed="true" stable="$line_stable">
+    ($parval1, $val1_zero3)
+  </equilibriumPoint>
+  <equilibriumPoint name="sLE2" styleNumber="9" fixed="true" stable="$line_stable">
+    ($parval2, $val2_zero3)
+  </equilibriumPoint>
+  <equilibriumPoint name="sLEbif" styleNumber="9" fixed="true" stable="$line_stable">
+    ($parvalbif, $valbif_zero2)
+  </equilibriumPoint>
+  <equilibriumPoint name="sLE3" styleNumber="9" fixed="true" stable="$line_stable">
+    ($parval3, $val3_zero)
+  </equilibriumPoint>
+
+
+  <equilibriumCurve name="sCLE" fixed="true" styleNumber="9" stable="$line_stable" through="$sLE1 $sLE2 $sLEbif $sLE3" extrapolateForward="true" extrapolateBackward="true" layer="2" />
+   
+
+</graph>
+
+
+<p>For <m>$par = $parval2</m>, the stable equilibrium near the bifurcation is at <m>$x =
+  <conditionalContent>
+    <case condition="$upperStable[1][1]">$val2_zero2</case>
+    <else>$val2_zero1</else>
+  </conditionalContent>
+  </m>
+  and the unstable equilibrium is at <m>$x =
+  <conditionalContent>
+    <case condition="$upperStable[1][1]">$val2_zero1</case>
+    <else>$val2_zero2</else>
+  </conditionalContent>
+  </m>.</p>
+
+
+
+<p>For <m>$par = $parval1</m>, the stable equilibria near the bifurcation point is at <m>$x = 
+  <conditionalContent>
+    <case condition="$upperStable[1][1]">$val1_zero2</case>
+    <else>$val1_zero1</else>
+  </conditionalContent>
+  </m>
+  and the unstable equilibrium is at <m>x =
+  <conditionalContent>
+    <case condition="$upperStable[1][1]">$val1_zero1</case>
+    <else>$val1_zero2</else>
+  </conditionalContent>
+  </m>.</p>
+
+<p>For the additional equilibrium that is present for all values of the parameter $par (and is not involved with a bifurcation):  When <m>$par = $parval1</m>, this equilibrium is at <m>$x =  $val1_zero3</m>.  When <m>$par = $parval2</m>, this equilibrium is at <m>$x =  $val2_zero3</m>.  When <m>$par = $parvalbif</m>, this equilibrium is at <m>$x =  $valbif_zero2</m>.  Finally, when <m>$par = $parval3</m>, this equilibrium is the only one and is at <m>$x= $val3_zero</m>.  In all cases the equilibriumm is 
+<conditionalContent>
+  <case condition="$line_stable">stable</case>
+  <else>unstable</else>
+</conditionalContent>.
+</p>
+
+</li>
+
+
+</ol>
+
+
+</solution>
+
+
+</problem>

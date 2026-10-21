@@ -1,0 +1,99 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7UKLUKhXSNcd6XTrnbww8T
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 956feb7851f98f39
+-->
+<problem>
+<!-- <title>Pure&#x2D;time DiffEq &#x2D; exponential</title> -->
+
+<setup>
+
+<selectFromSequence name="a" from="-10" to=" 10" exclude="0" />
+<selectFromSequence name="b" from="-5" to="5" exclude="0" />
+<selectFromSequence name="aa" from="-10" to="10" exclude="0" />
+
+<function name="f" variables="t"><math simplify="numbers">$a *e^($b *t)</math></function>
+<function name="intfeval" variables="t" symbolic="true"><math simplify="true">$a/$b e^($b*t)</math></function>
+<function name="antiderivf" variables="t" symbolic="true"><math simplify="true">1/$b e^($b*t)</math></function>
+<!-- <math name='intfpart' simplify='numbersPreserveOrder' >$a *Integral(exp($b *t),t)</math>
+ -->
+<math name="intfeval_nosimp">$a/$b e^($b*t)</math>
+<math name="intfeval_nosimp2">$a/$b /e^(-$b*t)</math>
+  
+
+<select name="f_name">g h p q r y z</select>
+<math name="dxdt">d$f_name/dt</math>
+
+<math name="finalans">$$intfeval(t)+$C_value </math>
+<math name="finalans_nosimp">$intfeval_nosimp+$C_value </math>
+<math name="finalans_nosimp2">$intfeval_nosimp2+$C_value </math>
+<math name="intfeval_C">$$intfeval(t)+C </math>
+<math name="intfeval_C_nosimp">$intfeval_nosimp+C </math>
+<math name="intfeval_C_nosimp2">$intfeval_nosimp2+C </math>
+<math name="x_t" referencesAreFunctionSymbols="$f_name">$f_name (t)</math>
+<math name="x_0" referencesAreFunctionSymbols="$f_name">$f_name (0)</math>
+<math name="intfeval_0">$$intfeval(0)</math>
+<math name="C_value" simplify="true">$aa -$intfeval_0 </math>
+
+
+</setup>
+
+<p>
+Solve the pure-time differential equation <m>$dxdt  = <math extend="$f.formula" /></m> with initial condition <m>$x_0  = $aa </m>.
+</p>
+
+<p>
+<m>$x_t =</m> 
+<answer symbolicEquality="true" simplifyOnCompare="true">
+<award>$finalans </award>
+<award>$finalans_nosimp </award>
+<award>$finalans_nosimp2 </award>
+<award credit="0" name="noConstant">$intfeval </award>
+<award credit="0" name="noConstant2">$intfeval_nosimp </award>
+<award credit="0" name="noConstant3">$intfeval_nosimp2 </award>
+<award credit="0" name="withC">$intfeval_C</award>
+<award credit="0" name="withC2">$intfeval_C_nosimp</award>
+<award credit="0" name="withC3">$intfeval_C_nosimp2</award>
+</answer>
+</p>
+
+<feedback condition="$noConstant or $noConstant2 or $noConstant3">The solution $x_t must match the initial condition <m>$x_0  = $aa </m>.</feedback>
+<feedback condition="$withC or $withC2 or $withC3">Since we have an initial condition <m>$x_0  = $aa </m>, don't add an arbitrary constant <m>C</m>.  Instead, find the value of the constant so that the solution $x_t matches the initial condition.</feedback>
+
+<p>Do not round your answer to a decimal.</p>
+
+
+
+<solution>
+<p>
+We use the indefinite integral <m>\displaystyle \int $f \, dt </m> to solve the differential equation.  To evaluate the integral, we first use the constant product rule for integration: 
+</p>
+<p>
+<m>\displaystyle \int $f \, dt  =  $a \int <math simplify="numbers">e^($b *t)</math> \, dt</m>
+</p>
+<p>
+We then find the antiderivative and add the arbitrary constant:
+</p>
+<p>
+<m>\displaystyle $a  \left( <math extend="$antiderivf.formula" /> \right)+C</m>
+</p>
+<p>
+Plugging in our initial condition <m>$x_0  = $aa </m> and solving for <m>C</m> gives us:
+</p>
+<p>
+<m>\displaystyle $aa  = $intfeval_0 +C =  <math simplify="true">$intfeval_0 +C</math></m>
+</p>
+<p>
+<m>\displaystyle C = $C_value </m>
+</p>
+<p>
+Finally, we have:
+</p>
+<p>
+<m>\displaystyle $x_t  = $finalans </m>
+</p>
+</solution>
+
+
+</problem>

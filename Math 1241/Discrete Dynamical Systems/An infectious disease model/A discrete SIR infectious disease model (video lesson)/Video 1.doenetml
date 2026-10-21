@@ -1,0 +1,100 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7CxRg9xHwhzoza8Psdx6WH
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 47672431efed1b9b
+-->
+<title>A discrete SIR infectious disease model</title>
+<p><ref>Video 1</ref> | <ref>Video 2</ref> | <ref>Summary</ref> | <ref>Transcripts</ref></p>
+
+<section><title>Video 1</title>
+<p>The model introduced in the video introduction contains three state variables:</p>
+<p name="modelEquations">
+<ul>
+  <li><m>S_t</m> = the number of susceptibles in day <m>t</m></li>
+  <li><m>I_t</m> = the number of infectives in day <m>t</m></li>
+  <li><m>R_t</m> = the number of removed in day <m>t</m>.</li>
+</ul>
+</p>
+  
+<p>The rule by which the state variables evolve is
+<md>
+  <mrow>S_{t+1} - S_t\amp = -b S_t I_t</mrow>
+  <mrow>I_{t+1} - I_t\amp = b S_tI_t - aI_t</mrow>
+  <mrow>R_{t+1} - R_t\amp = a I_t.</mrow>
+</md>
+</p>
+<figure suppressFigureNameInCaption="true">
+<video youtube="5y8ZJnsEBvU" size="large" aspectRatio="16/9" name="v1" />
+  <caption>Discrete SIR infectious disease model, part 1</caption>
+</figure>
+
+<number name="v1RoundUp" hide="true">
+  <conditionalContent>
+    <case condition="$v1.fractionWatched > 0.9">1</case>
+    <else>$v1.fractionWatched</else>
+  </conditionalContent>
+</number>
+  
+  <p>Video credit achieved: <number displayDecimals="1">$v1RoundUp*100</number>%</p>
+
+<answer hide="true" name="v1Credit">
+  <award credit="$v1RoundUp"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+
+<subsection><title>Video 1 review questions</title>
+<problem>
+
+<p>Which of the following statements are true? (Select all the correct statements.)</p>
+  <answer name="ans2a" selectMultiple="true" matchPartial="true">
+    <choice credit="1" name="choice1a">(A) <m>bS_tI_t</m> represents the number of susceptibles that become infected in a time step.</choice>
+    
+    <choice name="choice2a" credit="1">(B) <m>aI_t</m> represents the number of infectives who recover in a time step.</choice>
+
+    <choice name="choice3a" credit="1">(C) <m>bS_tI_t - aI_t</m> represents change in the number of infectives in a time step.</choice>
+
+    
+    <choice name="choice4a">(D) If the number of susceptibles becoming infected is greater than the number of infectives recovering then <m>I_t</m> will decrease.</choice>
+    
+    
+    <choice name="choice5a" credit="1">(E) If the number of susceptibles becoming infected is greater than the number of infectives recovering then <m>I_{t+1}-I_{t}</m> will be positive.</choice>
+    
+
+  </answer>
+
+  <feedback condition="$choice1a">(A) Yes, that's why we add <m>bS_tI_t</m> to the equation for <m>I</m> and subtract it from the equation for <m>S</m>.</feedback>
+    <feedback condition="$choice2a">(B) Yes, that's why we add <m>aI_t</m> to the equation for <m>R</m> and subtract it from the equation for <m>I</m>.</feedback>
+  <feedback condition="$choice3a">(C) Yes, <m>bS_tI_t - aI_t</m> is equal to the change <m>I_{t+1}-I_t</m>.</feedback>
+  <feedback condition="$choice4a">(D) No, if more people are getting sick than are recovering, the number of sick will increase.</feedback>
+  <feedback condition="$choice5a">(E) Yes, if more people are getting sick than are recovering, the change in the number of sick will be positive.</feedback>
+
+</problem>
+
+<problem>
+<p>Consider the six statements below regarding the discrete SIR model given by the equations above. All of the six statements are true, except one. Can you determine based on the equations which statement is <alert>False</alert>?</p>
+<answer name="answer1">
+<choice name="choice0">The number of susceptibles can only decrease or stay the same with time (assuming we have nonnegative numbers of individuals).</choice>
+  
+<choice name="choice1">The number of removed can only increase or stay the same with time (assuming we have nonnegative numbers of individuals).</choice>
+  
+<choice name="choice2">The number of infectives could increases or decrease with time. </choice>
+  
+<choice name="choice3">The model contains two parameters.</choice>
+  
+<choice name="choice4">The model contains three state variables.</choice>
+  
+<choice name="choice5" credit="1">As long as the numbers a and b are positive, the model will always give reasonable (i.e., nonnegative) values for the numbers of individuals in each class.</choice>
+</answer>
+  
+<feedback condition="$choice0">Since we assume that <m>b \gt 0</m> and we are given that <m>S_t \ge 0</m> and <m>I_t \ge 0</m>, then <m>-bS_tI_t \le 0</m>.  The change in the number of susceptives is negative or zero, and the number of susceptibles decreases with each time step or stay the same.  The statement is true.</feedback>
+<feedback condition="$choice1">Since we assume that <m>a \gt 0</m> and we are given that <m>I_t \ge 0</m>, then <m>aI_t \le 0</m>. The change in the number of removed is always positive or zero, and the number of susceptibles decreases with each time step or stay the same.  The statement is true.</feedback>
+<feedback condition="$choice2">The sign of <m>bS_tI_t -a I_t</m> could be positive or negative, depending on the values of the state variables.  The change in the number of infectives could positive or negative, and the number of infectives could increase or decrease.  The statement is true.</feedback>
+<feedback condition="$choice3">The model contains two parameters: the infection rate parameter <m>b</m> and the recovery parameter <m>a</m>.</feedback>
+<feedback condition="$choice4">The model contains three state variables: the number of suceptibles <m>S_t</m>, the number of infectives <m>I_t</m>, and the number of removed <m>R_t</m>.</feedback>
+<feedback condition="$choice5">We cannot be sure that the decrease in the number of susceptibles <m>bS_tI_t</m> is not larger than the number of susceptibles <m>S_t</m> that we start the time step with.  If <m>bS_tI_t \gt  S_t</m>, then the new value of the number of susceptibles will be negative.  The statement is false.</feedback>
+</problem>
+</subsection>
+
+</section>

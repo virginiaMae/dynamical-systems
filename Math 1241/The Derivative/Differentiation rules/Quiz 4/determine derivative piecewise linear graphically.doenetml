@@ -1,0 +1,162 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7MNs2Xn17i2g3VzGNLbQQ2
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: fcf76c89495a66bd
+-->
+<problem>
+<!-- <title>Determine derivative piecewise linear graphically</title> -->
+
+<setup>
+
+  <selectFromSequence name="scale" from="5" to="10" />
+  <selectFromSequence name="xmin" from="1.5-$scale" to="-1.5" />
+  <selectFromSequence name="ymin" from="2.5-$scale" to="-2.5" />
+  <number name="xmax">$xmin+$scale</number>
+  <number name="ymax">$ymin+$scale</number>
+    
+  <number name="dx" fixed="true">$scale/3</number>
+
+  <selectFromSequence name="m1" from="-2" to="2" step="0.5" exclude="-1.5 1.5" />
+  <selectFromSequence name="m2" from="max(-2,-3-$m1)" to="min(2, 3-$m1)" step="0.5" exclude="-1.5 1.5 $m1" />
+
+  <number name="m12">$m1+$m2</number>
+  
+  <selectFromSequence name="m3" from="max(-2,-3-$m12)" to="min(2, 3-$m12)" step="0.5" exclude="-1.5 1.5 $m2" />
+
+  <number name="d1">$m1*$dx</number>
+  <number name="d2">$m12*$dx</number>
+  <number name="d3">($m12+$m3)*$dx</number>
+  <number name="maxD">max($m1, $m12, $m12+$m3,0)*$dx</number>
+  <number name="minD">min($m1, $m12, $m12+$m3,0)*$dx</number>
+  
+
+  <selectFromSequence name="y1" from="round($ymin-$minD,2)" to="round($ymax-$maxD,2)" step="0.1" />
+  <number name="y2" displayDecimals="2">$y1+$d1</number>
+  <number name="y3" displayDecimals="2">$y1+$d2</number>
+  <number name="y4" displayDecimals="2">$y1+$d3</number>
+      
+  <number name="x1">$xmin </number>
+  <number name="x2" displayDecimals="2">$xmin +$dx </number>
+  <number name="x3" displayDecimals="2">$xmin +2*$dx </number>
+  <number name="x4" displayDecimals="2">$xmax </number>
+  
+
+</setup>
+
+
+<p>The <text extend="$polyline.styleDescription" /> curve is the graph of a function <m>g(x)</m>.  (It is called a piecewise linear function, because it is composed of pieces of linear functions.)  Move the <text extend="$p1[1][2].styleDescription" /> line segments up and down so that the <text extend="$p1[1][2].styleDescription" /> line segments form the graph of the derivative <m>g'(x)</m>.
+</p>
+    
+
+<graph xmin="$xmin" xmax="$xmax" ymin="$ymin" ymax="$ymax" showNavigation="false" identicalAxisScales="true" grid="true">
+
+<polyline fixed="true" name="polyline" vertices="($x1, $y1) ($x2, $y2) ($x3, $y3) ($x4, $y4)" />
+
+
+<repeatForSequence from="0" to="5" name="p1" valueName="i">
+
+
+  <point stylenumber="2" x="$xfixed" y="$py" name="P" hide="true">
+    
+      <constrainToGrid dy="0.5" dx="0.1" />
+    
+  </point>
+    
+  <lineSegment stylenumber="2" endpoints="($xfixed - 0.25 $dx, $P.y) ($xfixed + 0.25 $dx, $P.y)" />
+  <setup>
+    <math fixed="true" name="xfixed">$xmin + ($i+0.5) $dx/2</math>
+    <math name="py">0</math>
+  </setup>
+ 
+ 
+</repeatForSequence>
+
+</graph>
+
+<p><answer>
+<award matchPartial="true"><when>
+<math isResponse="true" extend="$p1[1][1].y" /> = $m1 and
+<math isResponse="true" extend="$p1[2][1].y" /> = $m1 and
+<math isResponse="true" extend="$p1[3][1].y" /> = $m2 and
+<math isResponse="true" extend="$p1[4][1].y" /> = $m2 and
+<math isResponse="true" extend="$p1[5][1].y" /> = $m3 and
+<math isResponse="true" extend="$p1[6][1].y" /> = $m3
+</when></award>
+</answer></p>
+
+<solution>
+  <setup>
+    <text name="trend1">
+    <conditionalContent><case condition="$m1 > 0">increases</case><else>decreases</else></conditionalContent>
+    </text>
+    
+    <text name="trend2">
+    <conditionalContent><case condition="$m2 > 0">increases</case><else>decreases</else></conditionalContent>
+    </text>
+    
+    <text name="trend3">
+    <conditionalContent><case condition="$m3 > 0">increases</case><else>decreases</else></conditionalContent>
+    </text>
+    
+  </setup>
+  
+  <p>For <m>$x1  \lt  x \lt  $x2 </m>,
+  
+  <conditionalContent>
+  <case condition="$m1 != 0">
+  <m>g(x)</m> $trend1  from $y1  to $y2 .  The slope is <me>\frac{ $y2 -($y1 )}{ $x2 -($x1 )} = <round numDigits="2"><number>$m1 </number></round>.</me>
+  </case>
+  
+  <else><m>g(x)</m> is constant at <m>$y1 </m>.  The slope is zero.</else>
+  
+  </conditionalContent>
+  </p>
+  
+  
+  <p>For <m>$x2  \lt  x \lt  $x3 </m>,
+  
+  <conditionalContent>
+  <case condition="$m2">
+  <m>g(x)</m> $trend2  from $y2  to $y3 .  The slope is <me>\frac{ $y3 -($y2 )}{ $x3 -($x2 )} = <round numDigits="2"><number>$m2 </number></round>.</me>
+  </case>
+  
+  <else><m>g(x)</m> is constant at <m>$y2 </m>.  The slope is zero.</else>
+  
+  </conditionalContent>
+  </p>
+  
+  
+  <p>For <m>$x3  \lt  x \lt  $x4 </m>,
+  
+  <conditionalContent>
+  <case condition="$m3">
+  <m>g(x)</m> $trend3  from $y3  to $y4 .  The slope is <me>\frac{ $y4 -($y3 )}{ $x4 -($x3 )} = <round numDigits="2"><number>$m3 </number></round>.</me>
+  </case>
+  
+  <else><m>g(x)</m> is constant at <m>$y3 </m>.  The slope is zero.</else>
+  
+  </conditionalContent>
+   </p>
+  
+  <p>A graph of <m>g(x)</m> and its derivative is shown below.</p>
+  
+  <graph xmin="$xmin" xmax="$xmax" ymin="$ymin" ymax="$ymax" showNavigation="false">
+  
+  <lineSegment fixed="true" endpoints="($x1, $y1) ($x2, $y2)" />
+  <lineSegment fixed="true" endpoints="($x2, $y2) ($x3, $y3)" />
+  <lineSegment fixed="true" endpoints="($x3, $y3) ($x4, $y4)" />
+  
+  <lineSegment stylenumber="2" fixed="true" endpoints="($x1, $m1) ($x2, $m1)" />
+  <lineSegment stylenumber="2" fixed="true" endpoints="($x2, $m2) ($x3, $m2)" />
+  <lineSegment stylenumber="2" fixed="true" endpoints="($x3, $m3) ($x4, $m3)" />
+  
+  
+  
+  
+  </graph>
+
+</solution>
+
+
+</problem>

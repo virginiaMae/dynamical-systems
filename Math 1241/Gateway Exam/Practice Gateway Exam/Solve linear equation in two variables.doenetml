@@ -1,0 +1,44 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7BmDkHfkUBnSUdufFbBm2P
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 315834f76feb49d0
+-->
+<problem>
+
+<setup>
+  <selectFromSequence name="b" numToSelect="4" withReplacement="true" from="-10" to="10" />
+  <selectFromSequence name="a" numToSelect="2" withReplacement="false" from="-10" to="10" />
+
+  <select name="x" numToSelect="2" withReplacement="false">p q r s u v w x y z</select>
+  <math name="lhs" simplify="full">$a[1]*$x[1]+$b[1]*$x[2]+$b[2]</math>
+  <math name="rhs" simplify="full">$a[2]*$x[1]+$b[3]*$x[2]+$b[4]</math>
+
+  <math name="solution" simplify="full">(($b[3]-$b[1])*$x[2]+$b[4]-$b[2])/($a[1]-$a[2])</math>
+
+  <math name="minus_byc" simplify="full">-$b[1]*$x[2]-$b[2]</math>
+  <math name="minus_dx" simplify="full">-$a[2]*$x[1]</math>
+  <math name="a_minus_d" simplify="full">$a[1]-$a[2]</math>
+  <math name="rhs_2" simplify="full">($b[3]-$b[1])*$x[2]+$b[4]-$b[2]</math>
+</setup>
+
+<p>Solve for <m>$x[1]</m>.</p>
+<md>
+  <mrow>$lhs = $rhs</mrow>
+</md>
+<p><m>$x[1] =</m> <mathInput name="input1" /></p>
+<answer>
+<award referencesAreResponses="$input1"><when>
+  $input1 = $solution
+</when></award>
+</answer>
+
+
+<solution>
+To solve for <m>$x[1]</m>, we move all terms involving <m>$x[1]</m> to the left side of the equation and move all other terms to the right side of the equation.  We add <m>$minus_dx</m> and then <m>$minus_byc</m> to both sides of the equation, obtaining
+<me>$a_minus_d$x[1] = $rhs_2.</me>
+Dividing by <m>$a_minus_d</m>, we obtain the solution
+<me>$x[1] = $solution.</me>
+</solution>
+
+</problem>

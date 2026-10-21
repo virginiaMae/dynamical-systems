@@ -1,0 +1,100 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7UJMjyVcYEHQzSfGe8keEZ
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 44aea463c68d650f
+-->
+<problem>
+<!-- <title>Pure time DiffEq &#x2D; polynomial</title> -->
+
+<setup>
+
+<selectFromSequence name="aa" from="3" to="7" />
+<selectFromSequence name="bb" from="2" to="$aa-1" />
+<selectFromSequence name="cc" from="1" to="$bb-1" />
+
+<selectFromSequence name="aaa" from="-10" to="10" exclude="0" numToSelect="4" withReplacement="true" />
+
+
+<function name="f" variables="t"><math simplify="numbersPreserveOrder">$aaa[1] *t^$aa +$aaa[2] *t^$bb +$aaa[3] *t^$cc </math></function>
+<function name="intfeval" variables="t" symbolic="true"><math simplify="true">$aaa[1]/($aa+1) *t^($aa+1) +$aaa[2]/($bb+1) *t^($bb+1) +$aaa[3] /($cc+1)*t^($cc+1)</math></function>
+<!-- <function name='intftemp' variables='a'>Integral($$f(x),(x,a))</function>
+<math name='intfpart' simplify='numbersPreserveOrder' >$aaa *Integral(t^$aa ,t)+$bbb *Integral(t^$bb ,t)+$ccc *Integral(t^$cc ,t)</math> -->
+
+<!-- name f_name expression_type RF -->
+
+  
+<select name="f_name">g h p q r y z</select>
+<math name="dxdt">d$f_name/dt</math>
+<math name="x_0" referencesAreFunctionSymbols="$f_name">$f_name (0)</math>
+
+
+<math name="finalans">$$intfeval(t) +$aaa[4] </math>
+<math name="intfeval_C">$$intfeval(t)+C </math>
+<math name="x_t" referencesAreFunctionSymbols="$f_name">$f_name (t)</math>
+<math name="intfeval_0">$$intfeval(0)</math>
+<math name="C_value" simplify="true">$aaa[4] -$intfeval_0 </math>
+
+</setup>
+
+<p>
+Solve the pure-time differential equation <m>$dxdt  = <math extend="$f.formula" /></m> with initial condition <m>$x_0  = $aaa[4] </m>.
+</p>
+  
+<p>
+<m>$x_t =</m> 
+<answer>
+<award>$finalans </award>
+<award credit="0" name="noConstant">$intfeval </award>
+<award credit="0" name="withC">$intfeval_C</award>
+</answer>
+</p>
+
+<feedback condition="$noConstant">The solution $x_t must match the initial condition <m>$x_0  = $aaa[4] </m>.</feedback>
+<feedback condition="$withC">Since we have an initial condition <m>$x_0  = $aaa[4] </m>, don't add an arbitrary constant <m>C</m>.  Instead, find the value of the constant so that the solution $x_t matches the initial condition.</feedback>
+
+<!-- <feedback condition="$award1">For full credit, do not round.  Leave fractions as fractions.</feedback>
+<copy prop="feedbacks" source="answer1" />
+ -->
+
+<p>
+Do not round your answer to a decimal.
+</p>
+
+
+
+<solution>
+<p>
+We start by finding the indefinite integral <m>\displaystyle $intf </m>.  To evaluate the integral, we first use the sum and constant product rules for integration: 
+</p>
+
+<p>
+<m>\displaystyle \int $f \, dt  = $aaa[1]  \int t^$aa\,dt + $aaa[2] \int t^$bb \,dt +  $aaa[3] \int <math simplify="true">t^$cc</math> \,dt</m>
+</p>
+  
+<p>
+We then evaluate each of these integrals using the power rule for integration and add the arbitrary constant:
+</p>
+<p>
+<m>\displaystyle $intfeval +C</m>
+</p>
+<p>
+Next, we substitute in the initial condition <m>$x_0  = $aaa[4] </m> and solve for <m>C</m>:
+</p>
+<p>
+<m>\displaystyle $aaa[4]  = $intfeval_0 +C= <math simplify="true">$intfeval_0 +C</math></m>
+</p>
+<p>
+<m>\displaystyle C = $C_value </m>
+</p>
+<p>
+Finally, we have:
+</p>
+<p>
+<m>\displaystyle $x_t  = $finalans </m>
+</p>
+
+</solution>
+
+
+</problem>

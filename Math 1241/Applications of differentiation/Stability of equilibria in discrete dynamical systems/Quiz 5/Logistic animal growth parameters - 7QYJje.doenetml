@@ -1,0 +1,212 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7QYJjekxEacpAEhfAqoqGi
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: c1ebf98ab45c3989
+-->
+<problem>
+<!-- <title>logistic animal growth parameters</title> -->
+
+<setup>
+
+<select name="statevar"> s m d p c m m</select>
+<select name="rpar"> r a b alpha beta</select>
+<select name="Kpar"> K M N Q C W</select>
+<selectFromSequence name="r1" from="0.1" to=" 1.9" step=" 0.1" />
+<selectFromSequence name="K" from="10" to=" 900" step=" 10" />
+<selectFromSequence name="initial" from="10" to="$K *(1+1/$r1)" step=" 10" exclude="$K" />
+
+<selectFromSequence name="r2" from="2.1" to=" 3.9" step=" 0.1" />
+  <select name="animal">
+    <option><text>squirrel</text><text>acorn</text></option>
+    <option><text>mouse</text><text>cheese</text></option>
+    <option><text>dolphin</text><text>fish</text></option>
+    <option><text>elephant</text><text>peanut</text></option>
+    <option><text>cheetah</text><text>antelope</text></option>
+    <option><text>robin</text><text>worm</text></option>
+    <option><text>termite</text><text>rotten wood</text></option>
+    <option><text>mosquito</text><text>vertebrate</text></option>
+  </select>
+
+<math name="one_plus_r1" simplify="full">1+$r1 </math>
+<math name="two_r1" simplify="full">2*$r1 </math>
+<math name="one_minus_r1" simplify="full">1-$r1 </math>
+
+<math name="one_plus_r2" simplify="full">1+$r2 </math>
+<math name="two_r2" simplify="full">2*$r2 </math>
+<math name="one_minus_r2" simplify="full">1-$r2 </math>
+
+<mathList name="equilibria">0 $Kpar </mathList>
+<textList name="stablelist_r1">unstable stable</textList>
+<textList name="stablelist_r2">unstable unstable</textList>
+
+<math name="rpar_stable_low">0</math>
+<math name="rpar_stable_high">2</math>
+
+</setup>
+
+
+A population of <pluralize>$animal[1][1]</pluralize> would be increasing at the rate of <m>$rpar </m> per year, except that due to a scarcity of <pluralize>$animal[1][2]</pluralize>, there is only enough food to support <m>$Kpar </m> <pluralize>$animal[1][1]</pluralize>.  Therefore, if <m>$statevar _t</m> is the number of <pluralize>$animal[1][1]</pluralize> in year <m>t</m>, the population evolves according to the dynamical system
+<me>$statevar _{t+1} - $statevar _{t} = $rpar  $statevar _t\left(1 - \frac{ $statevar _t}{ $Kpar  }\right).</me>
+
+
+
+<ol>
+<li>
+<p>Calculate the equilibria of the dynamical system. If there is more than one equilibrium, enter them in increasing order, separated by commas.  (The number <m>$Kpar </m> is positive.)</p>
+
+
+<p>Number of equilibria: <mathInput name="equiNum" /></p>
+
+<p>Equilibria:
+<repeatForSequence length="$equiNum" name="inputEquilibria"><mathInput /></repeatForSequence>
+</p>
+
+<answer>
+  <award matchPartial="true"><when>
+    <mathList isResponse="true"><setup><collect from="$inputEquilibria" componentType="mathInput" name="collect_list" /></setup><mathList name="list" extend="$collect_list.value" /></mathList> = $equilibria
+  </when></award>
+
+  <award matchPartial="true" unorderedCompare="true" credit="0.8" name="award1"><when>
+    <mathList isResponse="true"><setup><collect from="$inputEquilibria" componentType="mathInput" name="collect_list1" /></setup><mathList name="list1" extend="$collect_list1.value" /></mathList> = $equilibria
+  </when></award>
+
+</answer>
+<feedback condition="$award1">Be sure to enter the equilibria in increasing order.</feedback>
+</li>
+
+
+
+<li>
+<p>If <m>$rpar  = $r1 </m>, determine the stability of the equilibria.</p>
+
+<p>Specify the stability of each equilibrium in the same order as above.</p>
+
+<p>Stability of equilibria:
+<repeatForSequence length="$equiNum" name="inputStability">
+  <choiceInput inline="true">
+  <choice>unstable</choice>
+  <choice>stable</choice>
+  </choiceInput>
+  </repeatForSequence>
+
+</p>
+
+<answer maxNumAttempts="2">
+  <award matchPartial="true" matchByExactPositions="true"><when>
+    <textList isResponse="true"><setup><collect from="$inputStability" componentType="choiceInput" name="collect_list2" /></setup><textList name="list2" extend="$collect_list2.selectedValue" /></textList> = $stablelist_r1
+  </when></award>
+</answer>
+</li>
+
+<li>
+<p>If <m>$rpar  = $r1 </m>, <m>$Kpar  = $K </m>, and the initial population is <m>$statevar _0=$initial </m>, what will happen to the population after a long time?</p>
+
+<p>After a long time, the population size will approach 
+<answer>
+<award symbolicEquality="true">$K </award>
+</answer>
+ <pluralize>$animal[1][1]</pluralize>.</p>
+</li>
+
+<li>
+<p>If <m>$rpar  = $r2 </m>, determine the stability of the equilibria.</p>
+
+<p>Specify the stability of each equilibrium in the same order as above.</p>
+
+<p>Stability of equilibria:
+<repeatForSequence length="$equiNum" name="inputStability2">
+  <choiceInput inline="true">
+  <choice>unstable</choice>
+  <choice>stable</choice>
+  </choiceInput>
+  </repeatForSequence>
+
+</p>
+
+<answer maxNumAttempts="2">
+  <award matchPartial="true" matchByExactPositions="true"><when>
+    <textList isResponse="true"><setup><collect from="$inputStability2" componentType="choiceInput" name="collect_list3" /></setup><textList name="list3" extend="$collect_list3.selectedValue" /></textList> = $stablelist_r2
+  </when></award>
+</answer>
+</li>
+
+<li>
+<p>For what range of <m>$rpar </m> is there a stable nonzero equilibrium?</p>
+
+<p>There is a stable nonzero equilibrium for
+</p>
+  
+<p>
+  <mathInput name="stableBLower" />
+ <m>\lt  $rpar  \lt</m> 
+  <mathInput name="stableBUpper" />.
+</p>
+  
+<answer matchPartial="true">
+  <award symbolicEquality="true" referencesAreResponses="$stableBLower $stableBUpper">
+    <when>
+      $stableBLower = $rpar_stable_low
+      and $stableBUpper = $rpar_stable_high
+    </when>
+  </award>
+</answer>
+</li>
+</ol>
+
+
+<solution>
+
+<ol>
+<li>
+<p>To calulate equilibria, let <m>$statevar _{t+1}=$statevar _t = E</m>, in which case <m>E</m> must satisfy
+<md>
+  <mrow>E - E\amp = $rpar  E\left(1 - \frac{E}{ $Kpar  }\right)</mrow>
+  <mrow>0\amp =  $rpar  E\left(1 - \frac{E}{ $Kpar  }\right)</mrow>
+  <mrow>E\amp =0 \quad \text{or} \quad \left(1 - \frac{E}{ $Kpar  }\right)= 0</mrow>
+  <mrow>E\amp =0 \quad \text{or} \quad E = $Kpar </mrow>
+</md>
+</p>
+</li>
+
+<li>
+<p>To calculate stability of these equilibria, we need to rewrite the dynamical system by solving for <m>$statevar _{t+1}</m> in terms of <m>$statevar _t</m>.  Adding <m>$statevar _t</m> to both sides, we obtain
+<md>
+  <mrow>$statevar _{t+1}\amp = $statevar _{t}+ $rpar  $statevar _t\left(1 - \frac{ $statevar _t}{ $Kpar  }\right)</mrow>
+  <mrow>\amp = f($statevar _t)</mrow>
+</md>
+where <m>f($statevar ) = $statevar +$rpar  $statevar (1-$statevar /$Kpar )</m>.  Since <m>f($statevar )</m> is the updating function, we just need to calculate its derivative at the equilibria and see if it is between <m>-1</m> and <m>1</m>.
+<md>
+  <mrow>f'($statevar )\amp = 1 + $rpar  \left(1 - \frac{ $statevar  }{ $Kpar  }\right) + $rpar  $statevar  \left(-\frac{1}{ $Kpar  }\right)</mrow>
+  <mrow>\amp = 1 + $rpar  -  2$rpar  \frac{ $statevar  }{ $Kpar  }</mrow>
+</md>
+</p>
+<p>Let <m>$rpar =$r1 </m> so that <m>f'($statevar ) = $one_plus_r1  -$two_r1 \frac{ $statevar  }{ $Kpar  }</m>.   For the equilibrium <m>$statevar _t=0</m>, we need to check <m>f'(0)=$one_plus_r1 </m>.  Since <m>f'(0) \gt  1</m>, the equilibrum <m>$statevar _t=0</m> is unstable.</p>
+<p>For the equilibrium <m>$statevar _t=$Kpar </m>, we calculate <m>f'($Kpar ) = $one_plus_r1  - $two_r1  \cdot $Kpar / $Kpar  = $one_minus_r1 </m>.  Since <m>-1 \lt  f'($Kpar ) \lt  1</m>, the equilibrium <m>$statevar _t=$Kpar </m> is stable.</p>
+</li>
+
+<li>
+<p>Let <m>$rpar =$r1 </m> and <m>$Kpar =$K </m>.  If we started with an initial population of <m>$statevar _0=$initial </m> and waited a long time, the population will have
+
+<conditionalContent>
+<case condition="$initial > $K">decreased down</case>
+<else>increased up</else>
+</conditionalContent>
+
+ to nearly $K .</p>
+</li>
+
+<li>
+<p>Now, let <m>$rpar =$r2 </m> and keep <m>$Kpar </m> a parameter so that <m>f'($statevar ) = $one_plus_r2  -$two_r2 \frac{ $statevar  }{ $Kpar  }</m>.   For the equilibrium <m>$statevar _t=0</m>, we need to check <m>f'(0)=$one_plus_r2 </m>.  Since <m>f'(0) \gt  1</m>, the equilibrum <m>$statevar _t=0</m> is unstable.</p>
+<p>For the equilibrium <m>$statevar _t=$Kpar </m>, we calculate <m>f'($Kpar ) = $one_plus_r2  - $two_r2  \cdot $Kpar / $Kpar  = $one_minus_r2 </m>.  Since <m>f'($Kpar ) \lt  -1</m>, the equilibrium <m>$statevar _t=$Kpar </m> is unstable.</p>
+</li>
+
+<li>
+<p>For general <m>$rpar </m>, remember from above that the derivative is <m>f'($statevar ) = 1 + $rpar  -  2$rpar  \frac{ $statevar  }{ $Kpar  }</m>.  The derivative at the nonzero equilibrium <m>$statevar _t=$Kpar </m> is <me>f'($Kpar ) = 1+$rpar -2$rpar  $Kpar /$Kpar  = 1-$rpar .</me>  According to the stability theorem, for this equilibrium to be stable, we need the derivative to between -1 and 1.  Plugging in the derivative, we calculate that we require that <me>-1 \lt  1-$rpar \lt  1</me> or <me>0 \lt  $rpar  \lt  2.</me></p>
+</li>
+</ol>
+
+</solution>
+
+
+</problem>

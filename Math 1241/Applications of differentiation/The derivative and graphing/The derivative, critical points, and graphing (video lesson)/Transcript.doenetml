@@ -1,0 +1,62 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7REabGvejv66Z71zCzA5Dx
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 4f76d4c0b79ee03f
+-->
+<title>The derivative, critical points, and graphing</title>
+<p><ref>Video</ref> | <ref>Transcript</ref> </p>
+<description>
+
+</description>
+<section><title>Transcript: The derivative, critical points, and graphing</title>
+<p>The derivative measures the rate of change of a function, i.e. the change in input over change in output. In fact the notation df/dx is intended to invoke the idea of this ratio. If we think of \delta f as meaning change in f and \delta x as meaning change in x, then the derivative is the ratio, \delta f over \delta x, in the limit where the change in input, \delta x, is small. If we have a function f(x) and we are told that df/dx is positive everywhere, what do we know about the function? We know that whenever we increase the input x, the output f(x) must also increase. We call such an f an increasing function. Or even, monotone increasing, to indicate it always increases. The graph of such an f might look like this. </p>
+  
+<p>Conversely, if we are told that df/dx is negative everywhere, then we know that the output, f(x) must always decrease when x increases. We call such an f, a decreasing function, or even monotone decreasing. The graph of a monotone decreasing function might look like this. Of course, a function could have more complicated behavior than a monotone increasing or decreasing function. The function might increase in some places, and decrease in others. The function graphed here increases for x less than -3, but then at x = -3, it turns around and starts decreasing. It decreases over the interval -3 &lt; x &lt; 1, then turns around again at x = 1, and increases from then on.</p>
+  
+<p>It’s easy to see where the function increases, decreases, and changes direction from the graph. But, how do we determine these features of a function without a graph? In fact, we’ll often want to go the reverse direction: use information about the derivative of a function to determine its behavior so that we can graph it. We’ll accomplish this task by focusing on where the function f(x) can change direction, i.e., where the derivative can change sign. If the derivative is changing continuously, then the only way for it to change sign is if it crosses through 0. If the derivative f’(x) = 0 at some point x = a, then it’s possible that f’(x) has a different sign for x &lt; a than for x > a. For example, the function f(x) = (x - 1)^2, with deriative f’(x) = 2(x-1), has a zero derivative at x = 1. f’(1) = 0. </p>
+
+<p>In this case the derivative f’(x) is less than 0 for x &lt; 1, and f’(x) is greater than 0 for x > 1. The graph of f looks like this, and we can see that it decreases until x = 1, and increases after that. Just because the derivative is 0, doesn’t mean the function has to change sign. For example, the function f(x) = (x-1)^3, with derivative f’(x) = 3(x-1)^2, has a 0 derivative at x = 1. However, f’(x) is positive for both x &lt; 1 and x >1. Away from x = 1, the function f(x) is always increasing, as we can see from its graph.</p>
+  
+<p>A 0 derivative isn’t the only way the derivative could change sign. If the derivative of f does not exist at a point x = a, i.e. if the function f is not differentiable at x = a, then the derivative might also change sign at x = a. For example, for the function f(x) = the absolute value of (x-1), the derivative f’(x) = 1 for x > 1, and f’(x) = -1 for x &lt; 1. At the point x = 1, where the derivative changes sign, the derivative does not exist. The function f(x) whose graph looks like this, is not differentiable at x = 1. </p>
+  
+<p>Of course, one could imagine a different function whose graph looks like this. The derivative doesn’t exist at x = 1, but the derivative is positive for all x not equal to 1. 
+If a function f(x) is defined at the point x = a, but either </p>
+  
+<p>(1) the derivative f’(a) = 0, or </p>
+  
+<p>(2) the function is not differentiable at x = a, </p>
+  
+<p>then the point x = a is called a critical point of f. If a function is defined everywhere, then the only points where its derivative can change sign are critical points. </p>
+  
+<p>Besides at critical points, the derivative could also change sign at points where the function itself is not defined. For example, the function f(x) = 1/(x-1)^2 is not defined at x = 1. For x not equal to 1, its derivative is f’(x) = -2/(x-1)^3. The derivative changes sign at x = 1. For x &lt; 1, f’(x) is greater than 0. And for x > 1, f’(x) is less than 0. However, since f(x) is not defined at x = 1, the point x = 1 is not considered a critical point. </p>
+  
+<p>In summary, the derivative can change sign at critical points (points x = a where f(a) is defined and either f’(a) = 0 or f’(a) doesn’t exist), or at points where f(a) is not defined.</p>
+  
+<p>Since the derivative can change sign only at critical points and points where f isn’t defined, there’s a simple way to find the intervals where f increases and decreases. </p>
+  
+<p>One, find all critical points, or points where f(x) doesn’t exist.</p>
+  
+<p>Two, these points divide the number line into intervals. One interval to the left of all the points, one interval to the right of all points, and an interval between each pair of consecutive points. Pick a convenient point to represent that interval. We could call these points auxiliary points. The auxiliary points can be any point on each interval, but they cannot coincide with a critical point, or a point where f(x) doesn’t exist.</p>
+  
+<p>Three, calculate the derivative at each auxiliary point.</p>
+  
+<p>Four, if f’ is positive at an auxiliary point, it is positive everywhere on the corresponding interval, since f’ cannot change sign on that interval. 
+We can conclude that f is increasing on that interval. </p>
+  
+<p>Five, if f’ is negative at an auxiliary point, it is negative everywhere on the corresponding interval. We can conclude that f is decreasing on that interval. </p>
+  
+<p>Using this procedure, we can determine where a function f(x) is increasing, where it is decreasing, and where it changes direction. The result is that we have fundamental information on the behavior of the function. We can use this information, for example, to sketch the graph of the function. </p>
+  
+<p>For example, let f(x) = -2x^3 - 3x^2 + 36x  - 5. This function is defined for all x. To find the intervals where it is increasing and decreasing, we look for the critical points. The derivative of f is df/dx = -6x^2 - 6x + 36. The derivative exists everywhere, so the only critical points are where df/dx = 0. We can solve for the critical points by using the quadratic formula, or by factoring.</p>
+  
+<p>It turns out that this equation is easily solved by factoring. We can factor out a -6, obtaining -6 times the quantity (x^2 + x - 6) equals 0. Factoring the quadratic gives, -6 times (x+3) times (x-2) = 0. The critical points are x = -3 and x = 2. You can double check that df/dx evaluated at x = -3 is 0, and df/dx evaluated x = 2, is 0. The two critical points divide the real line into 3 intervals,  negative infinity to negative 3, negative 3 to 2, and 2 to *positive infinity. We need to pick an auxiliary point from each interval to see if f is increasing or decreasing on that interval. </p>
+  
+<p>For the interval, negative infinity to 3, let’s pick the point x = -4. Since df/dx, evaluated at x = -4 equals -6 times (-4)^2minus 6 times (-4)  plus 36, which equals -36, which is less than 0, the function is decreasing in the interval, negative infinity to negative 3. </p>
+  
+<p>For the interval negative 3 to 2, let’s pick the point x = 0. Since df/dx, evaluated at x = 0, is negative 6 times (0)^2 - 6(0) + 36, which is 36, which is greater than 0, the function is increasing in the interval (-3,2). </p>
+  
+<p>For the interval (2, infinity), let’s pick the point x = 4. Since df/dx, evaluated at x = 4, is (-6)(4)^2 - 6(4) + 36, which is equal to -84, which is less than 0, the function is decreasing in the interval (2, infinity). </p>
+  
+<p>Using just this information about the derivative, we can already sketch the basic form of the function. It should decrease until x = -3 , turn around and increase until x = 2, then decrease from then on. Of course, we don’t know exactly what it looks like from just the sign of the derivative, and without evaluating the function itself, for at least one point, we cannot pin down it’s vertical location, but just from the intervals where the function increases and decreases, we can get a rough idea of the function’s behavior. </p>
+</section>

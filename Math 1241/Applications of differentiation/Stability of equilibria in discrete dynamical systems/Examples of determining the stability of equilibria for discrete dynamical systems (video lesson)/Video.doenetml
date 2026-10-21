@@ -1,0 +1,227 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7Q5xx6SMV2VAMgNjuVmFCv
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 44b1699afba66c7f
+-->
+<title>Examples of determining the stability of equilibria for discrete dynamical systems</title>
+<p><ref>Video</ref> | <ref>Transcript</ref> </p>
+<description>
+Examples demonstrating how to calculate the stability of equilibira analytically from the derivative of the updating function.
+</description>
+
+<section name="vid_section"><title>Video</title>
+<figure suppressFigureNameInCaption="true">
+<video youtube="qBGrYK6im-o" size="large" aspectRatio="16/9" name="v1" />
+<caption>Examples of determining the stability of equilibria for discrete dynamical systems</caption>
+</figure>
+
+
+<setup>
+  <number name="timestamp1">175</number>
+  <number name="timestamp2">355</number>
+</setup>
+
+<sideBySide margins="5%">
+<div><number name="v1RoundUp" hide="true">
+  <conditionalContent>
+    <case condition="$v1.fractionWatched > 0.9">1</case>
+    <else>$v1.fractionWatched</else>
+  </conditionalContent>
+</number>
+  
+  <p>Video credit achieved: <number displayDecimals="1">$v1RoundUp*100</number>%</p>
+
+<answer hide="true" name="v1Credit">
+  <award credit="$v1RoundUp"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+</div>
+<!-- 
+<div>
+<updateValue type="number" target="v1.time" newValue="$timestamp1" name="skipTo1">
+  <label>Go to Key Moment 1</label>
+</updateValue>
+</div>
+
+<div>
+<updateValue type="text" triggerWithTargets="skipTo1" target="v1" prop="state" newValue="playing" name="playStamp1"/>
+
+<updateValue type="number" target="v1.time" newValue="$timestamp2" name="skipTo2">
+  <label>Go to Key Moment 2</label>
+</updateValue>
+</div>
+
+
+<updateValue type="text" triggerWithTargets="skipTo2" target="v1" prop="state" newValue="playing" name="playStamp2"/> -->
+</sideBySide>
+
+<aside name="stabilityTheorem"><title>Stability theorem</title>
+<p>We can summarize the results for the stability of discrete dynamical systems with the following stability theorem.</p>
+
+<p>Consider the discrete dynamical system
+<md>
+  <mrow>x_{n+1}\amp = f(x_n)</mrow>
+  <mrow>x_0\amp = a,</mrow>
+</md>
+with an 
+<ref to="doenet:equilibria_discrete_dynamical_systems">equilibrium</ref><footnote>Recall that the fact that <m>E</m> is an equilibrium simply means that <m>E = f(E)</m>.
+</footnote>
+  <m>x_n = E</m>. Then, we can determine the stability of the equilibrium by calculating the derivative of <m>f</m> evaluated at the equilbrium as follows.</p>
+<ul>
+<li>If <m>|f'(E)| \lt  1</m>, then the equilibrium <m>x_n=E</m> is stable.</li>
+<li>If <m>|f'(E)| \gt  1</m>, then the equilibrium <m>x_n = E</m> is unstable.</li>
+<li>If <m>|f'(E)|=1</m>, then we can't figure out the stability of the equilibrium from just the derivative <m>f'(E)</m>.</li>
+</ul>
+</aside>
+
+
+  
+<problem><title>Video review questions</title>
+<exercise includeAutoNumber="true"><title />
+<p>We are given a dynamical system in function iteration form and tasked with determining its equilibria and whether the equilibria are stable.</p>
+<p>The system is given by
+  <me>z_{t+1} = h(z_t)</me> 
+where <m>h</m> is the updating function given by
+
+  <function name="updatingFunc" symbolic="true" variables="z" hide="true">(-1/4)(z+2)(z-4)</function>
+  <me>h(z) = $updatingFunc.</me></p>
+
+<p>Now, our first order of business is to solve for the equilibrium points, which occur wherever <m>z_{t+1} = z_t</m>, (or where the graph of the updating function <m>h(z)</m> intersects the diagonal line <m>z_{t+1} = z_t</m>).</p>
+<p>To make this statement algebraically, we take the equation <m>z_{t+1}=h(z_t)</m>, set <m>z_{t+1} = z_t = E</m>, and solve the resulting equation for <m>E</m>:</p>
+
+<p>First, replace all instances of <m>z</m> with <m>E</m>:</p>
+    <m>E = </m>
+    <answer name="ans1a" symbolicEquality="true" simplifyOnCompare="true"><mathInput name="line1" />
+    <award>
+      <when>$line1 = $$updatingFunc(E)</when>
+    </award>
+    <award credit="0" name="hOfE">h(E)</award>
+  </answer> 
+  <feedback condition="$hOfE">You're close.  The equation is <m>E=h(E)</m>.  Now you need to substitute <m>E</m> into the formula for <m>h(z)</m>.</feedback>
+  <feedback condition="$ans1a.numSubmissions > 1 and $ans1a.creditAchieved != 1">
+    <m>E = $$updatingFunc(E)</m>
+  </feedback>
+ 
+  <p>Next, expand the binomial terms on the right hand side into one polynomial:</p>
+    <m>E = </m>
+    <answer name="ans1b" symbolicEquality="true" simplifyOnCompare="true"><mathInput name="line2" />
+    <award>
+      <when>$line2 = $$updatingFunc(E)</when>
+    </award>
+  </answer>
+  <feedback condition="$ans1b.numSubmissions > 1 and $ans1b.creditAchieved != 1">
+    <m>E = $$updatingFunc(E)</m>
+  </feedback>
+ 
+  <p>Subtracting <m>E</m> from both sides gives:</p>
+    <m>0 = </m>
+    <answer name="ans1c"><mathInput name="line3" />
+    <award>
+      <when>$line3 = <math simplify="true" name="m3">($$updatingFunc(E)) - E</math></when>
+    </award>
+  </answer>
+  <feedback condition="$ans1c.numSubmissions > 1 and $ans1c.creditAchieved != 1">
+    <m>0 = $m3</m>
+  </feedback>
+
+  <p>Multiply all terms by <m>-4</m> for clarity:</p>
+    <m>0 = </m>
+    <answer name="ans1d"><mathInput name="line4" />
+    <award>
+      <when>$line4 = <math simplify="true" expand="true">-4*($$updatingFunc(E) - E)</math></when>
+    </award>
+    <award>E^2+2E-8</award>
+  </answer>
+  <feedback condition="$ans1d.numSubmissions > 1 and $ans1d.creditAchieved != 1">
+    <m>0 = <math simplify="true" expand="true">-4*(($$updatingFunc(E)) - E)</math></m>
+  </feedback>
+  
+
+  <p>Solve for <m>E</m>:</p>
+    <m>E = </m> <mathInput name="line5" /> and 
+    <m>E = </m> <mathInput name="line6" />
+    <answer name="ans1e" matchPartial="true" unorderedCompare="true">
+    <award>
+      <when>($line5, $line6) = (-4, 2)</when>
+    </award>
+  </answer>
+
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<p>Observe the graph near the equilibria you just found. You can graphically assess the value of the derivative at each equilbrium point by dragging the $tangentLine.styleDescriptionWithNoun. Then, use the <ref to="$stabilityTheorem"><term>Stability theorem</term></ref> to answer the following questions:</p>
+  <p>The equilibrium point <m>E_1</m> is 
+    <answer inline="true">
+    <choice>stable</choice>
+    <choice credit="1">unstable</choice>
+  </answer>, and the equilibrium point <m>E_2</m> is 
+    <answer inline="true">
+    <choice credit="1">stable</choice>
+    <choice credit="true">unstable</choice>
+  </answer>.</p>
+
+  <p>
+<booleanInput name="showDiagonal">
+  <label>Show Cobwebbing and Diagonal line given by: <m>z_{t+1} = z_t</m></label>
+</booleanInput></p>
+
+<p>Updating function: <m>h(z) = </m> $f</p>
+
+  <setup>
+    <function name="f" variables="z">$updatingFunc</function>
+    <solveEquations variables="z" name="solveForE" minVar="-5" maxVar="3">$f = z</solveEquations>
+    <math extend="$A.x" name="px" />
+    <derivative name="df">$f</derivative>
+    <number name="num">10</number>
+    <number name="zeroFixed" fixed="true">0</number>
+    <point x="5" y="$initialPoint.x" name="initialPoint" hide="true" labelPosition="left">
+      
+        <constrainToGraph />
+      
+      <label>Initial Point</label>
+    </point>
+    
+  </setup>
+<!-- <asList>$solveForE.solutions</asList> -->
+
+<!-- 
+  <updateValue name="addLine" target="nPoints" newValue="$nPoints+1" type="number">
+    <label>Add line</label>
+  </updateValue>
+  <updateValue name="deleteLine" target="nPoints" newValue="$nPoints&#x2D;1" type="number" disabled="$nPoints <= 1" >
+    <label>Delete line</label>
+  </updateValue>
+ -->
+  <graph identicalAxisScales="true" grid="true" showNavigation="true" name="g1" xmin="-8" xmax="6" ymin="-6" ymax="8">
+  <xLabel><m>z_t</m></xLabel>
+  <yLabel><m>z_{t+1}</m></yLabel>
+  <point name="A" x="0" y="0" styleNumber="2">
+    
+      <repeat for="$solveForE.solutions" valueName="v"><attractTo><point>($v, $v)</point></attractTo></repeat>
+      <constrainTo>$f</constrainTo>
+      <constrainToGraph />
+    
+  </point>
+      <line equation="y=$$df($px)(x-$px) + $$f($px)" fixed="true" styleNumber="3" name="tangentLine" applyStyleToLabel="true">
+        <label>slope = <m><math displayDigits="2" extend="$tangentLine.slope" /></m></label>
+      </line>
+
+    <function extend="$f" layer="1" styleNumber="2" />
+    <cobwebPolyline function="$f" numPoints="$num" name="cobwebPolyline" initialPoint="$initialPoint" lockToSolution="true" draggable="false" hide="!$showDiagonal" />
+    <point extend="$initialPoint" layer="2" hide="!$showDiagonal" />
+
+    <point name="E1" styleNumber="5">($solveForE.solution1, $solveForE.solution1)
+      <label><m>E_1</m></label>
+    </point>
+    <point name="E2" styleNumber="5">($solveForE.solution2, $solveForE.solution2)
+      <label><m>E_2</m></label>
+    </point>
+
+    
+</graph>
+
+</exercise>
+</problem>
+</section>

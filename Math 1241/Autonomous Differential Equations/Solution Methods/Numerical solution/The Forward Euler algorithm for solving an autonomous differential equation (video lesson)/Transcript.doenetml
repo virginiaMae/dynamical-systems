@@ -1,0 +1,45 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 816vKeczX3p14dJdq1mWX4
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: c764ae6006136df8
+-->
+
+<title>The Forward Euler algorithm for solving an autonomous differential equation</title>
+  
+<p><ref>Video</ref> | <ref>Transcript</ref> </p>
+<description>
+Using the linear approximation, or tangent line, to the solution of a differential equation to estimate the solution over small intervals.
+</description>
+
+<section><title>Transcript</title>
+
+<p>
+If we have an autonomous differential equation, let’s say of the form dy/dt = f(y) with initial conditions y(0) = some number, we’ll call it y_0. One way to solve it is to use a graphical approach, where we plot f as a function of y, and then look at the sign of f to determine which direction y should move. So in this case it should move to the left here in the middle, because f is negative, move to the right at the right, and also move to the right at the left. And we have two equilibria. In this case in the equilibrium at the left, the arrows are moving toward it so it’s a stable equilibrium. We draw this equilibrium solution. The equilibrium at the right is unstable because the arrows are moving away. We could draw this equilibrium solution with a dashed line if we’d like, to emphasize that it’s unstable. And then for a particular initial condition, let’s imagine that y_0 was right over here, which on the plot versus time would be right about here. We can look at the magnitude of f to estimate how fast it should change. It’s clear it has to move to the left the whole time, and eventually it will reach the lower equilibrium as time goes to infinity.</p>
+
+<p>But what should it look like if we were to plot it versus time on the lower graph? Well, at the beginning, f is fairly small, because if we were right at the equilibrium f would be 0 so I should start moving at a fairly small slope. But then as I move toward the middle, when I get to 0 f is the largest in magnitude, it's the most negative, f should be moving as fast as possible there, with the steepest slope, and then as I continue to move to more negative values, f gets smaller, so I should slow down and have a more shallow slope, and eventually approach the equilibrium. Here I just estimated the slope of y by eye, by looking at the graph of f, and imagining how large f was, in order to draw the slope as I draw the curve y(t). We can do this more precisely by using an algorithm called the Forward Euler algorithm.</p> 
+
+<p>For the Forward Euler algorithm, all we do is: One, we look up the slope dy/dt, and the way we look up the slope is to look at the differential equation, and see that dy/dt is f(y) for my current value y, which is y(t). And then we just take a step in time t using that slope that we just determined. And then we repeat that process. Of course to do this we need real numbers, so let’s make a specific example. </p>
+
+<p>Let’s let dy/dt = y^2 - 1, so that the graph of f equals y^2 - 1, looks similar to the graph we just drew. And we can start with the initial condition y(0) = 0.8. In this case you can see that the equilibria are 1 and -1, because those are the points where f is 0, and we could imagine that the y_0 that I drew was close to 0.8. </p>
+
+<p>Alright, lets try to use the forward Euler algorithm to estimate what y(t) should look like. We’re starting off at t = 0, and we’re given that y at time 0 is 0.8. What’s the slope? The slope is dy/dt evaluated at t = 0. So this is f, evaluated at y(0), y(0) is 0.8, we’re given that, so the slope is 0.8^2 - 1 – which we can calculate is -0.36. So if we look at our original graph, we have to imagine that this point here is -0.36. So my initial slope should be -0.36. On the plot of y versus t, the solution y(t) is going to begin going at a slope of -0.36, starting at the point 0.8 when t is 0. Let’s imagine such a line would look like this. The equation for the linear approximation is L(t) = y(0) + dy/dy(0) (t-0). Plugging in our specific values, we know that y(0) is 0.8, the slope at time 0 is -0.36, and then we multiply by t. So that’s the equation of our initial approximation. If the slope never changed, we could continue to move along this line and that would well-describe the function y(t). </p>
+
+<p>But what happens as y decreases? As y decreases from 0.8, the function f(y) becomes more negative. Therefore the slope becomes steeper than -0.36, and so if I continue on this line, I’ll miss the fact that the graph of y(t) should get steeper. If I want to achieve a good approximation of the function y(t), I shouldn’t take too big of a step along this line, before I make a course correction and look up a new slope and maybe go along a different line. And that’s the idea of the Forward Euler algorithm. We take a step in the direction determined by that slope. And if we want our approximation to be small, we should take a small step before looking up a new slope.</p> 
+
+<p>And that’s the question we have to answer – how far should we go along this initial line? The distance we go on each step is a parameter of the Forward Euler algorithm. We have to choose the time step which we’ll denote by delta t for change in time.</p> 
+
+<p>How much do we let time change before we look up a new slope? The smaller the time step delta t, the more accurate our approximation will be, but the smaller the time step, the more work we have to do because we have to look up f and change our slope more often. For the purposes of this example, let’s start with a large time step. Let’s choose delta t = 1. Let’s go ahead and take a time step of size 1, starting at the value y = 0.8, and moving at the slope -0.36. Since we start at time 0, and take a step of size 1, we’re going to estimate y at time 1, and we’ll use a linear approximation where to estimate y(1) as y of time 0 plus the derivative dy/dt, which is the same as f, evaluated at y at time 0, and we’re going to move a distance (1-0). Put in our numbers, y(0) is 0.8, f(y(0)) is -0.36, which we have to multiply by 1, because this 1 is how much time changed in our time step, this is our delta t. Therefore, our estimate of y at time 1 is 0.44.</p>
+
+<p> On our plot of y versus t, let’s imagine that 1 is about over here, and so our estimate of y(1) is 0.44. Clearly this isn’t exactly right, because our slope should’ve gotten more negative as we continued up to 1, but we assumed we kept going at a straight line. For the real differential equation we should adjust our slope at every moment in time, but for the Forward Euler approximation, you can imagine that you close your eyes during the time step of delta t, here it was 1, and just keep walking blindly in a straight line during the whole time step. Now that the time step is over we can open our eyes and readjust. How do we readjust? We just look up a new slope. We go back to step 1 of our Forward Euler algorithm. </p>
+
+<p>Now we’re at time = 1, and we need to look up a new slope. Slope is the derivative at time = 1, which is f(y(1)) – and our approximation of y(1) is 0.44. On our plot of f versus y, imagine we’re right here at y(1) = 0.44, and we need to look up our slope. Our new slope is 0.44^2 - 1, which is -0.8064. This means our new linear approximation calculated at around t = 1, is y(1) plus the slope f(y(1)) times (t-1); or 0.44 minus 0.8064 times (t - 1). This is an equation for a line with slope -0.864(**-0.8064**). It might look something like this. </p>
+
+<p>We move along this line, with slope -0.8, for another time step of width 1. In other words we move until time 2. With this approximation, y at time 2 is approximately 0.44 minus 0.8064 multiplied by the time (2-1), again this time interval (2-1) is just our delta t, which is 1. And if we calculate this quantity, we get -0.3664. That’s our approximation at time 2.</p> 
+
+<p>Here we’ve illustrated how to use Forward Euler to go from time t = 0 to the next time step t = 1, then to go from t = 1 to t = 2. In general, to go from time t, to time step (t + delta t), the Forward Euler formula for y at the new time, which equals delta t, well it's approximately equal to y at the previous time step. Originally here we had y at 0, and in the second time step we had y at 1. Well, here we have y at t plus the slope in the first time step –  it was f at y(0), in the second time step it was f(y(1)), and in general it’ll be  f of y of whatever our time is, in this case we’re calling it t, times our time step. In each case the width of our time step was delta t. So (1-0) in the first case, (2-1) in the second case, and at every time step it's going to be delta t. So this is the Forward Euler formula for solving an autonomous differential equation, dy/dt = f(y).</p>
+
+
+</section>
+
+

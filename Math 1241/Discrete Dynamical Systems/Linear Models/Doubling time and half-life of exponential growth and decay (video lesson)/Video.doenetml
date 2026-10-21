@@ -1,0 +1,112 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7EfSseMmwgApdsacgMeAse
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: e8104b2eea6058b0
+-->
+<title>Doubling time and half-life of exponential growth and decay</title>
+
+<p><ref>Video</ref> | <ref>Summary</ref> | <ref>Transcript</ref> </p>
+<description>
+How exponential growth is characterized by a doubling time and exponential decay is characterized by a half-life.
+</description>
+<p>Sometimes, a population size <m>P_T</m> as a function of time can be 
+<ref to="doenet:7E6LN4EfVWPjCgUesVJd5Z">characterized by an exponential function</ref>
+  For example, the 
+<ref to="doenet:7F4gzqGfwcmfA5jaTZRWtB">population growth of bacteria</ref>
+  was characterized by the function <m>P_T = 0.022 \times 1.032^T</m>.  Such exponential growth or decay can be characterized by the time it takes for the population size to double or shrink in half.  For exponential growth, we can define a characteristic <em><ref to="$doubling_time">doubling time</ref></em>.  For exponential decay, we can define a characteristic <em><ref to="$half_life">half-life</ref></em>.</p>
+
+<section><title>Video</title>
+<figure suppressFigureNameInCaption="true">
+<video youtube="K950-_f_k_w" width="640px" name="v1" />
+<caption>Doubling time and half-life for discrete dynamical systems</caption>
+</figure>
+
+<number name="v1RoundUp" hide="true">
+  <conditionalContent>
+    <case condition="$v1.fractionWatched > 0.9">1</case>
+    <else>$v1.fractionWatched</else>
+  </conditionalContent>
+</number>
+  
+  <p>Video credit achieved: <number displayDecimals="1">$v1RoundUp*100</number>%</p>
+
+<answer hide="true" name="v1Credit">
+  <award credit="$v1RoundUp"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+  
+</section>
+
+
+<section><title>Video review questions</title>
+
+  <ol>
+  <li>
+    <problem><title>Doubling time</title>
+
+      <setup>
+        <selectFromSequence name="a" from="1.1" to="4" step="0.1" />
+        <number name="doublingTime">log(2)/log($a)</number>
+      </setup>
+
+      <p>If the population size <m>p_t</m> is growing according to <m>p_t = $a^t</m>, what is the doubling time of the population? <answer allowedErrorInNumbers="0.001" name="ans">$doublingTime</answer></p> 
+      <p>(If rounding, include at least 4 digits in your response.)
+      </p>
+
+  <hint hide="$ans.numSubmissions &lt; 2 or $ans.creditAchieved = 1 or $ans.numSubmissions >= 5">
+  <p>If a population is growing exponentially according to <m>p_t = a^t</m>, the doubling time is <m>t=\frac{\ln(2)}{\ln(a)}</m>.  In this example, <m>a=$a</m>.
+  </p>
+  </hint>
+  
+  <hint hide="$ans.numSubmissions &lt; 5 or $ans.creditAchieved = 1">
+<p>If a population is growing exponentially according to <m>p_t = $a^t</m>, the doubling time is <m>t=\frac{\ln(2)}{\ln($a)} \approx <number displayDigits="4" extend="$doublingTime" /></m>.
+</p>
+</hint>
+
+
+<solution>
+<p>If a population is growing exponentially according to <m>p_t = $a^t</m>, the doubling time is <m>t=\frac{\ln(2)}{\ln($a)} \approx <number displayDigits="4" extend="$doublingTime" /></m>.
+</p>
+
+</solution>
+      
+    </problem>
+  </li>
+  <li>
+    <problem><title>Half life</title>
+      <setup>
+        <selectFromSequence name="selectFromSequence" from="0.1" to="0.9" step="0.1" />
+        <number name="halfLife">log(1/2)/log($selectFromSequence[1])</number>
+      </setup>
+      <p>If the population size <m>p_t</m> is shrinking according to <m>p_t = $selectFromSequence[1]^t</m>, what is the half life of the population? <answer allowedErrorInNumbers="0.001" name="ans">$halfLife</answer> 
+      </p>
+      <p>(If rounding, include at least 4 digits in your response.)
+      </p>
+
+
+  <hint hide="$ans.numSubmissions &lt; 2 or $ans.creditAchieved = 1 or $ans.numSubmissions >= 5">
+  <p>If a population is shrinking according to <m>p_t = a^t</m>, the half life is <m>t=\frac{\ln(1/2)}{\ln(a)}</m>.  In this example, <m>a=$selectFromSequence[1]</m>.
+  </p>
+  </hint>
+  
+  <hint hide="$ans.numSubmissions &lt; 5 or $ans.creditAchieved = 1">
+<p>If a population is shrinking according to <m>p_t = $selectFromSequence[1]^t</m>, the half life is <m>t=\frac{\ln(1/2)}{\ln($selectFromSequence[1])} \approx <number displayDigits="4" extend="$halfLife" /></m>.
+</p>
+</hint>
+
+
+<solution>
+<p>If a population is shrinking according to <m>p_t = $selectFromSequence[1]^t</m>, the half life is <m>t=\frac{\ln(1/2)}{\ln($selectFromSequence[1])} \approx <number displayDigits="4" extend="$halfLife" /></m>.
+</p>
+
+</solution>
+
+      
+    </problem>
+  </li>
+
+  </ol>
+
+</section>

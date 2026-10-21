@@ -1,0 +1,28 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7PtHXcQW6ofyPDuhrStoBT
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: b9af0bd8cb24f72a
+-->
+<title>The tangent line as a linear approximation</title>
+<p><ref>Video</ref> | <ref>Transcript</ref></p>
+<description>
+How the tangent line to the graph of a function is a linear approximation to the function close by the tangent point.
+</description>
+
+<section><title>The tangent line as a linear approximation</title>
+<p>Let’s say f(x) is a function whose graph looks like this. This f(x) is a fairly complicated function, let’s imagine we only cared about f for values of x near some particular value. Let’s say for this value here, let’s call it a; if we only care about the behavior of f in some small region around a, we can come up with a simplified approximation for f. One approximation is a linear approximation. Let’s say we want to find the linear approximation to f for x near a. If x is a differentiable function, this means that around x = a, it looks like a linear function, we zoom in and we zoom in, eventually f will look linear – and in that zoomed in view, f will be very close to its tangent line. The graph of the tangent line might look something like this. Clearly the tangent line isn’t a good approximation to f far away from a, but right near a, it does a good job, in this region right here. In this region, the tangent line at x=a is a good approximation to f.</p>
+<p>So, let's calculate the equation for the tangent line at x=a. What’s the slope of the tangent line? The slope is the derivative evaluated at x=a. So we need to find the equation for a line with slope f’(a) that goes through the point that we’ve drawn right here. The x-coordinate of the point is a; what is the y-coordinate? The y-coordinate is the value of f at a. It’s just f(a). Now we need to remember the point-slope form for a line. The point-slope formula for a line through a point, let’s call the point (x_0, y_0), well it's not y = mx + b, because that’s the slope-intercept form. Instead it's y - y_0 = m(x-x_0). Where of course m is the slope. We can add y_0 to both sides, to get the equation y = y_0 + m(x-x_0). 
+<me>y = y_0 + m(x - x_0)</me>
+So to find the equation for the tangent line, we can use the point-slope formula, with m equals the slope of the tangent line, which is f’(a), x_0 equals a, and y_0 = f(a), because the coordinates of the point are a comma f(a). So therefore the tangent line is y equals y_0 plus f(a) plus the slope m, the derivative f’(a) times x minus the point a. So this is the equation for the tangent line or we could call it a linear approximation 
+<me> y = f(a) + f’(a)(x-a).</me>
+The tangent line or linear approximation for f is valid only near x=a. If you wanted to understand the behavior of f at a point far away from a, let’s say over here, we’ll call it b, then the linear approximation at a is no good. But a function has many linear approximations, we could also calculate a different linear approximation for f around the point b. It would look something like this. And it would be a good approximation for f near b. What’s the equation for this tangent line? Or linear approximation? Well, it's simply y = the value of f above b, f(b) plus the slope f’(b) times x minus b
+<me>y = f(b) + f'(b)(x-b).</me>
+The same formula we had before, only with b instead of a.</p>
+<p>Let’s try an example. Let’s find the linear approximation – tangent  line – to f(x) equals e^x^2-1 at x = 1. Here’s our formula, we just need to evaluate the function and its derivative at the point x=1. Well, f(1) is e^1^2 - 1, which is e^0, which is just 1. Ok, that was easy. How about the derivative? To calculate the derivative of f we need to use the chain rule. We could think of f(x) being the composition g(h(x)), where g(y) is the exponential function, and h(x) is the polynomial x^2-1. With this notation for the composition, then the chain rule says that the derivative of the composition is the derivative of the outside function, in this case g, evaluated at the inside function, times the derivative of the inside function, in this case its h. Now g’(y) is just e^y, and h’(x) is 2x. And so the derivative f’(x) is e^(x^2-1), that’s g’, e^y, evaluated at x^2 - 1…times 2x, the derivative h’. We need to evaluate this derivative at point a, which is just 1 here, so f’(1), which is e^(1^2 -1) times 2 times 1. So, e^0 times 2…e^0 is 1, so this is just equal to 2. Therefore the linear approximation, or the equation for the tangent line at x=1, is f(1) plus f’(1) times x-1. In other words it's 
+<me>y = 1+2(x-1).</me>
+Which you could multiply out if you like.</p>
+<p>And of course we would get a different linear approximation at a different point. Let’s say what if we tried finding the tangent line at x=-1? Well for that we just need the derivative and the function evaluated at -1. Well what’s f(-1)? Well it’s e^-1 squared minus 1 – which is also e^0, or 1. So f(-1) is the same thing as f(1). f’(-1) is a little different though. We’ll get e^(-1^2 - 1), but now multiply by 2x, so 2 times -1. So we get e^0 times negative 2. The derivative at -1 is -2. The tangent line y = f(-1)+ f’(-1)(x - (-1) )...so I’ll write it as (x+1)...is the equation 
+<m>y = 1 - 2(x+1)</m>
+So we calculated two tangent lines. One which approximates the function around x=1, and another that approximates the function around x = -1. </p>
+</section>

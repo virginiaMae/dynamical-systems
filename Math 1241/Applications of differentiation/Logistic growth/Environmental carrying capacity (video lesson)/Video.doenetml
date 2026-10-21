@@ -1,0 +1,109 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7RmdPQvfD82FhzAaSPs5Vx
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: a63e2b80e347de50
+-->
+<title>Environmental carrying capacity</title>
+<p><ref>Video</ref> | <ref>Summary</ref> | <ref>Transcript</ref>  </p>
+<description>
+We examine a difference equation used to describe population growth in limited environments.
+</description>
+
+
+
+
+<section><title>Video</title>
+
+
+<figure suppressFigureNameInCaption="true">
+<video youtube="CmOkPNkrNqA" size="large" aspectRatio="16/9" name="v1" />
+<caption>The discrete logistic equation</caption>
+</figure>
+
+
+<setup>
+  <number name="timestamp1" />
+  <number name="timestamp2" />
+</setup>
+
+<sideBySide margins="5%">
+<div><number name="v1RoundUp" hide="true">
+  <conditionalContent>
+    <case condition="$v1.fractionWatched > 0.9">1</case>
+    <else>$v1.fractionWatched</else>
+  </conditionalContent>
+</number>
+  
+  <p>Video credit achieved: <number displayDecimals="1">$v1RoundUp*100</number>%</p>
+
+<answer hide="true" name="v1Credit">
+  <award credit="$v1RoundUp"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+</div>
+
+<!-- <div>
+<updateValue type="number" target="v1.time" newValue="$timestamp1" name="skipTo1">
+  <label>Go to Key Moment 1</label>
+</updateValue>
+</div>
+
+<div>
+<updateValue type="text" triggerWithTargets="skipTo1" target="v1" prop="state" newValue="playing" name="playStamp1"/>
+
+<updateValue type="number" target="v1.time" newValue="$timestamp2" name="skipTo2">
+  <label>Go to Key Moment 2</label>
+</updateValue>
+</div>
+
+
+<updateValue type="text" triggerWithTargets="skipTo2" target="v1" prop="state" newValue="playing" name="playStamp2"/> -->
+</sideBySide>
+
+
+
+
+<aside><title>The discrete logistic equation</title>
+<p>Let <m>P_t</m> denote the population size in time period <m>t</m>.  Let <m>M</m> be the carrying capacity, which is the population size that the environment can support.  Then, </p>
+<men name="logistic">P_{t+1} - P_t = r \, P_t \, \left( 1 - \frac{P_t}{M} \right)</men>
+<p>Equation <ref to="$logistic" /> is the discrete logistic equation.</p>
+
+<ul><li>
+  <m>\displaystyle \frac{P_t}{M}</m> is the fraction of the carrying capacity that is used, and</li>
+  <li><m>\displaystyle 1 - \frac{P_t}{M}</m> is the unused fraction of the carrying capacity.</li>
+</ul>
+</aside>
+  
+<problem><title>Video review questions</title>
+<exercise includeAutoNumber="true"><title />
+
+<p>The growth of a population over time is modeled by a discrete dynamical system. Since it is not realistic to assume that exponential growth of the population will be maintained indefinitely in the presence of environmental constraints, a parameter called the ____________________ is introduced into the equations describing the discrete dynamical system. </p>
+
+<answer name="ans1a">
+  <choice>low density growth rate</choice>
+  <choice credit="1">carrying capacity</choice>
+  <choice>equilibrium point</choice>
+</answer>
+
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<figure suppressFigureNameInCaption="true">
+  <image source="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Eulemur_mongoz_%28male_-_face%29.jpg/1920px-Eulemur_mongoz_%28male_-_face%29.jpg" size="small" />
+  <caption>Lemur population modeled by a discrete logistic equation<footnote>By IParjan - Own work, Public Domain, https://commons.wikimedia.org/w/index.php?curid=2867040</footnote></caption>
+  <description>A photograph of a brown lemur sitting on a branch</description>
+  </figure>
+<p>The growth of a certain population of lemurs in Madagascar is modeled by the discrete logistic equation</p>
+  <me>P_{t+1} - P_t = r P_t \left(1 - \frac{P_t}{M}\right)</me>
+  
+where, <m>P_t</m> is the lemur population at time <m>t</m>, <m>r</m> is the low density growth rate of the population, and <m>M</m> is the carrying capacity. If, at a certain time <m>t</m>, measurements of the lemur population indicate that the value of the fraction <m>\frac{P_t}{M} \approx 1</m>, this could mean that
+  <answer name="ans2a">
+    <choice>the growth of the lemur population is well-approximated by the exponential growth model at time <m>t</m>.</choice>
+    <choice>the lemur population will decline until it eventually reaches the carrying capacity, <m>M</m>.</choice>
+    <choice credit="1">environmental conditions are such that the lemur population is at an equilibrium, neither growing nor declining in size.</choice>
+  </answer>
+</exercise>
+</problem>
+</section>

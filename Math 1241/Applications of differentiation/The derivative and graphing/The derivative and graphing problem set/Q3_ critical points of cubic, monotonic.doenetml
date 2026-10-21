@@ -1,0 +1,268 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7RNauh2sEhhZRAkmKL6JMP
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 6a031e734720ae43
+-->
+<problem>
+<!-- <title>critical points of cubic, monotonic</title> -->
+
+<setup>
+
+<function name="f" variables="x">4/3*x^3 -12x^2+36x-30</function>
+<derivative name="fprime" variables="x">$f</derivative>
+
+<math name="critical_point">3</math>
+<math name="fprime_factored">4 (x−3)^2</math>
+<math name="f_cp">$$f($critical_point )</math>
+
+<subsetOfReals name="left_interval">(-infinity, $critical_point)</subsetOfReals>
+<subsetOfReals name="right_interval">($critical_point, infinity)</subsetOfReals>
+
+<math name="x1">0</math>
+<math name="fprimex1">$$fprime($x1 )</math>
+<math name="x2">4</math>
+<math name="fprimex2">$$fprime($x2 )</math>
+<math name="point_cp">($critical_point ,$f_cp )</math>
+<math name="f0">$$f(0)</math>
+
+<number name="zero" fixed="true">0</number>
+
+</setup>
+
+
+<p>Let <m>f(x) = $f</m>.</p>
+
+
+<exercise>
+<p>Calculate <m>f'(x) =</m> 
+<answer>
+<award>$fprime </award>
+</answer></p>
+</exercise>
+
+<exercise>
+<p>Find the critical points of <m>f</m>.</p>
+
+<p>How many critical points are there?  <answer name="n_c">1</answer></p>
+
+
+<p>The critical points are</p>
+<ul>
+  <repeatForSequence length="min(10,$n_c)" name="cpMap"><li><m>x=</m> <mathInput /></li></repeatForSequence>
+</ul>
+<p>
+<answer matchPartial="true" unorderedCompare="true" name="ansCps">
+  <award referencesAreResponses="$cpMap">
+    <when allowedErrorInNumbers="0.0001">
+      <mathList>
+        <setup><collect componentType="mathInput" from="$cpMap" name="collect_list" /></setup><mathList name="list" extend="$collect_list.value" />
+      </mathList>
+      = $critical_point
+    </when>
+  </award>
+</answer>
+</p>
+
+
+<p>Find the value of <m>f</m> at the critical points.</p>
+
+
+<ul>
+  <setup><group name="group"><copy prop="submittedResponses" source="ansCps" name="ucps" /></group></setup><repeat for="$group" name="fcpMap" valueName="v"><li><m>f($v)=</m> <mathInput /></li></repeat>
+</ul>
+
+
+
+<p>
+  <answer disabled="$ansCps.creditAchieved != 1">
+    <award matchPartial="true" matchByExactPositions="true" allowedErrorInNumbers="0.0001">
+      <when>
+        <mathList hide="true" name="fucplist">
+          <setup><collect componentType="mathInput" from="$fcpMap" name="collect_list1" /></setup><mathList name="list1" extend="$collect_list1.value" />
+        </mathList>
+        = 
+        <mathList>
+          <repeat for="$ucps" valueName="v">
+              <evaluate forceNumeric="true" function="$f" input="$v" />
+            </repeat>
+        </mathList>
+      </when>
+    </award>
+  </answer>
+  <conditionalContent condition="$ansCps.creditAchieved != 1">
+    (Find the correct critical points first.)
+  </conditionalContent>
+</p>
+</exercise>
+
+<exercise>
+<p>What are the intervals over which <m>f'(x)</m> cannot change sign, as determined by the critical points? Determine whether <m>f</m> is increasing or decreasing on each interval.</p>
+
+<hint>
+You can write the intervals as <m>(a,b)</m> or as <m>a &lt; x &lt; b</m>.  Or if an interval extends to infinity, you can write it, for example, as <m>(-\infty, b)</m> or <m>x &lt; b</m>.
+</hint>
+
+
+<p>Left interval: 
+<answer name="answer4">
+  <mathInput name="mi4" />
+  <award referencesAreResponses="$mi4">
+    <when><subsetOfReals>$mi4</subsetOfReals> = $left_interval</when>
+  </award>
+</answer>
+</p>
+
+<p>Right interval: 
+<answer name="answer6">
+  <mathInput name="mi6" />
+  <award referencesAreResponses="$mi6">
+    <when><subsetOfReals>$mi6</subsetOfReals> = $right_interval</when>
+  </award>
+</answer>
+</p>
+
+<p>In the left interval, <m>f</m> is 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">increasing</choice>
+<choice>decreasing</choice>
+</choiceInput>
+</answer>
+
+</p>
+<p>
+
+In the right interval, <m>f</m> is 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">increasing</choice>
+<choice>decreasing</choice>
+</choiceInput>
+</answer>
+</p>
+</exercise>
+
+<exercise>
+<p>Using this information and the value of <m>f(0) =</m> 
+<answer>
+<award>$f0 </award>
+</answer>, as well as the value of <m>f(4.5) = </m> 
+<answer>
+<award>$$f(4.5) </award>
+</answer>sketch the graph of <m>f(x)</m>.</p>
+
+
+
+
+<graph size="large" aspectRatio="5/4" xmin="-1" xmax="6" ymin="-32" ymax="32" fixAxes="true">
+
+<point name="cp" x="1.5" y="16" styleNumber="2">
+
+<attractTo threshold="2"><point>($critical_point, $f_cp)</point></attractTo>
+<!-- <attractTo thresholdRelativeToGraph threshold="0.03"><point>($critical_point, $f_cp)</point></attractTo> -->
+
+    <label>Critical point</label>
+</point>
+
+
+<point name="yintercept" x="$zero" y="4">
+
+<attractTo threshold="2"><point>(0, $f0)</point></attractTo>
+
+  <label><m>y</m> - intercept</label>
+</point>
+
+<point name="p3" x="4.5" y="-2">
+  
+    <attractTo threshold="2"><point>(4.5, $$f(4.5))</point></attractTo>
+  
+  <label><m>(4.5, f(4.5))</m></label>
+</point>
+
+<curve extrapolateForward="true" through="$yintercept $cp $p3">
+
+<bezierControls>
+
+  
+<controlVectors hide="true">(-0.4, $yintercept.y)</controlVectors>
+  
+<controlVectors><vector><point name="control" x="-0.8 / sqrt(2)" y="8 / sqrt(2)">
+<constrainTo>
+<point>(0.8,  0)</point>
+<point name="controlCorrect">(-0.8,  0)</point>
+<point>( 0.8 / sqrt(2),  8 / sqrt(2))</point>
+<point>( 0.8 / sqrt(2), -8 / sqrt(2))</point>
+<point>(-0.8 / sqrt(2),  8 / sqrt(2))</point>
+<point>(-0.8 / sqrt(2), -8 / sqrt(2))</point>
+<point>(0, 8)</point>
+<point>(0, -8)</point>
+</constrainTo>
+</point></vector></controlVectors>
+<controlVectors hide="true">(($cp.x-$p3.x)/6, ($cp.y-$p3.y)/2)</controlVectors>
+</bezierControls>
+
+</curve>
+
+</graph>
+
+<p><answer>
+<award matchPartial="true"><when>
+$cp = ($critical_point, $f_cp) and <boolean>$yintercept = (0, $f0)</boolean> and $control = $controlCorrect and <math extend="$p3.y" /> > <math extend="$cp.y" />
+</when></award>
+</answer>
+</p>
+
+<hint>
+You sketch should include the critical point, have the correct value at <m>x=0</m> and <m>x=4.5</m>, and be increasing or decreasing in the correct intervals.
+</hint>
+</exercise>
+
+
+
+<solution>
+
+
+<exercise>
+<m>f'(x) = $fprime </m>.
+</exercise>
+
+<exercise>
+Factoring <m>f'(x)</m>, we get <m>f'(x) = $fprime=$fprime_factored </m>.  The one critical point is <m>x=$critical_point </m>.  <m>f($critical_point ) = $f_cp </m>.
+</exercise>
+
+<exercise>
+<p>The intervals are: <m>$left_interval </m> and <m>$right_interval </m>.</p>
+
+<p>For the interval <m>(-\infty, $critical_point )</m>, we could pick the point <m>x=$x1 </m>.  <m>f'($x1 ) = $fprimex1  \gt  0</m>.  <m>f(x)</m> is increasing on the interval <m>(-\infty,$critical_point )</m>.</p>
+
+<p>For the interval <m>($critical_point ,\infty)</m>, we could pick the point <m>x=$x2 </m>.  <m>f'($x2 ) = $fprimex2 \gt 0</m>.  <m>f(x)</m> is increasing on the interval <m>($critical_point ,\infty)</m>.</p>
+</exercise>
+
+<exercise>
+<p>It's not important to get the vertical scale or the curvature right, but just that <m>f</m> is always increasing and flattens out to zero slope at the critical point <m>x=3</m>.  Also, since <m>f(0)=-30</m>, it should cross the <m>y</m> axis at a negative <m>y</m>.</p>
+
+
+<graph size="large" aspectRatio="5/4" xmin="-1" xmax="6" ymin="-32" ymax="32" showNavigation="false">
+
+<function extend="$f" />
+
+<point fixed="true">(0, $f0)
+  <label><m>y</m> - intercept</label>
+</point>
+  
+<point fixed="true" styleNumber="2">($critical_point, $f_cp)
+  <label>Critical point</label>
+</point>
+
+<point fixed="true">(4.5, $$f(4.5))
+  <label><m>(4.5, f(4.5))</m></label>
+</point>
+
+</graph>
+</exercise>
+
+</solution>
+
+
+</problem>

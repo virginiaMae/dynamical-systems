@@ -1,0 +1,81 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 82dqvZj5vfXXpdUkYxAL12
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: b16d0dc846726e06
+-->
+<title>Model of an infectious disease without immunity</title>
+
+<description>
+
+</description>
+<p><ref>Video 1</ref> | <ref>Video 2</ref> | <ref>Applet</ref> | <ref>Transcripts</ref></p>
+
+
+<section><title>Video 1</title>
+
+
+<figure suppressFigureNameInCaption="true">
+<video youtube="GqOgEjfJhlc" aspectRatio="16/9" size="large" name="v1" />
+<caption>Model of an infectious disease without immunity</caption>
+</figure>
+
+<setup>
+  <number name="timestamp1" />
+  <number name="timestamp2" />
+</setup>
+
+<sideBySide margins="5%">
+<div>Video credit achieved: <number displayDecimals="1">$v1.fractionWatched*100</number>%
+  
+<answer hide="true" name="v1Credit">
+  <award credit="$v1.fractionWatched"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+</div>
+
+<!-- <div>
+<updateValue type="number" target="v1.time" newValue="$timestamp1" name="skipTo1">
+  <label>Go to Key Moment 1</label>
+</updateValue>
+</div>
+
+<div>
+<updateValue type="text" triggerWithTargets="skipTo1" target="v1" prop="state" newValue="playing" name="playStamp1"/>
+
+<updateValue type="number" target="v1.time" newValue="$timestamp2" name="skipTo2">
+  <label>Go to Key Moment 2</label>
+</updateValue>
+</div>
+
+
+<updateValue type="text" triggerWithTargets="skipTo2" target="v1" prop="state" newValue="playing" name="playStamp2"/> -->
+</sideBySide>
+<problem><title>Video 1 review question</title>
+<exercise includeAutoNumber="true"><title />
+  <p>In the SIS model introduced in the video, there are two groups of individuals to consider: 
+    <answer inline="true">
+      <choice>infected and removed</choice>
+      <choice credit="1">infected and susceptible</choice>
+      <choice>susceptible and removed</choice>
+    </answer>. This differs from the <ref to="doenet:7CwNV3LqM6TkSoyDPsPw76">discrete SIR model</ref> introduced in the beginning of the course in several ways. The first is that, in the current SIS model there is no 
+    <answer>
+      <choice credit="1">immunity</choice>
+      <choice>persistence</choice>
+      <choice>preference</choice>
+    </answer> to the disease and therefore no "recovered" population that is no longer susceptible.  Another difference between the SIR and the SIS model is that in the SIR model we considered the state of the system as measured over 
+    <answer inline="true">
+      <choice>a continuous span of time</choice>
+      <choice>a limiting time period of 100 years</choice>
+      <choice credit="1">discrete time steps</choice>
+    </answer>, while in the SIS model we are employing 
+    <answer>
+      <choice>a pure-time differential equation</choice>
+      <choice credit="1">an autonomous differential equation</choice>
+    </answer> 
+    to model a continuous dynamical system which depends on the state variable <m>I</m>, or <m>I(t)</m>, and not explicitly on time, <m>t</m>.
+  </p>
+</exercise>
+</problem>
+</section>

@@ -1,0 +1,173 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7LoGsb2Erc2dPPwTNAdDkP
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 1d19247979cb3366
+-->
+<title>The derivative of the natural logarithm</title>
+
+<p><ref>Video</ref> | <ref>Summary</ref> | <ref>Transcript</ref>  </p>
+<description>
+Determining the derivative of the natural logarithm from the fact that it is the inverse of the exponential function.
+</description>
+
+<section name="vid_section"><title>Video</title>
+<figure suppressFigureNameInCaption="true">
+<video youtube="ufWb2XBOVeI" size="large" aspectRatio="16/9" name="v1" />
+<caption>The derivative of the natural logarithm</caption>
+</figure>
+
+
+<setup>
+  <number name="timestamp1">218</number>
+  <number name="timestamp2">401</number>
+  <number name="timestamp3">537</number>
+  <number name="timestamp4">726</number>
+</setup>
+  
+  
+<sideBySide margins="5%">
+<div><p>Video credit achieved: <number displayDecimals="1">$v1RoundUp*100</number>%</p></div>
+
+</sideBySide>
+
+
+<number name="v1RoundUp" hide="true">
+  <conditionalContent>
+    <case condition="$v1.fractionWatched > 0.9">1</case>
+    <else>$v1.fractionWatched</else>
+  </conditionalContent>
+</number>
+
+
+<answer hide="true" name="v1Credit">
+  <award credit="$v1RoundUp"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+  
+
+<problem><title>Video review questions</title>
+<sideBySide>
+<stack>
+<exercise includeAutoNumber="true"><title />
+<p>Complete the sentence:</p>
+
+<p>Let <m>f(x) = \ln x</m>. Then, <m>f(x) = \frac{1}{2}</m> implies that ... 
+  <answer name="v1Review1a">
+    <choice><m>x = 2</m></choice>
+    <choice><m>\bigg(\frac{1}{2}\bigg)^x = e</m></choice>
+    <choice credit="1"><m>x = e^{\frac{1}{2}}</m></choice>
+  </answer>
+</p>
+
+  <feedback condition="$_choice1"><p>Oops - You're thinking too far ahead and applying the rule for taking the <em>derivative</em> of the <term>natural logarithm function</term>. While it's true that <m>f'(x) = \frac{1}{2}</m> would imply that <m>x = 2</m>, what's being asked here is what <m>f(x) = \frac{1}{2}</m> implies.  This is a question about the basic definition of the natural logarithm function, which you can read about <ref to="https://mathinsight.org/logarithm_basics">here</ref>. 
+</p></feedback>
+
+  <feedback condition="$_choice2"><p>This is incorrect. 
+The <term>natural logarithm function</term> takes as an input a number <m>x</m>, and returns as its output the value which the number <m>e</m> must be "raised to" which results in that particular <m>x</m> value. So, <m>\ln(x) = \frac{1}{2}</m> means that you must raise the number <m>e</m> to the power <m>\frac{1}{2}</m> for that particular <m>x</m> value.</p>
+<p>Take a look at the graph above to get a feel for the natural logarithm function. You can also review the basic definition of the <term>natural logarithm function</term> <ref to="https://mathinsight.org/logarithm_basics">here</ref>.</p>
+</feedback>
+</exercise>
+
+  
+<exercise includeAutoNumber="true"><title />
+<p>Let <m>f(x) = \ln x</m>. 
+Then <m>\frac{df}{dx} = </m> 
+  <answer name="vid1Review2">1/x</answer>
+</p>
+</exercise>
+
+<exercise includeAutoNumber="true"><title />  
+<p>The derivative of <m>f</m>, <m>\frac{df}{dx}</m>, evaluated at <m>x = 3</m> is:</p>
+  <m>\frac{df}{dx} \bigg |_{x=3} = </m>
+  <answer name="vid1Review3">1/3</answer>
+</exercise>
+
+</stack>
+
+<stack>
+  <number name="x" hide="true" displayDecimals="2">5</number>
+<figure suppressFigureNameInCaption="true">
+  <graph xmin="-2" ymin="-7">
+    <xLabel><m>x</m></xLabel>
+    <yLabel><m>f, g</m></yLabel>
+    <function name="f" applyStyleToLabel="true" labelPosition="center">ln(x)
+      <label><m>f(x) = \ln x</m></label>
+    </function>
+    <function name="f_prime" applyStyleToLabel="true" labelPosition="center" hide="!$showDerivative" domain="(0,infinity)" styleNumber="3">1/x
+      <label><m>f'(x) = \frac{1}{x}</m></label>
+    </function>
+    <function name="expFunction" applyStyleToLabel="true" labelPosition="center" styleNumber="4" hide="!$showExponentialFunc">e^x</function>  
+    <line styleNumber="6" fixed="true">y = x</line>
+    <point styleNumber="2" name="dragPoint" displayDecimals="2" applyStyleToLabel="true" labelPosition="upperright" showCoordsWhenDragging="false">($x,$$f($x))
+      <label><m>(x, \ln x) = <copy displayDecimals="2" source="$dragPoint.coords" /></m></label>
+    </point>
+
+    <point styleNumber="4" name="dragPoint2" displayDecimals="2" applyStyleToLabel="true" labelPosition="upperright" showCoordsWhenDragging="false">($x,$$expFunction($x))
+      <label><m>(x, e^ x) = <coords displayDecimals="2" extend="$dragPoint2.coords" /></m></label>
+    </point>
+
+    <point styleNumber="3" name="dragPointDerivative" displayDecimals="2" applyStyleToLabel="true" labelPosition="upperright" showCoordsWhenDragging="false" hide="!$showDerivative">($x,$$f_prime($x))
+      <label><m>(x, \frac{1}{x})</m></label>
+    </point>
+   
+    <point styleNumber="5" name="fixedPoint" displayDecimals="2" applyStyleToLabel="true" labelPosition="upperright" fixed="true">(e^(1/2),$$f(e^(1/2)))
+      <label><m>\bigg($fixedPoint.x, \frac{1}{2}\bigg)</m></label>
+    </point>
+  
+    <legend>
+      <label><m>f(x) = \ln x</m></label>
+      <label><m>f'(x) = 1/x</m></label>
+      <label><m>g(x) = e^x</m></label>
+    </legend>
+  </graph>
+<caption>Graph of <m>f(x) = \ln x</m> and <m>g(x) = e^x</m></caption>
+</figure>
+<booleanInput name="showDerivative">
+    <label>Show <m>f'(x)</m></label>
+</booleanInput>
+<booleanInput name="showExponentialFunc" prefill="true">
+    <label>Show <m>g(x)</m></label>
+</booleanInput>
+</stack>
+</sideBySide>
+
+<aside><title>Formula - The derivative of the <term>natural logarithm function</term>:</title>
+  <md>
+    <mrow>f'(x) \amp= \frac{1}{x}\;\;\;\text{where}\;\;\;f(x) = \ln x</mrow>
+  </md>
+
+  <md>
+    <mrow>\textbf{Differential form:}\;\;\; \frac{d}{dx} \bigg(\ln x \bigg)\amp= \frac{1}{x}\;\;\;</mrow>
+  </md>
+
+  
+  <number name="x" hide="true" displayDecimals="2">5</number>
+  <graph xmin="-2" ymin="-7">
+    <xLabel><m>x</m></xLabel>
+    <function name="f" applyStyleToLabel="true" labelPosition="center">ln(x)
+      <label><m>f(x) = \ln x</m></label>
+    </function>
+    <derivative name="f_prime" styleNumber="3" domain="(0,infinity)" applyStyleToLabel="true" labelPosition="left">$f
+      <label><m>f'(x) = \frac{1}{x}</m></label>
+    </derivative>
+    <line styleNumber="2" slope="$$f_prime($x)" through="$dragPoint" name="derivLine" />
+
+    <point styleNumber="2" name="dragPoint" displayDecimals="2" applyStyleToLabel="true" labelPosition="upperright" showCoordsWhenDragging="false">($x,$$f($x))
+      <label><m>f'($x) = <math displayDecimals="2" simplify="true">$$f_prime($x)</math></m></label>
+    </point>
+    <point styleNumber="5" name="dragPointDerivative" displayDecimals="2" applyStyleToLabel="true" labelPosition="left" showCoordsWhenDragging="false">($x,$$f_prime($x))
+      <label><m>($x, <math displayDecimals="2">$$f_prime($x)</math>)</m></label>
+    </point>
+    <legend>
+      <label><m>f(x) = \ln x</m></label>
+      <label><m>f'(x) = \frac{1}{x}</m></label>
+    </legend>
+  </graph>
+</aside>
+
+</problem>
+
+  
+</section>

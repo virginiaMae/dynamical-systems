@@ -1,0 +1,69 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7J6nHzcUSW5oZiw3Pi6W4T
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: edac467be0b16303
+-->
+<title>Controlling a rabbit population project</title>
+
+
+<p><ref>Videos and Introduction</ref> | <ref>Project Description</ref> | <ref>Transcripts</ref> </p>
+
+
+<description>
+A project to determine a strategy for maintaining a stable population of rabbits in an environment without predators.
+</description>
+
+
+
+
+<section><title>Background</title>
+
+<subsection><title>Rabbit trouble</title>
+
+<figure suppressFigureNameInCaption="true">
+<video youtube="DG6RDlC3tXY" size="large" aspectRatio="16/9" />
+<caption>Introduction to rabbit trouble</caption>
+</figure>
+
+<p>Trouble is brewing on Foxless Island.  It appears that a family bought a couple of baby rabbits for their children, but then let them loose when their children ended up playing too rough with the bunnies. Unfortunately, without the presence of any predators on the island, the rabbit population is now exploding.  As head of the Foxless Animal Control Team (FACT), you've been commissioned to develop and implement a plan to control the rabbit population.</p>
+
+<p>It turns out many people, especially children, like having at least some rabbits around, so FACT has been asked to find a way to maintain a steady but small population of rabbits on Foxless Island.  You calculate that a population of about a thousand rabbits would allow occasional rabbit sightings while still minimizing the damage to gardens.  The trick is to develop a rabbit management plan that would ensure such a moderately sized population.</p>
+
+</subsection>
+
+
+
+<subsection><title>Modeling rabbit growth</title>
+
+<p>A critical first step, you realize, is to develop a mathematical model of how the rabbit population is growing.  If the rabbits increase by the fraction <m>r</m> each month, then a reasonable model is
+<mdn>
+  <mrow name="freemodel">p_{t+1}-p_t\amp = r p_t</mrow>
+  <mrow number="false">p_0\amp = p_0,</mrow>
+</mdn>
+where <m>p_t</m> is the population size in month <m>t</m>.  The strange initial condition line is there to remind you that the initial population size <m>p_0</m> (some unknown large number), will play an important role.</p>
+
+<p>To get an idea of the growth rate <m>r</m>, you employ a team of counters to sample the rabbit population each month in various locations across the island.  They report back that the rabbit population seems to be increasing by 20% each month.  You don't feel this estimate of <m>r=0.2</m> is too reliable, but it's the best you have.</p>
+
+<p>If the rabbits are left alone, this model predicts 
+<ref to="doenet:7E6LN4EfVWPjCgUesVJd5Z">exponential growth</ref>
+of the rabbit population, which seems to capture what's happening, so it's a good start.</p>
+
+<p>The purpose of the model, though is to compare the effectiveness of different control strategies, where a control strategy is a method to determine how many rabbits are harvested (e.g., hunted or trapped) in order to reduce their numbers.  You will set a policy that gives the number of rabbits to be harvested as a function of the current population size, i.e., create a function <m>h(p)</m>.  If the number of rabbits in month <m>t</m> is <m>p_t</m>, you will direct that <m>h(p_t)</m> rabbits be harvested that month.</p>
+
+<p>With that control strategy, the model (which is <q>change = reproduction - harvested</q>) becomes
+<men name="controlModel">p_{t+1}-p_t = rp_t - h(p_t),</men>
+as you simply subtract off the number of harvested rabbits.
+</p>
+
+<p>Strategies for helping the children deal with the rabbit harvesting is also an important challenge, but is outside the scope of this project.</p>
+
+
+
+<figure suppressFigureNameInCaption="true">
+<video youtube="v1PIEbUnAKM" size="large" aspectRatio="16/9" />
+<caption>Initial planning for controlling rabbit population</caption>
+</figure>
+
+</subsection>
+</section>

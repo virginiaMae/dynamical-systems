@@ -1,0 +1,137 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7CgiJ8xhcLdvoCZ4NgQ4yn
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 4a6588e68b384b15
+-->
+<!--discrete_worksheet_question_2-->
+
+<problem>
+<variantControl numVariants="1" />
+
+<p>A colony of bacteria doubles in population every hour. The population initially contains <math name="b0">10^5</math>  bacteria.</p>
+
+<exercise includeAutoNumber="true"><title>Understanding the variables</title>
+<p>If denote the state variable by <m>b</m> and the time variable by <m>t</m>, then <m>b_t</m> represents the number of <answer name="svName" type="text">bacteria</answer> in the colony during the <m>t^{th}</m> <answer type="text" name="timeUnit">hour</answer> (time unit).</p>
+
+  <hint hide="$svName.creditAchieved = 1 and $timeUnit.creditAchieved = 1 or ($svName.numSubmissions + $timeUnit.numSubmissions &lt; 8)">
+  <m>b_t</m> represents the number of bacteria in the colony during the <m>t^{th}</m> hour.
+</hint>
+</exercise>
+
+<exercise includeAutoNumber="true"><title>The dynamical rule</title>
+
+<p>We'll write the dynamical rule as a function in the form:
+<me>b_{t+1} = f(b_t) \qquad \text{for $​t=0,1,2, \ldots$}</me>
+To go from one time step to the next we apply function <m>f</m> to the value of the state variable.</p>
+
+<p>For the above equation to be the correct rule, the function <m>f(b)</m> must be:</p>
+<p><m>f(b) =</m> 
+<answer name="rule">2b</answer>
+</p>
+
+<feedback condition="$rule=2b_t">You are close.  However, <m>f</m> is defined as a function of <m>b</m> not <m>b_t</m>, so replace <m>b_t</m> with just <m>b</m>.</feedback>
+
+<p>Note that we are using the argument <m>b</m> for the function <m>f(b)</m> rather than using <m>b_t</m>.  So, be sure to write your answer for <m>f(b)</m> using <m>b</m> rather than <m>b_t</m>.</p>
+
+
+
+
+<hint>
+<p>What is the dynamical rule given in the statement of the problem?  What happens to population every time step (i.e., every hour)?  It <answer weight="0">
+  <choiceInput inline="true">
+    <choice credit="1">doubles</choice>
+    <choice>triples</choice>
+    <choice>stays the same</choice>
+    <choice>increases by 2</choice>
+    <choice>decreases by 2</choice>
+    <choice>halves</choice>
+  </choiceInput>
+</answer>.
+</p>
+
+<p>If we start with <m>b</m> bacteria, how many bacteria should we have at the next time step? <answer weight="0" name="ruleHint">2b</answer>
+ The answer to this should be the value of <m>f(b)</m>.</p>
+ <feedback condition="$ruleHint=2b_t">You are close.  However, <m>f</m> is defined as a function of <m>b</m> not <m>b_t</m>, so replace <m>b_t</m> with just <m>b</m>.</feedback>
+</hint>
+
+
+</exercise>
+
+<exercise includeAutoNumber="true"><title>The initial condition</title>
+
+<p>Specify the initial condition.</p>
+
+<p><m>b_0 =</m> 
+<answer><award><math extend="$b0" /></award></answer>
+.</p>
+
+<hint>
+The value of the initial condition is stated in the problem. How many bacteria do we start with?
+</hint>
+
+
+</exercise>
+
+<exercise includeAutoNumber="true"><title>Evolving the dynamical system</title>
+
+<p>Given the initial colony size, calculate the number of bacteria for the next five hours.</p>
+
+<p><m>b_1=</m> 
+<answer><award><math name="b1">2<math extend="$b0" /></math></award></answer>
+</p>
+<p><m>b_2=</m> 
+<answer><award><math name="b2">2<math extend="$b1" /></math></award></answer>
+</p>
+<p><m>b_3=</m> 
+<answer><award><math name="b3">2<math extend="$b2" /></math></award></answer>
+</p>
+<p><m>b_4=</m> 
+<answer><award><math name="b4">2<math extend="$b3" /></math></award></answer>
+</p>
+<p><m>b_5=</m> 
+<answer><award><math name="b5">2<math extend="$b4" /></math></award></answer>
+</p>
+
+
+<hint>
+Start with the initial condition and apply the dynamical rule once for each time step.
+</hint>
+
+</exercise>
+
+<solution>
+
+<exercise includeAutoNumber="true"><title>Understanding the variables</title>
+The state variable <m>b_t</m> represent the number of bacteria in the colony during the <m>t^\text{th}</m> hour.
+</exercise>
+
+<exercise includeAutoNumber="true"><title>The dynamical rule</title>
+<p>During each time step the population doubles so we have the following updating function</p>
+<me>f(b) = 2b</me>
+</exercise>
+
+<exercise includeAutoNumber="true"><title>The initial condition</title>
+The colony starts with <m>10^5</m> bacteria so <m>b_0=10^5</m>
+</exercise>
+
+<exercise includeAutoNumber="true"><title>Evolving the dynamical system</title>
+<me>\left\{ 
+  \begin{array}{r c l}
+    b_{t+1}\amp =\amp f(b_t)\\
+b_0\amp =\amp 10^5\\
+\end{array} \right.</me>
+where <m>f(b) = 2b</m>.
+
+<p>  <m>b_0= 10^5</m></p>
+<p>  <m>b_1= 2 \times 10^5</m></p>
+<p>  <m>b_2= 4 \times 10^5</m></p>
+<p>  <m>b_3= 8 \times 10^5</m></p>
+<p>  <m>b_4= 1.6 \times 10^6</m></p>
+<p>  <m>b_5= 3.2 \times 10^6</m></p>
+</exercise>
+
+</solution>
+
+
+</problem>

@@ -1,0 +1,84 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7C2M7aUXPE2hMBVNGWPxLD
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 28e7feb27c618cb2
+-->
+<title>An introduction to discrete dynamical systems</title>
+<p><ref>Video 1</ref> | <ref>Video 2</ref> | <ref>Summary</ref> | <ref>Transcripts</ref> </p>
+<description>
+Overview of discrete dynamical systems, focusing on the simplest one-dimensional case, where the dynamics are given by iterating a function.
+</description>
+
+<section><title>Video 1</title>
+<p>
+<ref to="https://mathinsight.org/dynamical_system_idea">Dynamical systems</ref>
+ are about the evolution of some quantities over time.  This evolution can occur smoothly over time or in discrete time steps.  Here, we introduce dynamical systems where the state of the system evolves in discrete time steps, i.e., 
+<term><ref to="doenet:834ZcucTcagBYSRfPRBv6k">discrete dynamical systems</ref></term>.</p>
+
+<p>When we model a system as a discrete dynamical system, we imagine that we take a snapshot of the system at a sequence of times.  The snapshots could occur once a year, once every millisecond, or even irregularly, such as once every time a new government is elected.</p>
+
+<p>When we take these snapshots, the idea is that we are recording whatever variable determine the state of the system: our chosen 
+<term><ref to="doenet:82S5kKvMFZgTae6rHgvyF4">state variables</ref></term>
+ that evolve through the 
+<term><ref to="doenet:82MrUSX6Y2kQrMerT3xvqn">state space</ref></term>
+ (see 
+<ref to="https://mathinsight.org/dynamical_system_idea">Dynamical systems idea</ref>
+). To complete the description of the dynamical system, we need to specify a rule that determines, given an initial snapshot, what the resulting sequence of future snapshots must be. </p>
+
+<p>Here, we introduce these basic concepts of a dynamical system through an example involving the evolution of a population of moose.</p>
+</section>
+
+<section><title>Dynamics of moose population</title>
+<figure suppressFigureNameInCaption="true">
+<video youtube="RB966-3kx-0" size="large" aspectRatio="16/9" name="v1" />
+<caption>Discrete dynamical system introduction, Part 1</caption>
+</figure>
+
+<number name="v1RoundUp" hide="true">
+  <conditionalContent>
+    <case condition="$v1.fractionWatched > 0.9">1</case>
+    <else>$v1.fractionWatched</else>
+  </conditionalContent>
+</number>
+  
+  <p>Video credit achieved: <number displayDecimals="1">$v1RoundUp*100</number>%</p>
+
+<answer hide="true" name="v1Credit">
+  <award credit="$v1RoundUp"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+
+<problem><title>Video 1 review question</title>
+<p>Which of the following are valid descriptions of <m>m_{t+1}−m_t</m>? Hint: a lot of them are valid descriptions. You need to select all of them.</p>
+
+  
+  <answer matchPartial="true">
+    <choiceInput selectMultiple="true">
+ <choice name="c1" credit="1">(A) An expression for change in the moose population</choice>
+ <choice name="c2" credit="1">(B) The quantity we need to compute to determine future moose population sizes from the initial condition </choice>
+ <choice name="c3">(C) The initial condition for moose population size</choice>
+ <choice name="c4" credit="1">(D) A quantity whose formula will give the rule for how the moose dynamical system changes with time</choice>
+ <choice name="c5" credit="1">(E) An expression involving the state variables of the moose dynamical system</choice>
+ <choice name="c6" credit="1">(F) The difference between the moose population sizes at year <m>t+1</m> and year <m>t</m></choice>
+ <choice name="c7" credit="1">(G) A quantity that is positive if the moose population is growing</choice>
+ <choice name="c8" credit="1">(H) A quantity that is negative if the moose population is shrinking</choice>
+</choiceInput>
+  </answer>
+
+
+  
+<feedback condition="$c1">(A) Yes, <m>m_{t+1}-m_t</m> is indeed an expression for change in the moose population, as it is the change from year <m>t</m> to year <m>t+1</m>.</feedback>
+<feedback condition="$c2">(B) Yes, the quantity <m>m_{t+1}-m_t</m> (for each year <m>t</m>) is exactly what we need to compute <m>m_1</m> from <m>m_0</m> (when <m>t=0</m>), to compute <m>m_2</m> from <m>m_1</m> (when <m>t=1</m>).  In general, it allows us to compute <m>m_{t+1}</m> in year <m>t+1</m> from the previous year's population size of <m>m_t</m>.</feedback>
+  <feedback condition="$c3">(C) No, the expression <m>m_{t+1}-m_{t}</m> is not an initial condition, but a change in population size.  An initial condition would be something like <m>m_0</m>, the population size in year 0.</feedback>
+<feedback condition="$c4">(D) Yes, <m>m_{t+1} - m_t</m> does give the rule for how the moose dynamical system evolves, as it allows one to calculation <m>m_{t+1}</m>,  the population at year <m>t+1</m>, from <m>m_{t}</m>, the population in the previous year <m>t</m>.</feedback>
+<feedback condition="$c5">(E) Yes, the state variable of the moose dynamical system is <m>m</m>.  The expression <m>m_{t+1}</m> is the value of this state variable in year <m>t+1</m>, and the expression <m>m_t</m> is the value of this state variable in year <m>t</m>.</feedback>
+<feedback condition="$c6">(F) Yes, the expression <m>m_{t+1}-m_{t}</m> is exactly the difference between the moose population sizes in year <m>t+1</m> and year <m>t</m>.</feedback>
+<feedback condition="$c7">(G) Indeed. If <m>m_{t+1}-m_{t} \gt 0</m>, then <m>m_{t+1} \gt m_t</m>.  In this case, the population size in year <m>t+1</m> is greater than the population size in the previous year <m>t</m>, and the population is growing.</feedback>
+<feedback condition="$c8">(H) That is correct. If <m>m_{t+1}-m_{t} \lt 0</m>, then <m>m_{t+1} \lt m_t</m>.  In this case, the population size in year <m>t+1</m> is smaller than the population size in the previous year <m>t</m>, and the population is shrinking.</feedback>
+
+  
+</problem>
+</section>
+

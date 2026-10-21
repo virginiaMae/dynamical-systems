@@ -1,0 +1,78 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7UTCqjXYEQqh3zg1TKGpcF
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 2b1bb838009fa626
+-->
+<title>Riemann Sums and the Definite Integral</title>
+<p><ref>Video</ref> | <ref>Transcript</ref>  </p>
+<description>
+
+</description>
+
+<section><title>Video</title>
+<figure suppressFigureNameInCaption="true">
+<video youtube="DU0wn8NCfA8" size="large" aspectRatio="16/9" name="v1" />
+<caption>Riemann sums and the definite integral</caption>
+</figure>
+
+
+<setup>
+  <number name="timestamp1" />
+  <number name="timestamp2" />
+</setup>
+
+<sideBySide margins="5%">
+<div>Video credit achieved: <number displayDecimals="1">$v1.fractionWatched*100</number>%
+  
+<answer hide="true" name="v1Credit">
+  <award credit="$v1.fractionWatched"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+</div>
+
+<!-- <div>
+<updateValue type="number" target="v1.time" newValue="$timestamp1" name="skipTo1">
+  <label>Go to Key Moment 1</label>
+</updateValue>
+</div>
+
+<div>
+<updateValue type="text" triggerWithTargets="skipTo1" target="v1" prop="state" newValue="playing" name="playStamp1"/>
+
+<updateValue type="number" target="v1.time" newValue="$timestamp2" name="skipTo2">
+  <label>Go to Key Moment 2</label>
+</updateValue>
+</div>
+
+
+<updateValue type="text" triggerWithTargets="skipTo2" target="v1" prop="state" newValue="playing" name="playStamp2"/> -->
+</sideBySide>
+
+  
+<problem><title>Video review questions</title>
+<exercise includeAutoNumber="true"><title />
+
+<p>The accuracy of a Riemann sum approximation increases as...</p>
+
+<answer name="ans1a">
+  <choice credit="1">the number of intervals increases</choice>
+  <choice>long as the right-hand Riemann sum is taken, rather than the left-hand Riemann sum. </choice>
+  <choice>long as the left-hand Riemann sum is taken, rather than the righ-hand Riemann sum.</choice>
+</answer>
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<p>The following sum means...</p>
+                        
+  <me>I_r = \sum_{i=1}^{5} g(t_i)\Delta t</me>
+<answer name="ans2a">
+  <choice>the right hand Riemann sum is <m>I_r = g(t_1)^1 + g(t_2)^2 +....+g(t_5)^5</m></choice>
+  <choice>the right hand Riemann sum is <m>I_r = g(t)\Delta t_1 + g(t)\Delta t_2 +....+g(t)\Delta t_5</m></choice>
+  <choice credit="1">the right hand Riemann sum is <m>I_r = g(t_1)\Delta t + g(t_2)\Delta t +....+g(t_5)\Delta t</m></choice>
+</answer> 
+</exercise>
+
+</problem>
+</section>

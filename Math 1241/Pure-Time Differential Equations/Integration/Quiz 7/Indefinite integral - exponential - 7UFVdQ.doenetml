@@ -1,0 +1,44 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7UFVdQFq8knVqReC2PUSwM
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: eee60a0be1420cc3
+-->
+<problem>
+<!-- <title>Indefinite integral &#x2D; exponential</title> -->
+
+<setup>
+
+<selectFromSequence name="a" from="-10" to="10" numToSelect="2" withReplacement="true" exclude="0" />
+<function name="g" variables="t" simplify="numbers" symbolic="true">$a[1] *e^($a[2] *t)</function>
+<function name="g_simple" variables="t" simplify="numbers" symbolic="true">e^($a[2] *t)</function>
+<function name="expAntiderivative" variables="t" simplify="numbers" symbolic="true">($a[1]/$a[2])*e^($a[2] *t)</function>
+<math name="intgeval" simplify="numbers">$$expAntiderivative(t)</math>
+<math name="intgeval_C" simplify="numbersPreserveOrder">$intgeval +C</math>
+</setup>
+
+<p>  
+Evaluate the following integral:</p>
+<p><m>\displaystyle\int $g dt =</m>
+<answer>
+  <award symbolicEquality="true" simplifyOnCompare="true">$intgeval_C </award>
+  <award credit="0.67" name="award_noC" symbolicEquality="true" simplifyOnCompare="true">$intgeval</award>
+</answer>
+</p>
+  
+<feedback condition="$award_noC">Don't forget the constant of integration.</feedback>
+<hint>Do not round or use a decimal approximation.  Use exact, simplified fractions in your response.</hint>
+
+
+
+<solution>
+<p>We first use the constant product rules for integration:</p><p><m>\displaystyle \int $g dt = $a[1] \int $g_simple dt</m>
+</p>
+
+<p>We then find the antiderivative: </p>
+<p><m>\displaystyle $a[1] \int $g_simple dt = $intgeval_C</m></p>
+
+</solution>
+</problem>
+
+

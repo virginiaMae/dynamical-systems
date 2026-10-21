@@ -1,0 +1,27 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7GVcGkgjKJeCuJsFyNaCLz
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: f540010d0ca9da05
+-->
+<title>The idea of stability of equilibria of discrete dynamical systems</title>
+
+<p><ref>Video</ref> | <ref>Applet</ref> | <ref>Transcript</ref> </p>
+
+<section><title>Transcript</title>
+<p>When we talk about equilibria of dynamical systems, one of the next things we care about is the stability of the equilibria. If I have a dynamical system, 
+  <me>y_{n+1} = g(y_n)</me> 
+and I tell you <m>y_n</m> equals the number <m>E</m> (<m>E</m> is an equilibrium), then what happens if I set <m>y_0</m> (the initial condition) equal to the equilibrium?
+  <me>y_0 = E.</me>
+Well, this implies that <m>y_n</m> will stay equal to <m>E</m> for all future time, for all time points <m>n</m>. This is true for all equilibria; it's the definition of the equilibria. The idea of stability is –  what happens if you start…not exactly on the equilibrium … but nearby?</p>
+ 
+<p>So, what happens if <m>y_0</m> is close to <m>E</m>, but is not exactly equal to <m>E</m>? If the equilibrium is stable, then the state variable <m>y_n</m> will stay close to <m>E</m> or even approach <m>E</m>. It might even get closer. If the equilibrium is unstable, then the solution will move away from the equilibrium. At some later point we can talk about more precisely how to determine if an equilibrium is stable or unstable. For now, let's just use cobwebbing to explore the idea of stability.</p>
+
+<p>Let’s use the example function 
+  <me>g(y) = 1.5 y( 1-y),</me>
+for which you can calculate that the two equilibria are <m>E = 0</m> and <m>E = \frac{1}{3}</m>. We’ll use the applet that combines cobwebbing on the left with a plot of the solution on the right. We’ve already entered our function in terms of the variable <m>x</m>, because that's what the applet needs. We can immediately pick out the two equilibria, which are the points where the diagonal line intersects the graph of the function. There’s one equilibria down here at 0, and another one up here at <m>\frac{1}{3}</m>. We know if we start exactly at an equilibrium what will happen. So, if we start at <m>x=0</m> and we iterate, we will stay right at <m>x=0</m> forever. Similarly, if we start at the equilibrium <m>\frac{1}{3}</m>, we’ll stay at the equilibrium forever.</p>
+
+<p>But the question of stability of the equilibria is what happens if we start just above, or below, the equilibrium? So let’s start just above <m>\frac{1}{3}</m> and see what happens when we iterate the function. We can see that the solution goes back to the equilibrium. It asymptotes back at <m>\frac{1}{3}</m>. If we start just below <m>\frac{1}{3}</m>, again the solution goes back to the equilibrium at <m>\frac{1}{3}</m>. Hence we can see that the equilibrium at <m>\frac{1}{3}</m> is stable.</p> 
+
+<p>Now, what will happen if we start very close to the other equilibrium, 0? In this case, when we iterate the function, we see that the solution moves away from the equilibrium 0. And if we start just below the equilibrium, we move away from it down to negative values. No matter how close we start to the equilibrium at 0, we’ll move away (unless of course we start exactly at the equilibrium). This means that the equilibrium 0 is unstable. This dynamical system has two equilibria; the equilibrium at 0 is unstable, and the equilibrium at <m>\frac{1}{3}</m> is stable.</p> 
+</section>

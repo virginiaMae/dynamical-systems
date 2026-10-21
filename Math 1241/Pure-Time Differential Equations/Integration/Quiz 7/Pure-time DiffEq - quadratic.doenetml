@@ -1,0 +1,86 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7UtwMDrqjemnZfg7cBUJVp
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 6d186736e9ad1b92
+-->
+<problem>
+<!-- <title>Pure&#x2D;time DiffEq &#x2D; quadratic</title> -->
+
+<setup>
+
+<selectFromSequence name="aaa" from="-10" to="10" exclude="0" numToSelect="4" withReplacement="true" />
+
+
+<function name="f" variables="t" symbolic="true"><math simplify="numbersPreserveOrder">$aaa[1] *t^2+$aaa[2] *t+$aaa[3]</math></function>
+<function name="intfeval" variables="t" symbolic="true"><math simplify="numbersPreserveOrder">$aaa[1]/3 *t^3+$aaa[2] /2*t^2+$aaa[3]*t</math></function>
+
+<select name="f_name">g h p q r y z</select>
+<math name="dxdt">d$f_name/dt</math>
+<math name="x_0" referencesAreFunctionSymbols="$f_name">$f_name (0)</math>
+
+<math name="finalans">$$intfeval(t)+$aaa[4] </math>
+<math name="intfeval_C">$$intfeval(t)+C </math>
+<math name="x_t" referencesAreFunctionSymbols="$f_name">$f_name (t)</math>
+<math name="intfeval_0">$$intfeval(0)</math>
+<math name="C_value" simplify="true">$aaa[4] -$intfeval_0 </math>
+
+</setup>
+
+<p>
+Solve the pure-time differential equation <m>$dxdt  = <math extend="$f.formula" /></m> with initial condition <m>$x_0  = $aaa[4] </m>.
+</p>
+
+<p>
+<m>$x_t =</m> 
+<answer>
+<award>$finalans </award>
+<award credit="0" name="noConstant">$intfeval </award>
+<award credit="0" name="withC">$intfeval_C</award>
+</answer>
+</p>
+
+<feedback condition="$noConstant">The solution $x_t must match the initial condition <m>$x_0  = $aaa[4] </m>.</feedback>
+<feedback condition="$withC">Since we have an initial condition <m>$x_0  = $aaa[4] </m>, don't add an arbitrary constant <m>C</m>.  Instead, find the value of the constant so that the solution $x_t matches the initial condition.</feedback>
+
+<!-- <feedback condition="$award1">For full credit, don't round.  Leave fractions as fractions.</feedback>
+<copy prop="feedbacks" source="answer1" />-->
+
+<p>
+Do not round your answer to a decimal.
+</p>
+
+
+<solution>
+<p>
+We start by finding the indefinite integral <m>\displaystyle \int $f \, dt </m>.  To solve the integral, we first use the sum and constant product rules for integration: 
+</p>
+<p>
+<m>\displaystyle \int $f \, dt  = $aaa[1]  \int t^2\,dt + $aaa[2] \int t\,dt + \int $aaa[3]\,dt</m>
+</p>
+<p>
+We then evaluate each of these integrals using the power rule for integration and add the arbitrary constant:
+</p>
+<p>
+<m>\displaystyle <math extend="$intfeval.formula" />+C</m>
+</p>
+<p>
+Next, we substitute in the initial condition <m>$x_0  = $aaa[4] </m> and solve for <m>C</m>:
+</p>
+<p>
+<m>\displaystyle $aaa[4]  = $intfeval_0 +C = <math simplify="true">$intfeval_0+C</math></m>
+</p>
+<p><m>\displaystyle C = $C_value </m>
+</p>
+<p>
+Finally, we have:
+</p>
+
+<p>
+<m>\displaystyle $x_t  = $finalans </m>
+</p>
+
+</solution>
+
+
+</problem>

@@ -1,0 +1,124 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7KPouqEkmKunbCs3accHic
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 6733ced4939dd627
+-->
+<title>The derivative of a power function</title>
+
+<p><ref>Video</ref> | <ref>Summary</ref>| <ref>Transcript</ref>  </p>
+
+<description>
+Using the limit definition of the derivative to calculate the derivative of a power function.
+</description>
+
+<section name="vid_section"><title>Video</title>
+<figure suppressFigureNameInCaption="true">
+<video youtube="L7EJ_vVNuc0" size="large" aspectRatio="16/9" name="v1" />
+<caption>The derivative of a power function</caption>
+</figure>
+</section>
+
+
+<setup>
+  <number name="timestamp1">523</number>
+  <number name="timestamp2">602</number>
+</setup>
+
+<sideBySide margins="5%">
+<div><p>Video credit achieved: <number displayDecimals="1">$v1RoundUp*100</number>%</p></div>
+
+
+<p><updateValue type="number" target="$v1.time" newValue="$timestamp1" name="skipTo1">
+  <label>Go to Key Moment 1</label>
+</updateValue>
+<updateValue type="text" triggerWith="$skipTo1" target="$v1.state" newValue="playing" name="playStamp1" />
+<nbsp /><nbsp />
+<updateValue type="number" target="$v1.time" newValue="$timestamp2" name="skipTo2">
+  <label>Go to Key Moment 2</label>
+</updateValue>
+
+<updateValue type="text" triggerWith="$skipTo2" target="$v1.state" newValue="playing" name="playStamp2" />
+</p>
+</sideBySide>
+
+
+<number name="v1RoundUp" hide="true">
+  <conditionalContent>
+    <case condition="$v1.fractionWatched > 0.9">1</case>
+    <else>$v1.fractionWatched</else>
+  </conditionalContent>
+</number>
+
+
+<answer hide="true" name="v1Credit">
+  <award credit="$v1RoundUp"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+
+
+<problem><title>Video review question</title>
+
+<exercise includeAutoNumber="true"><title />
+<p>Using the rule outlined in the video, compute the derivative of the following power functions:
+  <ol>
+    <li><m>f(x) = x^3 \;\;\; f'(x) = </m> <answer name="ans1">3x^2</answer></li>
+    <li><m>f(x) = x^7 \;\;\; f'(x) = </m> <answer name="ans2">7x^6</answer></li>
+    <li><m>f(x) = x^{-5} \;\;\; f'(x) = </m> <answer name="ans3">-5 x^(-6)</answer></li>
+    <li><m>f(x) = x^{3/2} \;\;\; f'(x) = </m> <answer name="ans4" symbolicEquality="true" simplifyOnCompare="true">(3/2)x^(1/2)</answer>
+    , where <m>f</m> is restricted to the domain:
+      <answer inline="true">
+        <choice credit="1"><m>x > 0</m></choice>
+        <choice><m>x &lt; 0</m></choice>
+        <choice><m>x \neq 0</m></choice>
+      </answer>
+    </li>
+  </ol>
+</p>
+<feedback condition="$ans1.numSubmissions = 1  and $ans1.creditAchieved != 1"> See <ref to="$vid_section">Key Moment 1</ref> in the video for some worked examples like this.</feedback>
+<feedback condition="$ans2.numSubmissions = 1  and $ans2.creditAchieved != 1">See <ref to="$vid_section">Key Moment 1</ref> in the video for some worked examples like this.</feedback>
+<feedback condition="$ans3.numSubmissions = 1  and $ans3.creditAchieved != 1">See <ref to="$vid_section">Key Moment 2</ref> in the video for some worked examples like this.</feedback>
+<feedback condition="$ans4.numSubmissions = 1  and $ans4.creditAchieved != 1">See <ref to="$vid_section">Key Moment 2</ref> in the video for some worked examples like this.</feedback>
+
+<feedback condition="$ans1.numSubmissions > 1  and $ans1.creditAchieved != 1">To apply the power rule
+  <me>f'(x) = n x^{n-1}\;\;\; \text{where} \;\;\;f(x) = x^n</me> 
+  we first multiply the entire function by the value of the exponent of <m>f</m>, which is <m>n</m>. Then, we subtract <m>1</m> from the exponent of <m>f</m> to obtain the value of the exponent for <m>f'(x)</m>:
+  <md>
+    <mrow>f'(x)\amp, \;\;\; \text{where} \;\;\;f(x) = x^3</mrow>
+    <mrow>f'(x)\amp = 3\cdot x^{3 - 1}</mrow>
+    <mrow>f'(x)\amp = 3x^2</mrow>
+  </md>
+</feedback>
+<feedback condition="$ans2.numSubmissions > 1  and $ans2.creditAchieved != 1">To apply the power rule
+  <me>f'(x) = n x^{n-1}\;\;\; \text{where} \;\;\;f(x) = x^n</me> 
+  we first multiply the entire function by the value of the exponent of <m>f</m>, which is <m>n</m>. Then, we subtract <m>1</m> from the exponent of <m>f</m> to obtain the value of the exponent for <m>f'(x)</m>:
+  <md>
+    <mrow>f'(x)\amp, \;\;\; \text{where} \;\;\;f(x) = x^7</mrow>
+    <mrow>f'(x)\amp = 7\cdot x^{7 - 1}</mrow>
+    <mrow>f'(x)\amp = 7x^6</mrow>
+  </md>
+</feedback>
+<feedback condition="$ans3.numSubmissions > 1  and $ans3.creditAchieved != 1">To apply the power rule
+  <me>f'(x) = n x^{n-1}\;\;\; \text{where} \;\;\;f(x) = x^{-5}</me> 
+  we first multiply the entire function by the value of the exponent of <m>f</m>, which is <m>n</m>. Then, we subtract <m>1</m> from the exponent of <m>f</m> to obtain the value of the exponent for <m>f'(x)</m>:
+  <md>
+    <mrow>f'(x)\amp, \;\;\; \text{where} \;\;\;f(x) = x^{-5}</mrow>
+    <mrow>f'(x)\amp = -5\cdot x^{-5 - 1}</mrow>
+    <mrow>f'(x)\amp = -5x^{-6}\;\;\; \text{or}\;\;\;- \frac{5}{x^6}</mrow>
+  </md>
+</feedback>
+<feedback condition="$ans4.numSubmissions > 1  and $ans4.creditAchieved != 1">To apply the power rule
+  <me>f'(x) = n x^{n-1}\;\;\; \text{where} \;\;\;f(x) = x^n</me> 
+  we first multiply the entire function by the value of the exponent of <m>f</m>, which is <m>n</m>. Then, we subtract <m>1</m> from the exponent of <m>f</m> to obtain the value of the exponent for <m>f'(x)</m>:
+  <md>
+    <mrow>f'(x)\amp, \;\;\; \text{where} \;\;\;f(x) = x^{\frac{3}{2}}</mrow>
+    <mrow>f'(x)\amp = \frac{3}{2}\cdot x^{\frac{3}{2} - 1}</mrow>
+    <mrow>f'(x)\amp = \frac{3}{2} x^{\frac{1}{2}}\;\;\; \text{or}\;\;\;\frac{3 \sqrt{x}}{2}</mrow>
+  </md>
+</feedback>
+  
+  
+  
+</exercise>
+</problem>

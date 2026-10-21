@@ -1,0 +1,17 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 83Ao7F5pp6Dsyi9nQYvu9H
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 6269d4c27ca593da
+-->
+<section><title>Dynamical system definition</title>
+
+<p>A dynamical system is a system whose state evolves with time over a <term><ref to="doenet:82MrUSX6Y2kQrMerT3xvqn">state space</ref></term> according to a fixed rule.</p>
+
+<p>For an introduction into the concepts behind a dynamical system, see the <ref to="https://mathinsight.org/dynamical_system_idea">idea of a dynamical system</ref>.</p>
+
+<section><title>Formal definition of dynamical system</title>
+<p>A dynamical system is formally defined as a state space <m>X</m>, a set of times <m>T</m>, and a rule <m>R</m> that specifies how the state evolves with time. The rule <m>R</m> is a function whose domain is <m>X \times T</m> (<ref to="doenet:83Dk6R1eW1zpNeXdATS368">confused?</ref>) and whose codomain is <m>X</m>, i.e., <m>R:Xv\times T \rightarrow X</m> (<ref to="doenet:83GvQ82Ubr9gaa6o8Z57rx">confused?</ref>). The rule function <m>R</m> means that the <m>R</m> takes two inputs, <m>R=R(x,t)</m>, where <m>x \in X</m> (<ref to="doenet:83JYrBeRUJAxu23WPiuXGn">confused?</ref>) is the initial state (at time <m>t=0</m>, for example) and <m>t \in T</m> is a future time. In other words, <m>R(x,t)</m> gives the state at time <m>t</m> given that the initial state was <m>x</m>.</p>
+</section>
+
+</section>

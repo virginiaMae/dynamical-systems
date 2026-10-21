@@ -1,0 +1,84 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 82Bb2ZQcYVfsxAnKAB3ApT
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 2a355189501fc7cc
+-->
+<document documentWideCheckWork="true">
+<title>End of semester survey</title>
+
+<p>This survey is a follow-up to the survey we gave at the beginning of the semester.</p>
+
+<p>This questionnaire is completely optional. It will not be graded.</p>
+
+
+<p>Please tell us what you really think by selecting the choice that best matches your reaction to these statements.</p>
+
+<ol>
+  <li>The skills I learn in this class will help me in my career.
+    <answer name="skillHelp">
+      <choice credit="1">1. Strongly Disagree</choice>
+      <choice credit="1">2. Disagree</choice>
+      <choice credit="1">3. Undecided</choice>
+      <choice credit="1">4. Agree</choice>
+      <choice credit="1">5. Strongly Agree</choice>
+    </answer>
+  </li>
+  <li>Mathematics is not important in everyday life.
+    <answer name="mathNotImportant">
+      <choice credit="1">1. Strongly Disagree</choice>
+      <choice credit="1">2. Disagree</choice>
+      <choice credit="1">3. Undecided</choice>
+      <choice credit="1">4. Agree</choice>
+      <choice credit="1">5. Strongly Agree</choice>
+    </answer>
+  </li>
+  <li>In mathematics you can be creative and discover things by yourself.
+    <answer name="mathCreative">
+      <choice credit="1">1. Strongly Disagree</choice>
+      <choice credit="1">2. Disagree</choice>
+      <choice credit="1">3. Undecided</choice>
+      <choice credit="1">4. Agree</choice>
+      <choice credit="1">5. Strongly Agree</choice>
+    </answer>
+  </li>
+  <li>Mathematics is enjoyable and stimulating to me.
+    <answer name="mathEnjoy">
+      <choice credit="1">1. Strongly Disagree</choice>
+      <choice credit="1">2. Disagree</choice>
+      <choice credit="1">3. Undecided</choice>
+      <choice credit="1">4. Agree</choice>
+      <choice credit="1">5. Strongly Agree</choice>
+    </answer>
+  </li>
+  <li>Using a computer is a good way for me to learn mathematics.
+    <answer name="computerMath">
+      <choice credit="1">1. Strongly Disagree</choice>
+      <choice credit="1">2. Disagree</choice>
+      <choice credit="1">3. Undecided</choice>
+      <choice credit="1">4. Agree</choice>
+      <choice credit="1">5. Strongly Agree</choice>
+    </answer>
+  </li>
+
+  <li><p>Mathematical models can be used to (select which are true):</p>
+    <choiceInput name="modelsUsed" selectMultiple="true">
+      <choice>test the logical consistency of ideas</choice>
+      <choice>generate predictions</choice>
+      <choice>test hypothetical scenarios</choice>
+      <choice>identify parallels between different natural systems</choice>
+      <choice>motivate experiments</choice>
+      <choice>describe all theoretically possible outcomes</choice>
+      <choice>highlight assumptions in a way of thinking</choice>
+
+    </choiceInput>
+
+    <answer>
+      <award><when><text>$modelsUsed</text> != <text />    
+      </when></award>
+    </answer>
+    
+  </li>
+
+</ol>
+</document>

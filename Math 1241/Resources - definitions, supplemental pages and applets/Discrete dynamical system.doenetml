@@ -1,0 +1,16 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 834ZcucTcagBYSRfPRBv6k
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 917d90b0ca0f6baa
+-->
+<section suppressAutoName="true" suppressAutoNumber="true"><title>Discrete dynamical system definition</title>
+  
+<p>A discrete dynamical system is a dynamical system whose state evolves over state space in discrete time steps according to a fixed rule.</p>
+
+<p>For more details, see the <ref to="doenet:7C1w6bKbkKghbh9wUtwzxF">An introduction to discrete dynamical systems</ref>, or for an introduction into the concepts behind dynamical systems in general, see the <ref to="https://mathinsight.org/dynamical_system_idea">idea of a dynamical system</ref>.</p>
+</section>
+
+
+
+

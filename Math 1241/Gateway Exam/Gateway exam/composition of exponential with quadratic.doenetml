@@ -1,0 +1,42 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7AGPeuFtBPuxkN9i64wu12
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 458a0825d339adfd
+-->
+<!--*******************************************************
+Checked: VM 8/8/2022
+*********************************************************-->
+
+<problem>
+
+<selectFromSequence name="a" exclude="0" numToSelect="4" withReplacement="true" hide="true" from="-10" to="10" />
+
+<select name="f" numToSelect="2" hide="true">f g h k y z u v w</select>
+<function name="ff" hide="true" variables="x" symbolic="true"><math simplify="numbers">$a[1]*e^($a[2]*x+$a[3])</math></function>
+<function name="gg" hide="true" variables="x" symbolic="true"><math simplify="numbers">$a[4]*x^2+x</math></function>
+<math name="answer" hide="true" simplify="true" expand="true">$$ff($$gg(x))</math>
+
+
+
+Let <m>$f[1](x) = $ff</m> and <m>$f[2](x) = $gg</m>.  What is <m>$f[1]($f[2](x))</m>?
+
+<p><m>$f[1]($f[2](x)) =</m> <mathInput name="answer1input" />
+</p>
+<answer forcefullcheckworkbutton="true">
+<award referencesAreResponses="$answer1input">
+  <when>$answer1input = $answer</when>
+</award>
+</answer>
+
+  
+<solution>
+<md>
+  <mrow>$f[1]($f[2](x))\amp = $f[1]($gg)</mrow>
+  <mrow>\amp = <math simplify="numbersPreserveOrder" format="latex">$a[1] e^{ $a[2]($gg) + $a[3] }</math></mrow>
+  <mrow>\amp = <math extend="$answer" /></mrow>
+</md>
+<p>Note: either of the final two forms is fine.</p>
+</solution>
+
+</problem>

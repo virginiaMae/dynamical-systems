@@ -1,0 +1,256 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 81GgpPAwmp96Qbno8aP4kP
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 6759c5e32f03f7ef
+-->
+<title>Spruce budworm outbreak model</title>
+<p><ref>Project description</ref> | <ref>Applet 1</ref> | <ref>Applet 2</ref></p>
+
+<answer hide="true" />
+
+<description>
+A graphical analysis of a differential equation model reveals how the spruce budworm could devastate forests every 40 years.
+</description>
+
+
+<section><title>Introduction</title>
+
+<image source="http://mathinsight.org/media/image/image/spruce_budworm.jpg" width="400px"><shortDescription>Spruce budworm, &lt;i>Choristoneura fumiferana&lt;/i>, adult and pupa.</shortDescription></image>
+
+<p>The 
+<ref to="http://en.wikipedia.org/wiki/Choristoneura_fumiferana#Eastern_Spruce_Budworm">spruce budworm</ref>
+ (<em>Choristoneura fumiferana</em>) is one of the most destructive native insects in the northern spruce and fir forests of the Eastern United States and Canada.  Most of the time, the number of budworms remains at a low level.  However, every forty years or so, the population of budworms explodes to huge numbers, devastating the forest and destroying many trees, before dropping back down to the previous low level.  Evidence suggests these outbreaks have been recurring regularly for hundreds, if not thousands, of years.</p>
+
+<p>As these outbreaks have caused the loss of millions of cords of spruce and fir, the wood products industry would like to understand the cycles of spruce budworm populations as a first step toward developing effective management of the problem.  Here, we investigate a model developed by D. Ludwig, D. D. Jones
+and C.S. Holling, scientists from the University of British Columbia, that explains some of the features of the budworm cycle.
+<!-- django tag citation, ludwig_et_al_jae_1978, , , ,  -->
+
+</p>
+
+
+  <p>The model for budworm population size is a modification of the 
+<ref to="https://mathinsight.org/from_discrete_to_continuous_dynamical_systems">continuous logistic equation</ref>.  Let <m>t</m> be time in some arbitrary scale and let <m>w(t)</m> be the budworm population size at time <m>t</m>.  We model the evolution of <m>w(t)</m> according to an autonomous differential equation of the form
+<me>\frac{ dw }{ dt } = r w \left(1 - \frac{w}{a}\right) - h(w),</me>
+with low density growth rate <m>r</m> and carrying capacity <m>a</m>.  The last term <m>h(w)</m> models the mortality of budworms due to predatory birds.  (Details on the predation function <m>h(w)</m> are given below.)</p>
+
+</section>
+
+
+<section><title>The project</title>
+
+  <subsection><title>Project goals</title>
+
+    <ol>
+      <li>Explore the evolution of the spruce budworm outbreak as predicted by a logistic growth model that include predation by birds.</li>
+      <li>Analyze the influence of the birds on the outbreak dynamics.</li>
+      <li>Determine what ends the outbreak of budworms.</li>
+      <li>Present the results with a summary diagram that shows the evolution of the outbreak, from beginning to end.</li>
+    </ol>
+    
+  </subsection>
+
+  <subsection><title>Project requirements</title>
+    
+    <p>Work in a group of 3 or 4. One report per group.  Your group's project report must be no longer than four pages typed (10-12 point font, 1 inch margins), with original computer-generated graphs. Please turn in your group's report using Gradescope.  (Obtain permission beforehand for any deviations from these requirements or points will be deducted.)</p>
+  
+    <p>Your report needs to contain the following sections:</p>
+  
+    <ol>
+      <li>
+        <p><alert>The model</alert> (3 points): Introduce the model of the spruce budworm evolution.  Explain the meaning of the parameters <m>r</m> and <m>a</m> as well as important features of the form of the function describing predation by birds.</p>
+
+        <p>For the project, set <m>r=0.52</m> and explore the behavior as <m>a</m> changes.</p>
+      </li>
+  
+      <li>
+        <p><alert>The build-up toward the insect outbreak</alert> (9 points): 
+        Describe the behavior of the model during the stage when the forest is growing but the budworm population is under control.  Keeping in mind that <m>r=0.52</m>, consider three different forest sizes.</p>
+        <ul>
+          <li>A small forest, where <m>a</m> is so small there is only one stable equilibrium.</li>
+          <li>A slightly larger forest size, where <m>a</m> is just above the bifurcation that introduces two extra equilibria.</li>
+          <li>A large forest, with <m>a</m> just below the second bifurcation that removes two equilibria.</li>
+        </ul>
+  
+        <p>For each forest size, pick value of <m>a</m> and explain the spruce budworm dynamics with a phase line graph showing the equilibria and their stability.  Focus on the stable equilibria.  For each stable equilibrium, describe the initial conditions for which the solution will converge to the equilibrium.  Also, if there are multiple stable equilibria, compare the level of bird predation <m>h(w)</m> at each equilibrium.</p>
+  
+        <p>Explain what would happen if you started with the small forest, and then the forest slowly grew to the larger two forest sizes.  In this scenario, what would be the state of the budworm population?  Using your above analysis of the phase line diagrams, explain why the budworm outbreak has not yet occurred even in cases where there is a stable equilibrium that corresponds to a large budworm population.</p>
+        
+      </li>
+  
+      <li>
+        <p><alert>The outbreak</alert> (6 points): 
+        Describe the situation where the forest is so large that <m>a</m> is above the bifurcation that removes two equilibria.  As above, explain the dynamics with a phase line graph showing the equilibria and their stability.  For each stable equilibrium, describe the initial conditions for which the solution will converge to the equilibrium.  By comparing the predation level <m>h(w)</m> at this equilibrium with the predation level that would occur if <m>w</m> were a tenth of that size, assess the role the birds in controlling the outbreak.</p>
+      </li>
+  
+      <li>
+        <p><alert>The decline of the outbreak</alert> (6 points): 
+          Describe what happens to the spruce budworm population as the forest begins to die due the outbreak, decreasing the carrying capacity <m>a</m> back down to three sizes considered in the build-up phase.  Using the same three phase line graphs, explain what happens if, once the outbreak has begun and the budworms are destroying trees, the forest shrinks and the carrying capacity <m>a</m> passes through the same three values, only in reverse order.  Discuss why, for the larger two forest sizes, the budworm population size is different this time.</p>
+        <p>Discuss how far the carrying capacity must be dropped before the outbreak stops.  In particular, for what value of <m>a</m> does the equilibrium corresponding to the outbreak disappear?</p>
+  
+      </li>
+
+       <li>
+        <p><alert>Summary figure and conclusion</alert> (6 points): 
+Your final task is to create this summary diagram with <m>a</m> on the horizontal axis and <m>w</m> on the vertical axis.  Draw a bifurcation diagram, with solid lines representing stable equilibria and dashed lines representing unstable equilibria.  On top of the bifurcation diagram, draw a curve showing the evolution of the spruce budworm population size <m>w</m> and the carrying capacity <m>a</m> through the whole cycle of the outbreak.  This curve should have arrows, to show how the state changes with time, and it should be a loop, as this cycle will continue.</p>
+
+<p>Be sure to label everything clearly on the diagram so foresters can understand what your model is telling them.  Use this diagram to tell the story of how the model predicts how the spruce budworm outbreak initiates and is terminated.  Since the foresters may not understand mathematics very well, include enough description so that they can follow what you did.
+        </p>
+       </li>
+  
+    </ol>
+    
+    
+  </subsection>
+
+
+
+</section>
+
+<section>
+  <title>The complete model</title>
+
+  <p>To complete the model for the budworm dynamics
+    <me>\frac{ dw }{ dt } = r w \left(1 - \frac{w}{a}\right) - h(w),</me>
+  we must specify the predation function <m>h(w)</m>.
+  </p>
+    
+
+<p>The rate of predation <m>h(w)</m> depends on the budworm population in a special way.  First, if the spruce budworm population is small, the predation rate is very low, close to zero, since the birds will opt for some other types of prey.  The predation rate will grow as the budworms become more numerous.  But the second important feature is that the predation rate cannot grow to become too large.  Instead, if the budworm population is very large, the rate of predation reaches some maximum value.</p>
+
+
+<p>To be specific, we use the function
+<me>h(w)=\frac{w^2}{1+w^2}</me>
+which is graphed below.  The function saturates for large population size <m>w</m>  to the maximum value of 1, and when the budworm population size is <m>w=1</m>, the predation level <m>h(1)</m> is one-half.  This choice of <m>h(w)</m> is a quite simplistic, and it has no parameters to adjust how fast the birds eat the budworms as the population size increases.  </p>
+  
+  <image source="http://mathinsight.org/media/image/image/spruce_budworm_predation_function.png" />
+
+  <p>It turns out we can get away with this simple form, but it just means we have to be careful about how we interpret the growth rate <m>r</m> and carrying capacity <m>a</m>, as well as the scale of our budworm population size <m>w</m> and time <m>t</m>.
+<!-- django tag footnote, nondimensionalization, , , ,  -->
+
+<!-- We should have started with a more general form for <m>h(w)</m> with a more realistic maximum rate of predation, and we should be able to adjust how large the budworm population size needs to be before the predation to gets close to the maximum rate.  However, it turns out we could have started with a more general form and done some clever <ref uri='http://en.wikipedia.org/wiki/Nondimensionalization'>nondimensionalization</ref> to end up with our simplistic form.  When we start with the more complicated model and turn it into the simple form, the parameters <m>r</m> and <m>a</m> end up being combinations of parameters of the original model.  The variables <m>w</m> and <m>t</m> are also rescaled by parameters of the original model. -->
+<!-- django tag endfootnote, , , , ,  -->
+
+  <alert>This means, for example, that a population size of <m>w=1</m> does not mean that there is just one budworm.</alert>  Instead, <m>w=1</m> indicates the budworm population size where the birds are eating budworms at half their maximum rate.  However, we aren't going to worry about such details here, as we just care about the qualitative behavior of this system.</p>
+ 
+
+<p>The fact that the predation rate <m>h(w)</m> saturates to the maximum value of 1 has an important consequence: once <m>w</m> gets above about <m>w=3</m>, the birds are already eating as much they can.  They can't eat anymore to keep the budworm population under control!</p>
+ 
+  <p>Putting the predation rate into the model, the final form of our logistic model with predation is
+<men name="logistic_predation">\frac{ dw }{ dt } = r w \left(1 - \frac{w}{a}\right) - \frac{w^2}{1+w^2}.</men>
+This model is much too complicated to have a nice formula for the solution.  Instead, we will seek to understand the behavior of the spruce budworm population size <m>w(t)</m> using 
+    <ref to="doenet:7Y8muMcnPJ2z7QYSakZySD">graphical methods</ref>
+, as well as approximations to the solution using the 
+<ref to="doenet:813wVGaj38Qj94NeLfEJd2">the Forward Euler algorithm.</ref>.</p>
+<!--   _IoshU5rkp18M2uDOlKoUM -->
+  
+</section>
+
+
+<section><title>Model analysis</title>
+
+
+<p>For the purpose of our analysis, we'll set <m>r=0.52</m>, but we will let the carrying capacity <m>a</m> change as the forest grows (or shrink once the budworms start devastating the forest).</p>
+
+<p>To begin, you can explore the behavior of the model using <ref>Applet 1</ref> on the following page.  In the left panel, you can study the plot of the right hand side of equation <ref to="$logistic_predation" />, i.e.,
+<me>f(w) = r w \left(1 - \frac{w}{a}\right) - \frac{w^2}{1+w^2}.</me>
+You can explore how this function depends on the parameters <m>r</m> and <m>a</m>.  
+</p>
+
+
+<subsection><title>The build-up toward the insect outbreak</title>
+
+
+<p>Let's explore some of the key features of the model that will help explain the spruce budworm outbreaks.  Set the parameters back to their initial values: <m>r=0.52</m> and <m>a=3.6</m>.  How many equilibria does the equation have?  What are their values?  Are they stable or unstable?  For each stable equilibrium, determine the initial conditions for which the solution will converge to the equilibrium.</p>
+
+<p>This parameter regime should correspond to a low level of insects.  Since the carrying capacity <m>a</m> is small, we could think of the forest as being small.    Looking at the above plot of <m>h(w)</m>, what is the rate of bird predation when the budworm population is at this stable equilibrium?  Have the birds gotten to their maximum predation level?  You should see that the birds are eating at a moderate level.  The birds are able to keep the budworm population in check.</p>
+
+<p>Now, let's imagine the forest is growing so that the carrying capacity for the budworms increases.  As you increase <m>a</m>, do you notice any big changes in the graph of <m>f(w)</m>?  What happens just as you bring <m>a</m> above 7.1 or so?   When <m>a</m> is around 7.5, how many equilibria does the equation have?   What are their values?  Are they stable or unstable?  For each stable equilibrium, determine the initial conditions for which the solution will converge to the equilibrium.</p>
+
+<p>In this parameter regime, you should see two stable equilibria.  One is at a low budworm population size, pretty close to the one we saw above.  But, there is a new stable equilibrium at a larger value of population size <m>w</m>.  That equilibrium corresponds to the outbreak of spruce budworms.  What is <m>h(w)</m> at the upper equilibrium?  Have the predators pretty much reached their capacity at this population size?</p>
+
+<p>If we started with a small forest, which means a low spruce budworm population, and the forest then grew to this size (<m>a</m> around 7.5), which equilibrium would you expect the budworm population size to converge to?  Would the budworms be at the lower equilibrium where they are controlled by the birds?  Or the upper equilibrium corresponding to the outbreak?  This question can be resolved from your knowledge about which initial conditions converge to which equilibrium.</p>
+
+<p>If you further increase the forest size to give a carrying capacity around <m>a=20</m>, you shouldn't see any qualitative differences from the <m>a=7.5</m> case.  What quantitative difference do you observe?  In other words, what has changed about the location of the equilibria?   If one started with a low spruce budworm population size, would the population size be exploding or would the population size still be kept in check by the predators?</p>
+
+
+<aside><title>A caution with using numerical tools</title>
+
+<p>Since we cannot analytically find the solution to our model <ref to="$logistic_predation" />, we are using the above applet, which employs numerical methods to estimate the solution.  Although these tools are important and powerful, we can't use them blindly.  We must understand their limitations and use what we know about the system to verify the results of such tools.</p>
+
+<p>The applet can easily give a bogus result.  It uses a primitive method (Forward Euler) to estimate the solution to the given initial conditions.  If, for example, you increase the growth rate <m>r</m> to the largest value allowed by the applet, <m>r=1</m>, lower carrying capacity to around <m>a=1</m>, and set the initial condition to <m>w(0)</m> near 30, it will show the solution jumping down past the equilibria to negative values.  In such a case, the time step (which is the total time divided by 1000) is too large.  The results shown by the applet are incorrect in this case.  You must use your knowledge of differential equations (a solution can't jump over an equilibrium) to realize you shouldn't believe the applet.</p>
+
+<p>You might also notice that the applet doesn't always catch all the equilibria when they are close together.</p>
+</aside>
+
+
+
+
+</subsection>
+
+<subsection><title>The outbreak</title>
+
+
+<p>If the situation was precarious when <m>a=20</m>, it gets downright ugly when the forest grows much larger and increases the carrying capacity.  Something happens to the equilibria when the carrying capacity gets much larger than <m>a=27</m>.  Describe the situation when the carrying capacity is around <m>a=30</m>.  How many equilibria does the equation have?   What are their values?  Are they stable or unstable?  For each stable equilibrium, determine the initial conditions for which the solution will converge to the equilibrium.</p>
+
+<p>Don't blindly trust the Forward Euler approximation (blue curve) of the graph.  Use the Forward Euler approximation as a guide, but also estimate a solution using a <ref to="doenet:7Y8muMcnPJ2z7QYSakZySD">graphical approach</ref>
+ based on the graph of <m>f(w)</m>. If the blue curve seems to stop where it shouldn't (such as away from an equilibrium), you can try increasing the total time <m>t_f</m> of the simulation to see if you can get the blue curve to behave like you know it should (based on the analysis of the graph of <m>f(w)</m>).</p>
+
+<p>When the forest is large enough for the carrying capacity to be around <m>a=30</m> (and the growth rate is fixed at <m>r=0.52</m>), you should have discovered that there's no avoiding the population explosion in the spruce budworm.  The population skyrockets to nearly <m>w=30</m>.  There are budworms everywhere, and they are busy eating the leaves off the trees, decimating the forest.</p>
+
+<p>Are the birds doing much to control the situation?  What is <m>h(w)</m> for the outbreak equilibrium?  Is it much larger than when the budworms population <m>w</m> was a tenth this size?  The birds are enjoying their feast, but only putting a small dent into the budworm population size.</p>
+
+
+
+
+
+</subsection>
+
+<subsection><title>The decline of the outbreak</title>
+
+
+<p>What finally puts an end to the outbreak?  What the birds couldn't do, the budworms do to themselves.  After a prolonged outbreak, the spruce budworms cause a vast defoliation of the fir and spruce trees.  This decreases the amount of food available for the budworms, effectively decreasing the carrying capacity of the forest.  If the available food can't support the huge population of budworms, many of them will die of starvation, decreasing the population size.  Let's investigate how the model predicts this starvation should end the outbreak.</p>
+
+<p>Imagine that the defoliation due to the budworm outbreak decreased the carrying capacity back down to <m>a=20</m>.  You don't need to analyze the equilibria for this value of <m>a</m> again; you did all the work already.  For these parameters, you should have showed above that the birds could keep the population under control and the outbreak was prevented.  Therefore, when the carrying capacity gets back down to <m>a=20</m>, the outbreak should be ended, and we should be back to a small population of budworms, right?</p>
+
+<p>Do you agree with that last sentence?  If we start with a huge population of budworms and bring the carrying capacity down to <m>a=20</m>, which equilibrium should the budworm population size converge to?  Is the outbreak still occurring or has it ended?</p>
+
+<p>Assuming you determine that the outbreak is still occurring, then the budworms should continue their defoliation of the trees, dropping the carrying capacity even further.  Even when the carrying capacity drops all the way down to <m>a=7.5</m>, we still had two stable equilibria.  One corresponded to a small population size and one to the outbreak.  If the carrying capacity was brought down to <m>a=7.5</m> by feasting budworms, which equilibrium should the system be approaching?  Is the outbreak still occurring or has it ended?</p>
+
+<p>Another qualitative change occurs by the time the carrying capacity drops below <m>a=7</m>.  What is the dramatic difference between the situation when <m>a</m> is around 7.5 and the situation when <m>a</m> is around 6.5?  Describe what is different about the equilibria.  When a large population brings the carrying capacity down to this level, what must finally happen to the budworm population size?</p>
+
+<p>The idea is that when the carrying capacity gets this low, most of the budworms that don't die from starvation can be taken care of by the birds.  The budworms managed to defoliate a large portion of the forest, but have finally been brought down to a small population where they don't do much damage.  That is, at least until the forest grows back large enough so that the population can explode again.  But that will take 40 or so more years.</p>
+
+
+
+
+</subsection>
+
+</section>
+
+<section><title>A summary figure</title>
+
+
+<p>To present your results to foresters and folks in the wood products industry, you need a way to nicely summarize your results.  One way to do this would be to make a movie using the above applet.  You could set the initial condition <m>w_0</m> to a small value and the time <m>t</m> to some large number so that <m>w</m> is always at the lower stable equilibrium.  As the forest grows and the carrying capacity <m>a</m> slowly increases, the budworm population size would track the lower stable equilibrium until that equilibrium suddenly disappears, and the population explodes to the upper equilibrium. For the second half of the movie, set the initial condition to a large value so that <m>w</m> is at the upper stable equilibrium.  As forest dies and <m>a</m> decreases, the population size stays at the upper equilibrium until that equilibrium suddenly disappears and the population drops back down to low levels.</p>
+
+<p>An example of such a movie is shown in <ref>Applet 2</ref>.  Click the play button (at lower left of one of panels) to get it started.  The right panel plots a graph of the population size versus time.  (The <m>T</m> from the movie is slower time scale than the <m>t</m> in the first applet.)</p>
+
+
+
+
+<p>You like this movie but realize that you need a simpler way to communicate the results.  You decide it would be better to have something just on a piece of paper that you can hand out to people and that allows folks to see the whole situation with just one glance.  Your idea is that you could capture the essence of the whole movie with a plot of <m>w</m> versus the carrying capacity <m>a</m>.</p>
+
+<p>The crux of the idea is the following.  Imagine that you turn off the view of the function (and the vector field) in the first applet and just show the equilibria on the <m>w</m> phase line.  The summary figure will just show how the equilibria on the <m>w</m>-axis change as you change <m>a</m>.  Flip the <m>w</m>-axis so it becomes the vertical axis.  Make the horizontal axis be the <m>a</m>-axis.  Above each value of <m>a</m>, plot the values of the equilibria.  Above some values of <m>a</m> (such as <m>a=3</m>), you would just plot two circles, corresponding to the positions of the two equilibria.  Above other values of <m>a</m> (such as <m>a=7.5</m>), you would put four circles.  Since the location of the circles change smoothly as you change <m>a</m>, the track of the circles would trace out smooth curves as you moved from left to right (moved from small values of <m>a</m> to large values of <m>a</m>).</p>
+
+<p>In fact, the plot would be even clearer if, rather than plotting the individual circles, you just drew the smooth curves showing how the equilibria change as <m>a</m> changes.  You would use solid lines for stable equilibria and dash lines for unstable equilibria. For example, you would have a straight dashed line across the whole diagram at <m>w=0</m>, since that unstable equilibrium is there for all values of <m>a</m>.  The other equilibria move around as you change <m>a</m>, so they would be represented by curves.  This plot is a <ref to="doenet:81jbjnHHwBCpG1PqXqpVK8">bifurcation diagram</ref>
+. Don't use that term in front of the foresters, though, or they may get nervous and get scared of the mathematics.</p>
+
+<p>Once you have created a nice bifurcation diagram representing how the equilibria depends on <m>a</m>, the last part is to show the foresters what happens to the spruce worm population <m>w(t)</m>.  The population size will never approach an unstable equilibria, of course.  But, it will stay close to different stable equilibria depending on the situation.  Since this diagram doesn't show time, you can draw how <m>a</m> and <m>w</m> evolved in the movie using a curve (a different color?) with arrows on it.  The arrows will distinguish when <m>a</m> is increasing and when <m>a</m> is decreasing.  If you start at a small value of <m>a</m> and <m>w</m>, increase <m>a</m> through the catastrophic outbreak.  Then, once <m>w</m> jumps up to the outbreak level, bring <m>a</m> back down until <m>w</m> jumps down to a low level.  The curve with arrows representing this sequence of events should trace out a loop, and the curve should be on the stable equilibria from the bifurcation diagram except at the points where it jumps and and down.  This loop is how you'll explain the outbreak to the foresters.  (It's called a hysteresis loop, but again, keep the fancy lingo to yourself.)  The hysteresis loop, when drawn on top of the bifurcation diagram, succinctly tells the story of the above movie in one diagram.</p>
+
+<p>When you make this summary diagram, with <m>a</m> on the horizontal axis and <m>w</m> on the vertical axis, be sure to label everything clearly so the foresters can understand what your model is telling them.  You could include labels from the movie, if you like.  Use this diagram to tell the story of how the model predicts how the spruce budworm outbreak initiates and is terminated.  Remember, the foresters may not understand mathematics very well, so include enough description so that they can follow what you did.</p>
+
+
+
+
+</section>
+

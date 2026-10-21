@@ -1,0 +1,28 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7Jayi71xoxtbg3ovzVBwMx
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: f956a0cc7c143c04
+-->
+<title>Controlling a rabbit population project</title>
+
+<p><ref>Videos and Introduction</ref> | <ref>Project Description</ref> | <ref>Transcripts</ref> </p>
+
+<aside><title>Transcript: Controlling a rabbit population introduction</title>
+<p>Life used to be peaceful on Foxless island, but not anymore. What were they thinking? Bringing home a pair of bunnies to Foxless island for their kids? They should have known those kids wouldn’t be gentle with those bunnies. So, they figure the rabbits would be happier if they let them loose on the island. Well, on Foxless island the rabbits were too happy and the population got out of control. That’s where you come in. As head of the Foxless animal patrol team you’ve been commissioned to develop and implement a plan to control the rabbit population. This task won’t be easy, you know your only hope is to develop a mathematical model of the rabbit population growth.</p>
+</aside>
+
+<aside><title>Transcript: Initial planning for controlling rabbit population</title>
+  
+<p>Ok, let’s see if we can come up with a good plan for controlling these rabbits. We could let <m>p_t</m> be the number of rabbits each month, for month <m>t</m>. And let's see, the rabbit counter said that the rabbit population seems to increase by 20% each month. If this is so, then we could write a model saying the change in the rabbit population in one month, <m>p_{t+1} - p_t</m>, well we could call that 0.2 times the population size, <m>0.2p_t</m> 
+<me>p_{t+1} - p_t = 0.2p_t.</me></p>
+<p>But, you know I’m not so sure, do we really believe this, 20%? They might be wrong. Rather than assuming that 20% is right, let’s just call this a parameter, let’s call this <m>r</m>. And then, let’s not use this equation, let’s write it more generally. We could say that the rabbit population grows up by, let’s say, a fraction <m>r</m>
+<me>p_{t+1} - p_t = rp_t.</me>
+Yeah, this is better; I’ll choose this – because maybe <m>r</m> isn’t 20%.</p>
+<p>Alright, if the rabbits follow this equation, this corresponds to the rabbits on their own, and we know what happens then. What happens is that the population sort of explodes. We don’t like that; this is definitely bad news. Ok, we’ll fix that –  we need to fix that. What we could do is somehow remove a certain number of rabbits each month. Let’s call it <m>h_t</m>, for harvesting; we’ll harvest those rabbits. So we could remove <m>h_t</m> rabbits per month. How do we add that to our model? Well, we could just subtract it. We subtract from our equation, over here. If we did that we’ll have a new model (a better model I hope). We have that the change in the population is this reproduction, minus our harvesting 
+<me>p_{t+1} - p_t = rp_t - h_t.</me>
+Alright, but what should this harvesting be? That’s a tough question. Should we remove the same number each month? Or, a variable number? This is going to be a hard challenge. </p>
+</aside>
+
+
+

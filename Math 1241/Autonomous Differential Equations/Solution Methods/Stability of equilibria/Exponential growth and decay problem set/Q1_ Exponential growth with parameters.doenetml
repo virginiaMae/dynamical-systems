@@ -1,0 +1,304 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7Z2X8ozz3U564Ez1bzsAJ6
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 6ac602c8d8347048
+-->
+<problem>
+<!-- <title>Exponential growth with parameters</title> -->
+
+<setup>
+
+<function name="fun1" variables="z">0.5 z</function>
+<function name="fun2" variables="z">-0.5z</function>
+<math name="zsol" simplify="numbers">c e^(a*t)</math>
+<math name="a_positive">a > 0</math>
+<math name="a_negative">a &lt; 0</math>
+<number name="zmin">-5</number>
+<number name="zmax">5</number>
+<math name="a_nonnegative">a >= 0</math>
+<math name="a_nonpositive">a &lt;=0</math>
+<math name="y0sa" simplify="full">-1,0,1</math>
+<math name="yinf1a" simplify="full">$zmin </math>
+<math name="yinf2a" simplify="full">0</math>
+<math name="yinf3a" simplify="full">$zmax </math>
+<math name="y0sb" simplify="full">-4,0,4</math>
+
+</setup>
+
+
+<p>Consider the dynamical system, with constant parameters <m>a</m> and <m>c</m>:
+<md>
+  <mrow>z'(t)\amp = a z</mrow>
+  <mrow>z(0)\amp = c.</mrow>
+</md>
+</p>
+
+<exercise includeAutoNumber="true"><title />
+<p>
+Solve the dynamical system analytically (i.e., obtain a formula for <m>z(t)</m>).</p>
+
+<p><m>z(t)=</m> 
+<answer>
+<award symbolicEquality="true" simplifyOnCompare="true">$zsol </award>
+</answer>
+</p>
+
+
+<hint>
+See 
+<ref to="doenet:7XUfXRgBFR5siU2z19gbxK">Introduction to autonomous differential equations</ref>
+.
+</hint>
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<p>
+For which values of <m>a</m> does <m>z(t)</m> exhibit exponential growth? 
+<answer>
+<award>a > 0</award>
+<award credit="0.5" name="award2">a >= 0</award>
+</answer>
+</p>
+<feedback condition="$award2">Close, but we want to exclude the value <m>a=0</m>.</feedback>
+
+<p>
+For which values of <m>a</m> does <m>z(t)</m> exhibit exponential decay? 
+<answer>
+<award>a &lt; 0</award>
+<award credit="0.5" name="award4">a &lt;= 0</award>
+</answer>
+</p>
+<feedback condition="$award4">Close, but we want to exclude the value <m>a=0</m>.</feedback>
+
+
+
+<hint>
+Since you have the solution, you can read off what happens as <m>t</m> increases.  Does <m>z(t)</m> grow larger or decay to zero?  You answer should be an inequality involving the parameter <m>a</m>.
+</hint>
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+  <p>
+An equilibrium is a constant solution, <m>z(t)=z_e</m> for some number <m>z_e</m>.  We find it by setting the change <m>z'(t)=0</m> and substituting <m>z=z_e</m>.  For <m>a \ne 0</m>, what is the equilibrium?
+</p>
+<p>
+ <m>z_e=</m> 
+<answer>0</answer>
+</p>
+
+<p>For which values of <m>a</m> is this equilibrium stable? 
+<answer>
+<award>a &lt; 0</award>
+<award credit="0.5" name="award4a">a &lt;= 0</award>
+</answer>
+</p>
+<feedback condition="$award4a">Close, but we want to exclude the value <m>a=0</m>.</feedback>
+
+<p>
+For which values of <m>a</m> is this equilibrium unstable? 
+<answer>
+<award>a > 0</award>
+<award credit="0.5" name="award2a">a >= 0</award>
+</answer>
+</p>
+<feedback condition="$award2a">Close, but we want to exclude the value <m>a=0</m>.</feedback>
+
+
+<hint>
+To find an equilibrium, we set <m>z'(t)=az=0</m> and substitute <m>z=z_e</m>.   Therefore, we need to solve <m>az_e=0</m>.  Since <m>a \ne 0</m>, what must be the value of the equilibrium <m>z_e</m>?
+
+<p>Determining stability is simple because we have the solution.  For which values of <m>a</m> does the solution approach the equilibrium?  For which values of <m>a</m> does the solution move away from the equilibrium?  Your answers for the stability should be inequalities involving the parameter <m>a</m>.</p>
+</hint>
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<p>Solve the dynamical system graphically for both the case of exponential growth as follows.</p>
+
+<p>First, pick some value of <m>a</m> that will lead to exponential growth.  For that value of <m>a</m>, plot the right hand side of the dynamical system as a function of <m>z</m>.  (I.e., plot the function <m>f(z)=az</m>, where you plot <m>z</m> on the horizontal axis and <m>f</m> on the vertical axis.)
+  <answer name="ansAG">
+    <award referencesAreResponses="$gag.l">
+      <when>
+        <math extend="$gag.l.slope" /> > 0
+          and
+        <math extend="$gag.l.coeff0" /> = 0
+      </when>
+    </award>
+  </answer>
+
+</p>
+
+<feedback updateWith="$ansAG" condition="$gag.l.coeff0 != 0">
+  The line must go through the origin.
+</feedback>
+  
+<feedback updateWith="$ansAG" condition="$gag.l.slope &lt;= 0">
+  The line must have a positive slope.
+</feedback>
+  
+
+
+<graph width="400" aspectRatio="40/25" xmin="-5" xmax="5" ymin="-5" ymax="5" fixAxes="true" name="gag">
+  <xLabel><m>z</m></xLabel>
+  <yLabel><m>az</m></yLabel> 
+  <point name="P1" x="3" y="2">
+    
+      <attractTo><point>(0,0)</point></attractTo>
+    
+  </point>
+  <point name="P2" x="-1" y="1">
+    
+      <attractTo><point>(0,0)</point></attractTo>
+    
+  </point>
+
+  <line through="$P1 $P2" name="l" />
+</graph>
+
+
+<p>Using this graph to guide you, sketch the solution of <m>z</m> versus <m>t</m> on the below graph.  Sketch solutions for initial conditions <m>c=1</m>, <m>c=0</m>, and <m>c=-1</m>.</p>
+
+
+<module copy="doenet:83PUG3WFYYLvLvU2jrcCkc" size="medium" numPoints="3" var="z" vmin="$zmin" vmax="$zmax" IC1="1" final1="Infinity" IC2="0" final2="0" IC3="-1" final3="-Infinity" grid="true" ICvar="c" />
+  
+<p>Even though for some initial conditions, <m>z(t)</m> is decreasing, we still call it exponential growth, as it is shooting off to large, negative values.</p>
+
+
+
+
+<hint>
+See <ref to="doenet:7Y8muMcnPJ2z7QYSakZySD">Solving single autonomous differential equations using graphical methods </ref>.
+
+</hint>
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<p>Next, pick a value of <m>a</m> that will lead to exponential decay and plot the right hand side of the dynamical system as a function of <m>z</m>.
+  <answer name="ansAD">
+    <award referencesAreResponses="$gad.l">
+      <when>
+        <math extend="$gad.l.slope" /> &lt; 0
+          and
+        <math extend="$gad.l.coeff0" /> = 0
+      </when>
+    </award>
+  </answer>
+
+</p>
+
+<feedback updateWith="$ansAD" condition="$gad.l.coeff0 != 0">
+  The line must go through the origin.
+</feedback>
+  
+<feedback updateWith="$ansAD" condition="$gad.l.slope >= 0">
+  The line must have a negative slope.
+</feedback>
+  
+
+
+<graph width="400" aspectRatio="40/25" xmin="-5" xmax="5" ymin="-5" ymax="5" fixAxes="true" name="gad">
+  <xLabel><m>z</m></xLabel>
+  <yLabel><m>az</m></yLabel>  
+  <point name="P1" x="3" y="2">
+    
+      <attractTo><point>(0,0)</point></attractTo>
+    
+  </point>
+  <point name="P2" x="-1" y="1">
+    
+      <attractTo><point>(0,0)</point></attractTo>
+    
+  </point>
+
+  <line through="$P1 $P2" name="l" />
+
+</graph>
+
+
+
+
+
+<p>Using this graph to guide you, sketch the solution of <m>z</m> versus <m>t</m> on the below graph.  Sketch solutions for initial conditions <m>c=4</m>, <m>c=0</m>, and <m>c=-4</m>.</p>
+
+
+<module copy="doenet:83PUG3WFYYLvLvU2jrcCkc" size="medium" numPoints="3" var="z" vmin="$zmin" vmax="$zmax" IC1="4" final1="0" IC2="0" final2="0" IC3="-4" final3="0" grid="true" ICvar="c" />
+  
+<p>Even though for some initial conditions, <m>z(t)</m> is increasing, we still call it exponential decay, as the solution is decaying toward zero.</p>
+</exercise>
+
+
+<solution>
+
+
+<ol>
+
+<li>
+<m>z(t)=$zsol </m>.
+</li>
+
+<li>
+It exhibits exponential growth for <m>a \gt 0</m> and exponential decay for <m>a \lt 0</m>.
+</li>
+
+<li>
+The equilibrium must satisfy <m>\frac{ dz }{ dt }=0</m>, i.e., <m>az=0</m>.  Since <m>a \ne 0</m>, the only equilibrium is <m>z=0</m>.  If <m>a \lt  0</m>, the solution exhibits exponential decay toward zero, so the equilibrium is stable.  If <m>a \gt  0</m>, the solution exhibits exponential growth away from zero, so the equilibrium is unstable.
+</li>
+
+<li>
+<p>For positive <m>a</m>, the graph of <m>f(z)=az</m> looks like the following (which is for <m>a=0.5</m>).</p>
+
+
+
+<graph xmin="-5" xmax="5" ymin="-5" ymax="5" fixAxes="true">
+  <xLabel><m>z</m></xLabel>
+  <yLabel><m>az</m></yLabel> 
+  <line>y=0.5x</line>
+</graph>
+
+<p>If <m>z \gt  0</m>, then <m>f</m> is positive, and the solution increases away from zero.  If <m>z \lt  0</m>, then <m>f</m> is negative, and the solution decreases away from zero.  Plots of a few solutions are shown.</p>
+
+
+
+<graph xmin="-2" xmax="10" ymin="$zmin" ymax="$zmax" fixAxes="true">
+  <xLabel><m>t</m></xLabel>
+  <yLabel><m>z</m></yLabel> 
+  <function domain="(0,50)">e^(0.5x)</function>
+  <lineSegment styleNumber="2" endpoints="(0,0) (50,0)" />
+  <function styleNumber="3" domain="(0,50)">-e^(0.5x)</function>
+</graph>
+
+</li>
+
+<li>
+
+<p>For negative <m>a</m>, the graph of <m>f(z)=az</m> looks like the following (which is for <m>a=-0.5</m>).</p>
+
+
+<graph xmin="-5" xmax="5" ymin="-5" ymax="5" fixAxes="true">
+  <xLabel><m>z</m></xLabel>
+  <yLabel><m>az</m></yLabel> 
+  <line>y=-0.5x</line>
+</graph>
+
+
+<p>If <m>z \gt  0</m>, then <m>f</m> is negative, and the solution decreases toward zero.  If <m>z \lt  0</m>, then <m>f</m> is positive, and the solution increases toward zero.  Plots of a few solutions are shown.</p>
+
+
+<graph xmin="-2" xmax="10" ymin="$zmin" ymax="$zmax" fixAxes="true">
+  <xLabel><m>t</m></xLabel>
+  <yLabel><m>z</m></yLabel> 
+  <function domain="(0,50)">4e^(-0.5x)</function>
+  <lineSegment styleNumber="2" endpoints="(0,0) (50,0)" />
+  <function styleNumber="3" domain="(0,50)">-4e^(-0.5x)</function>
+</graph>
+
+
+</li>
+
+
+</ol>
+
+</solution>
+
+
+</problem>

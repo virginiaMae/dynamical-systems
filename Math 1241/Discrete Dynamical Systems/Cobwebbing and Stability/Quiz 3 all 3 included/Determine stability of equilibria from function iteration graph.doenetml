@@ -1,0 +1,160 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7HeDxvN9rPbswHgxMoH3vP
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 32364615e5cdfc2d
+-->
+<problem>
+<!-- <title>Determine stability of equilibria from function iteration graph</title> -->
+
+<setup>
+
+
+<select name="x"> x y z s u v w</select>
+<select name="n"> n t</select>
+<label name="xLabel"><m>{$x}_{$n}</m></label>
+<label name="yLabel"><m>{$x}_{$n + 1}</m></label>
+
+<selectFromSequence name="xmin" from="-10" to=" -1" />
+<selectFromSequence name="xmax" from="max($xmin +8, 1)" to="$xmin +15" />
+
+<selectFromSequence name="n_f" from="2" to=" 4" />
+<selectFromSequence name="fsign" from="-1" to=" 1" step=" 2" />
+
+
+
+<mathList name="equilibria">
+<sort>
+<selectFromSequence numToSelect="$n_f" withReplacement="false" from="$xmin + 2" to="$xmax - 2" />
+</sort>
+</mathList>
+
+<group name="fixedpoints"><repeat for="$equilibria" valueName="equi"><point>($equi, $equi)</point></repeat></group>
+
+<selectFromSequence name="pos_slope_1" numToSelect="2" withReplacement="true" from="2" to="3.5" step="0.1" />
+<select name="neg_slope_1" numToSelect="2" withReplacement="true">
+  <option selectweight="2"><selectFromSequence from="-0.5" to="0.7" step="0.1" exclude="0" /></option>
+  <option selectweight="1"><selectFromSequence from="-4.5" to="-2" step="0.1" /></option>
+</select>
+
+<mathList name="slopes" maxNumber="$n_f">
+<conditionalContent>
+<case condition="$fsign > 0">$pos_slope_1[1] $neg_slope_1[1][1][1] $pos_slope_1[2] $neg_slope_1[2][1][1]</case>
+<case condition="$fsign &lt; 0">$neg_slope_1[1][1][1] $pos_slope_1[1] $neg_slope_1[2][1][1] $pos_slope_1[2]</case>
+</conditionalContent>
+</mathList>
+
+
+<textList name="equilibria_stability"><repeat for="$slopes" valueName="slope">
+
+<conditionalContent>
+<case condition="abs($slope) &lt; 1"><text>stable</text></case>
+<else><text>unstable</text></else>
+</conditionalContent>
+
+</repeat></textList>
+
+
+<math name="xmin_zoomed" simplify="full"><min> 1 <mathList extend="$equilibria" /></min> - 2</math>
+<math name="xmax_zoomed" simplify="full"><max>-1 <mathList extend="$equilibria" /></max> + 2</math>
+
+
+</setup>
+
+
+<p>For the discrete dynamical system <m>$x _{ $n +1} = f($x _$n )</m>, the graph of <m>f</m> is shown below along with the diagonal. </p>
+
+
+<graph size="medium" xmin="$xmin_zoomed" xmax="$xmax_zoomed" ymin="$xmin_zoomed" ymax="$xmax_zoomed" showNavigation="false" grid="1 1">
+
+  <xLabel>$xLabel</xLabel>
+  <yLabel>$yLabel</yLabel>
+
+<line fixed="true" stylenumber="2" equation="y=x" />
+
+<function through="$fixedpoints" throughSlopes="$slopes">
+  <label><m>f({$x}_{$n})</m></label>
+</function>
+
+</graph>
+
+<p>Determine the equilibria of the dynamical system. Enter the equilibria in increasing order. All equilibria are integers.</p>
+
+<p>Number of equilibria: <mathInput name="equiNum" /></p>
+
+<p>Equilibria:
+<repeatForSequence length="min(10,$equiNum)" name="inputEquilibria"> <mathInput /> </repeatForSequence>
+</p>
+
+<answer>
+  <award matchPartial="true"><when>
+    <mathList isResponse="true"><setup><collect from="$inputEquilibria" componentType="mathInput" name="collect_list" /></setup><mathList name="list" extend="$collect_list.value" /></mathList> = $equilibria
+  </when></award>
+
+  <award matchPartial="true" unorderedCompare="true" credit="0.8" name="award1"><when>
+    <mathList isResponse="true"><setup><collect from="$inputEquilibria" componentType="mathInput" name="collect_list1" /></setup><mathList name="list1" extend="$collect_list1.value" /></mathList> = $equilibria
+  </when></award>
+
+</answer>
+<feedback condition="$award1">Be sure to enter the equilibria in increasing order.</feedback>
+
+<p>For each equilibrium, use cobwebbing to determine the stability of the equilibrium.  Specify the stability of each equilibrium in the same order as above.</p>
+
+
+<p>
+Equilibria are stable:
+<repeatForSequence length="$equiNum" name="inputStability">
+  <choiceInput inline="true"><choice>unstable</choice><choice>stable</choice></choiceInput>
+  </repeatForSequence>
+
+</p>
+
+<answer>
+  <award matchPartial="true" matchByExactPositions="true"><when>
+    <textList isResponse="true"><setup><collect from="$inputStability" componentType="choiceInput" name="collect_list2" /></setup><textList name="list2" extend="$collect_list2.selectedValue" /></textList> = $equilibria_stability
+  </when></award>
+</answer>
+
+
+
+
+<solution>
+
+
+<p>The equilibria are the points where the graph of <m>f</m> intersects the diagonal <m>$x _{ $n +1} = $x _$n </m>.  There are $n_f  intersection points: <asList>$fixedpoints</asList>.
+
+Therefore, there are $n_f  equilibria: <m>E = $equilibria </m>
+</p>
+
+<p>To test stability, start cobwebbing near an equilibrium to see if the solution moves toward or away from the equilibrium.  If the solution moves toward the equilibrium, the equilibrium is stable.  If the solution moves away from the equilibrium, the equilibrium is unstable.</p>
+
+<map behavior="parallel">
+
+<template>
+
+<p>If you start cobwebbing near the equilibrium  <m>E = $myEqui</m>, the solution will
+
+<conditionalContent>
+<case condition="$mySlope &lt; -1">spiral away from</case>
+<case condition="$mySlope &lt; 0">spiral towards</case>
+<case condition="$mySlope &lt; 1">move steadily toward</case>
+<else>move away from</else>
+</conditionalContent>
+
+the equilibrium.  The equilibrium  <m>E = $myEqui</m> is $myStability.</p>
+
+</template>
+
+<sources alias="myEqui"><mathList extend="$equilibria" /></sources>
+<sources alias="mySlope"><mathList extend="$slopes" /></sources>
+<sources alias="myStability"><textList extend="$equilibria_stability" /></sources>
+
+</map>
+
+<p>The stability, in order, of the equilibria is: <c>$equilibria_stability</c></p>
+
+
+</solution>
+
+
+</problem>

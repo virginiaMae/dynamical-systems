@@ -1,0 +1,154 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7K1sEsf1gUnAwhcA4PAivt
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: fb7b6bd80868b190
+-->
+<title>Developing intuition about the derivative</title>
+
+<description>
+An intuitive exploration into the properties of the derivative, illustrated by interactive graphics.
+</description>
+
+
+<p><ref>Video</ref> | <ref>Applets</ref> | <ref>Transcript</ref>  </p>
+<section name="vid_section"><title>Video</title>
+<figure suppressFigureNameInCaption="true">
+<video youtube="4H-vM5_kqPM" size="large" aspectRatio="16/9" name="v1" />
+<caption>Developing intuition about the derivative</caption>
+</figure>
+
+<setup>
+  <number name="timestamp1">200</number>
+  <number name="timestamp2">270</number>
+</setup>
+  
+
+<sideBySide margins="5%">
+<div><p>Video credit achieved: <number displayDecimals="1">$v1RoundUp*100</number>%</p></div>
+
+<div><updateValue type="number" target="$v1.time" newValue="$timestamp1" name="skipTo1">
+  <label>Go to Key Moment 1</label>
+</updateValue>
+<updateValue type="text" triggerWith="$skipTo1" target="$v1.state" newValue="playing" name="playStamp1" />
+</div>
+
+<div><updateValue type="number" target="$v1.time" newValue="$timestamp2" name="skipTo2">
+  <label>Go to Key Moment 2</label>
+</updateValue>
+
+<updateValue type="text" triggerWith="$skipTo2" target="$v1.state" newValue="playing" name="playStamp2" />
+</div>
+</sideBySide>
+
+
+<number name="v1RoundUp" hide="true">
+  <conditionalContent>
+    <case condition="$v1.fractionWatched > 0.9">1</case>
+    <else>$v1.fractionWatched</else>
+  </conditionalContent>
+</number>
+  
+<answer hide="true" name="v1Credit">
+  <award credit="$v1RoundUp"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+
+
+<problem><title>Video review questions</title>
+<setup>
+<number name="x">-3</number>
+</setup>
+
+<exercise includeAutoNumber="true"><title />
+<p>In the graph below, the $dragTangent.styleDescriptionWithNoun is tangent to the $f.styleDescriptionWithNoun, <m>f</m>. Click and drag the $dragPoint.styleDescriptionWithNoun to traverse the tangent lines of the function.</p>
+<graph xmin="-12" xmax="12" ymin="-14" ymax="14" size="large">
+  <function name="f" applyStyleToLabel="true">0.06x^3 + 0.4x^2 - 2x - 5
+    <label><m>f</m></label>
+  </function>
+  <point name="dragPoint" styleNumber="2">($x,$$f($x))
+    
+      <constrainTo>$f</constrainTo>
+    
+  </point>
+  <line name="dragTangent" styleNumber="2" slope="$$f_prime($x)" through="($x,$$f($x))" applyStyleToLabel="true">
+    <label>slope <m>m = <math displayDecimals="2" extend="$dragTangent.slope" /></m></label>
+  </line>
+  <point name="localMax" styleNumber="5">$f.maxima
+    <label><m>A</m></label>
+  </point>
+  <point name="localMin" styleNumber="5">$f.minima
+    <label><m>B</m></label>
+  </point>
+  <function name="f_prime" hide="!$showDerivative" styleNumber="3"><derivative>$f</derivative></function>
+  <line name="throughLocalMax" styleNumber="6" through="($f.maximumLocation1,0) ($f.maximumLocation1,1)" />
+  <line name="throughLocalMin" styleNumber="6" through="($f.minimumLocation1,0) ($f.minimumLocation1,1)" />
+</graph>
+<booleanInput name="showDerivative">
+  <label>Show <m>\frac{df}{dx}</m></label>
+</booleanInput>
+
+
+<p>Which statement below best describes the changes to the value of the derivative function <m>\frac{df}{dx}</m> between points <m>A</m> and <m>B</m>?
+  <answer name="ans1">
+    <choice>The value of the derivative function <m>\frac{df}{dx}</m>  stays a constant, negative value</choice>
+    <choice>The value of the derivative function <m>\frac{df}{dx}</m>  starts at zero, and then becomes increasingly larger as it gets closer to point <m>B</m></choice>
+    <choice>The value of the derivative function <m>\frac{df}{dx}</m>  starts at zero, and then becomes increasingly smaller as it gets closer to point <m>B</m></choice>
+    <choice credit="1">The value of the derivative function <m>\frac{df}{dx}</m>  starts at zero, becomes increasingly negative until roughly around <m>x = -2</m>, and then becomes less and less negative. It is zero again at point <m>B</m></choice>
+  </answer>
+</p>
+
+<hint hide="$ans1.numSubmissions &lt; 1 or $ans1.creditAchieved = 1 or $ans1.numSubmissions >= 2">
+  <p>Remember, the value of the derivative function <m>\frac{df}{dx}</m> or <m>f'(x)</m> is equal to the slope of the tangent line to <m>f</m> at that point. See <ref to="$vid_section">Key moment 1</ref> in the video.</p>
+  </hint>
+
+  <hint hide="$ans1.numSubmissions &lt; 2 or $ans1.creditAchieved = 1">
+    <p>What is happening to the slope of the tangent line to <m>f</m> as it traverses the function between points <m>A</m> and <m>B</m>? The value of the derivative function matches the slope of the tangent line at each point.</p>
+  </hint>  
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<p>Fill in the blanks below to complete the sentence. (<ref to="$vid_section">Key moment 2</ref> may help.) </p>
+<p>The <textInput name="userSlope" /> of the tangent line of <m>f</m> at any given <textInput name="user_xCoord" /> value is equal to the value of the <textInput name="userDerivative" /> function of <m>f</m> at that point.</p>
+
+<p>Word bank:</p>
+<sideBySide>  
+  <ul>
+    <li>function</li>
+    <li>line</li>
+    <li>output</li>
+    <li>input</li>
+</ul>
+  <ul>
+    <li>tangent</li>
+    <li>slope</li>
+    <li><m>y</m>-intercept</li>
+    <li>derivative</li>
+  </ul>
+</sideBySide>
+
+  
+  <answer matchPartial="true" type="text" name="ans2">
+    <award>
+      <when>
+        <textInput isResponse="true" extend="$userSlope" /> = slope and <textInput isResponse="true" extend="$user_xCoord" /> = input and <textInput isResponse="true" extend="$userDerivative" /> = derivative
+      </when>
+    </award>
+  </answer>
+
+<hint hide="$ans2.numSubmissions &lt; 2 or $ans2.creditAchieved = 1 or $ans2.numSubmissions >= 5">
+  <p>Blank 1 hint: what is the word for <m>m</m>?, the <m>\frac{\text{rise}}{\text{run}}</m> of the tangent line?</p>
+  <p>Blank 2 hint: a function is often referred to as an input-output machine. Which part of this name works better here?</p>
+  <p>Blank 3 hint: What is the name for the function labeled <m>\frac{df}{dx}</m>, or equivalently, <m>f'(x)</m>?</p>
+</hint>
+
+  <hint hide="$ans2.numSubmissions &lt; 5 or $ans2.creditAchieved = 1">
+    <p>The <alert>slope</alert> of the tangent line of <m>f</m> at any given <alert>input</alert> value is equal to the value of the <alert>derivative</alert> function of <m>f</m> at that point.</p>
+  </hint> 
+
+  <solution><p>The <alert>slope</alert> of the tangent line of <m>f</m> at any given <alert>input</alert> value is equal to the value of the <alert>derivative</alert> function of <m>f</m> at that point.</p></solution>
+    
+</exercise>
+</problem>
+</section>

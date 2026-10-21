@@ -1,0 +1,170 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7ZLbg7xpAU4mQptsBH3zPF
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 3603355ec134310d
+-->
+<problem>
+<!-- <title>analytic stability of ODE equilibria, dx/dt=x*quadratic, quadratic two zeros</title> -->
+
+<setup>
+
+<selectFromSequence name="a" from="-4" to=" 4" exclude="0" />
+<selectFromSequence name="b" from="-10" to=" 10" exclude="0" numToSelect="2" withReplacement="false" />
+<selectFromSequence name="x0" from="-10" to=" 10" />
+
+
+<select name="x">x y z u v w p X Y Z S</select>
+<function name="quadratic" variables="$x" symbolic="true"><math expand="true" simplify="true">($x -$b[1] )*($x -$b[2] )</math></function>
+
+<function name="fun" variables="$x" symbolic="true"><math simplify="numbers">$a *$x *$$quadratic($x )</math></function>
+
+<mathList name="Es">
+  <sort name="E1"><number>0</number> $b[1] $b[2]</sort>
+</mathList>
+
+<derivative name="fprime" variables="$x"><math expand="true" simplify="true">$fun</math></derivative>
+<evaluate name="fprime_E1" forceNumeric="true" function="$fprime" input="$E1[1]" />
+<evaluate name="fprime_E2" forceNumeric="true" function="$fprime" input="$E1[2]" />
+<evaluate name="fprime_E3" forceNumeric="true" function="$fprime" input="$E1[3]" />
+
+<boolean name="E1_stable">$fprime_E1  &lt; 0</boolean>
+<boolean name="E2_stable">$fprime_E2  &lt; 0</boolean>
+<boolean name="E3_stable">$fprime_E3  &lt; 0</boolean>
+
+<conditionalContent name="E1_stability">
+  <case condition="$a > 0">
+    <text>unstable</text><text>stable</text><text>unstable</text>
+  </case>
+  <else>
+    <text>stable</text><text>unstable</text><text>stable</text>
+  </else>
+</conditionalContent>
+  
+<math name="fun_expand" expand="true" simplify="true">$fun</math>
+
+</setup>
+
+<p>Consider the 
+  <select>
+    <option>differential equation</option>
+    <option>dynamical system</option>
+  </select>
+<md>
+  <mrow>
+   <select name="derivString">
+     <option>\frac{ d$x }{ dt }</option>
+     <option>$x'(t)</option>
+   </select>
+  \amp = <math extend="$fun.formula" /></mrow>
+  <mrow>$x _0\amp = $x0 </mrow>
+  <mrow />
+</md>
+</p>
+<p>
+Find all the equilibria and determine their stability.
+</p>
+
+
+<p>Number of equilibria: <mathInput name="n_e" /></p>
+
+<p>The equilibria are</p>
+<ul>
+  <repeatForSequence length="min(5, $n_e)" name="mapEs"><li><m>$(x)_e = </m> <mathInput /></li></repeatForSequence>
+</ul>
+<answer>
+<award matchPartial="true">
+  <when unorderedCompare="true">
+    <mathList><setup><collect isResponse="true" componentType="mathInput" from="$mapEs" name="collect_collectedEs" /></setup><mathList name="collectedEs" extend="$collect_collectedEs.value" /></mathList>
+    = $Es
+  </when>
+</award>
+</answer>
+
+<p>Stability of equilibria:</p>
+<ul>
+  <repeat for="$collectedEs" name="mapStab" valueName="v">
+      <li><m>$(x)_e = $v</m>:
+      <choiceInput inline="true">
+        <choice>stable</choice>
+        <choice>unstable</choice>
+      </choiceInput>
+      </li>
+    </repeat>
+</ul>
+  
+<answer maxNumAttempts="3">
+  <award matchPartial="true" matchByExactPositions="true">
+    <when>
+      <textList><setup><collect componentType="choiceInput" from="$mapStab" isResponse="true" name="collect_list" /></setup><textList name="list" extend="$collect_list.selectedValue" /></textList>
+      =
+      <textList>
+        <repeatForSequence length="3" indexName="i">
+            <conditionalContent>
+              <case condition="$collectedEs[$i] = $E1[1] or $collectedEs[$i] = $E1[3]">
+                <conditionalContent>
+                  <case condition="$a > 0"><text>unstable</text></case>
+                  <else><text>stable</text></else>
+                </conditionalContent>
+              </case>
+              <case condition="$collectedEs[$i] = $E1[2]">
+                <conditionalContent>
+                  <case condition="$a > 0"><text>stable</text></case>
+                  <else><text>unstable</text></else>
+                </conditionalContent>
+              </case>
+              <else><text>invalid</text></else>
+            </conditionalContent>
+          </repeatForSequence>
+      </textList>
+    </when>
+  </award>
+</answer>
+
+
+
+<solution>
+<p>To find equilibria, set <m>$derivString = 0</m>.  If we let <m>f($x ) =<math extend="$fun.formula" /></m>, then an equilibrium <m>$x _e</m> must satisfy <m>f($x _e)=0</m>, or
+<me>$$fun($(x)_e) =0.</me>
+Either <m>$x _e = 0</m> or <m>$$quadratic($(x)_e) =0</m>.  You can solve the latter equation by factoring or using the quadratic formula.  The result is that <m>$x _e = $b[1] </m> or <m>$x _e=$b[2] </m>.  The three equilibria, in increasing order, are <m>$x_e  = $E1[1] , $E1[2] , $E1[3] </m>.</p>
+
+<p>To determine stability, we need to evaluate the derivative <m>f'($x )</m>.  Probably, the easiest way is to first expand <m>f($x )</m> to <m>f($x ) = $fun_expand.</m>  Then, the derivative is <m>f'($x )= <math extend="$fprime.formula" />.</m>  We evaluate the derivative at each of the equilibria.</p>
+
+<p>To determine the stability of <m>$x _e = $E1[1] </m>, we calculate that <m>f'($E1[1] ) = $fprime_E1
+<conditionalContent>
+<case condition="$E1_stable">
+ \lt 
+</case>
+<else>
+ \gt 
+</else>
+</conditionalContent>
+ 0</m>.  Therefore <m>$x _e=$E1[1] </m> is $E1_stability[1][1] .</p>
+
+<p>To determine the stability of <m>$x _e = $E1[2] </m>, we calculate that <m>f'($E1[2] ) = $fprime_E2 
+<conditionalContent>
+<case condition="$E2_stable">
+ \lt 
+</case>
+<else>
+ \gt 
+</else>
+</conditionalContent>
+ 0</m>.  Therefore <m>$x _e=$E1[2] </m> is $E1_stability[1][2] .</p>
+
+<p>To determine the stability of <m>$x _e = $E1[3] </m>, we calculate that <m>f'($E1[3] ) = $fprime_E3
+<conditionalContent>
+<case condition="$E3_stable">
+ \lt 
+</case>
+<else>
+ \gt 
+</else>
+</conditionalContent>
+ 0</m>.  Therefore <m>$x _e=$E1[3] </m> is $E1_stability[1][3] .</p>
+
+
+</solution>
+
+
+</problem>

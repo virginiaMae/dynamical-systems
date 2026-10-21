@@ -1,0 +1,73 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 83h375jqfnyzoxUgkcGtAz
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: a02a7c872c5fac73
+-->
+<module name="cobwebApplet"><setup><number copy="$initialInitialValue" name="ref1" /></setup>
+  <moduleAttributes><function name="f">x(4-x)</function><number name="x0">1</number><number name="initialInitialValue">0</number><number name="initialValueDx">0.5</number><number name="initialValueOffset">0</number><number name="numIterationsRequired">0</number><number name="xmin">-10</number><number name="xmax">10</number><number name="ymin">-10</number><number name="ymax">10</number><boolean name="fixAxes">true</boolean><number name="attractThreshold">0.5</number><math name="variable">x</math><math name="timeVariable">n</math><boolean name="showCalculatedValues">true</boolean><text name="grid">none</text><point name="defaultPoint"></point></moduleAttributes><setup>
+    
+    
+    
+    
+    
+    
+<!--     <customAttribute componentType="_componentSize" attribute="width" defaultValue="300px" assignNames="width" />
+    <customAttribute componentType="_componentSize" attribute="height" defaultValue="300px" assignNames="height" /> -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </setup>
+
+  <setup>
+    <number name="numPoints">1</number>
+    <number name="zeroFixed" fixed="true">0</number>
+    <point x="$ref1" y="$zeroFixed" name="initialPoint" hide="true">
+      
+        <constrainToGrid dx="$initialValueDx" xoffset="$initialValueOffset" />
+      
+    </point>
+
+    <boolean name="initialCorrect">$initialPoint = ($x0,0)</boolean>
+    <number extend="$cobwebPolyline.fractionCorrectVerticesAdjusted" name="fractionCorrectCobweb" />
+    <label name="xLabelGraph"><m>$(variable)_$timeVariable</m></label>
+    <label name="yLabelGraph"><m>$(variable)_{$timeVariable+1}</m></label>
+  </setup>
+
+  <updateValue name="addLine" target="$numPoints" newValue="$numPoints+1" type="number">
+    <label>Add line</label>
+  </updateValue>
+  <updateValue name="deleteLine" target="$numPoints" newValue="max(1, $numPoints-1)" type="number" disabled="$numPoints &lt;= 1">
+    <label>Delete line</label>
+  </updateValue>
+
+<!--   <graph size="large" xmin="$xmin" xmax="$xmax" ymin="$ymin" ymax="$ymax" fixAxes="$fixAxes" identicalAxisScales grid="$grid" showNavigation="true"> -->
+
+    <graph size="large" xmin="$xmin" xmax="$xmax" ymin="$ymin" ymax="$ymax" identicalAxisScales="true" grid="$grid" showNavigation="true">
+    <xLabel>$xLabelGraph</xLabel>
+    <yLabel>$yLabelGraph</yLabel>
+    <cobwebPolyline function="$f" numPoints="$numPoints" name="cobwebPolyline" initialPoint="$initialPoint" numIterationsRequired="$numIterationsRequired" attractThreshold="$attractThreshold" variable="$variable" defaultPoint="$defaultPoint" />
+  </graph>
+
+  <aside hide="not $showCalculatedValues" name="calculatedValue">
+    <title>Calculated values</title>
+
+    <md>
+    <repeat for="$cobwebPolyline.iterateValues" valueName="x" indexName="i">
+        <mrow>
+          $(variable)_{<number>$i-1</number>} \amp = <math displayDigits="5" extend="$x" />
+        </mrow>
+      </repeat>
+    </md>
+
+  </aside>
+
+</module>

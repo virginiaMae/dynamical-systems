@@ -1,0 +1,12 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 82S5kKvMFZgTae6rHgvyF4
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: f62352f06db3fe5e
+-->
+<section suppressAutoName="true" suppressAutoNumber="true"><title>State variable definition</title>
+ 
+<p>A state variable is one of the variables used to describe the state of a dynamical system. Each state variable corresponds to one of the coordinates of the underlying state space.</p>
+
+<p>An intuitive introduction to the state space is given in <ref to="https://mathinsight.org/dynamical_system_idea">the idea of a dynamical system</ref>.</p>
+</section>

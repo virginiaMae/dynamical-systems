@@ -1,0 +1,24 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7C6m9oAVuQ11s9ZWKQXS8t
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: a4faa88579268295
+-->
+<title>An introduction to discrete dynamical systems</title>
+<p><ref>Video 1</ref> | <ref>Video 2</ref> | <ref>Summary</ref> | <ref>Transcripts</ref></p>
+
+<section><title>Summary from moose videos</title>
+
+<p>If a moose population starts with 1000 individuals and grows by 8% per year, we can model the population with a <term><ref to="doenet:834ZcucTcagBYSRfPRBv6k">discrete dynamical system</ref></term>
+<md>
+  <mrow>m_{t+1}-m_t\amp = 0.08 m_t</mrow>
+  <mrow>m_0\amp = 1000,</mrow>
+</md>
+where the <term><ref to="doenet:82S5kKvMFZgTae6rHgvyF4">state variables</ref></term> is the number moose in year <m>t</m>.  The discrete dynamical system gives a rule for going from a snapshot of the moose population to another snapshot of the moose population one year later.  One can use the dynamical system to calculate the population <m>m_1</m> after one year, <m>m_2</m> after two years, etc.</p>
+
+<p>You can view more 
+<ref to="doenet:7CaAzNYuMV6JzCMp241hnx">Discrete dynamical system iteration examples</ref>.  You can also read how to 
+<ref to="doenet:7DBEyjdcSF3AWs1fs2WNkK">Solving linear discrete dynamical systems</ref>
+ like the moose model so that you can directly calculate the value of the moose population at any time, without having to iterate the system for each time point.</p>
+
+</section>

@@ -1,0 +1,60 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7Nh14i9XxUdVgGWZb6kjrX
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 996ad9f850fb0c69
+-->
+<problem>
+<!-- <title>Derivative of exponential times polynomial with quadratic and cubic terms</title>
+ -->
+<setup>
+
+<selectFromSequence name="a" numToSelect="2" from="-10" to=" 10" exclude="0" />
+<!-- Original required condition was Or($a ,$b ) -->
+
+<select name="function"> u v w x y z</select>
+<select name="x"> s t</select>
+
+<math name="cubic" simplify="full">$a[1] *$x ^3+$a[2] *$x ^2</math>
+<math name="d_cubic" simplify="full">3*$a[1] *$x ^2+2*$a[2] *$x </math>
+<math name="d_f" simplify="full">($cubic + $d_cubic) *e^($x)</math>
+
+</setup>
+
+
+Calculate the derivative of <m>$function ($x ) = ($cubic  ) e^{$x}</m>.
+
+<p><m>$function'($x) = </m>
+<answer forceFullCheckworkButton="true"><award>$d_f</award></answer>
+</p>
+
+<hint>
+<p>You'll need to use the product rule</p>
+
+<paragraphs>
+<title>Helpful pages</title>
+<ul>
+<li><ref to="doenet:7Lv5ho8yHm7pNZA3UeSyG2">The idea of the product rule</ref>
+</li>
+</ul>
+</paragraphs>
+</hint>
+
+
+<solution>
+<p>By the <ref to="doenet:7Lv5ho8yHm7pNZA3UeSyG2">product rule</ref>
+
+
+
+<md>
+  <mrow>$function '($x )\amp =  ($cubic ) 'e^{$x} + ($cubic )  (e^{$x})'</mrow>
+  <mrow>\amp = ($d_cubic )  e^{$x} +  ($cubic )  e^{$x}</mrow>
+  <mrow>\amp = $d_f  .</mrow>
+</md>
+</p>
+
+
+</solution>
+
+
+</problem>

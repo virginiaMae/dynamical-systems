@@ -1,0 +1,104 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7BfgcAuBBN1Vmhcs6xRBJa
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: d60999a35161b9ba
+-->
+<!--*******************************************************
+Checked: VM 8/8/2022
+*********************************************************-->
+
+<problem>
+
+<setup>
+<selectFromSequence name="a1mag" from="2" to="7" numToSelect="2" />
+
+<select name="a1sign">
+  <option>
+    <number>-1</number>
+    <c>
+    <math simplify="numbers" name="m1">
+      ($b1[2]$x[2]+$b1[4])
+      ^$a1sign[1][5]
+      /($b1[1]$x[1]+$b1[3])
+      ^$a1sign[1][6]
+    </math>
+    <text extend="$m1.text" />
+    </c>
+    <math simplify="numbers">$b1[2]*$x[2]+$b1[4]</math>
+    <math simplify="numbers">$b1[1]*$x[1]+$b1[3]</math>
+    <math>$a2</math>
+    <math>-$a1</math>
+  </option>
+  <option>
+    <number>1</number>
+    <c>
+    <math simplify="numbers" name="m2">
+      ($b1[1]$x[1]+$b1[3])
+      ^$a1sign[1][5]
+      /($b1[2]$x[2]+$b1[4])
+      ^$a1sign[1][6]
+    </math>
+    <text extend="$m2.text" />
+    </c>
+    <math simplify="numbers">$b1[1]*$x[1]+$b1[3]</math>
+    <math simplify="numbers">$b1[2]*$x[2]+$b1[4]</math>
+    <math>$a1</math>
+    <math>-$a2</math>
+  </option>
+</select>
+<math name="a1" simplify="numbers">$a1mag[1]*$a1sign[1][1]</math>
+<math name="a2" simplify="numbers">-$a1mag[2]*$a1sign[1][1]</math>
+<selectFromSequence name="b1" exclude="0" numToSelect="4" withReplacement="true" from="-5" to="5" />
+
+<select name="x" numToSelect="2" withReplacement="false">x y z</select>
+
+<select name="A">A B C D</select>
+<math name="log_polynomial" simplify="numbers">$a1*log($b1[1]*$x[1]+$b1[3])+$a2*log($b1[2]*$x[2]+$b1[4])</math>
+<math name="single_log_arg" simplify="numbers">($b1[1]*$x[1]+$b1[3])^$a1*($b1[2]*$x[2]+$b1[4])^$a2</math>
+<math name="single_log_arg2" simplify="numbers">($b1[1]*$x[1]+$b1[3])^$a1/($b1[2]*$x[2]+$b1[4])^(-$a2)</math>
+<math name="single_log_arg3" simplify="numbers">($b1[2]*$x[2]+$b1[4])^$a2/($b1[1]*$x[1]+$b1[3])^(-$a1)</math>
+<math name="single_log_arg4" simplify="numbers">1/(($b1[2]*$x[2]+$b1[4])^(-$a2)*($b1[1]*$x[1]+$b1[3])^(-$a1))</math>
+
+<math name="single_log" simplify="numbers">log(($b1[1]*$x[1]+$b1[3])^$a1*($b1[2]*$x[2]+$b1[4])^$a2)</math>
+
+</setup>
+  
+Rewrite the expression
+<me>$log_polynomial</me>
+as a single logarithm <m>\log $A</m>.  Then,
+<p><m>$A =</m> <mathInput name="input1" /></p>
+<p>(Note: <q>log</q> is not part of your answer.)</p>
+
+<answer>
+  <award symbolicEquality="true" simplifyOnCompare="numbers" referencesAreResponses="$input1"><when>
+    $input1 = $single_log_arg
+  </when></award>
+  <award symbolicEquality="true" simplifyOnCompare="numbers"><when>
+    $input1 = $single_log_arg2
+  </when></award>
+  <award symbolicEquality="true" simplifyOnCompare="numbers"><when>
+    $input1 = $single_log_arg3
+  </when></award>
+  <award symbolicEquality="true" simplifyOnCompare="numbers"><when>
+    $input1 = $single_log_arg4
+  </when></award>
+</answer>
+
+<solution>
+<setup>
+  <math name="log_with_exponents" simplify="numbers">log(($b1[1]*$x[1]+$b1[3])^$a1)+log(($b1[2]*$x[2]+$b1[4])^$a2)</math>
+
+</setup>
+  
+By the properties of logarithms, multiplication of a logarithm can be changed to the logarithm of a power.  We transform both terms:
+<me>$log_polynomial \\= $log_with_exponents.</me>
+Then, since the sum of logarithms is equal to the logarithm of the product, we can rewrite
+<me>$log_with_exponents\\
+   = $single_log.</me>
+If the expression is equal to <m>\log $A</m>, then
+<me>$A=$single_log_arg.</me>
+
+</solution>
+
+</problem>

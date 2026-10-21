@@ -1,0 +1,103 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7VkKhYtqjDTc9WWVxm2KR4
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 296f6bdfd61a0322
+-->
+<title>Applications of integration</title>
+<p><ref>Video</ref> | <ref>Transcript</ref> </p>
+<description>
+Finding the area under a curve as an application of integration
+</description>
+
+<section><title>Video</title>
+<figure suppressFigureNameInCaption="true">
+<video youtube="zhctwHcCMJM" size="large" aspectRatio="16/9" name="v1" />
+<caption>Applications of integration: area under a curve</caption>
+</figure>
+
+
+
+<setup>
+  <number name="timestamp1" />
+  <number name="timestamp2" />
+</setup>
+
+<sideBySide margins="5%">
+<div>Video credit achieved: <number displayDecimals="1">$v1.fractionWatched*100</number>%
+  
+<answer hide="true" name="v1Credit">
+  <award credit="$v1.fractionWatched"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+</div>
+
+</sideBySide>
+
+  
+<problem><title>Video review questions</title>
+<exercise includeAutoNumber="true"><title />
+<p>You've decided to calculate the area under the function <m>f(x) = \sin(x - \frac{\pi}{2})</m> between <m>x = 0</m> and <m>x= \pi</m>. Which of the following choices represent this best graphically?</p>
+  <answer name="ans1a">
+    <choice>
+      <graph size="small" xmin="-2pi" xmax="2pi" ymin="-3/2" ymax="3/2" grid="pi/2 1/2" xTickScaleFactor="pi">
+        <function name="sinFunc">sin(x)</function>
+        <regionBetweenCurveXAxis function="$sinFunc" boundaryValues="0 pi" styleNumber="2" />
+      </graph>
+    </choice>
+    <choice>
+      <graph size="small" xmin="-2pi" xmax="2pi" ymin="-1/2" ymax="3" grid="pi/2 1/2" xTickScaleFactor="pi">
+        <function name="sinFunc2">sin(x)+pi/2</function>
+        <regionBetweenCurveXAxis function="$sinFunc2" boundaryValues="0 pi" styleNumber="3" />
+      </graph>
+    </choice>
+    <choice credit="1">
+      <graph size="small" xmin="-2pi" xmax="2pi" ymin="-3/2" ymax="3/2" grid="pi/2 1/2" xTickScaleFactor="pi">
+        <function name="sinFunc3">sin(x-pi/2)</function>
+        <regionBetweenCurveXAxis function="$sinFunc3" boundaryValues="0 pi" styleNumber="4" />
+      </graph>
+    </choice>
+    <choice>
+      <graph size="small" xmin="-2pi" xmax="2pi" ymin="-3/2" ymax="3/2" grid="pi/2 1/2" xTickScaleFactor="pi">
+        <function name="cosFunc">cos(x)</function>
+        <regionBetweenCurveXAxis function="$cosFunc" boundaryValues="0 pi" styleNumber="5" />
+      </graph>
+    </choice>
+  </answer>
+  
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<p>Once you've decided which is the correct picture, you set up your problem as follows:</p>
+<p>First, you notice that the graph looks just the same as if you were looking at <m>f(x) = \sin(x)</m>, but instead evaluating the integral from <m>-\frac{\pi}{2}</m> to <m>\frac{\pi}{2}</m>:</p>
+  <graph size="small" xmin="-2pi" xmax="2pi" ymin="-3/2" ymax="3/2" grid="pi/2 1/2" xTickScaleFactor="pi">
+    <function name="shiftedSin">sin(x)</function>
+    <regionBetweenCurveXAxis function="$shiftedSin" boundaryValues="-pi/2 pi/2" />
+  </graph>
+<p>Since this seems like a much simpler function to integrate, you make this change. If a little bird (or convenient table of integrals) then tells you the antiderivative of <m>\sin(x)</m>, you can construct the following:</p>  
+  
+  <mdn>
+    <mrow>\text{Area under curve}\;\; A \amp= \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \sin(x)dx</mrow>
+    <mrow> \amp= -\cos(x) \bigg|_{-\frac{\pi}{2}}^{\frac{\pi}{2}} = 0 - 0</mrow>
+    <mrow>\amp=0</mrow>
+  </mdn>
+<p>What theorem was used to proceed from step(1) to step (2) of this computation?</p>
+  
+<answer name="ans2a">
+  <choice>the <term>Indefinite Integral Theorem</term></choice>
+    <choice credit="1">the <term>Fundamental Theorem of Calculus</term></choice>
+    <choice>the <term>Minimum Value Theorem</term></choice>
+  </answer><p>Looking back at your picture, this doesn't seem quite right at all... What value have you actually computed here?</p>
+  <answer name="ans2b">
+    <choice>the inverse of the area under the curve</choice>
+    <choice>you just picked the wrong graph to begin with</choice>
+    <choice credit="1">the <term>signed area</term> between <m>-\frac{\pi}{2}</m> and <m>\frac{\pi}{2}</m></choice>
+  </answer>
+
+<p>We can fix this problem by considering the absolute value of the function instead, or breaking the area up into smaller intervals. You will have a chance to practice this in the problem set.</p>
+</exercise>
+</problem>
+  
+</section>
+

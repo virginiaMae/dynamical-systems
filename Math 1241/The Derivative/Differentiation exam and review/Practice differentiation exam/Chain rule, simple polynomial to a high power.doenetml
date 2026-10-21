@@ -1,0 +1,58 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7P4Y9cMHEK3cqTcgk97GUZ
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 80f16fed8beb1c7d
+-->
+<problem>
+<!-- <title>chain rule, simple polynomial to a high power</title> -->
+
+<setup>
+
+<selectFromSequence name="a" from="-10" to=" 10" exclude="0" />
+<selectFromSequence name="b" from="-10" to=" 10" />
+<selectFromSequence name="n" from="3" to=" 10" />
+<selectFromSequence name="n2" from="2" to=" 4" />
+<select name="x" numToSelect="2" withReplacement="false"> x y z</select>
+<select name="f" numToSelect="3" withReplacement="false"> f g h</select>
+
+<math name="poly" simplify="full">$x[1] ^$n2  + $a *$x[1] +$b </math>
+<math name="fun" simplify="full">$poly ^$n </math>
+<derivative name="answer" simplify="full" variables="$x[1]">$fun</derivative>
+<derivative name="dpoly" simplify="full" variables="$x[1]">$poly</derivative>
+<math name="dpower" simplify="full">$n *$x[2] ^($n -1)</math>
+<math name="dpower_at_poly" simplify="full">$n *$poly ^($n -1)</math>
+<!-- <math name='derivative_sign_error_detection' simplify='full' >$dpower_at_poly *$dpoly </math> -->
+
+</setup>
+
+
+Compute the derivative, <m>\frac{ d$f[1] }{ d$x[1] }</m>, of the function 
+<me>$f[1] ($x[1] ) = $fun .</me>
+
+<m>$f[1] '($x[1] ) =</m> 
+<answer forceFullCheckworkButton="true">
+<award>$answer </award>
+<!-- <award credit='0.9' nSignErrorsMatched="1" feedbackCodes='onesignerror'>$answer </award> -->
+<!-- <award credit='0.81' nSignErrorsMatched="2" feedbackCodes='twosignerrors'>$answer </award> -->
+<award>$derivative_sign_error_detection </award>
+<!-- <award credit='0.9' symbolicEquality='true' nSignErrorsMatched="1" feedbackCodes='onesignerror'>$derivative_sign_error_detection </award> -->
+<!-- <award credit='0.81' symbolicEquality='true' nSignErrorsMatched="2" feedbackCodes='twosignerrors'>$derivative_sign_error_detection </award> -->
+</answer>
+<!-- <copy prop="feedbacks" source="answer1" /> -->
+
+
+
+<solution>
+The function <m>$f[1] ($x[1] )</m> is the composition, <m>$f[1] ($x[1] ) = $f[3] ($f[2] ($x[1] ))</m>, of a quadratic function <m>$f[2] ($x[1] )=$poly </m> and power function <m>$f[3] ($x[2] ) = $x[2] ^{ $n  }</m>.   The derivatives of these functions are <m>$f[2] '($x[1] ) = $dpoly </m> and <m>$f[3] '($x[2] ) = $dpower </m>.   To calculate the derivative of <m>$f[1] ($x[1] )</m>, we use the chain rule.
+<md>
+  <mrow>$f[1] '($x[1] )\amp = $f[3] '($f[2] ($x[1] ))$f[3] '($x[1] )</mrow>
+  <mrow>\amp = $f[3] '($poly )($dpoly )</mrow>
+  <mrow>\amp = $dpower_at_poly \left($dpoly \right)</mrow>
+</md>
+
+
+</solution>
+
+
+</problem>

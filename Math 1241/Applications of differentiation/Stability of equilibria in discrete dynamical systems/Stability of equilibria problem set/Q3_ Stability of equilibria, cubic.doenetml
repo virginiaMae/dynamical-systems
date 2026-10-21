@@ -1,0 +1,280 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7Qg5GsGg72MmrqgV8n6nwZ
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 4f796fbd049fcba2
+-->
+<problem>
+<variantControl numVariants="1" />
+<!-- <title>Stability of discrete dynamical systems, cubic</title> -->
+
+<setup>
+
+<function name="f" variables="x">-x**3/8 + 3*x**2/4 + 3*x/8</function>
+<derivative name="df">$f</derivative>
+<math name="df0">$$df(0)</math>
+<math name="df1">$$df(1)</math>
+<math name="df5">$$df(5)</math>
+
+</setup>
+
+
+The dynamical system
+<md>
+  <mrow>x_{t+1}\amp =f(x_t)</mrow>
+  <mrow>x_0\amp = x_0</mrow>
+</md>
+with <m>f(x)=-\frac{1}{8}x^3+\frac{3}{4}x^2+\frac{3}{8}x</m> has three equilibria: <m>E=0</m>, and <m>E=1</m> and <m>E=5</m>.
+
+
+<exercise>
+<p>Determine the stability of the equilibria analytically.  For stable equilibria, indicate whether the solution spirals toward the equilibrium or moves steadily toward the equilibrium.  For unstable equilibrium, indicate whether the solution spirals away from the equilibrium or moves steadily away from the equilibrium.</p>
+
+<p>For the equilibrium <m>E=0</m>, since <m>f'(0)=</m> 
+<answer>$df0</answer>
+ and <m>|f'(0)|</m> 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">is less than</choice>
+<choice>is greater than</choice>
+</choiceInput>
+</answer>
+ <m>1</m>, the equilibrium <m>E=0</m> is 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">stable</choice>
+<choice>unstable</choice>
+</choiceInput>
+</answer>
+.  Moreover, since <m>f'(0)</m> is 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">positive</choice>
+<choice>negative</choice>
+</choiceInput>
+</answer>
+, the solution 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">moves steadily toward</choice>
+<choice>moves steadily away from</choice>
+<choice>spirals toward</choice>
+<choice credit="1">spirals away from</choice>
+</choiceInput>
+</answer>
+ the equilibrium.</p>
+
+<p>For the equilibrium <m>E=1</m>, since <m>f'(1)=</m> 
+<answer>$df1</answer>
+ and <m>|f'(1)|</m> 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">is greater than</choice>
+<choice>is less than</choice>
+</choiceInput>
+</answer>
+ <m>1</m>, the equilibrium <m>E=1</m> is 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">unstable</choice>
+<choice>stable</choice>
+</choiceInput>
+</answer>
+.  Moreover, since <m>f'(1)</m> is 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">positive</choice>
+<choice>negative</choice>
+</choiceInput>
+</answer>
+, the solution 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">moves steadily away from</choice>
+<choice>moves steadily toward</choice>
+<choice>spirals away from</choice>
+<choice>spirals toward</choice>
+</choiceInput>
+</answer>
+ the equilibrium.</p>
+
+<p>For the equilibrium <m>E=5</m>, since <m>f'(5)=</m> 
+<answer>$df5</answer>
+ and <m>|f'(5)|</m> 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">is greater than</choice>
+<choice>is less than</choice>
+</choiceInput>
+</answer>
+ <m>1</m>, the equilibrium <m>E=5</m> is 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">unstable</choice>
+<choice>stable</choice>
+</choiceInput>
+</answer>
+.  Moreover, since <m>f'(5)</m> is 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">negative</choice>
+<choice>positive</choice>
+</choiceInput>
+</answer>
+, the solution 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">spirals away from</choice>
+<choice>spirals toward</choice>
+<choice>moves steadily toward</choice>
+<choice>moves steadily away from</choice>
+</choiceInput>
+</answer>
+ the equilibrium.</p>
+</exercise>
+
+<exercise>
+<p>Demonstrate the stability of the equilibria by cobwebbing.  The second panel is a zoomed in view to use for the lower equilibria.</p>
+
+<p>We are not grading your cobwebbing sketch.  Be able to cobweb these by hand, as you'll need to do that on an exam.</p>
+
+<graph xmin="-1" xmax="7" ymin="-1" ymax="7" showNavigation="false">
+  <xLabel><m>x_t</m></xLabel>
+  <yLabel><m>x_{t+1}</m></yLabel>
+$f
+  <line equation="y=x" styleNumber="5" />
+</graph>
+
+
+
+<graph xmin="-0.5" xmax="1.5" ymin="-0.5" ymax="1.5" showNavigation="false">
+  <xLabel><m>x_t</m></xLabel>
+  <yLabel><m>x_{t+1}</m></yLabel>
+$f
+  <line equation="y=x" styleNumber="5" />
+</graph>
+</exercise>
+
+
+
+<solution>
+
+
+<exercise>
+<p>
+<m>f'(x)=$df </m>
+
+</p>
+<p>
+
+<m>f'(0)=$df0 </m>.  Since <m>|f'(0)| \lt  1</m>, <m>E=0</m> is stable.  Since <m>f'(0)</m> is positive, the solution moves steadily toward the equilibrium.
+
+</p>
+<p>
+
+<m>f'(1)=$df1 </m>.  Since <m>|f'(1)| \gt  1</m>, <m>E=1</m> is unstable.  Since <m>f'(1)</m> is positive, the solution moves steadily away from the equilibrium.
+
+</p>
+<p>
+
+<m>f'(5)=$df5 </m>.  Since <m>|f'(5)| \gt  1</m>, <m>E=5</m> is unstable.  Since <m>f'(5)</m> is negative, the solution spirals away from the equilibrium.</p>
+</exercise>
+
+<exercise>
+<p>
+A cobwebbing plot from below the first equilibrium, <m>E=0</m>:
+ <graph size="large" grid="0.5 0.5" xmin="-1" xmax="2" ymin="-1" ymax="2" name="cobwebSol1_left" showNavigation="false">
+    <xLabel><m>x_t</m></xLabel>
+    <yLabel><m>x_{t+1}</m></yLabel>
+    <line equation="y=x" styleNumber="5" fixed="true" />
+<!--     <copy source="f" layer="1" styleNumber="2" /> -->
+    <point name="start1_left" fixed="true">
+     (-0.95,-0.95)
+     <label>Start point</label>
+   </point>
+    <cobwebPolyline function="$f" numPoints="12" name="cobwebPolylineSol1_left" initialPoint="$start1_left" lockToSolution="true" draggable="false" />
+   
+  </graph>  
+</p>
+
+<p>
+A cobwebbing plot from above the first equilibrium, <m>E=0</m>:
+ <graph size="large" grid="0.5 0.5" xmin="-1" xmax="2" ymin="-1" ymax="2" name="cobwebSol1_right" showNavigation="false">
+    <xLabel><m>x_t</m></xLabel>
+    <yLabel><m>x_{t+1}</m></yLabel>
+    <line equation="y=x" styleNumber="5" fixed="true" />
+<!--     <copy source="f" layer="1" styleNumber="2" /> -->
+   <point name="start1_right" fixed="true">
+     (0.5,0.5)
+     <label>Start point</label>
+   </point>
+    <cobwebPolyline function="$f" numPoints="12" name="cobwebPolylineSol1_right" initialPoint="$start1_right" lockToSolution="true" draggable="false" />
+  </graph>  
+</p>
+
+<p>
+A cobwebbing plot from below the second equilibrium, <m>E=1</m>:
+ <graph size="large" grid="0.5 0.5" xmin="-1" xmax="2" ymin="-1" ymax="2" name="cobwebSol2_left" showNavigation="false">
+    <xLabel><m>x_t</m></xLabel>
+    <yLabel><m>x_{t+1}</m></yLabel>
+    <line equation="y=x" styleNumber="5" fixed="true" />
+<!--     <copy source="f" layer="1" styleNumber="2" /> -->
+   <point name="start2_left" fixed="true">
+     (0.9,0.9)
+     <label>Start point</label>
+   </point>
+    <cobwebPolyline function="$f" numPoints="12" name="cobwebPolylineSol2_left" initialPoint="$start2_left" lockToSolution="true" draggable="false" />
+  </graph>  
+</p>
+
+<p>
+A cobwebbing plot from above the second equilibrium, <m>E=1</m>:
+ <graph size="large" grid="0.5 0.5" xmin="-1" xmax="2" ymin="-1" ymax="2" name="cobwebSol2_right" showNavigation="false">
+    <xLabel><m>x_t</m></xLabel>
+    <yLabel><m>x_{t+1}</m></yLabel>
+    <line equation="y=x" styleNumber="5" fixed="true" />
+<!--     <copy source="f" layer="1" styleNumber="2" /> -->
+   <point name="start2_right" fixed="true">
+     (1.1,1.1)
+     <label>Start point</label>
+   </point>
+    <cobwebPolyline function="$f" numPoints="12" name="cobwebPolylineSol2_right" initialPoint="$start2_right" lockToSolution="true" draggable="false" />
+  </graph>  
+</p>
+
+<p>
+A cobwebbing plot from below the third equilibrium, <m>E=5</m>:
+ <graph size="large" grid="1 1" xmin="-1" xmax="7" ymin="-1" ymax="7" name="cobwebSol3_left" showNavigation="false">
+    <xLabel><m>x_t</m></xLabel>
+    <yLabel><m>x_{t+1}</m></yLabel>
+    <line equation="y=x" styleNumber="5" fixed="true" />
+<!--     <copy source="f" layer="1" styleNumber="2" /> -->
+   <point name="start3_left" fixed="true">
+     (4.9, 4.9)
+     <label>Start point</label>
+   </point>
+    <cobwebPolyline function="$f" numPoints="12" name="cobwebPolylineSol3_left" initialPoint="$start3_left" lockToSolution="true" draggable="false" />
+  </graph>  
+</p>
+
+
+<p>
+A cobwebbing plot from above the third equilibrium, <m>E=5</m>:
+ <graph size="large" grid="1 1" xmin="-1" xmax="7" ymin="-1" ymax="7" name="cobwebSol3_right" showNavigation="false">
+    <xLabel><m>x_t</m></xLabel>
+    <yLabel><m>x_{t+1}</m></yLabel>
+    <line equation="y=x" styleNumber="5" fixed="true" />
+<!--     <copy source="f" layer="1" styleNumber="2" /> -->
+   <point name="start3_right" fixed="true">
+     (5.1, 5.1)
+     <label>Start point</label>
+   </point>
+    <cobwebPolyline function="$f" numPoints="12" name="cobwebPolylineSol3_right" initialPoint="$start3_right" lockToSolution="true" draggable="false" />
+  </graph>  
+</p>
+</exercise>
+
+</solution>
+
+
+</problem>

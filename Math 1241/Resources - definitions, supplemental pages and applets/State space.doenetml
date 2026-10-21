@@ -1,0 +1,13 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 82MrUSX6Y2kQrMerT3xvqn
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 22d2041845220299
+-->
+<section suppressAutoName="true" suppressAutoNumber="true"><title>State space definition</title>
+ 
+<p>The <term>state space</term> of a dynamical system is the set of all possible states of the system. Each coordinate is a state variable, and the values of all the state variables completely describes the state of the system. In other words, each point in the state space corresponds to a different state of the system.</p>
+
+<p>An intuitive introduction to the state space is given in <ref to="https://mathinsight.org/dynamical_system_idea">the idea of a dynamical system</ref>.</p>
+
+</section>

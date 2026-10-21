@@ -1,0 +1,78 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7HMzSNkZxDupTNv2kdBu2P
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 88f2abfa84b23ba0
+-->
+<problem>
+<!-- <title>Discrete equilibria with parameters, factored cubic polynomial</title> -->
+
+<setup>
+
+<select name="difference_form" type="boolean">true false</select>
+
+<select name="n"> n t</select>
+<select name="a" numToSelect="6" withReplacement="false"> s u v w a b c d k m p q r</select>
+
+<select name="x">
+<option selectWeight="1">x</option>
+<option selectWeight="1">y</option>
+<option selectWeight="1">z</option>
+<option selectWeight="13">$a[6]</option>
+</select>
+
+<math name="equilibria" unordered="true">$a[2] ,$a[3] ,$a[4] </math>
+
+</setup>
+
+
+<p>For the dynamical system
+
+<md>
+  <mrow>$x _{ $n +1}
+    <conditionalContent>
+    <case condition="$difference_form">-$x _$n  </case>
+    </conditionalContent>
+  \amp = $a[1] ($x _$n -$a[2] )($x _$n -$a[3] )($x _$n -$a[4] )
+    <conditionalContent>
+    <case condition="not $difference_form">+ $x _$n  </case>
+    </conditionalContent>
+  </mrow>
+  <mrow>$x _0\amp = $a[5] ,</mrow>
+</md>
+for parameters <m>$a[1] </m>, <m>$a[2] </m>, <m>$a[3] </m>, <m>$a[4] </m>, and <m>$a[5] </m>, with <m>$a[1]  \ne 0</m>, what are the equilibria?
+
+</p>
+
+<p>Equilibria: 
+<answer>
+<award matchPartial="true" symbolicEquality="true">$equilibria </award>
+</answer>
+
+If there is more than one equilibrium, separate answers by commas.
+</p>
+
+
+<solution>
+
+
+To find the equilibria, set <m>$x _{ $n +1}=$x _$n  = E</m>.
+<md>
+  <mrow>E
+    <conditionalContent>
+    <case condition="$difference_form">-E</case>
+    </conditionalContent>
+  \amp = $a[1] (E-$a[2] )(E-$a[3] )(E-$a[4] )
+    <conditionalContent>
+    <case condition="not $difference_form">+E</case>
+    </conditionalContent>
+  </mrow>
+  <mrow>0\amp = $a[1] (E-$a[2] )(E-$a[3] )(E-$a[4] )</mrow>
+</md>
+
+Since <m>$a[1]  \ne 0</m>, this polynomial in <m>E</m> can be zero only if <m>E-$a[2] =0</m>, <m>E-$a[3] =0</m>, or <m>E-$a[4] =0</m>.  The three equilibria are <m>E=$a[2] </m>, <m>E=$a[3] </m>, and <m>E=$a[4] </m>.
+
+</solution>
+
+
+</problem>

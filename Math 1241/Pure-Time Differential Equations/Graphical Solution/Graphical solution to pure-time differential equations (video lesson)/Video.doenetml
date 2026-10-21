@@ -1,0 +1,94 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7TAwwsYJGSKbik3WFkv9gk
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: de0e9a63e27a9d39
+-->
+
+<title>Graphical solution of pure-time differential equations</title>
+<p><ref>Video</ref> | <ref>Transcript</ref>  </p>
+<description>
+
+</description>
+
+<section><title>Video</title>
+<figure suppressFigureNameInCaption="true">
+<video youtube="FbsC-t_KkvQ" size="large" aspectRatio="16/9" name="v1" />
+<caption>Graphical solution of pure-time differential equations</caption>
+</figure>
+
+<setup>
+  <number name="timestamp1" />
+  <number name="timestamp2" />
+</setup>
+
+<sideBySide margins="5%">
+<div>Video credit achieved: <number displayDecimals="1">$v1.fractionWatched*100</number>%
+  
+<answer hide="true" name="v1Credit">
+  <award credit="$v1.fractionWatched"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+</div>
+
+<!-- <div>
+<updateValue type="number" target="v1.time" newValue="$timestamp1" name="skipTo1">
+  <label>Go to Key Moment 1</label>
+</updateValue>
+</div>
+
+<div>
+<updateValue type="text" triggerWithTargets="skipTo1" target="v1" prop="state" newValue="playing" name="playStamp1"/>
+
+<updateValue type="number" target="v1.time" newValue="$timestamp2" name="skipTo2">
+  <label>Go to Key Moment 2</label>
+</updateValue>
+</div>
+
+
+<updateValue type="text" triggerWithTargets="skipTo2" target="v1" prop="state" newValue="playing" name="playStamp2"/> -->
+</sideBySide>
+
+  
+<problem><title>Video review questions</title>
+<exercise includeAutoNumber="true"><title />
+
+<p>The graph of <m>\frac{dz}{dt} = f(t)</m> is shown below. Which choice best describes the behavior of the solution, <m>z(t)</m>, as <m>t</m> increases?</p>
+
+<graph grid="true" xmin="-1" xmax="8" ymin="-2" ymax="4">
+  <function name="f">-(1/4)(x-1)(x-7)
+    <label><m>\frac{dz}{dt}</m></label>
+  </function>
+</graph>
+<answer name="ans1a">
+  <choice><m>z(t)</m> increases until it reaches approximately <m>t = 4</m>, then it decreases</choice>
+  <choice credit="1"><m>z(t)</m> starts off decreasing, changes direction and increases at <m>t = 1</m>, then begins to decrease again at <m>t = 7</m></choice>
+  <choice><m>z(t)</m> increases continuously as <m>t</m> increases</choice>
+</answer>
+
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<p>The graph of <m>z(t)</m> from the previous question is shown below along with the graph of its derivative. You can adjust the initial condition for <m>z(t)</m> with the slider below the graph.</p>
+
+<graph grid="true" xmin="-4" xmax="10" ymin="-6" ymax="12">
+  $f
+  <function name="sol" styleNumber="2">-(x^3)/12 + x^2 -(7/4)x +$C
+    <label><m>z(t)</m></label>
+  </function>
+</graph>
+<slider name="C" from="-4" to="4">
+  <label>Adjust initial condition, <m>C</m></label>
+</slider>
+
+<p>What effect does changing the initial condition have on the behavior of the solution <m>z(t)</m>?</p>
+<answer name="ans1b">
+  <choice credit="1">changing the initial condition shifts the graph of the solution vertically</choice>
+  <choice>changing the initial condition shifts the graph of the solution horizontally</choice>
+  <choice>changing the initial condition stretches the graph of the solution vertically</choice>
+</answer>
+</exercise>
+</problem>
+
+</section>

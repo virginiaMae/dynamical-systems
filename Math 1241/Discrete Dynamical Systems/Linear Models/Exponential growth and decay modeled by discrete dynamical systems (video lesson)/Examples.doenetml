@@ -1,0 +1,88 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7EazzHLPssTEMr5ZZaXDsi
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 1736165cd6f11a49
+-->
+<title>Exponential growth and decay modeled by discrete dynamical systems</title>
+
+<p><ref>Video</ref> | <ref>Summary</ref> | <ref>Examples</ref> | <ref>Transcript</ref> </p>
+
+<section><title>Examples</title>
+
+<subsection><title>Human population growth</title>
+
+
+<p>Suppose a human population is growing at 1% per year and initially has
+1,000,000 individuals.  Let <m>P_t</m> denote the populations size <m>t</m> years after the initial population of <m>P_0 = 1,000,000</m> individuals. If one asks what the population will be in 50 years there are two options.</p>
+
+<p><alert>Option 1.</alert>  At 1% per year growth, the dynamic equation would
+be 
+<me>P_{t+1} - P_t    = 0.01 \, P_t</me>
+and the corresponding iteration
+equation is
+<me>P_{t+1} = 1.01 \, P_t</me>
+Starting with the initial condition, <m>P_0 = 1,000,000</m>, we could calculate <m>P_1 = 1.01 \times 1,000,000 = 1,010,000</m>,
+<m>P_2 = 1.01 \times 1,010,000 = 1,020,100</m> and so on for 50 iterations.
+</p>
+
+<p><alert>Option 2.</alert>  Alternatively, one may write the solution
+<me>P_t = 1.01^t \left( 1,000,000 \right)</me>
+so that we immediately have a formula for the population after 50 years:
+<me>P_{50} = 1.01^{50} \left( 1,000,000 \right) = 1,644,631.</me>
+</p>
+
+
+
+
+
+</subsection>
+
+<subsection><title>Bacteria growth</title>
+
+
+<p>When nutrients are plentiful and the population size isn't too large, a bacteria can exhibit exponential growth.  See 
+<ref to="doenet:7F4gzqGfwcmfA5jaTZRWtB">this page</ref>
+ for details on developing an exponential growth model from data and solving it.</p>
+
+
+
+
+</subsection>
+
+<subsection><title>Penicillin clearance</title>
+
+
+<p>If penicillin is given as a 
+<ref to="http://en.wikipedia.org/wiki/Bolus_%28medicine%29">bolus</ref>
+ injection (a one-time injection) and the kidneys remove a fixed fraction of the penicillin every 5 minutes, the amount of penicillin in the blood exhibits exponential decay.  See 
+<ref to="doenet:7F4gzqGfwcmfA5jaTZRWtB">this page</ref>
+ for the steps to develop such an exponential decay model from data.</p>
+
+
+
+
+</subsection>
+
+<subsection><title>Chocolate decay</title>
+
+
+<p>I start with 2 chocolate bars.  Every day, I eat 10% of the chocolate that I started the day with.  Write down a dynamical system describing the chocolate I have left after each day and determine how much chocolate I have left after two weeks.</p>
+
+<p><alert>Solution</alert>: Let <m>c_t</m> be the amount of chocolate (in units of a chocolate bar) that I have after <m>t</m> days.  The dynamical system that <m>c_t</m> follows is
+<md>
+  <mrow>c_{t+1} - c_t\amp = -0.1 c_t</mrow>
+  <mrow>c_0\amp = 2.</mrow>
+</md>
+In function iteration form, the system is <m>c_{t+1}= 0.9c_t</m>, and its solution is
+<me>c_t = 0.9^t c_0 = 0.9^t 2.</me>
+</p>
+
+<p>After two weeks, the chocolate I have left is
+<me>c_{14} = 0.9^{14}2 \approx 0.46 \text{ chocolate bars}.</me>
+</p>
+</subsection>
+
+</section>
+
+

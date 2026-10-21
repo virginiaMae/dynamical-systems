@@ -1,0 +1,144 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7Cz1CnXXmuscrWeKyAHyig
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 8676be96953abae4
+-->
+<title>A discrete SIR infectious disease model</title>
+<p><ref>Video 1</ref> | <ref>Video 2</ref> | <ref>Summary</ref> | <ref>Transcripts</ref></p>
+<section><title>Video 2</title>
+
+<figure suppressFigureNameInCaption="true">
+<video youtube="0k2cA8nYQiA" size="large" aspectRatio="16/9" name="v1" />
+  <caption>Discrete SIR infectious disease model, part 2</caption>
+</figure>
+
+<number name="v1RoundUp" hide="true">
+  <conditionalContent>
+    <case condition="$v1.fractionWatched > 0.9">1</case>
+    <else>$v1.fractionWatched</else>
+  </conditionalContent>
+</number>
+  
+  <p>Video credit achieved: <number displayDecimals="1">$v1RoundUp*100</number>%</p>
+
+<answer hide="true" name="v1Credit">
+  <award credit="$v1RoundUp"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+  
+<problem><title>Video review question</title>
+
+<setup>
+  <number name="S0">20000</number>
+  <number name="I0">500</number>
+  <number name="R0">0</number>
+  <number name="a">0.05</number>
+  <number name="b">0.0001</number>
+</setup>
+
+<p>To answer the following question, refer again to the model introduced in the first video: </p>
+<ul>
+  <li><m>S_t</m> = the number of susceptibles in day <m>t</m></li>
+  <li><m>I_t</m> = the number of infectives in day <m>t</m></li>
+  <li><m>R_t</m> = the number of removed in day <m>t</m>.</li>
+</ul>
+
+<p>The rule by which the state variables evolve is
+<md>
+  <mrow>S_{t+1} - S_t\amp = -b S_t I_t</mrow>
+  <mrow>I_{t+1} - I_t\amp = b S_tI_t - aI_t</mrow>
+  <mrow>R_{t+1} - R_t\amp = a I_t.</mrow>
+</md></p>
+
+<p>Set the recovery rate parameter to <m>a=$a</m> and the infection rate parameter to <m>b=$b</m> (the same values as in the video).  If the initial conditions are
+<md>
+  <mrow>S_0 \amp = $S0</mrow>
+  <mrow>I_0 \amp = $I0</mrow>
+  <mrow>R_0 \amp = $R0</mrow>
+</md>
+calculate the number of suceptibles <m>S_1</m>, the number of infectives <m>I_1</m>, and the number of removed individuals <m>R_1</m> in day 1.</p>
+
+
+
+<p>
+<m>S_1 =</m> 
+  <answer name="S1" symbolicEquality="true">
+    <award><math simplify="true" name="S1num">$S0 - $b$S0$I0</math></award>
+  </answer>
+</p>
+  
+  <hint hide="$S1.numSubmissions &lt; 2 or $S1.creditAchieved = 1 or $S1.numSubmissions >= 5">
+  <p>The number of susceptibles in day 1 is
+    <me>S_1 = S_0 - b S_0 I_0</me>
+    where <m>S_0=$S0</m>, <m>I_0=$I0</m>, and <m>b=$b</m>.
+  </p>
+  </hint>
+
+  <hint hide="$S1.numSubmissions &lt; 5 or $S1.creditAchieved = 1">
+      <p>The number of susceptibles in day 1 is
+    <md>
+      <mrow>S_1 &amp;= S_0 - b S_0 I_0</mrow>
+      <mrow>&amp;= $S0 - $b \cdot $S0 \cdot $I0</mrow>
+      <mrow>&amp;= $S1num</mrow>
+    </md>
+  </p>
+        
+  </hint>
+  
+<p>
+<m>I_1 =</m> 
+  <answer name="I1" symbolicEquality="true">
+    <award><math simplify="true" name="I1num">$I0 + $b$S0$I0 - $a$I0</math></award>
+  </answer>
+</p>
+
+    <hint hide="$I1.numSubmissions &lt; 2 or $I1.creditAchieved = 1 or $I1.numSubmissions >= 5">
+  <p>The number of infectives in day 1 is
+    <me>I_1 = I_0 + b S_0 I_0 - aI_0</me>
+    where <m>S_0=$S0</m>, <m>I_0=$I0</m>, <m>a=$a</m> and <m>b=$b</m>.
+  </p>
+  </hint>
+
+  <hint hide="$I1.numSubmissions &lt; 5 or $I1.creditAchieved = 1">
+      <p>The number of infectives in day 1 is
+    <md>
+      <mrow>I_1 &amp;= I_0 + b S_0 I_0 - aI_0</mrow>
+      <mrow>&amp;= $I0 + $b \cdot $S0 \cdot $I0 - $a \cdot $I0</mrow>
+      <mrow> &amp;= $I1num</mrow>
+    </md>
+  </p>
+        
+  </hint>
+  
+<p>
+<m>R_1 =</m> 
+  <answer name="R1" symbolicEquality="true">
+    <award><math simplify="true" name="R1num">$R0 + $a$I0</math></award>
+  </answer>
+</p>
+    <hint hide="$R1.numSubmissions &lt; 2 or $R1.creditAchieved = 1 or $R1.numSubmissions >= 5">
+  <p>The number of removed individuals in day 1 is
+    <me>R_1 = R_0 + aI_0</me>
+    where <m>I_0=$I0</m>, <m>R_0=$R0</m>, and <m>a=$a</m>.
+  </p>
+  </hint>
+
+  <hint hide="$R1.numSubmissions &lt; 5 or $R1.creditAchieved = 1">
+      <p>The number of removed individuals in day 1 is
+    <md>
+      <mrow>R_1 &amp;= R_0 + aI_0</mrow>
+      <mrow>&amp;= $R0 + $a \cdot $I0</mrow>
+      <mrow>&amp;= $R1num</mrow>
+    </md>
+  </p>
+        
+  </hint>
+
+
+<p>You can calculate these numbers by hand or use the <ref to="doenet:7CHD615jgz11sJTjrWeHyD">Discrete SIR simulation applet</ref> (though you'll need to change the parameters <m>a</m> and <m>b</m> under Advanced Options).</p>
+  
+</problem>
+
+</section>

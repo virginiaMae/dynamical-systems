@@ -1,0 +1,48 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7EbpGqr9ikLD8XGTWH2Yov
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 976a856ba0b73cbe
+-->
+
+<title>Exponential growth and decay modeled by discrete dynamical systems</title>
+
+<p><ref>Video</ref> | <ref>Summary</ref> | <ref>Examples</ref> | <ref>Transcript</ref> </p>
+
+
+
+
+<section><title>Transcript</title>
+<p>Exponential growth and decay are processes that arise naturally from the simplest types of dynamical systems. For example, bacteria growth, at least in its initial stages, can be well modeled by exponential growth. And one sees exponential decay in a model of penicillin clearance in the blood. Let’s see how we get exponential growth and decay from the simplest dynamical system.</p>
+  
+<p>In general, we can write a discrete dynamical system in one dimension like this: <m>x_{t+1}</m> is some function of the value of the state variable <m>x</m> at previous time step <m>t</m>. We call this form <term><ref to="doenet:82YaRL8CieueYqLgxMpxye">function iteration form</ref></term> because we just need to iterate the function <m>f</m> to compute subsequent values of the state variable <m>x</m>. What's the simplest form for <m>f</m>? Well, we could have <m>f</m> just be a constant <m>c</m>, but that's too boring. Let's not talk about that case. We should have <m>f</m> at least depend on <m>x</m>, the simplest form of such an <m>f</m> would be to have <m>f</m> be a linear function. For example we could write <m>f(x) = x</m> times a constant <m>R</m>.
+  
+  <me>f(x)=x R</me> 
+
+In this case, we just multiply by <m>R</m> for each time step. Plugging this form of <m>f</m> into the dynamical system, we get that <m>x</m> of <m>(t+1)</m> equals <m>R</m> times the previous value <m>x_t</m>.
+<me>x_{t+1} = R x_t</me>
+Let's add to this initial condition, <m>x</m> at time zero, <m>x_0</m>, is some known value, and for simplicity let's make it positive. 
+
+<md> 
+  <mrow>x_{t+1} \amp= R x_t</mrow>
+  <mrow>x_0 \amp= \text{a known value}, \;\;x_0 > 0</mrow>
+</md>
+
+If <m>R</m> is greater than 1, then what do we know? Well, then we take the value of <m>x_t</m> and multiply by a value greater than 1 to get the future value of <m>x_{t+1}</m>. In other words, as time progresses, we get larger and larger values of <m>x</m>. So if <m>R>1</m>, then we have growth. What about if <m>R</m> is between 0 and 1? Then we’re multiplying <m>x_t</m> by a number less than 1, and so <m>x_{t+1}</m> is smaller than <m>x_t</m>, so we have decay. The solution to this dynamical system is simply that <m>x_t</m> is <m>R</m> to the <m>t</m>, times the initial condition <m>x_0</m>.
+<me>x_t = x_0 R^t</me>
+To get from time zero to time <m>t</m>, we simply need to take the initial conditions, and multiply by <m>R</m>, <m>t</m> times. Hence, we see that the solution is an exponential. It’ll be exponential growth if <m>R</m> is greater than 1, or exponential decay if <m>R</m> is between 0 and 1. These results are true, if we write our dynamical system in <term><ref to="doenet:82YaRL8CieueYqLgxMpxye">function iteration form</ref></term>, where <m>x_{t+1} = R x_t</m>. Now, here’s where people often get confused. We have two ways that we sometimes write down a discrete dynamical system. One is this <term>function iteration form</term>. We can also write a discrete dynamical system in <term><ref to="doenet:832kteFVLDpZJ9tARy27gK">difference form</ref></term>. Difference form focuses on the <em>change</em> from time <m>t</m> to time <m>t+1</m>. So <m>x_{t+1} - x_t</m>, this is the change, and if we have a linear dynamical system, we could write that the change is some number <m>r</m> times <m>x_t</m>, and we could add our initial condition again, that <m>x_0</m> is a known value, which we’ll assume to be positive. 
+
+<md> 
+  <mrow>x_{t+1} - x_t \amp= r x_t</mrow>
+  <mrow>x_0 \amp= \text{a known value}, \;\;x_0 > 0</mrow>
+</md>
+
+For this form of our dynamical system, what's the condition on the parameter <m>r</m> for exponential growth versus exponential decay? If we want growth, well, this means that <m>x_{t+1}</m> should be greater than <m>x_t</m>, i.e. <m>x_{t+1} - x_t</m> should be positive. And since we’re assuming our <m>x</m>’s are positive, this is the same thing as <m>r</m> being positive (because if <m>r</m> is positive, then this right hand side is positive and <m>x_{t+1} - x_t</m> is positive). On the other hand, if we wanted decay, we would just need to have <m>r</m> less than 0 (and in fact, let's make it greater than <m>-1</m> so we don’t subtract off more than what we started with).  This might be a little confusing: here (*using difference form)  we have condition <m>r > 0</m> for growth, and <m>r</m> between minus 1 and 0 for decay (<m>-1 &lt; r &lt; 0</m>), and over here (*using function iteration form), we had that capitol <m>R</m> had to be greater than 1 for growth, and capitol <m>R</m> had to be between 0 and 1 to get decay (<m>0 &lt; R &lt; 1 </m>). How do we reconcile these two different viewpoints? Well, let's take our equation in difference form and just add <m>x_t</m> to both sides. If I take <m>x_{t+1} - x_t</m> and I add <m>x_t</m>, I get just <m>x_{t+1} = r x_t + x_t</m>. So we can factor out the <m>x_t</m> and we get <m>(r+1)x_t</m>. Now we’ve transformed our equation to the same form as we have over here (*using function iteration form).
+
+<me>x_{t+1} = (r+1)x_t</me>
+(*The value) <m>x_{t+1}</m> is some number (in this case its little <m>r+1</m>) *times <m>x_t</m>. In fact, if we let capitol <m>R</m> be the same thing as little <m>(r + 1)</m>, we can see that our two equations are the same. In fact, we can see that the solution for this side is <m>x_t</m> equals little r plus 1 to the power t times our initial condition.
+<me>x_t = x_0 (r+1)^t</me>
+Which, again, is the same as this solution over here (*using function iteration form), if you replace little <m>(r + 1)</m> with big <m>R</m>.
+</p>
+
+</section>

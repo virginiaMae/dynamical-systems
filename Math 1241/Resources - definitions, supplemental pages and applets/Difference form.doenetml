@@ -1,0 +1,23 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 832kteFVLDpZJ9tARy27gK
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: e2c0be699afe1fa1
+-->
+<section suppressAutoName="true" suppressAutoNumber="true"><title>Difference form definition</title>
+ 
+<p>A discrete dynamical system is in <term>difference form</term> when it is written so that the left hand side gives the difference in the state variable over one time step.</p>
+
+<p>If the state variable is <m>x_n</m>, then a dynamical system is in <term>difference form</term> when it is of the form
+<me>x_{n+1}−x_n=f(x_n).</me></p>
+
+<p>For example, the dynamical system
+<me>x_{n+1}−x_n=3x_n</me>
+is written in <term>difference form</term> with <m>f(x)=3x.</m></p>
+
+<p>An alternative form is <term><ref to="doenet:82YaRL8CieueYqLgxMpxye">function iteration form</ref></term>, such as
+<me>x_{n+1}=4x_n.</me>
+</p>
+
+<p>This dynamical system is identical to the previous one, as one can see by subtracting <m>x_n</m> from both sides.</p>
+</section>

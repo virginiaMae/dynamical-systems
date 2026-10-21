@@ -1,0 +1,114 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7GRDE5ULzWs2MxiC3AP6RK
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 017336f2801b2f9a
+-->
+<title>The idea of stability of equilibria for discrete dynamical systems</title>
+
+<p><ref>Video</ref> | <ref>Applet</ref> | <ref>Transcript</ref> </p>
+
+
+
+<description>
+An introduction to the concept of stable and unstable equilibria and how to use cobwebbing to identify stability.
+</description>
+
+<section name="vid_section"><title>Video</title>
+<figure suppressFigureNameInCaption="true">
+<video youtube="_TSEy3s_Oxc" size="large" aspectRatio="16/9" name="v1" />
+<caption>Idea of stability of equilibria of discrete dynamical systems</caption>
+</figure>
+
+ 
+<number name="v1RoundUp" hide="true">
+  <conditionalContent>
+    <case condition="$v1.fractionWatched > 0.9">1</case>
+    <else>$v1.fractionWatched</else>
+  </conditionalContent>
+</number>
+  
+  <p>Video credit achieved: <number displayDecimals="1">$v1RoundUp*100</number>%</p>
+
+<answer hide="true" name="v1Credit">
+  <award credit="$v1RoundUp"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+</section>  
+
+<problem><title>Video review questions</title>
+
+<setup>
+<function name="h" variables="x">x/2+1/(18) x^3</function>
+<math name="equilibria" unordered="true">-3,3,0</math>
+</setup> 
+
+
+<p>Given the discrete dynamical system
+  <me>x _{n+1} = h(x_n) \;\; \text{where} \;\; h(x) = $h</me>
+whose function evolution rule, <m>h(x)</m> is graphed below,
+</p>  
+
+<exercise includeAutoNumber="true"><title>Determine equilibria</title> 
+<p>What are the 3 equilibria?
+  <answer name="vid1Review1" matchPartial="true" unorderedCompare="true">
+    <award>$equilibria</award>
+  </answer>
+  (<ref to="doenet:7FRM6VWrzPKk1bwC2SKx72">Remind me how to find equilibria...</ref>)
+</p>
+<p><em>Enter equilibrium values separated by commas</em></p>
+</exercise>
+  
+<module copy="doenet:83jD1JShkD8umrK9bSc1v8" xmin="-4" xmax="7" ymin="-4" ymax="7" function="$h" initialInitialValue="1" initialValueDx="0.25" checkInitialCondition="false" x0="3" showNavigation="false" cobwebbingWeight="0" attractThreshold="0.2" grid="true" name="cobweb_cubic" />  
+
+<exercise includeAutoNumber="true"><title>Determine stability using cobwebbing</title>
+<p>Cobweb using the applet above starting at <m>x_0 = 2.5</m>. Do the values for <m>x_n</m> tend towards or away from the equilbrium at <m>E = </m> <answer name="equilibriumAns">3</answer> ? <em>(type the closest equilbrium value)</em>
+  <answer>
+    <choice>Towards the equilibrium</choice>
+    <choice credit="1">Away from the equilibrium</choice>
+  </answer>
+  (<ref to="doenet:7GavdebJoto83FLcbNqFQV">Remind me how to cobweb...</ref>)
+</p>
+  
+ <hint><title>Starting picture</title>
+  <p>For starters, your cobwebbing should look something like this:</p>
+<module copy="doenet:83vCskTYActBRJRjUApuoe" xmin="-4" xmax="7" ymin="-4" ymax="7" function="$h" x0="2.5" showNavigation="false" numPoints="4" attractThreshold="0.2" grid="true" name="cobweb_sol1" />
+  </hint>
+
+<p>Cobweb using the applet above starting at <m>x_0 = 3.5</m>. Do the values for <m>x_n</m> tend towards or away from the equilbrium at <m>E = $equilibriumAns</m> 
+  <answer>
+    <choice>Towards the equilibrium</choice>
+    <choice credit="1">Away from the equilibrium</choice>
+  </answer>
+</p>
+
+  <hint><title>Starting picture</title>
+  <p>For starters, your cobwebbing should look something like this:</p>
+<module copy="doenet:83vCskTYActBRJRjUApuoe" xmin="-4" xmax="7" ymin="-4" ymax="7" function="$h" x0="3.5" showNavigation="false" numPoints="4" attractThreshold="0.2" grid="true" name="cobweb_sol2" />
+  </hint>
+
+<p>Is the equilibrium at <m>E = $equilibriumAns</m> stable or unstable?
+  <answer>
+    <choice>stable</choice>
+    <choice credit="1">unstable</choice>
+  </answer>
+</p>
+</exercise>
+
+
+<solution>
+<exercise includeAutoNumber="true"><title>Determine equilibria</title>
+  Equilibria are -3,0,3.
+</exercise>
+
+<exercise includeAutoNumber="true"><title>Determine stability using cobwebbing</title>
+  <ol>
+    <li>For <m>x_0 = 2.5</m> the values tend away from the equilibrium.</li>
+    <li>For <m>x_0 = 3.5</m> the values tend away from the equilibrium.</li>
+    <li>For <m>E = 3</m> the equilibrium is unstable.</li>
+  </ol>
+</exercise>  
+</solution>
+  
+</problem>

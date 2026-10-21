@@ -1,0 +1,108 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7J1uAXrMhqVCW4dGAXQwU2
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: f6389705a1ea9993
+-->
+<title>Information about Exam 1</title>
+<setup>
+  <text name="date1">Thursday, September 26</text>
+  <text name="date2">Thursday, October 3</text>
+  <text name="time1">11:15 AM - 12:05 PM</text>
+<!--   <text name="time2">12:20 PM &#x2D; 1:10 PM</text> -->
+  <text name="time3">1:25 PM - 2:15 PM</text>
+  <text name="location">Vincent Hall 16</text>
+</setup>
+
+<p>The discrete dynamical systems module exam for Math 1241 is based on the Discrete Dynamical Systems module. </p>
+
+
+<section><title>Material for the exam</title>
+
+<p>The following highlights what is and what is not good potential material for this exam.</p>
+
+<ol><li>
+<p>Functions, variables, and parameters</p>
+
+<ol>
+<li>Be comfortable with variables, parameters, and functions. Manipulating them is a key basic skill for this course.</li>
+<li>Of particular importance is being able to work with parameters that don't have a specific numerical value.</li>
+</ol>
+</li>
+
+<li>
+<p>Exponentials and logarithms</p>
+
+<p>You should be able to manipulate exponential functions and logarithms.</p>
+</li>
+
+<li>
+<p>Discrete-time dynamical systems</p>
+
+<p>Discrete-time dynamical systems will be the core this exam. </p>
+
+<p>Key points include:</p>
+<ol><li><ref to="doenet:7C1w6bKbkKghbh9wUtwzxF">Calculating the first few points of  a trajectory from an initial condition</ref>.</li>
+<li>Solving the system if it is linear without a constant term.    In this case, one obtains <ref to="doenet:7E6LN4EfVWPjCgUesVJd5Z">exponential growth or decay</ref>.</li>
+<li> Estimating a solution with <ref to="doenet:7GavdebJoto83FLcbNqFQV">cobwebbing using the graph of the updating function</ref>.</li>
+<li>Finding equilibria <ref to="doenet:7FmiE88UGp1HTdKmpQwzo2">analytically</ref> and <ref to="doenet:7FRM6VWrzPKk1bwC2SKx72">graphically</ref>.</li>
+<li><ref to="doenet:7GPggNZyhAcsd7fzc9Vfbe">Determining the stability of an equilibrium</ref> via cobwebbing or by observing trajectories near the equilibrium.</li>
+<li>Determining the <ref to="doenet:7Ef2Be1cwhbDsckykQow1H">doubling time or the half-life</ref> of a linear  dynamical system, or the time it takes to obtain a certain value.</li>
+<li>Analyzing the influence of parameters on the behavior of the system.</li>
+<li>Setting up a dynamical system from a verbal description of a system.  This process includes
+<ol>
+<li>carefully defining the notation used.</li>
+<li>possibly introducing parameters to describe quantities whose numerical value is unknown or whose value may change between experiments.</li>
+<li>possibly estimating parameters of the system from data.</li>
+</ol>
+
+ The dynamical systems you would be asked to set up will be linear (possibly with a constant term) unless any nonlinear component is clearly specified.  They would be along the lines of the <ref to="doenet:7F4gzqGfwcmfA5jaTZRWtB">bacteria growth</ref> or <ref to="doenet:7FeFkfmrhJwBt9YJHrSoTc">penicillin clearance</ref> examples.  (Sorry, no <ref to="doenet:activityId=2u-_L1xVCrmP242vPVeVk5s6j">rabbit control challenges</ref> on the exam.)</li>
+</ol>
+</li>
+</ol>
+</section>
+
+<section>
+  <title>Study aids</title>
+
+<ol>
+<li><p>Sample problems</p>
+ <p><ref to="https://mathinsight.org/assess/math1241/discrete_dynamical_system_elementary_problems">Elementary discrete dynamical system problems</ref> and <ref to="https://mathinsight.org/assess/math1241/discrete_dynamical_system_elementary_biology_problems">Elementary discrete dynamical system biology problems</ref> contain problems similar to those of the exam.  Generate multiple versions of these problems to see a larger array of the possible problems.</p></li>
+
+<li><p>Quizzes</p>
+<p><ref to="doenet:7DrnGdeDWjifqCJUWMFGdR">Quiz 1</ref>, <ref to="doenet:7EMJm4SsqjQGpfxD85wWzg">Quiz 2</ref>, and <ref to="doenet:7HG7uv2aYmM3Jj2Lu9MBTP">Quiz 3</ref> contain material that will be on the exam.  Even after the due date of quizzes, you can still generate more attempts and check out how well you can answer those questions.
+</p></li>
+
+
+<li><p>Problem Sets</p>
+<p>
+The problem sets from the course are also good review.</p></li>
+</ol>
+</section>
+
+<section>
+  <title>Exam rules</title>
+
+<ol>
+<li>You must bring your University ID card.</li>
+<li>You are allowed 50 minutes to take the exam.</li>
+<li>You are allowed to have one-half of one letter (8.5in <m>\times</m> 11in) sized sheet of paper of handwritten notes.  Double-sided is OK.</li>
+<li>You are allowed to have a calculator in the exam.  A graphing calculator is OK.</li>
+<li>No textbook or electronic equipment (other than calculator) allowed.</li>
+
+</ol>
+</section>
+
+<section>
+  <title>Exam times</title>
+
+  <p>You can take the exam up to two times.  You can take it once on $date1, and once on $date2. Each day, you can choose one of the following times (even if it is different from the time that you are officially registered):</p>
+<ul>
+<li>$time1</li>
+<!-- <li>$time2</li> -->
+<li>$time3</li>
+</ul>
+<p>Exam location: $location</p>
+
+<p>If you take the exam twice, your exam score will be the maximum of your scores from the two attempts.</p>
+</section>

@@ -1,0 +1,115 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 82eoHhQVRP4tNrEMHgov9e
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 3a66a5c8333e3d3d
+-->
+<title>Model of an infectious disease without immunity</title>
+
+<description>
+
+</description>
+<p><ref>Video 1</ref> | <ref>Video 2</ref> | <ref>Applet</ref> | <ref>Transcripts</ref></p>
+
+
+<section><title>Video 2</title>
+
+<figure suppressFigureNameInCaption="true">
+<video youtube="DYhZWXdOoJ0" aspectRatio="16/9" size="large" name="v2" />
+<caption>Analysis of a model of an infectious disease without immunity</caption>
+</figure>
+
+<setup>
+  <number name="timestamp1" />
+  <number name="timestamp2" />
+</setup>
+
+<sideBySide margins="5%">
+<div>Video credit achieved: <number displayDecimals="1">$v2.fractionWatched*100</number>%
+  
+<answer hide="true" name="v2Credit">
+  <award credit="$v2.fractionWatched"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v2" target="$v2Credit" actionName="submitAnswer" />
+</div>
+
+<!-- <div>
+<updateValue type="number" target="v1.time" newValue="$timestamp1" name="skipTo1">
+  <label>Go to Key Moment 1</label>
+</updateValue>
+</div>
+
+<div>
+<updateValue type="text" triggerWithTargets="skipTo1" target="v1" prop="state" newValue="playing" name="playStamp1"/>
+
+<updateValue type="number" target="v1.time" newValue="$timestamp2" name="skipTo2">
+  <label>Go to Key Moment 2</label>
+</updateValue>
+</div>
+
+
+<updateValue type="text" triggerWithTargets="skipTo2" target="v1" prop="state" newValue="playing" name="playStamp2"/> -->
+</sideBySide>
+
+<problem><title>Video review questions</title>
+<exercise includeAutoNumber="true"><title>Experiment with applet...</title>
+<p>Use the <ref>applet</ref> on the following page to model the dynamical system:
+  <mdn>
+    <mrow name="diffEq">\frac{dI}{dt} \amp= \alpha I (1 - I) - \mu I</mrow>
+    <mrow>\text{where,}\;\;\alpha \amp= 1</mrow>
+    <mrow>\mu \amp= 0.2</mrow>
+  </mdn>
+You can adjust the value for <m>\alpha</m> with the red slider  and the value for <m>\mu</m> with the purple slider.</p>
+  <figure suppressFigureNameInCaption="true">    
+    <image source="doenet:8KgAFquisWW4t8oA8i4CBe" asfilename="SIS applet howto 1.png" size="small" aspectRatio="830/374" mimeType="image/png" displayMode="inline" imageName="graphic showing sliders in applet" authorName="Virginia Mae" licenseCodes="CC-BY"><shortDescription>graphic showing sliders in applet</shortDescription></image>
+    
+    <caption>Adjust sliders to match given <m>\alpha</m> and <m>\mu</m> values.</caption>
+  </figure>
+
+  <p>For this model, since 
+    <answer>
+      <choice>the recovery rate, <m>\mu</m>, is greater than the infection rate, <m>\alpha</m></choice>
+      <choice credit="1">the infection rate, <m>\alpha</m>, is greater than the recovery rate, <m>\mu</m></choice>
+    </answer>, there are 
+    <answer inline="true">
+      <choice>1</choice>
+      <choice credit="1">2</choice>
+      <choice>3</choice>
+    </answer> biologically plausible equilibria. 
+  </p>
+<p>Click on the checkboxes to show the "vector field" and the "equilibria". Next adjust the position of the initial condition (the point labeled <m>x_0</m> in the applet.)</p>
+<p>Finally, click on the play button in the lower left corner of the graph to view an animation of the system.</p>
+</exercise>
+<exercise includeAutoNumber="true"><title>Using the same applet...</title>
+<p>Based on what you learned in the lesson on <ref to="doenet:7Z7pd9dxbBmFSwFMxsF35H">The stability of equilibria of a differential equation (video lesson)</ref>, use the <ref>applet</ref> to answer the following questions for the differential equation from <ref to="$diffEq">question 1</ref>.</p>
+  
+<hint><p>The applet displays the graph of the differential equation, <m>\frac{dI}{dt}</m>, in the left window and the <m>I</m> v. <m>t</m> graph in the right window.</p></hint>
+<p>For the equilibrium at <m>I^* = 0</m>, the system is 
+  <answer inline="true">
+    <choice>stable</choice>
+    <choice credit="1">unstable</choice>
+  </answer>, as all solutions near the equilibrium point move away from the equilibrium. The other equilibrium is located at <m>I^* = </m> <answer>0.8</answer>, and it is 
+  <answer inline="true">
+    <choice credit="1">stable</choice>
+    <choice>unstable</choice>
+  </answer>. This is an unfortunate situation, because it means that as time passes, the population of infected and susceptible individuals will stabilize with the following proportions:
+  <answer>
+    <choice credit="1">80% infected and 20% susceptible</choice>
+    <choice>20% infected and 80% susceptible</choice>
+    <choice>50% infected and 50% susceptible</choice>
+  </answer>.</p>
+<hint><title>What should it look like?</title>
+  <p>Using the applet, you should get something that looks like this for the graph of the differential equation (the graph on the left)</p>  
+  
+  <image source="doenet:oLSMFyaWjMMGwpnmAKjtbk" asfilename="diffeq graph.png" mimeType="image/png" imageName="Diff eq graph" authorName="Virginia Mae" licenseCodes="CC-BY"><shortDescription>graph of the differential equation</shortDescription></image>
+<p>...and something that looks like this for the <m>I</m> v. <m>t</m> graph (the graph on the right).</p>
+  <image source="doenet:xobmcY2dxNAAALx51TqN9h" asfilename="I v t graph.png" aspectRatio="956/1248" mimeType="image/png" imageName="I v. t graph" authorName="Virginia Mae" licenseCodes="CC-BY"><shortDescription>I v t graph</shortDescription></image>
+</hint>
+</exercise>
+
+</problem>
+
+
+
+</section>

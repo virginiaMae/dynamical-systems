@@ -1,0 +1,22 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7LqUouRxhayyXLETyBfWHP
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: ef4f074f0db39b6c
+-->
+<title>The derivative of the natural logarithm</title>
+<p><ref>Video</ref> | <ref>Summary</ref> | <ref>Transcript</ref>  </p>
+
+<section><title>Transcript: The derivative of the natural logarithm</title>
+<p>The derivative of the exponential function <m>f(x) = e^x</m> is the function itself. 
+<me>f’(x) = e^x</me>
+The natural logarithm is the inverse of the exponential function, so we could write <m>\ln</m> (we’ll choose <m>y</m> for the input), is the inverse, which we denote <m>f^-1</m> of <m>f</m>
+  <me>\ln y = f^{-1}(y).</me>
+Can we use this fact to figure out what the derivative of the natural logarithm should be? Well let’s think about the derivative of the exponential function, <m>\frac{df}{dx}</m>.</p>
+<p>One way to think of the derivative is that it's the slope, so we could write it as the change in <m>f</m>, let’s call it the output, the change in the output of <m>f</m> over the change in the input. Here’s a function machine diagram that could symbolize <m>f</m>, so the input to the function machine would be <m>x</m>, and if we write <m>y = f(x) = e^x</m>, then this output here would be <m>y</m>. So we might write the derivative as the change in <m>y</m> over the change in <m>x</m>. And this derivative, <m>\frac{df}{dx}</m>, the derivative of the exponential function, is <m>e^x</m>. Now let’s try to do the same thing for the natural logarithm. If this function machine represents <m>e^x</m>, and if we flip the function machine over and run it backward, we get <m>f^-1</m>, where the input is now <m>y</m> and the output is <m>x</m>.</p> <p>Running a function machine backwards undoes what the original function machine did. And this backward function is the natural logarithm. That’s why we used <m>y</m> over here, not that we had to use <m>y</m>, but it helps this diagram make more sense. So we can denote the sphere by <m>y</m> and we can denote the tetrahedron by <m>x</m>. So if <m>y = f(x) = e^x</m>, then <m>x = f^{-1}(y)</m> which is <m>\ln(y)</m>.</p>
+<p>Let's represent the derivative of <m>f^{-1}</m> in the same way that we represented the derivative of <m>f</m>. So <m>\frac{df^{-1}}{dy}</m> will equal the change in the output of <m>f^{-1}</m> over the change in the input of <m>f^{-1}</m>. Well, the output of <m>f^{-1}</m> is the <m>x</m>, so this tetrahedron, that’s the input to <m>f</m>. And the input to <m>f^{-1}</m> is the output to <m>f</m>. So the ratio of change in output of <m>f^{-1}</m>, to change in input to <m>f^{-1}</m>, is the same thing as the ratio of the change in the input to <m>f</m> over the change in the output of <m>f</m>. Or we might write this as the change in <m>x</m> over the change in <m>y</m>. Well this is just the reciprocal of the derivative of <m>f</m>. And what is the derivative of <m>f</m>? It’s <m>e^x</m>. So the derivative of <m>f^{-1}</m>, i.e. the derivative of the natural logarithm should be <m>\frac{1}{e^x}</m>.</p>
+<p>But that doesn’t quite make sense, because this <m>x</m> represents the output of the natural logarithm. We need to write the derivative of the natural logarithm in terms of its input <m>y</m>. But that's not so hard because we know that <m>e^x</m> is the same thing as <m>y</m>. So <m>\frac{1}{e^x}</m> is <m>\frac{1}{y}</m>. And that is the derivative of the natural logarithm: <m>\frac{df^{-1}}{dy}</m>, i.e. the derivative of the natural logarithm as we can write as <m>\frac{d}{dy}</m> of <m>\ln y</m> is equal to <m>\frac{1}{y}</m>
+  <me>\frac{d}{dy} \bigg( \ln y \bigg) = \frac{1}{y}.</me>
+Of course it didn’t matter that I used the letter <m>y</m> here, I could have used the letter <m>z</m>, or <m>x</m>, or anything. So for example, the derivative of <m>\ln z</m> is <m>\frac{1}{z}</m>.</p>
+
+</section>

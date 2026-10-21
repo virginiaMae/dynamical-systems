@@ -1,0 +1,157 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7FUH3CB36A2Fup4AyLyk8P
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 0dd493c851d4afe6
+-->
+<title>A graphical approach to finding equilibria of discrete dynamical systems</title>
+
+<p><ref>Video 1</ref> | <ref>Video 2</ref> | <ref>Transcripts</ref> </p>
+<description>
+By plotting the updating function and the diagonal, one can read off the equilibria from their intersections of the two graphs.
+</description>
+
+
+<section name="vid_section"><title>Video 2</title>
+<p>The second video gives you another chance to see both the graphical and analytic approach to finding equilibria with another sample function.</p>
+
+<figure suppressFigureNameInCaption="true">
+<video youtube="S79I3vEbObk" size="large" aspectRatio="16/9" name="v2" />
+<caption>Graphical approach to find equilibria of discrete dynamical systems</caption>
+</figure>
+
+<setup>
+  <number name="timestamp1">198</number>
+  <number name="timestamp2">208</number>
+</setup>
+  
+
+<sideBySide margins="5%">
+<div><p>Video credit achieved: <number displayDecimals="1">$v2RoundUp*100</number>%</p></div>
+
+<div>
+<p><updateValue type="number" target="$v2.time" newValue="$timestamp1" name="skipTo1">
+  <label>Go to Key Moment 1</label>
+</updateValue></p>
+<updateValue type="text" triggerWith="$skipTo1" target="$v2.state" newValue="playing" name="playStamp1" />
+</div>
+
+<div>
+<p><updateValue type="number" target="$v2.time" newValue="$timestamp2" name="skipTo2">
+  <label>Go to Key Moment 2</label>
+</updateValue>
+<!--   <updateValue type="number" target="$v1.time" triggerWith="buttonLink2" newValue="$timestamp2" name="skipTo2b"/> -->
+</p>
+
+<updateValue type="text" triggerWith="$skipTo2" target="$v2.state" newValue="playing" name="playStamp2" />
+<!-- <updateValue type="text" triggerWith="skipTo2b" target="v1" prop="state" newValue="playing"/> -->
+</div>
+</sideBySide>
+
+
+<number name="v2RoundUp" hide="true">
+  <conditionalContent>
+    <case condition="$v2.fractionWatched > 0.9">1</case>
+    <else>$v2.fractionWatched</else>
+  </conditionalContent>
+</number>
+
+<answer hide="true" name="v2Credit">
+  <award credit="$v2RoundUp"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v2" target="$v2Credit" actionName="submitAnswer" />
+  
+<problem><title>Video 1 review questions</title>
+<exercise includeAutoNumber="true"><title />
+<setup>
+  <boolean name="hidePoints">true</boolean>
+  <boolean name="hideExercise2">true</boolean>
+  <point hide="true" name="E1" fixed="true">(-2,-2)
+    <label><m>(-2,-2)</m></label>
+  </point>
+  <point hide="true" name="E2" fixed="true">(1,1)
+    <label><m>(1,1)</m></label>
+  </point>
+  <point hide="true" name="E3" fixed="true">(2,2)
+    <label><m>(2,2)</m></label>
+  </point>
+</setup>
+<p>How many equibilibria does the system shown in the graph below have?
+  <answer name="vid2Review1">3</answer></p>
+  
+
+  <hint hide="$vid2Review1.numSubmissions &lt; 2 or $vid2Review1.creditAchieved = 1 or $vid2Review1.numSubmissions >= 5">You can find a hint to this at <ref to="$vid_section">Key Moment 1</ref> in the video.</hint>
+
+<hint hide="$vid2Review1.numSubmissions &lt; 5 or $vid2Review1.creditAchieved = 1">Look for all the locations on the graph where the graph of <m>f(x_n)</m> intersects the graph of <m>y = x</m>. How many places does this happen?
+</hint>
+  
+
+<updateValue target="$hidePoints" newValue="false" type="boolean" triggerWhen="$vid2Review1.creditAchieved = 1" />
+
+<updateValue target="$hideExercise2" newValue="false" type="boolean" triggerWhen="$vid2Review1 = 3" />
+</exercise>
+
+<exercise includeAutoNumber="true" hide="$hideExercise2"><title />
+<p>Drag the equilibrium points labeled <m>E_1</m>, <m>E_2</m>, <m>E_3</m> to the correct locations on the graph. Click the button below when you are finished placing all points to check your work.</p>
+
+  <answer submitLabel="Check Equilibrium Points" name="vid2Review2">
+    <award unorderedCompare="true">
+      <when><mathList>$E1 $E2 $E3</mathList> = <mathList>$p1 $p2 $p3</mathList>
+      </when>
+    </award>
+  </answer>
+
+   <hint hide="$vid2Review2.numSubmissions &lt; 2 or $vid2Review2.creditAchieved = 1 or $vid2Review2.numSubmissions >= 5">You can find a hint to this at <ref to="$vid_section">Key Moment 2</ref> in the video.</hint>
+
+<hint hide="$vid2Review2.numSubmissions &lt; 5 or $vid2Review2.creditAchieved = 1">See if you can slide each $p1.styleDescriptionWithNoun to each location where the two functions intersect. If you get close to an intersection point, the $p1.styleDescriptionWithNoun will snap into place.
+</hint>
+  </exercise>
+
+  
+<graph xmin="-4" ymin="-4" name="cubicGraph">
+    <xLabel><m>x_n</m></xLabel>
+    <yLabel><m>x_{n+1}</m></yLabel>
+    <function applyStyleToLabel="true" name="f" fixed="true">
+      x^3 - x^2 - 3x + 4
+      <label><m>f(x_n)</m></label>
+    </function>
+    <line styleNumber="2" applyStyleToLabel="true" name="g" fixed="true">y = x
+      <label><m>y = x</m></label>
+    </line>
+    <point hide="$hidePoints" name="p1" styleNumber="2">(6,6)
+      <label><m>E_1</m></label>
+      
+        <attractTo threshold="0.1">$E1 $E2 $E3</attractTo>
+        <constrainTo>$g</constrainTo>
+      
+    </point>
+    <point hide="$hidePoints" name="p2" styleNumber="2">(7,7)
+      <label><m>E_2</m></label>
+      
+        <attractTo threshold="0.1">$E1 $E2 $E3</attractTo>
+        <constrainTo>$g</constrainTo>
+      </point>
+    <point hide="$hidePoints" name="p3" styleNumber="2">(8,8)
+      <label><m>E_3</m></label>
+      
+        <attractTo threshold="0.1">$E1 $E2 $E3</attractTo>
+        <constrainTo>$g</constrainTo>
+      
+    </point>
+  </graph>
+
+
+  
+<solution>
+  <graph xmin="-4" ymin="-4" name="solutionGraph">
+    <xLabel><m>x_n</m></xLabel>
+    <yLabel><m>x_{n+1}</m></yLabel>
+    $f $g
+    <point hide="false" styleNumber="2" extend="$E1" /> <point hide="false" styleNumber="2" extend="$E2" /> <point hide="false" styleNumber="2" extend="$E3" />
+  </graph>
+</solution>
+  
+</problem>
+  
+</section>

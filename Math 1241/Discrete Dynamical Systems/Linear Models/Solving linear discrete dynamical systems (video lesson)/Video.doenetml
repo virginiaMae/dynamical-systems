@@ -1,0 +1,88 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7DDxSKTLAehtBNzLfBEzGv
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 7649b8b237e613f2
+-->
+<title>Solving linear discrete dynamical systems</title>
+
+<p><ref>Video</ref> | <ref>Summary</ref> | <ref>Transcript</ref> </p>
+
+<description>
+One can solve a linear discrete dynamical system analytically.  The result is an exponential function of the time step.
+</description>
+
+<p>A linear discrete dynamical system is one of the form
+<md>
+  <mrow>x_{n+1}\amp = a x_n</mrow>
+  <mrow>x_0\amp = b,</mrow>
+</md>
+where <m>a</m> and <m>b</m> are two numbers called parameters.  The parameter <m>a</m> determines how fast <m>x_n</m> grows or shrinks.  The parameter <m>b</m> determines the initial condition.  Here we show how to solve such a linear system, meaning find a formula for <m>x_t</m> that is written just in terms of the time step <m>n</m> and the initial condition <m>x_0</m> (and, unlike above the above equation, doesn't depend on the value of <m>x</m> from the previous time step).</p>
+
+
+
+
+<section><title>Video</title>
+
+<figure suppressFigureNameInCaption="true">
+<video youtube="eNVN67eZC88" size="large" aspectRatio="16/9" name="v1" />
+<caption>Solving linear discrete dynamical systems</caption>
+</figure>
+  
+<number name="v1RoundUp" hide="true">
+  <conditionalContent>
+    <case condition="$v1.fractionWatched > 0.9">1</case>
+    <else>$v1.fractionWatched</else>
+  </conditionalContent>
+</number>
+  
+  <p>Video credit achieved: <number displayDecimals="1">$v1RoundUp*100</number>%</p>
+
+<answer hide="true" name="v1Credit">
+  <award credit="$v1RoundUp"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+  
+<problem><title>Video review question</title>
+
+<setup>
+<selectFromSequence name="a" from="1" to=" 10" />
+<selectFromSequence name="b" from="10" to=" 100" step=" 10" />
+<select name="x">x y z</select>
+<select name="n">n t</select>
+<math name="sol" simplify="full">$a **$n *$b </math>
+</setup>
+
+
+<p>Compute the solution to the discrete dynamical system
+<md>
+  <mrow>$x _{ $n +1}\amp = <math simplify="numbersPreserveOrder" format="latex">$a  $x _$n </math></mrow>
+  <mrow>$x _0\amp = $b</mrow>
+</md>
+</p>
+<p><m>$x _$n  =</m> 
+<answer name="ans">
+<award>$sol </award>
+</answer>
+</p>
+
+
+  <hint hide="$ans.numSubmissions &lt; 2 or $ans.creditAchieved = 1 or $ans.numSubmissions >= 5">
+  <p>In each time step <m>$x </m> is multiplied by <answer weight="0" name="usera">$a</answer>.  To go from the initial condition <m>$(x)_0 = $b </m> to <m>$(x)_$n </m>, we must multiply by <m>$a </m> a total of <answer weight="0" name="usern">$n </answer> times, or multiply by <math>$usera^$usern </math>.
+  </p>
+  </hint>
+  
+  <hint hide="$ans.numSubmissions &lt; 5 or $ans.creditAchieved = 1">
+  <p>In each time step <m>$x </m> is multiplied by <m>$a </m>.  To go from the initial condition <m>$x _0 = $b </m> to <m>$x _$n </m>, we must multiply by <m>$a </m> a total of <m>$n </m> times, or multiply by <m>$a ^$n </m>.  The solution is <m>$x _$n =$sol </m>
+  </p>
+  </hint>
+
+
+<solution>
+In each time step <m>$x </m> is multiplied by <m>$a </m>.  To go from the initial condition <m>$x _0 = $b </m> to <m>$x _$n </m>, we must multiply by <m>$a </m> a total of <m>$n </m> times, or multiply by <m>$a ^$n </m>.  The solution is <m>$x _$n =$sol </m>.
+
+</solution>
+</problem>
+</section>
+

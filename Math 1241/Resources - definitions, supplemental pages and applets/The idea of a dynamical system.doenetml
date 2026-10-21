@@ -1,0 +1,80 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 82V8SjnMP7wgZGDUwCj5CH
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: c353ab2e2f9c00c7
+-->
+<ref to="https://mathinsight.org/dynamical_system_idea">math insight source</ref>
+
+<section><title>The idea of a dynamical system</title>
+ 
+<subsection><title>What is a dynamical system?</title>
+<p>A dynamical system is all about the evolution of something over time. To create a dynamical system we simply need to decide (1) what is the “something” that will evolve over time and (2) what is the rule that specifies how that something evolves with time. In this way, a dynamical system is simply a model describing the temporal evolution of a system.</p>
+</subsection>
+
+<subsection><title>The state space</title>
+<p>The first step in creating a dynamical system is to pin down what is the special “something” that we want to evolve with time. To do this, we need to come up with a set of variables that give a complete description of the system at any particular time.</p>
+
+<p>By “complete description,” we don't necessarily mean that the variables will completely describe a real life system we may be trying to model. But, the variables must completely describe the state of the mathematical system. In a dynamical system, if we know the values of these variables at a particular time, we know everything about the state of the system at that time. To model some real life system, the modeler must clearly make a choice of what variables will form the complete description for the mathematical model.</p>
+
+<p>The variables that completely describe the state of the dynamical system are called the state variables. The set of all the possible values of the state variables is the state space.</p>
+
+<p>The state space can be discrete, consisting of isolated points, such as if the state variables could only take on integer values. It could be continuous, consisting of a smooth set of points, such as if the state variables could take on any real value. In the case where the state space is continuous and finite-dimensional, it is often called the phase space, and the number of state variables is the dimension of the dynamical system. The state space can also be infinite-dimensional.</p>
+</subsection>
+
+<subsection><title>The time evolution rule</title>
+<p>The second step in creating a dynamical system is to specify the rule for the time evolution of the dynamical system. This rule must be defined to make the state variables be a complete description the state of the system in the following sense: the value of the state variables at a particular time must completely determine the evolution to all future states. If the time evolution depends on a variable not included in the state space, then the rule combined with the state space does not specify a dynamical system. One must either change the rule or augment the state space by the neccesary variables to form a dynamical system.</p>
+
+<p>The time evolution rule could involve discrete or continuous time. If the time is discete, then the system evolves in time steps, and we usually let the time points be the integers t=0,1,2,…. We can write the state of the system at time t as xt. In many cases, the time evolution rule will be based on a function f that takes as its input the state of the system at one time and gives as its output the state of the system at the next time. Therefore, starting at the initial conditions x0 at time t=0, we can apply the function once to determine the state x1=f(x0) at time t=1, apply the function a second time to get the state x2=f(x1) at time t=2, and continue repeatedly applying the function to determine all future states. We end up with a sequence of states, the trajectory of the point x0: x1,x2,x3,…. In this way, the state at all times is determined both by the function f and the initial state x0. We refer to such as system as a discrete dynamical system.</p>
+
+<p>In a continuous dynamical system, on the other hand, the state of the system evolves through continuous time. One can think of the state of the system as flowing smoothly through state space. As time evolves, the state x(t) at time t can be thought of as a point that moves through the state space. The evolution rule will specify how this point x(t) moves by giving its velocity, such as through a function v(t)=F(x(t)), where v(t) is the velocity of the point at time t. In this case, starting with an initial state x(0) at time t=0, the trajectory of all future times x(t) will be a curve through state space.</p>
+</subsection>
+
+<!--Applet conversion required below...-->
+  
+<!-- Examples of dynamical systems
+To illustrate the idea of dynamical systems, we present examples of discrete and continuous dynamical systems.
+
+Bacteria doubling example
+The first dynamical system will model the growth of a bacteria population. Let the population size bt be the number of bacteria in the population at time t. If we allow the values of the bt to be non&#x2D;negative integers, then the non&#x2D;negative integers form the state space, and the state space is discrete.
+
+The bacteria population grows because each baterium grows and the divides into two bacteria. For this example, we will assume that all the bacteria divide at the same time. Then, we can define one time step as the time for all the bacteria to divide into two. For this model, we ignore how much real time elapses between each division cycle, but define our time so that one unit of time is the time between divisions. In this way, we form a discrete dynamical system, and simply need a rule to determine the population size bt at the times t=1,2,3,… given the initial population size b0 at time t=0.
+
+Since every bacterium divides into two during each time step, the rule is particular simple. The population size doubles at each time step. For any time t=n, the population size at the next step bn+1 will be two times the previous population size bn, i.e., bn+1=f(bn)=2bn.
+
+The rule bn+1=2bn, coupled with the initial population size b0 at time t=0, completely determines the population size at all future times t. Our dynamical system is well defined.
+
+The bacteria doubling dynamical system is illustrated by the following applet, which shows a number of ways to represent the solution trajectory b1,b2,b3,…. In this example, the dependence of the solution on the initial state b0 is quite simple. The trajectory is just scaled by b0.
+
+Bacteria doubling. The evolution of this bacteria population follows a simple rule: the number of bacteria doubles every time step. Since the state of the system is determined by a single variable, the population size b, the state space is one&#x2D;dimensional. The state space is represented by the blue vertical line at the left. The initial population size b0 is a blue point and the population size bt at time t is a red point on this state space. The time evolution of the dynamical system is also represented by the plot of population size bt versus t, where the lines connecting the points are not part of the graph but are there just to guide your eye. The population size bt is also illustrated in the right panel where each green dot represents one bacterium. You can change the time t and the initial population size b0 by moving the sliders in the gray box. Stop or start the animation by clicking the button that appears in the lower left corner of one of the panels.
+
+More information about applet.
+
+In the above description of this example, we defined the state space to be the non&#x2D;negative integers. The mathematical system will work the same way if we allow the population size to be any real number. Of course, it might be hard to interpret the meaning of fractional bacteria. But, as you learn how to analyze discrete dynamical systems, you will see how expanding the state space to include all real numbers will facilitate the mathematical analysis.
+
+Undamped pendulum example
+A second example dynamical system is a model of an undamped pendulum, that is, a pendulum that oscillates without any friction so that it will continue oscillating forever. Imagine that the pendulum consists of a rigid rod with a ball fastened at its end and that the pendulum is free to rotate around the pivot point.
+
+We can specify the position of the pendulum by the angle θ that the rod makes with a line pointing straight down. The angle is zero when the pendulum points straight down, and θ=±π when the pendulum points straight up. We use the convention that 0<θ<π indicates that the pendulum is pointing toward the right and that −π<θ<0 indicates that the pendulum is pointing toward the left.
+
+Pendulum position
+The angle θ completely specifies the position of the pendulum. So, our first thought might be that θ should completely determine the state of the dynamical system. However, we cannot use θ as the only state variable. If the above picture of the pendulum were a snapshot of a pendulum, we don't have enough information to know where the pendulum will move next.
+
+We might think that the pendulum will start moving downward because we implicitly assume that the pendulum starts out being stationary. But, if I told you that when I took the snapshot of the pendulum, it was moving rapidly in a counterclockwise direction, the additional information of how the pendulum was moving at the time of the snapshot would change your prediction of where the pendulum will move next. If we know the pendulum pictured above has a counterclockwise velocity, we expect that the pendulum will continue to move upward.
+
+In order to determine the future behavior of the pendulum, we need to know not only its position at the time of the snapshot, but also its velocity. Hence, the state space must include both those variables. It turns out that for this idealized pendulum, the angle θ and the angular velocity ω completely determine the state of the system. Both θ and ω will evolve over time, and their value at one time determines all their future values. The dynamical system is two&#x2D;dimensional, and since θ and ω evolve continuously, it is a continuous dynamical system.
+
+In the above bacteria dynamical system, we plotted the one&#x2D;dimensional state space (or phase space) as a blue line. In the pendulum example, we can plot the two&#x2D;dimensional state space (or phase space) as a plane, often called the phase plane. We can plot θ on the x&#x2D;axis of the Cartesian plane and ω on the y&#x2D;axis. In this representation, the current state of the system, θ(t) and ω(t), is a point (θ(t),ω(t)) on the phase plane, plotted as the red point on the left panel of the applet, below. The trajectory of the initial condition (θ(0),ω(0))=(θ0,ω0) (the blue point labeled as X0) is the green curve in the left panel.
+
+To further help you visualize how (θ(t),ω(t)) flows through the state space, gray arrows indicating the velocity of (θ(t),ω(t)) are plotted throughout the phase plane. Not only do the arrows point out the direction of the flow, but their length indicates the speed of (θ(t),ω(t)).
+
+Undamped pendulum. The dynamical system describing an undamped pendulum requires two state variables. The angle θ of the pendulum and the angular velocity ω. These two variables completely describe the state of the pendulum. The state space (or phase space) (θ,ω) is illustrated in the left panel. The space is periodic in θ, and the range −π≤θ<π is shown. The initial angle and angular velocity, X0=(θ0,ω0)=(θ(0),ω(0)), is set by dragging the blue point. The resulting evolution of the system is illustrated both by the green curve (the trajectory) and the moving red point, which indicates the state (i.e., angle and angular velocity) at time t: (θ(t),ω(t)). Gray arrows represent the speed and direction that the point (θ(t),ω(t)) moves through the state space. The right panel illustrates the evolution of just the angle θ(t) with respect to time t. The plot includes both the graph of θ versus t in green and a moving red point, corresponding to the similar curve and point in the left panel. Above the graph are slider by which you can change the time t and a graphical illustration of the pendulum with angle θ(t) and angular velocity ω(t). If the angular velocity ω is sufficiently large, the pendulum will swing around past an angle of ±π. In this case, the variable θ(t) will wrap around from π to −π or vice versa. At those points, the green curves will contain extraneous lines crossing between θ=π and θ=−π. Those lines should be ignored.
+
+More information about applet.
+
+The state space isn't really a plane because the angle θ is 2π&#x2D;periodic. The left edge of the plane at θ=−π is really the same thing as the right edge of the plane at θ=π, as both corresponding to the pendulum pointing straight up. You could imagine taking the phase plane plotted in the left panel and rolling it into a cylinder so that the lines θ=−π and θ=π match up. The cylinder would be a better representation of the phase space. The angular velocity ω, however, is not periodic, as positive values indicate a counterclockwise rotation of the pendulum (shown as an inset in the right panel) and negative values indicate clockwise rotation.
+
+The right panel of the above applet shows a plot of the pendulum angle θ versus time. Because the state space is two&#x2D;dimensional, we can't easily plot the full system state (θ(t),ω(t)) versus time. Instead, we chose to just plot the angle. (We could have also included a separate plot of ω versus t.) Again, this plot should really be on a cylinder, as the top edge of the gray region is θ=π and the bottom edge is θ=−π, which are really the same thing.
+
+It may be slightly confusing that we have mentioned two different velocities. One velocity is the angular velocity ω(t), which tells us how fast the angle ω(t) is changing and in which direction. The second velocity is the velocity (speed and direction) of the point (θ(t),ω(t)) through state space, i.e., the velocity of the red point in the left panel, above. These two velocities are related, as the left and right movement of the red point is due to changes in θ(t). In fact, the velocity of this left and right movement is exactly given by the angular velocity. The up and down movement of the red point is given by changes in the angular velocity ω(t), or the acceleration of the pendulum. How ω(t) changes with time depends on a little physics, and a discussion of this mechanism is outside the scope of this introductory page. -->
+</section>

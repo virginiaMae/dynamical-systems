@@ -1,0 +1,87 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7NTWR9SspAu4KbEfTbfNgB
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 5acf2a898ac6e1b5
+-->
+<problem>
+<!-- <title>Derivative of quotient of logarithm and linear</title> -->
+
+<setup>
+
+<selectFromSequence name="a" numToSelect="2" withReplacement="true" from="-10" to=" 10" exclude="0" />
+<selectFromSequence name="c" from="1" to=" 10" exclude="0" />
+<select name="function"> f g m p r u v w</select>
+<select name="x"> x y z s t</select>
+
+<math name="numerator" simplify="full">$a[1] *$x +$a[2] </math>
+<math name="denominator" simplify="full">$c  ln($x )</math>
+<math name="quotient" simplify="full">$numerator /$denominator </math>
+<derivative name="derivative" simplify="full" variables="$x">$quotient</derivative>
+<math name="derivative2" simplify="full" expand="true">$derivative </math>
+<derivative name="d_numerator" simplify="full" variables="$x">$numerator</derivative>
+<derivative name="d_denominator" simplify="full" variables="$x">$denominator</derivative>
+<math name="numerator_of_derivative" simplify="full" expand="true">$denominator *$d_numerator -$numerator *$d_denominator </math>
+<math name="deriv" simplify="full">d$function/d$x</math>
+<selectFromSequence name="phrasing" from="1" to="4" />
+<math name="derivative_sign_error_detection" simplify="full">$numerator_of_derivative /$denominator ^2</math>
+
+</setup>
+
+
+<conditionalContent>
+<case condition="$phrasing = 1">
+Let <m>$function ($x ) = $quotient </m>.  Find <m>$deriv </m>.
+
+</case><case condition="$phrasing = 2">
+Calculate <m>$deriv </m>, where  <m>$function ($x ) = $quotient </m>. 
+
+</case><case condition="$phrasing = 3">
+Calculate the derivative of <m>$function ($x ) = $quotient </m>.
+
+</case><else>
+Differentiate the function <m>$function ($x ) = $quotient </m>.
+
+</else>
+</conditionalContent>
+
+
+<p><m>$deriv  =</m> 
+<answer forceFullCheckWorkButton="true">
+<award>$derivative </award>
+<!-- <award credit='0.9' nSignErrorsMatched="1" feedbackCodes='onesignerror'>$derivative </award> -->
+<!-- <award credit='0.81' nSignErrorsMatched="2" feedbackCodes='twosignerrors'>$derivative </award> -->
+<!-- <award symbolicEquality='true'>$derivative_sign_error_detection </award> -->
+<!-- <award credit='0.9' symbolicEquality='true' nSignErrorsMatched="1" feedbackCodes='onesignerror'>$derivative_sign_error_detection </award> -->
+<!-- <award credit='0.81' symbolicEquality='true' nSignErrorsMatched="2" feedbackCodes='twosignerrors'>$derivative_sign_error_detection </award> -->
+</answer>
+</p>
+<!-- <copy prop="feedbacks" tname="answer1" /> -->
+
+<hint>
+
+<paragraphs>
+<title>Helpful pages</title>
+<ul>
+<li><ref to="doenet:7LnjShYdfNStWvZ8jTqwqr">The derivative of the natural logarithm</ref></li>
+<li><ref to="doenet:7LMCto3Hr81zxLMzwiiARp">The quotient rule for differentiation</ref></li>
+</ul>
+</paragraphs>
+</hint>
+
+
+<solution>
+Using the 
+<ref to="doenet:7LMCto3Hr81zxLMzwiiARp">The quotient rule for differentiation</ref>
+, 
+<md>
+  <mrow>\frac{ d$function }{ d$x }\amp =  \frac{ ($denominator  ) \frac{ d }{ d$x } ($numerator )  - ($numerator ) \frac{ d }{ d$x } ($denominator  ) }{ ($denominator )^2 }</mrow>
+  <mrow>\amp =  \frac{ ($denominator  ) ($d_numerator ) - ($numerator )($d_denominator ) }{ ($denominator )^2 }</mrow>
+  <mrow>\amp =  \frac{ $numerator_of_derivative  }{ ($denominator )^2 }.</mrow>
+</md>
+
+
+</solution>
+
+
+</problem>

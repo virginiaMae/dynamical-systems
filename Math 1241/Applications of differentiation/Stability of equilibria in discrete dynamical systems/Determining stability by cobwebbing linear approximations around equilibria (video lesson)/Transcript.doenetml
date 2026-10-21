@@ -1,0 +1,43 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7PJvXyc2Tkjew7gaAvkrQ6
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: c4e6bca1128ca526
+-->
+<title>Determining stability by cobwebbing linear approximations around equilibria</title>
+
+<p><ref>Video</ref> | <ref>Transcript</ref></p>
+
+<description>
+By cobwebbing the linear approximation to a discrete dynamical around an equilibrium, one can determine a criterion for the stability of the equilibrium.
+</description>
+
+<section><title>Transcript</title>
+
+<p>A linear dynamical system such as one in the form of <m>z_{n+1} = </m> some number <m>a</m> times <m>z_n</m>, is the simplest type of dynamical system. If <m>a</m> is between 0 and 1, we get exponential decay, and if <m>a</m> is greater than 1 we get exponential growth. In these cases it's fairly straightforward to determine what the equilibrium is, and whether it's stable or unstable. But there are other cases to worry about: what if a is equal to 1, or what about the case when a is negative? To examine these questions you can try cobwebbing to see what happens.</p> 
+
+<p>In this cobwebbing applet, I had to use <m>x</m> for <m>z_n</m>, so this case right here is the case where <m>z_{n+1} = 0.8</m> times <m>z_n</m>. Here we can iterate many times and see if the solution approaches an equilibrium. If it does, then the equilibrium seems to be stable. If on the other hand the solution seems to move away from the equilibrium, that's an indication that the equilibrium is unstable. Particularly, we can look to see if we get really close to the equilibrium, but we still move away. Those were the easy cases where the parameter <m>a</m> was positive.</p>
+
+<p>What you can do is also check out what happens when you have a negative value of <m>a</m>. In this case you can look for conditions on the parameter <m>a</m>, which here is negative 0.5, for which the solution will approach the equilibrium – so here’s a case where it looks like the equilibrium is stable, because the solution is getting closer and closer to an equilibrium.</p>
+  
+<p>After you understand how the stability of a linear dynamical system of this form works, how the stability depends on the parameter <m>a</m>, the next step is to ask: well, what happens if we add a constant term to the dynamical system? What if we had a dynamical system of the form <m>y_{n+1} = </m> some number <m>b</m> times <m>y_n</m> plus another number <m>c</m>? If <m>c</m> were 0, we’d be back at the previous case. One question you could ask is how does <m>c</m> influence the stability of the equilibria? And again, you can check this out by cobwebbing. Just go back to the cobwebbing applet if you like, you can see what happens when you add a number, like 5 or 11 to the dynamical system. Once you’ve done this we can get on to the bigger question we want to investigate: What about nonlinear systems?</p>
+
+<p>For example, we could have a dynamical system of the form: <m>x_{n+1}</m> is some function <m>f</m> of the previous time <m>x_n</m>. If <m>f</m> happened to be linear, let’s say <m>f(x)</m> was just <m>b</m> times <m>x</m> plus <m>c</m>, then we’re back to the previous case. But let’s imagine this isn’t true – so let’s imagine that we’re not having a linear function <m>f</m>. Now we know how to find the equilibria graphically. To do that we just plot the diagonal <m>x_{n+1} = x_n</m> and <m>f</m>. Then the equilibria are intersections of the diagonal and the function. </p>
+
+<p>Can we find a principle for determining the stability of equilibria for the case when we have a nonlinear system? And the answer is to approximate the nonlinear system by a linear system; we’re going to use a linear approximation so that we can take the results that we learned here and apply them to the nonlinear case. Our strategy is going to be based on two ideas. </p>
+
+<p>One is that stability is a local property. If we want to analyze the stability of an equilibrium, we only care about the behavior of the function f right near that equilibrium. An equilibrium is stable, or we might say, locally stable, if whenever we start near the equilibrium we always stay near the equilibrium. And it's unstable if no matter how close we start to the equilibrium we can still move away. </p>
+
+<p>The second idea is that most nonlinear functions tend to look linear when you zoom in. Even if the graph of a function is a complicated curve, if that curve is smooth then when we zoom in the graph of it looks like a line. This zoomed in line is the linear approximation that we’re going to use to try to estimate the stability of equilibria. This version of the cobwebbing applet can help you explore how linear approximations can help you understand the stability of the equilibria. The blue curve is the plot of an updating function for a discrete dynamical system, here its <m>1.5x</m> times <m>(1-x)</m>. And the red curve is the diagonal. The equilibria are the points where the diagonal intersects the graph of the function. </p>
+
+<p>Not only does this applet allow us to cobweb as usual, it will also find the equilibria if we click the find “e” button followed by clicking near a point where the graph of the function intersects the diagonal. In this case it found the equilibrium <m>\frac{1}{3}</m>. The applet then also calculates a linear approximation to the function, There’s a good approximation to the function near the equilibrium. The green line is something that we’ll learn more about later, it’s called the tangent line, and it’s very close to the graph of the function, the blue curve, around the point e. To see this, we can center the equilibrium by clicking “center e”, and then zoom in with the plus sign. </p>
+
+<p>As we zoom in, we can see that the tangent line, the green line, closely approximates the blue curve. For this reason, cobwebbing the function itself using the blue curve, is very similar to what you’d get if you cobwebbed the green line. The more we zoom in, the closer we see the green line becomes to the blue curve. The reason this is useful is that we well-understand how to determine stability of a linear dynamical system. If we replace the blue curve by the green line, then we have a linear dynamical system, and we know how the stability of the equilibrium would depend on the parameters.</p> 
+
+<p>Your job is to put this all together to determine what features the tangent line will determine the stability of the equilibrium for the nonlinear system. As a hint, we plot the slope here, in this case the slope of the green line is <m>\frac{1}{2}</m>. And that will probably play a key role in determining the stability of the equilibria. </p>
+
+ 
+
+
+
+</section>

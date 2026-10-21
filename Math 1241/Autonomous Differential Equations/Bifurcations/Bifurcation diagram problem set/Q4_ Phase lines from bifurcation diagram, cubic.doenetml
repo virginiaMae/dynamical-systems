@@ -1,0 +1,457 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 81zRL5G8wQz16VDmn8psFc
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 03a5a994acd7b6ae
+-->
+<problem>
+<!-- <title>Phase lines from bifurcation diagram, cubic</title> -->
+
+<variantControl numVariants="1" />
+  
+<setup>
+
+<number name="bifpoint1">-4</number>
+<number name="bifpoint2">2</number>
+<number name="bifxval1">-3</number>
+<number name="bifxval2">1</number>
+<number name="parval1">-5</number>
+<number name="parval2">-3</number>
+<number name="parval3">4</number>
+
+
+<math name="x">z</math>
+<math name="par">beta</math>
+<math name="f">h</math>
+<function name="basefun" variables="x" symbolic="true">1/2*x ^3-3/2*x </function>
+<mathList name="bifpoints" unordered="true">$bifpoint1 $bifpoint2</mathList>
+
+  
+<function name="fun" variables="x">($bifpoint2 -$bifpoint1 )/2*$$basefun(2x/($bifxval2 -$bifxval1 )+($bifxval1 +$bifxval2 )/($bifxval1 -$bifxval2 ))+($bifpoint1 +$bifpoint2 )/2</function>
+<solveEquations name="cubicSol">$fun=0</solveEquations>
+<math name="xmax">6</math>
+<math name="xmin">-8</math>
+
+
+<math name="allroots" simplify="full" unordered="true">$cubicSol.solutions</math>
+
+<solveEquations name="par1Sol">$fun-$parval1=0</solveEquations>
+<!-- <mathlist name='parval1_roots' simplify='full' unordered='true'> -->
+<mathList name="parval1_roots" unordered="true">
+  <repeat for="$par1Sol.solutions" valueName="v"><round>$v</round></repeat>
+</mathList>
+
+<solveEquations name="par2Sol">$fun-$parval2=0</solveEquations>
+<!-- <mathlist name='parval2_roots' simplify='full' unordered='true'> -->
+<mathList name="parval2_roots" unordered="true">
+  <repeat for="$par2Sol.solutions" valueName="v"><round>$v</round></repeat>
+</mathList>
+  
+<solveEquations name="par3Sol">$fun-$parval3=0</solveEquations>
+<!-- <mathlist name='parval3_roots' simplify='full' unordered='true'> -->
+<mathList name="parval3_roots" unordered="true">
+
+  <repeat for="$par3Sol.solutions" valueName="v"><round>$v</round></repeat>
+</mathList>
+
+<math name="parval1_root1"><round><math extend="$par1Sol.solution1" /></round></math>
+<math name="parval2_root1"><round><math extend="$par2Sol.solution1" /></round></math>
+<math name="parval2_root2"><round><math extend="$par2Sol.solution2" /></round></math>
+<math name="parval2_root3"><round><math extend="$par2Sol.solution3" /></round></math>
+<math name="parval3_root1" unordered="true"><round><math extend="$par3Sol.solution1" /></round></math>
+
+  
+<!--<math name='basefun_3' simplify='full' >$$basefun(3)</math>
+<function name='basefun_a' variables='x'>($bifpoint2 &#x2D;$bifpoint1 )/2*$$basefun(2)+($bifpoint1 +$bifpoint2 )/2</function>
+<math name='outside_stable' simplify='full' >1&#x2D;$middle_stable </math>
+-->
+
+
+<number name="ne_1">1</number>
+<number name="ne_2">3</number>
+<number name="ne_3">1</number>
+
+
+  <styleDefinition styleNumber="2" lineWidth="3" />
+  <styleDefinition styleNumber="3" lineColor="magenta" lineStyle="solid" lineWidth="2" />
+<!--   <styleDefinition styleNumber="3" lineColor="magenta" lineStyle="dashed" lineWidth="2"/> -->
+    <styleDefinition styleNumber="9" markerStyle="circle" markerColor="red" markerSize="5" />
+
+
+<function name="f1" variables="x" domain="(-10,$bifxval1)" styleNumber="2">$fun</function>
+  <function name="f2" variables="x" domain="($bifxval1,$bifxval2)" styleNumber="2">$fun</function>
+  <function name="f3" variables="x" domain="($bifxval2,10)" styleNumber="2">$fun</function>
+
+  
+</setup>
+
+
+
+
+<!--  
+<p>debug bifpoint1= <m>$bifpoint1</m></p>
+<p>debug bifpoint2= <m>$bifpoint2</m></p>
+<p>debug bifxval1= <m>$bifxval1</m></p>
+<p>debug bifxval2= <m>$bifxval2</m></p>
+<p>debug middle_stable= <m>$middle_stable</m></p>
+<p>debug parval1= <m>$parval1</m></p>
+<p>debug parval2= <m>$parval2</m></p>
+<p>debug parval3= <m>$parval3</m></p>
+<p>debug x= <m>$x</m></p>
+<p>debug par= <m>$par</m></p>
+<p>debug f= <m>$f</m></p>
+<p>debug basefun(1)= <m>$$basefun(1)</m></p>
+<p>debug fun(12)= <m>$$fun(12)</m></p>
+<p>debug test(12)= <m>$$test(12)</m></p>
+<p>debug A = <m>$A</m></p>
+<p>debug B = <m>$B</m></p>
+<p>debug C= <m>$C</m></p>
+<p>debug D= <m>$D</m></p>
+<p>debug allroots=<m>$allroots</m></p>
+<p>debug parval1_roots=<m>$parval1_roots</m></p>
+<p>debug parval2_roots=<m>$parval2_roots</m></p>
+<p>debug parval3_roots=<m>$parval3_roots</m></p>
+<p>debug parval3_root1= <m>$parval3_root1</m></p>
+<p>debug parval13_roots_close_to_int= <m>$parval13_roots_close_to_int</m></p>-->
+  
+
+<p>For the dynamical system
+<me>\frac{ d$x }{ dt } = $f ($x , $par ),</me>
+where the function <m>$f </m> of <m>$x </m> also depends on a parameter <m>$par </m>, a bifurcation diagram with respect to the parameter <m>$par </m> is shown below.  In this diagram, solid lines represent stable equilibria and dashed lines represent unstable equilibria.</p>
+
+
+    
+<graph aspectRatio="10/7" xmin="-8" xmax="8" ymin="$xmin" ymax="$xmax" fixAxes="true" grid="true">
+  <xLabel><m>$par</m></xLabel>
+  <yLabel><m>$x</m></yLabel>
+  <equilibriumCurve flipFunction="true" styleNumber="3">$f1</equilibriumCurve>
+  <equilibriumCurve flipFunction="true" styleNumber="3" stable="false">$f2</equilibriumCurve>
+  <equilibriumCurve flipFunction="true" styleNumber="3">$f3</equilibriumCurve>
+  <!--$fun-->
+</graph>
+
+
+  
+  
+
+<!--Problem#1*********************************************-->
+<exercise includeAutoNumber="true"><title />
+When <m>$par = $parval1 </m>, how many equilibria are there? 
+<answer name="numEqPoints_1">
+<award symbolicEquality="true">$ne_1 </award>
+</answer>
+ Determine their values, rounded to the nearest integer, and their stability.
+
+<p>Equilibria:</p>
+
+<ul>
+  <repeatForSequence length="min(5, $numEqPoints_1)" name="mapEPs"><li><m>$(x)_e = </m> <mathInput /></li></repeatForSequence>
+</ul>
+
+<p>
+<answer name="ansEPs">
+  <award referencesAreResponses="$mapEPs" matchPartial="true">
+    <when>
+      <mathList><setup><collect componentType="mathInput" from="$mapEPs" name="collect_collectedEPs" /></setup><mathList name="collectedEPs" extend="$collect_collectedEPs.value" /></mathList>
+      =
+      <mathList unordered="true">$parval1_roots</mathList>
+    </when>
+  </award>
+</answer>
+</p>
+
+
+<p>Stability of equilibria:</p>
+<ul>
+  <repeat for="$collectedEPs" name="mapSTBs" valueName="v">
+      <li><m>$(x)_e = $v</m>:
+      <choiceInput inline="true">
+        <choice>stable</choice>
+        <choice>unstable</choice>
+      </choiceInput>
+      </li>
+    </repeat>
+</ul>
+
+<p>
+<answer>
+  <award matchPartial="true" matchByExactPositions="true">
+    <when>
+      <textList><setup><collect componentType="choiceInput" from="$mapSTBs" isResponse="true" name="collect_list" /></setup><textList name="list" extend="$collect_list.selectedValue" /></textList>
+      =
+      <textList>
+        <repeatForSequence length="1" indexName="i">
+            <conditionalContent>
+              <case condition="$collectedEPs[$i] = $parval1_root1">
+                <text>stable</text>
+              </case>
+              <else><text>invalid</text></else>
+            </conditionalContent>
+          </repeatForSequence>
+      </textList>
+    </when>
+  </award>
+</answer>
+</p>
+
+<!-- <p>
+Stability of equilibria: In the same order, determine whether the solution is stable at each equilibrium point.  Enter a "1" if the solution is stable, and a "0" if it is unstable.</p>
+<ul>
+  <map name="mapSTBs">
+    <template><li>stable =1 / unstable =0 <mathinput /></li></template>
+    <sources><sequence length="min(5, $numEqPoints_1)" /></sources>
+  </map>
+</ul>
+
+<answer name="ansSTBs">
+  <award sourcesAreResponses="mapSTBs" matchPartial  >
+    <when>
+      <mathlist><collect prop="value" componentTypes="mathinput" source="mapSTBs" /></mathlist>
+      =
+      <mathlist unordered>1</mathlist>
+    </when>
+  </award>
+</answer>   -->
+
+  
+ 
+<p>Sketch the phase line for when <m>$par = $parval1 </m>, including equilibria and direction field.  Use a solid circle for stable equilibria and an open circle for unstable equilibria.</p>
+
+<!-- <copy uri="doenet:activityId=83TXioRLQfjiFmpyoM1xhD" aspectRatio="6" vmin="$xmin" vmax="$xmax" var="$x" nEquilibria="1" E1='$parval1_root1' E1stable="true" />
+ -->
+<module copy="doenet:83TXioRLQfjiFmpyoM1xhD" aspectRatio="6" vmin="$xmin" vmax="$xmax" var="$x" nEquilibria="1" E1="$parval1_root1" E1stable="true" />
+
+<hint>
+If you take a vertical cross section of the bifurcation diagram at <m>$par =$parval1 </m>, the result is the phase line at that value of the parameter, only flipped vertically.  You can read off directly from the diagram the values of the equilibria (the vertical coordinate of the curves at <m>$par =$parval1 </m>) and their stability.
+
+<p>You cannot read off the direction field (or vector field) directly from the bifurcation diagram.  But, once you have the equilibria and their stability, you can infer the directions of motions because the solutions should approach a certain class of equilibrium and move away from the other class.</p>
+
+</hint>
+</exercise>
+
+
+<!--Problem#2********************************************-->  
+<exercise includeAutoNumber="true"><title />
+When <m>$par = $parval2 </m>, how many equilibria are there? 
+<answer name="numEqPoints_2">
+<award symbolicEquality="true">$ne_2 </award>
+</answer>
+ Determine their values, rounded to the nearest integer, and their stability.
+
+<p>Equilibria: </p>
+
+<ul>
+  <repeatForSequence length="min(5, $numEqPoints_2)" name="mapEPs2"><li><m>$(x)_e = </m> <mathInput /></li></repeatForSequence>
+</ul>
+
+<p>
+<answer name="ansEPs2">
+  <award referencesAreResponses="$mapEPs2" matchPartial="true">
+    <when>
+      <mathList><setup><collect componentType="mathInput" from="$mapEPs2" name="collect_collectedEPs2" /></setup><mathList name="collectedEPs2" extend="$collect_collectedEPs2.value" /></mathList>
+      =
+      <mathList unordered="true">$parval2_roots</mathList>
+    </when>
+  </award>
+</answer>
+</p>
+
+<p>Stability of equilibria:</p>
+<ul>
+  <repeat for="$collectedEPs2" name="mapSTBs2" valueName="v">
+      <li><m>$(x)_e = $v</m>:
+      <choiceInput inline="true">
+        <choice>stable</choice>
+        <choice>unstable</choice>
+      </choiceInput>
+      </li>
+    </repeat>
+</ul>
+
+<p>
+<answer>
+  <award matchPartial="true" matchByExactPositions="true">
+    <when>
+      <textList><setup><collect componentType="choiceInput" from="$mapSTBs2" isResponse="true" name="collect_list1" /></setup><textList name="list1" extend="$collect_list1.selectedValue" /></textList>
+      =
+      <textList>
+        <repeatForSequence length="3" indexName="i">
+            <conditionalContent>
+              <case condition="$collectedEPs2[$i] = $parval2_root1 or $collectedEPs2[$i] = $parval2_root3">
+                <text>stable</text>
+              </case>
+              <case condition="$collectedEPs2[$i] = $parval2_root2">
+                <text>unstable</text>
+              </case>
+              <else><text>invalid</text></else>
+            </conditionalContent>
+          </repeatForSequence>
+      </textList>
+    </when>
+  </award>
+</answer>
+</p>
+
+<p>Sketch the phase line for when <m>$par = $parval2 </m>, including equilibria and direction field.  Use a solid circle for stable equilibria and an open circle for unstable equilibria.</p>
+<!-- 
+<copy uri="doenet:activityId=83TXioRLQfjiFmpyoM1xhD" aspectRatio="6" vmin="$xmin" vmax="$xmax" var="$x" nEquilibria="3" E1='$parval2_root1' E1stable='true' E2='$parval2_root2' E2stable='false' E3='$parval2_root3' E3stable='true'  /> -->
+
+
+<module copy="doenet:83TXioRLQfjiFmpyoM1xhD" aspectRatio="6" vmin="$xmin" vmax="$xmax" var="$x" nEquilibria="3" E1="$parval2_root1" E1stable="true" E2="$parval2_root2" E2stable="false" E3="$parval2_root3" E3stable="true" />
+
+</exercise>
+
+
+<!--Problem#3**********************************************-->  
+<exercise includeAutoNumber="true"><title />
+When <m>$par = $parval3 </m>, how many equilibria are there? 
+<answer name="numEqPoints_3">
+<award symbolicEquality="true">$ne_3 </award>
+</answer>
+ Determine their values, rounded to the nearest integer, and their stability.
+
+<p>Equilibria:</p>
+
+<ul>
+  <repeatForSequence length="min(5, $numEqPoints_3)" name="mapEPs3"><li><m>$(x)_e = </m> <mathInput /></li></repeatForSequence>
+</ul>
+
+<p>
+<answer name="ansEPs3">
+  <award referencesAreResponses="$mapEPs3" matchPartial="true">
+    <when>
+      <mathList><setup><collect componentType="mathInput" from="$mapEPs3" name="collect_collectedEPs3" /></setup><mathList name="collectedEPs3" extend="$collect_collectedEPs3.value" /></mathList>
+      =
+      <mathList unordered="true">$parval3_roots</mathList>
+    </when>
+  </award>
+</answer>
+</p>
+
+
+<p>Stability of equilibria:</p>
+<ul>
+  <repeat for="$collectedEPs3" name="mapSTBs3" valueName="v">
+      <li><m>$(x)_e = $v</m>:
+      <choiceInput inline="true">
+        <choice>stable</choice>
+        <choice>unstable</choice>
+      </choiceInput>
+      </li>
+    </repeat>
+</ul>
+
+<p>
+<answer>
+  <award matchPartial="true" matchByExactPositions="true">
+    <when>
+      <textList><setup><collect componentType="choiceInput" from="$mapSTBs3" isResponse="true" name="collect_list2" /></setup><textList name="list2" extend="$collect_list2.selectedValue" /></textList>
+      =
+      <textList>
+        <repeatForSequence length="1" indexName="i">
+            <conditionalContent>
+              <case condition="$collectedEPs3[$i] = $parval3_root1">
+                <text>stable</text>
+              </case>
+              <else><text>invalid</text></else>
+            </conditionalContent>
+          </repeatForSequence>
+      </textList>
+    </when>
+  </award>
+</answer>
+</p>
+
+
+<p>Sketch the phase line for when <m>$par = $parval3 </m>, including equilibria and direction field.  Use a solid circle for stable equilibria and an open circle for unstable equilibria.</p>
+
+
+<!-- <copy uri="doenet:activityId=83TXioRLQfjiFmpyoM1xhD" aspectRatio="6" vmin="$xmin" vmax="$xmax" var="$x" nEquilibria="1" E1='$parval3_root1' E1stable="true"/>
+ -->
+<module copy="doenet:83TXioRLQfjiFmpyoM1xhD" aspectRatio="6" vmin="$xmin" vmax="$xmax" var="$x" nEquilibria="1" E1="$parval3_root1" E1stable="true" /> 
+</exercise>
+
+<!--Problem#4********************************************-->
+<exercise includeAutoNumber="true"><title />
+<p>Identify any bifurcation points.</p>
+
+<p>Bifurcations points are at <m>$par  =</m> 
+  <mathInput name="bif1_ans" /> and at <m>$par  =</m> <mathInput name="bif2_ans" />
+<answer name="bifpoints_ans">
+<award referencesAreResponses="">
+  <when>$bif1_ans=$bifpoint1 and $bif2_ans=$bifpoint2</when>
+</award>
+<award referencesAreResponses="">
+  <when>$bif1_ans=$bifpoint2 and $bif2_ans=$bifpoint1</when>
+</award>
+</answer>
+</p>
+
+
+<hint>
+Bifurcation points are where the number or stability of equilibria changes.  Are there any special values of <m>$par </m> where something more interesting happens other than changes in the locations of the equilibria?
+</hint>
+</exercise>
+
+    
+
+<solution>
+
+<ol>
+
+<li>
+When <m>$par = $parval1 </m>, there is one equilibrium: <m>$x _e \approx $parval1_root1</m>.  The equilibrium is 
+stable
+. The phase line for <m>$x </m> should be drawn with a 
+filled
+ circle at  <m>$x = $parval1_root1</m> and the direction field arrows pointing 
+toward
+ the equlibrium.
+
+</li>
+
+<li>
+When <m>$par = $parval2 </m>, there are three equilibria, whose values rounded to the nearest integer are: $parval2_root1 and $parval2_root2.  The first equilibrium, <m>$x _1 \approx $parval2_root1</m>,  is 
+stable
+.   The second equilibrium, <m>$x _2 \approx $parval2_root2</m>, is 
+unstable
+.  The third equilibrium, <m>$x _3 \approx $parval2_root3</m>,  is 
+stable
+.  The phase line for <m>$x </m> should be drawn with a 
+filled
+ circle at  <m>$x =$parval2_root1</m>,
+unfilled
+ circle at  <m>$x = $parval2_root2</m>, and a
+filled
+ circle at  <m>$x = $parval2_root3</m>.  The direction field arrows should point away from the unfilled circle
+ and toward the filled circles
+.
+
+
+
+</li>
+
+<li>
+When <m>$par = $parval3 </m>, there is one equilibrium: <m>$x _e \approx $parval3_root1</m>.  The equilibrium is 
+stable
+. The phase line for <m>$x </m> should be drawn with a
+filled
+ circle at  <m>$x = $parval3_root1</m> and the direction field arrows pointing
+toward
+ the equlibrium.
+
+
+
+</li>
+
+<li>
+There are two bifurcations.  One bifurcation point is at <m>$par  = $bifpoint1 </m>, where two equilibria appear so that the number of equilibria increases from one to three as <m>$par </m> increases.  The other bifurcation point is at <m>$par =$bifpoint2 </m>, where two equilibria disappear so that the number of equilibria decreases from three to one as <m>$par </m> increases.
+</li>
+
+
+</ol>
+
+</solution>
+
+
+</problem>

@@ -1,0 +1,797 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7YGXi3vzS7nJUhwP6W6Hue
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 6cbfe5fddd387bc1
+-->
+<problem>
+<!-- <title>Determine stability of equilibria of autonomous differential equation from graph</title>
+ -->
+<setup>
+
+<number name="a">-4</number>
+<number name="b">2</number>
+<number name="c">6</number>
+<number name="sign">1</number>
+<number name="xmin">-11</number>
+<number name="xmax">11</number>
+<function name="fun" variables="z">$sign *exp(-z ^2/50)(z -$a )*(z -$b )*(z -$c )/40</function>
+<number name="initial1">$a -0.5</number>
+<number name="initial2">$a +0.5</number>
+<number name="initial3">$c -0.5</number>
+<number name="initial4">$c +0.5</number>
+<mathList name="equilibria">$a $b $c </mathList>
+<textList name="stability">unstable stable unstable</textList>
+
+
+  <styleDefinition styleNumber="2" markerStyle="circle" markerSize="3" />
+  <styleDefinition styleNumber="3" lineColor="purple" markerColor="purple" />
+  <styleDefinition styleNumber="4" lineColor="cyan" markerColor="cyan" />
+  <styleDefinition styleNumber="5" lineColor="red" markerColor="red" lineStyle="solid" markerStyle="circle" markerSize="3" lineWidth="2" />
+  <styleDefinition styleNumber="6" lineColor="red" markerColor="red" lineStyle="dashed" markerStyle="circle" markerSize="3" lineWidth="2" />
+
+
+</setup>
+
+
+
+<p>
+
+Consider the dynamical system
+<me>\frac{ dz }{ dt } = f(z )</me>
+where the function <m>f</m> is graphed below.  Find all equilibria.  (They are integers.) </p>
+
+<p>Number of equilibria: <mathInput name="n_e" /></p>
+<p>The equilibria, in increasing order, are </p>
+  <repeatForSequence length="min(10, $n_e.immediateValue)" name="eqMap"><p><m>z =</m> <mathInput /></p></repeatForSequence>
+<p>
+<answer>
+  <award matchPartial="true">
+    <when>
+      <mathList isResponse="true" name="userEqs">
+        <setup><collect componentType="mathInput" from="$eqMap" name="collect_eqCollect" /></setup><mathList name="eqCollect" extend="$collect_eqCollect.value" />
+      </mathList>=
+      $equilibria 
+    </when>
+  </award>
+  <award matchPartial="true" unorderedCompare="true" credit="0.8" name="eqWrongOrder">
+    <when>
+      $userEqs =
+      $equilibria 
+    </when>
+  </award>
+</answer>
+</p>
+<feedback condition="$eqWrongOrder">
+  For full credit, enter equilibria in increasing order.
+</feedback>
+  
+  
+
+<graph aspectRatio="5/3" xmin="-7.5" xmax="9.3" ymin="-3" ymax="3" fixAxes="true" grid="true" size="full">
+  <xLabel><m>z</m></xLabel>
+$fun
+</graph>
+
+<p>For each equilibrium, determine its stability by sketching (by hand) the solution for initial conditions just above and below the equilibrium.
+</p>
+
+  <repeatForSequence length="min(10, $n_e.immediateValue)" name="stableMap" indexName="i"><p>The equilibrium <m>z = <math extend="$eqCollect[$i]" /></m> is
+      <choiceInput inline="true">
+        <choice>stable</choice>
+        <choice>unstable</choice>
+      </choiceInput>
+      .
+    </p></repeatForSequence>
+  
+<p>
+<answer name="ansStability">
+  <award matchPartial="true" matchByExactPositions="true">
+    <when>
+      <textList>
+        <setup><collect componentType="choiceInput" from="$stableMap" isResponse="true" name="collect_list" /></setup><textList name="list" extend="$collect_list.values" />
+      </textList>=
+      $stability 
+    </when>
+  </award>
+</answer>
+
+</p>
+  
+<p>In the below graph, sketch the equilibria and solutions for the initial conditions <m>z _0 = $initial1 </m>, <m>z _0 = $initial2 </m>, <m>z _0 = $initial3 </m>, and <m>z _0 = $initial4 </m>.</p>
+  
+
+<p>Click <updateValue name="revealSolution1" type="boolean" target="$showSolution1" newValue="true" disabled="$showSolution1">
+  <label>show curve</label>
+</updateValue> and use the curve to draw the solution for <m>z_0=$initial1</m>.
+<answer name="ansSol1" matchPartial="true" disabled="not $showSolution1">
+  <award>
+    <when>
+      <boolean name="p11Location">$p11y = $initial1</boolean>
+      and
+      <boolean name="p11Slope">$p11Location and $p11r and -1 &lt; $p11m &lt; 0</boolean>
+      and
+      <boolean name="c1Decreasing">$p11r and $p11m &lt; 0 and $nYcpC1 = 0</boolean>
+      and
+      <boolean name="p12LocationSlope">$p12r and $p12m &lt; $p11m and $p12y &lt; $p11y and $nYcpC1 = 0 and $efmC1 = parabolaVertical and $nccpC1 = 0</boolean>
+      and
+      <boolean name="noTurn1">$c1Decreasing and $nXcpC1=0</boolean>
+    </when>
+  </award>
+
+</answer>
+</p>
+
+<feedback updateWith="$ansSol1" condition="not $p11Location">
+  The initial condition is incorrect.
+</feedback>
+<feedback updateWith="$ansSol1" condition="$p11Location  and $p11r and $p11m &lt;= -1">
+  The initial slope is too steep.
+</feedback>
+<feedback updateWith="$ansSol1" condition="$p11Location  and $p11r and $p11m = 0">
+  The solution must start with a negative slope.
+</feedback>
+<feedback updateWith="$ansSol1" condition="$p11Location  and (not $p11r or $p11m > 0)">
+  The initial slope is incorrect.
+</feedback>
+<feedback updateWith="$ansSol1" condition="$p11Slope and not $c1Decreasing">
+  The solution must be decreasing everywhere.
+</feedback>
+<feedback updateWith="$ansSol1" condition="$p11Slope and $c1Decreasing and not $p12LocationSlope">
+  The solution must be continually accelerating, i.e., increasing its downward speed so that the curve is concave downward everywhere.  (It can be a little tricky.  Look at the slope line coming from the initial point and make sure the curve keeps bending downward away from that line.)
+</feedback>
+<feedback updateWith="$ansSol1" condition="$nXcpC1 > 0">
+  The solution must be a function.  The curve cannot turn around so that time decreases.
+</feedback>
+
+
+
+<p>Click <updateValue name="revealSolution2" type="boolean" target="$showSolution2" newValue="true" disabled="$showSolution2">
+  <label>show curve</label>
+</updateValue> and use the curve to draw the solution for <m>z_0=$initial2</m>.
+<answer name="ansSol2" matchPartial="true" disabled="not $showSolution2">
+  <award>
+    <when>
+      <boolean name="p21Location">$p21y = $initial2</boolean>
+      and
+      <boolean name="p21Slope">$p21Location and $p21r and 0 &lt; $p21m &lt; 1</boolean>
+      and
+      <boolean name="p22LocationSlope">$p22r and $p22m = 0 and $p22y = $b</boolean>
+      and
+      <boolean name="noTurn2">$p22LocationSlope and $nXcpC2=0</boolean>
+    </when>
+  </award>
+
+</answer>
+</p>
+
+<feedback updateWith="$ansSol2" condition="not $p21Location">
+  The initial condition is incorrect.
+</feedback>
+<feedback updateWith="$ansSol2" condition="$p21Location  and $p21r and $p21m >= 1">
+  The initial slope is too large.
+</feedback>
+<feedback updateWith="$ansSol2" condition="$p21Location  and $p21r and $p21m = 0">
+  The solution must start with a positive slope.
+</feedback>
+<feedback updateWith="$ansSol2" condition="$p21Location  and (not $p21r or $p21m &lt; 0)">
+  The initial slope is incorrect.
+</feedback>
+<feedback updateWith="$ansSol2" condition="$p21Slope and not $p22LocationSlope">
+  The solution does not have the correct behavior for large <m>t</m>.
+</feedback>
+<feedback updateWith="$ansSol2" condition="$nXcpC2 > 0">
+  The solution must be a function.  The curve cannot turn around so that time decreases.
+</feedback>
+
+
+
+<p>Click <updateValue name="revealSolution3" type="boolean" target="$showSolution3" newValue="true" disabled="$showSolution3">
+  <label>show curve</label>
+</updateValue> and use the curve to draw the solution for <m>z_0=$initial3</m>.
+<answer name="ansSol3" matchPartial="true" disabled="not $showSolution3">
+  <award>
+    <when>
+      <boolean name="p31Location">$p31y = $initial3</boolean>
+      and
+      <boolean name="p31Slope">$p31Location and $p31r and -0.6 &lt; $p31m &lt; 0</boolean>
+      and
+      <boolean name="p32LocationSlope">$p32r and $p32m = 0 and $p32y = $b</boolean>
+      and
+      <boolean name="noTur32">$p32LocationSlope and $nXcpC3=0</boolean>
+    </when>
+  </award>
+
+</answer>
+</p>
+
+<feedback updateWith="$ansSol3" condition="not $p31Location">
+  The initial condition is incorrect.
+</feedback>
+<feedback updateWith="$ansSol3" condition="$p31Location  and $p31r and $p31m &lt;= -0.6">
+  The initial slope is too large.
+</feedback>
+<feedback updateWith="$ansSol3" condition="$p31Location  and $p31r and $p31m = 0">
+  The solution must start with a negative slope.
+</feedback>
+<feedback updateWith="$ansSol3" condition="$p31Location  and (not $p31r or $p31m > 0)">
+  The initial slope is incorrect.
+</feedback>
+<feedback updateWith="$ansSol3" condition="$p31Slope and not $p32LocationSlope">
+  The solution does not have the correct behavior for large <m>t</m>.
+</feedback>
+<feedback updateWith="$ansSol3" condition="$nXcpC3 > 0">
+  The solution must be a function.  The curve cannot turn around so that time decreases.
+</feedback>
+
+
+
+
+<p>Click <updateValue name="revealSolution4" type="boolean" target="$showSolution4" newValue="true" disabled="$showSolution4">
+  <label>show curve</label>
+</updateValue> and use the curve to draw the solution for <m>z_0=$initial4</m>.
+<answer name="ansSol4" matchPartial="true" disabled="not $showSolution4">
+  <award>
+    <when>
+      <boolean name="p41Location">$p41y = $initial4</boolean>
+      and
+      <boolean name="p41Slope">$p41Location and $p41r and 0 &lt; $p41m &lt; 0.6</boolean>
+      and
+      <boolean name="c4Increasing">$p41r and $p41m > 0 and $nYcpC4 = 0</boolean>
+      and
+      <boolean name="p42LocationSlope">$p42r and $p42m > $p41m and $p42y > $p41y and $nYcpC4 = 0 and $efmC4 = parabolaVertical and $nccpC4 = 0</boolean>
+      and
+      <boolean name="noTurn4">$c4Increasing and $nXcpC4=0</boolean>
+    </when>
+  </award>
+
+
+
+</answer>
+</p>
+
+<feedback updateWith="$ansSol4" condition="not $p41Location">
+  The initial condition is incorrect.
+</feedback>
+<feedback updateWith="$ansSol4" condition="$p41Location  and $p41r and $p41m >= 0.6">
+  The initial slope is too steep.
+</feedback>
+<feedback updateWith="$ansSol4" condition="$p41Location  and $p41r and $p41m = 0">
+  The solution must start with a positive slope.
+</feedback>
+<feedback updateWith="$ansSol4" condition="$p41Location  and (not $p41r or $p41m &lt; 0)">
+  The initial slope is incorrect.
+</feedback>
+<feedback updateWith="$ansSol4" condition="$p41Slope and not $c4Increasing">
+  The solution must be increasing everywhere.
+</feedback>
+<feedback updateWith="$ansSol4" condition="$p41Slope and $c4Increasing and not $p42LocationSlope">
+  The solution must be continually accelerating, i.e., increasing its upward speed so that the curve is concave upward everywhere.  (It can be a little tricky.  Look at the slope line coming from the initial point and make sure the curve keeps bending upward away from that line.)
+</feedback>
+<feedback updateWith="$ansSol4" condition="$nXcpC4 > 0">
+  The solution must be a function.  The curve cannot turn around so that time decreases.
+</feedback>
+
+
+
+
+<p>Click <updateValue name="revealEquilibria" type="boolean" target="$showEquilibria" newValue="true" disabled="$showEquilibria">
+  <label>show curves</label>
+</updateValue> and use the curves to draw the equilibrium solutions. 
+<answer name="ansSolEs" matchPartial="true" disabled="not $showEquilibria">
+  <award credit="$ansStability.creditAchieved">
+    <when>
+      <mathList>$p51y $p61y $p71y</mathList> = <mathList unordered="true">$a $b $c</mathList>
+      and
+      <boolean>$p51r and $p52r and $p51m = 0 and $p52y = $p51y and $p52m = 0</boolean>
+      and 
+      <boolean>$p61r and $p62r and $p61m = 0 and $p62y = $p61y and $p62m = 0</boolean>
+      and 
+      <boolean>$p71r and $p72r and $p71m = 0 and $p72y = $p71y and $p72m = 0</boolean>
+    </when>
+  </award>
+
+</answer>
+</p>
+<p>Note: Stable equilibrium solutions will appear as solid lines and unstable equilibrium solutions will appear as dashed lines. </p>
+
+<feedback updateWith="$ansSolEs" condition="$ansStability.creditAchieved &lt; 1">
+  Correctly answer the equilibria stability question, above, to get full credit.
+</feedback>
+
+
+
+<setup>
+  <boolean name="showSolution1">false</boolean>
+  <boolean name="showSolution2">false</boolean>
+  <boolean name="showSolution3">false</boolean>
+  <boolean name="showSolution4">false</boolean>
+  <boolean name="showEquilibria">false</boolean>
+  <number name="zeroFixed" fixed="true">0</number>
+</setup>
+<graph width="500" xmin="-3" xmax="21" ymin="-8.5" ymax="10.5" fixAxes="true" grid="1 1" identicalAxisScales="true" size="full">
+  <xLabel><m>t</m></xLabel>
+  <yLabel><m>z</m></yLabel>
+
+  <conditionalContent condition="$showSolution1">
+    <setup>
+      <number fixed="true" name="r11">1</number>
+      <number fixed="true" name="r12">1</number>
+      <copy prop="y" source="P11" name="p11y" />
+      <number name="p11m">$P11handle.y/$P11handle.x</number>
+      <boolean name="p11r">$P11handle.x &lt; 0</boolean>
+      <copy prop="y" source="P12" name="p12y" />
+      <copy prop="x" source="P12" name="p12x" />
+      <boolean name="p12r">$P12handle.x &lt; 0</boolean>
+      <number name="p12m">$P12handle.y/$P12handle.x</number>
+      <copy prop="numXCriticalPoints" source="C1" name="nXcpC1" />
+      <copy prop="numYCriticalPoints" source="C1" name="nYcpC1" />
+      <copy prop="extrapolateForwardMode" source="C1" name="efmC1" />
+      <copy prop="numCurvatureChangePoints" source="C1" name="nccpC1" />
+    </setup>
+    <point name="P11" styleNumber="1" x="$zeroFixed" y="1" hide="$ansSol1.creditAchieved=1" labelPosition="upperleft">
+      <label><m>w = $P11.y</m></label>
+      
+        <constrainToGrid dy="0.5" />
+      
+    </point>
+    <point name="P11handle" x="-4" y="-4" hide="true">
+      
+        <constrainTo><circle radius="$r11" /></constrainTo>
+        <attractTo threshold="0.2"><line>y=0</line></attractTo>
+      
+    </point>
+    <point name="P12" styleNumber="1" x="10" y="1" hide="$ansSol1.creditAchieved=1">
+      
+        <constrainTo><regionHalfPlane boundaryValue="15" greaterThan="false" /></constrainTo>
+        <attractToGrid dx="20" dy="1" ythreshold="0.3" includeGridlines="true" />
+      
+    </point>
+    <point name="P12handle" x="-4" y="-4" hide="true">
+      
+        <constrainTo><circle radius="$r12" /></constrainTo>
+        <attractTo threshold="0.2"><line>y=0</line></attractTo>
+      
+    </point>
+    <curve name="C1" through="$P11 $P12" extrapolateForward="true" draggable="$ansSol1.creditAchieved&lt; 1" styleNumber="1">
+      <bezierControls alwaysVisible="true">
+        <controlVectors><vector>$P11handle</vector></controlVectors>
+        <controlVectors><vector>$P12handle</vector></controlVectors>
+      </bezierControls>
+    </curve>
+
+  </conditionalContent>
+  
+
+  <conditionalContent condition="$showSolution2">
+    <setup>
+      <number fixed="true" name="r21">3</number>
+      <number fixed="true" name="r22">5</number>
+      <copy prop="y" source="P21" name="p21y" />
+      <number name="p21m">$P21handle.y/$P21handle.x</number>
+      <boolean name="p21r">$P21handle.x &lt; 0</boolean>
+      <copy prop="y" source="P22" name="p22y" />
+      <copy prop="x" source="P22" name="p22x" />
+      <boolean name="p22r">$P22handle.x &lt; 0</boolean>
+      <number name="p22m">$P22handle.y/$P22handle.x</number>
+      <copy prop="numXCriticalPoints" source="C2" name="nXcpC2" />
+      
+    </setup>
+    <point name="P21" styleNumber="2" x="$zeroFixed" y="1" hide="$ansSol2.creditAchieved=1" labelPosition="upperleft">
+      <label><m>w = $P21.y</m></label>
+      
+        <constrainToGrid dy="0.5" />
+      
+    </point>
+    <point name="P21handle" x="-4" y="-4" hide="true">
+      
+        <constrainTo><circle radius="$r21" /></constrainTo>
+        <attractTo threshold="0.2"><line>y=0</line></attractTo>
+      
+    </point>
+    <point name="P22" styleNumber="2" x="10" y="1" hide="$ansSol2.creditAchieved=1">
+      
+        <constrainTo><regionHalfPlane boundaryValue="15" greaterThan="false" /></constrainTo>
+        <attractToGrid dx="20" dy="1" ythreshold="0.3" includeGridlines="true" />
+      
+    </point>
+    <point name="P22handle" x="-4" y="-4" hide="true">
+      
+        <constrainTo><circle radius="$r22" /></constrainTo>
+        <attractTo threshold="0.2"><line>y=0</line></attractTo>
+      
+    </point>
+    <curve name="C2" through="$P21 $P22" extrapolateForward="true" draggable="$ansSol2.creditAchieved&lt; 1" styleNumber="2">
+      <bezierControls alwaysVisible="true">
+        <controlVectors><vector>$P21handle</vector></controlVectors>
+        <controlVectors><vector>$P22handle</vector></controlVectors>
+      </bezierControls>
+    </curve>
+
+  </conditionalContent>
+  
+
+
+  <conditionalContent condition="$showSolution3">
+    <setup>
+      <number fixed="true" name="r31">3</number>
+      <number fixed="true" name="r32">5</number>
+      <copy prop="y" source="P31" name="p31y" />
+      <number name="p31m">$P31handle.y/$P31handle.x</number>
+      <boolean name="p31r">$P31handle.x &lt; 0</boolean>
+      <copy prop="y" source="P32" name="p32y" />
+      <copy prop="x" source="P32" name="p32x" />
+      <boolean name="p32r">$P32handle.x &lt; 0</boolean>
+      <number name="p32m">$P32handle.y/$P32handle.x</number>
+      <copy prop="numXCriticalPoints" source="C3" name="nXcpC3" />
+      
+    </setup>
+    <point name="P31" styleNumber="3" x="$zeroFixed" y="1" hide="$ansSol3.creditAchieved=1" labelPosition="upperleft">
+      <label><m>w = $P31.y</m></label>
+      
+        <constrainToGrid dy="0.5" />
+      
+    </point>
+    <point name="P31handle" x="-4" y="-4" hide="true">
+      
+        <constrainTo><circle radius="$r31" /></constrainTo>
+        <attractTo threshold="0.2"><line>y=0</line></attractTo>
+      
+    </point>
+    <point name="P32" styleNumber="3" x="10" y="1" hide="$ansSol3.creditAchieved=1">
+      
+        <constrainTo><regionHalfPlane boundaryValue="15" greaterThan="false" /></constrainTo>
+        <attractToGrid dx="20" dy="1" ythreshold="0.3" includeGridlines="true" />
+      
+    </point>
+    <point name="P32handle" x="-4" y="-4" hide="true">
+      
+        <constrainTo><circle radius="$r32" /></constrainTo>
+        <attractTo threshold="0.2"><line>y=0</line></attractTo>
+      
+    </point>
+    <curve name="C3" through="$P31 $P32" extrapolateForward="true" draggable="$ansSol3.creditAchieved&lt; 1" styleNumber="3">
+      <bezierControls alwaysVisible="true">
+        <controlVectors><vector>$P31handle</vector></controlVectors>
+        <controlVectors><vector>$P32handle</vector></controlVectors>
+      </bezierControls>
+    </curve>
+
+  </conditionalContent>
+  
+
+
+  <conditionalContent condition="$showSolution4">
+    <setup>
+      <number fixed="true" name="r41">1</number>
+      <number fixed="true" name="r42">1</number>
+      <copy prop="y" source="P41" name="p41y" />
+      <number name="p41m">$P41handle.y/$P41handle.x</number>
+      <boolean name="p41r">$P41handle.x &lt; 0</boolean>
+      <copy prop="y" source="P42" name="p42y" />
+      <copy prop="x" source="P42" name="p42x" />
+      <boolean name="p42r">$P42handle.x &lt; 0</boolean>
+      <number name="p42m">$P42handle.y/$P42handle.x</number>
+      <copy prop="numXCriticalPoints" source="C4" name="nXcpC4" />
+      <copy prop="numYCriticalPoints" source="C4" name="nYcpC4" />
+      <copy prop="extrapolateForwardMode" source="C4" name="efmC4" />
+      <copy prop="numCurvatureChangePoints" source="C4" name="nccpC4" />
+    </setup>
+    <point name="P41" styleNumber="4" x="$zeroFixed" y="1" hide="$ansSol4.creditAchieved=1" labelPosition="upperleft">
+      <label><m>w = $P41.y</m></label>
+      
+        <constrainToGrid dy="0.5" />
+      
+    </point>
+    <point name="P41handle" x="-4" y="-4" hide="true">
+      
+        <constrainTo><circle radius="$r41" /></constrainTo>
+        <attractTo threshold="0.2"><line>y=0</line></attractTo>
+      
+    </point>
+    <point name="P42" styleNumber="4" x="10" y="1" hide="$ansSol4.creditAchieved=1">
+      
+        <constrainTo><regionHalfPlane boundaryValue="15" greaterThan="false" /></constrainTo>
+        <attractToGrid dx="20" dy="1" ythreshold="0.3" includeGridlines="true" />
+      
+    </point>
+    <point name="P42handle" x="-4" y="-4" hide="true">
+      
+        <constrainTo><circle radius="$r42" /></constrainTo>
+        <attractTo threshold="0.2"><line>y=0</line></attractTo>
+      
+    </point>
+    <curve name="C4" through="$P41 $P42" extrapolateForward="true" draggable="$ansSol4.creditAchieved&lt; 1" styleNumber="4">
+      <bezierControls alwaysVisible="true">
+        <controlVectors><vector>$P41handle</vector></controlVectors>
+        <controlVectors><vector>$P42handle</vector></controlVectors>
+      </bezierControls>
+    </curve>
+
+
+  </conditionalContent>
+  
+
+  <conditionalContent condition="$showEquilibria">
+    <setup>
+      <number fixed="true" name="rEs1">1</number>
+      <number fixed="true" name="rEs2">1</number>
+
+      <math extend="$P51.y" name="p51y" />
+      <number name="p51m">$P51handle.y/$P51handle.x</number>
+      <boolean name="p51r">$P51handle.x &lt; 0</boolean>
+      <math extend="$P52.y" name="p52y" />
+      <math extend="$P52.x" name="p52x" />
+      <boolean name="p52r">$P52handle.x &lt; 0</boolean>
+      <number name="p52m">$P52handle.y/$P52handle.x</number>
+
+      <math extend="$P61.y" name="p61y" />
+      <number name="p61m">$P61handle.y/$P61handle.x</number>
+      <boolean name="p61r">$P61handle.x &lt; 0</boolean>
+      <math extend="$P62.y" name="p62y" />
+      <math extend="$P62.x" name="p62x" />
+      <boolean name="p62r">$P62handle.x &lt; 0</boolean>
+      <number name="p62m">$P62handle.y/$P62handle.x</number>
+
+      <math extend="$P71.y" name="p71y" />
+      <number name="p71m">$P71handle.y/$P71handle.x</number>
+      <boolean name="p71r">$P71handle.x &lt; 0</boolean>
+      <math extend="$P72.y" name="p72y" />
+      <math extend="$P72.x" name="p72x" />
+      <boolean name="p72r">$P72handle.x &lt; 0</boolean>
+      <number name="p72m">$P72handle.y/$P72handle.x</number>
+
+      <boolean name="curve5IsDashed">
+        (($p51y = $a and $ansStability.submittedResponse1 = unstable)
+        or
+        ($p51y = $b and $ansStability.submittedResponse2 = unstable)
+        or
+        ($p51y = $c and $ansStability.submittedResponse3 = unstable))
+        and
+        $p51r and $p52r and $p51m = 0 and $p52y = $p51y and $p52m = 0
+      </boolean>
+      
+      <boolean name="curve6IsDashed">
+        (($p61y = $a and $ansStability.submittedResponse1 = unstable)
+        or
+        ($p61y = $b and $ansStability.submittedResponse2 = unstable)
+        or
+        ($p61y = $c and $ansStability.submittedResponse3 = unstable))
+        and
+        $p61r and $p62r and $p61m = 0 and $p62y = $p61y and $p62m = 0
+      </boolean>
+
+      
+      <boolean name="curve7IsDashed">
+        (($p71y = $a and $ansStability.submittedResponse1 = unstable)
+        or
+        ($p71y = $b and $ansStability.submittedResponse2 = unstable)
+        or
+        ($p71y = $c and $ansStability.submittedResponse3 = unstable))
+        and
+        $p71r and $p72r and $p71m = 0 and $p72y = $p71y and $p72m = 0
+      </boolean>
+
+    </setup>
+
+    <point name="P51" styleNumber="5" x="$zeroFixed" y="1" hide="$ansSolEs.creditAchieved=1" labelPosition="upperleft">
+      <label><m>w = $P51.y</m></label>
+      
+        <constrainToGrid dy="0.5" />
+      
+    </point>
+    <point name="P51handle" x="-4" y="-4" hide="true">
+      
+        <constrainTo><circle radius="$rEs1" /></constrainTo>
+        <attractTo threshold="0.2"><line>y=0</line></attractTo>
+      
+    </point>
+    <point name="P52" styleNumber="5" x="10" y="1" hide="$ansSolEs.creditAchieved=1">
+      
+        <constrainTo><regionHalfPlane boundaryValue="15" greaterThan="false" /></constrainTo>
+        <attractToGrid dx="20" dy="1" ythreshold="0.3" includeGridlines="true" />
+      
+    </point>
+    <point name="P52handle" x="-4" y="-4" hide="true">
+      
+        <constrainTo><circle radius="$rEs2" /></constrainTo>
+        <attractTo threshold="0.2"><line>y=0</line></attractTo>
+      
+    </point>
+
+    <conditionalContent name="C5">
+      <case condition="$curve5IsDashed">
+        <curve through="$P51 $P52" extrapolateForward="true" draggable="$ansSolEs.creditAchieved&lt; 1" styleNumber="6">
+          <bezierControls alwaysVisible="true">
+            <controlVectors><vector>$P51handle</vector></controlVectors>
+            <controlVectors><vector>$P52handle</vector></controlVectors>
+          </bezierControls>
+        </curve>
+      </case>
+      <else>
+        <curve through="$P51 $P52" extrapolateForward="true" draggable="$ansSolEs.creditAchieved&lt; 1" styleNumber="5">
+          <bezierControls alwaysVisible="true">
+            <controlVectors><vector>$P51handle</vector></controlVectors>
+            <controlVectors><vector>$P52handle</vector></controlVectors>
+          </bezierControls>
+        </curve>
+      </else>
+    </conditionalContent>
+
+
+    <point name="P61" styleNumber="5" x="$zeroFixed" y="-1" hide="$ansSolEs.creditAchieved=1" labelPosition="upperleft">
+      <label><m>w = $P61.y</m></label>
+      
+        <constrainToGrid dy="0.5" />
+      
+    </point>
+    <point name="P61handle" x="-4" y="4" hide="true">
+      
+        <constrainTo><circle radius="$rEs1" /></constrainTo>
+        <attractTo threshold="0.2"><line>y=0</line></attractTo>
+      
+    </point>
+    <point name="P62" styleNumber="5" x="10" y="-1" hide="$ansSolEs.creditAchieved=1">
+      
+        <constrainTo><regionHalfPlane boundaryValue="15" greaterThan="false" /></constrainTo>
+        <attractToGrid dx="20" dy="1" ythreshold="0.3" includeGridlines="true" />
+      
+    </point>
+    <point name="P62handle" x="-4" y="4" hide="true">
+      
+        <constrainTo><circle radius="$rEs2" /></constrainTo>
+        <attractTo threshold="0.2"><line>y=0</line></attractTo>
+      
+    </point>
+
+    <conditionalContent name="C6">
+      <case condition="$curve6IsDashed">
+        <curve through="$P61 $P62" extrapolateForward="true" draggable="$ansSolEs.creditAchieved&lt; 1" styleNumber="6">
+          <bezierControls alwaysVisible="true">
+            <controlVectors><vector>$P61handle</vector></controlVectors>
+            <controlVectors><vector>$P62handle</vector></controlVectors>
+          </bezierControls>
+        </curve>
+      </case>
+      <else>
+        <curve through="$P61 $P62" extrapolateForward="true" draggable="$ansSolEs.creditAchieved&lt; 1" styleNumber="5">
+          <bezierControls alwaysVisible="true">
+            <controlVectors><vector>$P61handle</vector></controlVectors>
+            <controlVectors><vector>$P62handle</vector></controlVectors>
+          </bezierControls>
+        </curve>
+      </else>
+    </conditionalContent>
+
+
+    <point name="P71" styleNumber="5" x="$zeroFixed" y="-6" hide="$ansSolEs.creditAchieved=1" labelPosition="upperleft">
+      <label><m>w = $P71.y</m></label>
+      
+        <constrainToGrid dy="0.5" />
+      
+    </point>
+    <point name="P71handle" x="-4" y="4" hide="true">
+      
+        <constrainTo><circle radius="$rEs1" /></constrainTo>
+        <attractTo threshold="0.2"><line>y=0</line></attractTo>
+      
+    </point>
+    <point name="P72" styleNumber="5" x="10" y="-6" hide="$ansSolEs.creditAchieved=1">
+      
+        <constrainTo><regionHalfPlane boundaryValue="15" greaterThan="false" /></constrainTo>
+        <attractToGrid dx="20" dy="1" ythreshold="0.3" includeGridlines="true" />
+      
+    </point>
+    <point name="P72handle" x="-4" y="-4" hide="true">
+      
+        <constrainTo><circle radius="$rEs2" /></constrainTo>
+        <attractTo threshold="0.2"><line>y=0</line></attractTo>
+      
+    </point>
+
+    <conditionalContent name="C7">
+      <case condition="$curve7IsDashed">
+        <curve through="$P71 $P72" extrapolateForward="true" draggable="$ansSolEs.creditAchieved&lt; 1" styleNumber="6">
+          <bezierControls alwaysVisible="true">
+            <controlVectors><vector>$P71handle</vector></controlVectors>
+            <controlVectors><vector>$P72handle</vector></controlVectors>
+          </bezierControls>
+        </curve>
+      </case>
+      <else>
+        <curve through="$P71 $P72" extrapolateForward="true" draggable="$ansSolEs.creditAchieved&lt; 1" styleNumber="5">
+          <bezierControls alwaysVisible="true">
+            <controlVectors><vector>$P71handle</vector></controlVectors>
+            <controlVectors><vector>$P72handle</vector></controlVectors>
+          </bezierControls>
+        </curve>
+      </else>
+    </conditionalContent>
+
+
+  </conditionalContent>
+  
+
+</graph>
+
+
+<solution>
+<p>The equilibria are <m>z =$a </m>, <m>$b </m>, and <m>$c </m>.</p>
+
+<p>Some sample solutions</p>
+
+
+
+
+<graph width="500" xmin="-3" xmax="21" ymin="-8.5" ymax="10.5" fixAxes="true" grid="dense" identicalAxisScales="true" name="solutionGraph">
+  <xLabel><m>t</m></xLabel>
+  <yLabel><m>w</m></yLabel>
+
+  <point name="P11" x="0" y="-4.5" hide="true" />
+  <point name="P11handle" x="-1" y="0.2" hide="true" />
+  <point name="P12" x="2" y="-7" hide="true" />
+  <point name="P12handle" x="-0.3" y="1" hide="true" />
+  <curve name="C1" through="$P11 $P12" extrapolateForward="true" draggable="false" styleNumber="1">
+    <bezierControls alwaysVisible="true">
+      <controlVectors><vector>$P11handle</vector></controlVectors>
+      <controlVectors><vector>$P12handle</vector></controlVectors>
+    </bezierControls>
+  </curve>
+
+    <point name="P21" x="0" y="-3.5" hide="true" />
+    <point name="P21handle" x="-3" y="-1" hide="true" />
+    <point name="P22" x="12" y="2" hide="true" />
+    <point name="P22handle" x="-5" y="0" hide="true" />
+    <curve name="C2" through="$P21 $P22" extrapolateForward="true" draggable="false" styleNumber="2">
+      <bezierControls alwaysVisible="true">
+        <controlVectors><vector>$P21handle</vector></controlVectors>
+        <controlVectors><vector>$P22handle</vector></controlVectors>
+      </bezierControls>
+    </curve>
+
+
+
+    <point name="P31" x="0" y="5.5" hide="true" />
+    <point name="P31handle" x="-3" y="1" hide="true" />
+    <point name="P32" x="12" y="2" hide="true" />
+    <point name="P32handle" x="-5" y="0" hide="true" />
+    <curve name="C3" through="$P31 $P32" extrapolateForward="true" draggable="false" styleNumber="3">
+      <bezierControls alwaysVisible="true">
+        <controlVectors><vector>$P31handle</vector></controlVectors>
+        <controlVectors><vector>$P32handle</vector></controlVectors>
+      </bezierControls>
+    </curve>
+
+
+    <point name="P41" x="0" y="6.5" hide="true" />
+    <point name="P41handle" x="-1" y="-0.2" hide="true" />
+    <point name="P42" x="2" y="9" hide="true" />
+    <point name="P42handle" x="-0.3" y="-1" hide="true" />
+    <curve name="C4" through="$P41 $P42" extrapolateForward="true" draggable="false" styleNumber="4">
+      <bezierControls alwaysVisible="true">
+        <controlVectors><vector>$P41handle</vector></controlVectors>
+        <controlVectors><vector>$P42handle</vector></controlVectors>
+      </bezierControls>
+    </curve>
+
+
+
+  <lineSegment styleNumber="6" endpoints="(0,-4) (30, -4)" />
+  <lineSegment styleNumber="5" endpoints="(0,2) (30, 2)" />
+  <lineSegment styleNumber="6" endpoints="(0,6) (30, 6)" />
+
+</graph>
+
+
+<p>
+Since solutions diverge away from <m>z =$a </m>, the equilibrium <m>z _e=$a </m> is unstable.
+Since solutions converge toward <m>z =$b </m>, the equilibrium <m>z _e=$b </m> is stable.
+
+Since solutions diverge away from <m>z =$c </m>, the equilibrium <m>z _e=$c </m> is unstable.
+</p>
+
+
+</solution>
+
+
+</problem>

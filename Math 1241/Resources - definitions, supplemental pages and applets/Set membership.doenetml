@@ -1,0 +1,13 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 83JYrBeRUJAxu23WPiuXGn
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 26da20d9d86785e9
+-->
+<section><title>Definition of the set membership symbol</title>
+ 
+<p>The symbol <m>\in</m> indicates set membership and means “is an element of” so that the statement <m>x \in A</m> means that <m>x</m> is an element of the set <m>A</m>. In other words, <m>x</m> is one of the objects in the collection of (possibly many) objects in the set <m>A</m>.</p>
+
+<p>For example, if <m>A</m> is the set <m>\{♢,♡,♣,♠\}</m>, then <m>♡ \in A</m> but <m>△ \notin A</m> (where the symbol <m>\notin</m> means “not an element of”). Or if <m>I</m> is the interval <m>[1,2]</m>, then <m>x \in I</m> means <m>x</m> is some real number in that interval, i.e., <m>x</m> satisfies <m>1 \leq x \leq 2</m>.</p>
+
+</section>

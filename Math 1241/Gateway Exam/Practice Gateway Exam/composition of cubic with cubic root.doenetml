@@ -1,0 +1,43 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7B9Ep6mXmnGGEqmy48QjUi
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 4d964de2f061d366
+-->
+<!--*******************************************************
+Checked: VM 8/8/2022
+*********************************************************-->
+
+<problem>
+
+  
+<selectFromSequence name="a" exclude="-1 0 1" numToSelect="2" withReplacement="true" hide="true" from="-10" to="10" />
+
+<selectFromSequence name="c" hide="true" from="2" to="10" />
+<select name="f" numToSelect="2" withReplacement="false" hide="true">f g h k y z u v w</select>
+
+<math name="ff" hide="true" simplify="full">$a[1]*x^3+$a[2]</math>
+<math name="answer" hide="true" simplify="full">$a[1]*$c*x+$a[2]</math>
+
+
+Let <m>$f[1](x) = $ff</m> and <m>$f[2](x) = \sqrt[3]{ $c x}</m>.  <nbsp /> What is <m>$f[1]($f[2](x))</m>?
+
+<p><m>$f[1]($f[2](x)) =</m> <mathInput name="answer1input" /> 
+</p>
+<answer forcefullcheckworkbutton="true">
+<award symbolicEquality="true" simplifyOnCompare="numbers" referencesAreResponses="$answer1input">
+  <when>$answer1input = $answer</when>
+</award>
+</answer>
+  
+
+<solution>
+<md>
+  <mrow>$f[1]($f[2](x))\amp = $f[1](\sqrt[3]{ $c x})</mrow>
+  <mrow>\amp = <math format="latex">$a[1](\sqrt[3]{ $c x})^3 + $a[2]</math></mrow>
+  <mrow>\amp = <math format="latex">$a[1]($c x) + $a[2]</math></mrow>
+  <mrow>\amp = $answer</mrow>
+</md>
+</solution>
+
+</problem>

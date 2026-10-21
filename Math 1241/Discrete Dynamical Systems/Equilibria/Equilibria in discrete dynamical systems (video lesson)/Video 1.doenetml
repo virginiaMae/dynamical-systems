@@ -1,0 +1,69 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7FnAayPCJCnjn6Jht6DPTg
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 23c35113571793ca
+-->
+<title>Equilibria in discrete dynamical systems</title>
+
+<p><ref>Video 1</ref> | <ref>Video 2</ref> | <ref>Video 3</ref> | <ref>Transcripts</ref> </p>
+
+<description>
+An introduction to the concept of equilibria in discrete dynamical systems and how to calculate them.
+</description>
+
+
+<p>An 
+<ref to="doenet:equilibrium_dynamical_systems|page_type=definition">equilibrium</ref>
+ is the simplest possible solution to a 
+<ref to="doenet:dynamical_system_idea">dynamical system</ref>. It is a solution where the 
+<ref to="doenet:state_variable|page_type=definition">state variable</ref>
+ is a constant; the variable doesn't change with time at all.  For example, if a population of moose was staying steady at 3240 moose, the constant population size of 3240 moose would be an equilibrium.  Although an equilibrium is so simple, it is a fundamental concept in dynamical systems and will form a basis for analyzing more complicated behavior.</p>
+
+
+<section><title>Video 1</title>
+
+
+<figure suppressFigureNameInCaption="true">
+<video youtube="_8G7hM7HAWU" size="large" aspectRatio="16/9" name="v1" />
+<caption>Introduction to equilibria of discrete dynamical systems. </caption>
+</figure>
+
+<number name="v1RoundUp" hide="true">
+  <conditionalContent>
+    <case condition="$v1.fractionWatched > 0.9">1</case>
+    <else>$v1.fractionWatched</else>
+  </conditionalContent>
+</number>
+  
+  <p>Video credit achieved: <number displayDecimals="1">$v1RoundUp*100</number>%</p>
+
+<answer hide="true" name="v1Credit">
+  <award credit="$v1RoundUp"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+
+  <problem><title>Video review question</title>
+
+  <p>Given the dynamical system <m>x_{t+1} = 4 + 0.6 x_t</m>, determine if <m>x_t = 5</m> or <m>x_t = 10</m> are equilibria.</p>
+
+  <p>If <m>x_0 = 5</m>, then <m>x_1 = </m>
+    <answer>7</answer>.  Therefore <m>x_t=5</m>
+    <answer inline="true">
+      <choice>is</choice>
+      <choice credit="1">is not</choice>
+    </answer>
+    an equilibrium.</p>
+    
+  <p>If <m>x_0 = 10</m>, then <m>x_1 = </m>
+    <answer>10</answer>.  Therefore <m>x_t=10</m>
+    <answer inline="true">
+      <choice credit="1">is</choice>
+      <choice>is not</choice>
+    </answer>
+    an equilibrium.</p>
+    
+  </problem>
+  
+</section>

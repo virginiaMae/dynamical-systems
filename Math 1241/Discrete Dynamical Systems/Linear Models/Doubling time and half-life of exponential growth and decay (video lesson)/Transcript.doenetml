@@ -1,0 +1,59 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7Eiv42boU6Tt7FxpCpLhrX
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 6c0a97b5ae7aba3f
+-->
+<title>Doubling time and half-life of exponential growth and decay</title>
+
+<p><ref>Video</ref> | <ref>Summary</ref> | <ref>Transcript</ref> </p>
+
+<section><title>Transcript</title>
+
+<p>This lecture is about doubling time or half-life of discrete dynamical systems. For what type of dynamical system does a solution exhibit exponential growth or decay? I don’t know if you’ve thought about it, but all these dynamical systems that have exponential solutions are linear, meaning they’re in the form <m>x_{n+1} - x_n</m> equals <m>a</m> times <m>x_n</m>,
+  
+  <me>x_{n+1} - x_n = a x_n</me> 
+
+or maybe in the form <m>x_{n+1}</m> equals (let’s say) <m>b</m> times <m>x_n</m> 
+  
+  <me>x_{n+1} = b x_n.</me>
+  
+These are the same thing, right? If you add <m>x_n</m> to both sides of the first equation you’ll get <m>(a+1)x_n</m>, so really, <m>b</m> is the same thing as <m>(a+1)</m>.</p>
+
+<p>For these linear equations, what does the solution look like? For the equation shown right here, the solution would look like <m>x_n</m> equals 
+  <me>x_n = b^n x_0</me>
+or, equivalently, 
+  <me>x_ n = (a+1)^n x_0.</me> 
+Same thing right? Or maybe if we had a different equation, ( I won’t write the equation ) but we might have a solution that looks like, – let’s see –  we could have a state variable <m>q</m> and maybe we could use <m>t</m> for the time variable, so maybe we’d have something like <m>q_t = d^t</m> times the initial conditions (<m>q_t = d^t q_0</m>) or <m>z_t</m> equals <m>r^t</m> times the initial conditions (<m>z_t = r^t z_0</m>)…whatever, something like this. But all these equations for the linear systems end up having exponentials for the solution. A linear equation means exponential solution. And these are the simplest types of dynamical systems – these linear equations which have exponential solutions.</p>
+<p>Ok, let's say I have a solution that looks like <m>P_t</m> equals <m>a</m> (*to the power <m>t</m>) times the initial condition (<m>P_t = a^t P_0</m>). Note that this is a different <m>a</m> than this <m>a</m> over here (*in earlier, <m>x_n</m> equation)-- a new <m>a</m>. How do I know if I have exponential growth or exponential decay?</p>
+
+<p>Well, for each time step I multiply by <m>a</m> and if <m>a</m> is bigger than 1 then I get bigger, so exponential growth corresponds to <m>a</m> being greater than 1. And if I multiply by a number between 0 and 1, then I get smaller each time, so exponential decay corresponds to <m>a</m> being between 0 and 1. Let's stick with exponential growth for just a moment. So, let's say we have a greater than 1, which means we have exponential growth. Since we multiply by <m>a</m> for each time step, the larger <m>a</m> is, the faster the growth. And one way we can measure how fast the growth is, is by looking at how long it takes for the state variable to double. In other words, what is the doubling time?</p>
+
+
+<p>Ok, here I wrote the dynamical system that leads to this exponential solution,
+  
+<me>P_{t+1} = a P_t \implies P_t = a^t P_0</me>
+  
+and we’re going to consider it first for the case that the parameter <m>a</m> is greater than 1 so that we have exponential growth. What we want to do is characterize how the size of the parameter <m>a</m> influences the speed at which the solution grows. And we’re going to do that using the doubling time. Let's say we don’t know the initial conditions, but we know <m>a</m>. We know the value of <m>a</m>, and we know <m>a</m> is greater than 1.</p>
+
+<p>The question is: will <m>P_t</m> eventually reach 2 times <m>P_0</m>? Will the dynamical system eventually double?  Well, if <m>a</m> is greater than 1 and we have exponential growth, it will. And when will it do that? It will do that when <m>P_t</m> (which is <m>a^t P_0</m>), is 2 times <m>P_0</m>
+  <me>P_t = a^t P_0 = 2 P_0.</me> 
+Let's assume that <m>P_0</m> is not zero (or nothing’s gonna happen). So, we started with some unknown initial condition but it's a nonzero initial condition. If that is true, we can cancel <m>P_0</m> from both sides, we can divide both sides of the equation by <m>P_0</m> (because it's nonzero), to get that <m>a</m> to the power of <m>t</m> must be 2.</p>
+  <me>a^t = 2</me>
+<p>Now remember, <m>a</m> is just a known number, what we want to find is the value of <m>t</m>, such that this is true. How do we solve this for <m>t</m>? We just take logarithms of both sides. I’ll get <m>\log(a^t) = \log 2</m>. Now you have to remember your rules for logarithms and realize that we can bring down this <m>t</m>; <m>\log(a^t)</m> is the same thing as <m>t</m> times <m>\log a</m>: <me>\log(a^t) = t \log a.</me>  This is true for any base logarithm.</p>
+  
+<p>So, we can divide both sides by <m>\log a </m> to calculate that the time it takes to double will be <m>\log 2</m> divided by <m>\log a</m>. This is the time to double. We can call this time, <m>T_{\text{double}}</m>
+  <me>T_{\text{double}} = \frac{\log 2}{\log a}.</me> So, if I have another dynamical system whose solution is exponential growth – so let’s say if <m>q_t = b^t q_0</m>, with <m>b</m> greater than 1, what is the doubling time? Well it doesn't depend on <m>q_0</m> –  it just depends on <m>b</m> – and it’s <m>\log 2</m> over <m>\log b</m>,
+  <me>T_{\text{double}} = \frac{\log 2}{\log  b}.</me>
+</p>
+
+<p>And again, we could use <m>\log</m> base 10 (<m>\log_{10} x</m>), <m>\log</m> base 2 (<m>\log_{2} x</m>), <m>\log</m> base e (<m>\ln x</m>) – it doesn’t matter. For any base logarithm this expression will give us the doubling time.</p>
+  
+<p>The doubling time and half-life applet allows you to explore how the doubling time works. The green curve is an exponential function that you can view as the solution to a linear dynamical system with parameter <m>b</m> and initial condition <m>P_0</m>. The exponential function is <m>P_0 b^t</m> times <m>b</m> to the power of <m>t</m>, and you can change <m>P_0</m> by dragging it up and down, and we can change <m>b</m> by typing in new values. The applet automatically calculates the doubling time for you –  it's simply <m>T_{\text{double}} = \frac{\log 2}{\log b}</m>, and the doubling time is illustrated by the vertical blue lines, which you can move by dragging any of the x’s. Notice that the second horizontal line is twice as high as the first, which happens after one doubling time. The third horizontal line is at twice the height of the second, and again this growth happens after one doubling time. The fourth horizontal line is double the third, which again happens after a doubling time. Notice that the rate of doubling doesn’t depend on the initial condition.  It does of course depend on <m>b</m>: if we make <m>b</m> smaller, the doubling time gets larger because the growth of the function is slower; and if we make <m>b</m> larger, the doubling time shrinks because the function grows faster. So, what changes if now the parameter <m>a</m> is between 0 and 1?  Well, now we have exponential decay rather than exponential growth so of course we won’t be doubling, but instead what we can do is ask how long does it take us to get to half the original value –  and this is the half-life.</p>
+<p>So, at what time is <m>P_t</m>  (which is <m>a^t P_0</m>) equal to one-half the initial conditions <m>P_0</m>?
+  <me>P_t = a^t P_0 = \frac{1}{2} P_0 \;\;\;P_0 \neq 0</me></p>
+<p>Again, we assume that we have nonzero initial condition, so we can divide both sides of the equation by <m>P_0</m>, and we have <m>a^t = \frac{1}{2}</m>. We take logarithms of both sides, move <m>t</m> outside the logarithm, and find that the time it takes for the system to reach one-half its original value is 
+  <me>T_{\text{half}} = \frac{\log \frac{1}{2}}{\log a}.</me> This is the half-life. The formulas for the doubling time and the half-life are nearly identical. The only difference is: for the doubling time we take the <m>\log 2</m>, while for the half-life we take the <m>\log(\frac{1}{2})</m> The doubling time is used for exponential growth when <m>a</m> is larger than 1 and the half-life is used for exponential decay when <m>a</m> is between 0 and 1. If you screw up and use the wrong formula, you’ll just get a negative sign, which will tell you to use the other one. The doubling time applet turns into the half-life applet if we make the parameter <m>b</m> less than 1. Now we get exponential decay and the half-life is automatically calculated as <m>\frac{\log \frac{1}{2}}{\log b}</m>. Again, the distance between the vertical lines is the half-life. And each horizontal line is at one-half the height of the previous. </p>
+
+  
+</section>

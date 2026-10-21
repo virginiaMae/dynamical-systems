@@ -1,0 +1,52 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7Hwn6ULwvkLc7VtBcftUmz
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 5a6e41c84b44412f
+-->
+<problem>
+<!-- <title>discrete equilibria 5</title> -->
+
+<setup>
+
+<selectFromSequence name="a" numToSelect="2" withReplacement="false" from="1" to=" 10" />
+
+<selectFromSequence name="c" from="1" to=" 33" />
+<select name="x"> x y z u v w p X Y Z S</select>
+
+<math name="answer" unordered="true">$a[1] ,$a[2] </math>
+<math name="twob" simplify="full">2*$a[2] </math>
+<math name="bsquare" simplify="full">$a[2] **2</math>
+
+</setup>
+
+
+<p>Find all equilibria to the discrete dynamical system below.  If there are multiple equilibria, separate your answers by commas.  
+<md>
+  <mrow>$x _{n+1}  - $x _n \amp = ($x _n - $a[1]  )( $x _n^2 - $twob $x _n + $bsquare  )</mrow>
+  <mrow>$x _0 \amp = $c</mrow>
+</md>
+</p>
+
+<p><m>E =</m> 
+<answer>
+<award matchPartial="true" unorderedCompare="true">$answer </award>
+</answer>
+</p>
+
+
+<solution>
+<p>To find the equilibria, we set <m>$x _{n+1} = E</m> and <m>$x _n = E</m> in the evolution rule, obtaining
+<md>
+  <mrow>E-E\amp =  ( E - $a[1]  )( E^2 - $twob E + $bsquare  )</mrow>
+  <mrow>0\amp = ( E - $a[1]  )( E^2 - $twob E + $bsquare  )</mrow>
+</md>
+We can factor the quadratic: <m>( E^2 - $twob E + $bsquare  )  = (E-$a[2] )^2</m>.  The condition for the equilibria becomes
+<me>0 = ( E - $a[1]  ) (E-$a[2] )^2.</me>
+Therefore, the equilibria are <m>E=$a[1] </m> and <m>E = $a[2] </m>.</p>
+
+
+</solution>
+
+
+</problem>

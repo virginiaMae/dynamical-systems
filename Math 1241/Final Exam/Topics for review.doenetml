@@ -1,0 +1,30 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 82FoCtgYUNpEQYqhvaQxNZ
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 10e0997b67a82452
+-->
+<title>Topics for review</title>
+
+<p>The last day of class on Wednesday will be a review session, where we'll have different stations focused on reviewing different topics.</p>
+
+<p>Which topics would you like us to discuss in class?  List up to six topics (fewer is fine).  List most important topics first.</p>
+
+<p>Topic 1: <textInput name="topic1" width="600" /></p>
+<p>Topic 2: <textInput name="topic2" width="600" /></p>
+<p>Topic 3: <textInput name="topic3" width="600" /></p>
+<p>Topic 4: <textInput name="topic4" width="600" /></p>
+<p>Topic 5: <textInput name="topic5" width="600" /></p>
+<p>Topic 6: <textInput name="topic6" width="600" /></p>
+
+
+<answer>
+  <award><when>
+    <text>$topic1</text> != <text />    
+    or <text>$topic2</text> != <text />    
+    or <text>$topic3</text> != <text />    
+    or <text>$topic4</text> != <text />    
+    or <text>$topic5</text> != <text />    
+    or <text>$topic6</text> != <text />    
+  </when></award>
+</answer>

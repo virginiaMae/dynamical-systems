@@ -1,0 +1,103 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7DvGWK6aa7ZvMzaaLjBxwR
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: ea2b0fde5d8cb516
+-->
+
+<!--Select for problem 1 v3, (4/5)prob-->
+<problem>
+<!-- <title>Compute iterates of discrete dynamical system</title> -->
+
+<setup>
+
+<select name="x0" numToSelect="2" withReplacement="true"> 3/4 1/5 2/5 3/5 4/5 1/6 5/6 1/2 1/3 2/3 1/4</select>
+<function name="f">$x0[2] x(1-x)</function>
+
+<math name="ans1" simplify="numbers">$$f($x0[1])</math>
+<math name="ans2" simplify="numbers">$$f($ans1)</math>
+<math name="ans3" simplify="numbers">$$f($ans2)</math>
+<math name="ans4" simplify="numbers">$$f($ans3)</math>
+
+</setup>
+
+
+<p>Compute the next four points of the solution to the discrete dynamical system
+
+<md>
+  <mrow>x_{n+1}\amp = $x0[2] x_n (1-x_n)</mrow>
+  <mrow>x_0\amp = $x0[1].</mrow>
+</md>
+</p>
+
+
+
+<p>Include at least 4 significant digits in your answer.</p>
+<p>
+<m>x_1 =</m> 
+<answer name="answer1">
+<award symbolicEquality="true" simplifyOnCompare="numbers" allowedErrorInNumbers="0.001">$ans1 </award>
+<award credit="0.5" symbolicEquality="true" simplifyOnCompare="numbers" allowedErrorInNumbers="0.01" feedbackCodes="numericalerror">$ans1 </award>
+<award credit="0.25" symbolicEquality="true" simplifyOnCompare="numbers" allowedErrorInNumbers="0.1" feedbackCodes="numericalerror">$ans1 </award>
+</answer>
+</p>
+$answer1.feedbacks
+
+
+<p>
+<m>x_2 =</m> 
+<answer name="answer2">
+<award symbolicEquality="true" simplifyOnCompare="numbers" allowedErrorInNumbers="0.001">$ans2 </award>
+<award credit="0.5" symbolicEquality="true" simplifyOnCompare="numbers" allowedErrorInNumbers="0.01" feedbackCodes="numericalerror">$ans2 </award>
+<award credit="0.25" symbolicEquality="true" simplifyOnCompare="numbers" allowedErrorInNumbers="0.1" feedbackCodes="numericalerror">$ans2 </award>
+</answer>
+</p>
+$answer2.feedbacks
+
+
+<p>
+<m>x_3 =</m> 
+<answer name="answer3">
+<award symbolicEquality="true" simplifyOnCompare="numbers" allowedErrorInNumbers="0.001">$ans3 </award>
+<award credit="0.5" symbolicEquality="true" simplifyOnCompare="numbers" allowedErrorInNumbers="0.01" feedbackCodes="numericalerror">$ans3 </award>
+<award credit="0.25" symbolicEquality="true" simplifyOnCompare="numbers" allowedErrorInNumbers="0.1" feedbackCodes="numericalerror">$ans3 </award>
+</answer>
+</p>
+$answer3.feedbacks
+
+
+<p>
+<m>x_4 =</m> 
+<answer name="answer4">
+<award symbolicEquality="true" allowedErrorInNumbers="0.001" simplifyOnCompare="numbers">$ans4 </award>
+<award credit="0.5" symbolicEquality="true" allowedErrorInNumbers="0.01" feedbackCodes="numericalerror">$ans4 </award>
+<award credit="0.25" symbolicEquality="true" allowedErrorInNumbers="0.1" feedbackCodes="numericalerror">$ans4 </award>
+</answer>
+</p>
+$answer4.feedbacks
+
+
+
+
+<solution>
+
+<p>
+<m>x_1 =  <round numDigits="4"><number>$ans1 </number></round></m>
+</p>
+
+<p>
+<m>x_2 =  <round numDigits="4"><number>$ans2 </number></round></m>
+</p>
+
+<p>
+<m>x_3 =  <round numDigits="4"><number>$ans3 </number></round></m>
+</p>
+
+<p>
+<m>x_4 =  <round numDigits="4"><number>$ans4 </number></round></m>
+</p>
+
+</solution>
+
+
+</problem>

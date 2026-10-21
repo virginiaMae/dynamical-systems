@@ -1,0 +1,84 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7NbWuejjNgEQdv4Ck4RY5R
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: f9c6df217cadae4e
+-->
+<problem>
+<!-- <title>Derivative of quotient of linear functions</title> -->
+
+<setup>
+
+<selectFromSequence name="a" numToSelect="4" withReplacement="true" from="-10" to=" 10" exclude="0" />
+
+<select name="function"> f g m p r u v w</select>
+<select name="x"> x y z s t</select>
+
+<math name="numerator" simplify="full">$a[1] *$x +$a[2] </math>
+<math name="denominator" simplify="full">$a[3] *$x +$a[4] </math>
+<math name="quotient" simplify="full">$numerator /$denominator </math>
+<math name="ad_minus_bc" simplify="full">$a[1] *$a[4] -$a[3] *$a[2] </math>
+<derivative name="derivative" simplify="full" variables="$x">$quotient</derivative>
+<math name="derivative2" simplify="full" expand="true">$derivative </math>
+<math name="deriv" simplify="full">d$function / d$x</math>
+<selectFromSequence name="phrasing" from="1" to="4" />
+
+</setup>
+
+
+<conditionalContent>
+<case condition="$phrasing = 1">
+Let <m>$function ($x ) = $quotient </m>.  Find <m>$deriv </m>.
+
+</case><case condition="$phrasing = 2">
+Calculate <m>$deriv </m>, where  <m>$function ($x ) = $quotient </m>. 
+
+</case><case condition="$phrasing = 3">
+Calculate the derivative of <m>$function ($x ) = $quotient </m>.
+
+</case><else>
+Differentiate the function <m>$function ($x ) = $quotient </m>.
+
+</else>
+</conditionalContent>
+
+
+<p><m>$deriv  =</m> 
+<answer forceFullCheckworkButton="true">
+<award>$derivative </award>
+<!-- <award credit='0.9' nSignErrorsMatched="1" feedbackCodes='onesignerror'>$derivative </award> -->
+<!-- <award credit='0.81' nSignErrorsMatched="2" feedbackCodes='twosignerrors'>$derivative </award> -->
+</answer>
+</p>
+<!-- <copy prop="feedbacks" source="answer1" /> -->
+
+<hint>
+
+<paragraphs>
+<title>Helpful pages</title>
+<ul>
+<li><ref to="doenet:7LMCto3Hr81zxLMzwiiARp">The quotient rule for differentiation</ref>
+
+
+</li>
+</ul>
+</paragraphs>
+</hint>
+
+
+<solution>
+Using the 
+<ref to="doenet:7LMCto3Hr81zxLMzwiiARp">The quotient rule for differentiation</ref>
+, 
+<md>
+  <mrow>\frac{ d$function }{ d$x }\amp =  \frac{ ($denominator  ) \frac{ d }{ d$x } ($numerator )  - ($numerator ) \frac{ d }{ d$x } ($denominator  ) }{ ($denominator )^2 }</mrow>
+  <mrow>\amp =  \frac{ ($denominator  ) ($a[1] ) - ($numerator )($a[3] ) }{ ($denominator )^2 }</mrow>
+  <mrow>\amp =  \frac{ $ad_minus_bc  }{ ($denominator )^2 }.</mrow>
+</md>
+We could multiply out the denominator <m>($denominator )^2</m>, but there is no real advantage for doing so.
+
+
+</solution>
+
+
+</problem>

@@ -1,0 +1,127 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7LNSPHEef7iQRxXsYipo7n
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: c3d60cd7c79f3113
+-->
+<title>The quotient rule for differentiation</title>
+<p><ref>Video</ref> | <ref>Summary</ref> | <ref>Transcript</ref>  </p>
+<description>
+The quotient rule is derived from the product rule for differentiation.
+</description>
+
+<section name="vid_section"><title>Video</title>
+<figure suppressFigureNameInCaption="true">
+<video youtube="52DCuZFysJU" size="large" aspectRatio="16/9" name="v1" />
+<caption>The quotient rule for differentiation</caption>
+</figure>
+
+
+<setup>
+  <number name="timestamp1">218</number>
+  <number name="timestamp2">401</number>
+  <number name="timestamp3">537</number>
+  <number name="timestamp4">726</number>
+</setup>
+  
+
+<sideBySide margins="5%">
+<div><p>Video credit achieved: <number displayDecimals="1">$v1RoundUp*100</number>%</p></div>
+</sideBySide>
+  
+<number name="v1RoundUp" hide="true">
+  <conditionalContent>
+    <case condition="$v1.fractionWatched > 0.9">1</case>
+    <else>$v1.fractionWatched</else>
+  </conditionalContent>
+</number>
+
+
+<answer hide="true" name="v1Credit">
+  <award credit="$v1RoundUp"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+
+
+<aside name="quotientRuleFormula"><title>Formula - The quotient rule:</title>
+  <md>
+  <mrow>\left(\frac{g(x)}{h(x)}\right)' \amp= \frac{h(x)g'(x) -g(x)h'(x)}{[h(x)]^2}</mrow>
+  </md>
+  <md>
+    <mrow>\textbf{Differential form:}\;\;\; \frac{ d }{ dx }\left(\frac{g}{h}\right)\amp= \frac{h\frac{ dg }{ dx } -g\frac{ dh }{ dx }}{h^2}.\;\;\;</mrow>
+  </md>
+</aside>
+
+<problem><title>Video review questions</title>
+<exercise includeAutoNumber="true"><title />
+<p>Which previously-derived differentiation formula is used in the video to derive the quotient rule?
+  <answer name="ans1a">
+    <choice>The power rule:  <m>f'(x) = a \cdot x^{a-1} \;\;\;\text{where}\;\;\;f(x) = a^x</m></choice>
+    <choice>The chain rule:  <m>h'(x) = f'(g(x))\cdot g'(x) \;\;\;\text{where}\;\;\;h(x) = f(g(x))</m></choice>
+    <choice credit="1">The product rule: <m>g'(x) = f'(x)h(x) + f(x)h'(x)\;\;\;\text{where}\;\;\;g(x) = f(x)h(x)</m></choice>
+  </answer>
+</p>
+</exercise>
+  
+<exercise includeAutoNumber="true"><title />
+  
+<p>Let's solve for the derivative of a quotient of two functions step-by-step, using the <ref to="$quotientRuleFormula"><term>quotient rule</term></ref>:</p>
+<p>Let  <m> h(x) = 2x</m>, and <m>g(x) = 3x^2</m>. Compute the derivative of <m>f(x) = \frac{g(x)}{h(x)}</m>.</p>
+  <ul>
+    <li><p>First, we need to calculate the<answer name="ans1b" inline="true">
+    <choice>product</choice>
+    <choice credit="1">derivative</choice>
+    <choice>exponential</choice>
+  </answer> of <m>h(x)</m> and <m>g(x)</m>.</p>
+      <p><m>\frac{dh}{dx} = </m>
+        <answer name="ans1c">2</answer></p>
+      <p><m>\frac{dg}{dx} = </m>
+        <answer name="ans1d">6x</answer></p>
+    </li>
+
+
+<setup>
+<!-- <math name="sol1e1">({g'(x)}*{h(x)} &#x2D; {g(x)}{h'(x)})/({h(x)}^2)</math> -->
+<math name="hOfx">2x</math>
+<math name="gOfx">3x^2</math>
+</setup>
+    
+    <li><p>Next, we need to apply the <ref to="$quotientRuleFormula"><term>quotient rule</term></ref> which is given by (use symbols here to recreate the general formula)</p>
+      <p>
+      <m>f'(x) = \bigg(</m> <mathInput name="mi1" /> -  <mathInput name="mi2" /><m>\bigg) \div </m> <mathInput name="mi3" />
+        <answer name="ans1e">
+<!--           <mathInput name="formulaInput" prefill="({ }*{ } &#x2D; { }*{ })/({ }^2)"/> -->
+          <award>
+            <when>$mi1 = h(x)g'(x) and $mi2 = h'(x)g(x) and ($mi3 = h(x)^2 or $mi3 = (h(x))^2)</when>
+          </award>
+          <award>
+            <when>$mi1 = h g' and $mi2 = h' g and ($mi3 = h^2 or $mi3 = (h)^2)</when>
+          </award>
+          <award>
+            <when>$mi1 = <math>h dg/dx</math> and $mi2 = <math>g dh/dx</math> and ($mi3 = h^2 or $mi3 = (h)^2)</when>
+          </award>
+          <award>
+            <when>$mi1 = <math>((h dg)/(dx))</math> and $mi2 = <math>((g dh)/(dx))</math> and ($mi3 = h^2 or $mi3 = (h)^2)</when>
+          </award>
+        </answer>
+    </p>
+    <hint>You can use either the "prime" format or the "differential" format here.</hint>
+    </li>
+
+    <li><p>Which gives us:</p> 
+      <p>
+      <m>f'(x) = \bigg(</m> <math name="numeratorSol">$ans1d $hOfx  -  $ans1c $gOfx</math><m>\bigg) \div  </m> <math name="denominatorSol">$hOfx^2</math></p> 
+      <p>We can then simplify this expression to arrive at our final answer:</p>
+      <p><m>f'(x) = </m><answer name="ans1f"><math>$numeratorSol/$denominatorSol</math></answer></p>
+
+      <feedback condition="$ans1f.creditAchieved = 1">Great job applying the <ref to="$quotientRuleFormula"><term>quotient rule</term></ref>. Setting it up this way was great practice. Now that you've solved it though, do you think you could have solved this problem a simpler way?</feedback>
+    </li>
+
+  </ul>
+</exercise>        
+
+</problem>
+
+
+</section>

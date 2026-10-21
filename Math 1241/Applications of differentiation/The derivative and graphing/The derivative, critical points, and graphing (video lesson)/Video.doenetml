@@ -1,0 +1,167 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7RCVx6dRgUCDPd5JBDDt56
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: b2598c044ff591e6
+-->
+<title>The derivative, critical points, and graphing</title>
+<p><ref>Video</ref> | <ref>Transcript</ref> </p>
+<description>
+
+</description>
+<section><title>Video</title>
+<figure suppressFigureNameInCaption="true">
+<video youtube="U18FPCJOeYA" size="large" aspectRatio="16/9" name="v1" />
+<caption>The derivative, critical points, and graphing</caption>
+</figure>
+
+
+<setup>
+  <number name="timestamp1" />
+  <number name="timestamp2" />
+</setup>
+
+<sideBySide margins="5%">
+<div><number name="v1RoundUp" hide="true">
+  <conditionalContent>
+    <case condition="$v1.fractionWatched > 0.9">1</case>
+    <else>$v1.fractionWatched</else>
+  </conditionalContent>
+</number>
+  
+  <p>Video credit achieved: <number displayDecimals="1">$v1RoundUp*100</number>%</p>
+
+<answer hide="true" name="v1Credit">
+  <award credit="$v1RoundUp"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+</div>
+
+<!-- <div>
+<updateValue type="number" target="v1.time" newValue="$timestamp1" name="skipTo1">
+  <label>Go to Key Moment 1</label>
+</updateValue>
+</div>
+
+<div>
+<updateValue type="text" triggerWithTargets="skipTo1" target="v1" prop="state" newValue="playing" name="playStamp1"/>
+
+<updateValue type="number" target="v1.time" newValue="$timestamp2" name="skipTo2">
+  <label>Go to Key Moment 2</label>
+</updateValue>
+</div>
+
+
+<updateValue type="text" triggerWithTargets="skipTo2" target="v1" prop="state" newValue="playing" name="playStamp2"/> -->
+</sideBySide>
+
+
+<aside><title>Procedure for determining where <m>f(x)</m> increases, decreases, or changes direction</title>
+  
+<p>The derivative can change sign at <term>critical points</term> (points <m>x = a</m>, where <m>f(a)</m> is defined, and either <m>f’(a) = 0</m> or <m>f’(a)</m> doesn’t exist), <em>or</em> at points where <m>f(a)</m> is not defined.</p>
+  
+<p>The procedure for determining where <m>f(x)</m> increases, decreases, or changes direction is as follows:</p>
+<ol>
+  <li>Find all <term>critical points</term>, as well as all points where <m>f(x)</m> doesn’t exist.</li>
+  
+  <li>These points divide the number line into intervals. One interval to the left of all the points, one interval to the right of all points, and an interval between each pair of consecutive points. Pick a convenient point to represent that interval. Let these be called <term>auxiliary points</term>. The auxiliary points can be any point on each interval, but they cannot coincide with a critical point, or a point where <m>f(x)</m> doesn’t exist.</li>
+  
+  <li>Calculate the derivative at each <term>auxiliary point</term>.</li>
+  
+  <li>If <m>f'</m> is positive at an <term>auxiliary point</term>, it is positive everywhere on the corresponding interval, since <m>f'</m>  cannot change sign on that interval. 
+<p>We can conclude that <m>f</m> is increasing on that interval. </p></li>
+  
+  <li>If <m>f'</m> is negative at an auxiliary point, it is negative everywhere on the corresponding interval.
+  <p>We can conclude that <m>f</m> is decreasing on that interval.</p> </li>
+</ol>
+</aside>
+
+<aside name="criticalPoint"><title>Critical Point - (definition)</title>
+  <term>critical point</term>
+  <p>A critical point, <m>a</m>, of <m>f</m> occurs where one of the following conditions exist:</p>
+  <ul>
+    <li><m>f'(a) = 0</m>; <nbsp /><nbsp /><nbsp /> (the derivative is equal to zero at <m>a</m>)</li>
+    <li><m>f'(a)</m> does not exist; <nbsp /><nbsp /><nbsp /> (<m>f</m> is not differentiable at <m>a</m>)</li>
+  </ul>
+  <p>For a point <m>a</m> to be a critical point of the function, the function must be defined at that point, i.e. <m>f(a)</m> exists.</p>
+</aside>
+
+  
+<problem><title>Video review questions</title>
+<exercise includeAutoNumber="true"><title />  
+<p>Consider the graph of the peicewise function <m>f</m> and its graph below. On the graph, the function <m>f</m> is represented by the $fL.styleDescriptionWithNoun and its derivative, <m>f'(x)</m>, is represented by the $fL_prime.styleDescriptionWithNoun . Then, answer the questions below.</p>
+<me>
+ f(x) =  
+ \begin{cases} 
+  \frac{(x+2)^3}{4} &amp; x &lt; 0 \\
+  \frac{1}{x} &amp; 0 &lt; x &lt; 4 \\
+  |x-6| &amp; x \geq 4\\
+ \end{cases}
+</me>
+<booleanInput name="showDerivative" prefill="true">
+  <label>Show Derivative</label>
+</booleanInput>
+  
+<graph ymin="-2" ymax="4" xmin="-5" xmax="8" grid="true" identicalAxisScales="true" size="large">
+  <function name="fL" domain="(-infinity, 0]">1/4 (x+2)^3</function>
+  <endpoint name="epZero" fixed="true" open="true">(0,$$fL(0))</endpoint>
+  <function name="fL_prime" domain="(-infinity, 0]" styleNumber="5" hide="!$showDerivative">
+    <derivative>$fL</derivative>
+  </function>
+  <endpoint name="epZeroDeriv" styleNumber="5" hide="!$showDerivative" fixed="true" open="true">(0,$$fL_prime(0))</endpoint>
+  
+  <function name="fR" domain="(0, 4]">1/x</function>
+  <function name="fR_prime" domain="(0, 4]" styleNumber="5" hide="!$showDerivative">
+    <derivative>$fR</derivative>
+  </function>
+  <endpoint name="ep4" open="true" fixed="true">(4,$$fR(4))</endpoint>
+  <endpoint name="ep4Deriv" open="true" styleNumber="5" hide="!$showDerivative" fixed="true">(4,$$fR_prime(4))</endpoint>
+  
+  <function name="fRR" domain="[4, infinity)">|x-6|</function>
+  <function name="fRR_prime" domain="[4, infinity)" styleNumber="5" hide="!$showDerivative">
+    <derivative>$fRR</derivative>
+  </function>
+  <endpoint name="ep4Closed" fixed="true">(4,$$fRR(4))</endpoint>
+  <endpoint name="ep4eriv" styleNumber="5" hide="!$showDerivative" open="true" fixed="true">(4,$$fRR_prime(4))</endpoint>
+  <endpoint name="ep6LDeriv" styleNumber="5" hide="!$showDerivative" open="true" fixed="true">(6,-1)</endpoint>
+  <endpoint name="ep4RDeriv" styleNumber="5" hide="!$showDerivative" open="true" fixed="true">(6,1)</endpoint>
+  <legend>
+    <label forObject="$fR"><m>f(x)</m></label>
+    <label forObject="$fR_prime"><m>f'(x)</m></label>
+  </legend>
+</graph>
+
+<p><m>f(-2)</m> is a <ref to="$criticalPoint">critical point</ref> of <m>f</m> because:</p>
+<answer name="ans1a">
+  <choice credit="1"><m>f'(x) = 0</m> at <m>x = -2</m></choice>
+  <choice><m>f'(x)</m> changes sign at <m>x = -2</m></choice>
+  <choice><m>f(x)</m> changes direction at <m>x = -2</m></choice>
+</answer>
+
+<p><m>x = 0</m> marks the endpoint of an interval to investigate because:</p>
+<answer name="ans1b">
+  <choice><m>f'(0) = 0</m></choice>
+  <choice credit="1"><m>f(0)</m> is not defined</choice>
+  <choice><m>f'(0) > f(0)</m></choice>
+</answer>
+
+<p><m>f(4)</m> is a <ref to="$criticalPoint">critical point</ref> of <m>f</m> because:</p>
+<answer name="ans1c">
+  <choice credit="1"><m>f'(4)</m> does not exist</choice>
+  <choice><m>f(4)</m> is not defined</choice>
+  <choice><m>f'(4) &lt; f(4)</m></choice>
+</answer>
+  
+<p><m>x = 6</m> marks the endpoint of an interval to investigate because:</p>
+<answer name="ans1d">
+  <choice><m>f'(6)</m> does not exist</choice>
+  <choice><m>f(6)</m> is not smooth (i.e. not differentiable) at <m>x = 6</m></choice>
+  <choice credit="1">both of the above are true</choice>
+</answer>
+</exercise>
+
+</problem>
+
+  
+</section>

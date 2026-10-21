@@ -1,0 +1,156 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7XHaNahg2HRCdz65A2Tr4X
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: cf8e3b0858088b08
+-->
+<problem>
+<!-- <title>Integrals of exponentials</title> -->
+
+<setup>
+
+<selectFromSequence name="a" from="-10" to=" 10" exclude="0 1" numToSelect="2" withReplacement="false" />
+<selectFromSequence name="b" from="-10" to="10" exclude="0 1" numToSelect="2" withReplacement="false" />
+
+
+<function name="g" variables="t" symbolic="true" simplify="numbers">
+  <math simplify="numbers">$a[2] *e^($b[2] *t)</math>
+</function>
+<math name="intgeval" simplify="true">$a[2] *e^($b[2] *t)/$b[2]</math>
+<math name="intgeval_C">$intgeval +C </math>
+<math name="g_C">$g+C </math>
+
+
+
+  
+<selectFromSequence name="lb" from="-2" to="1" />
+<selectFromSequence name="ub" from="$lb+1" to="2" />
+
+
+<function name="f" variables="t" symbolic="true" simplify="numbers">
+  <math simplify="numbers">$a[1] *e^($b[1] *t)</math>
+</function>
+<function name="antideriv_f" variables="t" symbolic="true" simplify="numbers">
+  <math simplify="true">$a[1] *e^($b[1] *t)/$b[1]</math>
+</function>
+  
+<math name="intfeval" simplify="numbers">$$antideriv_f($ub)-$$antideriv_f($lb)</math>
+<!-- <math name='intfpart' simplify='numbersPreserveOrder' >$a *Integral(exp($b *t),(t,$lb ,$ub ))</math>
+<function name='antiderivfpart' variables='x'>Integral(exp($b *t),(t,x))</function>
+<math name='antiderivf' simplify='full' >DiffSubs($$antiderivfpart(t),t,$lb ,$ub )</math>
+<math name='antiderivfeval' simplify='numbersPreserveOrder' >$a *($$antiderivfpart($ub )&#x2D;$$antiderivfpart($lb ))</math>
+ -->
+
+<math name="intfeval_signerror" simplify="numbers">$$antideriv_f($ub)+$$antideriv_f($lb)</math>
+<math name="intfeval_omit" simplify="full">$intfeval *$b[1] </math>
+<math name="intfeval_signerror_omit" simplify="full">$intfeval_signerror *$b[1] </math>
+
+</setup>
+
+
+<p>Evaluate the following integrals.  For full credit, do not round your answer to a decimal.  (Maximum of 90% credit will be awarded for rounded answers that include at least 5 correct significant digits.)</p>
+
+
+
+<ol>
+
+<li>
+<p><m>\displaystyle \int_{$lb}^{$ub} $f \, dt  =</m> 
+<answer symbolicEquality="true" simplifyOnCompare="true" forceFullCheckworkButton="true">
+<award>$intfeval </award>
+<award credit="0.9" name="award0">$intfeval_signerror </award>
+<award allowedErrorInNumbers="0.0001" credit="0.9" name="award1">$intfeval </award>
+<award allowedErrorInNumbers="0.0001" credit="0.81" name="award2">$intfeval_signerror </award>
+<award credit="0.5" name="award3">$intfeval_omit </award>
+<award credit="0.5*0.9" name="award5">$intfeval_signerror_omit </award>
+<award allowedErrorInNumbers="0.0001" credit="0.5*0.9" name="award4">$intfeval_omit </award>
+<award allowedErrorInNumbers="0.0001" credit="0.5*0.9*0.9" name="award6">$intfeval_signerror_omit </award>
+</answer>
+</p>
+<feedback condition="$award1">Don't round.  Use e^() or exp() and leave fractions as fractions.</feedback>
+<feedback condition="$award0">It looks like you may have added rather than subtracted the integrand at the bounds.</feedback>
+<feedback condition="$award2">It looks like you may have added rather than subtracted the integrand at the bounds. Don't round.  Use e^() or exp() and leave fractions as fractions.</feedback>
+<feedback condition="$award3">You need to account for the factor of <m>$b[1] </m> in the exponent when integrating.</feedback>
+<feedback condition="$award4">You need to account for the factor of <m>$b[1] </m> in the exponent when integrating.  Don't round.  Use e^() or exp() and leave fractions as fractions.</feedback>
+<feedback condition="$award5">You need to account for the factor of <m>$b[1] </m> in the exponent when integrating. It looks like you may have added rather than subtracted the integrand at the bounds.</feedback>
+<feedback condition="$award6">You need to account for the factor of <m>$b[1] </m> in the exponent when integrating. It looks like you may have added rather than subtracted the integrand at the bounds. Don't round.  Use e^() or exp() and leave fractions as fractions.</feedback>
+
+
+
+
+</li>
+
+<li>
+<p><m>\displaystyle \int $g \, dt =</m> 
+<answer symbolicEquality="true" simplifyOnCompare="true" forceFullCheckworkButton="true">
+<award>$intgeval_C </award>
+<award allowedErrorInNumbers="0.0001" credit="0.9" name="award10">$intgeval_C </award>
+<award credit="0.8" name="award7">$intgeval </award>
+<award allowedErrorInNumbers="0.0001" credit="0.72" name="award11">$intgeval </award>
+<award credit="0.5" name="award8">$g_C </award>
+<award allowedErrorInNumbers="0.0001" credit="0.5*0.9" name="award12">$g_C </award>
+<award credit="0.4" name="award9">$g </award>
+<award allowedErrorInNumbers="0.0001" credit="0.4*0.9" name="award13">$g </award>
+</answer>
+</p>
+<feedback condition="$award10">Don't round.  Leave fractions as fractions.</feedback>
+<feedback condition="$award7">Don't forget the constant.</feedback>
+<feedback condition="$award11">Don't forget the constant. Don't round.  Leave fractions as fractions.</feedback>
+<feedback condition="$award8">You need to account for the factor of <m>$b[2] </m> in the exponent when integrating.</feedback>
+<feedback condition="$award12">You need to account for the factor of <m>$b[2] </m> in the exponent when integrating. Don't round.  Leave fractions as fractions.</feedback>
+<feedback condition="$award9">You need to account for the factor of <m>$b[2] </m> in the exponent when integrating. Don't forget the constant.</feedback>
+<feedback condition="$award13">You need to account for the factor of <m>$b[2] </m> in the exponent when integrating. Don't forget the constant. Don't round.  Leave fractions as fractions.</feedback>
+
+
+</li>
+
+
+</ol>
+
+
+<solution>
+
+
+<ol>
+
+<li>
+<p>We first use the constant product rule for integration: 
+</p>
+<p>
+<m>\displaystyle  \int_{$lb}^{$ub} $f \, dt  = $a[1] \int_{$lb}^{$ub}<math simplify="numbers">e^($b[1] *t)</math> </m>
+</p>
+<p>
+We then find the antiderivative:
+</p>
+<p>
+<m>\displaystyle $a[1]  \left( <math simplify="numbers">e^($b[1] *t)/$b[1]</math>  \right)</m>
+</p>
+<p>
+Evaluating at the bounds gives us:
+</p>
+<p>
+<m>\displaystyle $intfeval </m>
+</p>
+</li>
+
+<li>
+<p>We first use the constant product rule for integration: 
+</p>
+<p>
+<m>\displaystyle \int $g \, dt  = $a[2] \int <math simplify="numbers"> e^($b[2] *t)</math> \, dt </m>
+</p>
+<p>
+We then find the antiderivative: 
+</p>
+<p>
+<m>\displaystyle $a[2] \left( <math simplify="numbers"> e^($b[2] *t)/$b[2]</math> \right)+C=$intgeval +C</m>
+</p>
+</li>
+
+
+</ol>
+
+</solution>
+
+
+</problem>

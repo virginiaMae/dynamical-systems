@@ -1,0 +1,122 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7Z8BidgrLp576E6u4WpP6t
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: b6d57071c7cfe16d
+-->
+<title>The stability of equilibria of a differential equation</title>
+
+<p><ref>Video 1</ref> | <ref>Video 2</ref> | <ref>Transcripts</ref> </p>
+
+<description>
+Identifying stable and unstable equilibria of a differential equation by graphically solving the equation for nearby initial conditions.
+</description>
+
+<section><title>Video 1</title>
+<figure suppressFigureNameInCaption="true">
+<video youtube="KgpUyKUC85Q" size="large" aspectRatio="16/9" name="v1" />
+<caption>The stability of equilibria of a differential equation</caption>
+</figure>
+
+
+
+<setup>
+  <number name="timestamp1" />
+  <number name="timestamp2" />
+</setup>
+
+<sideBySide margins="5%">
+<div>Video credit achieved: <number displayDecimals="1">$v1.fractionWatched*100</number>%
+  
+<answer hide="true" name="v1Credit">
+  <award credit="$v1.fractionWatched"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+</div>
+
+<!-- <div>
+<updateValue type="number" target="v1.time" newValue="$timestamp1" name="skipTo1">
+  <label>Go to Key Moment 1</label>
+</updateValue>
+</div>
+
+<div>
+<updateValue type="text" triggerWithTargets="skipTo1" target="v1" prop="state" newValue="playing" name="playStamp1"/>
+
+<updateValue type="number" target="v1.time" newValue="$timestamp2" name="skipTo2">
+  <label>Go to Key Moment 2</label>
+</updateValue>
+</div>
+
+
+<updateValue type="text" triggerWithTargets="skipTo2" target="v1" prop="state" newValue="playing" name="playStamp2"/> -->
+</sideBySide>
+
+
+<aside startOpen="true"><title>Stability theorem</title>
+
+<p>Let <m>\frac{ dx }{ dt } = f(x)</m> be an autonomous differential equation.  Suppose <m>x(t)=x^*</m> is an equilibrium, i.e.,
+<m>f(x^*)=0</m>.  Then</p>
+<ul>
+<li>if <m>f'(x^*)\lt 0</m>, the equilibrium <m>x(t)=x^*</m> is stable, and</li>
+<li>if <m>f'(x^*)\gt 0</m>, the equilibrium <m>x(t)=x^*</m> is unstable.</li>
+</ul>
+</aside>
+  
+<problem><title>Video review questions</title>
+<exercise includeAutoNumber="true"><title />
+<p>For an autonomous differential equation, 
+  <me>\frac{dx}{dt} = f(x)</me>
+the graph of <m>f</m> as a function of the state variable <m>x</m> is graphed below. Drag the points shown in the lower right corner to the equilibrium locations.</p>
+
+  <graph xmin="-6" xmax="6" grid="true">
+    <xLabel><m>x</m></xLabel>
+    <yLabel><m>\frac{dx}{dt}</m></yLabel>
+    <function through="(-4,-4) (-3,0) (-1,4) (1,-4) (3,0) (4,4)" applyStyleToLabel="true">
+      <label><m>f(x)</m></label>
+    </function>
+    <point styleNumber="3" name="dragPoint1">(3,-4)
+      <constrainToGrid />
+    </point>
+    <point styleNumber="3" name="dragPoint2">(4,-4)
+      <constrainToGrid />
+    </point>
+    <point styleNumber="3" name="dragPoint3">(5,-4)
+      <constrainToGrid />
+    </point>
+  </graph>
+
+  <answer name="ans1a" matchPartial="true" unorderedCompare="true">
+    <award>
+      <when>($dragPoint1.coords, $dragPoint2.coords, $dragPoint3.coords) = ((-3,0),(0,0),(3,0))</when>
+    </award>
+  </answer>
+  <hint><p>The equilibrium points are locations where <m>\frac{dx}{dt} = 0</m>.</p></hint>
+</exercise>
+
+<exercise includeAutoNumber="true"><title />  
+<p>Which of these points that you located above corresponds to a stable equilibrium?</p>
+  <p><m>x_e = </m>
+  <answer name="ans1b">
+    <choiceInput name="ci">
+    <choice><m>$dragPoint1.coords</m></choice>
+    <choice><m>$dragPoint2.coords</m></choice>
+    <choice><m>$dragPoint3.coords</m></choice>
+    </choiceInput>
+    <award>
+      <when>$ci = (0,0)</when></award>
+  </answer>
+  </p>
+
+  <hint><p>Remember, when an equilibrium is stable, that means that the trajectories for solutions with initial conditions near the equilbrium point move <em>toward</em> the equilibrium. </p>
+    <p>Here, you have to use your imagination to visualize the behavior of solutions <m>x(t)</m> based on the values of it's derivative <m>\frac{dx}{dt}</m> shown in the graph. For a reminder of how to do this, see <ref to="doenet:7Y8muMcnPJ2z7QYSakZySD">Solving single autonomous differential equations using graphical methods </ref></p></hint>
+
+
+
+</exercise>
+</problem>
+
+</section>
+
+

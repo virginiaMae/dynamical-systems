@@ -1,0 +1,94 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7XVtEPsnzpX6fXRoq8KYC2
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 8ab461c53b694403
+-->
+<title>Introduction to autonomous differential equations</title>
+<p><ref>Video</ref> | <ref>Transcript</ref> </p>
+<description>
+Introduction to solving autonomous differential equations, using a linear differential equation as an example.
+</description>
+
+
+<section><title>Video</title>
+
+<figure suppressFigureNameInCaption="true">
+<video youtube="WtoVZL_doco" size="large" aspectRatio="16/9" name="v1" />
+<caption>Introduction to autonomous differential equations</caption>
+</figure>
+
+
+
+<setup>
+  <number name="timestamp1" />
+  <number name="timestamp2" />
+</setup>
+
+<sideBySide margins="5%">
+<div>Video credit achieved: <number displayDecimals="1">$v1.fractionWatched*100</number>%
+  
+<answer hide="true" name="v1Credit">
+  <award credit="$v1.fractionWatched"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+</div>
+
+<!-- <div>
+<updateValue type="number" target="v1.time" newValue="$timestamp1" name="skipTo1">
+  <label>Go to Key Moment 1</label>
+</updateValue>
+</div>
+
+<div>
+<updateValue type="text" triggerWithTargets="skipTo1" target="v1" prop="state" newValue="playing" name="playStamp1"/>
+
+<updateValue type="number" target="v1.time" newValue="$timestamp2" name="skipTo2">
+  <label>Go to Key Moment 2</label>
+</updateValue>
+</div>
+
+
+<updateValue type="text" triggerWithTargets="skipTo2" target="v1" prop="state" newValue="playing" name="playStamp2"/> -->
+</sideBySide>
+
+  
+<problem><title>Video review questions</title>
+<exercise includeAutoNumber="true"><title />
+<p>An differential equation of the form
+  <me>\frac{dy}{dt} = f(y)</me>
+  is called an <term>autonomous differential equation</term> because...</p>
+  <answer name="ans1a">
+    <choice>it is self-governing</choice>
+    <choice>it states that the derivative, <m>\frac{dy}{dt}</m>, only depends on time and is not a function of <m>y</m></choice>
+    <choice credit="1">it states that the derivative, <m>\frac{dy}{dt}</m>, only depends on the function <m>y</m> and is not explicitly a function of time, <m>t</m>.</choice>
+  </answer>
+
+  <feedback condition="$_choice2.submitted">If this were the case, we would instead have what is called a <ref to="doenet:7TnsSPfdT3XFW3iGJ1EoWM">pure-time differential equation</ref></feedback>
+</exercise>
+  
+<exercise includeAutoNumber="true"><title />
+<p>Consider the <term>autonomous differential equation</term> given by
+  <me>\frac{dg}{dt} = 4g</me>
+Finding a <term>solution</term> to this differential equation means to</p>
+  <answer name="ans1b">
+    <choice credit="1">find a function <m>g(t)</m>, whose derivative is equal to 4 times the function itself.</choice>
+    <choice>differentiate the function <m>g</m> with respect to time four times</choice>
+    <choice>integrate the function <m>g</m> between <m>t = 0</m> and <m>t = 4</m></choice>
+  </answer>
+
+
+<p>We used the "guess and check" method to arrive at 3 possible solutions, where <m>C</m> in each of these functions is an arbitrary constant. Which of the following proposed functions, <m>g(t)</m>, solves the differential equation stated above?</p>
+  <answer name="ans1c">
+    <choice><m>g(t) = 4t + C</m></choice>
+    <choice credit="1"><m>g(t) = Ce^{4t}</m></choice>
+    <choice><m>g(t) = t^4 + C</m></choice>
+  </answer>
+
+<hint>Perform the "check" part of the "guess and check " method: differentiate <m>g(t)</m> and see if the answer you get is equal to 4 times the original function, <m>g(t)</m></hint>
+  
+</exercise>
+</problem>
+  
+</section>

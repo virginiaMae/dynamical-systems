@@ -1,0 +1,159 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7Qddu9P6QrQvpMzz15xtDK
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: af12f48456edb5cb
+-->
+<problem>
+<variantControl numVariants="1" />
+<!-- <title>Stability of discrete dynamical systems, linear case</title> -->
+
+<setup>
+
+<math name="solution" simplify="full">R^n*a</math>
+
+</setup>
+
+
+As a warm up for stability of nonlinear discrete dynamical systems, recall how to determine stability for the linear dynamical systems, such as a system with slope <m>R</m>:
+<md>
+  <mrow>x_{n+1}\amp = Rx_n</mrow>
+  <mrow>x_0\amp = a.</mrow>
+</md>
+
+
+<exercise>
+If <m>R \ne 1</m>, what is the one equilibrium?  <m>E=</m> 
+<answer>0</answer>
+</exercise>
+
+<exercise>
+What is the solution of the dynamical system?  <m>x_n=</m> 
+<answer>
+<award>$solution </award>
+</answer>
+
+
+
+<hint>
+Remember how to 
+<ref to="doenet:7DBEyjdcSF3AWs1fs2WNkK">solve linear discrete dynamical systems</ref>
+?
+</hint>
+
+</exercise>
+
+<exercise>
+For what values of the slope <m>R</m> does this solution get smaller (i.e., closer to zero) with time?  I.e., for what values of <m>R</m> does multiplying by <m>R</m> lead to smaller numbers?  Be sure to consider both positive and negative <m>R</m>.
+
+<p>The solution will get smaller with time if 
+  <mathInput name="smallerLower" />
+ <m>\lt R \lt</m> 
+  <mathInput name="smallerUpper" />.  
+  <answer matchPartial="true">
+    <award referencesAreResponses="$smallerLower $smallerUpper">
+      <when>$smallerLower = -1
+        and
+        $smallerUpper = 1
+      </when>
+    </award>
+  </answer>
+</p>
+
+<p>For what values of the slope <m>R</m> does this solution get larger (i.e., further from zero) with time?  I.e., for what values of <m>R</m> does multiplying by <m>R</m> lead to larger numbers?  Be sure to consider both positive and negative <m>R</m>.</p>
+
+<p>The solution will get larger with time if <m>R \gt</m> <mathInput name="largerUpper" />
+ or if <m>R \lt</m> 
+  <mathInput name="largerLower" />.
+  <answer matchPartial="true">
+    <award referencesAreResponses="$largerLower $largerUpper">
+      <when>$largerLower = -1
+        and
+        $largerUpper = 1
+      </when>
+    </award>
+  </answer>
+</p>
+
+</exercise>
+
+<exercise>
+<p>For what values of the slope <m>R</m> is the equilibrium stable? 
+  <mathInput name="stableLower" />
+ <m>\lt R \lt</m> 
+  <mathInput name="stableUpper" />
+  <answer matchPartial="true">
+    <award referencesAreResponses="$stableLower $stableUpper">
+      <when>$stableLower = -1
+        and
+        $stableUpper = 1
+      </when>
+    </award>
+  </answer>
+</p>
+
+<p>For what values of the slope <m>R</m> is the equilibrium unstable? 
+  <m>R \gt</m> <mathInput name="unstableUpper" />
+ or if <m>R \lt</m> 
+  <mathInput name="unstableLower" />
+  <answer matchPartial="true">
+    <award referencesAreResponses="$unstableLower $unstableUpper">
+      <when>$unstableLower = -1
+        and
+        $unstableUpper = 1
+      </when>
+    </award>
+  </answer>
+</p>
+
+
+<hint>
+This should be the same answer as the previous one.  For the stability inequality, we should actually be using <m>\le</m> and <m>\ge</m>, but we are ignoring those cases, as the results don't carry over to the nonlinear case, below.
+</hint>
+
+</exercise>
+
+<exercise>
+We can rewrite the condition even more simply using absolute values.  The equilibrium is stable for <m>|R| \lt</m> 
+<answer>1</answer>
+.  The equilibrium is unstable for <m>|R| \gt</m> 
+<answer>1</answer>
+.
+
+
+
+</exercise>
+
+
+
+<solution>
+
+
+<exercise>
+An equilibrium <m>E</m> must satisfy 
+<me>E = R E.</me>
+Subtracting <m>E</m> from both sides, the equation is
+<me>0 = (R-1)E.</me>
+If <m>R \ne 1</m>, this condition can be satisfied only if <m>E=0</m>.  The one equilibrium is <m>E=0</m>.
+</exercise>
+
+<exercise>
+At each time step, we multiply by <m>R</m>.  If we start with <m>x_0</m>, after <m>n</m> time steps, we must multiply by <m>R</m> a total of <m>n</m> times, or multiply by <m>R^n</m>.  The solution is <m>x_n = R^n a</m>.
+</exercise>
+
+<exercise>
+The solution will get smaller with time if <m>-1 \lt  R \lt  1</m>.  The solution will get larger with time if <m>R\gt 1</m> or <m>R\lt  -1</m>.
+</exercise>
+
+<exercise>
+The equilibrium is stable if <m>-1 \lt  R \lt  1</m>.  The equilibrium is unstable if <m>R \gt  1</m> or <m>R \lt  -1</m>.
+</exercise>
+
+<exercise>
+The equilibrium is stable for <m>|R| \lt 1</m>.  The equilibrium is unstable for <m>|R| \gt 1</m>.
+</exercise>
+
+</solution>
+
+
+</problem>

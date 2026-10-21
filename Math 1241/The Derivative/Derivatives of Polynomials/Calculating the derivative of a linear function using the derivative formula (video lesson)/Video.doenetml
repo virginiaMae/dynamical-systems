@@ -1,0 +1,93 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7Krq933VRqqFGMZoi4sqwD
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 2484c6599f09a7e6
+-->
+<title>Calculating the derivative of a linear function using the derivative formula</title>
+<p><ref>Video</ref> | <ref>Transcript</ref>  </p>
+<description>
+Exploring how the limit definition of the derivative gives the slope of a linear function.
+</description>
+
+<section name="vid_section"><title>Video</title>
+<figure suppressFigureNameInCaption="true">
+<video youtube="L1pDyEWlkb8" size="large" aspectRatio="16/9" name="v1" />
+<caption>Calculating the derivative of a linear function using the derivative formula</caption>
+</figure>
+</section>
+
+
+<number name="v1RoundUp" hide="true">
+  <conditionalContent>
+    <case condition="$v1.fractionWatched > 0.9">1</case>
+    <else>$v1.fractionWatched</else>
+  </conditionalContent>
+</number>
+  
+  <p>Video credit achieved: <number displayDecimals="1">$v1RoundUp*100</number>%</p>
+
+<answer hide="true" name="v1Credit">
+  <award credit="$v1RoundUp"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+
+
+<problem><title>Video review question</title>
+
+<exercise includeAutoNumber="true"><title />
+<graph size="small">
+  <xLabel><m>x</m></xLabel>
+  <yLabel><m>f(x)</m></yLabel>
+  <function name="f">x/2 + 1
+    <label><m>f</m></label>
+  </function>
+  <line styleNumber="6" fixed="true">x=3</line>
+  <point styleNumber="5" fixed="true">(3,5/2)</point>
+</graph>
+<p>Given the linear function <m>f(x) = $f</m>, what is the slope of the graph of <m>f</m> at <m>x = 3</m>?</p>
+  <p><m>f'(3) = </m>
+  <answer name="ans1">1/2</answer>.</p>
+<hint hide="$ans1.numSubmissions &lt; 2 or $ans1.creditAchieved = 1">
+  <p>What is the slope of the linear function <m>f(x) = $f</m>?</p>
+</hint>
+<p>Using the questions below, let's also determine the derivative of <m>f</m> using the derivative formula:</p>
+  <p>First we calculate the slope of the secant line between position
+    <answer name="ans2" inline="true">
+      <choice><m>y_0</m></choice>
+      <choice><m>\Delta x</m></choice>
+      <choice credit="1"><m>x_0</m></choice>
+    </answer> and position
+    <answer name="ans3" inline="true">
+      <choice><m>y_2</m></choice>
+      <choice><m>\Delta x</m></choice>
+      <choice credit="1"><m>x_0 + \Delta x</m></choice>
+    </answer>.</p>
+  <p>The difference <m>(f($ans3) - f($ans2))</m> in the output values between these two points is divided by 
+    <answer name="ans4" inline="true">
+      <choice><m>y_2</m></choice>
+      <choice credit="1"><m>\Delta x</m></choice>
+      <choice><m>x_0 + \Delta x</m></choice>
+    </answer> to get the secant slope:
+
+    <me>\text{secant slope} = \frac{\Delta f}{\Delta x} = \frac{f($ans3) - f($ans2)}{$ans4} = \frac{1}{2}</me>.</p>
+    <p>Finally, we take the 
+      <answer name="ans5">
+      <choice credit="1"><m>\lim_{\Delta x \to 0}</m></choice>
+      <choice>product of <m>\Delta x</m> and <m>\Delta f</m></choice>
+      <choice>sum of <m>f($ans3)</m> and <m>f($ans2)</m></choice>
+    </answer> of <m>\frac{f($ans3) - f($ans2)}{$ans4}</m> to arrive at the slope of the tangent line of our function,
+      <md>
+      <mrow>$ans5 \amp= \frac{\Delta f}{\Delta x} = $ans5 \frac{f($ans3) - f($ans2)}{$ans4}</mrow>
+        <mrow>\amp=$ans5 \frac{1}{2} </mrow>
+        <mrow> \amp= \frac{1}{2}.</mrow>
+      </md></p>
+      <p>The derivative of the function <m>f</m> at <m>x = 3</m> is <m>f'(3) = </m> <answer name="ans6">1/2</answer>.</p>
+<hint hide="$ans6.numSubmissions &lt; 2 or $ans6.creditAchieved = 1">
+  <p>What is the slope of the linear function $f? Since the slope of a linear function is constant, its derivative is also a constant value. So, since <m>f'(x) = \frac{1}{2}</m> for all <m>x</m>, <m>f'(3)</m> for <m>x = 3</m> is...</p>
+</hint>
+
+</exercise>
+</problem>
+

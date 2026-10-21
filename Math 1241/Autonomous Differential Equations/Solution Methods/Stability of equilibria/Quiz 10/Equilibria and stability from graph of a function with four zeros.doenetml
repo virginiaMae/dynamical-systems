@@ -1,0 +1,373 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7ZCCwgKVvxa1hNWSnxBK5V
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 56f235e2b47e8bd0
+-->
+<problem>
+<!-- <title>Equilibria and stability from graph of a function with four zeros</title> -->
+
+<setup>
+
+
+<select name="x">x y z s u v w</select>
+<select name="f">f g h m</select>
+
+<selectFromSequence name="xmin" from="-28" to="-2" />
+<selectFromSequence name="xmax" from="max(2, $xmin +15)" to="$xmin +30" />
+
+<mathList name="es">
+<sort name="e1">
+  <selectFromSequence name="eorig1" from="$xmin+3" to="$xmax-3" />
+  <selectFromSequence name="eorig2" from="$xmin+3" to="$xmax-3" exclude="$eorig1-1 $eorig1 $eorig1+1" />
+  <selectFromSequence name="eorig3" from="$xmin+3" to="$xmax-3" exclude="$eorig1-1 $eorig1 $eorig1+1 $eorig2-1 $eorig2 $eorig2+1" />
+  <selectFromSequence name="eorig4" from="$xmin+3" to="$xmax-3" exclude="$eorig1-1 $eorig1 $eorig1+1 $eorig2-1 $eorig2 $eorig2+1 $eorig3-1 $eorig3 $eorig3+1" />
+</sort>
+</mathList>
+
+<number name="slopeMin1">2/($e1[2]-$e1[1])</number>
+<number name="slopeMinSub">2/($e1[3]-$e1[2])</number>
+<number name="slopeMin4">2/($e1[4]-$e1[3])</number>
+<max name="slopeMin2">$slopeMin1 $slopeMinSub</max>
+<max name="slopeMin3">$slopeMin4 $slopeMinSub</max>
+<selectFromSequence name="fsign" from="-1" to="1" step="2" />
+
+<selectFromSequence name="slope1" from="$slopeMin1" to="10$slopeMin1" step="$slopeMin1" />
+<selectFromSequence name="slope2" from="$slopeMin2" to="10$slopeMin2" step="$slopeMin2" />
+<selectFromSequence name="slope3" from="$slopeMin3" to="10$slopeMin3" step="$slopeMin3" />
+<selectFromSequence name="slope4" from="$slopeMin4" to="10$slopeMin4" step="$slopeMin4" />
+<selectFromSequence name="yLeft" from="3" to="20" numToSelect="2" withReplacement="true" />
+
+<function name="fun" through="($xmin-20, -$fsign$yLeft[1]) ($e1[1],0) ($e1[2],0) ($e1[3],0) ($e1[4],0) ($xmax+20, -$fsign$yLeft[2])" throughSlopes="0 $fsign$slope1 -$fsign$slope2 $fsign$slope3 -$fsign$slope4 0" />
+
+<evaluate function="$fun" input="($e1[1]+$e1[2])/2" name="fmid1" />
+<evaluate function="$fun" input="($e1[2]+$e1[3])/2" name="fmid2" />
+<evaluate function="$fun" input="($e1[3]+$e1[4])/2" name="fmid3" />
+<max name="ftop">2 <number>$fmid1+1</number> <number>$fmid2+1</number> <number>$fmid3+1</number></max>
+<min name="fbot">-2 <number>$fmid1-1</number> <number>$fmid2-1</number> <number>$fmid3-1</number></min>
+
+<selectFromSequence name="ymin" from="$fbot-10" to="$fbot" />
+<selectFromSequence name="ymax" from="$ftop" to="$ftop+10" />
+
+
+</setup>
+
+
+<p>Consider the 
+  <select>
+    <option>differential equation</option>
+    <option>dynamical system</option>
+  </select>
+ <m>
+   <select>
+     <option>\frac{ d$x }{ dt }</option>
+     <option>$x'(t)</option>
+   </select>
+=$f ($x )</m> where the function <m>$f ($x )</m> is shown below.  All the zeros of <m>$f </m> (i.e,. the values of <m>$x </m> where <m>$f ($x )=0</m>) are integers.</p>
+
+
+<graph aspectRatio="5/3" xmin="$xmin" xmax="$xmax" ymin="$ymin" ymax="$ymax" fixAxes="true" grid="true">
+  <xLabel><m>$x</m></xLabel>
+  <yLabel><m>$f</m></yLabel>  
+  $fun
+</graph>
+
+<p>
+Find all the equilibria and determine their stability.
+</p>
+
+<p>Number of equilibria: <mathInput name="n_e" /></p>
+
+<p>The equilibria are</p>
+<ul>
+  <repeatForSequence length="min(6, $n_e)" name="mapEs"><li><m>$(x)_e = </m> <mathInput /></li></repeatForSequence>
+</ul>
+<answer>
+<award matchPartial="true">
+  <when unorderedCompare="true">
+    <mathList><setup><collect isResponse="true" componentType="mathInput" from="$mapEs" name="collect_collectedEs" /></setup><mathList name="collectedEs" extend="$collect_collectedEs.value" /></mathList>
+    = $es
+  </when>
+</award>
+</answer>
+
+<p>Stability of equilibria:</p>
+<ul>
+  <repeat for="$collectedEs" name="mapStab" valueName="v">
+      <li><m>$(x)_e = $v</m>:
+      <choiceInput inline="true">
+        <choice>stable</choice>
+        <choice>unstable</choice>
+      </choiceInput>
+      </li>
+    </repeat>
+</ul>
+  
+<answer maxNumAttempts="4">
+  <award matchPartial="true" matchByExactPositions="true">
+    <when>
+      <textList><setup><collect componentType="choiceInput" from="$mapStab" isResponse="true" name="collect_list" /></setup><textList name="list" extend="$collect_list.selectedValue" /></textList>
+      =
+      <textList>
+        <repeatForSequence length="4" indexName="i">
+            <conditionalContent>
+              <case condition="$collectedEs[$i] = $e1[1] or $collectedEs[$i] = $e1[3]">
+                <conditionalContent>
+                  <case condition="$fsign > 0"><text>unstable</text></case>
+                  <else><text>stable</text></else>
+                </conditionalContent>
+              </case>
+              <case condition="$collectedEs[$i] = $e1[2] or $collectedEs[$i] = $e1[4]">
+                <conditionalContent>
+                  <case condition="$fsign > 0"><text>stable</text></case>
+                  <else><text>unstable</text></else>
+                </conditionalContent>
+              </case>
+              <else><text>invalid</text></else>
+            </conditionalContent>
+          </repeatForSequence>
+      </textList>
+    </when>
+  </award>
+</answer>
+
+
+<solution>
+<p>The equilibria are the points where <m>\frac{ d$x }{ dt } =0</m>, i.e., where <m>$f ($x )=0</m>.  From the graph, you can see that <m>$f </m> has four zeros (the points where it is zero), so the dynamical system has four equilibria.  Since we know that zeros are integers, we can conclude that these equilibria are the zeros <m>$x _{e}=$e1[1] </m>, <m>$e1[2] </m>, <m>$e1[3] </m>, and <m>$e1[4] </m>.</p>
+
+<p>Since <m>$f ($x )</m> is
+<conditionalContent>
+<case condition="$fsign > 0">
+negative
+</case>
+<else>
+positive
+</else>
+</conditionalContent>
+ for <m>$x  \lt  $e1[1] </m> and
+<conditionalContent>
+<case condition="$fsign > 0">
+positive
+</case>
+<else>
+negative
+</else>
+</conditionalContent>
+ for <m>$e1[1]  \lt  $x  \lt  $e1[2] </m>, initial conditions starting near <m>$x =$e1[1] </m> move
+<conditionalContent>
+<case condition="$fsign > 0">
+away from
+</case>
+<else>
+toward
+</else>
+</conditionalContent>
+ <m>$e1[1] </m>.  We can conclude that the first equilibrium <m>$x _{e}=$e1[1] </m> is
+<conditionalContent>
+<case condition="$fsign > 0">
+unstable
+</case>
+<else>
+stable
+</else>
+</conditionalContent>
+.</p>
+
+<p>An alternative way to see that the equilibrium <m>$x _e=$e1[1] </m> is
+<conditionalContent>
+<case condition="$fsign > 0">
+unstable
+</case>
+<else>
+stable
+</else>
+</conditionalContent>
+ is to look at the slope of <m>$f </m> at <m>$x =$e1[1] </m>, which is the derivative <m>$f '($e1[1] )</m>.  Since the slope <m>$f '($e1[1] )</m> is
+<conditionalContent>
+<case condition="$fsign > 0">
+positive
+</case>
+<else>
+negative 
+</else>
+</conditionalContent>
+, you can conclude by the stability theorem that the equilibrium is
+<conditionalContent>
+<case condition="$fsign > 0">
+unstable
+</case>
+<else>
+stable
+</else>
+</conditionalContent>
+.</p>
+
+<p>We've seen above that <m>$f ($x )</m> is
+<conditionalContent>
+<case condition="$fsign > 0">
+positive
+</case>
+<else>
+negative
+</else>
+</conditionalContent>
+ for <m>$e1[1]  \lt  $x  \lt  $e1[2] </m>.  In addition, <m>$f ($x )</m> is
+<conditionalContent>
+<case condition="$fsign > 0">
+negative
+</case>
+<else>
+positive
+</else>
+</conditionalContent>
+  for <m>$e1[2]  \lt $x  \lt $e1[3] </m>.  Therefore, the second equilibrium <m>$x _{e}=$e1[2] </m> is
+<conditionalContent>
+<case condition="$fsign > 0">
+stable
+</case>
+<else>
+unstable
+</else>
+</conditionalContent>
+.  You can also see that the slope <m>$f '($e1[2] )</m> is
+<conditionalContent>
+<case condition="$fsign > 0">
+negative
+</case>
+<else>
+positive
+</else>
+</conditionalContent>
+, indicating that the equilibrium is
+<conditionalContent>
+<case condition="$fsign > 0">
+stable
+</case>
+<else>
+unstable
+</else>
+</conditionalContent>
+.</p>
+
+<p>We've seen above that <m>$f ($x )</m> is
+<conditionalContent>
+<case condition="$fsign > 0">
+negative
+</case>
+<else>
+positive
+</else>
+</conditionalContent>
+  for <m>$e1[2]  \lt $x  \lt $e1[3] </m>.  In addition, it is
+<conditionalContent>
+<case condition="$fsign > 0">
+positive
+</case>
+<else>
+negative
+</else>
+</conditionalContent>
+ for <m>$e1[3]  \lt $x  \lt $e1[4] </m>. Therefore, the third equilibrium <m>$x _{e}=$e1[3] </m> is
+<conditionalContent>
+<case condition="$fsign > 0">
+unstable
+</case>
+<else>
+stable
+</else>
+</conditionalContent>
+.  You can also verify that the slope <m>$f '($e1[3] )</m> is
+<conditionalContent>
+<case condition="$fsign > 0">
+positive
+</case>
+<else>
+negative
+</else>
+</conditionalContent>
+, indicating that the equilibrium is
+<conditionalContent>
+<case condition="$fsign > 0">
+unstable
+</case>
+<else>
+stable
+</else>
+</conditionalContent>
+.</p>
+
+<p>We've seen above that <m>$f ($x )</m> is
+<conditionalContent>
+<case condition="$fsign > 0">
+positive
+</case>
+<else>
+negative
+</else>
+</conditionalContent>
+ for <m>$e1[3]  \lt  $x  \lt  $e1[4] </m>.  In addition, <m>$f ($x )</m> is
+<conditionalContent>
+<case condition="$fsign > 0">
+negative
+</case>
+<else>
+positive
+</else>
+</conditionalContent>
+  for <m>$x  \gt $e1[4] </m>.  Therefore, the fourth equilibrium <m>$x _{e}=$e1[4] </m> is
+<conditionalContent>
+<case condition="$fsign > 0">
+stable
+</case>
+<else>
+unstable
+</else>
+</conditionalContent>
+.  You can also see that the slope <m>$f '($e1[4] )</m> is
+<conditionalContent>
+<case condition="$fsign > 0">
+negative
+</case>
+<else>
+positive
+</else>
+</conditionalContent>
+, indicating that the equilibrium is
+<conditionalContent>
+<case condition="$fsign > 0">
+stable
+</case>
+<else>
+unstable
+</else>
+</conditionalContent>
+.</p>
+
+
+<p>In summary, the equilibrium <m>u_e = $e1[1]</m> is 
+  <conditionalContent>
+    <case condition="$fsign > 0">unstable</case>
+    <else>stable</else>
+  </conditionalContent>,
+  the equilibrium <m>u_e = $e1[2]</m> is
+  <conditionalContent>
+    <case condition="$fsign > 0">stable</case>
+    <else>unstable</else>
+  </conditionalContent>,
+  the equilibrium <m>u_e = $e1[3]</m> is
+  <conditionalContent>
+    <case condition="$fsign > 0">unstable</case>
+    <else>stable</else>
+  </conditionalContent>,
+  and the equilibrium <m>u_e = $e1[4]</m> is
+  <conditionalContent>
+    <case condition="$fsign > 0">stable</case>
+    <else>unstable</else>
+  </conditionalContent>.
+</p>
+  
+
+</solution>
+
+
+</problem>

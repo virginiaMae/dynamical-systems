@@ -1,0 +1,140 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7FTxhfbHnP86ERaXP85VsH
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: bf20920fa9d58a3e
+-->
+<title>A graphical approach to finding equilibria of discrete dynamical systems</title>
+
+<p><ref>Video 1</ref> | <ref>Video 2</ref> | <ref>Transcripts</ref> </p>
+<description>
+By plotting the updating function and the diagonal, one can read off the equilibria from their intersections of the two graphs.
+</description>
+
+
+
+<p>One way to determine the 
+<term><ref to="doenet:83xTXp7HL7ZhCob6Z6UoEM">equilibria</ref></term>
+ of a 
+<ref to="doenet:7C1w6bKbkKghbh9wUtwzxF">discrete dynamical system</ref>
+ is to 
+<ref to="doenet:7FmiE88UGp1HTdKmpQwzo2">determine the equation the equilibrium must satisfy</ref>
+ and then solve that equation.</p>
+
+<p>Here, we introduce a way of finding the equilibria from the graph of the updating function.  If we have a dynamical system in 
+<term><ref to="doenet:82YaRL8CieueYqLgxMpxye">function iteration form</ref></term>
+,
+<md>
+  <mrow>x_{n+1}\amp = f(x_n)</mrow>
+  <mrow>x_0\amp = x_0,</mrow>
+</md>
+then, we can find the equilibria simply by plot the graph of <m>f</m>.  If <m>f</m> intersects the diagonal line where <m>x_{n+1}=x_n</m>, then we know the input of <m>f</m> was the same as its output.  If the updating function <m>f</m> holds a particular number fixed, then that number is an equilibrium.</p>
+
+
+<section name="vid_section"><title>Video 1</title>
+
+
+<p>The first video introduces the graphical approach of finding equilibria by looking at how we can solve equations graphically.</p>
+
+<figure suppressFigureNameInCaption="true">
+<video youtube="BAJqa39umgQ" size="large" aspectRatio="16/9" name="v1" />
+<caption>Introduction to finding equilibria of discrete dynamical systems graphically. </caption>
+</figure>
+
+
+<setup>
+  <number name="timestamp1">383</number>
+  <number name="timestamp2">513</number>
+</setup>
+  
+
+<sideBySide margins="5%">
+<div><p>Video credit achieved: <number displayDecimals="1">$v1RoundUp*100</number>%</p></div>
+
+<div>
+<p><updateValue type="number" target="$v1.time" newValue="$timestamp1" name="skipTo1">
+  <label>Go to Key Moment 1</label>
+</updateValue></p>
+<updateValue type="text" triggerWith="$skipTo1" target="$v1.state" newValue="playing" name="playStamp1" />
+</div>
+
+<div>
+<p><updateValue type="number" target="$v1.time" newValue="$timestamp2" name="skipTo2">
+  <label>Go to Key Moment 2</label>
+</updateValue>
+<!--   <updateValue type="number" target="$v1.time" triggerWith="buttonLink2" newValue="$timestamp2" name="skipTo2b"/> -->
+</p>
+
+<updateValue type="text" triggerWith="$skipTo2" target="$v1.state" newValue="playing" name="playStamp2" />
+<!-- <updateValue type="text" triggerWith="skipTo2b" target="v1" prop="state" newValue="playing"/> -->
+</div>
+</sideBySide>
+
+<number name="v1RoundUp" hide="true">
+  <conditionalContent>
+    <case condition="$v1.fractionWatched > 0.9">1</case>
+    <else>$v1.fractionWatched</else>
+  </conditionalContent>
+</number>
+
+
+<answer hide="true" name="v1Credit">
+  <award credit="$v1RoundUp"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+  
+<problem><title>Video review questions</title>
+  
+<exercise includeAutoNumber="true"><title />
+<p>Which of the following best describes the meaning of the function <m>f(H_t)</m> shown in the graph below, and in the video?</p>
+  <answer>
+    <choice>The function <m>f</m> represents how the state variable changes as a function of time</choice>
+    <choice credit="1">The function <m>f</m> represents the evolution rule of our dynamical system</choice>
+    <choice>The function <m>f</m> is an expression of the given discrete dynamical system in <term><ref to="doenet:832kteFVLDpZJ9tARy27gK">difference form</ref></term></choice>
+  </answer>
+
+
+<feedback condition="$_choice1">Take another look at the horizontal axis on the graph, is it <em>time</em> that is changing; is it <em>t</em> that is an input to the function <m>f</m>? What is the input? You can find a clue to this question at <ref to="$vid_section">Key Moment 1</ref> in the video.</feedback>
+<feedback condition="$_choice2">Excellent! The function <m>f</m> describes how we can <em>evolve</em> the dynamical system from one time step, <m>t</m>, to the next time step at <m>t+1</m>.  In other words, it is the function that changes <m>H_t</m> into <m>H_{t+1}</m>.</feedback>
+<feedback condition="$_choice3">If you take another look at the evolution rule we are given in this example, <m>H_{t+1} = f(H_t)</m>, you can see that it is actually written in <term><ref to="doenet:82YaRL8CieueYqLgxMpxye">function iteration form</ref></term> form, not <term><ref to="doenet:832kteFVLDpZJ9tARy27gK">difference form</ref></term>. You can find a clue to this question at <ref to="$vid_section">Key Moment 1</ref> in the video.</feedback>
+
+  <graph xmin="-1" ymin="-1" xmax="5" ymax="5">
+    <xLabel><m>H_t</m></xLabel>
+    <yLabel><m>H_{t+1}</m></yLabel>
+    <function fixed="true" applyStyleToLabel="true" labelPosition="right">x^2
+      <label><m>f(H_t)</m></label>
+    </function>
+    <line fixed="true" styleNumber="2" applyStyleToLabel="true">y=x
+      <label><m>H_{t+1} = H_t</m></label>
+    </line>
+    <point fixed="true" styleNumber="2">(0,0)
+      <label><m>(0,0)</m></label>
+    </point>
+    <point fixed="true" styleNumber="2">(1,1)
+      <label><m>(1,1)</m></label>
+    </point>
+  </graph>
+
+</exercise>
+  
+<exercise includeAutoNumber="true"><title />  
+<p>Refer to the example in the video. Which of the following is <alert><em>not</em></alert> true about the points where the graph of <m>H_{t+1}=f(H_t)</m> (i.e. the $_function1.styleDescriptionWithNoun) and the graph of <m>H_{t+1} = H_t</m> (i.e. the $_line1.styleDescriptionWithNoun) intersect?</p>
+  <answer name="vid1Review1">
+    <choice>these intersection points represent equilbrium solutions to the given dynamical system</choice>
+    <choice>these points occur at locations where the function <m>f</m> does not change the value of its inputs, <m>H_t</m>.</choice>
+    <choice>at these intersection points, it is always possible to determine the value of <m>H_{t+1}</m> from the value of <m>H_t</m> alone.</choice>
+    <choice credit="1">these intersection points occur only where the value of the state variable is zero.</choice>
+    <choice>at all intersection points <m>(H_t, H_{t+1})</m>, the value of the first coordinate, <m>H_t</m>, is equal to the value of the second coordinate, <m>H_{t+1}</m>.
+    </choice>
+  </answer>
+
+<feedback condition="$_choice4">This is actually a true statement - the intersection points <em>do</em> represent equilibrium solutions to the dynamical system. You can find a clue to this question at <ref to="$vid_section">Key Moment 2</ref> in the video.</feedback>
+<feedback condition="$_choice5">This is actually a true statement - at equilbrium points the function <m>f(H_t)</m> leaves the value of the state variable unchanged. You can find a clue to this question at <ref to="$vid_section">Key Moment 2</ref> in the video.</feedback>
+  <feedback condition="$_choice6">This is actually a true statement - at any equilibrium point, if you know the value of the input <m>H_t</m> (the value on the horizontal axis), then you also know the value of the output, <m>H_{t+1}</m> - they are the same! You can find a clue to this question at <ref to="$vid_section">Key Moment 2</ref> in the video.</feedback>
+  <feedback condition="$_choice7">Correct! While there is indeed an equilibrium solution at the location where the value of the state variable, <m>H_t</m> is zero, there is also an equilibrium solution where <m>H_t = 1</m>. This is the one statement that is <em>not</em> true.</feedback>
+  <feedback condition="$_choice8">This is actually a true statement - all equilibrium points have the same format: <m>(E, E)</m>. You can find a clue to this question at <ref to="$vid_section">Key Moment 2</ref> in the video.</feedback>
+</exercise>
+
+</problem>
+</section>

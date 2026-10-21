@@ -1,0 +1,42 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7JeoUszZ2ofNm78NBDHrLv
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: aa8e2809635e2be9
+-->
+<document documentWideCheckWork="true">
+
+
+<title>Rabbit control project evaluation</title>
+
+
+<p>Who were the members of your group?  (include yourself)</p>
+
+<answer>
+<textInput expanded="true" name="members" />
+  <award><when>$members != <text /></when></award>
+</answer>
+  
+<p>Which individuals contributed equally to the project?</p>
+
+<answer>
+<textInput expanded="true" name="contributed" />
+  <award><when>$contributed != <text /></when></award>
+</answer>
+  
+<p>List any individuals that did not contribute a fair amount to the project.  Explain the situation including interactions, if any, each individual had with the rest of the group while working on the project.</p>
+
+
+<answer weight="0">
+<textInput expanded="true" name="lackOfContribution" />
+  <award><when>true</when></award>
+</answer>
+
+<p>Other comments:</p>
+  
+<answer weight="0">
+<textInput expanded="true" name="other" />
+  <award><when>true</when></award>
+</answer>
+  
+</document>

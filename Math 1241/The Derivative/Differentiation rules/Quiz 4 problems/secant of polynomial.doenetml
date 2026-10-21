@@ -1,0 +1,108 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7MumSAwDbqhUS3x8V8mF8P
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: a0434b9702005da3
+-->
+<problem>
+<!-- <title>Secant of polynomial</title> -->
+
+<setup>
+
+<selectFromSequence name="c1" numToSelect="2" withReplacement="true" from="-10" to="10" exclude="0" />
+<selectFromSequence name="x1" numToSelect="4" withReplacement="false" from="-10" to=" 10" />
+<selectFromSequence name="n1" from="2" to=" 3" />
+<select name="x"> x y z</select>
+<select name="xa" numToSelect="2" withReplacement="false"> a b c d k m p q</select>
+
+<function name="fun" variables="$x" symbolic="true">$c1[1] $x ^$n1 +$c1[2]</function>
+
+<math name="dx" simplify="numbers">$x1[1] -$x1[2] </math>
+
+<math name="funx1" simplify="numbers">$$fun($x1[1] )</math>
+<math name="funx2" simplify="numbers">$$fun($x1[2] )</math>
+<math name="secant_slope_1" simplify="numbers">($funx1 -$funx2 )/($dx )</math>
+
+<math name="funxa" simplify="numbers">$$fun($xa[1] )</math>
+<math name="funxb" simplify="numbers">$$fun($xa[2] )</math>
+<math name="secant_slope_2" simplify="full">($funxa -$funxb )/($xa[1] -$xa[2] )</math>
+<math name="secant_slope_3">(g($xa[1]) - g($xa[2]))/($xa[1] -$xa[2] )</math>
+<math name="secant_slope_3a">(g($xa[2]) - g($xa[1]))/($xa[2] -$xa[1] )</math>
+
+</setup>
+
+<p>Let <m>f ($x ) = $fun </m>.</p>
+
+
+<ol>
+
+<li>
+<p>Calculate the slope of the secant line from <m>$x =$x1[1] </m> to <m>$x =$x1[2] </m>.</p>
+
+<p>Slope = 
+<answer>
+<award allowedErrorIsAbsolute="true" allowedErrorInNumbers="0.1">$secant_slope_1 </award>
+</answer>
+
+</p>
+
+
+</li>
+
+<li>
+<p>Calculate the slope of the secant line from <m>$x =$xa[1] </m> to <m>$x =$xa[2] </m>.</p>
+
+<p>Slope = 
+<answer>
+<award>$secant_slope_2 </award>
+</answer>
+
+</p>
+
+</li>
+
+<li>
+<p>For any function <m>g ($x )</m>, what is the slope of the secant line from <m>$x =$xa[1] </m> to <m>$x =$xa[2] </m>?</p>
+
+<p>Slope = 
+<answer>
+<award>$secant_slope_3 </award>
+<award>$secant_slope_3a </award>
+</answer>
+
+</p>
+
+</li>
+
+
+</ol>
+
+
+<solution>
+
+
+<ol>
+
+<li>
+The slope of the secant is
+<me>\frac{ f ($x1[1] ) - f ($x1[2] ) }{ $x1[1]  - ($x1[2] ) } =\frac{ $funx1 -($funx2 ) }{ $dx  } = <round numDigits="2"><number>$secant_slope_1 </number></round></me>
+</li>
+
+<li>
+The slope of the secant is
+<me>\frac{ f ($xa[1] ) - f ($xa[2] ) }{ $xa[1]  - $xa[2]  } =\frac{ $funxa -($funxb ) }{ $xa[1] -$xa[2]  } = $secant_slope_2 </me>
+</li>
+
+<li>
+<p>The slope of the secant is
+<me>\frac{ g ($xa[1] ) - g ($xa[2] )}{ $xa[1] -$xa[2]  }.</me>
+</p>
+</li>
+
+
+</ol>
+
+</solution>
+
+
+</problem>

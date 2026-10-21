@@ -1,0 +1,93 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7UGHUq4zLfgBDmsUEkuT8x
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 2008ad53e2deda5d
+-->
+<problem>
+<!-- <title>Indefinite integral &#x2D; 1/x</title> -->
+
+<setup>
+
+<selectFromSequence name="a" from="-10" to="10" exclude="0" numToSelect="2" withReplacement="true" />
+<selectFromSequence name="b" from="1" to="10" />
+
+
+<function name="f" variables="t"><math simplify="numbersPreserveOrder">$a[1] /($b +$a[2] *t)</math></function>
+
+<math name="denom" simplify="numbers">$b +$a[2] *t</math>
+<function name="fpart" variables="t">1/($b +$a[2] *t)</function>
+<math name="logf">ln(abs($b +$a[2] *t))</math>
+<math name="intfeval">($a[1] /$a[2] )*$logf </math>
+<math name="intfeval_C">$intfeval +C </math>
+<math name="intfeval_no_abs">($a[1] /$a[2] )*ln($b +$a[2] *t) </math>
+<math name="intfeval_no_abs_C">$intfeval_no_abs +C </math>
+
+  
+<abs name="divisor"><gcd>$a[1] $b $a[2]</gcd></abs>
+<math name="logfalt">log(abs($b /$divisor +$a[2] /$divisor *t))</math>
+<math name="intfevalalt">($a[1] /$a[2] )*$logfalt </math>
+<math name="intfevalalt_C">$intfevalalt +C </math>
+<math name="intfevalalt_no_abs">($a[1] /$a[2] )*log($b /$divisor +$a[2] /$divisor *t) </math>
+<math name="intfevalalt_no_abs_C">$intfevalalt_no_abs +C </math>
+
+<abs name="divisor2"><gcd>$b $a[2]</gcd></abs>
+<math name="logfalt2">log(abs($b /$divisor2 +$a[2] /$divisor2 *t))</math>
+<math name="intfevalalt2">($a[1] /$a[2] )*$logfalt2 </math>
+<math name="intfevalalt2_C">$intfevalalt2 +C </math>
+<math name="intfevalalt2_no_abs">($a[1] /$a[2] )*log($b /$divisor2 +$a[2] /$divisor2 *t)</math>
+<math name="intfevalalt2_no_abs_C">$intfevalalt2_no_abs +C </math>
+
+</setup>
+
+
+Evaluate the following integral: <m>\displaystyle \int $f \, dt =</m> 
+<answer>
+<award>$intfeval_C </award>
+<award>$intfevalalt_C </award>
+<award>$intfevalalt2_C </award>
+<award credit="0.67" name="noC">$intfeval </award>
+<award credit="0.67" name="noCAlt">$intfevalalt </award>
+<award credit="0.67" name="noCAlt2">$intfevalalt2 </award>
+<award credit="0.5" name="noAbs">$intfeval_no_abs_C </award>
+<award credit="0.5" name="noAbsAlt">$intfevalalt_no_abs_C </award>
+<award credit="0.5" name="noAbsAlt2">$intfevalalt2_no_abs_C </award>
+<award credit="0.33" name="noCAbs">$intfeval_no_abs </award>
+<award credit="0.33" name="noCAbsAlt">$intfevalalt_no_abs </award>
+<award credit="0.33" name="noCAbsAlt2">$intfevalalt2_no_abs </award>
+</answer>
+<feedback condition="$noC or $noCAlt or $noCAlt2">Don't forget the constant.</feedback>
+<feedback condition="$noAbs or $noAbsAlt or $noAbsAlt2">Don't forget the absolute value.</feedback>
+<feedback condition="$noCAbs or $noCAbsAlt or $noCAbsAlt2">Don't forget the absolute value and the constant.</feedback>
+
+
+
+<solution>
+<p>We first use the constant product rule for integrals to simplify:
+</p>
+
+<p>
+
+<m>\displaystyle \int $f \, dt  = $a[1] \int $fpart \, dt</m>
+</p>
+
+<p>
+Recall that the integral of one over a linear function of <m>t</m> is the natural logarithm of the absolute value of the linear function, divided by the coefficient of <m>t</m>:
+</p>
+
+<p>
+<m>\displaystyle \int $fpart \, dt  = \frac{ $logf  }{ $a[2]  }+C</m>
+</p>
+
+<p>
+Multiplying by <m>$a[1] </m> gives us our final solution:
+</p>
+  
+<p>
+<m>\displaystyle \int $f \, dt  = $intfeval +C</m>
+</p>
+
+</solution>
+
+
+</problem>

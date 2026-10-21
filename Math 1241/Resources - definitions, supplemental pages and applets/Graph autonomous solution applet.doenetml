@@ -1,0 +1,1296 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 83PUG3WFYYLvLvU2jrcCkc
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 798ba2ba262d70e1
+-->
+<module name="graphicalAutonomousSolution"><setup><number copy="$Pystart.value" name="ref1" /><number copy="$Pxstart.value" name="ref2" /><number copy="$Pystart.value" name="ref3" /><number copy="$Pystart.value" name="ref4" /><number copy="$Pxstart.value" name="ref5" /><number copy="$Pystart.value" name="ref6" /><number copy="$Pystart.value" name="ref7" /><number copy="$Pxstart.value" name="ref8" /><number copy="$Pystart.value" name="ref9" /><number copy="$Pystart.value" name="ref10" /><number copy="$Pxstart.value" name="ref11" /><number copy="$Pystart.value" name="ref12" /><number copy="$Pystart.value" name="ref13" /><number copy="$Pxstart.value" name="ref14" /><number copy="$Pystart.value" name="ref15" /><number copy="$Pystart.value" name="ref16" /><number copy="$Pxstart.value" name="ref17" /><number copy="$Pystart.value" name="ref18" /><number copy="$Pystart.value" name="ref19" /><number copy="$Pxstart.value" name="ref20" /><number copy="$Pystart.value" name="ref21" /><number copy="$Pystart.value" name="ref22" /><number copy="$Pxstart.value" name="ref23" /><number copy="$Pystart.value" name="ref24" /></setup>
+  <moduleAttributes><text name="size">medium</text><_componentSize name="height">300px</_componentSize><number name="aspectRatio">1</number><number name="vmin">-10</number><number name="vmax">10</number><number name="dv">0.5</number><math name="ICexpr">$(var)_0</math><boolean name="fixAxes">true</boolean><math name="var">x</math><text name="grid">medium</text><boolean name="convertEquilibria">false</boolean><number name="minHandleRadius">1</number><number name="numPoints">8</number><number name="IC1">-7</number><number name="final1">-Infinity</number><number name="IC2">-6</number><number name="final2">-6</number><number name="IC3">-5</number><number name="final3">-1</number><number name="IC4">-1</number><number name="final4">-1</number><number name="IC5">4</number><number name="final5">-1</number><number name="IC6">5</number><number name="final6">5</number><number name="IC7">6</number><number name="final7">Infinity</number><number name="IC8">8</number><number name="final8">Infinity</number><boolean name="Estable1">true</boolean><boolean name="Estable2">true</boolean><boolean name="Estable3">true</boolean><boolean name="Estable4">true</boolean><boolean name="Estable5">true</boolean><boolean name="Estable6">true</boolean><boolean name="Estable7">true</boolean><boolean name="Estable8">true</boolean></moduleAttributes>
+
+  
+<setup>
+  <boolean name="showSolution1">false</boolean>
+  <boolean name="showSolution2">false</boolean>
+  <boolean name="showSolution3">false</boolean>
+  <boolean name="showSolution4">false</boolean>
+  <boolean name="showSolution5">false</boolean>
+  <boolean name="showSolution6">false</boolean>
+  <boolean name="showSolution7">false</boolean>
+  <boolean name="showSolution8">false</boolean>
+  <number name="zeroFixed" fixed="true">0</number>
+  <number name="vrange" fixed="true">$vmax-$vmin</number>
+  <boolean name="convertE1">$convertEquilibria and $ansSol1.creditAchieved = 1 and $IC1 = $final1</boolean>
+  <boolean name="convertE2">$convertEquilibria and $ansSol2.creditAchieved = 1 and $IC2 = $final2</boolean>
+  <boolean name="convertE3">$convertEquilibria and $ansSol3.creditAchieved = 1 and $IC3 = $final3</boolean>
+  <boolean name="convertE4">$convertEquilibria and $ansSol4.creditAchieved = 1 and $IC4 = $final4</boolean>
+  <boolean name="convertE5">$convertEquilibria and $ansSol5.creditAchieved = 1 and $IC5 = $final5</boolean>
+  <boolean name="convertE6">$convertEquilibria and $ansSol6.creditAchieved = 1 and $IC6 = $final6</boolean>
+  <boolean name="convertE7">$convertEquilibria and $ansSol7creditAchieved = 1 and $IC7 = $final7</boolean>
+  <boolean name="convertE8">$convertEquilibria and $ansSol8creditAchieved'}) = 1 and $IC8 = $final8</boolean>
+</setup>
+<!-- 
+<graph width='$width' height='$height' ymin='$vmin' ymax='$vmax' xmin="&#x2D;0.1$vrange" xmax="0.9*$vrange" fixAxes="$fixAxes" identicalAxisScales grid="$grid" > -->
+
+
+<graph size="$size" aspectRatio="$aspectRatio" ymin="$vmin" ymax="$vmax" xmin="-0.1$vrange" xmax="0.9*$vrange" fixAxes="$fixAxes" grid="$grid">
+  <xLabel><m>t</m></xLabel>
+  <yLabel><m>$var</m></yLabel>
+
+  <conditionalContent condition="$showSolution1">
+    <setup>
+      <number fixed="true" name="r11">max(0.5 abs($p12y-$p11y),$minHandleRadius)</number>
+      <number fixed="true" name="r12">max(0.3 abs($p12x), $minHandleRadius)</number>
+      <math extend="$P11.y" name="p11y" />
+      <number name="p11m">$P11handle.y/$P11handle.x</number>
+      <boolean name="p11r">$P11handle.x &lt; 0</boolean>
+      <math extend="$P12.y" name="p12y" />
+      <math extend="$P12.x" name="p12x" />
+      <boolean name="p12r">$P12handle.x &lt; 0</boolean>
+      <number name="p12m">$P12handle.y/$P12handle.x</number>
+      <integer extend="$C1.numXCriticalPoints" name="nXcpC1" />
+      <integer extend="$C1.numYCriticalPoints" name="nYcpC1" />
+      <text extend="$C1.extrapolateForwardMode" name="efmC1" />
+      <integer extend="$C1.numCurvatureChangePoints" name="nccpC1" />
+
+      <number fixed="true" name="Pystart">$vmin+0.6$vrange</number>
+      <number fixed="true" name="Pxstart">0.6$vrange</number>
+    </setup>
+        
+    <point name="P11" styleNumber="1" x="$zeroFixed" y="$ref1" hide="$ansSol1.creditAchieved =1" labelPosition="upperleft">
+      <label><m>$var=$P11.y</m></label>
+      
+        <constrainToGrid dy="$dv" />
+        <constrainToGraph />
+      
+    </point>
+    <point name="P11handle" x="-1" y="-1" hide="true">
+      
+        <constrainTo><circle radius="$r11" /></constrainTo>
+        <attractTo threshold="0.01*$vrange"><line>y=0</line></attractTo>
+      
+    </point>
+    <point name="P12" styleNumber="1" x="$ref2" y="$ref3" hide="$ansSol1.creditAchieved=1">
+      
+        <constrainTo><regionHalfPlane boundaryValue="0.8*$vrange" greaterThan="false" /></constrainTo>
+        <attractToGrid dx="10*$vrange" dy="$dv" ythreshold="$dv" xthreshold="0.001$vrange" includeGridlines="true" />
+        <constrainToGraph />
+      
+    </point>
+    <point name="P12handle" x="-1" y="-1" hide="true">
+      
+        <constrainTo><circle radius="$r12" /></constrainTo>
+        <attractTo threshold="0.01*$vrange"><line>y=0</line></attractTo>
+      
+    </point>
+    <curve name="C1" through="$P11 $P12" extrapolateForward="true" draggable="$ansSol1.creditAchieved&lt; 1" styleNumber="1" hide="$convertE1">
+      <bezierControls alwaysVisible="true">
+        <controlVectors><vector>$P11handle</vector></controlVectors>
+        <controlVectors><vector>$P12handle</vector></controlVectors>
+      </bezierControls>
+    </curve>
+    <conditionalContent condition="$convertE1">
+      <equilibriumLine styleNumber="9" switchable="$ansE1.creditAchieved&lt;1" draggable="false" name="E1">y=$IC1</equilibriumLine>
+    </conditionalContent>
+
+  </conditionalContent>
+  
+
+  <conditionalContent condition="$showSolution2">
+    <setup>
+      <number fixed="true" name="r21">max(0.5 abs($p22y-$p21y),$minHandleRadius)</number>
+      <number fixed="true" name="r22">max(0.3 abs($p22x), $minHandleRadius)</number>
+      <math extend="$P21.y" name="p21y" />
+      <number name="p21m">$P21handle.y/$P21handle.x</number>
+      <boolean name="p21r">$P21handle.x &lt; 0</boolean>
+      <math extend="$P22.y" name="p22y" />
+      <math extend="$P22.x" name="p22x" />
+      <boolean name="p22r">$P22handle.x &lt; 0</boolean>
+      <number name="p22m">$P22handle.y/$P22handle.x</number>
+      <integer extend="$C2.numXCriticalPoints" name="nXcpC2" />
+      <integer extend="$C2.numYCriticalPoints" name="nYcpC2" />
+      <text extend="$C2.extrapolateForwardMode" name="efmC2" />
+      <integer extend="$C2.numCurvatureChangePoints" name="nccpC2" />
+    </setup>
+
+    <point name="P21" styleNumber="2" x="$zeroFixed" y="$ref4" hide="$ansSol2.creditAchieved=1" labelPosition="upperleft">
+      <label>$var=$P21.y</label>
+      
+        <constrainToGrid dy="$dv" />
+        <constrainToGraph />
+      
+    </point>
+    <point name="P21handle" x="-1" y="-1" hide="true">
+      
+        <constrainTo><circle radius="$r21" /></constrainTo>
+        <attractTo threshold="0.01*$vrange"><line>y=0</line></attractTo>
+      
+    </point>
+    <point name="P22" styleNumber="2" x="$ref5" y="$ref6" hide="$ansSol2.creditAchieved=1">
+      
+        <constrainTo><regionHalfPlane boundaryValue="0.8*$vrange" greaterThan="false" /></constrainTo>
+        <attractToGrid dx="10*$vrange" dy="$dv" ythreshold="$dv" xthreshold="0.001$vrange" includeGridlines="true" />
+        <constrainToGraph />
+      
+    </point>
+    <point name="P22handle" x="-1" y="-1" hide="true">
+      
+        <constrainTo><circle radius="$r22" /></constrainTo>
+        <attractTo threshold="0.01*$vrange"><line>y=0</line></attractTo>
+      
+    </point>
+    <curve name="C2" through="$P21 $P22" extrapolateForward="true" draggable="$ansSol2.creditAchieved&lt; 1" styleNumber="2" hide="$convertE2">
+      <bezierControls alwaysVisible="true">
+        <controlVectors><vector>$P21handle</vector></controlVectors>
+        <controlVectors><vector>$P22handle</vector></controlVectors>
+      </bezierControls>
+    </curve>
+    <conditionalContent condition="$convertE2">
+      <equilibriumLine styleNumber="9" switchable="$ansE2.creditAchieved&lt;1" draggable="false" name="E2">y=$IC2</equilibriumLine>
+    </conditionalContent>
+
+  </conditionalContent>
+  
+
+  <conditionalContent condition="$showSolution3">
+    <setup>
+      <number fixed="true" name="r31">max(0.5 abs($p32y-$p31y),$minHandleRadius)</number>
+      <number fixed="true" name="r32">max(0.3 abs($p32x), $minHandleRadius)</number>
+      <math extend="$P31.y" name="p31y" />
+      <number name="p31m">$P31handle.y/$P31handle.x</number>
+      <boolean name="p31r">$P31handle.x &lt; 0</boolean>
+      <math extend="$P32.y" name="p32y" />
+      <math extend="$P32.x" name="p32x" />
+      <boolean name="p32r">$P32handle.x &lt; 0</boolean>
+      <number name="p32m">$P32handle.y/$P32handle.x</number>
+      <integer extend="$C3.numXCriticalPoints" name="nXcpC3" />
+      <integer extend="$C3.numYCriticalPoints" name="nYcpC3" />
+      <text extend="$C3.extrapolateForwardMode" name="efmC3" />
+      <integer extend="$C3.numCurvatureChangePoints" name="nccpC3" />
+    </setup>
+
+    <point name="P31" styleNumber="3" x="$zeroFixed" y="$ref7" hide="$ansSol3.creditAchieved=1" labelPosition="upperleft">
+      <label><m>$var=$P31.y</m></label>
+      
+        <constrainToGrid dy="$dv" />
+        <constrainToGraph />
+      
+    </point>
+    <point name="P31handle" x="-1" y="-1" hide="true">
+      
+        <constrainTo><circle radius="$r31" /></constrainTo>
+        <attractTo threshold="0.01*$vrange"><line>y=0</line></attractTo>
+      
+    </point>
+    <point name="P32" styleNumber="3" x="$ref8" y="$ref9" hide="$ansSol3.creditAchieved=1">
+      
+        <constrainTo><regionHalfPlane boundaryValue="0.8*$vrange" greaterThan="false" /></constrainTo>
+        <attractToGrid dx="10*$vrange" dy="$dv" ythreshold="$dv" xthreshold="0.001$vrange" includeGridlines="true" />
+        <constrainToGraph />
+      
+    </point>
+    <point name="P32handle" x="-1" y="-1" hide="true">
+      
+        <constrainTo><circle radius="$r32" /></constrainTo>
+        <attractTo threshold="0.01*$vrange"><line>y=0</line></attractTo>
+      
+    </point>
+    <curve name="C3" through="$P31 $P32" extrapolateForward="true" draggable="$ansSol3.creditAchieved&lt; 1" styleNumber="3" hide="$convertE3">
+      <bezierControls alwaysVisible="true">
+        <controlVectors><vector>$P31handle</vector></controlVectors>
+        <controlVectors><vector>$P32handle</vector></controlVectors>
+      </bezierControls>
+    </curve>
+    <conditionalContent condition="$convertE3">
+      <equilibriumLine styleNumber="9" switchable="$ansE3.creditAchieved&lt;1" draggable="false" name="E3">y=$IC3</equilibriumLine>
+    </conditionalContent>
+
+  </conditionalContent>
+  
+
+  <conditionalContent condition="$showSolution4">
+    <setup>
+      <number fixed="true" name="r41">max(0.5 abs($p42y-$p41y),$minHandleRadius)</number>
+      <number fixed="true" name="r42">max(0.3 abs($p42x), $minHandleRadius)</number>
+      <math extend="$P41.y" name="p41y" />
+      <number name="p41m">$P41handle.y/$P41handle.x</number>
+      <boolean name="p41r">$P41handle.x &lt; 0</boolean>
+      <math extend="$P42.y" name="p42y" />
+      <math extend="$P42.x" name="p42x" />
+      <boolean name="p42r">$P42handle.x &lt; 0</boolean>
+      <number name="p42m">$P42handle.y/$P42handle.x</number>
+      <integer extend="$C4.numXCriticalPoints" name="nXcpC4" />
+      <integer extend="$C4.numYCriticalPoints" name="nYcpC4" />
+      <text extend="$C4.extrapolateForwardMode" name="efmC4" />
+      <integer extend="$C4.numCurvatureChangePoints" name="nccpC4" />
+    </setup>
+
+    <point name="P41" styleNumber="4" x="$zeroFixed" y="$ref10" hide="$ansSol4.creditAchieved=1" labelPosition="upperleft">
+      <label><m>$var=$P41.y</m></label>
+      
+        <constrainToGrid dy="$dv" />
+        <constrainToGraph />
+      
+    </point>
+    <point name="P41handle" x="-1" y="-1" hide="true">
+      
+        <constrainTo><circle radius="$r41" /></constrainTo>
+        <attractTo threshold="0.01*$vrange"><line>y=0</line></attractTo>
+      
+    </point>
+    <point name="P42" styleNumber="4" x="$ref11" y="$ref12" hide="$ansSol4.creditAchieved=1">
+      
+        <constrainTo><regionHalfPlane boundaryValue="0.8*$vrange" greaterThan="false" /></constrainTo>
+        <attractToGrid dx="10*$vrange" dy="$dv" ythreshold="$dv" xthreshold="0.001$vrange" includeGridlines="true" />
+        <constrainToGraph />
+      
+    </point>
+    <point name="P42handle" x="-1" y="-1" hide="true">
+      
+        <constrainTo><circle radius="$r42" /></constrainTo>
+        <attractTo threshold="0.01*$vrange"><line>y=0</line></attractTo>
+      
+    </point>
+    <curve name="C4" through="$P41 $P42" extrapolateForward="true" draggable="$ansSol4.creditAchieved&lt; 1" styleNumber="4" hide="$convertE4">
+      <bezierControls alwaysVisible="true">
+        <controlVectors><vector>$P41handle</vector></controlVectors>
+        <controlVectors><vector>$P42handle</vector></controlVectors>
+      </bezierControls>
+    </curve>
+    <conditionalContent condition="$convertE4">
+      <equilibriumLine styleNumber="9" switchable="$ansE4.creditAchieved&lt;1" draggable="false" name="E4">y=$IC4</equilibriumLine>
+    </conditionalContent>
+
+  </conditionalContent>
+  
+
+  <conditionalContent condition="$showSolution5">
+    <setup>
+      <number fixed="true" name="r51">max(0.5 abs($p52y-$p51y),$minHandleRadius)</number>
+      <number fixed="true" name="r52">max(0.3 abs($p52x), $minHandleRadius)</number>
+      <math extend="$P51.y" name="p51y" />
+      <number name="p51m">$P51handle.y/$P51handle.x</number>
+      <boolean name="p51r">$P51handle.x &lt; 0</boolean>
+      <math extend="$P52.y" name="p52y" />
+      <math extend="$P52.x" name="p52x" />
+      <boolean name="p52r">$P52handle.x &lt; 0</boolean>
+      <number name="p52m">$P52handle.y/$P52handle.x</number>
+      <integer extend="$C5.numXCriticalPoints" name="nXcpC5" />
+      <integer extend="$C5.numYCriticalPoints" name="nYcpC5" />
+      <text extend="$C5.extrapolateForwardMode" name="efmC5" />
+      <integer extend="$C5.numCurvatureChangePoints" name="nccpC5" />
+    </setup>
+
+    <point name="P51" styleNumber="5" x="$zeroFixed" y="$ref13" hide="$ansSol5.creditAchieved=1" labelPosition="upperleft">
+      <label><m>$var=$P51.y</m></label>
+      
+        <constrainToGrid dy="$dv" />
+        <constrainToGraph />
+      
+    </point>
+    <point name="P51handle" x="-1" y="-1" hide="true">
+      
+        <constrainTo><circle radius="$r51" /></constrainTo>
+        <attractTo threshold="0.01*$vrange"><line>y=0</line></attractTo>
+      
+    </point>
+    <point name="P52" styleNumber="5" x="$ref14" y="$ref15" hide="$ansSol5.creditAchieved=1">
+      
+        <constrainTo><regionHalfPlane boundaryValue="0.8*$vrange" greaterThan="false" /></constrainTo>
+        <attractToGrid dx="10*$vrange" dy="$dv" ythreshold="$dv" xthreshold="0.001$vrange" includeGridlines="true" />
+        <constrainToGraph />
+      
+    </point>
+    <point name="P52handle" x="-1" y="-1" hide="true">
+      
+        <constrainTo><circle radius="$r52" /></constrainTo>
+        <attractTo threshold="0.01*$vrange"><line>y=0</line></attractTo>
+      
+    </point>
+    <curve name="C5" through="$P51 $P52" extrapolateForward="true" draggable="$ansSol5.creditAchieved&lt; 1" styleNumber="5" hide="$convertE5">
+      <bezierControls alwaysVisible="true">
+        <controlVectors><vector>$P51handle</vector></controlVectors>
+        <controlVectors><vector>$P52handle</vector></controlVectors>
+      </bezierControls>
+    </curve>
+    <conditionalContent condition="$convertE5">
+      <equilibriumLine styleNumber="9" switchable="$ansE5.creditAchieved&lt;1" draggable="false" name="E5">y=$IC5</equilibriumLine>
+    </conditionalContent>
+
+  </conditionalContent>
+
+
+  <conditionalContent condition="$showSolution6">
+    <setup>
+      <number fixed="true" name="r61">max(0.5 abs($p62y-$p61y),$minHandleRadius)</number>
+      <number fixed="true" name="r62">max(0.3 abs($p62x), $minHandleRadius)</number>
+      <math extend="$P61.y" name="p61y" />
+      <number name="p61m">$P61handle.y/$P61handle.x</number>
+      <boolean name="p61r">$P61handle.x &lt; 0</boolean>
+      <math extend="$P62.y" name="p62y" />
+      <math extend="$P62.x" name="p62x" />
+      <boolean name="p62r">$P62handle.x &lt; 0</boolean>
+      <number name="p62m">$P62handle.y/$P62handle.x</number>
+      <integer extend="$C6.numXCriticalPoints" name="nXcpC6" />
+      <integer extend="$C6.numYCriticalPoints" name="nYcpC6" />
+      <text extend="$C6.extrapolateForwardMode" name="efmC6" />
+      <integer extend="$C6.numCurvatureChangePoints" name="nccpC6" />
+    </setup>
+
+    <point name="P61" styleNumber="6" x="$zeroFixed" y="$ref16" hide="$ansSol6.creditAchieved=1" labelPosition="upperleft">
+      <label><m>$var=$P61.y</m></label>
+      
+        <constrainToGrid dy="$dv" />
+        <constrainToGraph />
+      
+    </point>
+    <point name="P61handle" x="-1" y="-1" hide="true">
+      
+        <constrainTo><circle radius="$r61" /></constrainTo>
+        <attractTo threshold="0.01*$vrange"><line>y=0</line></attractTo>
+      
+    </point>
+    <point name="P62" styleNumber="6" x="$ref17" y="$ref18" hide="$ansSol6.creditAchieved'}=1">
+      
+        <constrainTo><regionHalfPlane boundaryValue="0.8*$vrange" greaterThan="false" /></constrainTo>
+        <attractToGrid dx="10*$vrange" dy="$dv" ythreshold="$dv" xthreshold="0.001$vrange" includeGridlines="true" />
+        <constrainToGraph />
+      
+    </point>
+    <point name="P62handle" x="-1" y="-1" hide="true">
+      
+        <constrainTo><circle radius="$r62" /></constrainTo>
+        <attractTo threshold="0.01*$vrange"><line>y=0</line></attractTo>
+      
+    </point>
+    <curve name="C6" through="$P61 $P62" extrapolateForward="true" draggable="$ansSol6.creditAchieved&lt; 1" styleNumber="6" hide="$convertE6">
+      <bezierControls alwaysVisible="true">
+        <controlVectors><vector>$P61handle</vector></controlVectors>
+        <controlVectors><vector>$P62handle</vector></controlVectors>
+      </bezierControls>
+    </curve>
+    <conditionalContent condition="$convertE6">
+      <equilibriumLine styleNumber="9" switchable="$ansE6.creditAchieved&lt;1" draggable="false" name="E6">y=$IC6</equilibriumLine>
+    </conditionalContent>
+
+  </conditionalContent>
+  
+
+  <conditionalContent condition="$showSolution7">
+    <setup>
+      <number fixed="true" name="r71">max(0.5 abs($p72y-$p71y),$minHandleRadius)</number>
+      <number fixed="true" name="r72">max(0.3 abs($p72x), $minHandleRadius)</number>
+      <math extend="$P71.y" name="p71y" />
+      <number name="p71m">$P71handle.y/$P71handle.x</number>
+      <boolean name="p71r">$P71handle.x &lt; 0</boolean>
+      <math extend="$P72.y" name="p72y" />
+      <math extend="$P72.x" name="p72x" />
+      <boolean name="p72r">$P72handle.x &lt; 0</boolean>
+      <number name="p72m">$P72handle.y/$P72handle.x</number>
+      <integer extend="$C7.numXCriticalPoints" name="nXcpC7" />
+      <integer extend="$C7.numYCriticalPoints" name="nYcpC7" />
+      <text extend="$C7.extrapolateForwardMode" name="efmC7" />
+      <integer extend="$C7.numCurvatureChangePoints" name="nccpC7" />
+    </setup>
+
+    <point name="P71" styleNumber="7" x="$zeroFixed" y="$ref19" hide="$ansSol7.creditAchieved=1" labelPosition="upperleft">
+      <label><m>$var=$P71.y</m></label>
+      
+        <constrainToGrid dy="$dv" />
+        <constrainToGraph />
+      
+    </point>
+    <point name="P71handle" x="-1" y="-1" hide="true">
+      
+        <constrainTo><circle radius="$r71" /></constrainTo>
+        <attractTo threshold="0.01*$vrange"><line>y=0</line></attractTo>
+      
+    </point>
+    <point name="P72" styleNumber="7" x="$ref20" y="$ref21" hide="$ansSol7.creditAchieved'}=1">
+      
+        <constrainTo><regionHalfPlane boundaryValue="0.8*$vrange" greaterThan="false" /></constrainTo>
+        <attractToGrid dx="10*$vrange" dy="$dv" ythreshold="$dv" xthreshold="0.001$vrange" includeGridlines="true" />
+        <constrainToGraph />
+      
+    </point>
+    <point name="P72handle" x="-1" y="-1" hide="true">
+      
+        <constrainTo><circle radius="$r72" /></constrainTo>
+        <attractTo threshold="0.01*$vrange"><line>y=0</line></attractTo>
+      
+    </point>
+    <curve name="C7" through="$P71 $P72" extrapolateForward="true" draggable="$ansSol7.creditAchieved&lt; 1" styleNumber="7" hide="$convertE7">
+      <bezierControls alwaysVisible="true">
+        <controlVectors><vector>$P71handle</vector></controlVectors>
+        <controlVectors><vector>$P72handle</vector></controlVectors>
+      </bezierControls>
+    </curve>
+    <conditionalContent condition="$convertE7">
+      <equilibriumLine styleNumber="9" switchable="$ansE7.creditAchieved&lt;1" draggable="false" name="E7">y=$IC7</equilibriumLine>
+    </conditionalContent>
+
+  </conditionalContent>
+  
+
+  <conditionalContent condition="$showSolution8">
+    <setup>
+      <number fixed="true" name="r81">max(0.5 abs($p82y-$p81y),$minHandleRadius)</number>
+      <number fixed="true" name="r82">max(0.3 abs($p82x), $minHandleRadius)</number>
+      <math extend="$P81.y" name="p81y" />
+      <number name="p81m">$P81handle.y/$P81handle.x</number>
+      <boolean name="p81r">$P81handle.x &lt; 0</boolean>
+      <math extend="$P82.y" name="p82y" />
+      <math extend="$P82.x" name="p82x" />
+      <boolean name="p82r">$P82handle.x &lt; 0</boolean>
+      <number name="p82m">$P82handle.y/$P82handle.x</number>
+      <integer extend="$C8.numXCriticalPoints" name="nXcpC8" />
+      <integer extend="$C8.numYCriticalPoints" name="nYcpC8" />
+      <text extend="$C8.extrapolateForwardMode" name="efmC8" />
+      <integer extend="$C8.numCurvatureChangePoints" name="nccpC8" />
+    </setup>
+
+    <point name="P81" styleNumber="8" x="$zeroFixed" y="$ref22" hide="$ansSol8.creditAchieved=1" labelPosition="upperleft">
+      <label><m>$var=$P81.y</m></label>
+      
+        <constrainToGrid dy="$dv" />
+        <constrainToGraph />
+      
+    </point>
+    <point name="P81handle" x="-1" y="-1" hide="true">
+      
+        <constrainTo><circle radius="$r81" /></constrainTo>
+        <attractTo threshold="0.01*$vrange"><line>y=0</line></attractTo>
+      
+    </point>
+    <point name="P82" styleNumber="8" x="$ref23" y="$ref24" hide="$ansSol8.creditAchieved=1">
+      
+        <constrainTo><regionHalfPlane boundaryValue="0.8*$vrange" greaterThan="false" /></constrainTo>
+        <attractToGrid dx="10*$vrange" dy="$dv" ythreshold="$dv" xthreshold="0.001$vrange" includeGridlines="true" />
+        <constrainToGraph />
+      
+    </point>
+    <point name="P82handle" x="-1" y="-1" hide="true">
+      
+        <constrainTo><circle radius="$r82" /></constrainTo>
+        <attractTo threshold="0.01*$vrange"><line>y=0</line></attractTo>
+      
+    </point>
+    <curve name="C8" through="$P81 $P82" extrapolateForward="true" draggable="$ansSol8.creditAchieved&lt; 1" styleNumber="8" hide="$convertE8">
+      <bezierControls alwaysVisible="true">
+        <controlVectors><vector>$P81handle</vector></controlVectors>
+        <controlVectors><vector>$P82handle</vector></controlVectors>
+      </bezierControls>
+    </curve>
+    <conditionalContent condition="$convertE8">
+      <equilibriumLine styleNumber="9" switchable="$ansE8.creditAchieved&lt;1" draggable="false" name="E8">y=$IC8</equilibriumLine>
+    </conditionalContent>
+
+  </conditionalContent>
+  
+
+
+</graph>
+
+
+
+
+
+<ul>
+
+<li>
+  <p>Click <updateValue name="revealSolution1" type="boolean" target="$showSolution1" newValue="true" disabled="$showSolution1">
+    <label>show curve</label>
+  </updateValue> and use the curve to draw the solution for <m>$ICexpr=$IC1</m>.
+  <answer name="ansSol1" matchPartial="true" disabled="not $showSolution1">
+    <award>
+      <when>
+        <boolean name="p11Location">$p11y = $IC1</boolean>
+        and
+        <boolean name="p11Slope">$p11Location and $p11r and 
+          <conditionalContent>
+            <case condition="$IC1 > $final1">
+              $p11m &lt; 0
+            </case>
+            <case condition="$IC1 &lt; $final1">
+              $p11m > 0
+            </case>
+            <else>
+              $p11m = 0
+            </else>
+          </conditionalContent>
+        </boolean>
+        and
+        <boolean>$p11Slope and $nXcpC1=0</boolean>
+        and
+        <conditionalContent>
+          <case condition="$final1 = -Infinity">
+            <boolean name="c1Decreasing">$p11r and $p11m &lt; 0 and $nYcpC1 = 0</boolean>
+            and
+            <boolean name="p12DecreasingLocationSlope">$p12r and $p12m &lt; $p11m and $p12y &lt; $p11y and $nYcpC1 = 0 and $efmC1 = parabolaVertical and $nccpC1 = 0</boolean>
+          </case>
+          <case condition="$final1 = Infinity">
+            <boolean name="c1Increasing">$p11r and $p11m > 0 and $nYcpC1 = 0</boolean>
+            and
+            <boolean name="p12IncreasingLocationSlope">$p12r and $p12m > $p11m and $p12y > $p11y and $nYcpC1 = 0 and $efmC1 = parabolaVertical and $nccpC1 = 0</boolean>
+          </case>
+          <else>
+            <boolean name="p12ConvergeLocationSlope">$p12r and $p12m = 0 and $p12y = $final1</boolean>
+          </else>
+        </conditionalContent>
+      </when>
+    </award>
+
+  </answer>
+  </p>
+
+  <feedback updateWith="$ansSol1" condition="not $p11Location">
+    The initial condition is incorrect.
+  </feedback>
+  <feedback updateWith="$ansSol1" condition="$nXcpC1 > 0">
+    The solution must be a function.  The curve cannot turn around so that time decreases.
+  </feedback>
+  <feedback updateWith="$ansSol1" condition="$p11Location and not $p11Slope">
+      The initial slope is incorrect.
+    </feedback>
+  <conditionalContent>
+    <case condition="$final1 = -Infinity">
+      <feedback updateWith="$ansSol1" condition="$p11Slope and not $c1Decreasing">
+        The solution does not have the correct behavior for large <m>t</m>.
+      </feedback>
+      <feedback updateWith="$ansSol1" condition="$p11Slope and $c1Decreasing and not $p12DecreasingLocationSlope">
+        The solution must be continually accelerating, i.e., increasing its downward speed so that the curve is concave downward everywhere.  (It can be a little tricky.  Look at the slope line coming from the initial point and make sure the curve keeps bending downward away from that line.)
+      </feedback>
+    </case>
+    <case condition="$final1 = Infinity">
+      <feedback updateWith="$ansSol1" condition="$p11Slope and not $c1Increasing">
+        The solution does not have the correct behavior for large <m>t</m>.
+      </feedback>
+      <feedback updateWith="$ansSol1" condition="$p11Slope and $c1Increasing and not $p12IncreasingLocationSlope">
+        The solution must be continually accelerating, i.e., increasing its upward speed so that the curve is concave upward everywhere.  (It can be a little tricky.  Look at the slope line coming from the initial point and make sure the curve keeps bending upward away from that line.)
+      </feedback>
+    </case>
+    <else>
+      <feedback updateWith="$ansSol1" condition="$p11Slope and not $p12ConvergeLocationSlope">
+        The solution does not have the correct behavior for large <m>t</m>.
+      </feedback>
+    </else>
+  </conditionalContent>
+
+  <conditionalContent condition="$convertE1">
+    <p>Check stability of equilibrium <m>$var(t)=$IC1</m>. 
+      <answer name="ansE1">
+        <award>
+          <when><boolean extend="$E1.stable" /> = $Estable1</when>
+        </award>
+      </answer>
+    </p>
+    <feedback updateWith="$ansE1" condition="$ansE1.creditAchieved &lt; 1"> 
+      Click the line representing the equilibrium to toggle its stability.  (Solid line corresponds to stable; dashed line corresponds to unstable.)
+    </feedback>
+  </conditionalContent>
+
+
+</li>
+
+
+            
+<conditionalContent condition="$numPoints >= 2">
+
+  <li>
+  <p>Click <updateValue name="revealSolution2" type="boolean" target="$showSolution2" newValue="true" disabled="$showSolution2">
+    <label>show curve</label>
+  </updateValue> and use the curve to draw the solution for <m>$ICexpr=$IC2</m>.
+  <answer name="ansSol2" matchPartial="true" disabled="not $showSolution2">
+    <award>
+      <when>
+        <boolean name="p21Location">$p21y = $IC2</boolean>
+        and
+        <boolean name="p21Slope">$p21Location and $p21r and 
+          <conditionalContent>
+            <case condition="$IC2 > $final2">
+              $p21m &lt; 0
+            </case>
+            <case condition="$IC2 &lt; $final2">
+              $p21m > 0
+            </case>
+            <else>
+              $p21m = 0
+            </else>
+          </conditionalContent>
+        </boolean>
+        and
+        <boolean>$p21Slope and $nXcpC2=0</boolean>
+        and
+        <conditionalContent>
+          <case condition="$final2 = -Infinity">
+            <boolean name="c2Decreasing">$p21r and $p21m &lt; 0 and $nYcpC2 = 0</boolean>
+            and
+            <boolean name="p22DecreasingLocationSlope">$p22r and $p22m &lt; $p21m and $p22y &lt; $p21y and $nYcpC2 = 0 and $efmC2 = parabolaVertical and $nccpC2 = 0</boolean>
+          </case>
+          <case condition="$final2 = Infinity">
+            <boolean name="c2Increasing">$p21r and $p21m > 0 and $nYcpC2 = 0</boolean>
+            and
+            <boolean name="p22IncreasingLocationSlope">$p22r and $p22m > $p21m and $p22y > $p21y and $nYcpC2 = 0 and $efmC2 = parabolaVertical and $nccpC2 = 0</boolean>
+          </case>
+          <else>
+            <boolean name="p22ConvergeLocationSlope">$p22r and $p22m = 0 and $p22y = $final2</boolean>
+          </else>
+        </conditionalContent>
+      </when>
+    </award>
+
+  </answer>
+  </p>
+
+  <feedback updateWith="$ansSol2" condition="not $p21Location">
+    The initial condition is incorrect.
+  </feedback>
+  <feedback updateWith="$ansSol2" condition="$nXcpC2 > 0">
+    The solution must be a function.  The curve cannot turn around so that time decreases.
+  </feedback>
+  <feedback updateWith="$ansSol2" condition="$p21Location and not $p21Slope">
+      The initial slope is incorrect.
+    </feedback>
+  <conditionalContent>
+    <case condition="$final2 = -Infinity">
+      <feedback updateWith="$ansSol2" condition="$p21Slope and not $c2Decreasing">
+        The solution does not have the correct behavior for large <m>t</m>.
+      </feedback>
+      <feedback updateWith="$ansSol2" condition="$p21Slope and $c2Decreasing and not $p22DecreasingLocationSlope">
+        The solution must be continually accelerating, i.e., increasing its downward speed so that the curve is concave downward everywhere.  (It can be a little tricky.  Look at the slope line coming from the initial point and make sure the curve keeps bending downward away from that line.)
+      </feedback>
+    </case>
+    <case condition="$final2 = Infinity">
+      <feedback updateWith="$ansSol2" condition="$p21Slope and not $c2Increasing">
+        The solution does not have the correct behavior for large <m>t</m>.
+      </feedback>
+      <feedback updateWith="$ansSol2" condition="$p21Slope and $c2Increasing and not $p22IncreasingLocationSlope">
+        The solution must be continually accelerating, i.e., increasing its upward speed so that the curve is concave upward everywhere.  (It can be a little tricky.  Look at the slope line coming from the initial point and make sure the curve keeps bending upward away from that line.)
+      </feedback>
+    </case>
+    <else>
+      <feedback updateWith="$ansSol2" condition="$p21Slope and not $p22ConvergeLocationSlope">
+        The solution does not have the correct behavior for large <m>t</m>.
+      </feedback>
+    </else>
+    </conditionalContent>
+
+
+    <conditionalContent condition="$convertE2">
+      <p>Check stability of equilibrium <m>$var(t)=$IC2</m>. 
+        <answer name="ansE2">
+          <award>
+            <when><boolean extend="$E2.stable" /> = $Estable2</when>
+          </award>
+        </answer>
+      </p>
+      <feedback updateWith="$ansE2" condition="$ansE2.creditAchieved &lt; 1"> 
+        Click the line representing the equilibrium to toggle its stability.  (Solid line corresponds to stable; dashed line corresponds to unstable.)
+      </feedback>
+    </conditionalContent>
+
+  </li>
+</conditionalContent>
+
+
+            
+<conditionalContent condition="$numPoints >= 3">
+
+  <li>
+  <p>Click <updateValue name="revealSolution3" type="boolean" target="$showSolution3" newValue="true" disabled="$showSolution3">
+    <label>show curve</label>
+  </updateValue> and use the curve to draw the solution for <m>$ICexpr=$IC3</m>.
+  <answer name="ansSol3" matchPartial="true" disabled="not $showSolution3">
+    <award>
+      <when>
+        <boolean name="p31Location">$p31y = $IC3</boolean>
+        and
+        <boolean name="p31Slope">$p31Location and $p31r and 
+          <conditionalContent>
+            <case condition="$IC3 > $final3">
+              $p31m &lt; 0
+            </case>
+            <case condition="$IC3 &lt; $final3">
+              $p31m > 0
+            </case>
+            <else>
+              $p31m = 0
+            </else>
+          </conditionalContent>
+        </boolean>
+        and
+        <boolean>$p31Slope and $nXcpC3=0</boolean>
+        and
+        <conditionalContent>
+          <case condition="$final3 = -Infinity">
+            <boolean name="c3Decreasing">$p31r and $p31m &lt; 0 and $nYcpC3 = 0</boolean>
+            and
+            <boolean name="p32DecreasingLocationSlope">$p32r and $p32m &lt; $p31m and $p32y &lt; $p31y and $nYcpC3 = 0 and $efmC3 = parabolaVertical and $nccpC3 = 0</boolean>
+          </case>
+          <case condition="$final3 = Infinity">
+            <boolean name="c3Increasing">$p31r and $p31m > 0 and $nYcpC3 = 0</boolean>
+            and
+            <boolean name="p32IncreasingLocationSlope">$p32r and $p32m > $p31m and $p32y > $p31y and $nYcpC3 = 0 and $efmC3 = parabolaVertical and $nccpC3 = 0</boolean>
+          </case>
+          <else>
+            <boolean name="p32ConvergeLocationSlope">$p32r and $p32m = 0 and $p32y = $final3</boolean>
+          </else>
+        </conditionalContent>
+      </when>
+    </award>
+
+  </answer>
+  </p>
+
+  <feedback updateWith="$ansSol3" condition="not $p31Location">
+    The initial condition is incorrect.
+  </feedback>
+  <feedback updateWith="$ansSol3" condition="$nXcpC3 > 0">
+    The solution must be a function.  The curve cannot turn around so that time decreases.
+  </feedback>
+  <feedback updateWith="$ansSol3" condition="$p31Location and not $p31Slope">
+      The initial slope is incorrect.
+    </feedback>
+  <conditionalContent>
+    <case condition="$final3 = -Infinity">
+      <feedback updateWith="$ansSol3" condition="$p31Slope and not $c3Decreasing">
+        The solution does not have the correct behavior for large <m>t</m>.
+      </feedback>
+      <feedback updateWith="$ansSol3" condition="$p31Slope and $c3Decreasing and not $p32DecreasingLocationSlope">
+        The solution must be continually accelerating, i.e., increasing its downward speed so that the curve is concave downward everywhere.  (It can be a little tricky.  Look at the slope line coming from the initial point and make sure the curve keeps bending downward away from that line.)
+      </feedback>
+    </case>
+    <case condition="$final3 = Infinity">
+      <feedback updateWith="$ansSol3" condition="$p31Slope and not $c3Increasing">
+        The solution does not have the correct behavior for large <m>t</m>.
+      </feedback>
+      <feedback updateWith="$ansSol3" condition="$p31Slope and $c3Increasing and not $p32IncreasingLocationSlope">
+        The solution must be continually accelerating, i.e., increasing its upward speed so that the curve is concave upward everywhere.  (It can be a little tricky.  Look at the slope line coming from the initial point and make sure the curve keeps bending upward away from that line.)
+      </feedback>
+    </case>
+    <else>
+      <feedback updateWith="$ansSol3" condition="$p31Slope and not $p32ConvergeLocationSlope">
+        The solution does not have the correct behavior for large <m>t</m>.
+      </feedback>
+    </else>
+  </conditionalContent>
+
+  <conditionalContent condition="$convertE3">
+    <p>Check stability of equilibrium <m>$var(t)=$IC3</m>. 
+      <answer name="ansE3">
+        <award>
+          <when><boolean extend="$E3.stable" /> = $Estable3</when>
+        </award>
+      </answer>
+    </p>
+    <feedback updateWith="$ansE3" condition="$ansE3.creditAchieved &lt; 1"> 
+      Click the line representing the equilibrium to toggle its stability.  (Solid line corresponds to stable; dashed line corresponds to unstable.)
+    </feedback>
+  </conditionalContent>
+
+  </li>
+</conditionalContent>
+
+
+<conditionalContent condition="$numPoints >= 4">
+
+  <li>
+  <p>Click <updateValue name="revealSolution4" type="boolean" target="$showSolution4" newValue="true" disabled="$showSolution4">
+    <label>show curve</label>
+  </updateValue> and use the curve to draw the solution for <m>$ICexpr=$IC4</m>.
+  <answer name="ansSol4" matchPartial="true" disabled="not $showSolution4">
+    <award>
+      <when>
+        <boolean name="p41Location">$p41y = $IC4</boolean>
+        and
+        <boolean name="p41Slope">$p41Location and $p41r and 
+          <conditionalContent>
+            <case condition="$IC4 > $final4">
+              $p41m &lt; 0
+            </case>
+            <case condition="$IC4 &lt; $final4">
+              $p41m > 0
+            </case>
+            <else>
+              $p41m = 0
+            </else>
+          </conditionalContent>
+        </boolean>
+        and
+        <boolean>$p41Slope and $nXcpC4=0</boolean>
+        and
+        <conditionalContent>
+          <case condition="$final4 = -Infinity">
+            <boolean name="c4Decreasing">$p41r and $p41m &lt; 0 and $nYcpC4 = 0</boolean>
+            and
+            <boolean name="p42DecreasingLocationSlope">$p42r and $p42m &lt; $p41m and $p42y &lt; $p41y and $nYcpC4 = 0 and $efmC4 = parabolaVertical and $nccpC4 = 0</boolean>
+          </case>
+          <case condition="$final4 = Infinity">
+            <boolean name="c4Increasing">$p41r and $p41m > 0 and $nYcpC4 = 0</boolean>
+            and
+            <boolean name="p42IncreasingLocationSlope">$p42r and $p42m > $p41m and $p42y > $p41y and $nYcpC4 = 0 and $efmC4 = parabolaVertical and $nccpC4 = 0</boolean>
+          </case>
+          <else>
+            <boolean name="p42ConvergeLocationSlope">$p42r and $p42m = 0 and $p42y = $final4</boolean>
+          </else>
+        </conditionalContent>
+      </when>
+    </award>
+
+  </answer>
+  </p>
+
+  <feedback updateWith="$ansSol4" condition="not $p41Location">
+    The initial condition is incorrect.
+  </feedback>
+  <feedback updateWith="$ansSol4" condition="$nXcpC4 > 0">
+    The solution must be a function.  The curve cannot turn around so that time decreases.
+  </feedback>
+  <feedback updateWith="$ansSol4" condition="$p41Location and not $p41Slope">
+      The initial slope is incorrect.
+    </feedback>
+  <conditionalContent>
+    <case condition="$final4 = -Infinity">
+      <feedback updateWith="$ansSol4" condition="$p41Slope and not $c4Decreasing">
+        The solution does not have the correct behavior for large <m>t</m>.
+      </feedback>
+      <feedback updateWith="$ansSol4" condition="$p41Slope and $c4Decreasing and not $p42DecreasingLocationSlope">
+        The solution must be continually accelerating, i.e., increasing its downward speed so that the curve is concave downward everywhere.  (It can be a little tricky.  Look at the slope line coming from the initial point and make sure the curve keeps bending downward away from that line.)
+      </feedback>
+    </case>
+    <case condition="$final4 = Infinity">
+      <feedback updateWith="$ansSol4" condition="$p41Slope and not $c4Increasing">
+        The solution does not have the correct behavior for large <m>t</m>.
+      </feedback>
+      <feedback updateWith="$ansSol4" condition="$p41Slope and $c4Increasing and not $p42IncreasingLocationSlope">
+        The solution must be continually accelerating, i.e., increasing its upward speed so that the curve is concave upward everywhere.  (It can be a little tricky.  Look at the slope line coming from the initial point and make sure the curve keeps bending upward away from that line.)
+      </feedback>
+    </case>
+    <else>
+      <feedback updateWith="$ansSol4" condition="$p41Slope and not $p42ConvergeLocationSlope">
+        The solution does not have the correct behavior for large <m>t</m>.
+      </feedback>
+    </else>
+  </conditionalContent>
+
+  <conditionalContent condition="$convertE4">
+    <p>Check stability of equilibrium <m>$var(t)=$IC4</m>. 
+      <answer name="ansE4">
+        <award>
+          <when><boolean extend="$E4.stable" /> = $Estable4</when>
+        </award>
+      </answer>
+    </p>
+    <feedback updateWith="$ansE4" condition="$ansE4.creditAchieved &lt; 1"> 
+      Click the line representing the equilibrium to toggle its stability.  (Solid line corresponds to stable; dashed line corresponds to unstable.)
+    </feedback>
+  </conditionalContent>
+
+
+  </li>
+
+</conditionalContent>
+
+
+<conditionalContent condition="$numPoints >= 5">
+
+  <li>
+  <p>Click <updateValue name="revealSolution5" type="boolean" target="$showSolution5" newValue="true" disabled="$showSolution5">
+    <label>show curve</label>
+  </updateValue> and use the curve to draw the solution for <m>$ICexpr=$IC5</m>.
+  <answer name="ansSol5" matchPartial="true" disabled="not $showSolution5">
+    <award>
+      <when>
+        <boolean name="p51Location">$p51y = $IC5</boolean>
+        and
+        <boolean name="p51Slope">$p51Location and $p51r and 
+          <conditionalContent>
+            <case condition="$IC5 > $final5">
+              $p51m &lt; 0
+            </case>
+            <case condition="$IC5 &lt; $final5">
+              $p51m > 0
+            </case>
+            <else>
+              $p51m = 0
+            </else>
+          </conditionalContent>
+        </boolean>
+        and
+        <boolean>$p51Slope and $nXcpC5=0</boolean>
+        and
+        <conditionalContent>
+          <case condition="$final5 = -Infinity">
+            <boolean name="c5Decreasing">$p51r and $p51m &lt; 0 and $nYcpC5 = 0</boolean>
+            and
+            <boolean name="p52DecreasingLocationSlope">$p52r and $p52m &lt; $p51m and $p52y &lt; $p51y and $nYcpC5 = 0 and $efmC5 = parabolaVertical and $nccpC5 = 0</boolean>
+          </case>
+          <case condition="$final5 = Infinity">
+            <boolean name="c5Increasing">$p51r and $p51m > 0 and $nYcpC5 = 0</boolean>
+            and
+            <boolean name="p52IncreasingLocationSlope">$p52r and $p52m > $p51m and $p52y > $p51y and $nYcpC5 = 0 and $efmC5 = parabolaVertical and $nccpC5 = 0</boolean>
+          </case>
+          <else>
+            <boolean name="p52ConvergeLocationSlope">$p52r and $p52m = 0 and $p52y = $final5</boolean>
+          </else>
+        </conditionalContent>
+      </when>
+    </award>
+
+  </answer>
+  </p>
+
+  <feedback updateWith="$ansSol5" condition="not $p51Location">
+    The initial condition is incorrect.
+  </feedback>
+  <feedback updateWith="$ansSol5" condition="$nXcpC5 > 0">
+    The solution must be a function.  The curve cannot turn around so that time decreases.
+  </feedback>
+  <feedback updateWith="$ansSol5" condition="$p51Location and not $p51Slope">
+      The initial slope is incorrect.
+    </feedback>
+  <conditionalContent>
+    <case condition="$final5 = -Infinity">
+      <feedback updateWith="$ansSol5" condition="$p51Slope and not $c5Decreasing">
+        The solution does not have the correct behavior for large <m>t</m>.
+      </feedback>
+      <feedback updateWith="$ansSol5" condition="$p51Slope and $c5Decreasing and not $p52DecreasingLocationSlope">
+        The solution must be continually accelerating, i.e., increasing its downward speed so that the curve is concave downward everywhere.  (It can be a little tricky.  Look at the slope line coming from the initial point and make sure the curve keeps bending downward away from that line.)
+      </feedback>
+    </case>
+    <case condition="$final5 = Infinity">
+      <feedback updateWith="$ansSol5" condition="$p51Slope and not $c5Increasing">
+        The solution does not have the correct behavior for large <m>t</m>.
+      </feedback>
+      <feedback updateWith="$ansSol5" condition="$p51Slope and $c5Increasing and not $p52IncreasingLocationSlope">
+        The solution must be continually accelerating, i.e., increasing its upward speed so that the curve is concave upward everywhere.  (It can be a little tricky.  Look at the slope line coming from the initial point and make sure the curve keeps bending upward away from that line.)
+      </feedback>
+    </case>
+    <else>
+      <feedback updateWith="$ansSol5" condition="$p51Slope and not $p52ConvergeLocationSlope">
+        The solution does not have the correct behavior for large <m>t</m>.
+      </feedback>
+    </else>
+  </conditionalContent>
+
+  <conditionalContent condition="$convertE5">
+    <p>Check stability of equilibrium <m>$var(t)=$IC5</m>. 
+      <answer name="ansE5">
+        <award>
+          <when><boolean extend="$E5.stable" /> = $Estable5</when>
+        </award>
+      </answer>
+    </p>
+    <feedback updateWith="$ansE5" condition="$ansE5.creditAchieved &lt; 1"> 
+      Click the line representing the equilibrium to toggle its stability.  (Solid line corresponds to stable; dashed line corresponds to unstable.)
+    </feedback>
+  </conditionalContent>
+
+
+  </li>
+
+</conditionalContent>
+
+
+<conditionalContent condition="$numPoints >= 6">
+
+  <li>
+  <p>Click <updateValue name="revealSolution6" type="boolean" target="$showSolution6" newValue="true" disabled="$showSolution6">
+    <label>show curve</label>
+  </updateValue> and use the curve to draw the solution for <m>$ICexpr=$IC6</m>.
+  <answer name="ansSol6" matchPartial="true" disabled="not $showSolution6">
+    <award>
+      <when>
+        <boolean name="p61Location">$p61y = $IC6</boolean>
+        and
+        <boolean name="p61Slope">$p61Location and $p61r and 
+          <conditionalContent>
+            <case condition="$IC6 > $final6">
+              $p61m &lt; 0
+            </case>
+            <case condition="$IC6 &lt; $final6">
+              $p61m > 0
+            </case>
+            <else>
+              $p61m = 0
+            </else>
+          </conditionalContent>
+        </boolean>
+        and
+        <boolean>$p61Slope and $nXcpC6=0</boolean>
+        and
+        <conditionalContent>
+          <case condition="$final6 = -Infinity">
+            <boolean name="c6Decreasing">$p61r and $p61m &lt; 0 and $nYcpC6 = 0</boolean>
+            and
+            <boolean name="p62DecreasingLocationSlope">$p62r and $p62m &lt; $p61m and $p62y &lt; $p61y and $nYcpC6 = 0 and $efmC6 = parabolaVertical and $nccpC6 = 0</boolean>
+          </case>
+          <case condition="$final6 = Infinity">
+            <boolean name="c6Increasing">$p61r and $p61m > 0 and $nYcpC6 = 0</boolean>
+            and
+            <boolean name="p62IncreasingLocationSlope">$p62r and $p62m > $p61m and $p62y > $p61y and $nYcpC6 = 0 and $efmC6 = parabolaVertical and $nccpC6 = 0</boolean>
+          </case>
+          <else>
+            <boolean name="p62ConvergeLocationSlope">$p62r and $p62m = 0 and $p62y = $final6</boolean>
+          </else>
+        </conditionalContent>
+      </when>
+    </award>
+
+  </answer>
+  </p>
+
+  <feedback updateWith="$ansSol6" condition="not $p61Location">
+    The initial condition is incorrect.
+  </feedback>
+  <feedback updateWith="$ansSol6" condition="$nXcpC6 > 0">
+    The solution must be a function.  The curve cannot turn around so that time decreases.
+  </feedback>
+  <feedback updateWith="$ansSol6" condition="$p61Location and not $p61Slope">
+      The initial slope is incorrect.
+    </feedback>
+  <conditionalContent>
+    <case condition="$final6 = -Infinity">
+      <feedback updateWith="$ansSol6" condition="$p61Slope and not $c6Decreasing">
+        The solution does not have the correct behavior for large <m>t</m>.
+      </feedback>
+      <feedback updateWith="$ansSol6" condition="$p61Slope and $c6Decreasing and not $p62DecreasingLocationSlope">
+        The solution must be continually accelerating, i.e., increasing its downward speed so that the curve is concave downward everywhere.  (It can be a little tricky.  Look at the slope line coming from the initial point and make sure the curve keeps bending downward away from that line.)
+      </feedback>
+    </case>
+    <case condition="$final6 = Infinity">
+      <feedback updateWith="$ansSol6" condition="$p61Slope and not $c6Increasing">
+        The solution does not have the correct behavior for large <m>t</m>.
+      </feedback>
+      <feedback updateWith="$ansSol6" condition="$p61Slope and $c6Increasing and not $p62IncreasingLocationSlope">
+        The solution must be continually accelerating, i.e., increasing its upward speed so that the curve is concave upward everywhere.  (It can be a little tricky.  Look at the slope line coming from the initial point and make sure the curve keeps bending upward away from that line.)
+      </feedback>
+    </case>
+    <else>
+      <feedback updateWith="$ansSol6" condition="$p61Slope and not $p62ConvergeLocationSlope">
+        The solution does not have the correct behavior for large <m>t</m>.
+      </feedback>
+    </else>
+  </conditionalContent>
+
+  <conditionalContent condition="$convertE6">
+    <p>Check stability of equilibrium <m>$var(t)=$IC6</m>. 
+      <answer name="ansE6">
+        <award>
+          <when><boolean extend="$E6.stable" /> = $Estable6</when>
+        </award>
+      </answer>
+    </p>
+    <feedback updateWith="$ansE6" condition="$ansE6.creditAchieved &lt; 1"> 
+      Click the line representing the equilibrium to toggle its stability.  (Solid line corresponds to stable; dashed line corresponds to unstable.)
+    </feedback>
+  </conditionalContent>
+
+
+  </li>
+
+</conditionalContent>
+
+
+<conditionalContent condition="$numPoints >= 7">
+
+  <li>
+  <p>Click <updateValue name="revealSolution7" type="boolean" target="$showSolution7" newValue="true" disabled="$showSolution7">
+    <label>show curve</label> 
+  </updateValue> and use the curve to draw the solution for <m>$ICexpr=$IC7</m>.
+  <answer name="ansSol7" matchPartial="true" disabled="not $showSolution7">
+    <award>
+      <when>
+        <boolean name="p71Location">$p71y = $IC7</boolean>
+        and
+        <boolean name="p71Slope">$p71Location and $p71r and 
+          <conditionalContent>
+            <case condition="$IC7 > $final7">
+              $p71m &lt; 0
+            </case>
+            <case condition="$IC7 &lt; $final7">
+              $p71m > 0
+            </case>
+            <else>
+              $p71m = 0
+            </else>
+          </conditionalContent>
+        </boolean>
+        and
+        <boolean>$p71Slope and $nXcpC7=0</boolean>
+        and
+        <conditionalContent>
+          <case condition="$final7 = -Infinity">
+            <boolean name="c7Decreasing">$p71r and $p71m &lt; 0 and $nYcpC7 = 0</boolean>
+            and
+            <boolean name="p72DecreasingLocationSlope">$p72r and $p72m &lt; $p71m and $p72y &lt; $p71y and $nYcpC7 = 0 and $efmC7 = parabolaVertical and $nccpC7 = 0</boolean>
+          </case>
+          <case condition="$final7 = Infinity">
+            <boolean name="c7Increasing">$p71r and $p71m > 0 and $nYcpC7 = 0</boolean>
+            and
+            <boolean name="p72IncreasingLocationSlope">$p72r and $p72m > $p71m and $p72y > $p71y and $nYcpC7 = 0 and $efmC7 = parabolaVertical and $nccpC7 = 0</boolean>
+          </case>
+          <else>
+            <boolean name="p72ConvergeLocationSlope">$p72r and $p72m = 0 and $p72y = $final7</boolean>
+          </else>
+        </conditionalContent>
+      </when>
+    </award>
+
+  </answer>
+  </p>
+
+  <feedback updateWith="$ansSol7" condition="not $p71Location">
+    The initial condition is incorrect.
+  </feedback>
+  <feedback updateWith="$ansSol7" condition="$nXcpC7 > 0">
+    The solution must be a function.  The curve cannot turn around so that time decreases.
+  </feedback>
+  <feedback updateWith="$ansSol7" condition="$p71Location and not $p71Slope">
+      The initial slope is incorrect.
+    </feedback>
+  <conditionalContent>
+    <case condition="$final7 = -Infinity">
+      <feedback updateWith="$ansSol7" condition="$p71Slope and not $c7Decreasing">
+        The solution does not have the correct behavior for large <m>t</m>.
+      </feedback>
+      <feedback updateWith="$ansSol7" condition="$p71Slope and $c7Decreasing and not $p72DecreasingLocationSlope">
+        The solution must be continually accelerating, i.e., increasing its downward speed so that the curve is concave downward everywhere.  (It can be a little tricky.  Look at the slope line coming from the initial point and make sure the curve keeps bending downward away from that line.)
+      </feedback>
+    </case>
+    <case condition="$final7 = Infinity">
+      <feedback updateWith="$ansSol7" condition="$p71Slope and not $c7Increasing">
+        The solution does not have the correct behavior for large <m>t</m>.
+      </feedback>
+      <feedback updateWith="$ansSol7" condition="$p71Slope and $c7Increasing and not $p72IncreasingLocationSlope">
+        The solution must be continually accelerating, i.e., increasing its upward speed so that the curve is concave upward everywhere.  (It can be a little tricky.  Look at the slope line coming from the initial point and make sure the curve keeps bending upward away from that line.)
+      </feedback>
+    </case>
+    <else>
+      <feedback updateWith="$ansSol7" condition="$p71Slope and not $p72ConvergeLocationSlope">
+        The solution does not have the correct behavior for large <m>t</m>.
+      </feedback>
+    </else>
+  </conditionalContent>
+
+  <conditionalContent condition="$convertE7">
+    <p>Check stability of equilibrium <m>$var(t)=$IC7</m>. 
+      <answer name="ansE7">
+        <award>
+          <when><boolean extend="$E7.stable" /> = $Estable7</when>
+        </award>
+      </answer>
+    </p>
+    <feedback updateWith="$ansE7" condition="$ansE7.creditAchieved &lt; 1"> 
+      Click the line representing the equilibrium to toggle its stability.  (Solid line corresponds to stable; dashed line corresponds to unstable.)
+    </feedback>
+  </conditionalContent>
+
+
+  </li>
+
+</conditionalContent>
+
+
+<conditionalContent condition="$numPoints >= 8">
+
+  <li>
+  <p>Click <updateValue name="revealSolution8" type="boolean" target="$showSolution8" newValue="true" disabled="$showSolution8">
+    <label>show curve</label>
+  </updateValue> and use the curve to draw the solution for <m>$ICexpr=$IC8</m>.
+  <answer name="ansSol8" matchPartial="true" disabled="not $showSolution8">
+    <award>
+      <when>
+        <boolean name="p81Location">$p81y = $IC8</boolean>
+        and
+        <boolean name="p81Slope">$p81Location and $p81r and 
+          <conditionalContent>
+            <case condition="$IC8 > $final8">
+              $p81m &lt; 0
+            </case>
+            <case condition="$IC8 &lt; $final8">
+              $p81m > 0
+            </case>
+            <else>
+              $p81m = 0
+            </else>
+          </conditionalContent>
+        </boolean>
+        and
+        <boolean>$p81Slope and $nXcpC8=0</boolean>
+        and
+        <conditionalContent>
+          <case condition="$final8 = -Infinity">
+            <boolean name="c8Decreasing">$p81r and $p81m &lt; 0 and $nYcpC8 = 0</boolean>
+            and
+            <boolean name="p82DecreasingLocationSlope">$p82r and $p82m &lt; $p81m and $p82y &lt; $p81y and $nYcpC8 = 0 and $efmC8 = parabolaVertical and $nccpC8 = 0</boolean>
+          </case>
+          <case condition="$final8 = Infinity">
+            <boolean name="c8Increasing">$p81r and $p81m > 0 and $nYcpC8 = 0</boolean>
+            and
+            <boolean name="p82IncreasingLocationSlope">$p82r and $p82m > $p81m and $p82y > $p81y and $nYcpC8 = 0 and $efmC8 = parabolaVertical and $nccpC8 = 0</boolean>
+          </case>
+          <else>
+            <boolean name="p82ConvergeLocationSlope">$p82r and $p82m = 0 and $p82y = $final8</boolean>
+          </else>
+        </conditionalContent>
+      </when>
+    </award>
+
+  </answer>
+  </p>
+
+  <feedback updateWith="$ansSol8" condition="not $p81Location">
+    The initial condition is incorrect.
+  </feedback>
+  <feedback updateWith="$ansSol8" condition="$nXcpC8 > 0">
+    The solution must be a function.  The curve cannot turn around so that time decreases.
+  </feedback>
+  <feedback updateWith="$ansSol8" condition="$p81Location and not $p81Slope">
+      The initial slope is incorrect.
+    </feedback>
+  <conditionalContent>
+    <case condition="$final8 = -Infinity">
+      <feedback updateWith="$ansSol8" condition="$p81Slope and not $c8Decreasing">
+        The solution does not have the correct behavior for large <m>t</m>.
+      </feedback>
+      <feedback updateWith="$ansSol8" condition="$p81Slope and $c8Decreasing and not $p82DecreasingLocationSlope">
+        The solution must be continually accelerating, i.e., increasing its downward speed so that the curve is concave downward everywhere.  (It can be a little tricky.  Look at the slope line coming from the initial point and make sure the curve keeps bending downward away from that line.)
+      </feedback>
+    </case>
+    <case condition="$final8 = Infinity">
+      <feedback updateWith="$ansSol8" condition="$p81Slope and not $c8Increasing">
+        The solution does not have the correct behavior for large <m>t</m>.
+      </feedback>
+      <feedback updateWith="$ansSol8" condition="$p81Slope and $c8Increasing and not $p82IncreasingLocationSlope">
+        The solution must be continually accelerating, i.e., increasing its upward speed so that the curve is concave upward everywhere.  (It can be a little tricky.  Look at the slope line coming from the initial point and make sure the curve keeps bending upward away from that line.)
+      </feedback>
+    </case>
+    <else>
+      <feedback updateWith="$ansSol8" condition="$p81Slope and not $p82ConvergeLocationSlope">
+        The solution does not have the correct behavior for large <m>t</m>.
+      </feedback>
+    </else>
+  </conditionalContent>
+
+  <conditionalContent condition="$convertE8">
+    <p>Check stability of equilibrium <m>$var(t)=$IC8</m>. 
+      <answer name="ansE8">
+        <award>
+          <when><boolean extend="$E8.stable" /> = $Estable8</when>
+        </award>
+      </answer>
+    </p>
+    <feedback updateWith="$ansE8" condition="$ansE8.creditAchieved &lt; 1"> 
+      Click the line representing the equilibrium to toggle its stability.  (Solid line corresponds to stable; dashed line corresponds to unstable.)
+    </feedback>
+  </conditionalContent>
+
+
+  </li>
+
+</conditionalContent>
+
+
+</ul>
+
+</module>

@@ -1,0 +1,26 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 83xTXp7HL7ZhCob6Z6UoEM
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 5d563a7b938ffe59
+-->
+<section><title>Equilibrium definition</title>
+ 
+<p>An <term>equilibrium</term> of a <term><ref to="doenet:834ZcucTcagBYSRfPRBv6k">discrete dynamical system</ref></term> is a value of the state variables where the state variables do not change. In other words, an equilibrium is a solution that does not change with time. This means if the systems starts at an equilibrium, the state will remain at the equilibrium forever.
+
+In a <ref to="doenet:7C1w6bKbkKghbh9wUtwzxF">discrete dynamical system</ref>, such as
+<me>x_{n+1}=f(x_n)</me>
+(in <term><ref to="doenet:82YaRL8CieueYqLgxMpxye">function iteration form</ref></term>) or
+<m>x_{n+1}−x_n=g(x_n)</m>
+(in <term><ref to="doenet:832kteFVLDpZJ9tARy27gK">difference form</ref></term>), one can find the equilibria by substituting in the same quantity for <m>x_n</m> and <m>x_{n+1}</m>, such as substituting <m>x_{n+1}=x_n=E</m>. One must then solve the equation
+<me>E=f(E)</me>
+or
+<me>0=g(E)</me>
+to determine the values <m>E</m> such that <m>x_n=E</m> is an equilibrium of the dynamical system. See <ref to="doenet:7FmiE88UGp1HTdKmpQwzo2">equilibria in discrete dynamical systems</ref>.</p>
+
+<p>In a continuous dynamical system, such as
+<me>\frac{dx}{dt}=f(x),</me>
+one can find the equilibrium by setting <m>\frac{dx}{dt}=0</m>. One must then solve the equation
+<me>0=f(E)</me>
+to determine values <m>E</m> such that <m>x(t)=E</m> is an equilibrium of the dynamical system.</p>
+</section>

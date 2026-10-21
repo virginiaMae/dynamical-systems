@@ -1,0 +1,182 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7LWkXwrZyhPDcxV4w2WEkc
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 0e2cb134daa13af1
+-->
+<title>The idea of the chain rule</title>
+
+<p><ref>Video</ref> | <ref>Summary</ref> | <ref>Transcript</ref>  </p>
+
+<description>
+An illustration of the basic concept of the chain rule using interactive graphics to diagram the relevant points on the graphs and the corresponding slopes.
+</description>
+
+<section><title>Video</title>
+<p>The chain rule gives us a way to calculate the derivative of a 
+<ref to="doenet:function_composition">composition</ref>
+ of functions, such as the composition <m>f(g(x))</m> of the functions <m>f</m> and <m>g</m>.  The chain rule can be tricky to apply correctly, especially since, with a complicated expression, one might need to use the chain rule multiple times.  Nonetheless, the idea of the chain rule can be understood fairly simply.</p>
+
+<p>The following video outlines the basic idea of the chain rule.  In the remainder of this page, we illustrate the idea of the chain rule in three ways.  <ref to="doenet:function_machines">First</ref>, we illustrate the concept using 
+<ref to="doenet:function_machine">function machines</ref>
+.  <ref to="doenet:linear_functions">Second</ref>, we show how for linear functions, the chain rule is just the product of the slopes of the function graphs.  <ref to="doenet:nonlinear_functions">Third</ref>, we show that for nonlinear functions, the chain rule is just the product of the slopes of the tangent lines to the function graphs.  Examples of the chain rule are given on 
+<ref to="doenet:chain_rule_simple_examples">another page</ref>
+.</p>
+
+
+<figure suppressFigureNameInCaption="true">
+<video youtube="AQ5dLpVgcGc" size="large" aspectRatio="16/9" name="v1" />
+<caption>The idea of the chain rule</caption>
+</figure>  
+<setup>
+  <number name="timestamp1">218</number>
+  <number name="timestamp2">401</number>
+  <number name="timestamp3">537</number>
+  <number name="timestamp4">726</number>
+</setup>
+  
+
+<sideBySide margins="5%">
+<div><p>Video credit achieved: <number displayDecimals="1">$v1RoundUp*100</number>%</p></div>
+
+<!-- <stack>
+<p><updateValue type="number" target="v1.time" newValue="$timestamp1" name="skipTo1">
+  <label>Go to Key Moment 1</label>
+</updateValue></p>
+<updateValue type="text" triggerWithTargets="skipTo1" target="v1" prop="state" newValue="playing" name="playStamp1"/>
+
+<p><updateValue type="number" target="v1.time" newValue="$timestamp2" name="skipTo2">
+  <label>Go to Key Moment 2</label>
+</updateValue>
+
+</p>
+
+<updateValue type="text" triggerWithTargets="skipTo2" target="v1" prop="state" newValue="playing" name="playStamp2"/>
+
+</stack>
+
+<stack>
+<p><updateValue type="number" target="v1.time" newValue="$timestamp3" name="skipTo3">
+  <label>Go to Key Moment 3</label>
+</updateValue>
+</p>
+
+<updateValue type="text" triggerWithTargets="skipTo3" target="v1" prop="state" newValue="playing" name="playStamp3"/>
+
+<p><updateValue type="number" target="v1.time" newValue="$timestamp4" name="skipTo4">
+  <label>Go to Key Moment 4</label>
+</updateValue>
+</p>
+
+<updateValue type="text" triggerWithTargets="skipTo4" target="v1" prop="state" newValue="playing" name="playStamp4"/>
+</stack> -->
+</sideBySide>
+
+<number name="v1RoundUp" hide="true">
+  <conditionalContent>
+    <case condition="$v1.fractionWatched > 0.9">1</case>
+    <else>$v1.fractionWatched</else>
+  </conditionalContent>
+</number>
+
+
+<answer hide="true" name="v1Credit">
+  <award credit="$v1RoundUp"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+
+<aside name="chainRuleFormula"><title>Formula - The chain rule:</title>
+  <md>
+  <mrow>h'(x) \amp= f'(g(x)) \cdot g'(x)\;\;\;\text{where}\;\;\;h(x) = f(g(x))</mrow>
+  </md>
+  <md>
+    <mrow>\textbf{Differential form:}\;\;\;\frac{dh}{dx} \amp= \frac{df}{dy} \cdot \frac{dy}{dx}\;\;\;\text{where}\;\;\;h = f(y)\;\;\text{and}\;\;y=g(x)</mrow>
+  </md>
+</aside>
+
+
+  
+
+<problem><title>Video review questions</title>
+
+<setup>
+  <function name="f" symbolic="true">7x</function>
+  <function name="g" variables="y" symbolic="true">3y+4</function>
+  <function name="h" variables="z" symbolic="true">z^3</function>
+</setup>
+
+
+<exercise includeAutoNumber="true"><title>Quick <ref to="https://mathinsight.org/function_composition">composition of functions</ref> review</title>
+  <p>a) If <m>f(x) = 7x</m> and <m>g(y) = $g</m>, then <m>f(g(y)) = </m>
+    <answer>$$f($$g(y))</answer>
+  </p>
+  <p>b) If <m>f(x) = $f</m> and <m>g(y) = $g</m>, then <m>\bigg(g \circ f\bigg)(x) = </m>
+    <answer>$$g($$f(x))</answer>
+  </p>
+  <p>c) If <m>h(z) = $h</m> and <m>f(x) = $f</m>, then <m>\bigg(f \circ h\bigg)(z) = </m>
+    <answer>$$f($$h(z))</answer>
+  </p>
+  <p>d) If <m>h(z) = $h</m> and <m>g(y) = $g</m>, then <m>h(g(y)) = </m>
+    <answer>$$h($$g(y))</answer>
+  </p>
+   <hint><p>You actually don't have to expand out the binomial for the last part; part (d) will be marked correct as long as you have the right expression, (i.e. it could be of the form <m>(a + b)^c</m>).</p>
+      <p>However, if you want to practice your algebra, it's easiest to use the <ref to="https://en.wikipedia.org/wiki/Binomial_theorem"><term>binomial theorem</term></ref> here to expand this expression.</p></hint>
+</exercise>
+
+<exercise includeAutoNumber="true"><title>Apply chain rule step-by-step</title>
+<p>Let's solve for the derivative of the composition of two functions using the <term>chain rule</term>:</p>
+<p>Let  <m> h(z) = $h</m>, and <m>g(y) = $g</m>. Compute the derivative of <m>h(g(y))</m>.</p>
+
+<ol>
+    <li><p>First, we need to calculate the 
+      <answer name="ans1b" inline="true">
+    <choice>approximation</choice>
+    <choice credit="1">composition</choice>
+    <choice>product</choice>
+  </answer> of <m>h(z)</m> and <m>g(y)</m>.</p>
+    <p>Great! If you wanted, at this point you could use the <ref to="https://en.wikipedia.org/wiki/Binomial_theorem"><term>binomial theorem</term></ref> and take the derivative of each term in your answer. But, using the <ref to="$chainRuleFormula">chain rule</ref> there's a much easier way. First, the unsimplified (or unexpanded) version of the composition <m>h(g(y))</m> is:</p>
+      
+      <p><m>h(g(y))</m> = $$h($$g(y))</p>
+    </li>
+
+   <li><p>Next, using the function symbols and variables specific to this problem,  we need to apply the <ref to="$chainRuleFormula">chain rule</ref>. Using the "prime" notation for the derivative, the general formula of the chain rule for this problem is given by: </p>
+      <p>
+      <m>h(g(y))' = </m> <mathInput name="mi1" /><m> '( g(y)) \cdot </m> <mathInput name="mi2" /></p>
+        <answer name="ans1c" matchPartial="true">
+          <award>
+            <when>$mi1 = h and $mi2 = g'(y)</when>
+          </award> 
+        </answer>
+     <feedback condition="$ans1c.numSubmissions > 0 and $ans1c.creditAchieved != 1"><p>Here, we are just trying to frame the general formula for the <ref to="$chainRuleFormula">chain rule</ref> in terms of the function symbols and variables of the problem.</p>
+       <p>If you do this, you will get 
+         <me>h'(y) = h'(g(y))\cdot g'(y)</me>
+       </p>
+     </feedback>
+    </li>
+
+  <li><p>Great job! One step to go. The first part of this formula is given by:</p>
+    <m>h'(g(y)) = <math name="part1">3 $$g(y)^(3-1)</math></m>,
+    <p>which you can simplify to:</p>
+    <m>h'(g(y)) = </m> <answer name="ans1d"><math simplify="true" extend="$part1" /></answer>
+    <feedback condition="$ans1d.numSubmissions > 0 and $ans1d.creditAchieved != 1">No need to multiply this all out, you can just subtract the exponents, giving <m>3(3y+4)^2</m></feedback>
+    <p>Then we need to find the derivative of <m>g</m> with respect to <m>y</m>, which is:</p>
+    <m>g'(y) = </m> <answer name="ans1e"><derivative variables="y">$g</derivative></answer>
+    <feedback condition="$ans1e.numSubmissions > 0 and $ans1e.creditAchieved != 1"><p>Using the fact that the derivative of a linear function is a constant value, what is the derivative of <m>g(y) = 3y+4</m>?</p>
+      <p><m>g'(y) = 3</m></p>
+    </feedback>
+    <p>Putting it all together, we have:</p>
+    <p hide="$ans1e.creditAchieved != 1 or $ans1d.creditAchieved != 1">
+    <m>h'(y) = </m> <math name="final">($ans1d) ($ans1e) </math></p>
+    <p>which simplifies to:
+    <m>h'(y) = </m><math simplify="true" extend="$final" />.</p>
+  </li>
+</ol>
+
+</exercise>
+
+</problem>
+
+
+</section>
+

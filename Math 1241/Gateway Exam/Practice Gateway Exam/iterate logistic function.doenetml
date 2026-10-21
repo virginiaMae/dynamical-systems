@@ -1,0 +1,42 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7BzxyTbqTGHxsNfoFzrvb2
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: ec9964e1cb941c50
+-->
+<problem>
+
+<setup>
+<selectFromSequence name="alpha" from="2" to="4" />
+<selectFromSequence name="n" from="2" to="5" />
+<function name="f" variables="x" symbolic="true">$alpha*x*(1-x)</function>
+<math name="ans" simplify="full">$$f($$f(1/$n))</math>
+<math name="ans_sub1" simplify="full">$$f(1/$n)</math>
+</setup>
+
+Compute the value of <m>f(f(\frac{1}{ $n }))</m> for the function <m>f(x)=$alpha x(1-x)</m>.
+
+<p><m>f(f(\frac{1}{ $n })) =</m> <mathInput name="input1" /></p>
+
+<p>To ensure credit, either don't round (keeping your numbers as fractions) 
+or include at least 5 significant digits in your answer.</p>
+
+<answer>
+<award allowedErrorInNumbers="0.0001" referencesAreResponses="$input1">
+  <when>
+    $input1 = $ans
+  </when>
+  </award>
+</answer>
+
+
+<solution>
+<md>
+  <mrow>f\left(f\left(\frac{1}{ $n }\right)\right)\amp = f\left($alpha \cdot \frac{1}{ $n }\left(1-\frac{1}{ $n }\right)\right)</mrow>
+  <mrow>\amp = f\left($ans_sub1\right)</mrow>
+  <mrow>\amp =  $alpha\cdot$ans_sub1\left(1-$ans_sub1\right)</mrow>
+  <mrow>\amp =$ans</mrow>
+</md>
+</solution>
+
+</problem>

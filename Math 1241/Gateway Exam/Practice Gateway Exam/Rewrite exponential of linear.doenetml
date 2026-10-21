@@ -1,0 +1,38 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7BckQCmP2SU3agv7s2hsTK
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 618390c5a7d0ff83
+-->
+<!--*******************************************************
+Checked: VM 8/8/2022
+*********************************************************-->
+
+<problem>
+
+<selectFromSequence name="a" hide="true" step=" 3" from="3" to="33" />
+<selectFromSequence name="b" hide="true" from="2" to="6" />
+<selectFromSequence name="c" hide="true" from="1" to="9" />
+<math name="AA" hide="true" simplify="full">$a e^$c</math>
+<math name="kk" hide="true" simplify="full">$b</math>
+
+Write the function <m>f(x)=$a e^{ $b x+$c }</m> in the form <m>f(x)=Ae^{kx}</m>. <nbsp />  What are the values of the parameters <m>A</m> and <m>k</m>?
+
+<p> <m>A=</m> <mathInput name="input1" /> , <m>k=</m> <mathInput name="input2" />
+</p>
+
+<answer>
+  <award matchpartial="true" referencesAreResponses="$input1 $input2"><when> 
+    <mathList>
+      $input1 $input2
+    </mathList>
+    =
+    <mathList>$AA $kk</mathList>
+  </when> </award>
+</answer>
+
+<solution>
+<m>A=$a e^$c</m>, <m>k=$b </m>
+</solution>
+
+</problem>

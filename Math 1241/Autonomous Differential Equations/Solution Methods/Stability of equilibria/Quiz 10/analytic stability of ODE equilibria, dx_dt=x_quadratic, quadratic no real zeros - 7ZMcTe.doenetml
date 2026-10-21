@@ -1,0 +1,134 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7ZMcTewDjNFmv6CbYee1Kt
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 3ba935a86752e991
+-->
+<problem>
+<!-- <title>analytic stability of ODE equilibria, dx/dt=x*quadratic, quadratic no real zeros</title> -->
+
+<setup>
+
+<selectFromSequence name="a" from="-4" to=" 4" exclude="0" />
+<selectFromSequence name="b" from="-4" to=" 4" />
+
+<selectFromSequence name="c" from="ceil($b^2/4)+1" to="10" />
+<selectFromSequence name="x0" from="-10" to=" 10" />
+
+<select name="x">x y z u v w p X Y Z S</select>
+
+<function name="quadratic" variables="$x" symbolic="true"><math simplify="numbers">$x ^2+$b *$x +$c </math></function>
+
+<function name="fun" variables="$x" symbolic="true"><math simplify="numbers">$a *$x *$$quadratic($x )</math></function>
+
+
+<mathList name="Es"><math name="E1">0</math></mathList>
+
+<derivative name="fprime" variables="$x"><math expand="true" simplify="true">$fun</math></derivative>
+<evaluate name="fprime_E1" forceNumeric="true" function="$fprime" input="$E1" />
+
+<boolean name="E1_stable">$fprime_E1  &lt; 0</boolean>
+<conditionalContent name="E1_stability">
+  <case condition="$E1_stable"><text>stable</text></case>
+  <else><text>unstable</text></else>
+</conditionalContent>
+
+<math name="fun_expand" expand="true" simplify="true">$fun</math>
+
+
+</setup>
+
+
+<p>Consider the 
+  <select>
+    <option>differential equation</option>
+    <option>dynamical system</option>
+  </select>
+<md>
+  <mrow>
+   <select name="derivString">
+     <option>\frac{ d$x }{ dt }</option>
+     <option>$x'(t)</option>
+   </select>
+  \amp = <math extend="$fun.formula" /></mrow>
+  <mrow>$x _0\amp = $x0 </mrow>
+  <mrow />
+</md>
+</p>
+<p>
+Find all the equilibria and determine their stability.
+</p>
+
+
+<p>Number of equilibria: <mathInput name="n_e" /></p>
+
+<p>The equilibria are</p>
+<ul>
+  <repeatForSequence length="min(5, $n_e)" name="mapEs"><li><m>$(x)_e = </m> <mathInput /></li></repeatForSequence>
+</ul>
+<answer>
+<award matchPartial="true">
+  <when unorderedCompare="true">
+    <mathList><setup><collect isResponse="true" componentType="mathInput" from="$mapEs" name="collect_collectedEs" /></setup><mathList name="collectedEs" extend="$collect_collectedEs.value" /></mathList>
+    = $Es
+  </when>
+</award>
+</answer>
+
+<p>Stability of equilibria:</p>
+<ul>
+  <repeat for="$collectedEs" name="mapStab" valueName="v">
+      <li><m>$(x)_e = $v</m>:
+      <choiceInput inline="true">
+        <choice>stable</choice>
+        <choice>unstable</choice>
+      </choiceInput>
+      </li>
+    </repeat>
+</ul>
+  
+<answer maxNumAttempts="3">
+  <award matchPartial="true" matchByExactPositions="true">
+    <when>
+      <textList><setup><collect componentType="choiceInput" from="$mapStab" isResponse="true" name="collect_list" /></setup><textList name="list" extend="$collect_list.selectedValue" /></textList>
+      =
+      <textList>
+        <repeatForSequence length="1" indexName="i">
+            <conditionalContent>
+              <case condition="$collectedEs[$i] = $E1">
+                $E1_stability[1][1]
+              </case>
+              <else><text>invalid</text></else>
+            </conditionalContent>
+          </repeatForSequence>
+      </textList>
+    </when>
+  </award>
+</answer>
+
+
+
+
+<solution>
+<p>To find equilibria, set <m>$derivString = 0</m>.  If we let <m>f($x ) =<math extend="$fun.formula" /></m>, then an equilibrium <m>$x _e</m> must satisfy <m>f($x _e)=0</m>, or
+<me>$$fun($(x)_e) =0.</me>
+Either <m>$x _e = 0</m> or <m>$$quadratic($(x)_e) =0</m>.  You can solve the latter equation by using the quadratic formula.  The result is that the quadratic has no real roots (the quadratic formula yields the square root of a negative number).  We care only about real values of <m>$x </m>, and the quadratic is never zero for any real <m>$x _e</m>.  There is only one equilibrium <m>$x _e=0</m>.</p>
+
+<p>To determine stability, we need to evaluate the derivative <m>f'($x )</m>.  Probably, the easiest way is to first expand <m>f($x )</m> to <m>f($x ) = $fun_expand.</m>  Then, the derivative is <m>f'($x )= <math extend="$fprime.formula" />.</m>  We evaluate the derivative at each of the equilibria.</p>
+
+<p>To determine the stability of <m>$x _e = $E1 </m>, we calculate that <m>f'($E1 ) = $fprime_E1
+<conditionalContent>
+<case condition="$E1_stable">
+ \lt 
+</case>
+<else>
+ \gt 
+</else>
+</conditionalContent>
+ 0</m>.  Therefore <m>$x _e=$E1 </m> is $E1_stability[1][1] .</p>
+
+
+</solution>
+
+
+</problem>

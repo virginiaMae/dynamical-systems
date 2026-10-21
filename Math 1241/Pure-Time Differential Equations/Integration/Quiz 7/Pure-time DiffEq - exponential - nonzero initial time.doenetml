@@ -1,0 +1,92 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7UvYJUf5MUqjYBkq9bWoXk
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 2b6b7106cf23caa7
+-->
+<problem>
+<!-- <title>Pure&#x2D;time DiffEq &#x2D; exponential &#x2D; nonzero initial time</title> -->
+
+<setup>
+
+<selectFromSequence name="a" from="-10" to=" 10" exclude="0" numToSelect="2" withReplacement="true" />
+<selectFromSequence name="b" from="-2" to="2" exclude="0" numToSelect="2" withReplacement="true" />
+
+
+<function name="f" variables="t"><math simplify="numbers">$a[1] *e^($b[1] *t)</math></function>
+<function name="intfeval" variables="t" symbolic="true"><math simplify="true">$a[1]/$b[1] e^($b[1]*t)</math></function>
+<function name="antiderivf" variables="t" symbolic="true"><math simplify="true">1/$b[1] e^($b[1]*t)</math></function>
+
+<select name="f_name">g h p q r y z</select>
+<math name="dxdt">d$f_name/dt</math>
+
+<math name="finalans">$$intfeval(t)+$C_value </math>
+<math name="intfeval_C">$$intfeval(t)+C </math>
+<math name="x_t" referencesAreFunctionSymbols="$f_name">$f_name (t)</math>
+<math name="x_lb" referencesAreFunctionSymbols="$f_name">$f_name ($b[2])</math>
+<math name="intfeval_lb">$$intfeval($b[2])</math>
+<math name="C_value" simplify="true">$a[2] -$intfeval_lb </math>
+
+
+</setup>
+
+
+<p>
+  Solve the pure-time differential equation <m>$dxdt  = <math extend="$f.formula" /></m> with initial condition <m>$x_lb  = $a[2] </m>.
+</p>
+
+<p>
+<m>$x_t =</m> 
+<answer>
+<award>$finalans </award>
+<award credit="0" name="noConstant">$intfeval </award>
+<award credit="0" name="withC">$intfeval_C</award>
+</answer>
+</p>
+
+<feedback condition="$noConstant">The solution $x_t must match the initial condition <m>$x_0  = $a[2] </m>.</feedback>
+<feedback condition="$withC">Since we have an initial condition <m>$x_0  = $a[2] </m>, don't add an arbitrary constant <m>C</m>.  Instead, find the value of the constant so that the solution $x_t matches the initial condition.</feedback>
+
+<p>Do not round your answer to a decimal.</p>
+
+
+
+<solution>
+
+<p>
+We use the indefinite integral <m>\displaystyle \int $f \, dt </m> to solve the differential equation.  To evaluate the integral, we first use the constant product rule for integration: 
+</p>
+<p>
+<m>\displaystyle \int $f \, dt  =  $a[1] \int <math simplify="numbers">e^($b[1] *t)</math> \, dt</m>
+</p>
+<p>
+We then find the antiderivative and add the arbitrary constant:
+</p>
+<p>
+<m>\displaystyle $a[1]  \left( <math extend="$antiderivf.formula" /> \right)+C</m>
+</p>
+  
+
+<p>
+We next plug in the initial condition <m>$x_lb  = $a[2] </m> and solve for <m>C</m>:
+</p>
+
+<p>
+<m>\displaystyle $a[2]  = $intfeval_lb +C =  <math simplify="true">$intfeval_lb +C</math></m>
+</p>
+
+<p>
+<m>\displaystyle C = $C_value </m>
+</p>
+
+<p>
+Finally, we have:
+</p>
+<p>
+<m>\displaystyle $x_t  = $finalans </m>
+</p>
+
+</solution>
+
+
+</problem>

@@ -1,0 +1,129 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 83ZXW3BL3nyj13erAdwJwe
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: e6fd5a94786f5243
+-->
+<document><title>Course Index</title>
+
+<section><title>Discrete Dynamical Systems</title>  
+<ul>
+  <li><alert>Dynamical system introduction</alert></li>
+    <ul>
+      <li><ref to="doenet:7BRujyNVd5uNj6H645HZFg">Exploring an anteatear dynamical system</ref></li>
+      <li><ref to="doenet:7BUKfyaPMcc4K1JTNfpSVP">The decay of lead in the bloodstream</ref></li>
+      <li><ref to="doenet:7BXVp6EG6LArNJ3qrYoj5R">A bistable population model</ref></li>
+      <li><ref to="doenet:doenetId=_usBZpR8J13yMZWcm9BJHe">An introduction to discrete dynamical systems</ref></li>
+      <li><ref to="doenet:7CaAzNYuMV6JzCMp241hnx">Discrete dynamical iteration examples</ref></li>
+      <li>Discrete dynamical system introductory problem set
+        <ul>
+          <li><ref to="doenet:7CdPFmoLGzxzJVKeWQN6ER">Q1: Train tracks</ref></li>
+          <li><ref to="doenet:7CdPFmoLGzxzJVKeWQN6ER">Q2: Bacteria doubling</ref></li>
+          <li><ref to="doenet:7CdPFmoLGzxzJVKeWQN6ER">Q3: Decay of penicillin</ref></li>
+        </ul>
+      </li>
+      <li><ref to="doenet:7CkDpewb8Wp9Mng4XjxDHt">Function iteration applet</ref></li>
+      <li><ref createButton="true" to="doenet:7DrnGdeDWjifqCJUWMFGdR">Practice!</ref></li>
+    </ul>
+</ul>
+
+<ul>
+  <li><alert>An infectious disease model  <ref createButton="true" to="doenet:7DrnGdeDWjifqCJUWMFGdR">Practice!</ref></alert></li>
+    <ul>
+      <li><ref to="doenet:7Cp7YWCRtmxPP5gpWzZkgF">Introduction to an infectious disease model</ref></li>
+      <li><ref to="doenet:7CwNV3LqM6TkSoyDPsPw76">A discrete SIR infectious disease model</ref></li>
+      <li><ref to="doenet:7CHD615jgz11sJTjrWeHyD">Simulation of a discrete SIR infectious disease model</ref></li>
+      <li><ref to="doenet:7CLRM8ZVrhz2U2dYXQ4o6x">Discrete SIR problem set</ref>
+        <ul>
+          <li>Q1: Initial exploration of the discrete SIR model</li>
+          <li>Q2: Stopping the spread of disease in the discrete SIR model</li>
+          <li>Q3: Outbreak or extinguish in the discrete SIR model</li>
+        </ul>
+      </li>
+      <li><ref to="doenet:7DrnGdeDWjifqCJUWMFGdR">Quiz 1</ref></li>
+      <li>Generate Extra Practice</li>
+    </ul>
+</ul>
+  
+<ul>
+  <li><alert>Linear Models</alert></li>
+    <ul>
+      <li><ref to="doenet:7DBEyjdcSF3AWs1fs2WNkK">Solving linear discrete dynamical systems</ref></li>
+      <li><ref to="doenet:7DJkFrEE5eYv9KbqumLsnF">Examples of solving linear discrete dynamical systems</ref></li>
+      <li><ref to="doenet:7DMcxL88eGgvMi1t44fyzX">More details on solving linear discrete dynamical systems</ref></li>
+      <li><ref to="doenet:7DQ1MPBXEiWDP9S747B66B">Solving linear discrete dynamical systems problem set</ref>
+        <ul>
+          <li>Q1:</li>
+          <li>Q2: </li>
+          <li>Q3: </li>
+          <li>Q4: </li>
+          <li>Q5: </li>
+          <li>Q6: </li>
+          <li>Q7: </li>
+          <li>Q8: </li>
+        </ul>
+      </li>
+      <li><ref to="doenet:7E6LN4EfVWPjCgUesVJd5Z">Exponential growth and decay modeled by discrete dynamical systems</ref></li>
+      <li><ref to="doenet:doenetId=_PRUWrCI7Ynh4Kuerwf4DK">test multipage video lesson</ref></li>
+      <li><ref to="doenet:7Ef2Be1cwhbDsckykQow1H">Doubling time and half-life of exponential growth and decay</ref></li>
+      <li><ref to="doenet:7EnVLoVXAuSvu6NLcKCna4">Doubling time and half-life problem set</ref></li>
+        <ul>
+          <li>Q1: </li>
+          <li>Q2: </li>
+          <li>Q3: </li>
+          <li>Q4: </li>
+          <li>Q5: </li>
+        </ul>
+      <li>Quiz 2</li>
+      <li><ref to="doenet:7F4gzqGfwcmfA5jaTZRWtB">Developing an inital model to describe bacterial growth</ref></li>
+      <li><ref to="doenet:7FeFkfmrhJwBt9YJHrSoTc">Penicillin clearance model project</ref></li>
+      <li><ref to="doenet:doenetId=_eRJpn25n0KT3izX5vzm4j">Penicillin clearance project evaluation</ref></li>
+
+    </ul>
+</ul>
+
+<ul>
+  <li><alert>Equilibria</alert></li>
+    <ul>
+      <li><ref to="doenet:7FmiE88UGp1HTdKmpQwzo2">Equilibria in discrete dynamical systems (video lesson)</ref></li>
+      <li><ref to="doenet:7Fy37aaVpzUEhx7qmFRJvx">Discrete equilibria problem set</ref></li>
+        <ul>
+          <li>Q1:</li>
+          <li>Q2: </li>
+          <li>Q3: </li>
+          <li>Q4: </li>
+          <li>Q5: </li>
+          <li>Q6: </li>
+          <li>Q7: </li>
+          <li>Q8: </li>
+          <li>Q9: </li>
+        </ul>
+      <li><ref to="doenet:7FRM6VWrzPKk1bwC2SKx72">Graphical approach to finding equilibria (video lesson)</ref></li>
+      <li><ref to="doenet:7FZEfHnPJnaE7FmBKnpB4g">Graphical discrete equilibria problem set</ref></li>
+        <ul>
+          <li>Q1: </li>
+          <li>Q2: </li>
+          <li>Q3: </li>
+        </ul>
+    </ul>
+</ul>
+      
+
+</section>
+
+<section><title>The Derivative</title>
+<ul>
+  <li>Introduction to the derivative</li>
+    <ul>
+      <li>Approximating a nonlinear function by a linear function</li>
+      <li>Approximating nonlinear problem set</li>
+      <li><ref to="doenet:doenetId=_ZmXPwXVrYkVe5Gh0N39j7">Developing intuition about the derivative</ref></li>
+      <li>Derivative intuition problem set</li>
+    </ul>
+</ul>
+
+
+</section>
+
+<ref to="https://docs.google.com/spreadsheets/d/18Bcp7M_dtMEWTiY3xf_BOXGUSKlqoLIl-BAcuBwOcGg/edit#gid=0">Tracking spreadsheet</ref>
+</document>

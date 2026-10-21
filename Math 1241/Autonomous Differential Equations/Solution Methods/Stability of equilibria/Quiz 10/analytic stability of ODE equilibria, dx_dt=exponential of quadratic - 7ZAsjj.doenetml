@@ -1,0 +1,93 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7ZAsjjdtBvXf7kSw3bGnNR
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 91da6a06089abf65
+-->
+<problem>
+<!-- <titleanalytic stability of ODE equilibria, dx/dt=exponential of quadratic</title> -->
+
+<setup>
+
+<selectFromSequence name="a" from="-10" to=" 10" exclude="0" numToSelect="2" withReplacement="true" />
+<selectFromSequence name="b" from="-10" to=" 10" numToSelect="3" withReplacement="true" />
+
+
+<select name="x">x y z u v w p X Y Z S</select>
+<function name="quadratic" variables="$x" symbolic="true"><math simplify="numbers">$a[1] *$x ^2+$b[1] *$x +$b[2]</math></function>
+<function name="fun" variables="$x" symbolic="true"><math simplify="numbers">$a[2] *e^($$quadratic($x ))</math></function>
+
+
+<mathList name="Es" />
+
+
+</setup>
+
+
+
+<p>Consider the 
+  <select>
+    <option>differential equation</option>
+    <option>dynamical system</option>
+  </select>
+<md>
+  <mrow>
+   <select name="derivString">
+     <option>\frac{ d$x }{ dt }</option>
+     <option>$x'(t)</option>
+   </select>
+  \amp = <math extend="$fun.formula" /></mrow>
+  <mrow>$x _0\amp = $b[3] </mrow>
+  <mrow />
+</md>
+</p>
+<p>
+Find all the equilibria and determine their stability.
+</p>
+
+
+<p>Number of equilibria: <mathInput name="n_e" /></p>
+
+<p>The equilibria are</p>
+<ul>
+  <repeatForSequence length="min(5, $n_e)" name="mapEs"><li><m>$(x)_e = </m> <mathInput /></li></repeatForSequence>
+</ul>
+<answer>
+<award>
+  <when>
+    $n_e = 0 
+  </when>
+</award>
+</answer>
+
+<p>Stability of equilibria:</p>
+<ul>
+  <repeat for="$collectedEs" name="mapStab" valueName="v">
+      <li><m>$(x)_e = $v</m>:
+      <choiceInput inline="true">
+        <choice>stable</choice>
+        <choice>unstable</choice>
+      </choiceInput>
+      </li>
+    </repeat>
+</ul>
+  
+<answer maxNumAttempts="3">
+  <award>
+    <when>
+      $n_e = 0 
+    </when>
+  </award>
+</answer>
+
+
+
+<solution>
+<p>To find equilibria, set <m>$derivString = 0</m>.  If we let <m>f($x ) =<math extend="$fun.formula" /></m>, then an equilibrium <m>$x _e</m> must satisfy <m>f($x _e)=0</m>, or
+<me>$$fun($(x)_e) =0.</me>
+However, the exponential function can never be zero, so there are no solutions for real values of <m>$x </m>.   There are no equilibria.</p>
+
+</solution>
+
+
+</problem>

@@ -1,0 +1,354 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7YTnnB8xtTYGhfThCNMYkt
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 51e49e7b4a6cfc01
+-->
+<problem>
+<!-- <title>Sketch solution of autonomous differential equation from graph</title> -->
+
+<setup>
+
+<selectFromSequence name="Esub1" from="-8" to="8" />
+<selectFromSequence name="Esub2" from="-8" to="8" exclude="$Esub1-2 $Esub1-1 $Esub1 $Esub1+1 $Esub1+2" />
+<selectFromSequence name="Esub3" from="-8" to="8" exclude="$Esub1-2 $Esub1-1 $Esub1 $Esub1+1  $Esub1+2 $Esub2-2 $Esub2-1  $Esub2 $Esub2+1 $Esub2+2" />
+<sort name="E1">$Esub1 $Esub2 $Esub3</sort>
+
+  
+<selectFromSequence name="M1sub" from="0.5" to="2" step="0.1" numToSelect="2" withReplacement="true" />
+<select name="M1">
+  <option>
+    <number>$M1sub[1]</number>
+    <number>-$M1sub[2]</number>
+    <number>3*$M1sub[1]</number>
+    <number>-3*$M1sub[2]</number>
+    <number>-4*$M1sub[2]</number>
+    <number>4*$M1sub[1]</number>
+    <number>1</number>
+    <selectFromSequence from="$E1[1]-0.5" step="-0.5" length="2" />
+    <number>-Infinity</number>
+    <selectFromSequence from="$E1[1]+0.5" step="0.5" length="2" />
+    $E1[2]
+    <selectFromSequence from="$E1[3]-0.5" step="-0.5" length="2" />
+    $E1[2]
+    <selectFromSequence from="$E1[3]+0.5" step="0.5" length="2" />
+    <number>Infinity</number>
+  </option>
+  <option>
+    <number>-$M1sub[1]</number>
+    <number>$M1sub[2]</number>
+    <number>3*$M1sub[2]</number>
+    <number>-3*$M1sub[1]</number>
+    <number>4*$M1sub[2]</number>
+    <number>-4*$M1sub[1]</number>
+    <number>2</number>
+    <selectFromSequence from="$xmin+0.5" step="0.5" length="2" />
+    $E1[1]
+    <selectFromSequence from="$E1[2]-0.5" step="-0.5" length="2" />
+    $E1[1]
+    <selectFromSequence from="$E1[2]+0.5" step="0.5" length="2" />
+    $E1[3]
+    <selectFromSequence from="$xmax-0.5" step="-0.5" length="2" />
+    $E1[3]
+  </option>
+</select>
+
+
+<select numToSelect="3" name="ICsub1">
+  <option>$M1[1][8] $M1[1][9]</option>
+  <option>$M1[1][10] $M1[1][11]</option>
+  <option>$M1[1][12] $M1[1][13]</option>
+  <option>$M1[1][14] $M1[1][15]</option>
+</select>
+
+<select name="ICEq">$E1[1] $E1[2] $E1[3]</select>
+
+<select numToSelect="4" name="IC1">
+  <option>$ICsub1[1][1] $ICsub1[1][2]</option>
+  <option>$ICsub1[2][1] $ICsub1[2][2]</option>
+  <option>$ICsub1[3][1] $ICsub1[3][2]</option>
+  <option>$ICEq $ICEq</option>
+</select>
+
+<function name="fun" through="($E1[1],0) (($E1[1]+$E1[2])/2, $M1[1][1]) ($E1[2], 0) (($E1[2]+$E1[3])/2, $M1[1][2]) ($E1[3],0)" />
+
+
+<select name="x">x y z s u v w</select>
+
+<number name="xmax">11</number>
+<number name="xmin">-11</number>
+
+
+
+  <styleDefinition styleNumber="2" markerStyle="circle" markerSize="3" />
+  <styleDefinition styleNumber="3" lineColor="purple" markerColor="purple" />
+  <styleDefinition styleNumber="4" lineColor="cyan" markerColor="cyan" />
+
+
+</setup>
+
+
+
+
+<p>Consider the dynamical system
+<md>
+  <mrow>\frac{ d$x }{ dt }\amp = f($x )</mrow>
+  <mrow>$x (0)\amp = $x _0,</mrow>
+</md>
+where the function <m>f</m> is graphed below and <m>$x _0</m> is an initial condition.  
+</p>
+
+
+<graph xmin="$xmin" xmax="$xmax" ymin="$M1[1][4]" ymax="$M1[1][3]" fixAxes="true" size="medium" grid="medium">
+  <xLabel>$x</xLabel>
+  <yLabel><m>f</m></yLabel>
+  $fun
+</graph>
+
+
+<p>For each of the below initial conditions, use the following applet to graph of the solution <m>$x (t)</m>.</p>
+
+<!-- Note, applet is copied from updated 2023 course -->
+<module copy="doenet:83PUG3WFYYLvLvU2jrcCkc" size="medium" aspectRatio="1" var="$x" vmin="$xmin-1" vmax="$xmax+1" IC1="$IC1[1][1]" final1="$IC1[1][2]" IC2="$IC1[2][1]" final2="$IC1[2][2]" IC3="$IC1[3][1]" final3="$IC1[3][2]" IC4="$IC1[4][1]" final4="$IC1[4][2]" grid="medium" numPoints="4" />
+<solution>
+
+  <p>Qualitative sketchs of the solutions to the differential equation are shown below.</p>
+
+  
+<graph size="medium" aspectRatio="1" ymin="$xmin-1" ymax="$xmax+1" xmin="-4" xmax="10" fixAxes="true" identicalAxisScales="true" grid="true">
+
+  <conditionalContent name="sC1">
+    <case condition="$IC1[1][1] = $IC1[1][2]">
+      <lineSegment styleNumber="1" endpoints="(0, $IC1[1][1]) (40, $IC1[1][1])" />
+    </case>
+    <case condition="$IC1[1][2] = Infinity">
+      <function domain="(0,40)" styleNumber="1">
+        exp(x/5)+$IC1[1][1]-1
+      </function>
+    </case>
+    <case condition="$IC1[1][2] = -Infinity">
+      <function domain="(0,40)" styleNumber="1">
+        -exp(x/5)+$IC1[1][1]+1
+      </function>
+    </case>
+    <else>
+      <function domain="(0,40)" styleNumber="1">
+        ($IC1[1][1]-$IC1[1][2]) * exp(-x/3) + $IC1[1][2]
+      </function>
+    </else>
+  </conditionalContent>
+  
+  <conditionalContent name="sC2">
+    <case condition="$IC1[2][1] = $IC1[2][2]">
+      <lineSegment styleNumber="2" endpoints="(0, $IC1[2][1]) (40, $IC1[2][1])" />
+    </case>
+    <case condition="$IC1[2][2] = Infinity">
+      <function domain="(0,40)" styleNumber="2">
+        exp(x/5)+$IC1[2][1]-1
+      </function>
+    </case>
+    <case condition="$IC1[2][2] = -Infinity">
+      <function domain="(0,40)" styleNumber="2">
+        -exp(x/5)+$IC1[2][1]+1
+      </function>
+    </case>
+    <else>
+      <function domain="(0,40)" styleNumber="2">
+        ($IC1[2][1]-$IC1[2][2]) * exp(-x/3) + $IC1[2][2]
+      </function>
+    </else>
+  </conditionalContent>
+  
+
+  <conditionalContent name="sC3">
+    <case condition="$IC1[3][1] = $IC1[3][2]">
+      <lineSegment styleNumber="3" endpoints="(0, $IC1[3][1]) (40, $IC1[3][1])" />
+    </case>
+    <case condition="$IC1[3][2] = Infinity">
+      <function domain="(0,40)" styleNumber="3">
+        exp(x/5)+$IC1[3][1]-1
+      </function>
+    </case>
+    <case condition="$IC1[3][2] = -Infinity">
+      <function domain="(0,40)" styleNumber="3">
+        -exp(x/5)+$IC1[3][1]+1
+      </function>
+    </case>
+    <else>
+      <function domain="(0,40)" styleNumber="3">
+        ($IC1[3][1]-$IC1[3][2]) * exp(-x/3) + $IC1[3][2]
+      </function>
+    </else>
+  </conditionalContent>
+  
+
+
+  <conditionalContent name="sC4">
+    <case condition="$IC1[4][1] = $IC1[4][2]">
+      <lineSegment styleNumber="4" endpoints="(0, $IC1[4][1]) (40, $IC1[4][1])" />
+    </case>
+    <case condition="$IC1[4][2] = Infinity">
+      <function domain="(0,40)" styleNumber="4">
+        exp(x/5)+$IC1[4][1]-1
+      </function>
+    </case>
+    <case condition="$IC1[4][2] = -Infinity">
+      <function domain="(0,40)" styleNumber="4">
+        -exp(x/5)+$IC1[4][1]+1
+      </function>
+    </case>
+    <else>
+      <function domain="(0,40)" styleNumber="4">
+        ($IC1[4][1]-$IC1[4][2]) * exp(-x/3) + $IC1[4][2]
+      </function>
+    </else>
+  </conditionalContent>
+  
+
+</graph>
+
+
+
+
+<ol>
+
+<li>
+  <p>
+  <conditionalContent>
+  <case condition="$IC1[1][1] = $IC1[1][2]">
+    Since <m>f($IC1[1][1]) = 0</m>, the velocity <m>\frac{ d$x }{ dt } = 0</m>.  The solution <m>$x (t)</m> doesn't change.  The solution is the equilibrium <m>$x (t)=$IC1[1][1] </m> for all time <m>t</m>.
+  </case>
+  <case condition="$IC1[1][2] = Infinity">
+    Since <m>f($IC1[1][1])</m> is positive, the solution <m>$x(t)</m> increases.  Since <m>f($x(t))</m> gets larger as <m>$x (t)</m> increases, the solution <m>$x (t)</m> speeds up until it leaves the region plotted.
+  </case>
+  <case condition="$IC1[1][2] = -Infinity">
+    Since <m>f($IC1[1][1])</m> is negative, the solution <m>$x(t)</m> decreases.  Since the magnitude of <m>f($x(t))</m> gets larger as <m>$x (t)</m> decreases, the solution <m>$x (t)</m> speeds up until it leaves the region plotted.
+  </case>
+  <else>
+    Since <m>f($IC1[1][1])</m>
+    <conditionalContent>
+      <case condition="$IC1[1][2] > $IC1[1][1]">
+        is positive, the solution <m>x(t)</m> increases.
+      </case>
+      <else>
+        is negative, the solution <m>x(t)</m> decreases.
+      </else>
+    </conditionalContent>
+    As the solution get closer to the equilibrium $final, it slows down and approaches the equilibrium as <m>t</m> gets large.
+  </else>
+</conditionalContent>
+  </p>
+
+<p>The solution for <m>$x _0 = $IC1[1][1] </m> is shown by the <copy prop="styleDescription" source="sC1[1][1]" /> curve above.</p>
+
+</li>
+
+<li>
+
+  <p>
+  <conditionalContent>
+  <case condition="$IC1[2][1] = $IC1[2][2]">
+    Since <m>f($IC1[2][1]) = 0</m>, the velocity <m>\frac{ d$x }{ dt } = 0</m>.  The solution <m>$x (t)</m> doesn't change.  The solution is the equilibrium <m>$x (t)=$IC1[2][1] </m> for all time <m>t</m>.
+  </case>
+  <case condition="$IC1[2][2] = Infinity">
+    Since <m>f($IC1[2][1])</m> is positive, the solution <m>$x(t)</m> increases.  Since <m>f($x(t))</m> gets larger as <m>$x (t)</m> increases, the solution <m>$x (t)</m> speeds up until it leaves the region plotted.
+  </case>
+  <case condition="$IC1[2][2] = -Infinity">
+    Since <m>f($IC1[2][1])</m> is negative, the solution <m>$x(t)</m> decreases.  Since the magnitude of <m>f($x(t))</m> gets larger as <m>$x (t)</m> decreases, the solution <m>$x (t)</m> speeds up until it leaves the region plotted.
+  </case>
+  <else>
+    Since <m>f($IC1[2][1])</m>
+    <conditionalContent>
+      <case condition="$IC1[2][2] > $IC1[2][1]">
+        is positive, the solution <m>x(t)</m> increases.
+      </case>
+      <else>
+        is negative, the solution <m>x(t)</m> decreases.
+      </else>
+    </conditionalContent>
+    As the solution get closer to the equilibrium $final, it slows down and approaches the equilibrium as <m>t</m> gets large.
+  </else>
+</conditionalContent>
+  </p>
+
+<p>The solution for <m>$x _0 = $IC1[2][1] </m> is shown by the <copy prop="styleDescription" source="sC2[1][1]" /> curve above.</p>
+
+</li>
+
+<li>
+
+  
+  <p>
+  <conditionalContent>
+  <case condition="$IC1[3][1] = $IC1[3][2]">
+    Since <m>f($IC1[3][1]) = 0</m>, the velocity <m>\frac{ d$x }{ dt } = 0</m>.  The solution <m>$x (t)</m> doesn't change.  The solution is the equilibrium <m>$x (t)=$IC1[3][1] </m> for all time <m>t</m>.
+  </case>
+  <case condition="$IC1[3][2] = Infinity">
+    Since <m>f($IC1[3][1])</m> is positive, the solution <m>$x(t)</m> increases.  Since <m>f($x(t))</m> gets larger as <m>$x (t)</m> increases, the solution <m>$x (t)</m> speeds up until it leaves the region plotted.
+  </case>
+  <case condition="$IC1[3][2] = -Infinity">
+    Since <m>f($IC1[3][1])</m> is negative, the solution <m>$x(t)</m> decreases.  Since the magnitude of <m>f($x(t))</m> gets larger as <m>$x (t)</m> decreases, the solution <m>$x (t)</m> speeds up until it leaves the region plotted.
+  </case>
+  <else>
+    Since <m>f($IC1[3][1])</m>
+    <conditionalContent>
+      <case condition="$IC1[3][2] > $IC1[3][1]">
+        is positive, the solution <m>x(t)</m> increases.
+      </case>
+      <else>
+        is negative, the solution <m>x(t)</m> decreases.
+      </else>
+    </conditionalContent>
+    As the solution get closer to the equilibrium $final, it slows down and approaches the equilibrium as <m>t</m> gets large.
+  </else>
+</conditionalContent>
+  </p>
+
+<p>The solution for <m>$x _0 = $IC1[3][1] </m> is shown by the <copy prop="styleDescription" source="sC3[1][1]" /> curve above.</p>
+
+
+
+</li>
+
+
+<li>
+
+  
+  <p>
+  <conditionalContent>
+  <case condition="$IC1[4][1] = $IC1[4][2]">
+    Since <m>f($IC1[4][1]) = 0</m>, the velocity <m>\frac{ d$x }{ dt } = 0</m>.  The solution <m>$x (t)</m> doesn't change.  The solution is the equilibrium <m>$x (t)=$IC1[4][1] </m> for all time <m>t</m>.
+  </case>
+  <case condition="$IC1[4][2] = Infinity">
+    Since <m>f($IC1[4][1])</m> is positive, the solution <m>$x(t)</m> increases.  Since <m>f($x(t))</m> gets larger as <m>$x (t)</m> increases, the solution <m>$x (t)</m> speeds up until it leaves the region plotted.
+  </case>
+  <case condition="$IC1[4][2] = -Infinity">
+    Since <m>f($IC1[4][1])</m> is negative, the solution <m>$x(t)</m> decreases.  Since the magnitude of <m>f($x(t))</m> gets larger as <m>$x (t)</m> decreases, the solution <m>$x (t)</m> speeds up until it leaves the region plotted.
+  </case>
+  <else>
+    Since <m>f($IC1[4][1])</m>
+    <conditionalContent>
+      <case condition="$IC1[4][2] > $IC1[4][1]">
+        is positive, the solution <m>x(t)</m> increases.
+      </case>
+      <else>
+        is negative, the solution <m>x(t)</m> decreases.
+      </else>
+    </conditionalContent>
+    As the solution get closer to the equilibrium $final, it slows down and approaches the equilibrium as <m>t</m> gets large.
+  </else>
+</conditionalContent>
+  </p>
+
+<p>The solution for <m>$x _0 = $IC1[4][1] </m> is shown by the <copy prop="styleDescription" source="sC4[1][1]" /> curve above.</p>
+
+
+
+</li>
+
+
+</ol>
+
+</solution>
+
+</problem>

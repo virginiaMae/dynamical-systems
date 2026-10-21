@@ -1,0 +1,78 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7TQxhGxBcHnahXLsdEv6NH
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 91f218467a8a7d84
+-->
+
+<title>Using the Forward Euler algorithm to solve pure-time differential equations</title>
+<p><ref>Video</ref> | <ref>Summary</ref> | <ref>Transcript</ref>  </p>
+<description>
+By pretending that the slope of a function is constant over small intervals, we following tangent lines to estimate the solution to pure-time differential equations.
+</description>
+
+
+
+
+<section><title>Transcript: Using the Forward Euler algorithm to solve pure-time differential equations</title>
+<p>The Forward Euler algorithm is an algorithm to estimate the solution to differential equations.  Let's illustrate how to use it to solve the pure-time differential equation <m>x'(t) = t^3-5t-2</m> with the initial condition that <m>x(t)</m> is 10 at time <m>t=0</m>.  Our goal is to estimate the solution <m>x(t)</m>.
+</p>
+
+<p>We know we must start at <m>x(0)=10</m>, and the next question is to determine how fast <m>x(t)</m> is changing at <m>t=0</m>.  This rate of change is simply the slope, or derivative, of the function <m>x(t)</m> at the initial time <m>t=0</m>.  We can calculate this derivative directly from the differential equation, by plugging in <m>t=0</m>.  We calculate that <m>x'(0)</m> is zero cubed minus five times zero minus two, or negative two.</p>
+
+<p>The slope of the graph of <m>x(t)</m> is negative two only at <m>t=0</m>.  For larger values of <m>t</m>, it will change according to the equation <m>x'(t)=t^3-5t-2</m>.  But, let's pretend that we don't realize that fact; let's pretend that the slope <m>x'(t)</m> stays fixed at the value negative two.  A function with constant slope is a line, so let's use the 
+<ref to="doenet:tangent_line_linear_approximation">linear approximation</ref>
+ to <m>x(t)</m> evaluated at <m>t=0</m>.  We denote this linear approximation as <m>L_0(t)</m>, where the zero indicates we are matching the function and its derivative at <m>t=0</m>.  We obtain the equation for a line with a slope of negative two and <m>y</m>-intercept of ten.  The graph of the linear approximation looks like this.  The slope looks shallower than negative two because the vertical scale is much larger than the horizontal scale.  But, indeed, it drops by eight units by the time we get to <m>t=4</m>.</p>
+
+<p>We could claim that <m>L_0(t)</m> is a good approximation to the solution if the derivative <m>x'(t)</m> stayed constant at negative two for all time, or at least didn't change much.  However, if we look at the formula for <m>x'(t)</m>, it's pretty clear that <m>x'(t)</m> is not constantly negative two but instead changes to much different values.  Since <m>x'(t)</m> is continuous, though, we can expect it to stay relatively close to negative two for a short amount of time; we can expect the linear approximation <m>L_0(t)</m> to be an OK approximation to the real solution <m>x(t)</m> for small values of <m>t</m>.
+</p>
+
+<p>If we are OK with approximating <m>x(t)</m> by the linear function <m>10-2t</m> for a small amount of time, how can we estimate values of the solution for longer times.  One option is the Forward Euler algorithm, in which we pick some small length of time <m>\Delta t</m> and use <m>L_0(t)</m> for that small interval of time.  Then, we'll calculate a new linear approximation and continue the process.  Let's illustrate the Forward Euler algorithm by choosing an interval length <m>\Delta t</m> of one.
+</p>
+
+<p>We use our linear approximation that we calculated from <m>t=0</m>, i.e., our <m>L_0(t)</m>, to estimate the value of the solution at <m>t=1</m>.  This approximation for <m>x(1)</m> is ten minus two times one, or eight.  I've highlighted this result in red on the graph.</p>
+
+<p>Now that we've estimated <m>x(1)</m> to be eight, we can repeat the process by calculating a new linear approximation at <m>t=1</m>.  We call this linear approximation <m>L_1(t)</m> to emphasize it is calculated at <m>t=1</m>.  The value of <m>x</m> and its derivative are calculated at <m>t=1</m> and we subtract one from <m>t</m>, as highlighted in red.  This linear approximation is the equation for the line that is equal to <m>x(1)</m> when <m>t=1</m> and has a slope equal to <m>x'(1)</m>.  We have an estimate of <m>x(1)</m>; the only new piece of information we need is <m>x'(1)</m>.  We calculate this derivative directly from the differential equation.  Plugging in <m>t=1</m> into the differential equation, we find that <m>x'(1)</m> is equal to negative six.  The derivative decreases from negative two at <m>t=0</m> to negative six at <m>t=1</m>; the function <m>x(t)</m> is beginning to decrease more steeply. 
+</p>
+
+<p>Plugging <m>x(1)=8</m> and <m>x'(1)=-6</m> into the linear approximation formula, we obtain a new approximation for <m>x(t)</m> for <m>t\gt 1</m>.  When we graph this second linear approximation, we see how the estimate of <m>x(t)</m> decreases more steeply.  Since we are using time intervals of length <m>\Delta t=1</m>, we'll use this linear approximation for a step of that length and estimate the value of <m>x(t)</m> at <m>t=2</m>.  The linear approximation yields <m>x(2)=2</m>, which we plot on the graph with another red point.
+</p>
+
+<p>To summarize our result so far with <m>\Delta t=1</m>, we used the linear approximation at <m>t=0</m> to estimate that <m>x(1)</m> is eight, then used the linear approximation at <m>t=1</m> to estimate that <m>x(2)</m> is two.  Let's continue this process for two more time steps to estimate <m>x(t)</m> at <m>t=3</m> and at <m>t=4</m>.  For these steps, I won't describe all the calculations; you can pause the video if you'd like to follow all the details.
+</p>
+
+<p>We write down a linear approximation for <m>x(t)</m> at <m>t=2</m>.  The important fact to note in this calculation is that <m>x'(2)</m> is negative four; the derivative has increased a little bit.  We draw a line sloping downward with slope negative 4.  From this line, we estimate that <m>x(3)</m> is about negative two.
+</p>
+
+<p>For the fourth and final step using <m>\Delta t=1</m>, we write down a linear approximation for <m>x(t)</m> at <m>t=3</m>.  Note that the estimate for <m>x'(3)</m> is ten. The slope has become large and positive and this last linear approximation increases rapidly.  The Forward Euler estimate of <m>x(4)</m> is eight.
+</p>
+
+<p>When <m>\Delta t=1</m>, the Forward Euler algorithm took four steps to get to <m>t=4</m>.  I've gathered formulas for all four steps together.  Let's massage them to make them prettier and easier to remember.  First, let's get rid of some extra information and just keep the final formulas.  Next, notice that in each step, we are multiplying the derivative by the same number.  One minus zero, two minus one, three minus two, etc., are all the length of the time interval, <m>\Delta t</m>, which in this case is one.  Let's rewrite the formula to show this dependence on <m>\Delta t</m>.
+</p>
+
+<p>We evaluated the functions and derivatives at the points <m>0,1,2</m>, etc., which are all multiples of the time interval <m>\Delta t</m>.  Let's define the time points <m>t_0</m>, <m>t_1</m>, <m>t_2</m>, etc., as these multiples of <m>\Delta t</m>, and replace the numbers with these time points.  In this way, our formulas are no longer specific to <m>\Delta t=1</m>.  In fact, let's remove any reference to value one and just keep definitions in terms of <m>\Delta t</m>.  Now our formulas for Forward Euler will work for any value of the time interval <m>\Delta t</m>.
+</p>
+
+<p>Of course, we can continue this process beyond the fourth time point.  If we like, we can write the Forward Euler formula for an arbitrary time point <m>t_i</m>.  The value <m>x(t_{i+1})</m> at the next time point is approximated as the value <m>x(t_i)</m> of the previous time point plus the value of the derivative times <m>\Delta t</m>.
+</p>
+
+<p>More important than memorizing this formula is understanding the idea behind the Forward Euler algorithm.  In each step, we simply calculate the slope of the function as the derivative given by the differential equation.  Then, we take a step of size <m>\Delta t</m> with that slope.  We can continue this process for as long as we want, though if we are calculating the Forward Euler algorithm by hand, there is always the danger we might fall asleep in the middle of repeating these tedious steps.
+</p>
+
+<p>The Forward Euler algorithm is nice in that it gives us an answer.  You might have some lingering doubts about the accuracy of the crude approximation of assuming the slope does not change in the middle of these intervals of length <m>\Delta t</m>.  Rather than directly trying to estimate its accuracy here, though, let's think about how we could improve the accuracy of the Forward Euler algorithm.  We could increase the accuracy by taking smaller time steps <m>\Delta t</m> so that we recalculate the slope of the function more frequently.</p>
+
+<p>For example, we could cut the time interval in half to <m>\Delta t=1/2</m>.  This sounds like a good idea, but the cost is that we have to take twice as many steps.   To get to <m>t=4</m>, we have to take eight steps of the algorithm.  Ready to crunch some numbers?  There, those calculations weren't so bad.  OK, I don't feel like reading those numbers either.  Let's just summarize the results of this graphically.
+</p>
+
+<p>We start off with this same slope of negative two, but this time only use this slope until <m>t=1/2</m>.  Then, we recalculate the slope at <m>t=1/2</m> and find that the function already should be decreasing more rapidly.  This change in slope was undetected by the first calculation with <m>\Delta t=1</m>.  For the next three time steps, the slopes don't change much, and the new calculation with <m>\Delta t=1/2</m> isn't too different from the first calculation with <m>\Delta t=1</m>.  We see that the slope already becomes positive at <m>t=2.5</m>.  When we get to <m>t=3.5</m>, we see that slope has increased dramatically and that the we significantly underestimated the value of <m>x(4)</m> in the first calculation with <m>\Delta t=1</m>.  In fact, we exceeded the scale of the graph, so let's increase the vertical scale so that everything fits.
+</p>
+
+<p>The second calculation, with <m>\Delta t=1/2</m> (the green curve), is more accurate than the first calculation with <m>\Delta t=1</m> (the blue curve).  Because we took a smaller time step, we could adjust the direction more frequently.  However, the improved accuracy came at a cost, as we had to do twice as much work.
+</p>
+
+<p>We should really estimate the solution with even smaller <m>\Delta t</m>, but that would be a big pain to do by hand.  Instead, we wrote a computer program to the calculation for us.  The solution with <m>\Delta t=1/4</m> (16 steps total) is shown by the cyan curve.  We could even try <m>\Delta t=1/8</m> (32 steps total), as shown by the thin magenta curve.  Again, we see that we've been underestimating the value of <m>x(4)</m>, as the last curve exceeded our scale again.  The calculations with larger time steps <m>\Delta t</m> have been significantly underestimating this value, and we must increase the vertical scale of the graph even further.
+</p>
+
+<p>In summary, the Forward Euler algorithm is a fairly simple algorithm to estimate the solution of a differential equation.  However, for accuracy, one needs to take many small time steps, which is best done with a computer program.
+</p>
+</section>

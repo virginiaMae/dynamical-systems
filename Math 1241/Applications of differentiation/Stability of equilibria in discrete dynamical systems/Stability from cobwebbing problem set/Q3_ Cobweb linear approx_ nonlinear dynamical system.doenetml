@@ -1,0 +1,278 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7PSr8S5VrmNLP8T1UKbEv8
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 541bd199926d48ea
+-->
+<problem>
+<variantControl numVariants="1" />
+<!-- <title>Cobweb linear approx: nonlinear dynamical system</title> -->
+
+<setup>
+
+<math name="f_x">f(x)</math>
+<math name="L_c" simplify="full">f(c) + m(x-c)</math>
+<math name="L_c2" simplify="full">f(c) + f'(c)(x-c)</math>
+<math name="L_E" simplify="full">f(E)+a(x-E)</math>
+<math name="L_Ealt" simplify="full">E+a(x-E)</math>
+<math name="L_E2" simplify="full">f(E)+f'(E)(x-E)</math>
+<math name="L_E2alt" simplify="full">E+f'(E)(x-E)</math>
+<math name="E">E</math>
+<math name="one">1</math>
+<math name="n1">-1</math>
+<number fixed="true" name="xmin">-10</number>
+<number fixed="true" name="xmax">10</number>
+
+</setup>
+
+  
+<p>The general form of a discrete dynamical system is a dynamical system in terms of a function <m>f</m>:
+  <me>x_{n+1} = f(x_n), \quad \text{for $ n=0,1,2,\ldots $ }.</me>
+</p>
+
+  
+<p>To answer the questions, you can use this optional cobweb applet, where you can change the function <m>f</m></p>
+
+  
+<p>f(x) = <mathInput prefill="0.05(x+10)^2-7" name="formula" /></p>
+
+<p>You also move the <text extend="$A.styleDescriptionWithNoun" /> to move the tangent line to an equilibrium.  Notice how the cobwebbing near an equilibrium is close to cobwebbing based on the tangent line.</p>
+
+<p>Cobweb applet for
+  <me>x_{n+1} = $$f(x_n)</me>
+</p>
+
+
+  <setup>
+    <function name="f" symbolic="true">$formula</function>
+    <solveEquations variables="x" name="solveForE" minVar="$xmin" maxVar="$xmax">$formula = x</solveEquations>
+    <math extend="$A.x" name="px" />
+    <derivative name="df">$f</derivative>
+    <number name="numPoints">10</number>
+    <number name="zeroFixed" fixed="true">0</number>
+    <point x="0" y="$initialPoint.x" name="initialPoint" hide="true">
+      
+        <constrainToGraph />
+      
+    </point>
+
+
+  </setup>
+
+  <updateValue name="addLine" target="$numPoints" newValue="$numPoints+1" type="number">
+    <label>Add line</label>
+  </updateValue>
+  <updateValue name="deleteLine" target="$numPoints" newValue="max(1,$numPoints-1)" type="number" disabled="$numPoints &lt;= 1">
+    <label>Delete line</label>
+  </updateValue>
+
+  <graph identicalAxisScales="true" grid="true" showNavigation="false" xmin="$xmin" xmax="$xmax" ymin="$xmin" ymax="$xmax">
+    <xLabel><m>x_n</m></xLabel>
+    <yLabel><m>x_{n+1}</m></yLabel>
+  <point name="A" x="0" y="0" styleNumber="3">
+    
+      <repeat for="$solveForE.solutions" valueName="v"><attractTo><point>($v, $v)</point></attractTo></repeat>
+      <constrainTo>$f</constrainTo>
+      <constrainToGraph />
+    
+  </point>
+      <line equation="y=$$df($px)(x-$px) + $$f($px)" fixed="true" styleNumber="3" name="tangentLine" />
+
+    <function extend="$f" layer="1" styleNumber="2" />
+    <cobwebPolyline function="$f" numPoints="$numPoints" name="cobwebPolyline" initialPoint="$initialPoint" lockToSolution="true" draggable="false" />
+    <point extend="$initialPoint" layer="2" hide="false" />
+  </graph>
+
+  <aside name="calculatedValue">
+    <title>Calculated values</title>
+
+    <md>
+    <repeat for="$cobwebPolyline.iterateValues" valueName="x" indexName="i">
+        <mrow>
+          x_{<number>$i-1</number>} \amp = <math displayDigits="5" extend="$x" />
+        </mrow>
+      </repeat>
+    </md>
+
+  </aside>
+
+  
+
+
+<ol>
+<li>
+Is it possible for a nonlinear system <m>x_{n+1}=f(x_n)</m> to have zero equilibria? 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">yes</choice>
+<choice>no</choice>
+</choiceInput>
+</answer>
+  One equilibrium? 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">yes</choice>
+<choice>no</choice>
+</choiceInput>
+</answer>
+  Two or more equilibria?  
+<answer inline="true">
+<choiceInput>
+<choice credit="1">yes</choice>
+<choice>no</choice>
+</choiceInput>
+</answer>
+ Graphically, how can you tell how many equilibria there are?  You look for the number of 
+<answer inline="true">
+<choiceInput shuffleOrder="true">
+<choice credit="1">intersections</choice>
+<choice>sunsets</choice>
+<choice>inches</choice>
+<choice>points</choice>
+<choice>iterations</choice>
+<choice>derivatives</choice>
+<choice>functions</choice>
+<choice>graphs</choice>
+<choice>axes</choice>
+<choice>units</choice>
+<choice>equations</choice>
+<choice>hours</choice>
+<choice>times</choice>
+<choice>half lives</choice>
+<choice>doubling times</choice>
+<choice>curves</choice>
+<choice>slopes</choice>
+<choice>orientations</choice>
+</choiceInput>
+</answer>
+ between the graph of 
+<answer>
+<award symbolicEquality="true">f</award>
+<award symbolicEquality="true">$f_x </award>
+</answer>
+ and the graph of the 
+<answer inline="true">
+<choiceInput shuffleOrder="true">
+<choice credit="1">diagonal</choice>
+<choice>function itself</choice>
+<choice>inverse</choice>
+<choice>derivative</choice>
+<choice>reciprocal</choice>
+<choice>trajectory</choice>
+<choice>solution</choice>
+<choice>equilibria</choice>
+<choice>answer</choice>
+<choice>universe</choice>
+</choiceInput>
+</answer>
+.
+</li>
+
+  
+<li>
+<p>
+Assume that the derivative of some function <m>f(x)</m> at <m>x=c</m> is <m>f'(c)=m</m>.  Given that information, write down the formula for the linear approximation (or tangent line) of <m>f(x)</m> calculated at <m>x=c</m>.
+</p>
+  
+<p>
+<m>L_c(x)=</m> 
+<answer>
+<award>$L_c </award>
+<award credit="0.5" name="award33">$L_c2 </award>
+</answer></p>
+<feedback condition="$award33">Yes, this is correct.  But replace <m>f'(c)</m> with <m>m</m> for full credit.</feedback>
+</li>
+
+<li>
+<p>
+If we want to analyze the behavior of the dynamical system near an equilibrium <m>x=E</m>, we should look at the tangent line to <m>f</m> evaluated at <m>x=</m> 
+<answer>
+<award symbolicEquality="true">$E </award>
+</answer>
+.  If we assume that <m>f'(E)=a</m>, write down the formula for this linear approximation.
+</p>
+
+<p>
+<m>L_E(x)=</m> 
+<answer>
+<award>$L_E </award>
+<award symbolicEquality="true">$L_Ealt </award>
+<award credit="0.5" name="award36">$L_E2 </award>
+<award symbolicEquality="true" credit="0.5" name="award37">$L_E2alt </award>
+</answer></p>
+<feedback condition="$award36">Yes, this is correct.  But replace <m>f'(E)</m> with <m>a</m> for full credit.</feedback>
+<feedback condition="$award37">Yes, this is correct.  But replace <m>f'(E)</m> with <m>a</m> for full credit.</feedback>
+</li>
+
+<li>
+<p>
+Since we can approximate <m>f</m> by its tangent line near the equilibrium, what conditions on the slope <m>f'(E)=a</m> of the tangent line will give you a stable equilibrium?
+</p>
+<p>
+
+The equilibrium <m>E</m> will be stable if 
+<answer>
+<award symbolicEquality="true">$n1 </award>
+</answer>
+ <m>\lt f'(E) \lt</m> 
+<answer>
+<award symbolicEquality="true">$one </award>
+</answer>
+.
+</p>
+
+<p>What conditions on the slope of the tangent line will give you an unstable equilibrium?
+</p>
+<p>
+
+The equilibrium <m>E</m> will be unstable if <m>f'(E) \gt</m> 
+<answer>
+<award symbolicEquality="true">$one </award>
+</answer>
+ or <m>f'(E) \lt</m> 
+<answer>
+<award symbolicEquality="true">$n1 </award>
+</answer>
+.</p>
+
+<p>To reiterate, the critical quantity is the slope of the tangent line or the 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">derivative</choice>
+<choice>value</choice>
+</choiceInput>
+</answer>
+ of <m>f</m> evaluated at <m>x=</m> 
+<answer>
+<award symbolicEquality="true">$E </award>
+</answer>
+.</p>
+</li>
+</ol>
+
+
+<solution>
+<ol>
+<li>yes, yes, yes, intersections, <m>f(x)</m>, diagonal
+</li>
+  
+<li>
+<m>L_c(x)=f(c)+f'(x)(x-c)=$L_c </m>.
+</li>
+
+<li>
+<m>L_E(x)=f(E)+f'(E)(x-E) = $L_E </m>.
+</li>
+
+<li>
+The equilibrium <m>E</m> will be stable if <m>-1 \lt f'(E) \lt 1</m>.
+
+<p>The equilibrium <m>E</m> will be unstable if <m>f'(E) \gt 1</m> or <m>f'(E) \lt -1</m>.</p>
+
+<p>The critical quantity is the slope of the tangent line or the derivative of <m>f</m> evaluated at <m>x=E</m>.</p>
+</li>
+</ol>
+</solution>
+
+
+</problem>

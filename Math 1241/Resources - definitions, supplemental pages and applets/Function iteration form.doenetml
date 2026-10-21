@@ -1,0 +1,20 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 82YaRL8CieueYqLgxMpxye
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 4fd7d100252f3868
+-->
+<section suppressAutoName="true" suppressAutoNumber="true"><title>Function iteration form definition</title>
+ 
+<p>A discrete dynamical system is in <term>function iteration form</term> when it is written so that the new value of the state variable is a function of the previous value of the state variable.</p>
+
+<p>If the state variable is <m>x_n</m>, then a dynamical system is in function iteration form when it is of the form
+<me>x_{n+1}=f(x_n).</me>
+For example, the dynamical system
+<me>x_{n+1}=3x_n</me>
+is written in <term>function iteration form</term> with <m>f(x)=3x.</m></p>
+
+<p>An alternative form is <term><ref to="doenet:832kteFVLDpZJ9tARy27gK">difference form</ref></term>, such as
+<me>x_{n+1}−x_n=2x_n.</me>
+This dynamical system is identical to the previous one, as one can see by solving for <m>x_{n+1}</m>.</p>
+</section>

@@ -1,0 +1,55 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7ERp2d11UBxMSdQRCCcMji
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: d5e8cf27d3b8e27b
+-->
+<problem>
+<!-- <title>Half life </title> -->
+
+<setup>
+
+<selectFromSequence name="a" from=".3" to=" .9" step=" .1" />
+<selectFromSequence name="b" from="3" to=" 60" step=" 7" />
+<select name="n">n t </select>
+<select name="x">alpha  beta  gamma  delta  epsilon  mu  nu  tau  sigma  omega  zeta </select>
+<math name="ans" simplify="full">log(.5)/log($a )</math>
+<math name="A" simplify="full">$a -1</math>
+
+</setup>
+
+
+<p>Find the half-life for the system below
+<md>
+<mrow>$x _{$n+1} \amp= $a $x _$n </mrow>
+<mrow>$x _0 \amp = $b </mrow>
+</md>
+
+</p>
+<p>
+The half-life is 
+<answer name="answer1">
+<award allowedErrorInNumbers="0.001">$ans </award>
+<award credit="0.5" allowedErrorInNumbers="0.01" feedbackCodes="numericalerror">$ans </award>
+<award credit="0.25" allowedErrorInNumbers="0.1" feedbackCodes="numericalerror">$ans </award>
+</answer>
+$answer1.feedbacks
+
+</p>
+<p>
+
+(Keep at least four significant digits in your response.)
+</p>
+
+
+
+<solution>
+<p>The dynamical system is in function iteration form.  We can immediately calculate the half life.</p>
+<p>
+The half life is <m>\frac{  \log \frac{1}{2} }{ \log $a  } = <round numDigits="4"><number>$ans </number></round></m>
+</p>
+
+</solution>
+
+
+</problem>

@@ -1,0 +1,24 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7GopVitZrhPtnzc8stoxM4
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 5310ae97e9edf8f2
+-->
+<problem>
+<!-- <title>Cobweb step&#x2D;by&#x2D;step, quadratic, worksheet</title> -->
+
+<setup>
+
+  <function name="f" variables="x">2x-x^2/3</function>
+  <math name="x0">1</math>
+
+</setup>
+
+
+<!-- cid=bafkreibftfv3r5d2dwuuh24ccbaj4mw3i236ajmj52trgdouewbmxtqjvq -->
+<!--   
+<copy uri='doenet:cid=bafkreibftfv3r5d2dwuuh24ccbaj4mw3i236ajmj52trgdouewbmxtqjvq' function="$f" x0="$x0"  width='400' height='300' xmin='&#x2D;1' xmax='4' ymin='&#x2D;0.7' ymax='3.5'  /> -->
+
+<module copy="doenet:83sSjM3J6YYLywqcqCxQXB" function="$f" x0="$x0" xmin="-1" xmax="4" ymin="-0.7" ymax="3.5" />
+  
+</problem>

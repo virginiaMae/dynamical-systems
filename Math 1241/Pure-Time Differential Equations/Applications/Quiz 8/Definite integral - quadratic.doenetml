@@ -1,0 +1,95 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7VBi6Jvedx6ugjLMvsmNmi
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 2d526b28f2dc30c7
+-->
+<problem>
+<!-- <title>Definite integral &#x2D; quadratic</title> -->
+
+<setup>
+
+<selectFromSequence name="aaa" from="-10" to="10" exclude="0" numToSelect="3" withReplacement="true" />
+
+<function name="g" variables="t"><math simplify="numbersPreserveOrder">$aaa[1] *t^2+$aaa[2] *t+$aaa[3]</math></function>
+<selectFromSequence name="lb" from="-2" to="1" />
+<selectFromSequence name="ub" from="$lb+1" to="2" />
+
+<function name="antideriv_g" simplify="numbers" symbolic="true" variables="t">$aaa[1]*t^3/3 + $aaa[2]*t^2/2 + $aaa[3]*t</function>
+<math name="intgeval" simplify="numbers">$$antideriv_g($ub)-$$antideriv_g($lb)</math>
+
+
+  
+
+</setup>
+
+
+<p>Evaluate the following integral:</p>
+  
+<p><m>\displaystyle \int_{$lb}^{$ub} $g \, dt =</m> 
+<answer name="answer1" forceFullCheckworkButton="true">
+<award allowedErrorInNumbers="0.0001">$intgeval </award>
+<award credit="0.8" allowedErrorInNumbers="0.001" feedbackCodes="numericalerror">$intgeval </award>
+</answer>
+</p>
+  $answer1.feedbacks
+
+<p>
+If rounding, include at least 5 significant digits in your response.
+</p>
+
+<solution>
+
+<setup>
+  <function name="indefinta" variables="t" simplify="numbers" symbolic="true">t^3/3</function>
+<evaluate name="indefinta_ub" function="$indefinta" input="$ub" />
+<evaluate name="indefinta_lb" function="$indefinta" input="$lb" />
+<function name="indefintb" variables="t" simplify="numbers" symbolic="true">t^2/2</function>
+<evaluate name="indefintb_ub" function="$indefintb" input="$ub" />
+<evaluate name="indefintb_lb" function="$indefintb" input="$lb" />
+<function name="indefintc" variables="t" simplify="numbers" symbolic="true">t</function>
+<evaluate name="indefintc_ub" function="$indefintc" input="$ub" />
+<evaluate name="indefintc_lb" function="$indefintc" input="$lb" />
+
+<math name="intsevalpart"> $aaa[1] *($indefinta_ub -$indefinta_lb )+$aaa[2] *($indefintb_ub -$indefintb_lb )+$aaa[3] *($indefintc_ub -$indefintc_lb ) </math>
+
+<math name="intseval"> <math simplify="numbers">$aaa[1] *($indefinta_ub -$indefinta_lb )</math>+<math simplify="numbers">$aaa[2] *($indefintb_ub -$indefintb_lb )</math>+<math simplify="numbers">$aaa[3] *($indefintc_ub -$indefintc_lb )</math> </math>
+
+</setup>
+
+<p>We first use the sum and constant product rules for integration: 
+</p>
+  
+<p>
+<m>\displaystyle \int_{$lb}^{$ub} $g \, dt 
+ =$aaa[1] \int_{$lb}^{$ub} t^2 \,dt
+ +$aaa[2] \int_{$lb}^{$ub} t \,dt
+ +$aaa[3] \int_{$lb}^{$ub} 1 \,dt
+</m>
+</p>
+
+<p>
+
+We then evaluate each of these integrals using the power rule for integration:
+</p>
+  
+<p>
+<m>\displaystyle 
+  $aaa[1] \frac{t^3}{3}\bigg|_{$lb}^{$ub}
+  +$aaa[2] \frac{t^2}{2}\bigg|_{$lb}^{$ub}
+  +$aaa[3] t\bigg|_{$lb}^{$ub}
+</m>
+</p>
+<p>
+Finally, we substitute in the bounds and simplify:
+</p>
+
+<p>
+<m>\displaystyle $intsevalpart = $intseval  = $intgeval </m>
+</p>
+
+
+</solution>
+
+
+</problem>

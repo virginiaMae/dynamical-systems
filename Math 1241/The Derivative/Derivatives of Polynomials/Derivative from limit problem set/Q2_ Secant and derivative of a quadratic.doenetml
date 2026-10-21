@@ -1,0 +1,211 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7KGaS32TJcUCBeHkw6Ghyz
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: b8218f2cdf7cd682
+-->
+<problem>
+  <variantControl numVariants="1" />
+<!-- <title>Secant and derivative of a quadratic, worksheet</title> -->
+
+<setup>
+
+<function name="f" variables="x" symbolic="true" applyStyleToLabel="true">5x^2
+  <label><m>f(x)</m></label>
+</function>
+<math name="f_x_plus_h" simplify="full">$$f(x+h)</math>
+<math name="h">h</math>
+<math name="secant_slope_numerator" simplify="full" expand="true">$$f(x+$h )-$$f(x)</math>
+<math name="neg_secant_slope_numerator" simplify="full" expand="true">-$$f(x+$h )+$$f(x)</math><math name="secant_slope" simplify="full" expand="true">$secant_slope_numerator /$h </math>
+<math name="fprime" simplify="full">10x</math>
+<math name="one">1</math>
+
+</setup>
+
+
+<p>Let <m>f(x)</m> be the quadratic function <m>f(x)=<math extend="$f.formula" /></m>.</p>
+
+
+<exercise includeAutoNumber="true"><title />
+<p>Calculate the slope of the secant line from <m>x</m> to <m>x+h</m>.</p>
+
+<p> slope <m>= \biggl[</m>
+  <mathInput name="mi1" />
+<m> - \biggl(</m>
+  <mathInput name="mi2" />
+<m>\biggr)\biggr]\bigg/</m>
+  <mathInput name="mi3" />
+</p>
+<answer matchPartial="true">
+  <award referencesAreResponses="$mi1 $mi2 $mi3">
+    <when>
+      $mi1 = $f_x_plus_h
+      and
+      $mi2 = $f
+      and
+      $mi3 = $h
+    </when>
+  </award>
+  <award>
+    <when>
+      $mi1 = $f
+      and
+      $mi2 = $f_x_plus_h
+      and
+      $mi3 = -$h
+    </when>
+  </award>
+</answer>
+
+
+<p>Simplify your expression by multiplying out the quadratic and canceling terms:
+</p>
+<p>
+
+slope <m>= </m> 
+  <mathInput name="mi21" />
+<m>\bigg/</m>
+  <mathInput name="mi22" />
+</p>
+<answer matchPartial="true" symbolicEquality="true" simplifyOnCompare="numbers">
+  <award referencesAreResponses="$mi21 $mi22">
+    <when>
+      $mi21=$secant_slope_numerator
+      and
+      $mi22=$h
+    </when>
+  </award>
+    <award>
+    <when>
+      $mi21=$neg_secant_slope_numerator
+      and
+      $mi22=-$h
+    </when>
+  </award>
+</answer>
+<p>Cancel the <m>h</m> in the numerator and denominator to get your final answer:
+</p>
+<p>
+
+secant slope = 
+<answer>
+<award>$secant_slope </award>
+<award credit="0" name="limit_too_early">$fprime</award>
+</answer>
+</p>
+<feedback condition="$limit_too_early">
+  We are asking for the slope of the <em>secant</em> line, which is the line with a finite value of <m>h</m>.  Don't take the limit of <m>h \to 0</m> yet!
+</feedback>
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<p>Calculate an expression for the derivative <m>\frac{df}{dx}</m> by taking the limit as <m>h \to 0</m> of the secant slope calculated above.  Since you've canceled the <m>h</m> from the denominator, taking the limit is as simple as replacing <m>h</m> with zero.
+</p>
+  
+<p><m>\displaystyle \frac{df}{dx} = \lim_{h \to 0 } </m> 
+  <mathInput name="mi31" />
+ <m>=</m> 
+  <mathInput name="mi32" />
+</p>
+<answer>
+  <award referencesAreResponses="$mi31 $mi32" matchPartial="true">
+    <when>
+      $mi31 = $secant_slope
+      and
+      $mi32 = $fprime
+    </when>
+  </award>
+</answer>
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<p>Sketch a graph of <m>f(x)</m> and its derivative <m>\frac{df}{dx}</m>.  Pay attention to the places where <m>\frac{df}{dx}</m> is positive, zero, and negative.  Drag the <text extend="$p3.styleDescription" /> points so that the <text extend="$parab1.styleDescription" /> curve represents the graph of <m>f</m>. Drag the <text extend="$p1.styleDescription" /> points so that the <text extend="$line1.styleDescription" /> line represents the graph of <m>\frac{df}{dx}</m>.
+</p>
+
+<graph size="large" aspectRatio="5/4" xmin="-4" xmax="4" ymin="-11" ymax="11" showNavigation="false" grid="1 1">
+
+<point name="p1" x="-2" y="0">
+<attractToGrid dx="0.5" />
+</point>
+
+<point name="p2" x="1" y="0">
+<attractToGrid dx="0.5" />
+</point>
+
+<line name="line1" through="$p1 $p2" applyStyleToLabel="true">
+  <label><m>\frac{df}{dx}</m></label>
+</line>
+
+<point stylenumber="2" name="p3" x="-1" y="0">
+<attractToGrid dx="0.5" />
+</point>
+
+<point stylenumber="2" name="p4" x="0" y="0">
+<attractToGrid dx="0.5" />
+</point>
+
+<point stylenumber="2" name="p5" x="2" y="0">
+<attractToGrid dx="0.5" />
+</point>
+
+<parabola name="parab1" stylenumber="2" through="$p3 $p4 $p5" applyStyleToLabel="true">
+  <label><m>f(x)</m></label>
+</parabola>
+
+</graph>
+
+<p>Graph of function:
+  <answer>
+    <award><when>
+      <math extend="$parab1.equation" isResponse="true" /> = <math>y = 5x^2</math>
+    </when></award>
+  </answer>
+</p>
+<p>Graph of derivative:
+  <answer>
+    <award><when>
+      <math extend="$line1.equation" isResponse="true" /> = <math>y = 10x</math>
+    </when></award>
+  </answer>
+</p>
+</exercise>
+
+
+<solution>
+
+
+<exercise includeAutoNumber="true"><title />
+<md>
+  <mrow>\text{secant slope}\amp = \frac{($f_x_plus_h ) - (<math extend="$f.formula" />) }{ $h  }</mrow>
+  <mrow>\amp = \frac{ $secant_slope_numerator  }{ $h  }</mrow>
+  <mrow>\amp = $secant_slope </mrow>
+</md>
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<me>\frac{df}{dx} = \lim_{h \to 0} $secant_slope  = $fprime </me>
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+The graph of <m>f</m> (thick blue curve) and <m>\frac{df}{dx}</m> (thin red curve).
+
+<graph size="large" aspectRatio="5/4" xmin="-4" xmax="4" ymin="-11" ymax="11" showNavigation="false" grid="1 1">
+
+<point fixed="true">(0,0)</point>
+<point fixed="true">(1,10)</point>
+<line fixed="true" applyStyleToLabel="true">y=10x
+  <label><m>\frac{df}{dx}</m></label>
+</line>
+
+<point stylenumber="2" fixed="true">(-1,5)</point>
+<point stylenumber="2" fixed="true">(0,0)</point>
+<point stylenumber="2" fixed="true">(1,5)</point>
+<function fixed="true" extend="$f" stylenumber="2" symbolic="false" />
+
+</graph>
+</exercise>
+
+</solution>
+
+
+</problem>

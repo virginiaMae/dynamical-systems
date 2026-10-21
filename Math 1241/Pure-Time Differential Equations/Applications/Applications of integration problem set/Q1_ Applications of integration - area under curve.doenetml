@@ -1,0 +1,654 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7VriAsWnxa6VS34ikswbUi
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: ce44cc8146e2cd35
+-->
+<problem>
+<!-- <title>Applications of integration &#x2D; area under curve</title> -->
+
+<setup>
+
+<function name="f" variables="x">3x+2</function>
+<math name="lb">0</math>
+<math name="ub">4</math>
+<function name="antideriv_f" variables="x" symbolic="true" simplify="true">3x^2/2+2x</function>
+<math name="integral_f_eval" simplify="numbers">$$antideriv_f($ub) -$$antideriv_f($lb) </math>
+
+<function name="g" variables="x">x^2-4</function>
+<math name="lb2">-2</math>
+<math name="ub2">2</math>
+<function name="antideriv_g" symbolic="true" simplify="true">x^3/3-4x</function>
+<math name="integral_g_eval" simplify="numbers">$$antideriv_g($ub2) - $$antideriv_g($lb2) </math>
+<math name="integral_g_number">-32/3</math>
+<math name="integral_g_number2">(-32)/3</math>
+<math name="integral_g_number3">-10.66666666666666666</math>
+<math name="integral_g_neg_number">32/3</math>
+<math name="integral_g_neg_number2">10.66666666666</math>
+
+<function name="h" variables="x" symbolic="true">x^2-2x</function>
+<math name="lb3">0</math>
+<math name="ub3">3</math>
+<math name="mb3">2</math>
+<math name="h_neg">-$$h(x)</math>
+<function name="h_antideriv" symbolic="true" simplify="true">x^3/3-x^2</function>
+<function name="h_neg_antideriv" symbolic="true" simplify="true">-x^3/3+x^2</function><math name="integral_h_part1_eval" simplify="numbers">-$$h_antideriv($mb3) + $$h_antideriv($lb3) </math>
+<math name="integral_h_half_number" simplify="numbersPreserveOrder">4/3</math>
+<math name="integral_h_half_number2" simplify="numbersPreserveOrder">1.333333333333333333</math>
+<math name="integral_h_part2_eval" simplify="numbers">$$h_antideriv($ub3) - $$h_antideriv($mb3)</math>
+<math name="totalarea" simplify="numbers">$integral_h_part1_eval +$integral_h_part2_eval </math>
+<math name="totalarea_number" simplify="numbersPreserveOrder">8/3</math>
+<math name="totalarea_number2" simplify="numbersPreserveOrder">2.6666666666666666</math>
+
+<function name="ff" variables="x">2e^(2x)</function>
+<math name="lb4">0</math>
+<math name="ub4">2</math>
+<function name="antideriv_ff" symbolic="true" simplify="true">e^(2x)</function>
+<math name="integral_ff_eval" simplify="numbers">$$antideriv_ff($ub4) - $$antideriv_ff($lb4) </math>
+
+<function name="gg" variables="x">4x-x^2</function>
+<math name="neg_gg">-4x+x^2</math>
+<math name="lb5">-1</math>
+<math name="ub5">5</math>
+<math name="mb5_1">0</math>
+<math name="mb5_2">4</math>
+<function name="antideriv_gg" symbolic="true" simplify="true">2x^2 - x^3/3</function>
+<function name="antideriv_neg_gg" symbolic="true" simplify="true">-2x^2 + x^3/3</function>
+<math name="integral_gg_part2" simplify="true">$$antideriv_gg($mb5_2) - $$antideriv_gg($mb5_1)</math>
+<math name="integral_gg_part1_neg" simplify="true">-$$antideriv_gg($mb5_1) + $$antideriv_gg($lb5)</math>
+<math name="integral_gg_part3_neg" simplify="true">-$$antideriv_gg($ub5) + $$antideriv_gg($mb5_2)</math>
+<mathList name="integral_gg_pieces">
+  $integral_gg_part1_neg $integral_gg_part2 $integral_gg_part3_neg
+</mathList>
+<math name="integral_gg_eval" simplify="numbers">$integral_gg_part1_neg +$integral_gg_part2 +$integral_gg_part3_neg </math>
+<math name="integral_gg_number" simplify="numbersPreserveOrder">46/3</math>
+<math name="integral_gg_number2" simplify="numbersPreserveOrder">15.3333333333</math>
+
+
+<math name="intervals_gg">($lb5 ,$mb5_1 ), ($mb5_1 , $mb5_2 ), ($mb5_2 ,$ub5 )</math>
+<textList name="intervals_gg_signs">negative positive negative</textList>
+<textList name="intervals_gg_change_sign">
+  <text>change sign</text>
+  <text>keep sign</text>
+  <text>change sign</text>
+</textList>
+
+
+
+<math name="xmin">-5</math>
+<math name="xmax">5</math>
+<math name="ymin">-7</math>
+<math name="ymax">7</math>
+<math name="aa">1</math>
+<math name="bb">-2</math>
+<math name="cc">0</math>
+<math name="zeroFixed" fixed="true">0</math>
+
+
+</setup>
+
+
+<p>Definite integrals can be used to compute areas in certain situations.</p>
+
+
+<exercise includeAutoNumber="true"><title />
+<p>When we first defined the definite integral, it was as the limit of Riemann sums.  The Riemann sum approximated a function as constant on intervals.  If we look at this graphically, we can see the Riemann sum from <m>a</m> to <m>b</m> as an approximation of the area under the curve from <m>x=a</m> to <m>x=b</m>.  Each term in the Riemann sum gives the area of a rectangle with height <m>f(x_i)</m> and width <m>\Delta t</m>.  Think about how the area of these rectangles relates to the area under the curve: the rectangles 
+<answer inline="true">
+<choiceInput>
+<choice name="choice0" credit="0.33">are disjoint</choice>
+<choice name="choice1" credit="0.33">fill up the width of the interval [a,b]</choice>
+<choice name="choice2" credit="0.33">are close to the height of the curve</choice>
+<choice credit="1">all of the above</choice>
+</choiceInput>
+</answer>
+, and their sum is 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">approximately the area under the curve</choice>
+<choice>equal to the area under the curve</choice>
+<choice>unrelated to the area under the curve</choice>
+</choiceInput>
+</answer>
+.</p>
+<feedback condition="$choice0">True, but is it the only statement that is true?</feedback>
+<feedback condition="$choice1">True, but is it the only statement that is true?</feedback>
+<feedback condition="$choice2">True, but is it the only statement that is true?</feedback>
+
+<p> As <m>\Delta t</m> gets 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">smaller</choice>
+<choice>larger</choice>
+</choiceInput>
+</answer>
+, the rectangles get closer to representing the total area under the curve.  This means that we can find the area under a curve <m>y=f(x)</m> between <m>x=a</m> and <m>x=b</m> by evaluating the definite integral <m>\displaystyle \int_a^b f(x) \, dx</m>.</p>
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<p>Let's do a couple quick examples: find the area under the curve <m>y=<math extend="$f.formula" /></m> between <m>x=$lb </m> and <m>x=$ub </m>.  What is the integral that will give this area? <m>\displaystyle \int_{ <math extend="$u_a1.immediateValue" /> }^{ <math extend="$u_b1.immediateValue" /> }</m>  
+<mathInput name="u_f" />
+ <m>dx</m>, where integration limits are from 
+<mathInput name="u_a1" />
+to 
+<mathInput name="u_b1" />
+<answer>
+<award matchPartial="true" referencesAreResponses="$u_f $u_a1 $u_b1">
+  <when>$u_f=$f and <when>$u_a1=$lb and $u_b1=$ub</when></when>
+</award>
+</answer>
+</p>
+
+<p>
+Now evaluate the definite integral: 
+<answer>
+<award symbolicEquality="true">$integral_f_eval </award>
+<award allowedErrorInNumbers="0.001" credit="0.5" name="award11">$integral_f_eval </award>
+</answer></p>
+<feedback condition="$award11">Enter a single number for full credit.</feedback>
+</exercise>
+
+
+<exercise includeAutoNumber="true"><title />
+<p>Find the area between the <m>x</m>-axis and the curve <m>y=<math extend="$g.formula" /></m> between <m>x=$lb2 </m> and <m>x=$ub2 </m>.  What is the integral that would naively seem to give this area? 
+ <m>\displaystyle \int_{ <math extend="$u_a2.immediateValue" /> }^{ <math extend="$u_b2.immediateValue" /> }</m>  
+<mathInput name="u_g" />
+ <m>dx</m>, where integration limits are from 
+<mathInput name="u_a2" />
+to 
+<mathInput name="u_b2" />
+<answer>
+<award matchPartial="true" referencesAreResponses="$u_g $u_a2 $u_b2">
+  <when>$u_g=$g and <when>$u_a2=$lb2 and $u_b2=$ub2</when></when>
+</award>
+</answer>
+</p>
+
+
+<p>
+
+Now evaluate the definite integral: 
+<answer name="answer11">
+<mathInput name="mi_dig" />
+<award symbolicEquality="true" allowedErrorInNumbers="0.001">
+  <when>
+    $mi_dig=$integral_g_number or $mi_dig=$integral_g_number2 or $mi_dig=$integral_g_number3 
+  </when>
+</award>
+<award credit="0.5" symbolicEquality="true" allowedErrorInNumbers="0.01" feedbackCodes="numericalerror">
+  <when>
+    $mi_dig=$integral_g_number or $mi_dig=$integral_g_number2 or $mi_dig=$integral_g_number3 
+  </when>
+</award>
+<award allowedErrorInNumbers="0.001" credit="0.5" name="award14">$integral_g_number </award>
+<award credit="0.25" allowedErrorInNumbers="0.01" feedbackCodes="numericalerror">$integral_g_number </award>
+<!-- <award symbolicEquality='true' allowedErrorInNumbers='0.001'>$integral_g_number2 </award>
+<award credit='0.5' symbolicEquality='true' allowedErrorInNumbers='0.01' feedbackCodes='numericalerror'>$integral_g_number2 </award>-->
+</answer>
+</p>
+<feedback condition="$award14">Enter a single number for full credit.  (An improper fraction or a decimal with at least 4 significant digits is OK.)</feedback>
+$answer11.feedbacks
+
+<p>
+
+What's wrong with this answer? 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">It's negative.</choice>
+<choice name="choice17">Nothing.</choice>
+<choice name="choice18">It's positive.</choice>
+</choiceInput>
+</answer>
+</p>
+<feedback condition="$choice17">Think about what an area is.</feedback>
+<feedback condition="$choice18">The definite integral is actually negative.</feedback>
+<p>If we graph <m>y=<math extend="$g.formula" /></m>, we see that it is below the axis between <m>$lb2 </m> and <m>$ub2 </m>.  What is <m>f(x_i)</m> in our Riemann sums?  
+<answer inline="true">
+<choiceInput>
+<choice credit="1">Negative.</choice>
+<choice>Positive.</choice>
+<choice>Zero.</choice>
+</choiceInput>
+</answer>
+  In order for the Riemann sum to represent the area, we have to take <m>|f(x_i)|</m> instead of just <m>f(x_i)</m>. The definite integral for the area becomes <m>\displaystyle \int_a^b |f(x)| \, dx</m>.  In this example, we can avoid the absolute values by just multiplying everything by <m>-1</m>.  If we multiply the final answer by <m>-1</m>, we get the area 
+<answer name="answer14">
+<award symbolicEquality="true" allowedErrorInNumbers="0.001">$integral_g_neg_number </award>
+<award credit="0.5" symbolicEquality="true" allowedErrorInNumbers="0.01" feedbackCodes="numericalerror">$integral_g_neg_number </award>
+<award symbolicEquality="true" allowedErrorInNumbers="0.001">$integral_g_neg_number2 </award>
+<award credit="0.5" symbolicEquality="true" allowedErrorInNumbers="0.01" feedbackCodes="numericalerror">$integral_g_neg_number2 </award>
+<award allowedErrorInNumbers="0.001" credit="0.5" name="award24">$integral_g_neg_number </award>
+<award credit="0.25" allowedErrorInNumbers="0.01" feedbackCodes="numericalerror">$integral_g_neg_number </award>
+</answer>.
+</p>
+<feedback condition="$award24">Enter a single number for full credit.  (An improper fraction or a decimal with at least 4 significant digits is OK.)</feedback>
+$answer14.feedbacks
+ That works because <m><math extend="$g.formula" /></m> is negative over the entire interval.
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<p>How can we handle area for a curve that goes above and below the axis?  Suppose we want to know the area bounded by <m>y=<math extend="$h.formula" /></m> between <m>x=$lb3 </m> and <m>x=$ub3 </m>.  Sketch the graph of this function and the region whose area we're trying to calculate.  </p>
+
+
+
+<graph size="large" aspectRatio="5/4" xmin="$xmin" xmax="$xmax" ymin="$ymin" ymax="$ymax" fixAxes="true">
+
+  <point name="A" x="-2" y="1">
+    
+      <attractTo>$h</attractTo>
+      <constrainToGraph />
+    
+  </point>
+  <point name="B" x="-1" y="1">
+    
+      <attractTo>$h</attractTo>
+      <constrainToGraph />
+    
+  </point>
+  <point name="C" x="0" y="1">
+    
+      <attractTo>$h</attractTo>
+      <constrainToGraph />
+    
+  </point>
+
+  <parabola through="$A $B $C" name="parab" />
+
+  <point name="R1" x="-3" y="$zeroFixed" styleNumber="2" hide="not $showRegion">
+    
+      <attractTo><point>($lb3,0)</point></attractTo>
+      <attractTo><point>($ub3,0)</point></attractTo>
+    
+  </point>
+  <point name="R2" x="-2" y="$zeroFixed" styleNumber="2" hide="not $showRegion">
+    
+      <attractTo><point>($lb3,0)</point></attractTo>
+      <attractTo><point>($ub3,0)</point></attractTo>
+    
+  </point>
+
+  <regionBetweenCurveXAxis function="$parabF" boundaryValues="$R1.x $R2.x" styleNumber="2" hide="not $showRegion" />
+</graph>
+
+
+<p>Move the <text extend="$A.styleDescription" /> points so that the <text extend="$h.styleDescription" /> curve is the graph of <m>y=$h</m>.
+<answer name="ansGraphH">
+  <award>
+    <when>
+      <function name="parabF">$parab.a x^2 + $parab.b x + $parab.c</function>
+      = $h
+    </when>
+  </award>
+  <considerAsResponses>
+    $A $B $C
+  </considerAsResponses>
+</answer>
+</p>
+
+<p>Click this box to show the region: <booleanInput name="showRegion" />.  Then move the <text extend="$R1.styleDescription" /> points so that the shaded region represents the region described above.
+<answer disabled="$ansGraphH.creditAchieved &lt; 1">
+  <award credit="$showRegion" matchPartial="true" referencesAreResponses="$R1 $R2" unorderedCompare="true">
+    <when>
+      <mathList>$R1.x $R2.x</mathList>
+      = <mathList>$lb3 $ub3</mathList>
+    </when>
+  </award>
+</answer>
+</p>
+
+<p>The shaded region is composed of two pieces.  The region is below the <m>x</m>-axis for <mathInput name="hna" /> <m> &lt; x &lt; </m> <mathInput name="hnb" />
+<answer>
+<award symbolicEquality="true" referencesAreResponses="$hna $hnb" matchPartial="true">
+  <when>$hna = $lb3 and $hnb=$mb3</when>
+</award>
+</answer>.
+The region is above the <m>x</m>-axis when <mathInput name="hpa" /> <m>&lt; x &lt; </m> <mathInput name="hpb" />
+<answer>
+<award symbolicEquality="true" referencesAreResponses="$hpa $hpb" matchPartial="true">
+  <when>$hpa = $mb3  and $hpb = $ub3</when>
+  </award>
+</answer>
+.</p>
+
+<p> If we find the area in each of these two regions, we can find the total area by 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">adding</choice>
+<choice>subtracting</choice>
+<choice>multiplying</choice>
+</choiceInput>
+</answer>
+ them together.</p>
+
+
+<p>Write down the integral that represents the area below the axis, and evaluate it:
+</p>
+
+<p>(Integration limits are from <mathInput name="u_a3" />
+to 
+<mathInput name="u_b3" />)
+  </p>
+<p>
+<m>\displaystyle \int_{ <math extend="$u_a3.immediateValue" /> }^{ <math extend="$u_b3.immediateValue" /> }</m>  
+<mathInput name="u_h_neg" />
+ <m>dx</m>
+ <answer>
+<award matchPartial="true" referencesAreResponses="$u_a3 $u_b3 $u_h_neg">
+  <when><when>$u_a3=$lb3 and $u_b3=$mb3</when> and $u_h_neg=$h_neg</when>
+</award>
+<award credit="0.6" matchPartial="true" name="award36">
+  <when><when>$u_a3=$lb3 and $u_b3=$mb3</when> and $u_h_neg=$h</when>
+</award>
+</answer>
+</p>
+<feedback condition="$award36">This region is below the axis, so we need to change the sign to get area.</feedback>
+
+<p>
+<nbsp /><nbsp /><nbsp /><nbsp /><nbsp /><nbsp /> <m> =</m> 
+<answer name="answer21">
+<award symbolicEquality="true">$integral_h_half_number </award>
+<award symbolicEquality="true" allowedErrorInNumbers="0.001">$integral_h_half_number2 </award>
+<award credit="0.5" symbolicEquality="true" allowedErrorInNumbers="0.01" feedbackCodes="numericalerror">$integral_h_half_number2 </award>
+<award allowedErrorInNumbers="0.001" credit="0.5" name="award40">$integral_h_half_number </award>
+<award credit="0.25" allowedErrorInNumbers="0.01" feedbackCodes="numericalerror">$integral_h_half_number </award>
+</answer>
+</p>
+<feedback condition="$award40">Enter a single number for full credit.  (An improper fraction or a decimal with at least 4 significant digits is OK.)</feedback>
+$answer21.feedbacks
+
+
+<p>Write down the integral that represents the area above the axis, and evaluate it:
+</p>
+<p>(Integration limits are from <mathInput name="u_a4" />
+to 
+<mathInput name="u_b4" />)
+  </p>
+<p>
+<m>\displaystyle \int_{ <math extend="$u_a4.immediateValue" /> }^{ <math extend="$u_b4.immediateValue" /> }</m>  
+<mathInput name="u_h" />
+ <m>dx</m>
+ <answer>
+<award matchPartial="true" referencesAreResponses="$u_a4 $u_b4 $u_h">
+  <when><when>$u_a4=$mb3 and $u_b4=$ub3</when> and $u_h=$h</when>
+</award>
+<award credit="0.6" matchPartial="true" name="award42">
+  <when><when>$u_a4=$mb3 and $u_b4=$ub3</when> and $u_h=$h_neg</when>
+</award>
+</answer>
+</p>
+<feedback condition="$award42">This region is above the axis, so we don't need to change the sign to get area.</feedback>
+
+<p><nbsp /><nbsp /><nbsp /><nbsp /><nbsp /><nbsp />  <m> =</m> 
+<answer name="answer25">
+<award symbolicEquality="true">$integral_h_half_number </award>
+<award symbolicEquality="true" allowedErrorInNumbers="0.001">$integral_h_half_number2 </award>
+<award credit="0.5" symbolicEquality="true" allowedErrorInNumbers="0.01" feedbackCodes="numericalerror">$integral_h_half_number2 </award>
+<award allowedErrorInNumbers="0.001" credit="0.5" name="award45">$integral_h_half_number </award>
+<award credit="0.25" allowedErrorInNumbers="0.01" feedbackCodes="numericalerror">$integral_h_half_number </award>
+</answer>
+</p>
+<feedback condition="$award45">Enter a single number for full credit.  (An improper fraction or a decimal with at least 4 significant digits is OK.)</feedback>
+$answer25.feedbacks
+
+
+<p>What is the total area bounded by the <m>x</m>-axis and <m>y=<math extend="$h.formula" /></m> between <m>x=$lb3 </m> and <m>x=$ub3 </m>? 
+<answer name="answer28">
+<award symbolicEquality="true">$totalarea_number </award>
+<award symbolicEquality="true" allowedErrorInNumbers="0.001">$totalarea_number2 </award>
+<award credit="0.5" symbolicEquality="true" allowedErrorInNumbers="0.01" feedbackCodes="numericalerror">$totalarea_number2 </award>
+<award allowedErrorInNumbers="0.001" credit="0.5" name="award48">$totalarea_number </award>
+<award credit="0.25" allowedErrorInNumbers="0.01" feedbackCodes="numericalerror">$totalarea_number </award>
+</answer>
+</p>
+<feedback condition="$award48">Enter a single number for full credit.  (An improper fraction or a decimal with at least 4 significant digits is OK.)</feedback>
+$answer28.feedbacks
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+Evaluate a definite integral (or sum of definite integrals) that gives the area between the <m>x</m>-axis and the curve <m>y=<math extend="$ff.formula" /></m> between <m>x=$lb4 </m> and <m>x=$ub4 </m>.
+
+<p>In the interval <m>x \in ($lb4 , $ub4 )</m>, the expression <m><math extend="$ff.formula" /></m> is 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">positive</choice>
+<choice>negative</choice>
+<choice>zero</choice>
+<choice>both positive and negative</choice>
+</choiceInput>
+</answer>
+.  Therefore, we need to split the interval into 
+<answer name="piece1">
+<award symbolicEquality="true">1</award>
+</answer>
+<pluralize basedOnNumber="$piece1">piece</pluralize>, and we 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">do not</choice>
+<choice>do</choice>
+</choiceInput>
+</answer>
+ need to change the sign.  The area is 
+<answer>
+<award allowedErrorInNumbers="0.001">$integral_ff_eval </award>
+</answer>
+.
+</p>
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+Evaluate a definite integral (or sum of definite integrals) that gives the area between the <m>x</m>-axis and the curve <m>y=<math extend="$gg.formula" /></m> between <m>x=$lb5 </m> and <m>x=$ub5 </m>.
+
+<p>In the interval <m>x \in ($lb5 , $ub5 )</m>, the expression <m><math extend="$gg.formula" /></m> is 
+<answer inline="true">
+<choiceInput>
+<choice credit="1">both positive and negative</choice>
+<choice>positive</choice>
+<choice>negative</choice>
+</choiceInput>
+</answer>
+. We need to split the interval into 
+<answer name="piece2">
+<award symbolicEquality="true">3</award>
+</answer>
+<pluralize basedOnNumber="$piece2">piece</pluralize>. </p>
+
+<p>The intervals are 
+<repeatForSequence length="$piece2" name="intMap"><mathInput /> </repeatForSequence>
+<answer matchPartial="true">
+<award referencesAreResponses="$intMap"><when>
+  <mathList name="intList"><setup><collect componentType="mathInput" from="$intMap" name="collect_intCol" /></setup><mathList name="intCol" extend="$collect_intCol.value" /></mathList>
+  = $intervals_gg 
+</when></award>
+<award unorderedCompare="true" credit="0.8" name="aUnordered1">
+  <when>$intList = $intervals_gg</when>
+</award>
+</answer>
+.  Enter in increasing order, such as <c>(-5,2)</c> followed by <c>(2,7)</c>.</p>
+<feedback condition="$aUnordered1">
+  For full credit, enter the intervals in increasing order.
+</feedback>
+
+<p>What is the sign of <m><math extend="$gg.formula" /></m> in each interval?</p>
+<repeatForSequence length="$piece2" name="signMap" indexName="i"><p><math extend="$intCol[$i]" />: <choiceInput inline="true"><choice>positive</choice><choice>negative</choice></choiceInput> </p></repeatForSequence>
+
+<answer>
+<award matchByExactPositions="true" matchPartial="true" referencesAreResponses="$signMap"><when>
+  <textList><setup><collect componentType="choiceInput" from="$signMap" name="collect_list" /></setup><textList name="list" extend="$collect_list.selectedValue" /></textList>
+  =
+  $intervals_gg_signs
+  </when>
+  </award>
+</answer>
+
+<p>Therefore, we need to change the sign in which intervals?</p>
+<repeatForSequence length="$piece2" name="changeSignMap" indexName="i"><p><math extend="$intCol[$i]" />: <choiceInput inline="true"><choice>change sign</choice><choice>keep sign</choice></choiceInput> </p></repeatForSequence>
+
+<answer>
+<award matchByExactPositions="true" matchPartial="true" referencesAreResponses="$changeSignMap"><when>
+  <textList><setup><collect componentType="choiceInput" from="$changeSignMap" name="collect_list1" /></setup><textList name="list1" extend="$collect_list1.selectedValue" /></textList>
+  =
+  $intervals_gg_change_sign
+  </when>
+  </award>
+</answer>
+
+<p>Enter the area over or under each interval.</p>
+<repeatForSequence length="$piece2" name="areaMap" indexName="i"><p><math extend="$intCol[$i]" />: <mathInput /> </p></repeatForSequence>
+
+<answer matchByExactPositions="true" matchPartial="true" name="answer38">
+<award referencesAreResponses="$areaMap" allowedErrorInNumbers="0.001">
+  <when>
+    <mathList name="user_pieces">
+      <setup><collect componentType="mathInput" from="$areaMap" name="collect_list2" /></setup><mathList name="list2" extend="$collect_list2.value" />
+    </mathList>
+    =
+    $integral_gg_pieces
+  </when>
+</award>
+<award credit="0.8" allowedErrorInNumbers="0.01" feedbackCodes="numericalerror">
+  <when>$user_pieces=$integral_gg_pieces</when>
+</award>
+</answer>
+$answer38.feedbacks
+
+
+<p>The total area is 
+<answer name="answer39">
+<award symbolicEquality="true">$integral_gg_number </award>
+<award symbolicEquality="true" allowedErrorInNumbers="0.001">$integral_gg_number2 </award>
+<award credit="0.5" symbolicEquality="true" allowedErrorInNumbers="0.01" feedbackCodes="numericalerror">$integral_gg_number2 </award>
+<award allowedErrorInNumbers="0.001" credit="0.5" name="award53">$integral_gg_number </award>
+<award credit="0.25" allowedErrorInNumbers="0.01" feedbackCodes="numericalerror">$integral_gg_number </award>
+</answer>
+.</p>
+<feedback condition="$award53">Enter a single number for full credit.  (An improper fraction or a decimal with at least 4 significant digits is OK.)</feedback>
+$answer39.feedbacks
+</exercise>
+
+
+<solution>
+
+<setup>
+<function name="integral_f_indef" variables="a">Integral($$f(x),(x,a))</function>
+<math name="integral_f_bounds">DiffSubs($$integral_f_indef(x),x,$lb ,$ub )</math>
+<math name="integral_f_asdiff" simplify="numbersPreserveOrder">$integral_f_bounds .as_difference()</math>
+<function name="integral_g_indef" variables="a">Integral($$g(x),(x,a))</function>
+<math name="integral_g_bounds">DiffSubs($$integral_g_indef(x),x,$lb2 ,$ub2 )</math>
+<math name="integral_g_asdiff" simplify="numbersPreserveOrder">$integral_g_bounds .as_difference()</math>
+</setup>
+
+
+<ol>
+
+<li>
+<p>The rectangles whose combined area is the Riemann sum are disjoint and fill up the width of the interval.  Their height is close to that of the curve, since one corner is on the curve.  Because of this, the area below the curve is approximately the same as the area of the rectangles.  As <m>\Delta t</m> gets smaller, the approximation improves. Taking the limit, we have that the area under the curve <m>y=f(x)</m> between <m>x=a</m> and <m>x=b</m> can be found by evaluating the definite integral <m>\displaystyle \int_a^b f(x) \, dx</m>.</p>
+</li>
+
+<li>
+<p> The area under the curve <m>y=<math extend="$f.formula" /></m> between <m>x=$lb </m> and <m>x=$ub </m> is given by the integral <me>\displaystyle \int_{$lb}^{$ub} $f \, dx. </me>  We evaluate this using the rules of integration:
+</p>
+<p>
+
+<m>\displaystyle \int_{$lb}^{$ub} $f \, dx 
+  = $antideriv_f\bigg|_{$lb}^{$ub}
+  = $$antideriv_f($ub) - $$antideriv_f($lb)
+  =$integral_f_eval </m></p>
+</li>
+
+<li>
+<p> The area between the <m>x</m>-axis and the curve <m>y=<math extend="$g.formula" /></m> between <m>x=$lb2 </m> and <m>x=$ub2 </m> would naively be given by the integral <me>\displaystyle \int_{$lb2}^{$ub2} $g \, dx .</me>  We evaluate this using the rules of integration:
+</p>
+<p>
+
+<m>\displaystyle \int_{$lb2}^{$ub2} $g \, dx
+  = $antideriv_g\bigg|_{$lb2}^{$ub2}
+  = $$antideriv_g($ub2) - $$antideriv_g($lb2)
+  = $integral_g_eval
+</m></p>
+
+<p> We're trying to find the area.  Areas are always positive, but the integral gave us a negative value. This happens because <m><math extend="$g.formula" /></m> is negative between <m>$lb2 </m> and <m>$ub2 </m>, so the terms in the Riemann sum that approximates the definite integral will be negative.  To get an area, we need to make sure the function is positive.  We can just multiply by <m>-1</m> to get <m>-\displaystyle  \int_{$lb2}^{$ub2} $g \, dx  =$integral_g_neg_number </m>.</p>
+</li>
+
+<li>
+<p>We could only multiply by <m>-1</m> at the end in part 3 because the entire region was below the <m>x</m>-axis.  Here, the region is split into two.  Between <m>x=$lb3 </m> and <m>x=$mb3 </m> the curve is below the <m>x</m>-axis, but between <m>x=$mb3 </m> and <m>x=$ub3 </m> the curve is above the <m>x</m>-axis.  We can find the total area by evaluating these two parts separately and adding them together.</p>
+
+<p>The integral that represents the area below the axis is
+</p>
+<p>
+<m>\displaystyle \int_{$lb3}^{$mb3} $h_neg \, dx
+  = $h_neg_antideriv\bigg|_{$lb3}^{$mb3}
+  = $$h_neg_antideriv($mb3) - $$h_neg_antideriv($lb3)
+  = $integral_h_part1_eval
+</m></p>
+
+<p>The integral that represents the area above the axis is
+</p>
+<p>
+
+<m>\displaystyle \int_{$mb3}^{$ub3} $h \, dx 
+  = $h_antideriv\bigg|_{$mb3}^{$ub3}
+  = $$h_antideriv($ub3) - $$h_antideriv($mb3)
+  = $integral_h_part2_eval
+</m></p>
+
+<p>The total area is then <m>\displaystyle $integral_h_part1_eval +$integral_h_part2_eval =$totalarea </m></p>
+</li>
+
+<li>
+<p>Since <m><math extend="$f.formula" /></m> is always positive, we don't need to worry about splitting it into more than one integral.  The integral that represents the area is:
+</p>
+<p>
+
+<m>\displaystyle \int_{$lb4}^{$ub4} $ff \, dx
+  = $antideriv_ff\bigg|_{$lb4}^{$ub4} 
+<!--   = $$antideriv_ff($ub4) &#x2D; $$antideriv_ff($lb4) -->
+  = $integral_ff_eval </m>
+</p>
+
+</li>
+
+<li>
+<p>Observe that <m>y=<math extend="$gg.formula" /></m> is negative between <m>$lb5 </m> and <m>$mb5_1 </m>, positive between <m>$mb5_1 </m> and <m>$mb5_2 </m>, and negative between <m>$mb5_2 </m> and <m>$ub5 </m>.  We need to add together three definite integrals for this:
+</p>
+<p>
+
+
+<m>\displaystyle \int_{$lb5}^{$mb5_1} -$gg \, dx + \int_{$mb5_1}^{$mb5_2} $gg \, dx + \int_{$mb5_2}^{$ub5} -$gg \, dx  </m>
+</p>
+<p>
+
+
+</p>
+<p>
+
+<m>\displaystyle \int_{$lb5}^{$mb5_1} $neg_gg \, dx 
+  = $antideriv_neg_gg \bigg|_{$lb5}^{$mb5_1}
+  = $$antideriv_neg_gg($mb5_1) - $$antideriv_neg_gg($lb5)
+  = $integral_gg_part1_neg</m>
+</p>
+<p>
+
+<m>\displaystyle \int_{$mb5_1}^{$mb5_2} $gg \, dx 
+ = $antideriv_gg \bigg|_{$mb5_1}^{$mb5_2}
+ = $$antideriv_gg($mb5_2) - $$antideriv_gg($mb5_1)
+  =$integral_gg_part2</m>
+</p>
+<p>
+
+<m>\displaystyle \int_{$mb5_2}^{$ub5} $neg_gg \, dx 
+  = $antideriv_neg_gg \bigg|_{$mb5_2}^{$ub5}
+  = $$antideriv_neg_gg($ub5) - $$antideriv_neg_gg($mb5_2)
+  = $integral_gg_part3_neg</m>
+</p>
+<p>
+
+The total area is then <m>\displaystyle $integral_gg_eval </m>.
+</p>
+
+</li>
+
+
+</ol>
+
+</solution>
+
+
+</problem>

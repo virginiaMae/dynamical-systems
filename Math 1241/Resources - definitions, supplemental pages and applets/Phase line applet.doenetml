@@ -1,0 +1,371 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 83TXioRLQfjiFmpyoM1xhD
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: fd0acf63218fb9f6
+-->
+<module name="stateLine"><setup><number copy="$vmin.value" name="ref2" /><number copy="$vmin" name="ref3" /><number copy="$vmin.value" name="ref4" /><number copy="$vmin.value" name="ref5" /><number copy="$vmin.value" name="ref6" /><number copy="$vmin.value" name="ref7" /><number copy="$vmin.value" name="ref8" /><number copy="$vmin.value" name="ref9" /><number copy="$vmin.value" name="ref10" /><number copy="$vmin.value" name="ref11" /><number copy="$vmin" name="ref12" /><number copy="$vmin.value" name="ref13" /></setup>
+  <moduleAttributes><_componentSize name="width">300px</_componentSize><_componentSize name="height">100px</_componentSize><number name="aspectRatio">3</number><text name="size">medium</text><number name="vmin">-10</number><number name="vmax">10</number><math name="var">x</math><number name="nEquilibria">0</number><number name="E1">-6</number><number name="E2">-2</number><number name="E3">2</number><number name="E4">6</number><boolean name="E1stable">true</boolean><boolean name="E2stable">not $E1stable</boolean><boolean name="E3stable">not $E2stable</boolean><boolean name="E4stable">not $E3stable</boolean><boolean name="v1right">$E1stable</boolean><boolean name="v2right">$E2stable</boolean><boolean name="v3right">$E3stable</boolean><boolean name="v4right">$E4stable</boolean><boolean name="v5right">not $E4stable</boolean><number name="attractThreshold">0.3</number></moduleAttributes>
+
+  
+<setup>
+  <number name="zeroFixed" fixed="true">0</number>
+  <number name="vrange" fixed="true">$vmax-$vmin</number>
+  <number name="nEsUser">0</number>
+
+  <sort name="sortedEpointsUser"><collect componentType="point" from="$mapEpointsUser" name="EpointsUser" /></sort>
+
+  <boolean name="showVectors">false</boolean>
+  <sort name="sortedVectors1" sortVectorsBy="tail">
+    <collect componentType="vector" from="$phaseLine" />
+  </sort>
+  <copy prop="tailX1" name="v1tx" source="sortedVectors1[1]" />
+  <copy prop="tailX2" name="v1ty" source="sortedVectors1[1]" />
+  <copy prop="headX1" name="v1hx" source="sortedVectors1[1]" />
+  <copy prop="headX2" name="v1hy" source="sortedVectors1[1]" />
+
+  <conditionalContent condition="$nEquilibria >= 1">
+    <copy prop="tailX1" name="v2tx" source="sortedVectors1[2]" />
+    <copy prop="tailX2" name="v2ty" source="sortedVectors1[2]" />
+    <copy prop="headX1" name="v2hx" source="sortedVectors1[2]" />
+    <copy prop="headX2" name="v2hy" source="sortedVectors1[2]" />
+  </conditionalContent>
+
+  <conditionalContent condition="$nEquilibria >= 2">
+    <copy prop="tailX1" name="v3tx" source="sortedVectors1[3]" />
+    <copy prop="tailX2" name="v3ty" source="sortedVectors1[3]" />
+    <copy prop="headX1" name="v3hx" source="sortedVectors1[3]" />
+    <copy prop="headX2" name="v3hy" source="sortedVectors1[3]" />
+  </conditionalContent>
+
+  <conditionalContent condition="$nEquilibria >= 3">
+    <copy prop="tailX1" name="v4tx" source="sortedVectors1[4]" />
+    <copy prop="tailX2" name="v4ty" source="sortedVectors1[4]" />
+    <copy prop="headX1" name="v4hx" source="sortedVectors1[4]" />
+    <copy prop="headX2" name="v4hy" source="sortedVectors1[4]" />
+  </conditionalContent>
+
+  <conditionalContent condition="$nEquilibria >= 4">
+    <copy prop="tailX1" name="v5tx" source="sortedVectors1[5]" />
+    <copy prop="tailX2" name="v5ty" source="sortedVectors1[5]" />
+    <copy prop="headX1" name="v5hx" source="sortedVectors1[5]" />
+    <copy prop="headX2" name="v5hy" source="sortedVectors1[5]" />
+  </conditionalContent>
+
+
+  <mathList name="Es">
+    <conditionalContent condition="$nEquilibria >= 1">
+     $E1
+    </conditionalContent>
+    <conditionalContent condition="$nEquilibria >= 2">
+     $E2
+    </conditionalContent>
+    <conditionalContent condition="$nEquilibria >= 3">
+     $E3
+    </conditionalContent>
+    <conditionalContent condition="$nEquilibria >= 4">
+     $E4
+    </conditionalContent>
+  </mathList>
+
+  <repeat for="$Es" name="Epoints" valueName="v"><point>($v,0)</point></repeat>
+
+
+  <booleanList name="EstabilityBoolean">
+    <conditionalContent condition="$nEquilibria >= 1">
+      $E1stable
+    </conditionalContent>
+    <conditionalContent condition="$nEquilibria >= 2">
+      <boolean>$E2stable</boolean>
+    </conditionalContent>
+    <conditionalContent condition="$nEquilibria >= 3">
+      $E3stable
+    </conditionalContent>
+    <conditionalContent condition="$nEquilibria >= 4">
+      <boolean>$E4stable</boolean>
+    </conditionalContent>
+  </booleanList>
+
+</setup>
+
+
+<p>
+  <updateValue name="addEquilibrium" target="$nEsUser" newValue="$nEsUser+1" disabled="$nEsUser >= 5">
+    <label>Add equilibrium</label>
+  </updateValue>
+  <updateValue name="removeEquilibrium" target="$nEsUser" newValue="$nEsUser-1" disabled="$nEsUser &lt;= 0">
+    <label>Remove equilibrium</label>
+  </updateValue>
+  <updateValue name="revealVectors" type="boolean" target="$showVectors" newValue="true" disabled="$showVectors">
+    <label>Show vectors</label>
+  </updateValue>
+</p>
+
+
+<graph aspectRatio="$aspectRatio" size="$size" xmin="$vmin" xmax="$vmax" ymin="-3" ymax="3" fixAxes="true" displayYAxis="false" name="phaseLine">
+  <xLabel><m>$var</m></xLabel>
+  <repeatForSequence from="$vmin+0.1$vrange" length="min($nEsUser,5)" step="0.1$vrange" name="mapEpointsUser" valueName="v"><setup><number copy="$v.value" name="ref1" /></setup>
+      <equilibriumPoint styleNumber="9" x="$ref1" y="-2" switchable="true">
+        
+          <attractTo>
+            <line>y=0</line>
+          </attractTo>
+          <attractTo threshold="$attractThreshold">
+            $Epoints
+          </attractTo>
+        
+      </equilibriumPoint>
+    </repeatForSequence>
+
+
+  <point name="vATail" hide="true" x="$ref2+0.1$vrange" y="2.5">
+    
+      <attractTo><line>y=0</line></attractTo>
+    
+  </point>
+  <point name="vAHead" hide="true" x="$ref3+0.2$vrange" y="2.5">
+    
+      <attractTo><line>y=0</line></attractTo>
+    
+  </point>
+  <vector name="vA" hide="not $showVectors" head="$vAHead" tail="$vATail" styleNumber="2" />
+  
+
+  <conditionalContent condition="$nEsUser >= 1">
+    <point name="vBTail" hide="true" x="$ref4+0.1$vrange" y="2">
+      
+        <attractTo><line>y=0</line></attractTo>
+      
+    </point>
+    <point name="vBHead" hide="true" x="$ref5+0.2$vrange" y="2">
+      
+        <attractTo><line>y=0</line></attractTo>
+      
+    </point>
+    <vector name="vB" hide="not $showVectors" head="$vBHead" tail="$vBTail" styleNumber="2" />
+  </conditionalContent>
+
+
+  <conditionalContent condition="$nEsUser >= 2">
+    <point name="vCTail" hide="true" x="$ref6+0.1$vrange" y="1.5">
+      
+        <attractTo><line>y=0</line></attractTo>
+      
+    </point>
+    <point name="vCHead" hide="true" x="$ref7+0.2$vrange" y="1.5">
+      
+        <attractTo><line>y=0</line></attractTo>
+      
+    </point>
+    <vector name="vC" hide="not $showVectors" head="$vCHead" tail="$vCTail" styleNumber="2" />
+  </conditionalContent>
+
+
+  <conditionalContent condition="$nEsUser >= 3">
+    <point name="vDTail" hide="true" x="$ref8+0.1$vrange" y="1">
+      
+        <attractTo><line>y=0</line></attractTo>
+      
+    </point>
+    <point name="vDHead" hide="true" x="$ref9+0.2$vrange" y="1">
+      
+        <attractTo><line>y=0</line></attractTo>
+      
+    </point>
+    <vector name="vD" hide="not $showVectors" head="$vDHead" tail="$vDTail" styleNumber="2" />
+  </conditionalContent>
+
+
+  <conditionalContent condition="$nEsUser >= 4">
+    <point name="vETail" hide="true" x="$ref10+0.1$vrange" y="-1">
+      
+        <attractTo><line>y=0</line></attractTo>
+      
+    </point>
+    <point name="vEHead" hide="true" x="$ref11+0.2$vrange" y="-1">
+      
+        <attractTo><line>y=0</line></attractTo>
+      
+    </point>
+    <vector name="vE" hide="not $showVectors" head="$vEHead" tail="$vETail" styleNumber="2" />
+  </conditionalContent>
+
+
+  <conditionalContent condition="$nEsUser >= 5">
+    <point name="vFTail" hide="true" x="$ref12+0.1$vrange" y="-1.5">
+      
+        <attractTo><line>y=0</line></attractTo>
+      
+    </point>
+    <point name="vFHead" hide="true" x="$ref13+0.2$vrange" y="-1.5">
+      
+        <attractTo><line>y=0</line></attractTo>
+      
+    </point>
+    <vector name="vF" hide="not $showVectors" head="$vFHead" tail="$vFTail" styleNumber="2" />
+  </conditionalContent>
+
+
+
+</graph>
+
+  <setup>
+    <conditionalContent name="creditForStability">
+      <case condition="$EpointsInLocation">
+        <number>0.5</number>
+      </case>
+      <else>
+        <number>0</number>
+      </else>
+    </conditionalContent>
+  </setup>
+
+  <p>Check Equilibria:
+<answer matchPartial="true" name="ansEPoints" numAwardsCredited="2">
+  <award unorderedCompare="true" credit="0.5">
+      <when name="EpointsInLocation">
+        <mathList>$EpointsUser</mathList>
+        = <mathList>$Epoints</mathList>
+      </when>
+  </award>
+  <award credit="$creditForStability[1][1]" matchByExactPositions="true">
+      <when>
+        <booleanList><copy prop="stable" source="sortedEpointsUser" /></booleanList>
+         = $EstabilityBoolean
+    </when>
+    </award>
+  </answer>
+
+  </p>
+
+  <feedback updateWith="$ansEPoints" condition="not $EpointsInLocation">
+    Some equilibria are not in the correct location.
+  </feedback>
+  <feedback updateWith="$ansEPoints" condition="$EpointsInLocation and $ansEPoints.creditAchieved &lt; 1">
+    Some equilibria have the incorrect stability.  You can click an equilibrium to toggle between stable (filled point) and unstable (unfilled point).
+  </feedback>
+  
+
+
+
+
+  <p>Vector field: 
+    
+  <answer matchPartial="true" name="ansVs">
+    <award credit="$showVectors">
+      <when>
+        <when name="vsOnAxis">
+          <boolean>$v1hy = 0 and $v1ty = 0</boolean>
+          <conditionalContent condition="$nEquilibria >=1">
+            and 
+            <boolean>$v2hy = 0 and $v2ty = 0</boolean>
+          </conditionalContent>
+          <conditionalContent condition="$nEquilibria >=2">
+            and 
+            <boolean>$v3hy = 0 and $v3ty = 0</boolean>
+          </conditionalContent>
+          <conditionalContent condition="$nEquilibria >=3">
+            and
+            <boolean>$v4hy = 0 and $v4ty = 0</boolean>
+          </conditionalContent>
+          <conditionalContent condition="$nEquilibria >=4">
+            and
+            <boolean>$v5hy = 0 and $v5ty = 0</boolean>
+          </conditionalContent>
+        </when>
+        and
+        <when>
+          <conditionalContent name="v1Location">
+            <case condition="$nEquilibria = 0">
+              <boolean>true</boolean>
+            </case>
+            <else>
+              <boolean>max($v1hx, $v1tx) &lt; $E1</boolean>
+            </else>
+          </conditionalContent>
+          <conditionalContent name="v2Location">
+            <case condition="$nEquilibria = 1">
+              and
+              <boolean>$E1 &lt; min($v2hx, $v2tx)</boolean>
+            </case>
+            <case condition="$nEquilibria > 1">
+              and
+              <boolean>$E1 &lt; min($v2hx, $v2tx) and max($v2hx, $v2tx) &lt; $E2</boolean>
+            </case>
+          </conditionalContent>
+          <conditionalContent name="v3Location">
+            <case condition="$nEquilibria = 2">
+              and
+              <boolean>$E2 &lt; min($v3hx, $v3tx)</boolean>
+            </case>
+            <case condition="$nEquilibria > 2">
+              and
+              <boolean>$E2 &lt; min($v3hx, $v3tx) and max($v3hx, $v3tx) &lt; $E3</boolean>
+            </case>
+          </conditionalContent>
+          <conditionalContent name="v4Location">
+            <case condition="$nEquilibria = 3">
+              and
+              <boolean>$E3 &lt; min($v4hx, $v4tx)</boolean>
+            </case>
+            <case condition="$nEquilibria > 3">
+              and
+              <boolean>$E3 &lt; min($v4hx, $v4tx) and max($v4hx, $v4tx) &lt; $E4</boolean>
+              and
+              <boolean>$E4 &lt; min($v5hx, $v5tx)</boolean>
+            </case>
+          </conditionalContent>
+        </when>
+        and
+        <when>
+          <boolean>$v1Location[1][1] and <boolean>$v1hx > $v1tx</boolean> = $v1right</boolean>
+          <conditionalContent condition="$nEquilibria >= 1">
+            and
+            <boolean>$v2Location[1][2] and <boolean>$v2hx > $v2tx</boolean> = $v2right</boolean>
+            <conditionalContent condition="$nEquilibria >= 2">
+              and
+              <boolean>$v3Location[1][2] and <boolean>$v3hx > $v3tx</boolean> = $v3right</boolean>
+              <conditionalContent condition="$nEquilibria >= 3">
+                and
+                <boolean>$v4Location[1][2] and <boolean>$v4hx > $v4tx</boolean> = $v4right</boolean>
+                <conditionalContent condition="$nEquilibria >= 4">
+                  and
+                  <boolean>$v5Location and <boolean>$v5hx > $v5tx</boolean> = $v5right</boolean>
+                </conditionalContent>
+              </conditionalContent>
+            </conditionalContent>  
+          </conditionalContent>
+        </when>
+      </when>
+    </award>
+    <considerAsResponses>
+      $v1hx $v1hy $v1tx $v1ty
+      $v2hx $v2hy $v2tx $v2ty
+      $v3hx $v3hy $v3tx $v3ty
+      $v4hx $v4hy $v4tx $v4ty
+      $v5hx $v5hy $v5tx $v5ty
+    </considerAsResponses>
+  </answer>
+  </p>
+
+  <feedback updateWith="$ansVs" condition="$nEsUser != $nEquilibria">
+    The number of equilibria is incorrect.
+  </feedback>
+  <feedback updateWith="$ansVs" condition="!$showVectors">
+    Click the Show vectors button to reveal the arrows for the vector field.
+  </feedback>
+  <feedback updateWith="$ansVs" condition="$nEsUser = $nEquilibria and $showVectors and not $vsOnAxis">
+    All arrows must be on the state line.
+  </feedback>
+  <feedback updateWith="$ansVs" condition="$nEsUser = $nEquilibria and $showVectors and $vsOnAxis and ($v1Location[1][1] = false or $v2Location[1][2]=false or $v3Location[1][2]=false or $v4Location[1][2]=false or $v5Location=false)">
+    Place one arrow into each of the intervals separated by equilibria.  Make sure no arrows cross an equilibrium.
+  </feedback>
+  <feedback updateWith="$ansVs" condition="$nEsUser = $nEquilibria and $showVectors and $vsOnAxis and not ($v1Location[1][1] = false or $v2Location[1][2]=false or $v3Location[1][2]=false or $v4Location[1][2]=false or $v5Location=false) and $ansVs.creditAchieved &lt; 1">
+    An arrow is not pointed in the correct direction.
+  </feedback>
+
+
+
+
+</module>
+

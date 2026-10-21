@@ -1,0 +1,116 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7V1fBnDapn5dFQaXNZR4Ja
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 082f520493605c20
+-->
+<problem>
+<!-- <title>Riemann sum example &#x2D; polynomial</title> -->
+
+<setup>
+
+<function name="rate_func" variables="t">30-40*t^2+80*t</function>
+<math name="lh_five" simplify="numbers">($$rate_func(0)+$$rate_func(0.2)+$$rate_func(0.4)+$$rate_func(0.6)+$$rate_func(0.8))*0.2</math>
+<math name="rh_five" simplify="numbers">($$rate_func(1)+$$rate_func(0.2)+$$rate_func(0.4)+$$rate_func(0.6)+$$rate_func(0.8))*0.2</math>
+<math name="lh_ten" simplify="numbers">($$rate_func(0)+$$rate_func(0.2)+$$rate_func(0.4)+$$rate_func(0.6)+$$rate_func(0.8)+$$rate_func(0.1)+$$rate_func(0.3)+$$rate_func(0.5)+$$rate_func(0.7)+$$rate_func(0.9))*0.1</math>
+<math name="all_five" simplify="numbers">($$rate_func(0)+$$rate_func(0.2)+$$rate_func(0.4)+$$rate_func(0.6)+$$rate_func(0.8)+$$rate_func(1))*0.2</math>
+<math name="all_ten">($$rate_func(0)+$$rate_func(0.2)+$$rate_func(0.4)+$$rate_func(0.6)+$$rate_func(0.8)+$$rate_func(0.1)+$$rate_func(0.3)+$$rate_func(0.5)+$$rate_func(0.7)+$$rate_func(0.9)+$$rate_func(1))*0.1</math>
+<math name="f0">$$rate_func(0)</math>
+<math name="f1">$$rate_func(.1)</math>
+<math name="f2">$$rate_func(.2)</math>
+<math name="f3">$$rate_func(.3)</math>
+<math name="f4">$$rate_func(.4)</math>
+<math name="f5">$$rate_func(.5)</math>
+<math name="f6">$$rate_func(.6)</math>
+<math name="f7">$$rate_func(.7)</math>
+<math name="f8">$$rate_func(.8)</math>
+<math name="f9">$$rate_func(.9)</math>
+<math name="f10">$$rate_func(1)</math>
+
+</setup>
+
+<p>
+Suppose the speed of a car is given by <m><math extend="$rate_func.formula" /></m> miles per hour (<m>t</m> is measured in hours).</p>
+
+
+
+<!--Problem #1************************************************-->
+<exercise includeAutoNumber="true"><title />
+<p>
+Estimate how far the car has travelled in an hour using a left-hand Riemann sum with <m>5</m> intervals. Include at least 4 significant figures in your answer.
+<answer>
+<award symbolicEquality="true" allowedErrorInNumbers="0.001">$lh_five </award>
+<award credit="0.5" symbolicEquality="true" allowedErrorInNumbers="0.01" name="numericalerror1">$lh_five </award>
+<award symbolicEquality="true" allowedErrorInNumbers="0.001" credit="0" name="award1">$all_five </award>
+</answer></p>
+  
+<feedback condition="$award1">Don't include the right endpoint.</feedback>
+<copy prop="feedbacks" source="answer1" />
+<feedback condition="$numericalerror1">Double check your arithmetic/rounding.</feedback>
+</exercise>
+
+<!--Problem #2***********************************************-->  
+<exercise includeAutoNumber="true"><title /><p>
+Estimate how far the car has travelled in an hour using a right-hand Riemann sum with <m>5</m> intervals. Include at least 4 significant figures in your answer.
+
+<answer>
+<award symbolicEquality="true" allowedErrorInNumbers="0.001">$rh_five </award>
+<award credit="0.5" symbolicEquality="true" allowedErrorInNumbers="0.01" name="numericalerror3">$rh_five </award>
+<award symbolicEquality="true" allowedErrorInNumbers="0.001" credit="0" name="award3">$all_five </award>
+</answer></p>
+  
+<feedback condition="$award3">Don't include the left endpoint.</feedback>
+<copy prop="feedbacks" source="answer2" />
+<feedback condition="$numericalerror3">Double check your arithmetic/rounding.</feedback>
+</exercise>
+
+<!--Problem #3**********************************************-->  
+<exercise includeAutoNumber="true"><title /><p>
+Estimate how far the car has travelled in an hour using a left-hand Riemann sum with <m>10</m> intervals. Include at least 4 significant figures in your answer.
+
+<answer>
+<award symbolicEquality="true" allowedErrorInNumbers="0.001">$lh_ten </award>
+<award credit="0.5" symbolicEquality="true" allowedErrorInNumbers="0.01" name="numericalerror5">$lh_ten </award>
+<award symbolicEquality="true" credit="0" name="award5">$all_ten </award>
+</answer></p>
+  
+<feedback condition="$award5">Don't include the right endpoint.</feedback>
+<copy prop="feedbacks" source="answer3" />
+<feedback condition="$numericalerror5">Double check your arithmetic/rounding.</feedback>
+</exercise>
+
+
+<solution>
+
+
+<exercise includeAutoNumber="true"><title />
+<p>If we split an hour up into <m>5</m> intervals, each interval is <m>0.2</m> hours long.  Since <m>t</m> is measured in hours, we want to leave it this way, rather than converting into minutes.  The endpoints of our intervals are <m>0</m>, <m>0.2</m>, <m>0.4</m>, <m>0.6</m>, and <m>0.8</m>.  The left-hand Riemann sum is then
+</p>
+<p>
+
+<m>$f0 \cdot 0.2+$f2 \cdot 0.2+$f4 \cdot 0.2+$f6 \cdot 0.2+$f8 \cdot 0.2= $lh_five. </m></p>
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<p>If we split an hour up into <m>5</m> intervals, each interval is <m>0.2</m> hours long.  Since <m>t</m> is measured in hours, we want to leave it this way, rather than converting into minutes.  The endpoints of our intervals are <m>0</m>, <m>0.2</m>, <m>0.4</m>, <m>0.6</m>, and <m>0.8</m>.  The right-hand Riemann sum is then
+</p>
+<p>
+
+<m>$f2 \cdot 0.2+$f4 \cdot 0.2+$f6 \cdot 0.2+$f8 \cdot 0.2+$f10 \cdot 0.2= $rh_five. </m></p>
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<p>If we split an hour up into <m>10</m> intervals, each interval is <m>.1</m> hours long.  Since <m>t</m> is measured in hours, we want to leave it this way, rather than converting into minutes.  The endpoints of our intervals are <m>0</m>, <m>0.1</m>, <m>0.2</m>, <m>0.3</m>, <m>0.4</m>, <m>0.5</m>, <m>0.6</m>, <m>0.7</m>, <m>0.8</m>, and <m>0.9</m>.  The left-hand Riemann sum is then
+</p>
+
+  
+<p><m>$f0 \cdot 0.2+$f1 \cdot 0.2+$f2 \cdot 0.2 ...</m></p>
+<p><m>+$f3 \cdot 0.2+$f4 \cdot 0.2+$f5 \cdot 0.2 ...</m></p>
+<p><m>+$f6 \cdot 0.2+$f7 \cdot 0.2+
+  $f8 \cdot 0.2+$f9 \cdot 0.2= $lh_ten .</m></p>
+</exercise>
+
+</solution>
+
+
+</problem>

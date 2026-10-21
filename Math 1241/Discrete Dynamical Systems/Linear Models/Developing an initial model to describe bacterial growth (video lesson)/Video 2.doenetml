@@ -1,0 +1,114 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7F6QfZhyLck4U3YkQhvR16
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 80c1abe0b486f447
+-->
+<title>Developing an initial model to describe bacteria growth</title>
+
+<p><ref>Video 1</ref> | <ref>Video 2 </ref> | <ref>Summary</ref> | <ref>Transcripts</ref> </p>
+
+
+<description>
+By analyzing some data and hypothesizing rules for cell division, we develop a discrete dynamical system for the growth of a population of bacteria.
+</description>
+
+<setup>
+  <number name="B0" fixed="true">0.022</number>
+  <number name="B1" fixed="true">0.036</number>
+  <number name="B2" fixed="true">0.060</number>
+  <number name="B3" fixed="true">0.101</number>
+  <number name="B4" fixed="true">0.169</number>
+  <number name="B5" fixed="true">0.266</number>
+  <number name="dB1" fixed="true">$B1-$B0</number>
+  <number name="dB2" fixed="true">$B2-$B1</number>
+  <number name="dB3" fixed="true">$B3-$B2</number>
+  <number name="dB4" fixed="true">$B4-$B3</number>
+  <number name="dB5" fixed="true">$B5-$B4</number>
+</setup>
+
+<!--****************************************************
+                   Video 2
+*****************************************************-->
+<section name="vid_section"><title>Video 2</title>
+
+<figure suppressFigureNameInCaption="true">
+<video youtube="YW5zmsji5_A" size="large" aspectRatio="16/9" name="v2" />
+<caption>Solving a bacteria growth model</caption>
+</figure>
+<setup>
+<number name="timestamp1">518</number>
+</setup>
+
+<sideBySide margins="5%">
+<div><p>Video credit achieved: <number displayDecimals="1">$v2RoundUp*100</number>%</p></div>
+
+<div>
+<p><updateValue type="number" target="$v2.time" newValue="$timestamp1" name="skipTo1">
+  <label>Go to Key Moment 1</label>
+</updateValue></p>
+
+<updateValue type="text" triggerWith="$skipTo1" target="$v2.state" newValue="playing" name="playStamp1" />
+</div>
+</sideBySide>
+
+<number name="v2RoundUp" hide="true">
+  <conditionalContent>
+    <case condition="$v2.fractionWatched > 0.9">1</case>
+    <else>$v2.fractionWatched</else>
+  </conditionalContent>
+</number>
+
+<answer hide="true" name="v2Credit">
+  <award credit="$v2RoundUp"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v2" target="$v2Credit" actionName="submitAnswer" />
+</section>
+
+<section><title>Video 2 review questions</title>
+<!-- 
+  <p>Coming soon!</p> -->
+
+<setup>
+  <math name="c">5/3</math>
+  <math name="B32" simplify="numbers">$B0 $c^(32)</math>
+</setup>
+<exercise includeAutoNumber="true"><title />
+<p>Using the equation described below and in the video, 
+  <md name="specific_solution">
+    <mrow>B_t &amp;= \bigg(\frac{5}{3}\bigg)^t B_0</mrow>
+    <mrow>B_0 &amp;= 0.022</mrow>
+  </md>
+  where <m>t</m> is the number of time steps and <m>B_t</m> is the population at time step <m>t</m>, solve for <m>B_{32}</m>. Express your answer symbolically, or numerically to at least 2 decimal places.</p>
+  <p><m>B_{32} = </m>
+    <answer symbolicEquality="true" simplifyOnCompare="true" allowedErrorInNumbers="0.01" allowedErrorIsAbsolute="true" name="vid2Review1">
+      <award>$B32</award>
+    </answer>
+  </p>
+
+<hint hide="$vid2Review1.numSubmissions &lt; 2 or $vid2Review1.creditAchieved = 1 or $vid2Review1.numSubmissions >= 5">Use substitution for the variable <m>t</m> in the equation provided. The variable <m>t</m> represents the number of time steps under consideration.</hint>
+
+<hint hide="$vid2Review1.numSubmissions &lt; 5 or $vid2Review1.creditAchieved = 1">Since we are considering the 32nd time step, we need to solve this equation for <m>t = 32</m>. We have,
+  <md>
+    <mrow>B_{32} \amp= <math extend="$B32" simplify="none" /></mrow>
+    <mrow>\amp= $B32</mrow>
+  </md>
+</hint>
+<solution>Since we are considering the 32nd time step, we need to solve this equation for <m>t = 32</m>. We have,
+  <md>
+    <mrow>B_{32} \amp= <math extend="$B32" simplify="none" /></mrow>
+    <mrow>\amp= $B32</mrow>
+  </md>
+</solution>  
+</exercise>
+
+<exercise includeAutoNumber="true"><title />
+<p>How many minutes have passed by time step <m>t = 32</m>? <answer name="vid2Review2">32*16</answer></p>
+
+<hint hide="$vid2Review2.numSubmissions &lt; 2 or $vid2Review2.creditAchieved = 1 or $vid2Review2.numSubmissions >= 5">Recall that each time step corresponds to an interval of several minutes. See <ref to="$vid_section">Key Moment 1</ref> in the video for a clue.</hint>
+</exercise>
+<solution>Since there are 16 minutes between each time step, the total number of minutes is just <m>16 \cdot 32 = 512</m> minutes</solution>
+</section>
+ 
+

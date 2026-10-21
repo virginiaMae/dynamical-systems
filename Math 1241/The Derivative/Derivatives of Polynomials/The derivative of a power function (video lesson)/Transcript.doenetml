@@ -1,0 +1,78 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7KTysD9txN2GTjwav7S5ZF
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 211f09c12c2a0139
+-->
+<title>The derivative of a power function</title>
+
+<p><ref>Video</ref> | <ref>Summary</ref>| <ref>Transcript</ref>  </p>
+
+<description>
+Using the limit definition of the derivative to calculate the derivative of a power function.
+</description>
+
+<section><title>Transcript: The derivative of a power function</title>
+
+<p>The power function is a function of the form <m>f(x)</m> equals <m>x</m> to some power; let’s call it <m>p</m>,
+<me>f(x) = x^p.</me> 
+We’ll start off by looking at power functions where the exponent <m>p</m> is an integer. In this case let’s just write our function as <m>f(x) = x^n</m>. We’ll use <m>n</m> for the exponent, since <m>n</m> is often used for integers. So, let’s let <m>n = 1,2,3,...</m> etc. 
+<me>f(x) = x^n \;\; \text{where} \;\; n = 1,2,3...</me>
+When <m>n = 2</m>, we have quadratic functions: <m>f(x) = x^2</m>. Now we’ve already calculated that the derivative <m>f’(x)</m> for a quadratic is just 2 times <m>x</m>. Let’s look at the calculation behind this, to see if it will give us insight into what to do when <m>n</m> is an integer other than 2.</p>
+<p>Alright, the derivative is <m>\frac{df}{dx}</m>, which if we wanted to we could write this as <m>\frac{dx^2}{dx}</m>, substituting the value <m>f = x^2</m> right in the differential notation. So, this derivative is the limit as <m>\Delta x</m> goes to 0, of <m>(x + \Delta x)^2 - x^2</m> (that’s the change in the output of <m>f</m>), all over <m>\Delta x</m> (the change in the input)
+<me>\lim_{\Delta x \to 0} \frac{(x + \Delta x)^2 - x^2}{\Delta x}.</me> 
+How did we determine that this formula gave us <m>2x</m>, the derivative of <m>x^2</m>? Well, what we did is we multiplied out the quadratic. When we do this, we get <m>x^2 + 2 x \Delta x + \Delta x ^2 - x^2</m>, all over <m>\Delta x</m> 
+<me>\lim_{\Delta x \to 0} \frac{x^2 + 2 x \Delta x + \Delta x ^2 - x^2}{\Delta x}.</me> 
+The first term, <m>x^2</m>, is canceled out by the <m>x^2</m> that we subtract off at the end. The second term, when we divide by <m>\Delta x</m>, just becomes <m>2x</m>. The third term becomes <m>\Delta x</m>
+<me>\lim_{\Delta x \to 0} 2 x  + \Delta x.</me>
+Now when we take the limit, <m>\Delta x</m> goes to 0 and this <m>\Delta x</m> goes away, and we’re just left with the final answer that the derivative is <m>2x</m>
+<me>\lim_{\Delta x \to 0} 2 x  + \Delta x = 2x.</me>
+And that was all fine and good for quadratic, but what happens when <m>n</m>, the exponent, becomes larger than 2? If we repeat these calculations, let's say for <m>n = 3</m>, we just need to replace these 2’s with 3’s. But now it’s going to get a little uglier when we try to multiply out the cubic. If we did this with the cubic, it would look something like this:
+<me>\frac{dx^3}{dx} = \lim_{\Delta x \to 0} \frac{(x + \Delta x)^3 - x^3}{\Delta x} = \lim_{\Delta x \to 0} \frac{x^3 + 3x^2 \Delta x + 3 x \Delta x^2 + \Delta x^3 - x^3}{\Delta x}</me>
+Our multiplied expression at the right is a bit more complicated, but let's think about what happens to these extra terms. Just like before, the <m>x^3</m>, the highest order term, gets canceled out by the term at the right which we subtract off. And the second term, the <m>\Delta x</m>’s will cancel, and we’ll get just <m>3x^2</m>. But now we have two more terms, but notice this term is <m>\Delta x^2</m> and this term is <m>\Delta x^3</m>. When we divide by <m>\Delta x</m>, the first term will become something times <m>\Delta x</m>, and the second term will become <m>\Delta x^2</m>. I’ll write them out exactly here, but I don’t want you to pay attention to the details of these two terms, instead let’s rewrite them as <m>\Delta x</m> times something, where this something is just some expression
+<me>\frac{dx^3}{dx} = \lim_{\Delta x \to 0} 3x^2 + 3x \Delta x + \Delta x^2 = \lim_{\Delta x \to 0} 3x^2 + \Delta x (\text{something}).</me>
+But the important part is it's just some finite expression, it’s not something that will blow up to infinity as <m>\Delta x</m> goes to 0. Then, you can see we don’t care what this "something" is; we’re going to take the limit as <m>\Delta x</m> goes to 0, and this whole term is going to go away, and we’ll be left with the final result, that the derivative is <m>3x^2</m>.
+<me>\frac{dx^3}{dx} = 3x^2</me>
+The main point is that when we multiplied out this cubic, we had a bunch of terms. The first term does not depend on <m>\Delta x</m>, but it gets subtracted off. The second term is the term that matters, because the <m>\Delta x</m> will be canceled, and we’ll get the important <m>3x^2</m>, and the third and later terms will all go away, because even after dividing by *<m>\Delta x</m>, they’ll still contain a <m>\Delta x</m> in them, and so they’ll go to 0 in the limit. And the nice thing is that this process will work, even for exponents larger than 3.</p>
+<p>Let’s take a look at the general case.
+Let’s try to take a derivative of a power function <m>x^n</m>, where we’ll leave <m>n</m> as any positive integer. The derivative of <m>x^n</m> with respect to x, we need to use our limit definition, and when we do that we get <m>x + \Delta x</m>, to the power of <m>n</m>, minus <m>x^n</m>, all over <m>\Delta x</m>
+<me>\frac{dx^n}{dx} = \lim_{\Delta x \to 0} \frac{(x + \Delta x)^n - x^n}{\Delta x}.</me>
+The tricky part is this <m>(x + \Delta x)^n</m>. What does that look like when we multiply it out? Well let's look at the binomial theorem.</p> 
+<p>A binomial is a polynomial with two terms, let’s write it as <m>(x+y)</m>, and raise it to the power of <m>n</m>. The binomial theorem gives an expression for all the terms when we multiply this out. But it turns out we don’t care about most of the terms. Remember when we multiplied out the cubic, the only term that mattered was the term that contained one <m>\Delta x</m>. The term with 0 <m>\Delta x</m>’s got subtracted off. The term with 2 or more <m>\Delta x</m>’s went to 0, even after dividing by <m>\Delta x</m>. So, the binomial theorem says when you multiply this out, you’ll first get a term where you multiply <m>x</m> by itself <m>n</m> times, 
+<me>(x+y)^n = x^n + ...</me>
+Then, you’ll get a term where you multiply by <m>x</m> by (*itself) <m>(n-1)</m> times, and <m>y</m> once. And you can do that in <m>n</m> different ways, it all works out that way, so you end up getting <m>n(x^{n-1})y</m>
+<me>(x+y)^n = x^n + n x^{n-1} y + ...</me>
+And then you’ll get a bunch more terms, but they’ll all contain at least 2 <m>y</m>’s, so you’ll get <m>y^2</m> times "something", and that "something" will be a polynomial in the <m>x</m>’s and <m>y</m>’s.
+<me>(x+y)^n = x^n + n x^{n-1} y + y^2(\text{something}) + ...</me>
+And here we're going to use <m>y = \Delta x</m>, and this <m>y^2</m> will be <m>\Delta x^2</m>, which will still go to 0 when dividing by *<m>\Delta x</m>. So, let’s plug this into our expression for the derivative.</p> 
+<p>So, we need to multiply out <m>(x + \Delta x)^n</m>, so we’ll use this expression where <m>y</m> is <m>\Delta x</m>, and we’ll get <m>x^n + n x^{n-1}</m> times <m>\Delta x</m> plus  <m>\Delta x^2</m> times "something", minus <m>x^n</m>, all over <m>\Delta x</m>
+<me>\frac{dx^n}{dx} = \lim_{\Delta x \to 0} \frac{x^n + n x^{n-1} \Delta x + \Delta x^2 (\text{something}) - x^n}{\Delta x}</me>
+Ok, this is looking familiar. The <m>x^n</m> cancels with the <m>x^n</m> that we subtract off. When we divide by <m>\Delta x</m>, we’ll get <m>n</m> times <m>x^{n-1}</m> (the  <m>\Delta x</m>’s cancel). Plus, when we cancel <m>\Delta x</m> we still have one <m>\Delta x</m> left, times "something", but <m>\Delta x</m> times "something" goes to 0 as <m>\Delta x</m> goes to 0. So we’re left with the limit is <m>n</m> times <m>x^{n-1}</m>.</p>
+<me>\frac{dx^n}{dx} = \lim_{\Delta x \to 0} n x^{n-1}</me>
+<p>So we can summarize. If <m>f(x)</m> equals <m>x^n</m>, then its derivative <m>df/dx = n x^{n-1}</m>. 
+Or, we could also write it as <m>f’(x) = n x^{n-1}</m>. Either notation. And this is how we take the derivative of a power function. </p>
+<p>Let’s use this general formula to calculate the derivative for some specific power functions. If we let <m>n = 1</m>, then we get <m>f(x) = x</m>, and the derivative is 1 times <m>x^0</m> which is just 1. 
+<me>n = 1, \;\;\;f(x) = x, \;\;\; \frac{df}{dx} = 1</me>
+Alright, we knew that already.</p>
+<p>(*For) <m>n = 2</m>, we have our quadratic, and we get back that <m>\frac{df}{dx}</m> is equal to <m>2x</m>
+<me>n = 2, \;\;\;f(x) = x^2, \;\;\; \frac{df}{dx} = 2x \;,</me>
+and we could easily write out some more,
+<me>n = 3, \;\;\;f(x) = x^3, \;\;\; \frac{df}{dx} = 3x^2</me>
+<me>n = 4, \;\;\;f(x) = x^4, \;\;\; \frac{df}{dx} = 4x^3.</me></p>
+
+<p>The neat thing is that this formula works for any power function, not just for positive integers. We won’t show that here, but in general if <m>f(x)</m> equals a power function <m>x^p</m>, for any <m>p \neq 0</m>, then the derivative <m>f’(x)</m> is <m>p x^{p-1}</m>. Or we could write <m>\frac{df}{dx}</m>, it's the same formula, <m>\frac{df}{dx} = p x^{p-1}</m>. This works for negative powers, and even fractional powers. Though for those fractional powers, we might want to restrict <m>x</m> to be positive, so that our function still takes on real values.</p>
+<p>So, now we know how to calculate the derivative of powers with negative exponents. Let’s say we set <m>p = -1</m>. Now our <m>f(x)</m> is <m>x^{-1}</m>, or we could write it as <m>\frac{1}{x}</m>. Using our formula, we see that <m>\frac{df}{dx}</m> has to equal <m>p</m>, <m>p</m> is <m>-1</m>, so we get <m>-x^{p-1}</m>. But here we have to be careful -- our exponent <m>p</m> is <m>-1</m>, so <m>(p-1)</m> is <m>-1</m> minus another 1, so we have <m>x</m> to the power of <m>-2</m>, or if you like, <m>- \frac{1}{x^2}</m>
+<me>p = -1, \;\;\;f(x) = x^{-1}, \;\;\; \frac{df}{dx} = - \frac{1}{x^2}.</me>
+We can continue to other negative exponents.
+For <m>x</m> to the power of <m>-2</m>, the derivative is <m>-2</m> times <m>x</m> to the power of negative 3, again we had to subtract 1 from the exponent, so our new exponent is negative 3,
+<me>p = -2, \;\;\;f(x) = x^{-2}, \;\;\; \frac{df}{dx} = - \frac{2}{x^3}.</me>
+
+And similarly, for <m>x</m> to the power of <m>-3</m>, we get <m>-3 x</m> to the power of <m>-4</m>
+<me>p = -3, \;\;\;f(x) = x^{-3}, \;\;\; \frac{df}{dx} = - \frac{3}{x^4}.</me></p>
+<p>What about the square root? <m>f(x)</m> equals the square root of <m>x</m>? That’s just <m>x</m> to the power of <m>\frac{1}{2}</m>. This formula works just as well for fractional powers, so we can use it for <m>p = \frac{1}{2}</m>. In this case, <m>df/dx = p</m>, so <m>\frac{1}{2}</m> times <m>x</m> to the power of <m>\frac{1}{2}</m> minus 1. Well <m>\frac{1}{2} - 1</m> is negative <m>\frac{1}{2}</m>. We can rewrite <m>x</m> to the power of negative <m>\frac{1}{2}</m> as 1 over the square root of <m>x</m>, so we get that the derivative of the square root is 1 over 2 times the square root of <m>x</m>
+  <me>p = \frac{1}{2}, \;\;\;f(x) = x^{\frac{1}{2}}, \;\;\; \frac{df}{dx} = - \frac{1}{2\sqrt{x}}.</me></p>
+
+
+
+
+</section>

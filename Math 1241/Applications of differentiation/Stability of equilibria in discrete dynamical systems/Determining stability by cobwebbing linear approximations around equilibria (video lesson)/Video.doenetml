@@ -1,0 +1,188 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: 7PGUpUJbRG1Qk5Gu1VM8Un
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 01f702399b06a336
+-->
+<title>Determining stability by cobwebbing linear approximations around equilibria</title>
+
+<p><ref>Video</ref> | <ref>Transcript</ref></p>
+
+<description>
+By cobwebbing the linear approximation to a discrete dynamical around an equilibrium, one can determine a criterion for the stability of the equilibrium.
+</description>
+
+<section name="vid_section"><title>Video</title>
+<figure suppressFigureNameInCaption="true">
+<video youtube="ixPT3tRuEDU" size="large" aspectRatio="16/9" name="v1" />
+<caption>Determining stability by cobwebbing linear approximations around equilibria</caption>
+</figure>
+
+<setup>
+  <number name="timestamp1">175</number>
+  <number name="timestamp2">355</number>
+</setup>
+
+<sideBySide margins="5%">
+<div><number name="v1RoundUp" hide="true">
+  <conditionalContent>
+    <case condition="$v1.fractionWatched > 0.9">1</case>
+    <else>$v1.fractionWatched</else>
+  </conditionalContent>
+</number>
+  
+  <p>Video credit achieved: <number displayDecimals="1">$v1RoundUp*100</number>%</p>
+
+<answer hide="true" name="v1Credit">
+  <award credit="$v1RoundUp"><when>true</when></award>
+</answer>
+
+<callAction triggerWith="$v1" target="$v1Credit" actionName="submitAnswer" />
+</div>
+
+<div>
+<updateValue type="number" target="$v1.time" newValue="$timestamp1" name="skipTo1">
+  <label>Go to Key Moment 1</label>
+</updateValue>
+</div>
+
+<div>
+<updateValue type="text" triggerWith="$skipTo1" target="$v1.state" newValue="playing" name="playStamp1" />
+
+<updateValue type="number" target="$v1.time" newValue="$timestamp2" name="skipTo2">
+  <label>Go to Key Moment 2</label>
+</updateValue>
+
+<updateValue type="text" triggerWith="$skipTo2" target="$v1.state" newValue="playing" name="playStamp2" />
+</div>
+
+
+</sideBySide>
+
+
+
+
+
+  
+<problem><title>Video review questions</title>
+<exercise includeAutoNumber="true"><title />
+
+<p>Imagine the updating function for a discrete dynamical system that you are investigating is <m>not</m> a linear function, but rather some complex curve, as shown in the example in the applet below. Let's review the steps described in the video for understanding the behavior of the system near it's equilibria. (Hint, see <ref to="$vid_section">Key Moment 1</ref> for a clue)</p>
+
+<ul>
+  <li>
+<p>First, plot the updating function (i.e., the function <m>f</m>, where <m>x_{n+1} = f(x_n))</m> and determine its equilibria locations by...</p>
+<answer name="ans1a">
+  <choice credit="1">locating the intersection points of the function <m>f</m> with the diagonal line given by <m>x_{n+1} = x_n</m></choice>
+  <choice>locating the intersection points of the function <m>f</m> with its inverse, <m>f^{-1}(x_n)</m></choice>
+  <choice>realizing that the point <m>(x_n, x_{n+1}) = (0,0)</m> is always a point of equilibrium</choice>
+</answer>
+
+
+<p>
+<booleanInput name="showDiagonal" prefill="true">
+  <label>Show Cobwebbing and Diagonal line given by: <m>x_{n+1} = x_n</m></label>
+</booleanInput></p>
+<!-- <p>Sample evolution rule: <m>f(x) = </m> <mathinput prefill="0.05(x&#x2D;2)^3+1" name="formula" /></p> -->
+<p>Sample updating function: <m>f(x) = </m> <math name="formula">0.05(x-2)^3+1</math></p>
+
+  <setup>
+    <function name="f" symbolic="true">$formula</function>
+    <solveEquations variables="x" name="solveForE" minVar="$xmin" maxVar="$xmax">$formula = x</solveEquations>
+    <math extend="$A.x" name="px" />
+    <derivative name="df">$f</derivative>
+    <number name="nPoints">10</number>
+    <number name="zeroFixed" fixed="true">0</number>
+    <number name="ipNum">-3</number>
+    <point x="$ipNum" y="$ipNum" name="initialPoint" labelPosition="left">
+      
+        <constrainToGraph />
+      
+      <label>Initial Point</label>
+    </point>
+<!--     <point x="$ipNum" y="$ipNum" name="initialPoint" hide labelPosition="left">
+      <constraints>
+        <constrainToGraph />
+      </constraints>
+      <label>Initial Point</label>
+    </point> -->
+    
+  </setup>
+<!-- <asList>$solveForE.solutions</asList> -->
+
+<!-- 
+  <updateValue name="addLine" target="numPoints" newValue="$numPoints+1" type="number">
+    <label>Add line</label>
+  </updateValue>
+  <updateValue name="deleteLine" target="numPoints" newValue="$numPoints&#x2D;1" type="number" disabled="$numPoints <= 1" >
+    <label>Delete line</label>
+  </updateValue>
+ -->
+  <graph identicalAxisScales="true" grid="true" showNavigation="true" name="g1">
+  <xLabel><m>x_n</m></xLabel>
+  <yLabel><m>x_{n+1}</m></yLabel>
+  <point name="A" x="0" y="0" styleNumber="2">
+    
+      <repeat for="$solveForE.solutions" valueName="v"><attractTo><point>($v, $v)</point></attractTo></repeat>
+      <constrainTo>$f</constrainTo>
+      <constrainToGraph />
+    
+  </point>
+      <line equation="y=$$df($px)(x-$px) + $$f($px)" fixed="true" styleNumber="3" name="tangentLine" />
+
+    <function extend="$f" layer="1" styleNumber="2" />
+<!--     <cobwebpolyline function="$f" numPoints="$numPoints" name="cobwebPolyline" initialPoint="$initialPoint" lockToSolution draggable="false" hide="!$showDiagonal"/> -->
+    <cobwebPolyline function="$f" numPoints="$nPoints" name="cobwebPolyline" initialPoint="$initialPoint" lockToSolution="true" draggable="true" hide="!$showDiagonal" />
+<!--     <copy source="initialPoint" layer="2"/> -->
+    <point extend="$initialPoint" layer="2" hide="false" />
+
+    <point name="E1" styleNumber="5">($solveForE.solution1, $solveForE.solution1)
+      <label><m>E_1</m></label>
+    </point>
+    <point name="E2" styleNumber="5">($solveForE.solution2, $solveForE.solution2)
+      <label><m>E_2</m></label>
+    </point>
+    <point name="E3" styleNumber="5">($solveForE.solution3, $solveForE.solution3)
+      <label><m>E_3</m></label>
+    </point>
+    
+</graph>
+
+  </li>
+
+<li>
+<p>Second, we can understand the behavior of the system near the equilibria, whether stable or unstable, by...(<ref to="$vid_section">Key Moment 2</ref>)</p>
+<answer name="ans1b">
+  <choice>cobwebbing a linear approximation to the function <m>f</m> at the equilibrium point</choice>
+  <choice credit="1">cobwebbing the function itself from initial points located near the equilibrium points</choice>
+  <choice credit="1">Either of the above.</choice>
+</answer>
+</li>
+
+<li>
+  <p>Finally, observe cobwebbing around Points <m>E_1</m> through <m>E_3</m> on the graph by dragging the $initialPoint.styleDescriptionWithNoun to answer the next question. </p>
+    <p>The equilibria at points <m>E_1</m> and <m>E_3</m> on the graph are 
+  <answer name="ans1c" inline="true">
+    <choice>stable</choice>
+    <choice credit="1">unstable</choice>
+  </answer> because the cobwebbing on either side of these points moves 
+  <answer name="ans1d" inline="true">
+    <choice>towards</choice>
+    <choice credit="1">away from</choice> 
+  </answer> the equilibrium.</p>
+    
+     <p>The equilibria at point <m>E_2</m> on the graph is
+  <answer name="ans1e" inline="true">
+    <choice credit="1">stable</choice>
+    <choice>unstable</choice>
+  </answer> because the cobwebbing on either side of this point moves 
+  <answer name="ans1f" inline="true">
+    <choice credit="1">towards</choice>
+    <choice>away from</choice> 
+  </answer> the equilibrium.</p>     
+  </li>
+</ul>
+</exercise>
+
+</problem>
+</section>

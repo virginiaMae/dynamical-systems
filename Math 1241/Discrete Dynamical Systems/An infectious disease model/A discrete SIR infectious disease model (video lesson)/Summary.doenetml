@@ -5,37 +5,95 @@ Doenet-Sync-NumVariants: 1
 Doenet-Sync-Hash: 360bca99da15d1c8
 -->
 <title>A discrete SIR infectious disease model</title>
-<p><ref>Video 1</ref> | <ref>Video 2</ref> | <ref>Summary</ref> | <ref>Transcripts</ref></p>
-
-
-
-<section><title>Summary</title>
-<p>The model introduced in the video introduction contains three state variables:</p>
-<p name="modelEquations">
-<ul>
-  <li><m>S_t</m> = the number of susceptibles in day <m>t</m></li>
-  <li><m>I_t</m> = the number of infectives in day <m>t</m></li>
-  <li><m>R_t</m> = the number of removed in day <m>t</m>.</li>
-</ul>
-</p>
-  
-<p>The rule by which the state variables evolve is
-<md>
-  <mrow>S_{t+1} - S_t\amp = -b S_t I_t</mrow>
-  <mrow>I_{t+1} - I_t\amp = b S_tI_t - aI_t</mrow>
-  <mrow>R_{t+1} - R_t\amp = a I_t.</mrow>
-</md>
+<p>
+  <ref>Video 1</ref> | <ref>Video 2</ref> | <ref>Summary</ref> |
+  <ref>Transcripts</ref>
 </p>
 
-<p>The three equations which define the "rule" of the dynamical system are called <alert>difference equations</alert> because they describe <em>changes</em> to the state variables over a single time step. These should look familiar from the previous unit because they are equations for a discrete dynamical system expressed in <term><ref to="doenet:832kteFVLDpZJ9tARy27gK">difference form</ref></term>. We can use the figure below to better understand each of the three parts of the rule:</p>
-  
-<figure>
-<image source="doenet:rXNsNcsATM5qGhgjDEaXwv" asfilename="Discrete SIR screenshot (1).png" size="large" mimeType="image/png" imageName="Infographic showing the interaction between the susceptibles, the infectives, and the removed" authorName="Virginia Mae" licenseCodes="CC-BY"><shortDescription>Infographic showing the interaction between the susceptibles, the infectives, and the removed</shortDescription></image>
-<caption>Relationships between state variables in an infectious disease model</caption>
-</figure>
+<section>
+  <title>Summary</title>
+  <p>
+    The model introduced in the video introduction contains three state
+    variables:
+  </p>
+  <p name="modelEquations">
+    <ul>
+      <li><m>S_t</m> = the number of susceptibles in day <m>t</m></li>
+      <li><m>I_t</m> = the number of infectives in day <m>t</m></li>
+      <li><m>R_t</m> = the number of removed in day <m>t</m>.</li>
+    </ul>
+  </p>
 
-  
-<p>The first equation, <me>S_{t+1} - S_t = -b S_t I_t</me> describes the change in the number of <alert>susceptibles</alert> (the orange group) from time <m>t</m> to time <m>(t+1)</m>. This change is represented on the right-hand side by a negative quantity, <m>-b S_t I_t</m>, because the number of susceptibles is decreasing as individuals become infected. (The first arrow in the diagram is pointing <em>away</em> from the orange group.)</p>
-<p>The second equation, <me>I_{t+1} - I_t = b S_tI_t - aI_t</me> describes the change in the number of <alert>infectives</alert> (the green group) from time <m>t</m> to time <m>(t+1)</m>. This change is represented by two terms on the right-hand side, corresponding to the two arrows pointing towards and away from the green group in the figure. The number of susceptibles who become infectives during this time step <em>add</em> to the total number of infectives, so this arrow is pointing toward the green group and the <m>b S_t I_t</m> term on the right-hand side is positive. The other piece of the puzzle is represented in the diagram by the arrow pointing away from the green group, which corresponds to the number of infectives who are removed during this time step. Since this quantity <em>decreases</em> the total number of infectives, the <m>aI_t</m> term is subtracted in the second equation.</p>
-<p>Lastly, the third equation, <me>R_{t+1} - R_t = a I_t</me> describes the change in the number of <alert>removed</alert> (the blue group) from time <m>t</m> to time <m>(t+1)</m>. The only way for the number of removed to change in the system is for infective individuals to recover (or die, depending on the disease). The single arrow in the diagram represents individuals who are being <em>added</em> to the group of removed individuals (the blue group); hence, the <m>a I_t</m> term in the final equation is positive.</p>
+  <p>
+    The rule by which the state variables evolve is
+    <md>
+      <mrow>S_{t+1} - S_t\amp = -b S_t I_t</mrow>
+      <mrow>I_{t+1} - I_t\amp = b S_tI_t - aI_t</mrow>
+      <mrow>R_{t+1} - R_t\amp = a I_t.</mrow>
+    </md>
+  </p>
+
+  <p>
+    The three equations which define the "rule" of the dynamical system are
+    called <alert>difference equations</alert> because they describe
+    <em>changes</em> to the state variables over a single time step. These
+    should look familiar from the previous unit because they are equations for a
+    discrete dynamical system expressed in
+    <term><ref to="doenet:832kteFVLDpZJ9tARy27gK">difference form</ref></term>. We
+    can use the figure below to better understand each of the three parts of the rule:
+  </p>
+
+  <figure>
+    <image
+      source="doenet:rXNsNcsATM5qGhgjDEaXwv"
+      asfilename="Discrete SIR screenshot (1).png"
+      size="large"
+      mimeType="image/png"
+      imageName="Infographic showing the interaction between the susceptibles, the infectives, and the removed"
+      authorName="Virginia Mae"
+      licenseCodes="CC-BY"
+    >
+      <shortDescription>
+        Infographic showing the interaction between the susceptibles, the
+        infectives, and the removed
+      </shortDescription>
+    </image>
+    <caption>
+      Relationships between state variables in an infectious disease model
+    </caption>
+  </figure>
+
+  <p>
+    The first equation, <me>S_{t+1} - S_t = -b S_t I_t</me> describes the change
+    in the number of <alert>susceptibles</alert> (the orange group) from time
+    <m>t</m> to time <m>(t+1)</m>. This change is represented on the right-hand side
+    by a negative quantity, <m>-b S_t I_t</m>, because the number of
+    susceptibles is decreasing as individuals become infected. (The first arrow
+    in the diagram is pointing <em>away</em> from the orange group.)
+  </p>
+  <p>
+    The second equation, <me>I_{t+1} - I_t = b S_tI_t - aI_t</me> describes the
+    change in the number of <alert>infectives</alert> (the green group) from
+    time <m>t</m> to time <m>(t+1)</m>. This change is represented by two terms on
+    the right-hand side, corresponding to the two arrows pointing towards and away
+    from the green group in the figure. The number of susceptibles who become infectives
+    during this time step <em>add</em> to the total number of infectives, so this
+    arrow is pointing toward the green group and the <m>b S_t I_t</m> term on the
+    right-hand side is positive. The other piece of the puzzle is represented in the
+    diagram by the arrow pointing away from the green group, which corresponds to
+    the number of infectives who are removed during this time step. Since this quantity
+    <em>decreases</em> the total number of infectives, the <m>aI_t</m> term is subtracted
+    in the second equation.
+  </p>
+  <p>
+    Lastly, the third equation, <me>R_{t+1} - R_t = a I_t</me> describes the
+    change in the number of <alert>removed</alert> (the blue group) from time
+    <m>t</m> to time <m>(t+1)</m>. The only way for the number of removed to change
+    in the system is for infective individuals to recover (or die, depending on the
+    disease). The single arrow in the diagram represents individuals who are being
+    <em>added</em> to the group of removed individuals (the blue group); hence, the
+    <m>a I_t</m> term in the final equation is positive.
+  </p>
 </section>
+
+Hello world!

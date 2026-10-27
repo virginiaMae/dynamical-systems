@@ -62,7 +62,7 @@ Doenet-Sync-Hash: 360bca99da15d1c8
       Relationships between state variables in an infectious disease model
     </caption>
   </figure>
-
+Hello World 
   <p>
     The first equation, <me>S_{t+1} - S_t = -b S_t I_t</me> describes the change
     in the number of <alert>susceptibles</alert> (the orange group) from time

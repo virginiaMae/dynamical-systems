@@ -142,25 +142,22 @@ Let <m>n=2</m>, so <m>g(t)=</m>
 <p>
 
 <m>y=</m> 
-<answer>
+<answer name="answer7">
 <award allowedErrorInNumbers="0.001">$L20 </award>
 <award credit="0.5" allowedErrorInNumbers="0.01" feedbackCodes="numericalerror">$L20 </award>
 <award credit="0.25" allowedErrorInNumbers="0.1" feedbackCodes="numericalerror">$L20 </award>
 </answer>
-<copy prop="feedbacks" source="answer7" />
 </p>
+$answer7.feedbacks
 
 <p>Find the equation for the linear approximation of <m>g</m> around <m>t=1</m>
 </p>
 <p>
 
 <m>L_{1}(t)=</m> 
-<answer>
-<award allowedErrorInNumbers="0.001">$L21 </award>
-<award credit="0.5" allowedErrorInNumbers="0.01" feedbackCodes="numericalerror">$L21 </award>
-<award credit="0.25" allowedErrorInNumbers="0.1" feedbackCodes="numericalerror">$L21 </award>
+<answer name="answer8">
+<award>$L21 </award>
 </answer>
-<copy prop="feedbacks" source="answer8" />
 </p>
 
 <p>Find the equation for the linear approximation of <m>g</m> around <m>t=2</m>
@@ -168,13 +165,13 @@ Let <m>n=2</m>, so <m>g(t)=</m>
 <p>
 
 <m>L_{2}(t)=</m> 
-<answer>
+<answer name="answer9">
 <award allowedErrorInNumbers="0.001">$L22 </award>
 <award credit="0.5" allowedErrorInNumbers="0.01" feedbackCodes="numericalerror">$L22 </award>
 <award credit="0.25" allowedErrorInNumbers="0.1" feedbackCodes="numericalerror">$L22 </award>
 </answer>
-<copy prop="feedbacks" source="answer9" />
 </p>
+$answer9.feedbacks
 
 <p>On the below graph of <m>g</m>, plot the tangent lines corresponding to these three linear approximations.</p>
 
@@ -265,7 +262,7 @@ Let <m>n=2</m>, so <m>g(t)=</m>
 
 <p><m>t=1</m>:  <m>g(1)=$g21 </m>, <m>g'(1)=$g2prime1 </m>, <m>L_{1}(t)=1(t-1)+1 = $L21</m></p>
 
-<p><m>t=2</m>:  <m>g(2)=<evaluate function="$g2" input="2" forceSymbolic="true" simplify="true" name="g22s" /> </m>, <m>f'(2)=$g2prime2</m>, <m>L_{2}(t)=$g22s  \approx <round numDigits="4"><number>$L22 </number></round></m>.
+<p><m>t=2</m>:  <m>g(2)=<evaluate function="$g2" input="2" forceSymbolic="true" simplify="true" name="g22s" /> </m>, <m>g'(2)=$g2prime2</m>, <m>L_{2}(t)=$g22s  \approx <round numDigits="4"><number>$L22 </number></round></m>.
 
 </p>
 

@@ -69,8 +69,8 @@ Modeling the slowing growth rate caused by environmental carrying capacity in ba
       <graph name="g" xmin="$xmin" xmax="$xmax" ymin="$ymin" ymax="$ymax" xlabelPosition="$xlabelpos" ylabelPosition="$ylabelpos" ylabelAlignment="$ylabelalign" showNavigation="not $hideNavigation">
         <xLabel>$xlabel</xLabel>
         <yLabel>$ylabel</yLabel>
-        <copy prop="pointsInColumnH" source="data" hide="not $showColHpoints" stylenumber="1" name="Ps1" draggable="false" />
-        <copy prop="pointsInColumnI" source="data" hide="not $showColIpoints" stylenumber="2" name="Ps2" draggable="false" />
+        <pointList name="Ps1" hide="not $showColHpoints" styleNumber="1" draggable="false">$data.pointsInColumns[8]</pointList>
+        <pointList name="Ps2" hide="not $showColIpoints" styleNumber="2" draggable="false">$data.pointsInColumns[9]</pointList>
         <point name="A" labelIsName="true" hide="not $plotAltLine" styleNumber="3">(0,0)
 <!--           <constraints baseOnGraph="g"> -->
           
@@ -482,17 +482,17 @@ plot of the relative population change <m>(P_{t+1}-P_t)/P_t</m> versus populatio
 <paginator name="graphPaginator">
 
   <subsection name="applet1">
-    <title><text name="title">Title</text></title>
-    <module copy="$graphingApplet" title="$title" name="app" />
-  </subsection>
-  <subsection name="applet2">
-    <title><text name="title">Title</text></title>
-    <module copy="$graphingApplet" title="$title" name="copy" />
-  </subsection>
-  <subsection name="applet3">
-    <title><text name="title">Title</text></title>
-    <module copy="$graphingApplet" title="$title" name="copy1" />
-  </subsection>
+    <title><text name="title1">Title</text></title>
+    <module copy="$graphingApplet" title="$title1" name="app" />
+</subsection>
+<subsection name="applet2">
+    <title><text name="title2">Title</text></title>
+    <module copy="$graphingApplet" title="$title2" name="copy" />
+</subsection>
+<subsection name="applet3">
+    <title><text name="title3">Title</text></title>
+    <module copy="$graphingApplet" title="$title3" name="copy1" />
+</subsection>
 
 </paginator>
 <paginatorControls paginator="$graphPaginator" name="pcontrols2" pageLabel="Applet" />
